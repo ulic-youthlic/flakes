@@ -1,0 +1,213 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+[character]
+success_symbol = '[λ](bold blue)'
+error_symbol = '[λ](bold red)'
+vimcmd_symbol = '[Λ](bold blue)'
+vimcmd_replace_one_symbol = '[Λ](bold purple)'
+vimcmd_replace_symbol = '[Λ](bold purple)'
+vimcmd_visual_symbol = '[Λ](bold yellow)'
+
+[[battery.display]]
+threshold = 10
+style = 'bold red'
+
+[[battery.display]]
+threshold = 30
+style = 'bold yellow'
+discharging_symbol = '💦'
+
+[[battery.display]]
+threshold = 100
+style = 'green'
+
+[git_branch]
+format = 'on [$symbol$branch(:$remote_branch)]($style) '
+symbol = " "
+
+[git_status]
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+conflicted = "[⚔️${count}](red)"
+ahead = '[⇡${count}](bold green)'
+behind = '[⇣${count}](bold yellow)'
+untracked = '[!${count}](red)'
+stashed = "[📦${count}](purple)"
+modified = '[M${count}](bold yellow)'
+staged = "[+${count}](green)"
+renamed = "[»${count}](bold yellow)"
+deleted = '[-${count}](blue)'
+up_to_date = '[✓](green)'
+format = '([(\[$all_status\])(\[$ahead_behind\])]($style) ) '
+
+[git_commit]
+format = '([\($hash$tag\)]($style) )'
+only_detached = false
+
+[directory]
+fish_style_pwd_dir_length = 2
+truncation_length = 2
+truncate_to_repo = false
+repo_root_style = "bold green"
+use_os_path_sep = false
+read_only = " 󰌾"
+
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+[package]
+symbol = "󰏗 "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
+

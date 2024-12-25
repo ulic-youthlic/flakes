@@ -1,0 +1,89 @@
+include {
+  proxy.d/*.dae
+}
+
+global {
+  lan_interface: auto
+  wan_interface: auto
+
+  log_level: trace
+  allow_insecure: false
+  auto_config_kernel_parameter: true
+  dial_mode: domain
+
+  tcp_check_url: 'http://cp.cloudflare.com'
+  udp_check_dns: 'dns.google.com:53'
+  check_interval: 600s
+  check_tolerance: 50ms
+
+  tproxy_port: 12345
+}
+
+dns {
+  ipversion_prefer: 4
+
+  upstream {
+    googledns: 'tcp+udp://8.8.8.8:53'
+    alidns: 'udp://dns.alidns.com:53'
+  }
+  routing {
+    request {
+      qname(geosite: category-ads) -> reject
+      qname(geosite: category-ads-all) -> reject
+      qname(geosite: cn) -> alidns
+      fallback: googledns
+    }
+    response {
+      upstream(googledns) && ip(geoip: private) -> alidns
+      fallback: accept
+    }
+  }
+}
+
+group {
+  proxy {
+    filter: subtag(wget)
+    policy: min_moving_avg
+  }
+  us {
+    filter: subtag(wget) && name(keyword: "美国")
+    policy: min_moving_avg
+  }
+  hk {
+    filter: subtag(wget) && name(keyword: "香港")
+    policy: min_moving_avg
+  }
+}
+
+# 更多的 Routing 样例见 https://github.com/daeuniverse/dae/blob/main/docs/en/configuration/routing.md
+routing {
+  pname(hickory-dns) && dport(53) -> must_direct
+  pname(mihomo) -> must_direct
+  pname(systemd-resolved) -> must_direct
+
+  domain(full: time.windows.com) -> must_direct
+  domain(regex: ".*wgetcloud.*v2ray.*") -> must_direct
+  domain(suffix: "hit.edu.cn") -> must_direct
+  domain(geosite: microsoft) -> proxy
+  # domain(geosite: onedrive) -> must_direct
+  domain(geosite: "category-ai-chat-!cn") -> us
+  domain(geosite: google) -> us
+  domain(geosite: google-play) -> proxy
+  domain(geosite: apple) -> us
+  domain(geosite: spotify) -> us
+  domain(geosite: tiktok) -> us
+  domain(geosite: cn) -> direct
+
+  dip(geoip:private) -> direct
+  dip(geoip:cn) -> direct
+  # dport(63434) && sip(192.168.31.170) -> hk
+  dip(223.5.5.5) -> direct
+  
+  # ban qq dns over http
+  # dip(43.136.0.0/13) -> block
+  # dip(109.244.0.0/16) -> block
+  # dip(175.27.0.0/16) -> block
+  # dip('2409:8C1E:75B0:80::/64') -> block
+
+  fallback: proxy
+}

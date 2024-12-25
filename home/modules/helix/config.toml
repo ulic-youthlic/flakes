@@ -1,0 +1,84 @@
+theme = "ayu_evolve"
+
+[editor]
+line-number = "relative"
+cursorline = true
+cursorcolumn = false
+true-color = true
+undercurl = true
+bufferline = "multiple"
+color-modes = true
+default-line-ending = "lf"
+popup-border = "all"
+
+[editor.statusline]
+left = [
+  "mode",
+  "spacer",
+  "version-control",
+  "file-type",
+  "separator",
+  "read-only-indicator",
+  "file-name",
+  "file-modification-indicator",
+  "spacer",
+  "spinner",
+]
+center = ["diagnostics"]
+right = [
+  "register",
+  "file-line-ending",
+  "file-encoding",
+  "separator",
+  "total-line-numbers",
+  "position",
+  "position-percentage",
+]
+separator = "|"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.auto-save]
+focus-lost = true
+after-delay.enable = true
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·"
+
+[editor.indent-guides]
+render = true
+
+[editor.gutters]
+layout = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
+line-numbers.min-width = 1
+
+[editor.soft-wrap]
+enable = true
+wrap-at-text-width = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "error"
+prefix-len = 2

@@ -1,0 +1,13 @@
+{ ... }@args:
+final: prev:
+let
+  inherit (prev) lib;
+  overlay-files = [
+    ./helix.nix
+    ./spotify.nix
+    ./niri.nix
+    ./ghostty.nix
+  ];
+  overlay-list = map (file: import file args) overlay-files;
+in
+(lib.composeManyExtensions overlay-list) final prev
