@@ -26,7 +26,7 @@
         {
           enable = true;
           enableSshSupport = true;
-          pinentryPackage = pkgs.pinentry-qt;
+          pinentryPackage = pkgs.pinentry-curses;
         }
         (lib.mkIf config.youthlic.programs.fish.enable {
           enableFishIntegration = true;

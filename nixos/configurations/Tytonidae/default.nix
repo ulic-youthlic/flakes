@@ -1,13 +1,16 @@
-{ pkgs, inputs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports =
     (with inputs; [
       nixos-hardware.nixosModules.asus-fx506hm
     ])
     ++ [
-      ./gui.nix
       ./users
-      ./steam.nix
 
       # Include the hardware related config
       ./hardware-configuration.nix
@@ -25,6 +28,16 @@
       dae.enable = true;
       openssh.enable = true;
       steam.enable = true;
+    };
+    gui.enabled = "niri";
+  };
+
+  specialisation = {
+    cosmic = {
+      inheritParentConfig = true;
+      configuration = {
+        youthlic.gui.enabled = lib.mkForce "cosmic";
+      };
     };
   };
 
@@ -55,6 +68,7 @@
     wechat-uos
     nvtopPackages.full
     spotify
+    localsend
   ];
 
   environment.variables.EDITOR = "hx";

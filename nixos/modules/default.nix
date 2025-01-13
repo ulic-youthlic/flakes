@@ -20,6 +20,9 @@
       ./dae
       ./openssh.nix
       ./nh.nix
+      ./i18n.nix
+      ./gui.nix
+      ./steam.nix
     ];
 
   config = {
