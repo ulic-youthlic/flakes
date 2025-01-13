@@ -17,6 +17,9 @@
       ./nix.nix
       ./home.nix
       ./sops.nix
+      ./dae
+      ./openssh.nix
+      ./nh.nix
     ];
 
   config = {

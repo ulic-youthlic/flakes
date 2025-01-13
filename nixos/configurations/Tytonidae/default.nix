@@ -5,13 +5,8 @@
       nixos-hardware.nixosModules.asus-fx506hm
     ])
     ++ [
-      ./i18n.nix
       ./gui.nix
       ./users
-      ./openssh.nix
-      ./kvm.nix
-      ./dae
-      ./nh.nix
       ./steam.nix
 
       # Include the hardware related config
@@ -19,10 +14,18 @@
       ./networking.nix
     ];
 
-  youthlic.home-manager = {
-    enable = true;
-    unixName = "david";
-    hostName = "Tytonidae";
+  youthlic = {
+    home-manager = {
+      enable = true;
+      unixName = "david";
+      hostName = "Tytonidae";
+    };
+    i18n.enable = true;
+    programs = {
+      dae.enable = true;
+      openssh.enable = true;
+      steam.enable = true;
+    };
   };
 
   programs.gnupg.agent = {
@@ -46,7 +49,6 @@
 
     element-desktop
     discord-ptb
-    asusctl
     vlc
     btop
     handbrake
@@ -56,12 +58,6 @@
   ];
 
   environment.variables.EDITOR = "hx";
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;

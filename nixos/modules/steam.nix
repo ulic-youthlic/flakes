@@ -1,6 +1,14 @@
-{ ... }:
+{ lib, config, ... }:
+let
+  cfg = config.youthlic.programs.steam;
+in
 {
-  config = {
+  options = {
+    youthlic.programs.steam = {
+      enable = lib.mkEnableOption "steam";
+    };
+  };
+  config = lib.mkIf cfg.enable {
     hardware.graphics.enable32Bit = true;
     programs.steam = {
       enable = true;
