@@ -61,6 +61,7 @@
               side-by-side = true;
             };
           };
+          lfs.enable = true;
           extraConfig = {
             credential = {
               helper = "store --file=${config.sops.secrets."git-credential".path}";

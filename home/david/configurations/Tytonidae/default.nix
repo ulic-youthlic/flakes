@@ -28,6 +28,10 @@
     sops.enable = true;
   };
 
+  david = {
+    wallpaper.enable = true;
+  };
+
   xdg.userDirs = {
     enable = true;
     download = "${config.home.homeDirectory}/dls";

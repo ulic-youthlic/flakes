@@ -127,7 +127,7 @@ environment {
 }
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "swaybg" "-i" "/home/david/pic/wallpaper/screenbackground.png"
+spawn-at-startup "swaybg" "-i" "/home/david/wallpaper/01.png"
 spawn-at-startup "fcitx5" "-d" "--replace"
 spawn-at-startup "xwayland-satellite" ":1"
 
