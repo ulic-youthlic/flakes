@@ -13,6 +13,7 @@
 
   youthlic.programs = {
     firefox.enable = true;
+    fuzzel.enable = true;
     helix.enable = true;
     gpg.enable = true;
     git = {
