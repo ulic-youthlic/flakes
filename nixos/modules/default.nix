@@ -21,7 +21,7 @@
       ./openssh.nix
       ./nh.nix
       ./i18n.nix
-      ./gui.nix
+      ./gui
       ./steam.nix
     ];
 
