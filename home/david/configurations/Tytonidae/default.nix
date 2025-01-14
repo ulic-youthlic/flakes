@@ -17,7 +17,7 @@
     helix.enable = true;
     gpg.enable = true;
     git = {
-      email = "ulic.youthilc@gmail.com";
+      email = "ulic.youthlic@gmail.com";
       name = "ulic-youthlic";
       signKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
     };
