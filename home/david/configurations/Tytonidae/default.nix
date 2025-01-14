@@ -8,11 +8,11 @@
 }:
 {
   imports = [
-    ./firefox.nix
     ./niri
   ];
 
   youthlic.programs = {
+    firefox.enable = true;
     helix.enable = true;
     gpg.enable = true;
     git = {

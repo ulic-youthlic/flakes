@@ -14,6 +14,7 @@
       ./foot
       ./starship
       ./sops.nix
+      ./firefox.nix
     ];
 
   options = {
