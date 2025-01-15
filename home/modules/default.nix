@@ -17,6 +17,8 @@
       ./fuzzel.nix
       ./firefox.nix
       ./niri.nix
+      ./wluma.nix
+      ./waybar.nix
     ];
 
   options = {

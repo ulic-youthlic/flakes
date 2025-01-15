@@ -29,14 +29,14 @@
       openssh.enable = true;
       steam.enable = true;
     };
-    gui.enabled = "niri";
+    gui.enabled = "cosmic";
   };
 
   specialisation = {
-    cosmic = {
+    niri = {
       inheritParentConfig = true;
       configuration = {
-        youthlic.gui.enabled = lib.mkForce "cosmic";
+        youthlic.gui.enabled = lib.mkForce "niri";
       };
     };
   };

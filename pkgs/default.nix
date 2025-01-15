@@ -4,6 +4,7 @@
   ...
 }:
 {
+  pinentry-selector = pkgs.callPackage ./pinentry-selector.nix { };
   immersive-translate =
     (pkgs.callPackage "${inputs.firefox-addons}/default.nix" { }).firefox-addons.immersive-translate;
 }

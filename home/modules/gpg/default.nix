@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  outputs,
   ...
 }:
 {
@@ -26,7 +27,7 @@
         {
           enable = true;
           enableSshSupport = true;
-          pinentryPackage = pkgs.pinentry-curses;
+          pinentryPackage = outputs.packages."${pkgs.system}".pinentry-selector;
         }
         (lib.mkIf config.youthlic.programs.fish.enable {
           enableFishIntegration = true;

@@ -22,13 +22,14 @@ in
   };
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      mako
+      swaynotificationcenter
       swaybg
       xwayland-satellite
-      waybar
     ];
     youthlic.programs = {
       fuzzel.enable = true;
+      wluma.enable = true;
+      waybar.enable = true;
     };
     programs.niri = {
       config = builtins.readFile cfg.config;
