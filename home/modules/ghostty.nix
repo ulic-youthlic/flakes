@@ -27,7 +27,7 @@
           enable = true;
           package = pkgs.ghostty;
           settings = {
-            font-family = "FiraCode Nerd Font";
+            # font-family = "FiraCode Nerd Font";
             font-feature = [
               "calt=1"
               "clig=1"
@@ -46,8 +46,9 @@
               "cv30"
             ];
             font-size = 17;
-            theme = "ayu";
+            # theme = "ayu";
             background-opacity = 0.8;
+            confirm-close-surface = "false";
           };
         }
         (lib.mkIf config.youthlic.programs.fish.enable {
