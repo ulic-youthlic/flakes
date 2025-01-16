@@ -42,7 +42,7 @@ in
         noto-fonts-emoji
         lxgw-wenkai
       ];
-      fontconfig.defaultFonts = pkgs.lib.mkForce {
+      fontconfig.defaultFonts = {
         serif = [
           "LXGW WenKai"
           "Noto Serif CJK SC"

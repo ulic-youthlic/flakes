@@ -1,4 +1,4 @@
-theme = "ayu_evolve"
+# theme = "ayu_evolve" # avoid conflicting with stylix
 
 [editor]
 line-number = "relative"
@@ -56,8 +56,9 @@ focus-lost = true
 after-delay.enable = true
 
 [editor.whitespace.render]
-space = "all"
+space = "none"
 tab = "all"
+nbsp = "all"
 newline = "none"
 
 [editor.whitespace.characters]

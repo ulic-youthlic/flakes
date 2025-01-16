@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  rootPath,
+  lib,
+  config,
+  ...
+}:
 let
   cfg = config.david.wallpaper;
 in
@@ -16,7 +21,7 @@ in
     home.file."wallpaper" = {
       force = true;
       recursive = true;
-      source = ./pic;
+      source = rootPath + "/assets/wallpaper";
     };
   };
 }

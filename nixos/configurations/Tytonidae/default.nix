@@ -11,6 +11,7 @@
     ])
     ++ [
       ./users
+      ./stylix.nix
 
       # Include the hardware related config
       ./hardware-configuration.nix

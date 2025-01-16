@@ -1,2 +1,2 @@
-home/david/modules/wallpaper/pic/ filter=lfs diff=lfs merge=lfs -text
-home/david/modules/wallpaper/pic/01.png filter=lfs diff=lfs merge=lfs -text
+assets/ filter=lfs diff=lfs merge=lfs -text
+assets/wallpaper/01.png filter=lfs diff=lfs merge=lfs -text

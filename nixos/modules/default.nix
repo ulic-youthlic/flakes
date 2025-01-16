@@ -1,7 +1,6 @@
 {
   inputs,
   outputs,
-  pkgs,
   ...
 }:
 {
@@ -12,6 +11,7 @@
       home-manager.nixosModules.home-manager
       dae.nixosModules.dae
       sops-nix.nixosModules.sops
+      stylix.nixosModules.stylix
     ])
     ++ [
       ./nix.nix
