@@ -73,6 +73,7 @@
   ];
 
   environment.variables.EDITOR = "hx";
+  services.dbus.implementation = "broker";
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
