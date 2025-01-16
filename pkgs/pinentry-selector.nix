@@ -10,14 +10,14 @@ pkgs.writeShellApplication {
         tty)
           pinentry-tty;;
         *)
-          pinentry-qt;;
+          pinentry-gnome3;;
       esac
     elif [ -v SSH_CLIENT ] && [ -n "$SSH_CLIENT" ]; then
       pinentry-tty
     elif [ -v WAYLAND_DISPLAY ] && [ -n "$WAYLAND_DISPLAY" ]; then
-      pinentry-qt
+      pinentry-gnome3
     elif [ -v DISPLAY ] && [ -n "$DISPLAY" ]; then
-      pinentry-qt
+      pinentry-gnome3
     else
       pinentry-tty
     fi
