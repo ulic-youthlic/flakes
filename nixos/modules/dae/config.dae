@@ -59,7 +59,7 @@ group {
 routing {
   pname(hickory-dns) && dport(53) -> must_direct
   pname(mihomo) -> must_direct
-  pname(systemd-resolved) -> must_direct
+  # pname(systemd-resolve) -> must_direct
 
   domain(full: time.windows.com) -> must_direct
   domain(regex: ".*wgetcloud.*v2ray.*") -> must_direct
