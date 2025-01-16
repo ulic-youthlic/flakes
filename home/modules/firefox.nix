@@ -25,8 +25,9 @@ in
       profiles.default = {
         name = "default";
         isDefault = true;
-        extensions = [
-          outputs.packages."${system}".immersive-translate
+        extensions = with outputs.packages."${system}"; [
+          immersive-translate
+          tridactyl
         ];
         search = {
           force = true;

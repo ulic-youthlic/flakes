@@ -5,9 +5,13 @@
 }:
 {
   pinentry-selector = pkgs.callPackage ./pinentry-selector.nix { };
-  immersive-translate =
-    (pkgs.callPackage "${inputs.firefox-addons}/default.nix" { }).firefox-addons.immersive-translate;
 }
+// (
+  let
+    firefox-addons = (pkgs.callPackage "${inputs.firefox-addons}/default.nix" { }).firefox-addons;
+  in
+  pkgs.lib.genAttrs [ "immersive-translate" "tridactyl" ] (name: firefox-addons."${name}")
+)
 // (
   let
     nur-xddxdd = (pkgs.callPackage "${inputs.nur-xddxdd}/default.nix" { });
