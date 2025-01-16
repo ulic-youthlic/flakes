@@ -85,6 +85,7 @@
     gitoxide
     kdePackages.kdenlive
     fd
+    viu
   ];
   programs.ssh = {
     enable = true;
