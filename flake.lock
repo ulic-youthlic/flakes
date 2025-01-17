@@ -104,11 +104,11 @@
       "flake": false,
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1737000491,
-        "narHash": "sha256-TwGT60ULkUGzENZ3yDr5mJ64jP6dC1nHSLcxaxzCK5w=",
+        "lastModified": 1737086610,
+        "narHash": "sha256-c8b20yTbg2oaUvCVXdm2Lvh1YQN0v2Xp4lpvJaGPOCQ=",
         "ref": "master",
-        "rev": "e6a2fbf1de0422eb9b3f9011af30ce4fc5c17a01",
-        "revCount": 4041,
+        "rev": "75a6a0f78832ef7c1e5e86f0d55bf07e7d01980d",
+        "revCount": 4043,
         "type": "git",
         "url": "https://gitlab.com/rycee/nur-expressions.git?dir=pkgs/firefox-addons"
       },
@@ -386,11 +386,11 @@
         "zig": "zig"
       },
       "locked": {
-        "lastModified": 1736911212,
-        "narHash": "sha256-OLly4X2kN1tDb2gMYcWeim6uJECPoc52ltJsz1iD5Ug=",
+        "lastModified": 1737085478,
+        "narHash": "sha256-EzdUQf1ljtGIWMmscVzoW3rUxxN3UKyNXOXbzUvz3BQ=",
         "owner": "ghostty-org",
         "repo": "ghostty",
-        "rev": "ff9414d9ea7b16a375d41cde8f6f193de7e5db72",
+        "rev": "72d085525b22d66468c5969a4d507a0fa68d4a04",
         "type": "github"
       },
       "original": {
@@ -474,11 +474,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1736956623,
-        "narHash": "sha256-EiXiH9achp3FT9awsI/Bx5brMjB/RQGZnSdLqD44BaA=",
+        "lastModified": 1737072630,
+        "narHash": "sha256-eAcGSaqAHCTtSW8Y1ipK9/KagOPjHvaHmeSKXjXk+Cw=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "3318953bf6b3f7c054e971aec61bf22fd2a05104",
+        "rev": "ffdfb59033a4a6a8d931618f4e685c90928bd931",
         "type": "github"
       },
       "original": {
@@ -495,11 +495,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736785676,
-        "narHash": "sha256-TY0jUwR3EW0fnS0X5wXMAVy6h4Z7Y6a3m+Yq++C9AyE=",
+        "lastModified": 1737075266,
+        "narHash": "sha256-u1gk5I1an975FOAMMdS6oBKnSIsZza5ZKhaeBZAskVo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "fc52a210b60f2f52c74eac41a8647c1573d2071d",
+        "rev": "12851ae7467bad8ef422b20806ab4d6d81e12d29",
         "type": "github"
       },
       "original": {
@@ -710,11 +710,11 @@
         "nixpkgs-stable": "nixpkgs-stable_3"
       },
       "locked": {
-        "lastModified": 1736997002,
-        "narHash": "sha256-EPbAFUXgu3agihgA+MJlQe6J18SIEZ4cRm+zhNRbGfo=",
+        "lastModified": 1737071825,
+        "narHash": "sha256-P9n4HP0XPlXTViw7g3lBRX3Eix0sgcnhanV0ddB08SA=",
         "owner": "lilyinstarlight",
         "repo": "nixos-cosmic",
-        "rev": "40534c1bc524aa8c433a7a30318d7e20bddb33fb",
+        "rev": "c92ead1ab77f8be697a44ca855d06c5957ee2a62",
         "type": "github"
       },
       "original": {
