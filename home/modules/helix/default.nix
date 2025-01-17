@@ -38,6 +38,7 @@
       programs.helix = lib.mkIf cfg.enable {
         enable = true;
         defaultEditor = true;
+        extraPackages = cfg.extraPackages;
         settings =
           let
             config-file = builtins.readFile ./config.toml;
@@ -226,6 +227,5 @@
           ];
         };
       };
-      # home.packages = cfg.extraPackages;
     };
 }

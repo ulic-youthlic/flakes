@@ -11,10 +11,11 @@ pkgs.runCommand "helix-wrapped"
   ''
     mkdir -p $out/bin
     makeWrapper "${lib.getExe inputs.helix.packages."${pkgs.system}".default}" $out/bin/hx \
-    --prefix PATH : ${
+    --suffix PATH : ${
       lib.makeBinPath (
         with pkgs;
         [
+          rustfmt
           clang-tools
           libxml2
           typstyle
