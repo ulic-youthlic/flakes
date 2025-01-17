@@ -8,14 +8,7 @@
 {
   options = {
     youthlic.programs.gpg = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        example = false;
-        description = ''
-          whether enable gpg
-        '';
-      };
+      enable = lib.mkEnableOption "gpg";
     };
   };
   config =

@@ -5,14 +5,7 @@ in
 {
   options = {
     youthlic.programs.starship = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        example = false;
-        description = ''
-          whether enable starship
-        '';
-      };
+      enable = lib.mkEnableOption "starship";
     };
   };
   config = lib.mkIf cfg.enable {

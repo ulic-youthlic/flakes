@@ -10,11 +10,7 @@ in
 {
   options = {
     david.wallpaper = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        example = false;
-      };
+      enable = lib.mkEnableOption "wallpaper";
     };
   };
   config = lib.mkIf cfg.enable {

@@ -1,7 +1,6 @@
 { config, lib, ... }:
 let
-  inherit (lib) mkOption mkIf mkMerge;
-  inherit (lib.types) bool;
+  inherit (lib) mkEnableOption mkIf mkMerge;
   fish-cfg = config.youthlic.programs.fish;
   bash-cfg = config.youthlic.programs.bash;
   cfg-helper =
@@ -20,24 +19,10 @@ in
   options = {
     youthlic.programs = {
       fish = {
-        enable = mkOption {
-          type = bool;
-          default = true;
-          description = ''
-            whether to use fish shell
-          '';
-          example = false;
-        };
+        enable =mkEnableOption "fish";
       };
       bash = {
-        enable = mkOption {
-          type = bool;
-          default = true;
-          description = ''
-            whether to use bash shell
-          '';
-          example = false;
-        };
+        enable = mkEnableOption "bash";
       };
     };
   };

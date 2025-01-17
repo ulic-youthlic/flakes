@@ -7,14 +7,7 @@
 {
   options = {
     youthlic.programs.helix = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        example = false;
-        description = ''
-          enable helix editor
-        '';
-      };
+      enable = lib.mkEnableOption "helix";
       extraPackages = lib.mkOption {
         type = lib.types.listOf lib.types.package;
         default = [ ];

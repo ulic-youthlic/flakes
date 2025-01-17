@@ -7,14 +7,7 @@
 {
   options = {
     youthlic.programs.ghostty = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        example = false;
-        default = true;
-        description = ''
-          whether enable ghostty
-        '';
-      };
+      enable = lib.mkEnableOption "ghostty";
     };
   };
   config =

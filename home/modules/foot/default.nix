@@ -5,14 +5,7 @@ in
 {
   options = {
     youthlic.programs.foot = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        example = false;
-        description = ''
-          whether use foot terminal
-        '';
-      };
+      enable = lib.mkEnableOption "foot";
     };
   };
   config = lib.mkIf cfg.enable {
