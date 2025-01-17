@@ -23,6 +23,7 @@
       ./i18n.nix
       ./gui
       ./steam.nix
+      ./tailscale.nix
     ];
 
   config = {

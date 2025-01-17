@@ -29,6 +29,7 @@
       dae.enable = true;
       openssh.enable = true;
       steam.enable = true;
+      tailscale.enable = true;
     };
     gui.enabled = "cosmic";
   };
