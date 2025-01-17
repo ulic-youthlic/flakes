@@ -22,8 +22,8 @@ Hey, you. This is my nixos configurations.
 | `outputs` field                           | description                                                                 | source                                   |
 | ----------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------- |
 | `packages`                                | packages imported or wrapped from elsewhere                                 | ./pkgs                                   |
-| `overlays.modifications`                  | the overlays modify <nixpkgs>                                               | ./overlays/modifications                 |
-| `overlays.additions`                      | the ovelrays add packages in <nixpkgs>                                      | ./overlays/additions                     |
+| `overlays.modifications`                  | the overlays modify `<nixpkgs>`                                             | ./overlays/modifications                 |
+| `overlays.additions`                      | the ovelrays add packages in `<nixpkgs>`                                    | ./overlays/additions                     |
 | `nixosModules.default`                    | nixos modules shared on different nixos machines                            | ./nixos/modules                          |
 | `nixosConfigurations.${machine}`          | machine-local nixos config                                                  | ./nixos/configurations/${machine}        |
 | `homeManagerModules.default`              | home-manager modules shared between different user and machine combinations | ./home/modules                           |
