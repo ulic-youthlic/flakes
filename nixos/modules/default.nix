@@ -24,6 +24,7 @@
       ./gui
       ./steam.nix
       ./tailscale.nix
+      ./kanata.nix
     ];
 
   config = {

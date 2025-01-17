@@ -30,6 +30,7 @@
       openssh.enable = true;
       steam.enable = true;
       tailscale.enable = true;
+      kanata.enable = true;
     };
     gui.enabled = "cosmic";
   };
