@@ -62,6 +62,9 @@ in
       programs = {
         fish = {
           enable = true;
+          interactiveShellInit = ''
+            fish_vi_key_bindings
+          '';
           functions = {
             __fish_command_not_found_handler = {
               body = "__fish_default_command_not_found_handler $argv[1]";
