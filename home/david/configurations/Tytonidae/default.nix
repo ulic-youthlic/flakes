@@ -29,6 +29,7 @@
     foot.enable = false;
     starship.enable = true;
     sops.enable = true;
+    mpv.enable = true;
   };
 
   david = {

@@ -23,6 +23,7 @@
       ./niri.nix
       ./wluma.nix
       ./waybar.nix
+      ./mpv.nix
     ];
 
   options = {
