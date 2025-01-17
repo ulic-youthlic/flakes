@@ -58,8 +58,6 @@
     git
     vim
     helix
-    nixd
-    nixfmt-rfc-style
 
     element-desktop
     discord-ptb

@@ -17,14 +17,7 @@
       };
       extraPackages = lib.mkOption {
         type = lib.types.listOf lib.types.package;
-        default = with pkgs; [
-          taplo
-          markdown-oxide
-          nixd
-          deno
-          nixfmt-rfc-style
-          nodePackages_latest.vscode-json-languageserver
-        ];
+        default = [ ];
         example = (
           with pkgs;
           [
@@ -53,20 +46,131 @@
           config;
         languages = {
           language-server = {
-            vscode-json-languageserver = {
-              command = "vscode-json-languageserver";
-              args = [ "--stdio" ];
-              config = {
-                provideFormatter = true;
-                json = {
-                  validate = {
-                    enable = true;
-                  };
-                };
-              };
+            fish-lsp = {
+              command = "fish-lsp";
+              args = [
+                "start"
+              ];
             };
           };
           language = [
+            {
+              name = "nix";
+              formatter = {
+                command = "nixfmt";
+                args = [ "-" ];
+              };
+            }
+            {
+              name = "xml";
+              formatter = {
+                command = "xmllint";
+                args = [
+                  "--format"
+                  "-"
+                ];
+              };
+            }
+            {
+              name = "typst";
+              formatter = {
+                command = "typstyle";
+              };
+            }
+            {
+              name = "c";
+              formatter = {
+                command = "clang-format";
+              };
+            }
+            {
+              name = "cpp";
+              formatter = {
+                command = "clang-format";
+              };
+            }
+            {
+              name = "python";
+              formatter = {
+                command = "ruff";
+                args = [
+                  "format"
+                  "-s"
+                  "--line-length"
+                  "88"
+                  "-"
+                ];
+              };
+              language-servers = [
+                "pyright"
+                "ruff"
+              ];
+            }
+            {
+              name = "go";
+              formatter = {
+                command = "goimports";
+              };
+            }
+            {
+              name = "awk";
+              formatter = {
+                command = "awk";
+                timeout = 5;
+                args = [
+                  "--file=/dev/stdin"
+                  "--pretty-print=/dev/stdout"
+                ];
+              };
+            }
+            {
+              name = "fish";
+              language-servers = [
+                "fish-lsp"
+              ];
+            }
+            {
+              name = "yaml";
+              formatter = {
+                command = "deno";
+                args = [
+                  "fmt"
+                  "-"
+                  "--ext"
+                  "yaml"
+                ];
+              };
+            }
+            {
+              name = "html";
+              formatter = {
+                command = "deno";
+                args = [
+                  "fmt"
+                  "-"
+                  "--ext"
+                  "html"
+                ];
+              };
+              language-servers = [
+                "vscode-html-language-server"
+              ];
+            }
+            {
+              name = "css";
+              formatter = {
+                command = "deno";
+                args = [
+                  "fmt"
+                  "-"
+                  "--ext"
+                  "css"
+                ];
+              };
+              language-servers = [
+                "vscode-css-language-server"
+              ];
+            }
             {
               name = "toml";
               formatter = {
@@ -92,7 +196,7 @@
             {
               name = "json";
               language-servers = [
-                "vscode-json-languageserver"
+                "vscode-json-language-server"
               ];
               formatter = {
                 command = "deno";
@@ -107,7 +211,7 @@
             {
               name = "jsonc";
               language-servers = [
-                "vscode-json-languageserver"
+                "vscode-json-language-server"
               ];
               formatter = {
                 command = "deno";
@@ -122,6 +226,6 @@
           ];
         };
       };
-      home.packages = cfg.extraPackages;
+      # home.packages = cfg.extraPackages;
     };
 }

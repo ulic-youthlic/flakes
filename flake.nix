@@ -122,8 +122,8 @@
           nixosModules.default = import ./nixos/modules;
 
           overlays = {
-            modifications = (import ./overlays/modifications { inherit inputs; });
-            additions = (import ./overlays/additions { inherit inputs; });
+            modifications = (import ./overlays/modifications { inherit inputs outputs; });
+            additions = (import ./overlays/additions { inherit inputs outputs; });
           };
 
           nixosConfigurations =
