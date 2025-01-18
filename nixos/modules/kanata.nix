@@ -43,7 +43,7 @@ in
 
           (defalias
               cac (tap-hold 190 190 esc lctrl)  ;; hold CapsLock → Esc, press CapsLock → LCtrl
-              esc-behavior (tap-hold 190 190 caps esc)  ;; press Esc → CapsLock, hold Esc → Esc
+              esc-behavior (tap-hold 190 190 esc caps)  ;; hold Esc → CapsLock, press Esc → Esc
           )
         '';
       };
