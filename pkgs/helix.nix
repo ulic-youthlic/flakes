@@ -31,6 +31,7 @@ let
       lldb
       rust-analyzer
       nil
+      haskell-language-server
     ]
   );
 in
