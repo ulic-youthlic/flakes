@@ -30,6 +30,7 @@
     starship.enable = true;
     sops.enable = true;
     mpv.enable = true;
+    kvm.enable = true;
   };
 
   david = {

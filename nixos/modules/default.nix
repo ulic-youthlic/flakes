@@ -25,6 +25,7 @@
       ./steam.nix
       ./tailscale.nix
       ./kanata.nix
+      ./kvm.nix
     ];
 
   config = {

@@ -24,6 +24,7 @@
       ./wluma.nix
       ./waybar.nix
       ./mpv.nix
+      ./kvm.nix
     ];
 
   options = {

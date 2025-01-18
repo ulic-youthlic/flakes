@@ -31,6 +31,10 @@
       steam.enable = true;
       tailscale.enable = true;
       kanata.enable = true;
+      kvm = {
+        enable = true;
+        unixName = "david";
+      };
     };
     gui.enabled = "cosmic";
   };
