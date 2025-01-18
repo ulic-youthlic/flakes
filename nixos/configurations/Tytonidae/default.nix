@@ -42,6 +42,12 @@
         youthlic.gui.enabled = lib.mkForce "niri";
       };
     };
+    kde = {
+      inheritParentConfig = true;
+      configuration = {
+        youthlic.gui.enabled = lib.mkForce "kde";
+      };
+    };
   };
 
   programs.gnupg.agent = {

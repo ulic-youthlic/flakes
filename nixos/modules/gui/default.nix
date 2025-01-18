@@ -11,6 +11,7 @@ in
   imports = [
     ./niri.nix
     ./cosmic.nix
+    ./kde.nix
   ];
   options = {
     youthlic.gui = {
@@ -19,6 +20,7 @@ in
           lib.types.enum [
             "cosmic"
             "niri"
+            "kde"
           ]
         );
         default = null;
