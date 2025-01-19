@@ -1,18 +1,10 @@
 {
   pkgs,
-  config,
-  rootPath,
-  inputs,
   unixName,
+  config,
   ...
 }:
 {
-  imports = [
-    ./niri
-    ./wluma
-    ./waybar
-  ];
-
   youthlic.programs = {
     firefox.enable = true;
     fuzzel.enable = true;
@@ -22,16 +14,13 @@
       email = "ulic.youthlic@gmail.com";
       name = "ulic-youthlic";
       signKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
-      encrypt-credential = true;
     };
     fish.enable = true;
     bash.enable = true;
     ghostty.enable = true;
-    foot.enable = false;
     starship.enable = true;
     sops.enable = true;
     mpv.enable = true;
-    kvm.enable = true;
   };
 
   david = {
@@ -61,6 +50,7 @@
       input-overlay
     ];
   };
+
   home.packages = with pkgs; [
     tealdeer
     ripgrep
@@ -90,6 +80,7 @@
     fd
     viu
   ];
+
   programs.ssh = {
     enable = true;
     hashKnownHosts = true;
@@ -109,7 +100,7 @@
         };
       };
     };
-    includes = [ config.sops.secrets.ssh-config.path ];
+    # includes = [ config.sops.secrets.ssh-config.path ];
   };
   programs.chromium = {
     enable = true;
@@ -119,27 +110,4 @@
       "--enable-features=UseOzonePlatform"
     ];
   };
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
-    };
-  };
-
-  sops.secrets = {
-    "ssh-private-key/tytonidae" = {
-      mode = "0600";
-      path = "${config.home.homeDirectory}/.ssh/id_ed25519_tytonidae";
-    };
-    "ssh-private-key/akun" = {
-      mode = "0600";
-      path = "${config.home.homeDirectory}/.ssh/id_ed25519_akun";
-    };
-    "ssh-config" = {
-      mode = "0400";
-      format = "yaml";
-      sopsFile = rootPath + "/secrets/ssh-config.yaml";
-    };
-  };
-
 }

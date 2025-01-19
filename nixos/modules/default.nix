@@ -12,6 +12,7 @@
       dae.nixosModules.dae
       sops-nix.nixosModules.sops
       stylix.nixosModules.stylix
+      disko.nixosModules.disko
     ])
     ++ [
       ./nix.nix

@@ -28,6 +28,7 @@
           key fingerprint for sign commit
         '';
       };
+      encrypt-credential = lib.mkEnableOption "encrypt git credential";
     };
   };
   config =
@@ -62,12 +63,14 @@
             };
           };
           lfs.enable = true;
+        }
+        (lib.mkIf cfg.encrypt-credential {
           extraConfig = {
             credential = {
               helper = "store --file=${config.sops.secrets."git-credential".path}";
             };
           };
-        }
+        })
         (lib.mkIf (cfg.signKey != null) {
           signing = {
             signByDefault = true;

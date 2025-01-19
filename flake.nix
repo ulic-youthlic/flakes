@@ -65,6 +65,11 @@
     stylix = {
       url = "github:danth/stylix";
     };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -193,7 +198,10 @@
           in
           {
             homeConfigurations = nixpkgs.lib.foldr (a: b: a // b) { } (
-              map (hostName: mkHomeConfig { inherit hostName; }) [ "Tytonidae" ]
+              map (hostName: mkHomeConfig { inherit hostName; }) [
+                "Tytonidae"
+                "Akun"
+              ]
             );
             homeManagerModules =
               {
