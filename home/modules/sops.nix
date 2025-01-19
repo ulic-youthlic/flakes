@@ -18,7 +18,7 @@
       };
       keyFile = lib.mkOption {
         type = lib.types.nonEmptyStr;
-        default = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+        default = "/var/sops/key.txt";
         description = ''
           path to age key file
         '';
