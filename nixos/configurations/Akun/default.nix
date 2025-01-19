@@ -16,7 +16,7 @@
     };
     i18n.enable = true;
     programs = {
-      # dae.enable = true;
+      dae.enable = true;
       openssh.enable = true;
       kanata.enable = true;
     };

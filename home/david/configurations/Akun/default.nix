@@ -2,6 +2,7 @@
   pkgs,
   unixName,
   config,
+  rootPath,
   ...
 }:
 {
@@ -100,7 +101,7 @@
         };
       };
     };
-    # includes = [ config.sops.secrets.ssh-config.path ];
+    includes = [ config.sops.secrets.ssh-config.path ];
   };
   programs.chromium = {
     enable = true;
@@ -109,5 +110,20 @@
       "--enable-wayland-ime=true"
       "--enable-features=UseOzonePlatform"
     ];
+  };
+  sops.secrets = {
+    "ssh-private-key/tytonidae" = {
+      mode = "0600";
+      path = "${config.home.homeDirectory}/.ssh/id_ed25519_tytonidae";
+    };
+    "ssh-private-key/akun" = {
+      mode = "0600";
+      path = "${config.home.homeDirectory}/.ssh/id_ed25519_akun";
+    };
+    "ssh-config" = {
+      mode = "0400";
+      format = "yaml";
+      sopsFile = rootPath + "/secrets/ssh-config.yaml";
+    };
   };
 }
