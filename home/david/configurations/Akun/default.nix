@@ -15,6 +15,7 @@
       email = "ulic.youthlic@gmail.com";
       name = "ulic-youthlic";
       signKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
+      encrypt-credential = true;
     };
     fish.enable = true;
     bash.enable = true;
