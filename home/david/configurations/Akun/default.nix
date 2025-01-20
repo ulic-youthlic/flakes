@@ -81,6 +81,7 @@
     kdePackages.kdenlive
     fd
     viu
+    just
   ];
 
   programs.ssh = {

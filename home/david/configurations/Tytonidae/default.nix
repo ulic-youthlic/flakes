@@ -89,6 +89,7 @@
     kdePackages.kdenlive
     fd
     viu
+    just
   ];
   programs.ssh = {
     enable = true;
