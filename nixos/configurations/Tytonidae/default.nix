@@ -35,6 +35,7 @@
         enable = true;
         unixName = "david";
       };
+      open-webui.enable = true;
     };
     gui.enabled = "cosmic";
   };

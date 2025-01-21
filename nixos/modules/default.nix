@@ -27,6 +27,7 @@
       ./tailscale.nix
       ./kanata.nix
       ./kvm.nix
+      ./open-webui.nix
     ];
 
   config = {
