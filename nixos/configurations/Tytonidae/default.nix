@@ -16,6 +16,7 @@
       # Include the hardware related config
       ./hardware-configuration.nix
       ./networking.nix
+      ./disk-config.nix
     ];
 
   youthlic = {
