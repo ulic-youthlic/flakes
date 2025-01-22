@@ -31,9 +31,6 @@
                 settings = {
                   allowDiscards = true;
                   fallbackToPassword = true;
-                  # keyFile = "/dev/disk/by-label/LUKS_DECR";
-                  # keyFileSize = 512 * 64;
-                  # keyFileOffset = 512 * 192;
                 };
                 initrdUnlock = true;
                 extraFormatArgs = [
@@ -68,9 +65,6 @@
                 settings = {
                   allowDiscards = true;
                   fallbackToPassword = true;
-                  # keyFile = "/dev/disk/by-label/LUKS_DECR";
-                  # keyFileSize = 512 * 64;
-                  # keyFileOffset = 512 * 192;
                 };
                 initrdUnlock = true;
                 extraFormatArgs = [
@@ -89,7 +83,6 @@
                   type = "btrfs";
                   extraArgs = [
                     "-f"
-                    "-m dup"
                     "-d raid0"
                     "/dev/mapper/crypto1"
                   ];
@@ -116,10 +109,8 @@
                       ];
                     };
                     "@swap" = {
-                      mountpoint = "/swap";
-                      swap = {
-                        swapfile.size = "32G";
-                      };
+                      mountpoint = "/.swapvol";
+                      swap.swapfile.size = "32G";
                     };
                   };
                 };
