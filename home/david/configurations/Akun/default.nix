@@ -23,6 +23,7 @@
     starship.enable = true;
     sops.enable = true;
     mpv.enable = true;
+    atuin.enable = true;
   };
 
   david = {
