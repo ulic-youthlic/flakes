@@ -10,7 +10,7 @@
           partitions = {
             ESP = {
               name = "ESP";
-              size = "512M";
+              size = "1G";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -19,6 +19,35 @@
                 mountOptions = [
                   "umask=0077"
                   "defaults"
+                ];
+              };
+            };
+            crypto-swap = {
+              size = "32G";
+              content = {
+                type = "luks";
+                name = "crypto-swap";
+                passwordFile = "/tmp/secret.key";
+                settings = {
+                  allowDiscards = true;
+                  fallbackToPassword = true;
+                };
+                content = {
+                  type = "swap";
+                  resumeDevice = true;
+                };
+                initrdUnlock = true;
+                extraFormatArgs = [
+                  "--type luks2"
+                  "--cipher aes-xts-plain64"
+                  "--hash sha512"
+                  "--iter-time 5000"
+                  "--pbkdf argon2id"
+                  "--key-size 256"
+                  "--use-random"
+                ];
+                extraOpenArgs = [
+                  "--timeout 10"
                 ];
               };
             };
@@ -83,7 +112,7 @@
                   type = "btrfs";
                   extraArgs = [
                     "-f"
-                    "-d raid0"
+                    "-d single"
                     "/dev/mapper/crypto1"
                   ];
                   subvolumes = {
