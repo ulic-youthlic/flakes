@@ -25,6 +25,7 @@
       ./waybar.nix
       ./mpv.nix
       ./kvm.nix
+      ./atuin.nix
     ];
 
   options = {

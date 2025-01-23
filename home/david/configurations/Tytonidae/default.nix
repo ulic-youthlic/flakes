@@ -32,6 +32,7 @@
     sops.enable = true;
     mpv.enable = true;
     kvm.enable = true;
+    atuin.enable = true;
   };
 
   david = {
