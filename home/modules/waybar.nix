@@ -124,7 +124,7 @@ in
       ];
       style = ''
          * {
-          font-family: Noto Sans Mono, Noto Sans Mono CJK SC, FiraCode Nerd Font;
+          font-family: LXGW Wenkai, FiraCode Nerd Font;
           font-weight: bold;
           font-size: 14px;
         }
