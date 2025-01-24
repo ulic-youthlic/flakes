@@ -47,6 +47,27 @@ in
             })
           ];
           waylandFrontend = true;
+          ignoreUserConfig = true;
+          settings = {
+            addons = {
+              classicui.globalSection.Theme = "FluentDark-solid";
+            };
+            inputMethod = {
+              "Groups/0" = {
+                Name = "Default";
+                "Default Layout" = "us";
+                DefaultIM = "keyboard-us";
+              };
+              "Groups/0/Items/0" = {
+                Name = "keyboard-us";
+                Layout = "";
+              };
+              "Groups/0/Items/1" = {
+                Name = "rime";
+                Layout = "";
+              };
+            };
+          };
         };
       };
     };
