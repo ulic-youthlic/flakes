@@ -66,6 +66,22 @@
         "type": "github"
       }
     },
+    "bt-tracker": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737706116,
+        "narHash": "sha256-jMrl9cy/1vlJgpljPG0jGlnlGSfCdseKe14guF/EMPo=",
+        "owner": "XIU2",
+        "repo": "TrackersListCollection",
+        "rev": "d56981366bbe7ce97655111d0b8db5b1b91d4540",
+        "type": "github"
+      },
+      "original": {
+        "owner": "XIU2",
+        "repo": "TrackersListCollection",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1727974419,
@@ -1066,6 +1082,7 @@
     },
     "root": {
       "inputs": {
+        "bt-tracker": "bt-tracker",
         "dae": "dae",
         "disko": "disko",
         "firefox-addons": "firefox-addons",

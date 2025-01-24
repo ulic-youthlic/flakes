@@ -28,6 +28,7 @@
       ./kanata.nix
       ./kvm.nix
       ./open-webui.nix
+      ./transmission.nix
     ];
 
   config = {

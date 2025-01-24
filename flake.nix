@@ -70,6 +70,11 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    bt-tracker = {
+      url = "github:XIU2/TrackersListCollection";
+      flake = false;
+    };
   };
   outputs =
     {
