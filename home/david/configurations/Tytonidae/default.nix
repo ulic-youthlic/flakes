@@ -10,7 +10,6 @@
   imports = [
     ./niri
     ./wluma
-    ./waybar
   ];
 
   youthlic.programs = {

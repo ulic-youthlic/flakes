@@ -25,6 +25,7 @@ in
       swaynotificationcenter
       swaybg
       xwayland-satellite
+      niri-unstable
     ];
     youthlic.programs = {
       fuzzel.enable = true;
@@ -33,6 +34,7 @@ in
     };
     programs.niri = {
       config = builtins.readFile cfg.config;
+      package = pkgs.niri-unstable;
     };
   };
 }
