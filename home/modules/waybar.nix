@@ -33,6 +33,7 @@ in
             "backlight"
             "pulseaudio"
             "battery"
+            "custom/notification"
           ];
 
           "niri/worksapces" = { };
@@ -120,6 +121,21 @@ in
             };
             tooltip-format = "{calendar}";
           };
+          "custom/notification" = {
+            "tooltip" = false;
+            "format" = "{icon}";
+            "format-icons" = {
+              "notification" = "<span foreground='red'><sup></sup></span>";
+              "none" = "";
+              "dnd-notification" = "<span foreground='red'><sup></sup></span>";
+              "dnd-none" = "";
+            };
+            "return-type" = "json";
+            "exec" = "swaync-client -swb";
+            "on-click" = "swaync-client -t -sw";
+            "on-click-right" = "swaync-client -d -sw";
+            "escape" = true;
+          };
         }
       ];
       style = ''
@@ -134,6 +150,7 @@ in
           color: @theme_text_color;
         }
 
+        #custom-notification,
         #workspaces,
         #taskbar button,
         #mode,
