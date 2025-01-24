@@ -38,6 +38,10 @@
       };
       open-webui.enable = true;
       transmission.enable = true;
+      caddy = {
+        enable = true;
+        baseDomain = "home.arp";
+      };
     };
     gui.enabled = "cosmic";
   };

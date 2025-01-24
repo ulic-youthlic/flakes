@@ -29,6 +29,7 @@
       ./kvm.nix
       ./open-webui.nix
       ./transmission.nix
+      ./caddy.nix
     ];
 
   config = {

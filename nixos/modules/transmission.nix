@@ -15,24 +15,47 @@ in
       enable = lib.mkEnableOption "transmission";
     };
   };
-  config = lib.mkIf cfg.enable {
-    users.groups."${config.services.transmission.group}".members = [
-      config.youthlic.home-manager.unixName
-    ];
-    sops.secrets."transmission-config" = {
-      sopsFile = rootPath + "/secrets/transmission.yaml";
-    };
-    services.transmission = {
-      enable = true;
-      package = pkgs.transmission_4;
-      settings = {
-        utp-enabled = true;
-        watch-dir-enabled = true;
-        default-trackers = builtins.readFile "${inputs.bt-tracker}/all.txt";
+  config = lib.mkMerge [
+    (lib.mkIf cfg.enable {
+      users.groups."${config.services.transmission.group}".members = [
+        config.youthlic.home-manager.unixName
+      ];
+      sops.secrets."transmission-config" = {
+        sopsFile = rootPath + "/secrets/transmission.yaml";
       };
-      openRPCPort = true;
-      openPeerPorts = true;
-      credentialsFile = "${config.sops.secrets.transmission-config.path}";
-    };
-  };
+      services.transmission = {
+        enable = true;
+        package = pkgs.transmission_4;
+        settings = {
+          utp-enabled = true;
+          watch-dir-enabled = true;
+          default-trackers = builtins.readFile "${inputs.bt-tracker}/all.txt";
+          rpc-bind-address = "0.0.0.0";
+        };
+        openRPCPort = true;
+        openPeerPorts = true;
+        credentialsFile = "${config.sops.secrets.transmission-config.path}";
+      };
+    })
+    (
+      let
+        caddy-cfg = config.youthlic.programs.caddy;
+      in
+      lib.mkIf caddy-cfg.enable {
+        services.transmission = {
+          openRPCPort = lib.mkForce false;
+          settings = {
+            rpc-bind-address = lib.mkForce "127.0.0.1";
+          };
+        };
+        services.caddy.virtualHosts = {
+          "transmission.${caddy-cfg.baseDomain}" = {
+            extraConfig = ''
+              reverse_proxy 127.0.0.1:9091
+            '';
+          };
+        };
+      }
+    )
+  ];
 }
