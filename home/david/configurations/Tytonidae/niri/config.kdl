@@ -173,6 +173,7 @@ window-rule {
 
 binds {
     Super+V { spawn "bash" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
+    Super+Shift+L { spawn "bash" "-c" "swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --grace 2 --fade-in 0.5"; }
     
     Mod+Shift+Slash { show-hotkey-overlay; }
 

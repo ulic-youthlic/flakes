@@ -27,6 +27,7 @@
       ./kvm.nix
       ./atuin.nix
       ./swaync.nix
+      ./swaylock.nix
     ];
 
   options = {

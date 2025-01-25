@@ -35,6 +35,7 @@ in
       wluma.enable = true;
       waybar.enable = true;
       swaync.enable = true;
+      swaylock.enable = true;
     };
     programs.niri = {
       config = builtins.readFile cfg.config;
