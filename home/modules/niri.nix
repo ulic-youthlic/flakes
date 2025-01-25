@@ -31,6 +31,7 @@ in
       fuzzel.enable = true;
       wluma.enable = true;
       waybar.enable = true;
+      swaync.enable = true;
     };
     programs.niri = {
       config = builtins.readFile cfg.config;

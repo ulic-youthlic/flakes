@@ -26,6 +26,7 @@
       ./mpv.nix
       ./kvm.nix
       ./atuin.nix
+      ./swaync.nix
     ];
 
   options = {
