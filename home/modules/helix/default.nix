@@ -49,6 +49,16 @@
           };
           language = [
             {
+              name = "kdl";
+              formatter = {
+                command = "kdlfmt";
+                args = [
+                  "format"
+                  "-"
+                ];
+              };
+            }
+            {
               name = "just";
               formatter = {
                 command = "just";

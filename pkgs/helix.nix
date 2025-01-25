@@ -9,6 +9,7 @@ let
   runtimeInputs = (
     with pkgs;
     [
+      kdlfmt
       rustfmt
       clang-tools
       libxml2
