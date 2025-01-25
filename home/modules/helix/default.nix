@@ -49,6 +49,15 @@
           };
           language = [
             {
+              name = "just";
+              formatter = {
+                command = "just";
+                args = [
+                  "--dump"
+                ];
+              };
+            }
+            {
               name = "nix";
               formatter = {
                 command = "nixfmt";
