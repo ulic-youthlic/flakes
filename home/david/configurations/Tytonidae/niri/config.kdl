@@ -131,6 +131,7 @@ spawn-at-startup "swaybg" "-i" "/home/david/wallpaper/01.png"
 spawn-at-startup "fcitx5" "-d" "--replace"
 spawn-at-startup "xwayland-satellite" ":1"
 spawn-at-startup "polkit-kde-agent"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -171,6 +172,8 @@ window-rule {
 }
 
 binds {
+    Super+V { spawn "bash" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
+    
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T { spawn "ghostty"; }

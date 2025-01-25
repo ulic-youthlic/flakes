@@ -27,6 +27,8 @@ in
       xwayland-satellite
       niri-unstable
       polkit-kde-agent
+      wl-clipboard
+      cliphist
     ];
     youthlic.programs = {
       fuzzel.enable = true;
