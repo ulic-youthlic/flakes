@@ -36,18 +36,21 @@ in
             libsForQt5.fcitx5-qt
             fcitx5-gtk
             fcitx5-configtool
-            fcitx5-chinese-addons
+            fcitx5-fluent
             (fcitx5-rime.override {
               rimeDataPkgs = (
                 with (outputs.packages."${pkgs.system}");
                 [
                   rime-ice
+                  rime-zhwiki
+                  rime-moegirl
                 ]
               );
             })
           ];
           waylandFrontend = true;
-          ignoreUserConfig = true;
+          # rime deploy need use user config dir
+          # ignoreUserConfig = false;
           settings = {
             addons = {
               classicui.globalSection.Theme = "FluentDark-solid";
