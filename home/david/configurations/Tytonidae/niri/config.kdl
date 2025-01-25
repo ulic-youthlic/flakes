@@ -130,6 +130,7 @@ spawn-at-startup "swaync"
 spawn-at-startup "swaybg" "-i" "/home/david/wallpaper/01.png"
 spawn-at-startup "fcitx5" "-d" "--replace"
 spawn-at-startup "xwayland-satellite" ":1"
+spawn-at-startup "polkit-kde-agent"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.

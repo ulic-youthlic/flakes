@@ -26,6 +26,7 @@ in
       swaybg
       xwayland-satellite
       niri-unstable
+      polkit-kde-agent
     ];
     youthlic.programs = {
       fuzzel.enable = true;
