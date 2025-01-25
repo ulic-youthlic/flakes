@@ -9,6 +9,7 @@ let
   runtimeInputs = (
     with pkgs;
     [
+      cmake-language-server
       kdlfmt
       rustfmt
       clang-tools
@@ -33,6 +34,7 @@ let
       rust-analyzer
       nil
       haskell-language-server
+      neocmakelsp
     ]
   );
 in

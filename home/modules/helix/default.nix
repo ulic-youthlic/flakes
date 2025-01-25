@@ -40,6 +40,12 @@
           config;
         languages = {
           language-server = {
+            neocmakelsp = {
+              command = "neocmakelsp";
+              args = [
+                "stdio"
+              ];
+            };
             fish-lsp = {
               command = "fish-lsp";
               args = [
@@ -48,6 +54,13 @@
             };
           };
           language = [
+            {
+              name = "cmake";
+              language-servers = [
+                "neocmakelsp"
+                "cmake-language-server"
+              ];
+            }
             {
               name = "kdl";
               formatter = {
