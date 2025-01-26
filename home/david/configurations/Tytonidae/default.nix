@@ -32,6 +32,7 @@
     mpv.enable = true;
     kvm.enable = true;
     atuin.enable = true;
+    thunderbird.enable = true;
   };
 
   david = {

@@ -28,6 +28,7 @@
       ./atuin.nix
       ./swaync.nix
       ./swaylock.nix
+      ./thunderbird.nix
     ];
 
   options = {
