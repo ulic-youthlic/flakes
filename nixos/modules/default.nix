@@ -1,4 +1,5 @@
 {
+  pkgs,
   inputs,
   outputs,
   ...
@@ -15,6 +16,7 @@
       disko.nixosModules.disko
     ])
     ++ [
+      ./deploy
       ./nix.nix
       ./home.nix
       ./sops.nix
@@ -39,5 +41,8 @@
         additions
       ];
     };
+    environment.systemPackages = with pkgs; [
+      deploy-rs
+    ];
   };
 }

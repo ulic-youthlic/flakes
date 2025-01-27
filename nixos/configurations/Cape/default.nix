@@ -17,6 +17,7 @@
       unixName = "alice";
       hostName = "Cape";
     };
+    users.deploy.enable = true;
     programs = {
       openssh.enable = true;
       tailscale.enable = true;

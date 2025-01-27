@@ -10,9 +10,9 @@ switch specialisation=DEFAULT_SPECIALISATION:
 update:
     nix flake update | spacer
 
-push host target:
-    nixos-rebuild switch --flake {{ FLAKE_HOME }}#{{ host }} --target-host {{ target }} | spacer
+deploy host:
+    deploy {{ FLAKE_HOME }}#{{ host }}
 
 alias s := switch
 alias u := update
-alias p := push
+alias d := deploy

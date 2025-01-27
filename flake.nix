@@ -75,6 +75,10 @@
       url = "github:XIU2/TrackersListCollection";
       flake = false;
     };
+
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+    };
   };
   outputs =
     {
@@ -231,6 +235,50 @@
                   }) (builtins.attrNames allUsers)
                 )
               );
+          }
+        )
+        // (
+          let
+            mkDeployNode =
+              {
+                hostName,
+                unixName ? "deploy",
+                system ? "x86_64-linux",
+                sshName ? hostName,
+              }:
+              {
+                "${hostName}" = {
+                  hostname = "${sshName}";
+                  sshUser = "${unixName}";
+                  interactiveSudo = true;
+                  sshOpts = [
+                    "-i"
+                    "/home/david/.ssh/id_ed25519_deploy"
+                  ];
+                  profiles = {
+                    system = {
+                      user = "${unixName}";
+                      path =
+                        inputs.deploy-rs.lib."${system}".activate.nixos
+                          self.outputs.nixosConfigurations."${hostName}";
+                    };
+                  };
+                };
+              };
+          in
+          {
+            deploy.nodes = nixpkgs.lib.foldr (a: b: a // b) { } (
+              map
+                (
+                  hostName:
+                  mkDeployNode {
+                    inherit hostName;
+                  }
+                )
+                [
+                  "Cape"
+                ]
+            );
           }
         );
     };

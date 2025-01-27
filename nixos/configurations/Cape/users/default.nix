@@ -12,6 +12,7 @@
     ];
   };
 
+  users.mutableUsers = false;
   programs.fish.enable = true;
   users.users.alice.shell = pkgs.fish;
   users.users.alice.openssh.authorizedKeys.keyFiles = [

@@ -35,22 +35,19 @@
     let
       cfg = config.youthlic.programs.git;
     in
-    {
-      programs.lazygit = {
-        enable = true;
-      };
-      programs.gh = {
-        enable = true;
-        gitCredentialHelper.enable = true;
-        settings = {
-          git_protocol = "ssh";
+    lib.mkMerge [
+      {
+        programs.lazygit = {
+          enable = true;
         };
-      };
-      sops.secrets."git-credential" = {
-        mode = "0640";
-      };
-      programs.git = lib.mkMerge [
-        {
+        programs.gh = {
+          enable = true;
+          gitCredentialHelper.enable = true;
+          settings = {
+            git_protocol = "ssh";
+          };
+        };
+        programs.git = {
           enable = true;
           userEmail = cfg.email;
           userName = cfg.name;
@@ -63,20 +60,23 @@
             };
           };
           lfs.enable = true;
-        }
-        (lib.mkIf cfg.encrypt-credential {
-          extraConfig = {
-            credential = {
-              helper = "store --file=${config.sops.secrets."git-credential".path}";
-            };
+        };
+      }
+      (lib.mkIf (cfg.signKey != null) {
+        programs.git.signing = {
+          signByDefault = true;
+          key = cfg.signKey;
+        };
+      })
+      (lib.mkIf cfg.encrypt-credential {
+        programs.git.extraConfig = {
+          credential = {
+            helper = "store --file=${config.sops.secrets."git-credential".path}";
           };
-        })
-        (lib.mkIf (cfg.signKey != null) {
-          signing = {
-            signByDefault = true;
-            key = cfg.signKey;
-          };
-        })
-      ];
-    };
+        };
+        sops.secrets."git-credential" = {
+          mode = "0640";
+        };
+      })
+    ];
 }

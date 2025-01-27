@@ -141,6 +141,10 @@
       mode = "0600";
       path = "${config.home.homeDirectory}/.ssh/id_ed25519_cape";
     };
+    "ssh-private-key/deploy" = {
+      mode = "0600";
+      path = "${config.home.homeDirectory}/.ssh/id_ed25519_deploy";
+    };
     "ssh-config" = {
       mode = "0400";
       format = "yaml";
