@@ -41,7 +41,7 @@ in
       let
         caddy-cfg = config.youthlic.programs.caddy;
       in
-      lib.mkIf caddy-cfg.enable {
+      lib.mkIf (cfg.enable && caddy-cfg.enable) {
         services.transmission = {
           openRPCPort = lib.mkForce false;
           settings = {

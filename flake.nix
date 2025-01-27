@@ -202,12 +202,17 @@
               };
           in
           {
-            homeConfigurations = nixpkgs.lib.foldr (a: b: a // b) { } (
-              map (hostName: mkHomeConfig { inherit hostName; }) [
-                "Tytonidae"
-                "Akun"
-              ]
-            );
+            homeConfigurations =
+              nixpkgs.lib.foldr (a: b: a // b) { } (
+                map (hostName: mkHomeConfig { inherit hostName; }) [
+                  "Tytonidae"
+                  "Akun"
+                ]
+              )
+              // mkHomeConfig {
+                hostName = "Cape";
+                unixName = "alice";
+              };
             homeManagerModules =
               {
                 default = import ./home/modules;

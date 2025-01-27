@@ -2,34 +2,23 @@
   pkgs,
   unixName,
   config,
-  rootPath,
   ...
 }:
 {
   youthlic.programs = {
-    firefox.enable = true;
-    fuzzel.enable = true;
     helix.enable = true;
     gpg.enable = true;
+    fish.enable = true;
+    bash.enable = true;
+    starship.enable = true;
+    sops.enable = true;
+    atuin.enable = true;
     git = {
       email = "ulic.youthlic@gmail.com";
       name = "ulic-youthlic";
-      signKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
-      encrypt-credential = true;
+      encrypt-credential = false;
     };
-    fish.enable = true;
-    bash.enable = true;
-    ghostty.enable = true;
-    starship.enable = true;
-    sops.enable = true;
-    mpv.enable = true;
-    atuin.enable = true;
   };
-
-  david = {
-    wallpaper.enable = true;
-  };
-
   xdg.userDirs = {
     enable = true;
     download = "${config.home.homeDirectory}/dls";
@@ -46,14 +35,6 @@
   home.homeDirectory = "/home/${unixName}";
   home.stateVersion = "24.11";
   programs.home-manager.enable = true;
-  programs.obs-studio = {
-    enable = true;
-    plugins = with pkgs.obs-studio-plugins; [
-      obs-source-record
-      input-overlay
-    ];
-  };
-
   home.packages = with pkgs; [
     tealdeer
     ripgrep
@@ -70,21 +51,16 @@
     dust
     duf
     doggo
-    qq
-    telegram-desktop
-    ghostty
-    scrcpy
     ast-grep
+    dig
     lazygit
     dig
     fend
     gitoxide
-    kdePackages.kdenlive
-    fd
     viu
+    fd
     just
   ];
-
   programs.ssh = {
     enable = true;
     hashKnownHosts = true;
@@ -103,34 +79,6 @@
           AddKeysToAgent = "yes";
         };
       };
-    };
-    includes = [ config.sops.secrets.ssh-config.path ];
-  };
-  programs.chromium = {
-    enable = true;
-    commandLineArgs = [
-      "--ozone-platform=wayland"
-      "--enable-wayland-ime=true"
-      "--enable-features=UseOzonePlatform"
-    ];
-  };
-  sops.secrets = {
-    "ssh-private-key/tytonidae" = {
-      mode = "0600";
-      path = "${config.home.homeDirectory}/.ssh/id_ed25519_tytonidae";
-    };
-    "ssh-private-key/akun" = {
-      mode = "0600";
-      path = "${config.home.homeDirectory}/.ssh/id_ed25519_akun";
-    };
-    "ssh-private-key/cape" = {
-      mode = "0600";
-      path = "${config.home.homeDirectory}/.ssh/id_ed25519_cape";
-    };
-    "ssh-config" = {
-      mode = "0400";
-      format = "yaml";
-      sopsFile = rootPath + "/secrets/ssh-config.yaml";
     };
   };
 }

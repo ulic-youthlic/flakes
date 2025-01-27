@@ -61,6 +61,7 @@ routing {
   pname(mihomo) -> must_direct
   # pname(systemd-resolve) -> must_direct
 
+  dip(107.174.145.140) -> must_direct
   domain(full: time.windows.com) -> must_direct
   domain(regex: ".*wgetcloud.*v2ray.*") -> must_direct
   domain(suffix: "hit.edu.cn") -> must_direct

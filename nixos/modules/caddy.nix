@@ -16,5 +16,8 @@ in
     services.caddy = {
       enable = true;
     };
+    networking.firewall = {
+      allowedTCPPorts = [ 443 ];
+    };
   };
 }
