@@ -17,24 +17,13 @@
     ])
     ++ [
       ./containers
-      ./postgresql.nix
-      ./forgejo.nix
       ./deploy
       ./nix.nix
       ./home.nix
       ./sops.nix
-      ./dae
-      ./openssh.nix
-      ./nh.nix
       ./i18n.nix
       ./gui
-      ./steam.nix
-      ./tailscale.nix
-      ./kanata.nix
-      ./kvm.nix
-      ./open-webui.nix
-      ./transmission.nix
-      ./caddy.nix
+      ./programs
     ];
 
   config = {
