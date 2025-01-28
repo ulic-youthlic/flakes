@@ -4,6 +4,7 @@
 }:
 {
   imports = [
+    ./forgejo.nix
     ./networking.nix
     ./stylix.nix
     ./hardware-configuration.nix

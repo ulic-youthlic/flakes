@@ -16,6 +16,9 @@
       disko.nixosModules.disko
     ])
     ++ [
+      ./containers
+      ./postgresql.nix
+      ./forgejo.nix
       ./deploy
       ./nix.nix
       ./home.nix
