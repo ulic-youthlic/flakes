@@ -83,6 +83,7 @@ in
             START_SSH_SERVER = true;
             SSH_PORT = cfg.sshPort;
             HTTP_PORT = cfg.httpPort;
+            ROOT_URL = "https://${cfg.domain}";
           };
         };
       };
