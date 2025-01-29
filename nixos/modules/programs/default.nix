@@ -13,5 +13,6 @@
     ./steam.nix
     ./tailscale.nix
     ./transmission.nix
+    ./conduwuit.nix
   ];
 }

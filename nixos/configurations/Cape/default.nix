@@ -22,6 +22,10 @@
     programs = {
       openssh.enable = true;
       tailscale.enable = true;
+      conduwuit = {
+        enable = true;
+        serverName = "im.youthlic.fun";
+      };
       caddy = {
         enable = true;
         baseDomain = "youthlic.fun";
