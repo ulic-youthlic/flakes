@@ -64,8 +64,8 @@ in
         { lib, ... }:
         {
           imports = [
-            ./../forgejo.nix
-            ./../postgresql.nix
+            ./../programs/forgejo.nix
+            ./../programs/postgresql.nix
           ];
 
           systemd.tmpfiles.rules = [
