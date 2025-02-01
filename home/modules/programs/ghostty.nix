@@ -38,9 +38,9 @@
               "cv29"
               "cv30"
             ];
-            font-size = 17;
+            font-size = lib.mkForce 17;
             # theme = "ayu";
-            background-opacity = 0.8;
+            background-opacity = lib.mkForce 0.8;
             confirm-close-surface = "false";
           };
         }
