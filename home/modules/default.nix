@@ -10,27 +10,7 @@
     ])
     ++ [
       ./nix.nix
-      ./helix
-      ./chromium.nix
-      ./gpg
-      ./git.nix
-      ./shell
-      ./ghostty.nix
-      ./foot
-      ./starship
-      ./sops.nix
-      ./fuzzel.nix
-      ./firefox.nix
-      ./niri.nix
-      ./wluma.nix
-      ./waybar.nix
-      ./mpv.nix
-      ./kvm.nix
-      ./atuin.nix
-      ./swaync.nix
-      ./swaylock.nix
-      ./thunderbird.nix
-      ./obs.nix
+      ./programs
     ];
 
   options = {
