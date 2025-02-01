@@ -25,6 +25,7 @@
     mpv.enable = true;
     atuin.enable = true;
     obs.enable = true;
+    chromium.enable = true;
   };
 
   david = {
@@ -68,13 +69,4 @@
     viu
     just
   ];
-
-  programs.chromium = {
-    enable = true;
-    commandLineArgs = [
-      "--ozone-platform=wayland"
-      "--enable-wayland-ime=true"
-      "--enable-features=UseOzonePlatform"
-    ];
-  };
 }

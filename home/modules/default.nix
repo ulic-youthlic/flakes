@@ -11,6 +11,7 @@
     ++ [
       ./nix.nix
       ./helix
+      ./chromium.nix
       ./gpg
       ./git.nix
       ./shell
