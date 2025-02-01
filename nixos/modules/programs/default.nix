@@ -1,6 +1,7 @@
 { config, lib, ... }:
 {
   imports = [
+    ./mautrix-telegram.nix
     ./caddy.nix
     ./dae
     ./forgejo.nix
