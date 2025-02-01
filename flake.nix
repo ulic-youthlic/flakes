@@ -48,12 +48,12 @@
     };
 
     nur-xddxdd = {
-      url = "github:xddxdd/nur-packages?ref=master&dir=/pkgs/uncategorized";
+      url = "github:xddxdd/nur-packages/master";
       flake = false;
     };
 
-    firefox-addons = {
-      url = "git+https://gitlab.com/rycee/nur-expressions.git?dir=pkgs/firefox-addons&ref=master";
+    nur = {
+      url = "github:nix-community/nur-combined/master";
       flake = false;
     };
 

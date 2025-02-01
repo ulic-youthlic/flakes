@@ -9,7 +9,7 @@
 }
 // (
   let
-    firefox-addons = (pkgs.callPackage "${inputs.firefox-addons}/default.nix" { }).firefox-addons;
+    firefox-addons = (pkgs.callPackage "${inputs.nur}/repos/rycee/pkgs/firefox-addons/default.nix" { });
   in
   pkgs.lib.genAttrs [ "immersive-translate" "tridactyl" ] (name: firefox-addons."${name}")
 )
