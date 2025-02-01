@@ -15,5 +15,6 @@
     ./tailscale.nix
     ./transmission.nix
     ./conduwuit.nix
+    ./nix-ld.nix
   ];
 }

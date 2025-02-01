@@ -42,6 +42,7 @@
         enable = true;
         baseDomain = "home.arp";
       };
+      nix-ld.enable = true;
     };
     gui.enabled = "cosmic";
   };
