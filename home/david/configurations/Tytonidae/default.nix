@@ -38,20 +38,9 @@
   david = {
     wallpaper.enable = true;
     programs.openssh.enable = true;
+    xdg-dirs.enable = true;
   };
 
-  xdg.userDirs = {
-    enable = true;
-    download = "${config.home.homeDirectory}/dls";
-    documents = "${config.home.homeDirectory}/doc";
-    music = "${config.home.homeDirectory}/mus";
-    pictures = "${config.home.homeDirectory}/pic";
-    videos = "${config.home.homeDirectory}/vid";
-    templates = "${config.home.homeDirectory}/tpl";
-    publicShare = "${config.home.homeDirectory}/pub";
-    desktop = "${config.home.homeDirectory}/dsk";
-    createDirectories = true;
-  };
   home.username = "${unixName}";
   home.homeDirectory = "/home/${unixName}";
   home.stateVersion = "24.11";
