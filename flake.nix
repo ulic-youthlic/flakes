@@ -52,8 +52,8 @@
       flake = false;
     };
 
-    nur = {
-      url = "github:nix-community/nur-combined/master";
+    nur-rycee = {
+      url = "gitlab:rycee/nur-expressions/master";
       flake = false;
     };
 

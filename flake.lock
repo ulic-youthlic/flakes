@@ -1050,20 +1050,35 @@
       }
     },
     "nur": {
-      "flake": false,
       "locked": {
-        "lastModified": 1738362038,
-        "narHash": "sha256-hJGcjRO5f+xkeTcxrqq8N7quF06mvbjGVTex7RhhQcw=",
+        "lastModified": 1731941414,
+        "narHash": "sha256-2Xf90oIkzvOjzZBIgLxga6DqidvB6CSODE5+DODfLeI=",
         "owner": "nix-community",
-        "repo": "nur-combined",
-        "rev": "563d2f5693a726fabd8ad1386b478417ecf93714",
+        "repo": "NUR",
+        "rev": "23a30a846dc89a997f42f2d7e64d6f38564014ae",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "master",
-        "repo": "nur-combined",
+        "repo": "NUR",
         "type": "github"
+      }
+    },
+    "nur-rycee": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1738382607,
+        "narHash": "sha256-ppR81tMrcQk/wHm8MmKtp3mrtYmMTgF2lxLLXYwRsOM=",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "rev": "dc86c8feffa328d9050e039a1286e175af6d76d8",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "rycee",
+        "ref": "master",
+        "repo": "nur-expressions",
+        "type": "gitlab"
       }
     },
     "nur-xddxdd": {
@@ -1083,21 +1098,6 @@
         "type": "github"
       }
     },
-    "nur_2": {
-      "locked": {
-        "lastModified": 1731941414,
-        "narHash": "sha256-2Xf90oIkzvOjzZBIgLxga6DqidvB6CSODE5+DODfLeI=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "23a30a846dc89a997f42f2d7e64d6f38564014ae",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
-      }
-    },
     "oskars-dotfiles": {
       "inputs": {
         "flake-parts": "flake-parts_3",
@@ -1110,7 +1110,7 @@
         ],
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-unstable": "nixpkgs-unstable_2",
-        "nur": "nur_2",
+        "nur": "nur",
         "rust-overlay": "rust-overlay_2",
         "winapps": "winapps"
       },
@@ -1144,7 +1144,7 @@
         "nixos-cosmic": "nixos-cosmic",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
-        "nur": "nur",
+        "nur-rycee": "nur-rycee",
         "nur-xddxdd": "nur-xddxdd",
         "oskars-dotfiles": "oskars-dotfiles",
         "sops-nix": "sops-nix",
