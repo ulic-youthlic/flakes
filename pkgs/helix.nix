@@ -9,6 +9,9 @@ let
   runtimeInputs = (
     with pkgs;
     [
+      lua-language-server
+      bash-language-server
+      hurl
       cmake-language-server
       kdlfmt
       rustfmt
