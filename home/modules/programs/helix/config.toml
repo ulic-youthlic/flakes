@@ -10,6 +10,9 @@ bufferline = "multiple"
 color-modes = true
 default-line-ending = "lf"
 popup-border = "all"
+# letters in the beginning are used first
+# move home raw letters to the beginning
+jump-label-alphabet = "jkdls;aurieowpqnvmcxz"
 
 [editor.statusline]
 left = [
