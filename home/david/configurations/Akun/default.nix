@@ -6,32 +6,34 @@
   ...
 }:
 {
-  youthlic.programs = {
-    firefox.enable = true;
-    fuzzel.enable = true;
-    helix.enable = true;
-    gpg.enable = true;
-    git = {
-      email = "ulic.youthlic@gmail.com";
-      name = "ulic-youthlic";
-      signKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
-      encrypt-credential = true;
+  youthlic = {
+    xdg-dirs.enable = true;
+    programs = {
+      firefox.enable = true;
+      fuzzel.enable = true;
+      helix.enable = true;
+      gpg.enable = true;
+      git = {
+        email = "ulic.youthlic@gmail.com";
+        name = "ulic-youthlic";
+        signKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
+        encrypt-credential = true;
+      };
+      fish.enable = true;
+      bash.enable = true;
+      ghostty.enable = true;
+      starship.enable = true;
+      sops.enable = true;
+      mpv.enable = true;
+      atuin.enable = true;
+      obs.enable = true;
+      chromium.enable = true;
     };
-    fish.enable = true;
-    bash.enable = true;
-    ghostty.enable = true;
-    starship.enable = true;
-    sops.enable = true;
-    mpv.enable = true;
-    atuin.enable = true;
-    obs.enable = true;
-    chromium.enable = true;
   };
 
   david = {
     wallpaper.enable = true;
     programs.openssh.enable = true;
-    xdg-dirs.enable = true;
   };
 
   home.username = "${unixName}";

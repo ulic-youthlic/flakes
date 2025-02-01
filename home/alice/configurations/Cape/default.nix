@@ -5,31 +5,22 @@
   ...
 }:
 {
-  youthlic.programs = {
-    helix.enable = true;
-    gpg.enable = true;
-    fish.enable = true;
-    bash.enable = true;
-    starship.enable = true;
-    sops.enable = true;
-    atuin.enable = true;
-    git = {
-      email = "ulic.youthlic@gmail.com";
-      name = "ulic-youthlic";
-      encrypt-credential = false;
+  youthlic = {
+    xdg-dirs.enable = true;
+    programs = {
+      helix.enable = true;
+      gpg.enable = true;
+      fish.enable = true;
+      bash.enable = true;
+      starship.enable = true;
+      sops.enable = true;
+      atuin.enable = true;
+      git = {
+        email = "ulic.youthlic@gmail.com";
+        name = "ulic-youthlic";
+        encrypt-credential = false;
+      };
     };
-  };
-  xdg.userDirs = {
-    enable = true;
-    download = "${config.home.homeDirectory}/dls";
-    documents = "${config.home.homeDirectory}/doc";
-    music = "${config.home.homeDirectory}/mus";
-    pictures = "${config.home.homeDirectory}/pic";
-    videos = "${config.home.homeDirectory}/vid";
-    templates = "${config.home.homeDirectory}/tpl";
-    publicShare = "${config.home.homeDirectory}/pub";
-    desktop = "${config.home.homeDirectory}/dsk";
-    createDirectories = true;
   };
   home.username = "${unixName}";
   home.homeDirectory = "/home/${unixName}";

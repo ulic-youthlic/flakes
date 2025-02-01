@@ -11,6 +11,7 @@
     ++ [
       ./nix.nix
       ./programs
+      ./xdg-dirs.nix
     ];
 
   options = {
