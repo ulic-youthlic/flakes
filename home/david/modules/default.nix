@@ -1,7 +1,8 @@
 { pkgs, ... }:
 {
   imports = [
-    ./wallpaper
+    ./wallpaper.nix
+    ./programs
   ];
   config = {
     home.packages = with pkgs; [
