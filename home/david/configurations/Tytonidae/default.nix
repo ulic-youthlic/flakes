@@ -33,6 +33,7 @@
     kvm.enable = true;
     atuin.enable = true;
     thunderbird.enable = true;
+    obs.enable = true;
   };
 
   david = {
@@ -45,13 +46,6 @@
   home.homeDirectory = "/home/${unixName}";
   home.stateVersion = "24.11";
   programs.home-manager.enable = true;
-  programs.obs-studio = {
-    enable = true;
-    plugins = with pkgs.obs-studio-plugins; [
-      obs-source-record
-      input-overlay
-    ];
-  };
   home.packages = with pkgs; [
     tealdeer
     ripgrep

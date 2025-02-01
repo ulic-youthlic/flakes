@@ -29,6 +29,7 @@
       ./swaync.nix
       ./swaylock.nix
       ./thunderbird.nix
+      ./obs.nix
     ];
 
   options = {
