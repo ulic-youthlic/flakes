@@ -16,7 +16,11 @@ deploy host:
 clean keep_since="1w":
     nh clean all --verbose -K {{ keep_since }} -k 5
 
+health:
+    nix --accept-flake-config run github:juspay/nix-health
+
 alias s := switch
 alias u := update
 alias d := deploy
 alias c := clean
+alias h := health
