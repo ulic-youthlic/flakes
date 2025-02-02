@@ -13,8 +13,8 @@ update:
 deploy host:
     deploy {{ FLAKE_HOME }}#{{ host }}
 
-clean:
-    nh clean all --verbose -K 1w
+clean keep_since="1w":
+    nh clean all --verbose -K {{ keep_since }} -k 5
 
 alias s := switch
 alias u := update
