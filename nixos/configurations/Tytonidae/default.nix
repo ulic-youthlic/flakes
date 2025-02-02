@@ -44,14 +44,14 @@
       };
       nix-ld.enable = true;
     };
-    gui.enabled = "cosmic";
+    gui.enabled = "niri";
   };
 
   specialisation = {
-    niri = {
+    cosmic = {
       inheritParentConfig = true;
       configuration = {
-        youthlic.gui.enabled = lib.mkForce "niri";
+        youthlic.gui.enabled = lib.mkForce "cosmic";
       };
     };
     kde = {
