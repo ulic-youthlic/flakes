@@ -38,10 +38,6 @@
       };
       open-webui.enable = true;
       transmission.enable = true;
-      caddy = {
-        enable = true;
-        baseDomain = "home.arp";
-      };
       nix-ld.enable = true;
     };
     gui.enabled = "niri";
