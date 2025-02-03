@@ -16,5 +16,6 @@
     ./transmission.nix
     ./conduwuit.nix
     ./nix-ld.nix
+    ./juicity
   ];
 }

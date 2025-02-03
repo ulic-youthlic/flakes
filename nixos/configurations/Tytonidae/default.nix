@@ -39,6 +39,7 @@
       open-webui.enable = true;
       transmission.enable = true;
       nix-ld.enable = true;
+      juicity.client.enable = true;
     };
     gui.enabled = "niri";
   };

@@ -16,9 +16,13 @@ pkgs.buildGoModule rec {
     "cmd/client"
   ];
   vendorHash = "sha256-uULJKg1nh6jU0uIgDf4GMu8O00zifLvU2wv65dlHLAs=";
-  postInstallPhase = ''
+  fixupPhase = ''
+    runHook preFixup
+
     mv $out/bin/server $out/bin/juicity-server
     mv $out/bin/client $out/bin/juicity-client
+
+    runHook postFixup
   '';
 
   ldflags = [

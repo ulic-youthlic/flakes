@@ -31,6 +31,7 @@
         enable = true;
         baseDomain = "youthlic.fun";
       };
+      juicity.server.enable = true;
     };
   };
 

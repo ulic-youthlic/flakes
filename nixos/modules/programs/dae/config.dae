@@ -1,5 +1,6 @@
 include {
   proxy.d/*.dae
+  local.d/*.dae
 }
 
 global {
@@ -43,10 +44,12 @@ dns {
 group {
   proxy {
     filter: subtag(wget)
+    filter: name(local)
     policy: min_moving_avg
   }
   us {
     filter: subtag(wget) && name(keyword: "美国")
+    filter: name(local)
     policy: min_moving_avg
   }
   hk {
@@ -59,6 +62,7 @@ group {
 routing {
   pname(hickory-dns) && dport(53) -> must_direct
   pname(mihomo) -> must_direct
+  pname(juicity-client) -> must_direct
   # pname(systemd-resolve) -> must_direct
 
   dip(107.174.145.140) -> must_direct
