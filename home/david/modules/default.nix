@@ -7,6 +7,7 @@
   config = {
     home.packages = with pkgs; [
       spacer
+      devenv
     ];
   };
 }

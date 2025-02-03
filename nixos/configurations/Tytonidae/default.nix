@@ -84,6 +84,8 @@
     nvtopPackages.full
     spotify
     localsend
+
+    juicity
   ];
 
   environment.variables.EDITOR = "hx";

@@ -7,6 +7,7 @@ let
     ./spotify.nix
     ./niri.nix
     ./ghostty.nix
+    ./juicity.nix
   ];
   overlay-list = map (file: import file args) overlay-files;
 in
