@@ -3,12 +3,23 @@
   pkgs,
   inputs,
   ...
-}:
+}@args:
 let
-  helix = inputs.helix.packages."${pkgs.system}".default;
+  inherit (inputs.helix.packages."${pkgs.system}") helix helix-unwrapped;
+  helix-core = helix-unwrapped.overrideAttrs {
+    HELIX_DEFAULT_RUNTIME = "${grammarRuntime}";
+  };
+  helix-wrapped = (helix.override grammarConfig).passthru.wrapper helix-core;
+  grammars = import ./grammars args;
+  grammarOverlays = grammars.overlays;
+  grammarRuntime = grammars.runtime;
+  grammarConfig = {
+    inherit grammarOverlays;
+  };
   runtimeInputs = (
     with pkgs;
     [
+      idris2Packages.idris2Lsp
       lua-language-server
       bash-language-server
       hurl
@@ -43,8 +54,8 @@ let
 in
 pkgs.symlinkJoin {
   name = "helix-wrapped";
-  paths = [ helix ];
-  inherit (helix) meta;
+  paths = [ helix-wrapped ];
+  inherit (helix-wrapped) meta;
   buildInputs = [
     pkgs.makeWrapper
   ];

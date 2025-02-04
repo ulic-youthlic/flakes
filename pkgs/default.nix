@@ -5,7 +5,7 @@
 }:
 {
   pinentry-selector = pkgs.callPackage ./pinentry-selector.nix { };
-  helix = pkgs.callPackage ./helix.nix { inherit inputs; };
+  helix = pkgs.callPackage ./helix { inherit inputs; };
   juicity = pkgs.callPackage ./juicity.nix { };
 }
 // (
