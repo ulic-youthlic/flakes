@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./rustypaste-cli.nix
     ./atuin.nix
     ./firefox.nix
     ./shell

@@ -1,6 +1,7 @@
 { config, lib, ... }:
 {
   imports = [
+    ./rustypaste
     ./mautrix-telegram.nix
     ./caddy.nix
     ./dae

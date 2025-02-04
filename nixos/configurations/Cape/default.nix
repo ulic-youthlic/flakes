@@ -20,6 +20,10 @@
     };
     users.deploy.enable = true;
     programs = {
+      rustypaste = {
+        enable = true;
+        url = "https://paste.youthlic.fun";
+      };
       openssh.enable = true;
       tailscale.enable = true;
       conduwuit = {
