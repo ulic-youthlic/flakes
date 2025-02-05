@@ -69,6 +69,5 @@
     kdePackages.kdenlive
     fd
     viu
-    just
   ];
 }

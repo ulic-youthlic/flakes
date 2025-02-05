@@ -1,4 +1,8 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 let
   inherit (lib) mkEnableOption mkIf mkMerge;
   fish-cfg = config.youthlic.programs.fish;
@@ -19,7 +23,7 @@ in
   options = {
     youthlic.programs = {
       fish = {
-        enable =mkEnableOption "fish";
+        enable = mkEnableOption "fish";
       };
       bash = {
         enable = mkEnableOption "bash";

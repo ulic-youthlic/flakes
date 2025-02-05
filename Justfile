@@ -1,3 +1,5 @@
+#!/usr/bin/env -S just --justfile
+
 FLAKE_HOME := justfile_directory()
 DEFAULT_SPECIALISATION := "default"
 
@@ -9,6 +11,9 @@ switch specialisation=DEFAULT_SPECIALISATION:
 
 update:
     nix flake update --log-format internal-json 2>&1 | nom --json
+
+build specialisation=DEFAULT_SPECIALISATION:
+    nh os build {{ FLAKE_HOME }} {{ if specialisation == DEFAULT_SPECIALISATION { "-S" } else { "-s " + specialisation } }}
 
 deploy host:
     deploy {{ FLAKE_HOME }}#{{ host }}
@@ -24,3 +29,4 @@ alias u := update
 alias d := deploy
 alias c := clean
 alias h := health
+alias b := build

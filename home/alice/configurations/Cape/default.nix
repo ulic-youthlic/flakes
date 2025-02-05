@@ -50,7 +50,6 @@
     gitoxide
     viu
     fd
-    just
   ];
   programs.ssh = {
     enable = true;
