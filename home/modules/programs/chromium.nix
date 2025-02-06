@@ -12,8 +12,10 @@ in
     programs.chromium = {
       enable = true;
       commandLineArgs = [
-        "--ozone-platform=wayland"
-        "--enable-wayland-ime=true"
+        "--ozone-platform-hint=wayland"
+        "--process-per-site"
+        "--enable-wayland-ime"
+        "--wayland-text-input-version=3"
         "--enable-features=UseOzonePlatform"
       ];
     };
