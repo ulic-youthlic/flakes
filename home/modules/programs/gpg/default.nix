@@ -21,9 +21,9 @@
           enable = true;
           enableSshSupport = true;
           pinentryPackage = outputs.packages."${pkgs.system}".pinentry-selector;
-          sshKeys = [
-            "C817E333BF88F16EA0F7ADE27BDCCC16AD25E5A6"
-          ];
+          # sshKeys = [
+          #   "C817E333BF88F16EA0F7ADE27BDCCC16AD25E5A6"
+          # ];
         }
         (lib.mkIf config.youthlic.programs.fish.enable {
           enableFishIntegration = true;
