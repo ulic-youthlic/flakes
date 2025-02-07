@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   outputs,
   pkgs,
   lib,
@@ -12,8 +13,14 @@
         allowUnfree = true;
       };
     };
+    sops.secrets."access-tokens" = {
+      mode = "0444";
+    };
     nix = {
       nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+      extraOptions = ''
+        !include ${config.sops.secrets."access-tokens".path}
+      '';
       settings = {
         inherit (outputs.nix.settings) substituters;
         trusted-users = [
