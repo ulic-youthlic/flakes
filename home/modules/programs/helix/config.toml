@@ -54,10 +54,6 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
-[editor.auto-save]
-focus-lost = true
-after-delay.enable = true
-
 [editor.whitespace.render]
 space = "none"
 tab = "all"
@@ -80,7 +76,6 @@ line-numbers.min-width = 1
 
 [editor.soft-wrap]
 enable = true
-wrap-at-text-width = true
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
