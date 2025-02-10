@@ -43,6 +43,7 @@ mode.insert = "INSERT"
 mode.select = "SELECT"
 
 [editor.lsp]
+display-progress-messages = true
 display-messages = true
 display-inlay-hints = true
 
