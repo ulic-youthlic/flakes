@@ -53,7 +53,8 @@ let
   );
 in
 pkgs.symlinkJoin {
-  name = "helix-wrapped";
+  pname = "helix-wrapped";
+  version = helix-wrapped.version;
   paths = [ helix-wrapped ];
   inherit (helix-wrapped) meta;
   buildInputs = [
