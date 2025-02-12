@@ -44,7 +44,7 @@ let
       golangci-lint-langserver
       tinymist
       delve
-      lldb
+      # lldb
       rust-analyzer
       nil
       haskell-language-server
