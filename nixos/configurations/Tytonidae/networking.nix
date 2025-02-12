@@ -5,11 +5,25 @@
     wait-online.enable = false;
     networks = {
       "eno2" = {
+        dns = [
+          "192.168.31.1"
+        ];
+        address = [
+          "192.168.31.25/24"
+        ];
+        gateway = [
+          "192.168.31.1"
+        ];
+        routes = [
+          {
+            Gateway = "192.168.31.1";
+          }
+        ];
         matchConfig.Name = "eno2";
-        networkConfig = {
-          DHCP = "yes";
-          IPv6AcceptRA = true;
-        };
+        # networkConfig = {
+        #   DHCP = "no";
+        #   IPv6AcceptRA = true;
+        # };
       };
     };
   };
