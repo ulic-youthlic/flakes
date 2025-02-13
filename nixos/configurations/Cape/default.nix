@@ -20,6 +20,7 @@
     };
     users.deploy.enable = true;
     programs = {
+      transfer-sh.enable = true;
       rustypaste = {
         enable = true;
         url = "https://paste.youthlic.fun";

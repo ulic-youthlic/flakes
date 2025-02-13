@@ -1,6 +1,7 @@
 { config, lib, ... }:
 {
   imports = [
+    ./transfer-sh.nix
     ./rustypaste
     ./mautrix-telegram.nix
     ./caddy.nix
