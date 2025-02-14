@@ -15,6 +15,7 @@
   youthlic = {
     xdg-dirs.enable = true;
     programs = {
+      zed-editor.enable = true;
       rustypaste-cli.enable = true;
       firefox.enable = true;
       fuzzel.enable = true;
