@@ -66,6 +66,7 @@
         programs.git.signing = {
           signByDefault = true;
           key = cfg.signKey;
+          format = "openpgp";
         };
       })
       (lib.mkIf cfg.encrypt-credential {
