@@ -183,15 +183,15 @@
                   pkgs = nixpkgs.legacyPackages."${system}";
                   modules =
                     [
-                      (./home + "/${unixName}/configurations/${hostName}")
+                      "${toString ./home}/${unixName}/configurations/${hostName}"
                     ]
                     ++ (with outputs.homeManagerModules; [
                       default
-                      "${unixName}"
+                      extra
                     ])
-                    ++ (with inputs; [
-                      stylix.homeManagerModules.stylix
-                    ]);
+                    ++ [
+                      outputs.homeManagerModules."${unixName}"
+                    ];
                   extraSpecialArgs = {
                     inherit
                       inputs
@@ -220,18 +220,26 @@
             homeManagerModules =
               {
                 default = import ./home/modules;
+                extra = import ./home/extra;
               }
               // (
                 let
                   allEntries = builtins.readDir ./home;
                   allUsers = nixpkgs.lib.filterAttrs (
-                    key: value: value == "directory" && key != "modules"
+                    key: value:
+                    value == "directory"
+                    && (
+                      !builtins.elem key [
+                        "modules"
+                        "extra"
+                      ]
+                    )
                   ) allEntries;
                 in
                 builtins.listToAttrs (
                   map (name: {
                     name = name;
-                    value = import (./home + "/${name}/modules");
+                    value = import "${toString ./home}/${name}/modules";
                   }) (builtins.attrNames allUsers)
                 )
               );

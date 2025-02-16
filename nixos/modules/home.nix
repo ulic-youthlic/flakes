@@ -50,10 +50,6 @@
               outputs.homeManagerModules."${unixName}"
               (rootPath + "/home/${unixName}/configurations/${hostName}")
             ];
-
-            config = {
-              youthlic.nixos.enable = true;
-            };
           }
         );
         extraSpecialArgs = {

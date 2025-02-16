@@ -2,6 +2,9 @@
 
 FLAKE_HOME := justfile_directory()
 DEFAULT_SPECIALISATION := "default"
+DEFAULT_KEEP_SINCE := "1w"
+DEFAULT_USER := env('USER')
+DEFAULT_HOST := shell('hostname')
 
 default:
     @just --list
@@ -18,11 +21,21 @@ build specialisation=DEFAULT_SPECIALISATION:
 deploy host:
     deploy {{ FLAKE_HOME }}#{{ host }}
 
-clean keep_since="1w":
-    nh clean all --verbose -K {{ keep_since }} -k 5
+clean keepSince=DEFAULT_KEEP_SINCE:
+    nh clean all --verbose -K {{ keepSince }} -k 5
 
 health:
     nix --accept-flake-config run github:juspay/nix-health
+
+switchHome host=DEFAULT_HOST $USER=DEFAULT_USER:
+    @echo USER: $USER
+    @echo HOST: {{ host }}
+    nh home switch -b backup {{ if host != DEFAULT_HOST { "-c \"" + USER + "@" + host + "\"" } else { "" } }} {{ FLAKE_HOME }}
+
+buildHome host=DEFAULT_HOST $USER=DEFAULT_USER:
+    @echo USER: $USER
+    @echo HOST: {{ host }}
+    nh home build -b backup {{ if host != DEFAULT_HOST { "-c \"" + USER + "@" + host + "\"" } else { "" } }} {{ FLAKE_HOME }}
 
 alias s := switch
 alias u := update
@@ -30,3 +43,5 @@ alias d := deploy
 alias c := clean
 alias h := health
 alias b := build
+alias H := switchHome
+alias B := buildHome
