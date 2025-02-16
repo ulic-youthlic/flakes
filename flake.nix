@@ -251,10 +251,6 @@
                   hostname = "${sshName}";
                   sshUser = "${unixName}";
                   interactiveSudo = true;
-                  sshOpts = [
-                    "-i"
-                    "/home/david/.ssh/id_ed25519_deploy"
-                  ];
                   profiles = {
                     system = {
                       user = "${unixName}";
