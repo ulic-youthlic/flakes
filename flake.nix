@@ -2,7 +2,8 @@
   description = "A simple NixOS flakes";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
     helix = {
       url = "github:helix-editor/helix/master";
@@ -63,7 +64,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:danth/stylix?rev=e86de61bb8f5f2b6459d0be3e3291ad16db4b777";
     };
 
     disko = {

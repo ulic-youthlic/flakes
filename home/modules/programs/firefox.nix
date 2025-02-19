@@ -25,7 +25,7 @@ in
       profiles.default = {
         name = "default";
         isDefault = true;
-        extensions = with outputs.packages."${system}"; [
+        extensions.packages = with outputs.packages."${system}"; [
           immersive-translate
           tridactyl
         ];
