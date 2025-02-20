@@ -14,6 +14,7 @@
       sops-nix.nixosModules.sops
       stylix.nixosModules.stylix
       disko.nixosModules.disko
+      lix-module.nixosModules.default
     ])
     ++ [
       ./containers
