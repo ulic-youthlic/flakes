@@ -69,7 +69,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix?rev=e86de61bb8f5f2b6459d0be3e3291ad16db4b777";
+      url = "github:danth/stylix";
     };
 
     disko = {
