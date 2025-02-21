@@ -3,7 +3,13 @@
 
   inputs = {
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    # nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    nixpkgs = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "7ffd9ae656aec493492b44d0ddfb28e79a1ea25d";
+    };
 
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
@@ -11,79 +17,123 @@
     };
 
     helix = {
-      url = "github:helix-editor/helix/master";
+      type = "github";
+      owner = "helix-editor";
+      repo = "helix";
+      ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      type = "github";
+      owner = "nix-community";
+      repo = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     oskars-dotfiles = {
-      url = "github:oskardotglobal/.dotfiles/nix";
+      type = "github";
+      owner = "oskardotglobal";
+      repo = ".dotfiles";
+      ref = "nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     niri-flake = {
-      url = "github:sodiboo/niri-flake";
+      type = "github";
+      owner = "sodiboo";
+      repo = "niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
+      type = "github";
+      owner = "lilyinstarlight";
+      repo = "nixos-cosmic";
     };
 
     ghostty = {
-      url = "github:ghostty-org/ghostty";
+      type = "github";
+      owner = "ghostty-org";
+      repo = "ghostty";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
 
     nixos-hardware = {
-      url = "github:NixOS/nixos-hardware/master";
+      type = "github";
+      owner = "NixOS";
+      repo = "nixos-hardware";
+      ref = "master";
     };
 
     dae = {
-      url = "github:daeuniverse/flake.nix";
+      type = "github";
+      owner = "daeuniverse";
+      repo = "flake.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     flake-parts = {
-      url = "github:hercules-ci/flake-parts";
+      type = "github";
+      owner = "hercules-ci";
+      repo = "flake-parts";
     };
 
     flake-utils = {
-      url = "github:numtide/flake-utils";
+      type = "github";
+      owner = "numtide";
+      repo = "flake-utils";
     };
 
     nur-xddxdd = {
-      url = "github:xddxdd/nur-packages/master";
+      type = "github";
+      owner = "xddxdd";
+      repo = "nur-packages";
+      ref = "master";
       flake = false;
     };
 
     nur-rycee = {
-      url = "gitlab:rycee/nur-expressions/master";
+      type = "gitlab";
+      owner = "rycee";
+      repo = "nur-expressions";
+      ref = "master";
       flake = false;
     };
 
     sops-nix = {
-      url = "github:Mic92/sops-nix";
+      type = "github";
+      owner = "Mic92";
+      repo = "sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {
-      url = "github:danth/stylix";
+      type = "github";
+      owner = "danth";
+      repo = "stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     disko = {
-      url = "github:nix-community/disko";
+      type = "github";
+      owner = "nix-community";
+      repo = "disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     bt-tracker = {
-      url = "github:XIU2/TrackersListCollection";
+      type = "github";
+      owner = "XIU2";
+      repo = "TrackersListCollection";
       flake = false;
     };
 
     deploy-rs = {
-      url = "github:serokell/deploy-rs";
+      type = "github";
+      owner = "serokell";
+      repo = "deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs =
