@@ -50,7 +50,7 @@ in
             timeout = "30s";
             expose_version = true;
             expose_list = true;
-            handle_spaces = "encode";
+            handle_spaces = "replace";
           };
           paste = {
             duplicate_files = true;
@@ -97,7 +97,7 @@ in
               }
               {
                 mime = "text/plain";
-                regex = "^.*\\.(log|txt|diff|sh|rs|toml|py|json|yaml|yml|ts|js|go|c|C|c++|cpp|cxx)$";
+                regex = "^.*\\.(log|txt|diff|sh|rs|toml|py|json|yaml|yml|ts|js|go|c|C|c++|cpp|cxx|patch|toml|bash|fish)$";
               }
             ];
           };

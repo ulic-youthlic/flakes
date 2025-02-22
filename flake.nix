@@ -8,7 +8,7 @@
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "7ffd9ae656aec493492b44d0ddfb28e79a1ea25d";
+      ref = "1d182bfc59037ed9325e3493fe210e31ab6b2d86";
     };
 
     lix-module = {
