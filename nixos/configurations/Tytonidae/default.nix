@@ -96,6 +96,7 @@
     kernelPackages = pkgs.linuxPackages_zen;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    initrd.systemd.enable = true;
   };
 
   # This value determines the NixOS release from which the default
