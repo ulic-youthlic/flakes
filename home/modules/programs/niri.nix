@@ -26,7 +26,7 @@ in
       swaybg
       xwayland-satellite
       niri-unstable
-      polkit-kde-agent
+      kdePackages.polkit-kde-agent-1
       wl-clipboard
       cliphist
     ];
