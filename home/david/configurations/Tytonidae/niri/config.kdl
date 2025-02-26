@@ -53,7 +53,7 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        // off
+        off
         // How many logical pixels the ring extends out from the windows.
         width 4
         // Colors can be set in a variety of ways:
@@ -83,9 +83,9 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        off
+        // off
         width 4
-        active-color "#ffc87f"
+        active-color "#7fc8ff"
         inactive-color "#505050"
  // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
@@ -122,20 +122,22 @@ spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
+prefer-no-csd
 screenshot-path "~/pic/screenshot%Y-%m-%d-%H-%M-%S.png"
+hotkey-overlay {
+    skip-at-startup
+}
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
 animations {
- // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
-
+    window-close {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
 }
 window-rule {
-    match app-id="^org\\.wezfurlong\\.wezterm$"
-    default-column-width {
-
-    }
+    draw-border-with-background true
+    geometry-corner-radius 12
+    clip-to-geometry true
 }
 window-rule {
     match app-id="^org\\.keepassxc\\.KeePassXC$"
@@ -143,13 +145,46 @@ window-rule {
     block-out-from "screen-capture"
 }
 window-rule {
+    match app-id="^com\\.mitchellh\\.ghostty$" is-active=true
     draw-border-with-background false
 }
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-geometry-corner-radius 12
-clip-to-geometry true
+window-rule {
+    match app-id="^com\\.mitchellh\\.ghostty$" is-active=false
+    opacity 0.8
+    draw-border-with-background false
+}
+window-rule {
+    match is-window-cast-target=true
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+    border {
+        inactive-color "#7d0d2d"
+    }
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+    shadow {
+        on
+    }
+}
+window-rule {
+    match app-id="^org\\.telegram\\.desktop$" title="Media viewer"
+    open-floating true
+}
+layer-rule {
+    match namespace="^swaync-notification-window$"
+    match namespace="^swaync-control-center$"
+    block-out-from "screen-capture"
+}
+layer-rule {
+    match namespace="^launcher$"
+    shadow {
+        on
+    }
+    geometry-corner-radius 10
 }
 binds {
     Mod+V {
@@ -455,8 +490,11 @@ binds {
     Alt+Print {
         screenshot-window
     }
-    Mod+Shift+E {
+    Mod+Shift+Q {
         quit
+    }
+    Mod+E {
+        expand-column-to-available-width
     }
 }
 
