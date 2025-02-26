@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  outputs,
   ...
 }:
 {
@@ -30,6 +31,7 @@
     {
       programs.helix = lib.mkIf cfg.enable {
         enable = true;
+        package = outputs.packages."${pkgs.system}".helix;
         defaultEditor = true;
         extraPackages = cfg.extraPackages;
         settings =

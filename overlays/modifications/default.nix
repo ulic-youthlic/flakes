@@ -3,7 +3,6 @@ final: prev:
 let
   inherit (prev) lib;
   overlay-files = [
-    ./helix.nix
     ./spotify.nix
     ./niri.nix
     ./ghostty.nix

@@ -8,7 +8,6 @@
   youthlic = {
     xdg-dirs.enable = true;
     programs = {
-      helix.enable = true;
       gpg.enable = true;
       fish.enable = true;
       bash.enable = true;
