@@ -164,6 +164,9 @@ binds {
     Mod+T {
         spawn "ghostty"
     }
+    Mod+Shift+T {
+        toggle-column-tabbed-display
+    }
     Mod+Space {
         spawn "fuzzel"
     }
