@@ -18,7 +18,8 @@ in
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [
         obs-source-record
-        input-overlay
+        obs-vaapi
+        obs-vkcapture
       ];
     };
   };

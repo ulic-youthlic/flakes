@@ -9,6 +9,7 @@
       "libvirtd"
       "wheel"
       "video"
+      "audio"
     ];
   };
   services.udev = {
