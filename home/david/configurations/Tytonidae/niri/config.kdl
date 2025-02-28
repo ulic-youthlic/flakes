@@ -437,7 +437,7 @@ binds {
         focus-window-previous
     }
     Mod+Shift+Tab {
-        focus-monitor-previous
+        switch-focus-between-floating-and-tiling
     }
     Mod+BracketLeft {
         consume-or-expel-window-left
