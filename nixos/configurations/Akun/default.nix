@@ -9,6 +9,7 @@
   ];
 
   youthlic = {
+    users.deploy.enable = true;
     home-manager = {
       enable = true;
       unixName = "david";
@@ -19,6 +20,7 @@
       dae.enable = true;
       openssh.enable = true;
       kanata.enable = true;
+      tailscale.enable = true;
     };
     gui.enabled = "kde";
   };
