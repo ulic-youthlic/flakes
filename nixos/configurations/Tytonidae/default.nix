@@ -85,6 +85,12 @@
     nvtopPackages.full
     spotify
     localsend
+    jq
+    onefetch
+    vesktop
+    gg
+    aria2
+    fractal
 
     juicity
   ];
