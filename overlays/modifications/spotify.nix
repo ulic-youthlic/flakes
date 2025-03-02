@@ -1,1 +1,1 @@
-{ inputs, ... }: inputs.oskars-dotfiles.overlays.spotx
+{ inputs, ... }: import "${inputs.oskars-dotfiles}/overlays/spotx.nix"

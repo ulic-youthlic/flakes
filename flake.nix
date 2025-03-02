@@ -7,7 +7,10 @@
 
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
 
     helix = {
@@ -15,14 +18,19 @@
       owner = "helix-editor";
       repo = "helix";
       ref = "master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
 
     home-manager = {
       type = "github";
       owner = "nix-community";
       repo = "home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     oskars-dotfiles = {
@@ -30,14 +38,16 @@
       owner = "oskardotglobal";
       repo = ".dotfiles";
       ref = "nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      flake = false;
     };
 
     niri-flake = {
       type = "github";
       owner = "sodiboo";
       repo = "niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     nixos-cosmic = {
@@ -50,7 +60,10 @@
       type = "github";
       owner = "ghostty-org";
       repo = "ghostty";
-      inputs.nixpkgs-unstable.follows = "nixpkgs";
+      inputs = {
+        nixpkgs-unstable.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
 
     nixos-hardware = {
@@ -64,7 +77,10 @@
       type = "github";
       owner = "daeuniverse";
       repo = "flake.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     flake-parts = {
@@ -99,21 +115,29 @@
       type = "github";
       owner = "Mic92";
       repo = "sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     stylix = {
       type = "github";
       owner = "danth";
       repo = "stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        home-manager.follows = "home-manager";
+      };
     };
 
     disko = {
       type = "github";
       owner = "nix-community";
       repo = "disko";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     bt-tracker = {
@@ -127,7 +151,10 @@
       type = "github";
       owner = "serokell";
       repo = "deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
+      };
     };
   };
   outputs =
