@@ -311,7 +311,7 @@
                   interactiveSudo = true;
                   profiles = {
                     system = {
-                      user = "${unixName}";
+                      user = "root";
                       path =
                         inputs.deploy-rs.lib."${system}".activate.nixos
                           self.outputs.nixosConfigurations."${hostName}";

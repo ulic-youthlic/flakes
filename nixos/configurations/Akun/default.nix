@@ -22,7 +22,7 @@
       kanata.enable = true;
       tailscale.enable = true;
     };
-    gui.enabled = "kde";
+    gui.enabled = "cosmic";
   };
   programs.gnupg.agent = {
     enable = true;
