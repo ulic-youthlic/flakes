@@ -24,9 +24,6 @@ deploy host:
 clean keepSince=DEFAULT_KEEP_SINCE:
     nh clean all --verbose -K {{ keepSince }} -k 5
 
-health:
-    nix --accept-flake-config run github:juspay/nix-health
-
 switchHome host=DEFAULT_HOST $USER=DEFAULT_USER:
     @echo USER: $USER
     @echo HOST: {{ host }}
@@ -41,7 +38,6 @@ alias s := switch
 alias u := update
 alias d := deploy
 alias c := clean
-alias h := health
 alias b := build
 alias H := switchHome
 alias B := buildHome
