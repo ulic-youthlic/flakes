@@ -19,5 +19,6 @@
     ./conduwuit.nix
     ./nix-ld.nix
     ./juicity
+    ./miniflux.nix
   ];
 }

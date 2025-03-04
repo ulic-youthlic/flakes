@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ./users
     ./disko-config.nix
+    ./miniflux.nix
   ];
 
   youthlic = {
