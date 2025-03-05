@@ -31,6 +31,8 @@ in
           watch-dir-enabled = true;
           default-trackers = builtins.readFile "${inputs.bt-tracker}/all.txt";
           rpc-bind-address = "0.0.0.0";
+          speed-limit-up-enabled = true;
+          speed-limit-up = 1000;
         };
         openRPCPort = true;
         openPeerPorts = true;
