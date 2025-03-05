@@ -18,25 +18,16 @@ in
         type = lib.types.port;
         default = 8480;
       };
-      interface = lib.mkOption {
-        type = lib.types.nonEmptyStr;
-        example = "ens3";
-      };
     };
   };
   config = lib.mkIf cfg.enable {
-    networking.nat = {
-      enable = true;
-      internalInterfaces = [ "ve-+" ];
-      externalInterface = cfg.interface;
-      enableIPv6 = true;
-    };
+    youthlic.containers.enable = true;
     containers."forgejo" = {
       ephemeral = true;
       autoStart = true;
       privateNetwork = true;
-      hostAddress = "10.231.136.1";
-      localAddress = "10.231.136.102";
+      hostBridge = "${config.youthlic.containers.bridgeName}";
+      localAddress = "192.168.111.101/24";
       bindMounts = {
         "/var/lib/forgejo" = {
           hostPath = "/mnt/containers/forgejo/state";
@@ -99,6 +90,7 @@ in
           };
 
           networking = {
+            defaultGateway = "192.168.111.1";
             firewall = {
               enable = true;
               allowedTCPPorts = [

@@ -9,25 +9,16 @@ in
       adminCredentialsFile = lib.mkOption {
         type = lib.types.nonEmptyStr;
       };
-      interface = lib.mkOption {
-        type = lib.types.nonEmptyStr;
-        example = "ens3";
-      };
     };
   };
   config = lib.mkIf cfg.enable {
-    networking.nat = {
-      enable = true;
-      internalInterfaces = [ "ve-+" ];
-      externalInterface = cfg.interface;
-      enableIPv6 = true;
-    };
+    youthlic.containers.enable = true;
     containers."miniflux" = {
       ephemeral = true;
       autoStart = true;
       privateNetwork = true;
-      hostAddress = "10.231.137.1";
-      localAddress = "10.231.137.102";
+      hostBridge = "${config.youthlic.containers.bridgeName}";
+      localAddress = "192.168.111.102/24";
       bindMounts = {
         "/var/lib/miniflux" = {
           hostPath = "/mnt/containers/miniflux/state";
@@ -41,18 +32,6 @@ in
           isReadOnly = true;
         };
       };
-      forwardPorts = [
-        {
-          containerPort = 8485;
-          hostPort = 8485;
-          protocol = "tcp";
-        }
-        {
-          containerPort = 8485;
-          hostPort = 8485;
-          protocol = "udp";
-        }
-      ];
 
       config =
         { lib, ... }:
@@ -92,6 +71,7 @@ in
           };
 
           networking = {
+            defaultGateway = "192.168.111.1";
             firewall = {
               enable = true;
               allowedTCPPorts = [ 8485 ];
