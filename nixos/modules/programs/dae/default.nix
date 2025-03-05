@@ -18,6 +18,7 @@ in
     (lib.mkIf cfg.enable {
       services.dae = {
         enable = true;
+        package = pkgs.dae;
         openFirewall = {
           enable = true;
           port = 12345;
@@ -63,6 +64,7 @@ in
               fi
             done
             if [[ -d /etc/dae/proxy.d ]]; then
+              rm -rf /etc/proxy.d.old
               mv /etc/dae/proxy.d /etc/dae/proxy.d.old
             fi
             mv ''${new_proxy} /etc/dae/proxy.d

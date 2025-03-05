@@ -12,8 +12,8 @@ global {
   auto_config_kernel_parameter: true
   dial_mode: domain
 
-  tcp_check_url: 'http://cp.cloudflare.com'
-  udp_check_dns: 'dns.google.com:53'
+  # tcp_check_url: 'http://cp.cloudflare.com'
+  # udp_check_dns: '114.114.114.114:53'
   check_interval: 600s
   check_tolerance: 50ms
 
@@ -25,7 +25,7 @@ dns {
 
   upstream {
     googledns: 'tcp+udp://8.8.8.8:53'
-    alidns: 'udp://dns.alidns.com:53'
+    alidns: 'udp://223.5.5.5:53'
   }
   routing {
     request {

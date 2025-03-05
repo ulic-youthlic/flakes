@@ -21,7 +21,7 @@
         ];
         matchConfig.Name = "eno2";
         # networkConfig = {
-        #   DHCP = "no";
+        #   DHCP = "yes";
         #   IPv6AcceptRA = true;
         # };
       };
