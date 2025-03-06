@@ -8,6 +8,7 @@ let
     ./ghostty.nix
     ./juicity.nix
     ./dae.nix
+    ./jujutsu.nix
   ];
   overlay-list = map (file: import file args) overlay-files;
 in

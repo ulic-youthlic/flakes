@@ -156,6 +156,16 @@
         utils.follows = "flake-utils";
       };
     };
+
+    jj = {
+      type = "github";
+      owner = "jj-vcs";
+      repo = "jj";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
   };
   outputs =
     {

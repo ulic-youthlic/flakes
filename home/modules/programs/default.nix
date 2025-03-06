@@ -24,5 +24,6 @@
     ./swaync.nix
     ./helix
     ./waybar.nix
+    ./jujutsu.nix
   ];
 }
