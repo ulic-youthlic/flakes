@@ -21,22 +21,35 @@
           package = pkgs.ghostty;
           settings = {
             # font-family = "FiraCode Nerd Font";
+            # font-feature = [
+            #   "calt=1"
+            #   "clig=1"
+            #   "liga=1"
+            #   "cv01"
+            #   "cv02"
+            #   "cv06"
+            #   "zero"
+            #   "onum"
+            #   "cv17"
+            #   "ss05"
+            #   "ss03"
+            #   "cv16"
+            #   "cv31"
+            #   "cv29"
+            #   "cv30"
+            # ];
+
+            # font-family = "Maple Mono SC NF";
             font-feature = [
-              "calt=1"
-              "clig=1"
-              "liga=1"
-              "cv01"
-              "cv02"
-              "cv06"
+              "calt"
               "zero"
-              "onum"
-              "cv17"
+              "cv01"
+              "cv96"
+              "cv97"
+              "cv98"
+              "cv99"
               "ss05"
-              "ss03"
-              "cv16"
-              "cv31"
-              "cv29"
-              "cv30"
+              "ss08"
             ];
             font-size = lib.mkForce 17;
             # theme = "ayu";

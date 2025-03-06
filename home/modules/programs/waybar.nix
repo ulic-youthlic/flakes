@@ -141,7 +141,7 @@ in
         ];
         style = ''
            * {
-            font-family: LXGW Wenkai, FiraCode Nerd Font;
+            font-family: LXGW Wenkai, Maple Mono SC NF;
             font-weight: bold;
             font-size: 14px;
           }
