@@ -5,17 +5,17 @@
   ...
 }@args:
 let
-  inherit (inputs.helix.packages."${pkgs.system}") helix helix-unwrapped;
-  helix-core = helix-unwrapped.overrideAttrs {
-    HELIX_DEFAULT_RUNTIME = "${grammarRuntime}";
-  };
-  helix-wrapped = (helix.override grammarConfig).passthru.wrapper helix-core;
-  grammars = import ./grammars args;
-  grammarOverlays = grammars.overlays;
-  grammarRuntime = grammars.runtime;
-  grammarConfig = {
-    inherit grammarOverlays;
-  };
+  inherit (inputs.helix.packages."${pkgs.system}") helix;
+  # helix-core = helix-unwrapped.overrideAttrs {
+  #   HELIX_DEFAULT_RUNTIME = "${grammarRuntime}";
+  # };
+  # helix-wrapped = (helix.override grammarConfig).passthru.wrapper helix-core;
+  # grammars = import ./grammars args;
+  # grammarOverlays = grammars.overlays;
+  # grammarRuntime = grammars.runtime;
+  # grammarConfig = {
+  #   inherit grammarOverlays;
+  # };
   runtimeInputs = (
     with pkgs;
     [
@@ -53,10 +53,11 @@ let
   );
 in
 pkgs.symlinkJoin {
-  pname = "helix-wrapped";
-  version = helix-wrapped.version;
-  paths = [ helix-wrapped ];
-  inherit (helix-wrapped) meta;
+  # pname = "helix-wrapped";
+  # version = helix.version;
+  name = "helix-wrapped";
+  paths = [ helix ];
+  inherit (helix) meta;
   buildInputs = [
     pkgs.makeWrapper
   ];
