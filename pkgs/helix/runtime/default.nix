@@ -65,30 +65,41 @@ let
       inherit (grammar) name;
       value = builtins.fetchTree {
         type = "github";
-        inherit (grammar) owner repo rev; };
+        inherit (grammar) owner repo rev;
+      };
     }) grammars
   );
   queries = lib.mapAttrsToList (name: value: ''
-    mkdir -p $out/queries/${name}
-    cp ${value}/queries/* $out/queries/${name}/
+    mkdir -p $out/${name}
+
+    ln -s ${value}/queries/* $out/${name}/
   '') sources;
-  runtime = pkgs.runCommand "helix-default-runtime" { } ''
-    mkdir -p $out
-    ${builtins.concatStringsSep "\n" queries}
-  '';
   builtGrammars = lib.listToAttrs (
     map (grammar: {
       inherit (grammar) name;
       value = buildGrammar grammar;
     }) grammars
   );
+  grammarLinks = lib.mapAttrsToList (
+    name: value: "ln -s ${value}/${name}.so $out/${name}.so"
+  ) builtGrammars;
+  grammarDir = pkgs.runCommandNoCCLocal "helix-grammars" { } ''
+    mkdir -p $out
+
+    ${builtins.concatStringsSep "\n" grammarLinks}
+  '';
+  queryDir = pkgs.runCommandNoCCLocal "helix-query" { } ''
+    mkdir -p $out
+
+    ${builtins.concatStringsSep "\n" queries}
+  '';
   grammarFiles = [
     ./idris.nix
   ];
 in
-{
-  overlays = [
-    (final: prev: lib.filterAttrs (n: v: !(builtins.hasAttr n prev)) builtGrammars)
-  ];
-  inherit runtime;
-}
+pkgs.runCommandNoCCLocal "helix-runtime" { } ''
+  mkdir -p $out
+
+  ln -s ${grammarDir} $out/grammars
+  ln -s ${queryDir} $out/queries
+''

@@ -6,16 +6,7 @@
 }@args:
 let
   inherit (inputs.helix.packages."${pkgs.system}") helix;
-  # helix-core = helix-unwrapped.overrideAttrs {
-  #   HELIX_DEFAULT_RUNTIME = "${grammarRuntime}";
-  # };
-  # helix-wrapped = (helix.override grammarConfig).passthru.wrapper helix-core;
-  # grammars = import ./grammars args;
-  # grammarOverlays = grammars.overlays;
-  # grammarRuntime = grammars.runtime;
-  # grammarConfig = {
-  #   inherit grammarOverlays;
-  # };
+  runtime = import ./runtime args;
   runtimeInputs = (
     with pkgs;
     [
@@ -53,8 +44,6 @@ let
   );
 in
 pkgs.symlinkJoin {
-  # pname = "helix-wrapped";
-  # version = helix.version;
   name = "helix-wrapped";
   paths = [ helix ];
   inherit (helix) meta;
@@ -63,6 +52,7 @@ pkgs.symlinkJoin {
   ];
   postBuild = ''
     wrapProgram $out/bin/hx \
-    --suffix PATH : ${lib.makeBinPath runtimeInputs}
+    --suffix PATH : ${lib.makeBinPath runtimeInputs} \
+    --set HELIX_RUNTIME ${runtime}
   '';
 }
