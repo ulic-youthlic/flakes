@@ -15,8 +15,8 @@
         name = "Noto Serif CJK SC";
       };
       monospace = {
-        package = pkgs.nerd-fonts.fira-code;
-        name = "FiraCode Nerd Font";
+        package = pkgs.maple-mono-SC-NF;
+        name = "Maple Mono SC NF";
       };
       emoji = {
         package = pkgs.noto-fonts-emoji;
