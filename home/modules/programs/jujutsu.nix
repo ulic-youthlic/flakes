@@ -60,7 +60,7 @@ in
           ui = {
             color = "auto";
             movement.edit = true;
-            graph.style = "square";
+            graph.style = "curved";
             show-cryptographic-signatures = true;
             pager = "delta";
             diff = {
