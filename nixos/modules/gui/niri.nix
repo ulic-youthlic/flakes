@@ -9,9 +9,15 @@ let
 in
 {
   config = lib.mkIf (cfg.enabled == "niri") {
+    qt = {
+      enable = true;
+      platformTheme = "qt5ct";
+    };
     environment.systemPackages = with pkgs; [
       bluez
       cosmic-files
+      kdePackages.qt6ct
+      libsForQt5.qt5ct
     ];
     xdg.mime = {
       enable = true;

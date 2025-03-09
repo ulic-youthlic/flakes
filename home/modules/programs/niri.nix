@@ -30,6 +30,43 @@ in
       wl-clipboard
       cliphist
     ];
+    qt = {
+      enable = true;
+    };
+    xdg.portal = {
+      configPackages = [ pkgs.niri-unstable ];
+      config = {
+        common = {
+          default = [
+            "cosmic"
+          ];
+        };
+      };
+      enable = true;
+      extraPortals = lib.mkIf (
+        !pkgs.niri-unstable.cargoBuildNoDefaultFeatures
+        || builtins.elem "xdp-gnome-screencast" pkgs.niri-unstable.cargoBuildFeatures
+      ) [ pkgs.xdg-desktop-portal-gnome ];
+    };
+    xdg.configFile =
+      let
+        qtctConf =
+          ''
+            [Appearance]
+            standard_dialogs=xdgdesktopportal
+          ''
+          + lib.optionalString (config.qt.style ? name) ''
+            style=${config.qt.style.name}
+          '';
+      in
+      {
+        "qt5ct/qt5ct.conf" = lib.mkForce {
+          text = qtctConf;
+        };
+        "qt6ct/qt6ct.conf" = lib.mkForce {
+          text = qtctConf;
+        };
+      };
     youthlic.programs = {
       fuzzel.enable = true;
       wluma.enable = true;
