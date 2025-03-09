@@ -497,5 +497,8 @@ binds {
     Mod+E {
         expand-column-to-available-width
     }
+    Mod+Shift+S {
+        toggle-keyboard-shortcuts-inhibit
+    }
 }
 
