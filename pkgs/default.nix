@@ -3,10 +3,13 @@
   inputs,
   ...
 }:
+let
+  srcs = pkgs.callPackage ./_sources/generated.nix { };
+in
 {
   pinentry-selector = pkgs.callPackage ./pinentry-selector.nix { };
   helix = pkgs.callPackage ./helix { inherit inputs; };
-  juicity = pkgs.callPackage ./juicity.nix { };
+  juicity = pkgs.callPackage ./juicity.nix { inherit srcs; };
 }
 // (
   let

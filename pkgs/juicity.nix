@@ -1,21 +1,16 @@
-{ pkgs, ... }:
-pkgs.buildGoModule rec {
+{ buildGoModule, srcs, ... }:
+buildGoModule rec {
   name = "juicity";
-  version = "unstable-20240514.r132.4af4f68";
+  version = "unstable-${srcs.juicity.date}.${srcs.juicity.version}";
 
-  src = pkgs.fetchFromGitHub {
-    repo = "juicity";
-    owner = "juicity";
-    rev = "4af4f68b405a6b86560ebb16963d133a7196af5c";
-    hash = "sha256-4sej/nb7d58+hSCaD6KIfDsqiGmgECPIbRKR65TbMBM=";
-  };
+  src = srcs.juicity.src;
   env.CGO_ENABLED = 0;
 
   subPackages = [
     "cmd/server"
     "cmd/client"
   ];
-  vendorHash = "sha256-uULJKg1nh6jU0uIgDf4GMu8O00zifLvU2wv65dlHLAs=";
+  vendorHash = "sha256-PdX9GENqdTPpNWVRG3cTgZfAlEU85MVgDOJdcVT4gnw=";
   fixupPhase = ''
     runHook preFixup
 

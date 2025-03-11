@@ -1,0 +1,22 @@
+{
+    "juicity": {
+        "cargoLocks": null,
+        "date": "2025-02-20",
+        "extract": null,
+        "name": "juicity",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "4c5e8bd948ba2f72a0dd38681cf13ae532f6c9f5",
+            "sha256": "sha256-s/OYlW66mu/3MHwhZCxvQv8f/rNuCB4SLZ2jYPO5UQQ=",
+            "sparseCheckout": [],
+            "type": "git",
+            "url": "https://githuh.com/juicity/juicity"
+        },
+        "version": "4c5e8bd948ba2f72a0dd38681cf13ae532f6c9f5"
+    }
+}
