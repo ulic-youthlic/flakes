@@ -2,11 +2,12 @@
   lib,
   pkgs,
   inputs,
+  callPackage,
   ...
-}@args:
+}:
 let
   inherit (inputs.helix.packages."${pkgs.system}") helix;
-  runtime = import ./runtime args;
+  runtime = callPackage ./runtime.nix { };
   runtimeInputs = (
     with pkgs;
     [

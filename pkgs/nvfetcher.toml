@@ -1,3 +1,8 @@
 [juicity]
 src.git = "https://github.com/juicity/juicity"
 fetch.git = "https://githuh.com/juicity/juicity"
+
+[tree-sitter-idris]
+src.git = "https://github.com/kayhide/tree-sitter-idris"
+fetch.git = "https://github.com/kayhide/tree-sitter-idris"
+passthru.name = "idris"

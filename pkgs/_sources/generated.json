@@ -18,5 +18,27 @@
             "url": "https://githuh.com/juicity/juicity"
         },
         "version": "4c5e8bd948ba2f72a0dd38681cf13ae532f6c9f5"
+    },
+    "tree-sitter-idris": {
+        "cargoLocks": null,
+        "date": "2024-11-05",
+        "extract": null,
+        "name": "tree-sitter-idris",
+        "passthru": {
+            "name": "idris"
+        },
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "c56a25cf57c68ff929356db25505c1cc4c7820f6",
+            "sha256": "sha256-aOAxb0KjhSwlNX/IDvGwEysYvImgUEIDeNDOWRl1qNk=",
+            "sparseCheckout": [],
+            "type": "git",
+            "url": "https://github.com/kayhide/tree-sitter-idris"
+        },
+        "version": "c56a25cf57c68ff929356db25505c1cc4c7820f6"
     }
 }

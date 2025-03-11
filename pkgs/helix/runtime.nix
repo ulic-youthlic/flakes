@@ -1,16 +1,18 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  srcs,
+  stdenv,
+  runCommandNoCCLocal,
+  ...
+}:
 let
-  inherit (pkgs) stdenv;
   buildGrammar =
     grammar:
-    let
-      source = sources."${grammar.name}";
-    in
     stdenv.mkDerivation {
       pname = "helix-tree-sitter-${grammar.name}";
-      version = grammar.rev;
-      src = source;
-      sourceRoot = "source";
+      version = grammar.version;
+      src = grammar.src;
+      # sourceRoot = "source";
 
       dontConfigue = true;
 
@@ -59,45 +61,32 @@ let
         runHook postFixup
       '';
     };
-  grammars = map (file: import file) grammarFiles;
-  sources = lib.listToAttrs (
-    map (grammar: {
-      inherit (grammar) name;
-      value = builtins.fetchTree {
-        type = "github";
-        inherit (grammar) owner repo rev;
-      };
-    }) grammars
-  );
-  queries = lib.mapAttrsToList (name: value: ''
-    mkdir -p $out/${name}
+  grammars = lib.filterAttrs (key: _: lib.hasPrefix "tree-sitter-" key) srcs;
 
-    ln -s ${value}/queries/* $out/${name}/
-  '') sources;
-  builtGrammars = lib.listToAttrs (
-    map (grammar: {
-      inherit (grammar) name;
-      value = buildGrammar grammar;
-    }) grammars
-  );
+  queries = lib.mapAttrsToList (_: value: ''
+    mkdir -p $out/${value.name}
+
+    ln -s ${value.src}/queries/* $out/${value.name}/
+  '') grammars;
+  builtGrammars = builtins.mapAttrs (_: v: {
+    inherit (v) name;
+    value = buildGrammar v;
+  }) grammars;
   grammarLinks = lib.mapAttrsToList (
-    name: value: "ln -s ${value}/${name}.so $out/${name}.so"
+    _: value: "ln -s ${value.value}/${value.name}.so $out/${value.name}.so"
   ) builtGrammars;
-  grammarDir = pkgs.runCommandNoCCLocal "helix-grammars" { } ''
+  grammarDir = runCommandNoCCLocal "helix-grammars" { } ''
     mkdir -p $out
 
     ${builtins.concatStringsSep "\n" grammarLinks}
   '';
-  queryDir = pkgs.runCommandNoCCLocal "helix-query" { } ''
+  queryDir = runCommandNoCCLocal "helix-query" { } ''
     mkdir -p $out
 
     ${builtins.concatStringsSep "\n" queries}
   '';
-  grammarFiles = [
-    ./idris.nix
-  ];
 in
-pkgs.runCommandNoCCLocal "helix-runtime" { } ''
+runCommandNoCCLocal "helix-runtime" { } ''
   mkdir -p $out
 
   ln -s ${grammarDir} $out/grammars

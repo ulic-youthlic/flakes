@@ -15,4 +15,19 @@
     };
     date = "2025-02-20";
   };
+  tree-sitter-idris = {
+    pname = "tree-sitter-idris";
+    version = "c56a25cf57c68ff929356db25505c1cc4c7820f6";
+    src = fetchgit {
+      url = "https://github.com/kayhide/tree-sitter-idris";
+      rev = "c56a25cf57c68ff929356db25505c1cc4c7820f6";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ ];
+      sha256 = "sha256-aOAxb0KjhSwlNX/IDvGwEysYvImgUEIDeNDOWRl1qNk=";
+    };
+    name = "idris";
+    date = "2024-11-05";
+  };
 }
