@@ -16,6 +16,9 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
+    stylix.targets.firefox.profileNames = [
+      "default"
+    ];
     programs.firefox = {
       enable = true;
       languagePacks = [
