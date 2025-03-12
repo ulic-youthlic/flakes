@@ -24,8 +24,8 @@ dns {
   ipversion_prefer: 4
 
   upstream {
-    googledns: 'tcp+udp://8.8.8.8:53'
-    alidns: 'udp://223.5.5.5:53'
+    googledns: 'http3://8.8.8.8/dns-query'
+    alidns: 'http3://223.6.6.6/dns-query'
   }
   routing {
     request {
