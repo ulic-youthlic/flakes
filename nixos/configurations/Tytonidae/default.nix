@@ -93,6 +93,10 @@
     fractal
 
     juicity
+    waypipe
+    wineWow64Packages.waylandFull
+    iperf3
+    nvfetcher
   ];
 
   environment.variables.EDITOR = "hx";
