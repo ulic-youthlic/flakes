@@ -47,7 +47,7 @@
           { ... }:
           {
             imports = [
-              outputs.homeManagerModules."${unixName}"
+              outputs.homeModules."${unixName}"
               (rootPath + "/home/${unixName}/configurations/${hostName}")
             ];
           }
@@ -58,7 +58,7 @@
           inherit (pkgs) system;
         };
         backupFileExtension = "backup";
-        sharedModules = [ outputs.homeManagerModules.default ];
+        sharedModules = [ outputs.homeModules.default ];
       };
     };
 }

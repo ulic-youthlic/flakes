@@ -181,6 +181,9 @@
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = flake-utils.lib.defaultSystems;
+      imports = [
+        inputs.home-manager.flakeModules.home-manager
+      ];
       perSystem = (
         { pkgs, system, ... }@args:
         {
@@ -272,12 +275,12 @@
                     [
                       "${toString ./home}/${unixName}/configurations/${hostName}"
                     ]
-                    ++ (with outputs.homeManagerModules; [
+                    ++ (with outputs.homeModules; [
                       default
                       extra
                     ])
                     ++ [
-                      outputs.homeManagerModules."${unixName}"
+                      outputs.homeModules."${unixName}"
                     ];
                   extraSpecialArgs = {
                     inherit
@@ -304,7 +307,7 @@
                 hostName = "Cape";
                 unixName = "alice";
               };
-            homeManagerModules =
+            homeModules =
               {
                 default = import ./home/modules;
                 extra = import ./home/extra;
