@@ -32,10 +32,13 @@
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         ];
         auto-optimise-store = lib.mkDefault true;
-        experimental-features = [
-          "nix-command"
-          "flakes"
-        ];
+        experimental-features =
+          [
+            "nix-command"
+            "flakes"
+          ]
+          ++ (lib.optional config.lix.enable "pipe-operator")
+          ++ (lib.optional (!config.lix.enable) "pipe-operators");
         warn-dirty = false;
         system-features = [
           "kvm"
