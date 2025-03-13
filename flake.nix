@@ -184,7 +184,7 @@
       imports = [
         inputs.home-manager.flakeModules.home-manager
       ];
-      perSystem = (
+      perSystem =
         { pkgs, system, ... }@args:
         {
           _module.args.pkgs = import inputs.nixpkgs {
@@ -199,8 +199,7 @@
               inherit inputs;
             }
           );
-        }
-      );
+        };
       flake =
         {
           nix.settings = {
@@ -233,16 +232,11 @@
           nixosConfigurations =
             let
               nixosConfigDir = ./nixos/configurations;
-            in
-            nixpkgs.lib.genAttrs
-              (map (f: nixpkgs.lib.removeSuffix ".nix" f) (builtins.attrNames (builtins.readDir nixosConfigDir)))
-              (
+              makeNixConfiguration =
                 hostName:
                 nixpkgs.lib.nixosSystem {
                   modules =
-                    [
-                      outputs.nixosModules.default
-                    ]
+                    [ outputs.nixosModules.default ]
                     ++ [
                       (
                         let
@@ -252,11 +246,18 @@
                         if builtins.pathExists dirPath then dirPath else filePath
                       )
                     ];
-                  specialArgs = {
-                    inherit inputs outputs rootPath;
-                  };
-                }
-              );
+                  specialArgs = { inherit inputs outputs rootPath; };
+                };
+            in
+            nixosConfigDir
+            |> builtins.readDir
+            |> builtins.attrNames
+            |> map (f: nixpkgs.lib.removeSuffix ".nix" f)
+            |> map (name: {
+              inherit name;
+              value = makeNixConfiguration name;
+            })
+            |> builtins.listToAttrs;
         }
         // (
           let
@@ -313,25 +314,22 @@
                 extra = import ./home/extra;
               }
               // (
-                let
-                  allEntries = builtins.readDir ./home;
-                  allUsers = nixpkgs.lib.filterAttrs (
-                    key: value:
-                    value == "directory"
-                    && (
-                      !builtins.elem key [
-                        "modules"
-                        "extra"
-                      ]
-                    )
-                  ) allEntries;
-                in
-                builtins.listToAttrs (
-                  map (name: {
-                    name = name;
-                    value = import "${toString ./home}/${name}/modules";
-                  }) (builtins.attrNames allUsers)
+                ./home
+                |> builtins.readDir
+                |> nixpkgs.lib.filterAttrs (key: value: value == "directory")
+                |> nixpkgs.lib.filterAttrs (
+                  key: value:
+                  !builtins.elem key [
+                    "modules"
+                    "extra"
+                  ]
                 )
+                |> builtins.attrNames
+                |> map (name: {
+                  name = name;
+                  value = import "${toString ./home}/${name}/modules";
+                })
+                |> builtins.listToAttrs
               );
           }
         )
@@ -361,19 +359,18 @@
               };
           in
           {
-            deploy.nodes = nixpkgs.lib.foldr (a: b: a // b) { } (
-              map
-                (
-                  hostName:
-                  mkDeployNode {
-                    inherit hostName;
-                  }
-                )
-                [
-                  "Cape"
-                  "Akun"
-                ]
-            );
+            deploy.nodes =
+              [
+                "Cape"
+                "Akun"
+              ]
+              |> map (
+                hostName:
+                mkDeployNode {
+                  inherit hostName;
+                }
+              )
+              |> nixpkgs.lib.foldr (a: b: a // b) { };
           }
         );
     };

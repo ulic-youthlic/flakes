@@ -61,20 +61,26 @@ let
         runHook postFixup
       '';
     };
-  grammars = lib.filterAttrs (key: _: lib.hasPrefix "tree-sitter-" key) srcs;
+  grammars = srcs |> lib.filterAttrs (key: _: lib.hasPrefix "tree-sitter-" key);
 
-  queries = lib.mapAttrsToList (_: value: ''
-    mkdir -p $out/${value.name}
+  queries =
+    grammars
+    |> lib.mapAttrsToList (
+      _: value: ''
+        mkdir -p $out/${value.name}
 
-    ln -s ${value.src}/queries/* $out/${value.name}/
-  '') grammars;
-  builtGrammars = builtins.mapAttrs (_: v: {
-    inherit (v) name;
-    value = buildGrammar v;
-  }) grammars;
-  grammarLinks = lib.mapAttrsToList (
-    _: value: "ln -s ${value.value}/${value.name}.so $out/${value.name}.so"
-  ) builtGrammars;
+        ln -s ${value.src}/queries/* $out/${value.name}/
+      ''
+    );
+  grammarLinks =
+    grammars
+    |> builtins.mapAttrs (
+      _: v: {
+        inherit (v) name;
+        value = buildGrammar v;
+      }
+    )
+    |> lib.mapAttrsToList (_: value: "ln -s ${value.value}/${value.name}.so $out/${value.name}.so");
   grammarDir = runCommandNoCCLocal "helix-grammars" { } ''
     mkdir -p $out
 

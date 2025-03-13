@@ -2,14 +2,14 @@
 final: prev:
 let
   inherit (prev) lib;
-  overlay-files = [
-    ./spotify.nix
-    ./niri.nix
-    ./ghostty.nix
-    ./juicity.nix
-    ./dae.nix
-    ./jujutsu.nix
-  ];
-  overlay-list = map (file: import file args) overlay-files;
 in
-(lib.composeManyExtensions overlay-list) final prev
+[
+  ./spotify.nix
+  ./niri.nix
+  ./ghostty.nix
+  ./juicity.nix
+  ./dae.nix
+  ./jujutsu.nix
+]
+|> map (file: import file args)
+|> (overlays: (lib.composeManyExtensions overlays) final prev)

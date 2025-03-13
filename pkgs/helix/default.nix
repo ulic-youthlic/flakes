@@ -38,7 +38,7 @@ let
       delve
       lldb
       rust-analyzer
-      nil
+      # nil
       haskell-language-server
       neocmakelsp
     ]
