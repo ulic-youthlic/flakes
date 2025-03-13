@@ -216,7 +216,7 @@
                 cachix = x: "https://${x}.cachix.org";
               in
               nixpkgs.lib.flatten [
-                mirrors
+                # mirrors
                 (cachix "nix-community")
                 "https://cache.nixos.org"
                 (cachix "cosmic")
