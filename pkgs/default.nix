@@ -13,6 +13,7 @@ in
   helix = callPackage ./helix { };
   juicity = callPackage ./juicity.nix { };
   rime-ice = callPackage ./rime-ice.nix { };
+  dioxionary = callPackage ./dioxionary.nix { };
 }
 // (
   let

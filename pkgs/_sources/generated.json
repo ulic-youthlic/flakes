@@ -1,4 +1,30 @@
 {
+    "dioxionary": {
+        "cargoLocks": {
+            "Cargo.lock": [
+                "./dioxionary-v1.1.3/Cargo.lock",
+                {}
+            ]
+        },
+        "date": null,
+        "extract": null,
+        "name": "dioxionary",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "vaaandark",
+            "repo": "dioxionary",
+            "rev": "v1.1.3",
+            "sha256": "sha256-tRv0Rdr8N3MJLeBpXjxNybAIZoNCmXEt1yj1Ij+I7U0=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v1.1.3"
+    },
     "juicity": {
         "cargoLocks": null,
         "date": "2025-02-20",

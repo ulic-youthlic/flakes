@@ -10,3 +10,8 @@ passthru.name = "idris"
 [rime-ice]
 src.git = "https://github.com/iDvel/rime-ice.git"
 fetch.github = "iDvel/rime-ice"
+
+[dioxionary]
+src.github = "vaaandark/dioxionary"
+fetch.github = "vaaandark/dioxionary"
+cargo_locks = ["Cargo.lock"]
