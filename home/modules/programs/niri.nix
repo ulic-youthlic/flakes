@@ -35,13 +35,6 @@ in
     };
     xdg.portal = {
       configPackages = [ pkgs.niri-unstable ];
-      config = {
-        common = {
-          default = [
-            "cosmic"
-          ];
-        };
-      };
       enable = true;
       extraPortals = lib.mkIf (
         !pkgs.niri-unstable.cargoBuildNoDefaultFeatures
