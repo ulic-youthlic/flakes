@@ -42,7 +42,6 @@
     helix
 
     element-desktop
-    discord-ptb
     vlc
     btop
     spotify
