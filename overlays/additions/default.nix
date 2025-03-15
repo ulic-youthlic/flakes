@@ -2,8 +2,9 @@
 final: prev:
 let
   inherit (prev) lib;
-  overlay-files = [
-  ];
-  overlay-list = map (file: import file args) overlay-files;
 in
-(lib.composeManyExtensions overlay-list) final prev
+[
+  ./rime-ice.nix
+]
+|> map (file: import file args)
+|> (overlays: (lib.composeManyExtensions overlays) final prev)

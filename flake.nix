@@ -113,14 +113,6 @@
       repo = "flake-utils";
     };
 
-    nur-xddxdd = {
-      type = "github";
-      owner = "xddxdd";
-      repo = "nur-packages";
-      ref = "master";
-      flake = false;
-    };
-
     nur-rycee = {
       type = "gitlab";
       owner = "rycee";

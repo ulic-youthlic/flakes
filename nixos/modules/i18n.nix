@@ -1,6 +1,5 @@
 {
   pkgs,
-  outputs,
   lib,
   config,
   ...
@@ -35,17 +34,11 @@ in
           addons = with pkgs; [
             libsForQt5.fcitx5-qt
             fcitx5-gtk
-            fcitx5-configtool
             fcitx5-fluent
             (fcitx5-rime.override {
-              rimeDataPkgs = (
-                with (outputs.packages."${pkgs.system}");
-                [
-                  rime-ice
-                  rime-zhwiki
-                  rime-moegirl
-                ]
-              );
+              rimeDataPkgs = [
+                rime-ice
+              ];
             })
           ];
           waylandFrontend = true;

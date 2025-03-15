@@ -15,6 +15,18 @@
     };
     date = "2025-02-20";
   };
+  rime-ice = {
+    pname = "rime-ice";
+    version = "75b225e84f5e95ddf0b5a50fa6e2cff9800ee7b7";
+    src = fetchFromGitHub {
+      owner = "iDvel";
+      repo = "rime-ice";
+      rev = "75b225e84f5e95ddf0b5a50fa6e2cff9800ee7b7";
+      fetchSubmodules = false;
+      sha256 = "sha256-/sKoufIf4m5h1Zds6AqIyeCjDaZsFU9ot5ln3ykuNyU=";
+    };
+    date = "2025-03-11";
+  };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";
     version = "c56a25cf57c68ff929356db25505c1cc4c7820f6";

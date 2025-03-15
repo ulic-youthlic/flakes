@@ -19,6 +19,27 @@
         },
         "version": "4c5e8bd948ba2f72a0dd38681cf13ae532f6c9f5"
     },
+    "rime-ice": {
+        "cargoLocks": null,
+        "date": "2025-03-11",
+        "extract": null,
+        "name": "rime-ice",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "iDvel",
+            "repo": "rime-ice",
+            "rev": "75b225e84f5e95ddf0b5a50fa6e2cff9800ee7b7",
+            "sha256": "sha256-/sKoufIf4m5h1Zds6AqIyeCjDaZsFU9ot5ln3ykuNyU=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "75b225e84f5e95ddf0b5a50fa6e2cff9800ee7b7"
+    },
     "tree-sitter-idris": {
         "cargoLocks": null,
         "date": "2024-11-05",
