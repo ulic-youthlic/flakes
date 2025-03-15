@@ -5,6 +5,11 @@
     image = rootPath + "/assets/wallpaper/01.png";
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
+    cursor = {
+      package = pkgs.rose-pine-cursor;
+      name = "BreezeX-RosePineDawn-Linux";
+      size = 24;
+    };
     fonts = {
       serif = {
         package = pkgs.lxgw-wenkai;

@@ -3,7 +3,25 @@
 
   inputs = {
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    # nixpkgs.url = "github:NixOS/nixpkgs/master";
     nixpkgs.follows = "nixos-cosmic/nixpkgs";
+
+    # pr: https://github.com/NixOS/nixpkgs/pull/389740
+    nixpkgs-845dc1e9cbc2e48640b8968af58b4a19db67aa8f = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      rev = "845dc1e9cbc2e48640b8968af58b4a19db67aa8f";
+    };
+
+    # issue: https://github.com/NixOS/nixpkgs/issues/389977
+    nixpkgs-e3e32b642a31e6714ec1b712de8c91a3352ce7e1 = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      rev = "e3e32b642a31e6714ec1b712de8c91a3352ce7e1";
+    };
 
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";

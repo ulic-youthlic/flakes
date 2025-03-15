@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.youthlic.containers.forgejo;
 in
@@ -58,6 +63,8 @@ in
             ./../programs/forgejo.nix
             ./../programs/postgresql.nix
           ];
+
+          nixpkgs.pkgs = pkgs;
 
           systemd.tmpfiles.rules = [
             "d /var/lib/forgejo 770 forgejo forgejo -"

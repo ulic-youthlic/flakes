@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.youthlic.containers.miniflux;
 in
@@ -40,6 +45,8 @@ in
             ./../programs/miniflux.nix
             ./../programs/postgresql.nix
           ];
+
+          nixpkgs.pkgs = pkgs;
 
           systemd.tmpfiles.rules = [
             "d /var/lib/miniflux 770 miniflux miniflux -"
