@@ -41,8 +41,8 @@ Hey, you. This is my nixos configurations.
 | `overlays.additions`                      | the ovelrays add packages in `<nixpkgs>`                                    | ./overlays/additions                     |
 | `nixosModules.default`                    | nixos modules shared on different nixos machines                            | ./nixos/modules                          |
 | `nixosConfigurations.${machine}`          | machine-local nixos config                                                  | ./nixos/configurations/${machine}        |
-| `homeModules.default`              | home-manager modules shared between different user and machine combinations | ./home/modules                           |
-| `homeModules.extra`                | home-manager modules only for non-nixos                                     | ./home/extra                             |
-| `homeModules.${user}`              | home-manager modules shared between different users                         | ./home/${user}/modules                   |
+| `homeModules.default`                     | home-manager modules shared between different user and machine combinations | ./home/modules                           |
+| `homeModules.extra`                       | home-manager modules only for non-nixos                                     | ./home/extra                             |
+| `homeModules.${user}`                     | home-manager modules shared between different users                         | ./home/${user}/modules                   |
 | `homeConfigurations."${user}@${machine}"` | home-manager config for different user and machine combinations             | ./home/${user}/configurations/${machine} |
 | `deploy.nodes.${machine}.system`          | deploy-rs profile for deploying `nixosConfiguration.${machine}` remotely    | -                                        |

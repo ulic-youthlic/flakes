@@ -3,16 +3,16 @@
 {
   dioxionary = {
     pname = "dioxionary";
-    version = "v1.1.3";
+    version = "v1.1.4";
     src = fetchFromGitHub {
       owner = "vaaandark";
       repo = "dioxionary";
-      rev = "v1.1.3";
+      rev = "v1.1.4";
       fetchSubmodules = false;
-      sha256 = "sha256-tRv0Rdr8N3MJLeBpXjxNybAIZoNCmXEt1yj1Ij+I7U0=";
+      sha256 = "sha256-FAt0WKxVzM+JCGEVJRKUmMebj0MMwHOo8SlPeHn8s/0=";
     };
     cargoLock."Cargo.lock" = {
-      lockFile = ./dioxionary-v1.1.3/Cargo.lock;
+      lockFile = ./dioxionary-v1.1.4/Cargo.lock;
       outputHashes = {
         
       };
