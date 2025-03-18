@@ -10,7 +10,6 @@ in
   ./juicity.nix
   ./dae.nix
   ./jujutsu.nix
-  ./fix-pwvucontrol.nix
   ./fix-forgejo-lts.nix
 ]
 |> map (file: import file args)
