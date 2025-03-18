@@ -27,6 +27,7 @@
     };
     i18n.enable = true;
     programs = {
+      guix.enable = true;
       dae.enable = true;
       openssh.enable = true;
       steam.enable = true;

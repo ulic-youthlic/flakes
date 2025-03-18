@@ -20,5 +20,6 @@
     ./nix-ld.nix
     ./juicity
     ./miniflux.nix
+    ./guix.nix
   ];
 }
