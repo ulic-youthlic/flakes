@@ -7,14 +7,6 @@
     # nixpkgs.url = "github:NixOS/nixpkgs/master";
     nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
-    # issue: https://github.com/NixOS/nixpkgs/issues/389977
-    nixpkgs-e3e32b642a31e6714ec1b712de8c91a3352ce7e1 = {
-      type = "github";
-      owner = "NixOS";
-      repo = "nixpkgs";
-      rev = "e3e32b642a31e6714ec1b712de8c91a3352ce7e1";
-    };
-
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
       inputs = {

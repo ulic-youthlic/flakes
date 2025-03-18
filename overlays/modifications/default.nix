@@ -10,7 +10,6 @@ in
   ./juicity.nix
   ./dae.nix
   ./jujutsu.nix
-  ./fix-forgejo-lts.nix
 ]
 |> map (file: import file args)
 |> (overlays: (lib.composeManyExtensions overlays) final prev)
