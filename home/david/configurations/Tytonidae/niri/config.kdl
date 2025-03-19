@@ -434,6 +434,9 @@ binds {
     Mod+F {
         toggle-window-floating
     }
+    Mod+Shift+F {
+        toggle-windowed-fullscreen
+    }
     Mod+Tab {
         focus-window-previous
     }
