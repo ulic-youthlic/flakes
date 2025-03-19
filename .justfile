@@ -13,8 +13,10 @@ switch specialisation=DEFAULT_SPECIALISATION:
     nh os switch {{ FLAKE_HOME }} {{ if specialisation == DEFAULT_SPECIALISATION { "-S" } else { "-s " + specialisation } }}
 
 update:
-    cd pkgs && nvfetcher
     nix flake update --log-format internal-json 2>&1 | nom --json
+
+updatePkgs:
+    cd pkgs && nvfetcher
 
 build specialisation=DEFAULT_SPECIALISATION:
     nh os build {{ FLAKE_HOME }} {{ if specialisation == DEFAULT_SPECIALISATION { "-S" } else { "-s " + specialisation } }}
@@ -42,3 +44,4 @@ alias c := clean
 alias b := build
 alias H := switchHome
 alias B := buildHome
+alias U := updatePkgs
