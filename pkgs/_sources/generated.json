@@ -1,8 +1,8 @@
 {
     "dioxionary": {
         "cargoLocks": {
-            "Cargo.lock": [
-                "./dioxionary-v1.1.4/Cargo.lock",
+            "./Cargo.lock": [
+                "./dioxionary-v1.1.4/./Cargo.lock",
                 {}
             ]
         },

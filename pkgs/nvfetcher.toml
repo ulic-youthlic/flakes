@@ -14,4 +14,4 @@ fetch.github = "iDvel/rime-ice"
 [dioxionary]
 src.github = "vaaandark/dioxionary"
 fetch.github = "vaaandark/dioxionary"
-cargo_locks = ["Cargo.lock"]
+cargo_locks = ["./Cargo.lock"]

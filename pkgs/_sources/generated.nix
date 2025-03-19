@@ -11,8 +11,8 @@
       fetchSubmodules = false;
       sha256 = "sha256-FAt0WKxVzM+JCGEVJRKUmMebj0MMwHOo8SlPeHn8s/0=";
     };
-    cargoLock."Cargo.lock" = {
-      lockFile = ./dioxionary-v1.1.4/Cargo.lock;
+    cargoLock."./Cargo.lock" = {
+      lockFile = ./dioxionary-v1.1.4/./Cargo.lock;
       outputHashes = {
         
       };

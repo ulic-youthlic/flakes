@@ -13,7 +13,7 @@ in
 rustPlatform.buildRustPackage {
   inherit (src) pname src;
   version = "${src.version}";
-  cargoLock = src.cargoLock."Cargo.lock";
+  cargoLock = src.cargoLock."./Cargo.lock";
   nativeBuildInputs = [
     pkg-config
     installShellFiles
