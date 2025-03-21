@@ -34,7 +34,7 @@ in
         ];
         search = {
           force = true;
-          default = "DuckDuckGo";
+          default = "ddg";
           engines = {
             "Nix Packages" = {
               urls = [
@@ -131,8 +131,8 @@ in
               ];
               definedAliases = [ "nw" ];
             };
-            "Bing".metaData.hidden = true;
-            "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
+            "bing".metaData.hidden = true;
+            "google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
           };
         };
       };
