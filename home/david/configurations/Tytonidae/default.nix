@@ -7,11 +7,6 @@
   ...
 }:
 {
-  imports = [
-    ./niri
-    ./wluma
-  ];
-
   youthlic = {
     xdg-dirs.enable = true;
     programs = {
@@ -50,7 +45,10 @@
 
   david = {
     wallpaper.enable = true;
-    programs.openssh.enable = true;
+    programs = {
+      niri.enable = true;
+      openssh.enable = true;
+    };
   };
 
   home.username = "${unixName}";

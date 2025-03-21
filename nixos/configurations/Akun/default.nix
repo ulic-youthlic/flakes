@@ -22,7 +22,7 @@
       kanata.enable = true;
       tailscale.enable = true;
     };
-    gui.enabled = "cosmic";
+    gui.enabled = "niri";
   };
   programs.gnupg.agent = {
     enable = true;

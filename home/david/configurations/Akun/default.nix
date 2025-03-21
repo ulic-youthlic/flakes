@@ -40,7 +40,10 @@
 
   david = {
     wallpaper.enable = true;
-    programs.openssh.enable = true;
+    programs = {
+      openssh.enable = true;
+      niri.enable = true;
+    };
   };
 
   home.username = "${unixName}";
