@@ -200,16 +200,9 @@
             # substituters shared in home-manager and nixos configuration
             substituters =
               let
-                channelStore = x: "https://${x}/nix-channels/store";
-                mirrors = map (x: channelStore "mirrors.${x}.edu.cn") [
-                  "bfsu"
-                  "tuna.tsinghua"
-                  "ustc"
-                ];
                 cachix = x: "https://${x}.cachix.org";
               in
               nixpkgs.lib.flatten [
-                # mirrors
                 (cachix "nix-community")
                 "https://cache.nixos.org"
                 (cachix "cosmic")
