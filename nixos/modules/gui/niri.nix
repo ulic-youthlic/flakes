@@ -19,37 +19,45 @@ in
       kdePackages.qt6ct
       libsForQt5.qt5ct
     ];
-    xdg.mime = {
-      enable = true;
-      defaultApplications = {
-        "inode/directory" = [
-          "com.system76.CosmicFiles.desktop"
-        ];
-        "x-scheme-handler/about" = [
-          "firefox.desktop"
-          "chromium-browser.desktop"
-        ];
-        "x-scheme-handler/ftp" = [
-          "firefox.desktop"
-          "chromium-browser.desktop"
-        ];
-        "x-scheme-handler/http" = [
-          "firefox.desktop"
-          "chromium-browser.desktop"
-        ];
-        "x-scheme-handler/https" = [
-          "firefox.desktop"
-          "chromium-browser.desktop"
-        ];
-        "x-scheme-handler/mailto" = [
-          "firefox.desktop"
-          "chromium-browser.desktop"
-        ];
-        "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
-        "x-scheme-handler/unknown" = [
-          "firefox.desktop"
-          "chromium-browser.desktop"
-        ];
+    xdg = {
+      terminal-exec = {
+        enable = true;
+        settings = {
+          default = [ "com.mitchellh.ghostty.desktop" ];
+        };
+      };
+      mime = {
+        enable = true;
+        defaultApplications = {
+          "inode/directory" = [
+            "com.system76.CosmicFiles.desktop"
+          ];
+          "x-scheme-handler/about" = [
+            "firefox.desktop"
+            "chromium-browser.desktop"
+          ];
+          "x-scheme-handler/ftp" = [
+            "firefox.desktop"
+            "chromium-browser.desktop"
+          ];
+          "x-scheme-handler/http" = [
+            "firefox.desktop"
+            "chromium-browser.desktop"
+          ];
+          "x-scheme-handler/https" = [
+            "firefox.desktop"
+            "chromium-browser.desktop"
+          ];
+          "x-scheme-handler/mailto" = [
+            "firefox.desktop"
+            "chromium-browser.desktop"
+          ];
+          "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
+          "x-scheme-handler/unknown" = [
+            "firefox.desktop"
+            "chromium-browser.desktop"
+          ];
+        };
       };
     };
     hardware.bluetooth = {
