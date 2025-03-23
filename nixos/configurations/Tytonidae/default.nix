@@ -40,6 +40,7 @@
       transmission.enable = true;
       nix-ld.enable = true;
       juicity.client.enable = true;
+      asusd.enable = true;
     };
     gui.enabled = "niri";
   };

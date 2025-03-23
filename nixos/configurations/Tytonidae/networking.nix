@@ -20,10 +20,10 @@
           }
         ];
         matchConfig.Name = "eno2";
-        networkConfig = {
-          DHCP = "yes";
-          IPv6AcceptRA = true;
-        };
+        # networkConfig = {
+        #   DHCP = "yes";
+        #   IPv6AcceptRA = true;
+        # };
       };
     };
   };

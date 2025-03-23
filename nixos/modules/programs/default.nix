@@ -21,5 +21,6 @@
     ./juicity
     ./miniflux.nix
     ./guix.nix
+    ./asusd.nix
   ];
 }
