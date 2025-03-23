@@ -77,7 +77,8 @@
     vim
     helix
 
-    element-desktop
+    fluffychat
+    kdePackages.neochat
     vlc
     btop
     handbrake
@@ -90,7 +91,6 @@
     vesktop
     gg
     aria2
-    fractal
 
     juicity
     waypipe

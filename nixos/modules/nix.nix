@@ -11,6 +11,14 @@
     nixpkgs = {
       config = {
         allowUnfree = true;
+        allowInsecurePredicate =
+          p:
+          builtins.elem (lib.getName p) [
+            # for fluffychat and neochat
+            "olm"
+
+            "fluffychat-linux"
+          ];
       };
     };
     sops.secrets."access-tokens" = {

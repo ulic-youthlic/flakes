@@ -41,7 +41,8 @@
     vim
     helix
 
-    element-desktop
+    fluffychat
+    kdePackages.neochat
     vlc
     btop
     spotify
