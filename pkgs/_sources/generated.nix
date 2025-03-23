@@ -3,20 +3,23 @@
 {
   dioxionary = {
     pname = "dioxionary";
-    version = "v1.1.4";
-    src = fetchFromGitHub {
-      owner = "vaaandark";
-      repo = "dioxionary";
-      rev = "v1.1.4";
+    version = "20d7b44e49e51c2fce3b0369bd544ec561476108";
+    src = fetchgit {
+      url = "https://github.com/vaaandark/dioxionary.git";
+      rev = "20d7b44e49e51c2fce3b0369bd544ec561476108";
       fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ ];
       sha256 = "sha256-FAt0WKxVzM+JCGEVJRKUmMebj0MMwHOo8SlPeHn8s/0=";
     };
     cargoLock."./Cargo.lock" = {
-      lockFile = ./dioxionary-v1.1.4/./Cargo.lock;
+      lockFile = ./dioxionary-20d7b44e49e51c2fce3b0369bd544ec561476108/./Cargo.lock;
       outputHashes = {
         
       };
     };
+    date = "2025-03-17";
   };
   juicity = {
     pname = "juicity";
@@ -34,15 +37,15 @@
   };
   rime-ice = {
     pname = "rime-ice";
-    version = "75b225e84f5e95ddf0b5a50fa6e2cff9800ee7b7";
+    version = "1dcc6f1119836af276dd35c6f0fe93f6bdabc65a";
     src = fetchFromGitHub {
       owner = "iDvel";
       repo = "rime-ice";
-      rev = "75b225e84f5e95ddf0b5a50fa6e2cff9800ee7b7";
+      rev = "1dcc6f1119836af276dd35c6f0fe93f6bdabc65a";
       fetchSubmodules = false;
-      sha256 = "sha256-/sKoufIf4m5h1Zds6AqIyeCjDaZsFU9ot5ln3ykuNyU=";
+      sha256 = "sha256-9Xpx3s7iHLiwdzehPQZl44Q1aWhqViekrAHFBXE2PCc=";
     };
-    date = "2025-03-11";
+    date = "2025-03-22";
   };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";

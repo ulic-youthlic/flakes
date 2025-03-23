@@ -2,11 +2,11 @@
     "dioxionary": {
         "cargoLocks": {
             "./Cargo.lock": [
-                "./dioxionary-v1.1.4/./Cargo.lock",
+                "./dioxionary-20d7b44e49e51c2fce3b0369bd544ec561476108/./Cargo.lock",
                 {}
             ]
         },
-        "date": null,
+        "date": "2025-03-17",
         "extract": null,
         "name": "dioxionary",
         "passthru": null,
@@ -16,14 +16,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "owner": "vaaandark",
-            "repo": "dioxionary",
-            "rev": "v1.1.4",
+            "rev": "20d7b44e49e51c2fce3b0369bd544ec561476108",
             "sha256": "sha256-FAt0WKxVzM+JCGEVJRKUmMebj0MMwHOo8SlPeHn8s/0=",
             "sparseCheckout": [],
-            "type": "github"
+            "type": "git",
+            "url": "https://github.com/vaaandark/dioxionary.git"
         },
-        "version": "v1.1.4"
+        "version": "20d7b44e49e51c2fce3b0369bd544ec561476108"
     },
     "juicity": {
         "cargoLocks": null,
@@ -47,7 +46,7 @@
     },
     "rime-ice": {
         "cargoLocks": null,
-        "date": "2025-03-11",
+        "date": "2025-03-22",
         "extract": null,
         "name": "rime-ice",
         "passthru": null,
@@ -59,12 +58,12 @@
             "name": null,
             "owner": "iDvel",
             "repo": "rime-ice",
-            "rev": "75b225e84f5e95ddf0b5a50fa6e2cff9800ee7b7",
-            "sha256": "sha256-/sKoufIf4m5h1Zds6AqIyeCjDaZsFU9ot5ln3ykuNyU=",
+            "rev": "1dcc6f1119836af276dd35c6f0fe93f6bdabc65a",
+            "sha256": "sha256-9Xpx3s7iHLiwdzehPQZl44Q1aWhqViekrAHFBXE2PCc=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "75b225e84f5e95ddf0b5a50fa6e2cff9800ee7b7"
+        "version": "1dcc6f1119836af276dd35c6f0fe93f6bdabc65a"
     },
     "tree-sitter-idris": {
         "cargoLocks": null,

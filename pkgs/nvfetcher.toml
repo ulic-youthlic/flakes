@@ -12,6 +12,6 @@ src.git = "https://github.com/iDvel/rime-ice.git"
 fetch.github = "iDvel/rime-ice"
 
 [dioxionary]
-src.github = "vaaandark/dioxionary"
-fetch.github = "vaaandark/dioxionary"
+src.git = "https://github.com/vaaandark/dioxionary.git"
+fetch.git = "https://github.com/vaaandark/dioxionary.git"
 cargo_locks = ["./Cargo.lock"]
