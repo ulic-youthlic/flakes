@@ -38,7 +38,7 @@ in
       enableDefaultPackages = false;
       packages = with pkgs; [
         nerd-fonts.fira-code
-        maple-mono-SC-NF
+        maple-mono.NF-CN
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-cjk-serif
@@ -56,7 +56,7 @@ in
           "Noto Serif"
         ];
         monospace = [
-          "Maple Mono SC NF"
+          "Maple Mono NF CN"
         ];
         emoji = [ "Noto Color Emoji" ];
       };

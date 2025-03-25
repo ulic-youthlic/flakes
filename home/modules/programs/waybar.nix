@@ -141,7 +141,7 @@ in
         ];
         style = ''
            * {
-            font-family: LXGW Wenkai, Maple Mono SC NF;
+            font-family: LXGW Wenkai, Maple Mono NF CN;
             font-weight: bold;
             font-size: 14px;
           }

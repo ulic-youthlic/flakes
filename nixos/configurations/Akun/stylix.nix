@@ -20,8 +20,8 @@
         name = "Noto Serif CJK SC";
       };
       monospace = {
-        package = pkgs.maple-mono-SC-NF;
-        name = "Maple Mono SC NF";
+        package = pkgs.maple-mono.NF-CN;
+        name = "Maple Mono NF CN";
       };
       emoji = {
         package = pkgs.noto-fonts-emoji;
