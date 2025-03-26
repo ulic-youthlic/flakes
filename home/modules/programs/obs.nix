@@ -20,6 +20,7 @@ in
         obs-source-record
         obs-vaapi
         obs-vkcapture
+        obs-webkitgtk
       ];
     };
   };
