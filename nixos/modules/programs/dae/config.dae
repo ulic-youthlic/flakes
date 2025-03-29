@@ -71,7 +71,7 @@ routing {
   domain(suffix: "hit.edu.cn") -> must_direct
   domain(geosite: microsoft) -> proxy
   # domain(geosite: onedrive) -> must_direct
-  domain(geosite: "category-ai-chat-!cn") -> us
+  domain(geosite: "category-ai-!cn") -> us
   domain(geosite: google) -> us
   domain(geosite: google-play) -> proxy
   domain(geosite: apple) -> us
