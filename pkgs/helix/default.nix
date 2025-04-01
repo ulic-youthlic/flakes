@@ -27,6 +27,7 @@ let
       yaml-language-server
       taplo
       markdown-oxide
+      marksman
       nixd
       deno
       nixfmt-rfc-style
