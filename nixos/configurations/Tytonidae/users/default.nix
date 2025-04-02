@@ -10,6 +10,7 @@
       "wheel"
       "video"
       "audio"
+      "input"
     ];
   };
   services.udev = {

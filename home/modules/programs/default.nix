@@ -25,5 +25,6 @@
     ./helix
     ./waybar.nix
     ./jujutsu.nix
+    ./espanso.nix
   ];
 }

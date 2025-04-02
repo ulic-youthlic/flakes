@@ -35,6 +35,7 @@
       atuin.enable = true;
       obs.enable = true;
       chromium.enable = true;
+      espanso.enable = true;
     };
   };
 
