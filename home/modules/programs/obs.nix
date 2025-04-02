@@ -21,6 +21,7 @@ in
         obs-vaapi
         obs-vkcapture
         obs-webkitgtk
+        obs-pipewire-audio-capture
       ];
     };
   };
