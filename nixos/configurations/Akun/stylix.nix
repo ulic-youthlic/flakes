@@ -16,8 +16,8 @@
         name = "LXGW WenKai";
       };
       sansSerif = {
-        package = pkgs.noto-fonts-cjk-serif;
-        name = "Noto Serif CJK SC";
+        package = pkgs.source-sans;
+        name = "Source Sans 3";
       };
       monospace = {
         package = pkgs.maple-mono.NF-CN;

@@ -44,16 +44,20 @@ in
         noto-fonts-cjk-serif
         noto-fonts-emoji
         lxgw-wenkai
+        source-sans
+        source-serif
       ];
       fontconfig.defaultFonts = {
         serif = [
           "LXGW WenKai"
+          "Source Serif 4"
           "Noto Serif CJK SC"
           "Noto Serif"
         ];
         sansSerif = [
-          "Noto Serif CJK SC"
-          "Noto Serif"
+          "Source Sans 3"
+          "Noto Sans CJK SC"
+          "Noto Sans"
         ];
         monospace = [
           "Maple Mono NF CN"
