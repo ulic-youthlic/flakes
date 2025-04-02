@@ -41,6 +41,7 @@
       nix-ld.enable = true;
       juicity.client.enable = true;
       asusd.enable = true;
+      owncast.enable = true;
     };
     gui.enabled = "niri";
   };
