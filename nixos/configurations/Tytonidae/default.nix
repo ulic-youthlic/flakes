@@ -17,6 +17,7 @@
       ./hardware-configuration.nix
       ./networking.nix
       ./disk-config.nix
+      ./hardware.nix
     ];
 
   youthlic = {
