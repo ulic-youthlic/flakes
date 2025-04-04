@@ -3,10 +3,10 @@
 {
   dioxionary = {
     pname = "dioxionary";
-    version = "20d7b44e49e51c2fce3b0369bd544ec561476108";
+    version = "71f064e2cca49d36950b505873e05b256b868b56";
     src = fetchgit {
       url = "https://github.com/vaaandark/dioxionary.git";
-      rev = "20d7b44e49e51c2fce3b0369bd544ec561476108";
+      rev = "71f064e2cca49d36950b505873e05b256b868b56";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
@@ -14,12 +14,12 @@
       sha256 = "sha256-FAt0WKxVzM+JCGEVJRKUmMebj0MMwHOo8SlPeHn8s/0=";
     };
     cargoLock."./Cargo.lock" = {
-      lockFile = ./dioxionary-20d7b44e49e51c2fce3b0369bd544ec561476108/./Cargo.lock;
+      lockFile = ./dioxionary-71f064e2cca49d36950b505873e05b256b868b56/./Cargo.lock;
       outputHashes = {
         
       };
     };
-    date = "2025-03-17";
+    date = "2025-04-04";
   };
   juicity = {
     pname = "juicity";
@@ -35,17 +35,45 @@
     };
     date = "2025-02-20";
   };
+  noto-sans-cjk = {
+    pname = "noto-sans-cjk";
+    version = "Serif2.003";
+    src = fetchFromGitHub {
+      owner = "notofonts";
+      repo = "noto-cjk";
+      rev = "Serif2.003";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ "Sans/OTC" ];
+      sha256 = "sha256-UxbwdY2w3u6i1kBWwr5vMKvsnD3eCllN+kBrCH38KlY=";
+    };
+  };
+  noto-serif-cjk = {
+    pname = "noto-serif-cjk";
+    version = "Serif2.003";
+    src = fetchFromGitHub {
+      owner = "notofonts";
+      repo = "noto-cjk";
+      rev = "Serif2.003";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ "Serif/OTC" ];
+      sha256 = "sha256-mfbBSdJrUCZiUUmsmndtEW6H3z6KfBn+dEftBySf2j4=";
+    };
+  };
   rime-ice = {
     pname = "rime-ice";
-    version = "af3ea15b5c843d2c2d9ce904356073f962e8aa3d";
+    version = "a5f5404e369100fcfc5562f86f1205827453e31c";
     src = fetchFromGitHub {
       owner = "iDvel";
       repo = "rime-ice";
-      rev = "af3ea15b5c843d2c2d9ce904356073f962e8aa3d";
+      rev = "a5f5404e369100fcfc5562f86f1205827453e31c";
       fetchSubmodules = false;
-      sha256 = "sha256-52Iu5qikFJzYc5jL604C/zklLozV6p+C0/zr/DUvlGk=";
+      sha256 = "sha256-s3r8cdEliiPnKWs64Wgi0rC9Ngl1mkIrLnr2tIcyXWw=";
     };
-    date = "2025-03-30";
+    date = "2025-04-01";
   };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";

@@ -2,11 +2,11 @@
     "dioxionary": {
         "cargoLocks": {
             "./Cargo.lock": [
-                "./dioxionary-20d7b44e49e51c2fce3b0369bd544ec561476108/./Cargo.lock",
+                "./dioxionary-71f064e2cca49d36950b505873e05b256b868b56/./Cargo.lock",
                 {}
             ]
         },
-        "date": "2025-03-17",
+        "date": "2025-04-04",
         "extract": null,
         "name": "dioxionary",
         "passthru": null,
@@ -16,13 +16,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "20d7b44e49e51c2fce3b0369bd544ec561476108",
+            "rev": "71f064e2cca49d36950b505873e05b256b868b56",
             "sha256": "sha256-FAt0WKxVzM+JCGEVJRKUmMebj0MMwHOo8SlPeHn8s/0=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vaaandark/dioxionary.git"
         },
-        "version": "20d7b44e49e51c2fce3b0369bd544ec561476108"
+        "version": "71f064e2cca49d36950b505873e05b256b868b56"
     },
     "juicity": {
         "cargoLocks": null,
@@ -44,9 +44,55 @@
         },
         "version": "4c5e8bd948ba2f72a0dd38681cf13ae532f6c9f5"
     },
+    "noto-sans-cjk": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "noto-sans-cjk",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "notofonts",
+            "repo": "noto-cjk",
+            "rev": "Serif2.003",
+            "sha256": "sha256-UxbwdY2w3u6i1kBWwr5vMKvsnD3eCllN+kBrCH38KlY=",
+            "sparseCheckout": [
+                "Sans/OTC"
+            ],
+            "type": "github"
+        },
+        "version": "Serif2.003"
+    },
+    "noto-serif-cjk": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "noto-serif-cjk",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "notofonts",
+            "repo": "noto-cjk",
+            "rev": "Serif2.003",
+            "sha256": "sha256-mfbBSdJrUCZiUUmsmndtEW6H3z6KfBn+dEftBySf2j4=",
+            "sparseCheckout": [
+                "Serif/OTC"
+            ],
+            "type": "github"
+        },
+        "version": "Serif2.003"
+    },
     "rime-ice": {
         "cargoLocks": null,
-        "date": "2025-03-30",
+        "date": "2025-04-01",
         "extract": null,
         "name": "rime-ice",
         "passthru": null,
@@ -58,12 +104,12 @@
             "name": null,
             "owner": "iDvel",
             "repo": "rime-ice",
-            "rev": "af3ea15b5c843d2c2d9ce904356073f962e8aa3d",
-            "sha256": "sha256-52Iu5qikFJzYc5jL604C/zklLozV6p+C0/zr/DUvlGk=",
+            "rev": "a5f5404e369100fcfc5562f86f1205827453e31c",
+            "sha256": "sha256-s3r8cdEliiPnKWs64Wgi0rC9Ngl1mkIrLnr2tIcyXWw=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "af3ea15b5c843d2c2d9ce904356073f962e8aa3d"
+        "version": "a5f5404e369100fcfc5562f86f1205827453e31c"
     },
     "tree-sitter-idris": {
         "cargoLocks": null,

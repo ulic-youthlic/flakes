@@ -15,3 +15,13 @@ fetch.github = "iDvel/rime-ice"
 src.git = "https://github.com/vaaandark/dioxionary.git"
 fetch.git = "https://github.com/vaaandark/dioxionary.git"
 cargo_locks = ["./Cargo.lock"]
+
+[noto-serif-cjk]
+src.github = "notofonts/noto-cjk"
+fetch.github = "notofonts/noto-cjk"
+git.sparseCheckout = ["Serif/OTC"]
+
+[noto-sans-cjk]
+src.github = "notofonts/noto-cjk"
+fetch.github = "notofonts/noto-cjk"
+git.sparseCheckout = ["Sans/OTC"]
