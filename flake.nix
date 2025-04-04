@@ -2,10 +2,10 @@
   description = "A simple NixOS flakes";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs.url = "github:NixOS/nixpkgs/master";
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    # nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
