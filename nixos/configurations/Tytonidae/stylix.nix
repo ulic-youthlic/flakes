@@ -16,8 +16,8 @@
         name = "LXGW WenKai";
       };
       sansSerif = {
-        package = pkgs.source-sans;
-        name = " Serif Sans 3";
+        package = pkgs.source-han-sans;
+        name = " Serif Han Sans SC";
       };
       monospace = {
         package = pkgs.maple-mono.NF-CN;

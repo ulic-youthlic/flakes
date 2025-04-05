@@ -46,17 +46,21 @@ in
         lxgw-wenkai
         source-sans
         source-serif
+        source-han-serif
+        source-han-sans
       ];
       fontconfig.defaultFonts = {
         serif = [
           "LXGW WenKai"
-          "Source Serif 4"
+          "Source Han Serif SC"
           "Noto Serif CJK SC"
+          "Source Serif 4"
           "Noto Serif"
         ];
         sansSerif = [
-          "Source Sans 3"
+          "Source Han Sans SC"
           "Noto Sans CJK SC"
+          "Source Sans 3"
           "Noto Sans"
         ];
         monospace = [
