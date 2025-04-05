@@ -2,11 +2,11 @@
     "dioxionary": {
         "cargoLocks": {
             "./Cargo.lock": [
-                "./dioxionary-71f064e2cca49d36950b505873e05b256b868b56/./Cargo.lock",
+                "./dioxionary-c140d4438e517a9b618198a678189a349fb0c692/./Cargo.lock",
                 {}
             ]
         },
-        "date": "2025-04-04",
+        "date": "2025-04-05",
         "extract": null,
         "name": "dioxionary",
         "passthru": null,
@@ -16,13 +16,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "71f064e2cca49d36950b505873e05b256b868b56",
-            "sha256": "sha256-FAt0WKxVzM+JCGEVJRKUmMebj0MMwHOo8SlPeHn8s/0=",
+            "rev": "c140d4438e517a9b618198a678189a349fb0c692",
+            "sha256": "sha256-rPQ1EUsjlzWt1QgsWs/PVkcDMHGjH6w6fjzVSTiqqnk=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vaaandark/dioxionary.git"
         },
-        "version": "71f064e2cca49d36950b505873e05b256b868b56"
+        "version": "c140d4438e517a9b618198a678189a349fb0c692"
     },
     "juicity": {
         "cargoLocks": null,

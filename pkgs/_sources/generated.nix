@@ -3,23 +3,23 @@
 {
   dioxionary = {
     pname = "dioxionary";
-    version = "71f064e2cca49d36950b505873e05b256b868b56";
+    version = "c140d4438e517a9b618198a678189a349fb0c692";
     src = fetchgit {
       url = "https://github.com/vaaandark/dioxionary.git";
-      rev = "71f064e2cca49d36950b505873e05b256b868b56";
+      rev = "c140d4438e517a9b618198a678189a349fb0c692";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-FAt0WKxVzM+JCGEVJRKUmMebj0MMwHOo8SlPeHn8s/0=";
+      sha256 = "sha256-rPQ1EUsjlzWt1QgsWs/PVkcDMHGjH6w6fjzVSTiqqnk=";
     };
     cargoLock."./Cargo.lock" = {
-      lockFile = ./dioxionary-71f064e2cca49d36950b505873e05b256b868b56/./Cargo.lock;
+      lockFile = ./dioxionary-c140d4438e517a9b618198a678189a349fb0c692/./Cargo.lock;
       outputHashes = {
         
       };
     };
-    date = "2025-04-04";
+    date = "2025-04-05";
   };
   juicity = {
     pname = "juicity";
