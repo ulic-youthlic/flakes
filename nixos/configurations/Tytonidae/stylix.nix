@@ -17,7 +17,7 @@
       };
       sansSerif = {
         package = pkgs.source-han-sans;
-        name = " Serif Han Sans SC";
+        name = "Source Han Sans SC";
       };
       monospace = {
         package = pkgs.maple-mono.NF-CN;

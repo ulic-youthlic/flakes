@@ -43,12 +43,10 @@
             font-feature = [
               "calt"
               "zero"
-              "cv01"
+              "cv03"
               "cv96"
               "cv97"
               "cv98"
-              "cv99"
-              "ss05"
               "ss08"
             ];
             font-size = lib.mkForce 17;
