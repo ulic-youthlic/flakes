@@ -25,8 +25,14 @@
     wireless.iwd = {
       enable = true;
       settings = {
+        IPv6 = {
+          Enabled = true;
+        };
         General = {
           EnableNetworkConfiguration = true;
+        };
+        Settings = {
+          AutoConnect = true;
         };
         Network = {
           EnableIPv6 = true;
