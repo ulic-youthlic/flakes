@@ -23,5 +23,6 @@
     ./guix.nix
     ./asusd.nix
     ./owncast.nix
+    ./minio.nix
   ];
 }

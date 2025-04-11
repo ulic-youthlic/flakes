@@ -43,6 +43,7 @@
       juicity.client.enable = true;
       asusd.enable = true;
       owncast.enable = true;
+      minio.enable = true;
     };
     gui.enabled = "niri";
   };
