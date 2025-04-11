@@ -36,6 +36,10 @@ in
               "battery"
               "custom/notification"
             ];
+            "wlr/taskbar" = {
+              # on-click = "${lib.getExe pkgs.niri-unstable} msg action focus-window --id {app_id}";
+              on-click = "activate";
+            };
 
             "niri/worksapces" = { };
             "niri/taskbar" = {
