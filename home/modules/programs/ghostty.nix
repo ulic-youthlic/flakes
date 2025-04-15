@@ -44,9 +44,6 @@
               "calt"
               "zero"
               "cv03"
-              "cv96"
-              "cv97"
-              "cv98"
               "ss08"
             ];
             font-size = lib.mkForce 17;

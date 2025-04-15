@@ -35,9 +35,6 @@ in
           "calt" = true;
           "zero" = true;
           "cv03" = true;
-          "cv96" = true;
-          "cv97" = true;
-          "cv98" = true;
           "ss08" = true;
         };
         ui_font_family = "Source Han Sans SC";
