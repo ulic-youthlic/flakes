@@ -29,6 +29,7 @@
       cfg = config.youthlic.programs.helix;
     in
     {
+      stylix.targets.helix.enable = false;
       programs.helix = lib.mkIf cfg.enable {
         enable = true;
         package = outputs.packages."${pkgs.system}".helix;

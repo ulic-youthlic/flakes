@@ -1,4 +1,4 @@
-# theme = "ayu_evolve" # avoid conflicting with stylix
+theme = "ayu_dark"
 
 [editor]
 line-number = "relative"
