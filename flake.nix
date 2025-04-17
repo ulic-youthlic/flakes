@@ -43,6 +43,13 @@
       flake = false;
     };
 
+    niri-overview = {
+      type = "github";
+      owner = "YaLTeR";
+      repo = "niri";
+      ref = "pull/1440/head";
+    };
+
     niri-flake = {
       type = "github";
       owner = "sodiboo";
