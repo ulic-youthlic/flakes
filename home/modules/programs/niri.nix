@@ -2,10 +2,12 @@
   pkgs,
   config,
   lib,
+  osConfig ? null,
   ...
 }:
 let
   cfg = config.youthlic.programs.niri;
+  niri = osConfig.programs.niri.package;
 in
 {
   options = {
@@ -21,24 +23,24 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      swaynotificationcenter
-      swaybg
-      xwayland-satellite
-      niri-unstable
-      kdePackages.polkit-kde-agent-1
-      wl-clipboard
-      cliphist
-    ];
+    home.packages =
+      (with pkgs; [
+        swaynotificationcenter
+        swaybg
+        xwayland-satellite
+        kdePackages.polkit-kde-agent-1
+        wl-clipboard
+        cliphist
+      ])
+      ++ [ niri ];
     qt = {
       enable = true;
     };
     xdg.portal = {
-      configPackages = [ pkgs.niri-unstable ];
+      configPackages = [ niri ];
       enable = true;
       extraPortals = lib.mkIf (
-        !pkgs.niri-unstable.cargoBuildNoDefaultFeatures
-        || builtins.elem "xdp-gnome-screencast" pkgs.niri-unstable.cargoBuildFeatures
+        !niri.cargoBuildNoDefaultFeatures || builtins.elem "xdp-gnome-screencast" niri.cargoBuildFeatures
       ) [ pkgs.xdg-desktop-portal-gnome ];
     };
     xdg.configFile =
@@ -69,7 +71,7 @@ in
     };
     programs.niri = {
       config = builtins.readFile cfg.config;
-      package = pkgs.niri-unstable;
+      package = niri;
     };
   };
 }
