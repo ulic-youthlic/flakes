@@ -221,6 +221,9 @@ binds {
     Mod+Q {
         close-window
     }
+    Mod+O {
+        toggle-overview
+    }
     Mod+Left {
         focus-column-left
     }

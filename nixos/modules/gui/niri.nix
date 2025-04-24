@@ -76,7 +76,7 @@ in
     };
     programs.niri = {
       enable = true;
-      package = pkgs.niri-overview;
+      package = pkgs.niri-unstable;
     };
   };
 }
