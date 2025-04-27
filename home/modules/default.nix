@@ -6,6 +6,7 @@
   imports =
     (with inputs; [
       sops-nix.homeManagerModules.sops
+      betterfox-nix.homeManagerModules.betterfox
     ])
     ++ [
       ./programs

@@ -43,6 +43,15 @@
       flake = false;
     };
 
+    betterfox-nix = {
+      type = "github";
+      owner = "HeitorAugustoLN";
+      repo = "betterfox-nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     niri-flake = {
       type = "github";
       owner = "sodiboo";

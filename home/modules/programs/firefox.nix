@@ -21,11 +21,18 @@ in
     ];
     programs.firefox = {
       enable = true;
+      betterfox = {
+        enable = true;
+      };
       languagePacks = [
         "zh-CN"
         "en-US"
       ];
       profiles.default = {
+        betterfox = {
+          enable = true;
+          enableAllSections = true;
+        };
         name = "default";
         isDefault = true;
         extensions.packages = with outputs.packages."${system}"; [
