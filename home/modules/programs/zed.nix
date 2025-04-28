@@ -16,15 +16,17 @@ in {
     programs.zed-editor = {
       enable = true;
       extensions = [
-        "Nix"
-        "HTML"
-        "Java"
-        "Git Firely"
-        "Make"
-        "Deno"
-        "Java with Eclipse JDTLS"
-        "NeoCMake"
-        "Typst"
+        "nix"
+        "html"
+        "java"
+        "git-firely"
+        "make"
+        "deno"
+        "java-eclipse-jdtlS"
+        "neocMake"
+        "typst"
+        "toml"
+        "markdown-oxide"
       ];
       extraPackages = with pkgs; [
         nixd
@@ -32,10 +34,18 @@ in {
         neocmakelsp
         deno
         jdt-language-server
+        taplo
+        alejandra
+        markdown-oxide
       ];
       userSettings = {
+        soft_wrap = "editor_width";
         autosave = "on_focus_change";
         auto_update = false;
+        calls = {
+          mute_on_join = true;
+          share_on_join = false;
+        };
         "format_on_save" = "off";
         ui_font_size = 20;
         buffer_font_size = 20;
