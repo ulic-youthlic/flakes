@@ -18,11 +18,22 @@ in
     programs.zed-editor = {
       enable = true;
       extensions = [
-        "nix"
+        "Nix"
+        "HTML"
+        "Java"
+        "Git Firely"
+        "Make"
+        "Deno"
+        "Java with Eclipse JDTLS"
+        "NeoCMake"
+        "Typst"
       ];
       extraPackages = with pkgs; [
         nixd
         nil
+        neocmakelsp
+        deno
+        jdt-language-server
       ];
       userSettings = {
         autosave = "on_focus_change";
@@ -38,8 +49,11 @@ in
           "ss08" = true;
         };
         ui_font_family = "Source Han Sans SC";
-        theme = "Ayu Dark";
+        theme = "Gruvbox Dark Hard";
         vim_mode = true;
+        vim = {
+          default_mode = "helix_normal";
+        };
       };
     };
   };
