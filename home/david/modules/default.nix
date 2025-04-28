@@ -2,6 +2,7 @@
   imports = [
     ./wallpaper.nix
     ./programs
+    ./emails.nix
   ];
   config = {
     services.mpris-proxy.enable = true;

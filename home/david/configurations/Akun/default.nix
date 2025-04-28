@@ -7,15 +7,18 @@
 }: {
   youthlic = {
     xdg-dirs.enable = true;
-    programs = {
+    programs = let
+      email = config.accounts.email.accounts.ulic-youthlic;
+      inherit (email) address name;
+      signKey = email.gpg.key;
+    in {
       firefox.enable = true;
       fuzzel.enable = true;
       helix.enable = true;
       gpg.enable = true;
       git = {
-        email = "ulic.youthlic@gmail.com";
-        name = "ulic-youthlic";
-        signKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
+        inherit name signKey;
+        email = address;
         encrypt-credential = true;
       };
       zed-editor.enable = true;
@@ -23,9 +26,8 @@
       bash.enable = true;
       jujutsu = {
         enable = true;
-        email = "ulic.youthlic@gmail.com";
-        name = "ulic-youthlic";
-        signKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
+        inherit name signKey;
+        email = address;
       };
       ghostty.enable = true;
       starship.enable = true;
@@ -34,12 +36,14 @@
       atuin.enable = true;
       obs.enable = true;
       chromium.enable = true;
+      thunderbird.enable = true;
       # espanso.enable = true;
     };
   };
 
   david = {
     wallpaper.enable = true;
+    accounts.email.enable = true;
     programs = {
       openssh.enable = true;
       niri.enable = true;

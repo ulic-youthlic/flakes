@@ -8,7 +8,11 @@
 }: {
   youthlic = {
     xdg-dirs.enable = true;
-    programs = {
+    programs = let
+      email = config.accounts.email.accounts.ulic-youthlic;
+      inherit (email) name address;
+      signKey = email.gpg.key;
+    in {
       zed-editor.enable = true;
       rustypaste-cli.enable = true;
       firefox.enable = true;
@@ -17,14 +21,12 @@
       gpg.enable = true;
       jujutsu = {
         enable = true;
-        email = "ulic.youthlic@gmail.com";
-        name = "ulic-youthlic";
-        signKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
+        inherit name signKey;
+        email = address;
       };
       git = {
-        email = "ulic.youthlic@gmail.com";
-        name = "ulic-youthlic";
-        signKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
+        inherit name signKey;
+        email = address;
         encrypt-credential = true;
       };
       fish.enable = true;
@@ -45,6 +47,7 @@
 
   david = {
     wallpaper.enable = true;
+    accounts.email.enable = true;
     programs = {
       niri.enable = true;
       openssh.enable = true;
