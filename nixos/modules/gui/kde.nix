@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.gui;
-in
-{
+in {
   config = lib.mkIf (cfg.enabled == "kde") {
     stylix.targets.qt.platform = "kde";
     services = {

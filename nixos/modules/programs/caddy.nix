@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.youthlic.programs.caddy;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.youthlic.programs.caddy;
+in {
   options = {
     youthlic.programs.caddy = {
       enable = lib.mkEnableOption "caddy";
@@ -17,7 +19,7 @@ in
       enable = true;
     };
     networking.firewall = {
-      allowedTCPPorts = [ 443 ];
+      allowedTCPPorts = [443];
     };
   };
 }

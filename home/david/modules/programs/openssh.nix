@@ -3,11 +3,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.openssh;
-in
-{
+in {
   options = {
     david.programs.openssh = {
       enable = lib.mkEnableOption "openssh";
@@ -35,10 +33,9 @@ in
           };
         };
       };
-
     })
     (lib.mkIf (cfg.enable && config.youthlic.programs.sops.enable) {
-      programs.ssh.includes = [ config.sops.secrets.ssh-config.path ];
+      programs.ssh.includes = [config.sops.secrets.ssh-config.path];
       sops.secrets = {
         "ssh-private-key/tytonidae" = {
           mode = "0600";

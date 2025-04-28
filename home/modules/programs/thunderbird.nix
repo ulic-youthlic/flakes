@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  cfg = config.youthlic.programs.thunderbird;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.youthlic.programs.thunderbird;
+in {
   options = {
     youthlic.programs.thunderbird = {
       enable = lib.mkEnableOption "thunderbird";

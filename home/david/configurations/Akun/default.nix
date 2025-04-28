@@ -4,8 +4,7 @@
   config,
   rootPath,
   ...
-}:
-{
+}: {
   youthlic = {
     xdg-dirs.enable = true;
     programs = {

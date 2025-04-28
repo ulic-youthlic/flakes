@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  cfg = config.youthlic.programs.open-webui;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.youthlic.programs.open-webui;
+in {
   options = {
     youthlic.programs.open-webui = {
       enable = lib.mkEnableOption "open-webui";
@@ -23,15 +25,15 @@ in
       let
         caddy-cfg = config.youthlic.programs.caddy;
       in
-      lib.mkIf (cfg.enable && caddy-cfg.enable) {
-        services.caddy.virtualHosts = {
-          "open-webui.${caddy-cfg.baseDomain}" = {
-            extraConfig = ''
-              reverse_proxy 127.0.0.1:8083
-            '';
+        lib.mkIf (cfg.enable && caddy-cfg.enable) {
+          services.caddy.virtualHosts = {
+            "open-webui.${caddy-cfg.baseDomain}" = {
+              extraConfig = ''
+                reverse_proxy 127.0.0.1:8083
+              '';
+            };
           };
-        };
-      }
+        }
     )
   ];
 }

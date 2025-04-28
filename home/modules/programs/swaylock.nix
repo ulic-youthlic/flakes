@@ -3,11 +3,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.swaylock;
-in
-{
+in {
   options = {
     youthlic.programs.swaylock = {
       enable = lib.mkEnableOption "swaylock";

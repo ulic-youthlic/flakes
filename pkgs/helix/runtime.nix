@@ -4,10 +4,8 @@
   stdenv,
   runCommandNoCCLocal,
   ...
-}:
-let
-  buildGrammar =
-    grammar:
+}: let
+  buildGrammar = grammar:
     stdenv.mkDerivation {
       pname = "helix-tree-sitter-${grammar.name}";
       version = grammar.version;
@@ -81,20 +79,20 @@ let
       }
     )
     |> lib.mapAttrsToList (_: value: "ln -s ${value.value}/${value.name}.so $out/${value.name}.so");
-  grammarDir = runCommandNoCCLocal "helix-grammars" { } ''
+  grammarDir = runCommandNoCCLocal "helix-grammars" {} ''
     mkdir -p $out
 
     ${builtins.concatStringsSep "\n" grammarLinks}
   '';
-  queryDir = runCommandNoCCLocal "helix-query" { } ''
+  queryDir = runCommandNoCCLocal "helix-query" {} ''
     mkdir -p $out
 
     ${builtins.concatStringsSep "\n" queries}
   '';
 in
-runCommandNoCCLocal "helix-runtime" { } ''
-  mkdir -p $out
+  runCommandNoCCLocal "helix-runtime" {} ''
+    mkdir -p $out
 
-  ln -s ${grammarDir} $out/grammars
-  ln -s ${queryDir} $out/queries
-''
+    ln -s ${grammarDir} $out/grammars
+    ln -s ${queryDir} $out/queries
+  ''

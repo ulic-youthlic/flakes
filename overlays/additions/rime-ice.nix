@@ -1,9 +1,6 @@
-{ outputs, ... }:
-final: prev:
-let
+{outputs, ...}: final: prev: let
   inherit (final) stdenv;
   inherit (stdenv.hostPlatform) system;
-in
-{
+in {
   rime-ice = outputs.packages."${system}".rime-ice;
 }

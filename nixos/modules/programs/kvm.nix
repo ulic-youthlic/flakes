@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.kvm;
-in
-{
+in {
   options = {
     youthlic.programs.kvm = {
       enable = lib.mkEnableOption "kvm";
@@ -24,7 +22,7 @@ in
     programs.virt-manager = {
       enable = true;
     };
-    users.groups.libvirtd.members = [ cfg.unixName ];
+    users.groups.libvirtd.members = [cfg.unixName];
     virtualisation = {
       libvirtd = {
         enable = true;

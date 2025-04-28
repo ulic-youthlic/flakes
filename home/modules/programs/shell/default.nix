@@ -2,13 +2,11 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   inherit (lib) mkEnableOption mkIf mkMerge;
   fish-cfg = config.youthlic.programs.fish;
   bash-cfg = config.youthlic.programs.bash;
-  cfg-helper =
-    conf:
+  cfg-helper = conf:
     mkMerge [
       conf
       (mkIf fish-cfg.enable {
@@ -18,8 +16,7 @@ let
         enableBashIntegration = true;
       })
     ];
-in
-{
+in {
   options = {
     youthlic.programs = {
       fish = {

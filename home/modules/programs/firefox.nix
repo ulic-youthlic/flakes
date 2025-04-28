@@ -5,11 +5,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.firefox;
-in
-{
+in {
   options = {
     youthlic.programs.firefox = {
       enable = lib.mkEnableOption "firefox";
@@ -60,7 +58,7 @@ in
                 }
               ];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = [ "@np" ];
+              definedAliases = ["@np"];
             };
             "Nix Options" = {
               urls = [
@@ -78,7 +76,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "@no" ];
+              definedAliases = ["@no"];
             };
             "Home Manager Options" = {
               urls = [
@@ -96,7 +94,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "hm" ];
+              definedAliases = ["hm"];
             };
             "NUR Packages" = {
               urls = [
@@ -104,7 +102,7 @@ in
                   template = "https://nur.nix-community.org/";
                 }
               ];
-              definedAliases = [ "nu" ];
+              definedAliases = ["nu"];
             };
             "Nix Flakes" = {
               urls = [
@@ -122,7 +120,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "nf" ];
+              definedAliases = ["nf"];
             };
             "NixOS Wiki" = {
               urls = [
@@ -136,7 +134,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "nw" ];
+              definedAliases = ["nw"];
             };
             "bing".metaData.hidden = true;
             "google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias

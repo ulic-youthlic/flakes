@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.youthlic.programs.rustypaste;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.youthlic.programs.rustypaste;
+in {
   imports = [
     ./template.nix
   ];

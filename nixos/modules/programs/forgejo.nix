@@ -3,11 +3,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.forgejo;
-in
-{
+in {
   options = {
     youthlic.programs.forgejo = {
       enable = lib.mkEnableOption "forgejo";
@@ -92,15 +90,15 @@ in
       let
         caddy-cfg = config.youthlic.programs.caddy;
       in
-      lib.mkIf (cfg.enable && caddy-cfg.enable) {
-        services.caddy.virtualHosts = {
-          "forgejo.${caddy-cfg.baseDomain}" = {
-            extraConfig = ''
-              reverse_proxy 127.0.0.1:${cfg.httpPort}
-            '';
+        lib.mkIf (cfg.enable && caddy-cfg.enable) {
+          services.caddy.virtualHosts = {
+            "forgejo.${caddy-cfg.baseDomain}" = {
+              extraConfig = ''
+                reverse_proxy 127.0.0.1:${cfg.httpPort}
+              '';
+            };
           };
-        };
-      }
+        }
     )
   ];
 }

@@ -3,20 +3,18 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.services.rustypaste;
-  settingsFormat = pkgs.formats.toml { };
+  settingsFormat = pkgs.formats.toml {};
   configFile = settingsFormat.generate "rustypaste-config.toml" cfg.settings;
-in
-{
+in {
   options = {
     services.rustypaste = {
       enable = lib.mkEnableOption "rustypaste";
-      package = lib.mkPackageOption pkgs "rustypaste" { };
+      package = lib.mkPackageOption pkgs "rustypaste" {};
       settings = lib.mkOption {
         type = settingsFormat.type;
-        default = { };
+        default = {};
         description = ''
           Rustypaste configuration
         '';
@@ -63,7 +61,7 @@ in
         isSystemUser = true;
       };
       groups = lib.optionalAttrs (cfg.group == "rustypaste") {
-        rustypaste = { };
+        rustypaste = {};
       };
     };
     systemd.services.rustypaste = {
@@ -88,8 +86,8 @@ in
         Type = "simple";
         Restart = "on-failure";
         Home = "/var/lib/rustypaste";
-        ReadWritePaths = [ "/var/lib/rustypaste" ];
-        StateDirectory = [ "rustypaste" ];
+        ReadWritePaths = ["/var/lib/rustypaste"];
+        StateDirectory = ["rustypaste"];
         ExecStart = ''
           ${lib.getExe cfg.package}
         '';

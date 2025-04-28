@@ -1,21 +1,22 @@
-{ config, lib, ... }:
-let
-  cfg = config.youthlic.programs.mautrix-telegram;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.youthlic.programs.mautrix-telegram;
+in {
   options = {
     youthlic.programs.mautrix-telegram = {
       enable = lib.mkEnableOption "mautrix-telegram";
     };
   };
-  config =
-    let
-      conduwuit-cfg = config.youthlic.programs.conduwuit;
-      caddy-cfg = config.youthlic.programs.caddy;
-    in
+  config = let
+    conduwuit-cfg = config.youthlic.programs.conduwuit;
+    caddy-cfg = config.youthlic.programs.caddy;
+  in
     lib.mkMerge [
       (lib.mkIf cfg.enable {
-        sops.secrets.matrix-telegram-bot = { };
+        sops.secrets.matrix-telegram-bot = {};
         services.mautrix-telegram = {
           enable = true;
           environmentFile = "${config.sops.secrets.matrix-telegram-bot.path}";

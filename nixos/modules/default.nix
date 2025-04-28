@@ -3,8 +3,7 @@
   inputs,
   outputs,
   ...
-}:
-{
+}: {
   imports =
     (with inputs; [
       niri-flake.nixosModules.niri

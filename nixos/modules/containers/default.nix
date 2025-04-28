@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  cfg = config.youthlic.containers;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.youthlic.containers;
+in {
   imports = [
     ./forgejo.nix
     ./miniflux.nix

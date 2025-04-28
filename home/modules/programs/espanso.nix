@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.espanso;
-in
-{
+in {
   options = {
     youthlic.programs.espanso = {
       enable = lib.mkEnableOption "espanso";
@@ -18,7 +16,7 @@ in
       enable = true;
       package = pkgs.espanso-wayland;
       configs = {
-        default = { };
+        default = {};
       };
       matches = {
         base = {

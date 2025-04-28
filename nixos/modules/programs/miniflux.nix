@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.youthlic.programs.miniflux;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.youthlic.programs.miniflux;
+in {
   options = {
     youthlic.programs.miniflux = {
       enable = lib.mkEnableOption "miniflux";

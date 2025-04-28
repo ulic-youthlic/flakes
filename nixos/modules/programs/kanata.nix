@@ -3,18 +3,16 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.kanata;
-in
-{
+in {
   options = {
     youthlic.programs.kanata = {
       enable = lib.mkEnableOption "kanata";
     };
   };
   config = lib.mkIf cfg.enable {
-    boot.kernelModules = [ "uinput" ];
+    boot.kernelModules = ["uinput"];
     hardware.uinput.enable = true;
     services.kanata = {
       enable = true;

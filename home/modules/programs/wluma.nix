@@ -3,11 +3,9 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.wluma;
-in
-{
+in {
   options = {
     youthlic.programs.wluma = {
       enable = lib.mkEnableOption "wluma";
@@ -39,18 +37,18 @@ in
     systemd.user.services.wluma = {
       Unit = {
         Description = "Adjusting screen brightness based on screen contents and amount of ambient light";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
+        PartOf = ["graphical-session.target"];
+        After = ["graphical-session.target"];
       };
       Service = {
-        ExecStart = [ "${lib.getExe cfg.package}" ];
+        ExecStart = ["${lib.getExe cfg.package}"];
         Restart = "always";
-        EnvironmentFile = [ "-%E/wluma/service.conf" ];
+        EnvironmentFile = ["-%E/wluma/service.conf"];
         PrivateNetwork = true;
         PrivateMounts = false;
       };
       Install = {
-        WantedBy = [ "graphical-session.target" ];
+        WantedBy = ["graphical-session.target"];
       };
     };
   };

@@ -3,8 +3,7 @@
   unixName,
   config,
   ...
-}:
-{
+}: {
   youthlic = {
     xdg-dirs.enable = true;
     programs = {

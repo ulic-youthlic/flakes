@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  cfg = config.youthlic.programs.fuzzel;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.youthlic.programs.fuzzel;
+in {
   options = {
     youthlic.programs.fuzzel = {
       enable = lib.mkEnableOption "fuzzel";

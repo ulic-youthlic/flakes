@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.asusd;
-in
-{
+in {
   options = {
     youthlic.programs.asusd = {
       enable = lib.mkEnableOption "asusd";

@@ -4,13 +4,12 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   config = {
     nixpkgs = {
       config = {
         allowUnfree = true;
-        allowUnfreePredicate = (_: true);
+        allowUnfreePredicate = _: true;
       };
       overlays = [
         outputs.overlays.modifications

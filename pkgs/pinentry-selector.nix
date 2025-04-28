@@ -1,4 +1,4 @@
-{ pkgs }:
+{pkgs}:
 pkgs.writeShellApplication {
   name = "pinentry";
   runtimeInputs = with pkgs; [

@@ -3,11 +3,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.containers.miniflux;
-in
-{
+in {
   options = {
     youthlic.containers.miniflux = {
       enable = lib.mkEnableOption "miniflux container";
@@ -38,57 +36,55 @@ in
         };
       };
 
-      config =
-        { lib, ... }:
-        {
-          imports = [
-            ./../programs/miniflux.nix
-            ./../programs/postgresql.nix
-          ];
+      config = {lib, ...}: {
+        imports = [
+          ./../programs/miniflux.nix
+          ./../programs/postgresql.nix
+        ];
 
-          nixpkgs.pkgs = pkgs;
+        nixpkgs.pkgs = pkgs;
 
-          systemd.tmpfiles.rules = [
-            "d /var/lib/miniflux 770 miniflux miniflux -"
-            "d /var/lib/postgresql 770 postgres postgres -"
-            "d /run/secrets 770 root miniflux -"
-          ];
+        systemd.tmpfiles.rules = [
+          "d /var/lib/miniflux 770 miniflux miniflux -"
+          "d /var/lib/postgresql 770 postgres postgres -"
+          "d /run/secrets 770 root miniflux -"
+        ];
 
-          youthlic.programs = {
-            miniflux = {
-              enable = true;
-              database = {
-                user = "miniflux";
-              };
-              adminCredentialsFile = cfg.adminCredentialsFile;
+        youthlic.programs = {
+          miniflux = {
+            enable = true;
+            database = {
+              user = "miniflux";
             };
-            postgresql = {
-              enable = true;
-              database = "miniflux";
-              auth_method = "peer";
-              version = "17";
-            };
+            adminCredentialsFile = cfg.adminCredentialsFile;
           };
-
-          systemd.services.miniflux = {
-            wants = [ "postgresql.service" ];
-            requires = [ "postgresql.service" ];
-            after = [ "postgresql.service" ];
-            wantedBy = [ "default.target" ];
+          postgresql = {
+            enable = true;
+            database = "miniflux";
+            auth_method = "peer";
+            version = "17";
           };
-
-          networking = {
-            defaultGateway = "192.168.111.1";
-            firewall = {
-              enable = true;
-              allowedTCPPorts = [ 8485 ];
-              allowedUDPPorts = [ 8485 ];
-            };
-            useHostResolvConf = lib.mkForce false;
-          };
-          services.resolved.enable = true;
-          system.stateVersion = "24.11";
         };
+
+        systemd.services.miniflux = {
+          wants = ["postgresql.service"];
+          requires = ["postgresql.service"];
+          after = ["postgresql.service"];
+          wantedBy = ["default.target"];
+        };
+
+        networking = {
+          defaultGateway = "192.168.111.1";
+          firewall = {
+            enable = true;
+            allowedTCPPorts = [8485];
+            allowedUDPPorts = [8485];
+          };
+          useHostResolvConf = lib.mkForce false;
+        };
+        services.resolved.enable = true;
+        system.stateVersion = "24.11";
+      };
     };
   };
 }

@@ -3,11 +3,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.zed-editor;
-in
-{
+in {
   options = {
     youthlic.programs.zed-editor = {
       enable = lib.mkEnableOption "zed-editor";

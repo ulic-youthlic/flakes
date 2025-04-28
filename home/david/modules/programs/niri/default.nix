@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  cfg = config.david.programs.niri;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.david.programs.niri;
+in {
   options = {
     david.programs.niri = {
       enable = lib.mkEnableOption "niri";

@@ -3,8 +3,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   imports =
     (with inputs; [
       nixos-hardware.nixosModules.asus-fx506hm

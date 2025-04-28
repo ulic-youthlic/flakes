@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  cfg = config.youthlic.programs.openssh;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.youthlic.programs.openssh;
+in {
   options = {
     youthlic.programs.openssh = {
       enable = lib.mkEnableOption "openssh";
@@ -42,7 +44,7 @@ in
           "diffie-hellman-group-exchange-sha256"
         ];
       };
-      ports = [ 3022 ];
+      ports = [3022];
     };
   };
 }

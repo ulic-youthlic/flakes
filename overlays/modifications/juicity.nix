@@ -1,9 +1,6 @@
-{ outputs, ... }:
-final: prev:
-let
+{outputs, ...}: final: prev: let
   inherit (final) stdenv;
   inherit (stdenv.hostPlatform) system;
-in
-{
+in {
   juicity = outputs.packages."${system}".juicity;
 }

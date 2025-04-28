@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.youthlic.programs.chromium;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.youthlic.programs.chromium;
+in {
   options = {
     youthlic.programs.chromium = {
       enable = lib.mkEnableOption "chromium";

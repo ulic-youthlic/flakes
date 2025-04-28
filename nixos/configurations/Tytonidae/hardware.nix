@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   nixpkgs.config.cudaSupport = true;
   services = {
     hardware.bolt.enable = true;

@@ -5,14 +5,12 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   config = {
     nixpkgs = {
       config = {
         allowUnfree = true;
-        allowInsecurePredicate =
-          p:
+        allowInsecurePredicate = p:
           builtins.elem (lib.getName p) [
             # for fluffychat and neochat
             "olm"
@@ -25,7 +23,7 @@
       mode = "0444";
     };
     nix = {
-      nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+      nixPath = ["nixpkgs=${inputs.nixpkgs}"];
       extraOptions = ''
         !include ${config.sops.secrets."access-tokens".path}
       '';

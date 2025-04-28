@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.youthlic.programs.guix;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.youthlic.programs.guix;
+in {
   options = {
     youthlic.programs.guix = {
       enable = lib.mkEnableOption "guix";

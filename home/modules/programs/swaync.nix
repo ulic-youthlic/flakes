@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.youthlic.programs.swaync;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.youthlic.programs.swaync;
+in {
   options = {
     youthlic.programs.swaync = {
       enable = lib.mkEnableOption "swaync";
@@ -16,7 +18,7 @@ in
       };
     })
     (lib.mkIf (!cfg.systemd.enable) {
-      systemd.user.services.swaync = lib.mkForce { };
+      systemd.user.services.swaync = lib.mkForce {};
     })
   ];
 }

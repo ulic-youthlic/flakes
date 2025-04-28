@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{inputs, ...}: {
   imports =
     (with inputs; [
       niri-flake.homeModules.niri

@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.youthlic.programs.owncast;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.youthlic.programs.owncast;
+in {
   options = {
     youthlic.programs.owncast = {
       enable = lib.mkEnableOption "owncast";

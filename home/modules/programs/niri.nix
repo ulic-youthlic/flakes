@@ -4,12 +4,10 @@
   lib,
   osConfig ? null,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.niri;
   niri = osConfig.programs.niri.package;
-in
-{
+in {
   options = {
     youthlic.programs.niri = {
       enable = lib.mkEnableOption "niri";
@@ -32,36 +30,34 @@ in
         wl-clipboard
         cliphist
       ])
-      ++ [ niri ];
+      ++ [niri];
     qt = {
       enable = true;
     };
     xdg.portal = {
-      configPackages = [ niri ];
+      configPackages = [niri];
       enable = true;
       extraPortals = lib.mkIf (
         !niri.cargoBuildNoDefaultFeatures || builtins.elem "xdp-gnome-screencast" niri.cargoBuildFeatures
-      ) [ pkgs.xdg-desktop-portal-gnome ];
+      ) [pkgs.xdg-desktop-portal-gnome];
     };
-    xdg.configFile =
-      let
-        qtctConf =
-          ''
-            [Appearance]
-            standard_dialogs=xdgdesktopportal
-          ''
-          + lib.optionalString (config.qt.style ? name) ''
-            style=${config.qt.style.name}
-          '';
-      in
-      {
-        "qt5ct/qt5ct.conf" = lib.mkForce {
-          text = qtctConf;
-        };
-        "qt6ct/qt6ct.conf" = lib.mkForce {
-          text = qtctConf;
-        };
+    xdg.configFile = let
+      qtctConf =
+        ''
+          [Appearance]
+          standard_dialogs=xdgdesktopportal
+        ''
+        + lib.optionalString (config.qt.style ? name) ''
+          style=${config.qt.style.name}
+        '';
+    in {
+      "qt5ct/qt5ct.conf" = lib.mkForce {
+        text = qtctConf;
       };
+      "qt6ct/qt6ct.conf" = lib.mkForce {
+        text = qtctConf;
+      };
+    };
     youthlic.programs = {
       fuzzel.enable = true;
       wluma.enable = true;

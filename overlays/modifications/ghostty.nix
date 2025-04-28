@@ -1,9 +1,6 @@
-{ inputs, ... }:
-final: prev:
-let
+{inputs, ...}: final: prev: let
   inherit (final) stdenv;
   inherit (stdenv.hostPlatform) system;
-in
-{
+in {
   ghostty = inputs.ghostty.packages."${system}".default;
 }

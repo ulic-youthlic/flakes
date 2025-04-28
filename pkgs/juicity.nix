@@ -1,4 +1,8 @@
-{ buildGoModule, srcs, ... }:
+{
+  buildGoModule,
+  srcs,
+  ...
+}:
 buildGoModule rec {
   name = "juicity";
   version = "unstable-${srcs.juicity.date}.${srcs.juicity.version}";

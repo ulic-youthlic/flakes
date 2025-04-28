@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.gui;
-in
-{
+in {
   imports = [
     ./niri.nix
     ./cosmic.nix
@@ -66,7 +64,7 @@ in
         monospace = [
           "Maple Mono NF CN"
         ];
-        emoji = [ "Noto Color Emoji" ];
+        emoji = ["Noto Color Emoji"];
       };
     };
 

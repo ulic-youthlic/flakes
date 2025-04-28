@@ -4,13 +4,11 @@
   inputs,
   callPackage,
   ...
-}:
-let
+}: let
   inherit (inputs.helix.packages."${pkgs.system}") helix;
-  runtime = callPackage ./runtime.nix { };
+  runtime = callPackage ./runtime.nix {};
   runtimeInputs = (
-    with pkgs;
-    [
+    with pkgs; [
       idris2Packages.idris2Lsp
       lua-language-server
       bash-language-server
@@ -30,7 +28,7 @@ let
       marksman
       nixd
       deno
-      nixfmt-rfc-style
+      alejandra
       vscode-langservers-extracted
       fish-lsp
       gopls
@@ -45,16 +43,16 @@ let
     ]
   );
 in
-pkgs.symlinkJoin {
-  name = "helix-wrapped";
-  paths = [ helix ];
-  inherit (helix) meta;
-  buildInputs = [
-    pkgs.makeWrapper
-  ];
-  postBuild = ''
-    wrapProgram $out/bin/hx \
-    --suffix PATH : ${lib.makeBinPath runtimeInputs} \
-    --set HELIX_RUNTIME ${runtime}
-  '';
-}
+  pkgs.symlinkJoin {
+    name = "helix-wrapped";
+    paths = [helix];
+    inherit (helix) meta;
+    buildInputs = [
+      pkgs.makeWrapper
+    ];
+    postBuild = ''
+      wrapProgram $out/bin/hx \
+      --suffix PATH : ${lib.makeBinPath runtimeInputs} \
+      --set HELIX_RUNTIME ${runtime}
+    '';
+  }

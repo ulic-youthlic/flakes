@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.gui;
-in
-{
+in {
   config = lib.mkIf (cfg.enabled == "niri") {
     qt = {
       enable = true;
@@ -23,7 +21,7 @@ in
       terminal-exec = {
         enable = true;
         settings = {
-          default = [ "com.mitchellh.ghostty.desktop" ];
+          default = ["com.mitchellh.ghostty.desktop"];
         };
       };
       mime = {
@@ -52,7 +50,7 @@ in
             "firefox.desktop"
             "chromium-browser.desktop"
           ];
-          "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
+          "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
           "x-scheme-handler/unknown" = [
             "firefox.desktop"
             "chromium-browser.desktop"

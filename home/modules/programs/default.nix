@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./zed.nix
     ./rustypaste-cli.nix

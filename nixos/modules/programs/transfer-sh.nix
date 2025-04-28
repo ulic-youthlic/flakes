@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.youthlic.programs.transfer-sh;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.youthlic.programs.transfer-sh;
+in {
   options = {
     youthlic.programs.transfer-sh = {
       enable = lib.mkEnableOption "transfer.sh";

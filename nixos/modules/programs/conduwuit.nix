@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  cfg = config.youthlic.programs.conduwuit;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.youthlic.programs.conduwuit;
+in {
   options = {
     youthlic.programs.conduwuit = {
       enable = lib.mkEnableOption "conduwuit";
@@ -24,7 +26,7 @@ in
         enable = true;
         settings = {
           global = {
-            port = [ 8481 ];
+            port = [8481];
             address = [
               "0.0.0.0"
               "::"

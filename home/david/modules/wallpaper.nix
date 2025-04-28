@@ -3,11 +3,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.david.wallpaper;
-in
-{
+in {
   options = {
     david.wallpaper = {
       enable = lib.mkEnableOption "wallpaper";

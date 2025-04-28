@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.david.programs.wluma;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.david.programs.wluma;
+in {
   options = {
     david.programs.wluma = {
       enable = lib.mkEnableOption "wluma";
