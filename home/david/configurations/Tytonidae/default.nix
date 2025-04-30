@@ -6,6 +6,9 @@
   unixName,
   ...
 }: {
+  imports = [
+    ./niri.nix
+  ];
   youthlic = {
     xdg-dirs.enable = true;
     programs = let
@@ -49,7 +52,6 @@
     wallpaper.enable = true;
     accounts.email.enable = true;
     programs = {
-      niri.enable = true;
       openssh.enable = true;
     };
   };

@@ -3,6 +3,7 @@
   config,
   lib,
   osConfig ? null,
+  inputs,
   ...
 }: let
   cfg = config.youthlic.programs.niri;
@@ -11,12 +12,11 @@ in {
   options = {
     youthlic.programs.niri = {
       enable = lib.mkEnableOption "niri";
+      # settings = lib.mkOption {
+      #   type = lib.types.attrs;
+      # };
       config = lib.mkOption {
-        type = lib.types.path;
-        example = ./config.kdl;
-        description = ''
-          the pach to config.kdl
-        '';
+        type = inputs.niri-flake.lib.kdl.types.kdl-document;
       };
     };
   };
@@ -66,7 +66,8 @@ in {
       swaylock.enable = true;
     };
     programs.niri = {
-      config = builtins.readFile cfg.config;
+      # settings = cfg.settings;
+      config = cfg.config;
       package = niri;
     };
   };

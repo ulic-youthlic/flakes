@@ -5,6 +5,9 @@
   rootPath,
   ...
 }: {
+  imports = [
+    ./niri.nix
+  ];
   youthlic = {
     xdg-dirs.enable = true;
     programs = let
@@ -46,7 +49,6 @@
     accounts.email.enable = true;
     programs = {
       openssh.enable = true;
-      niri.enable = true;
     };
   };
 
