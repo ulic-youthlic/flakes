@@ -12,6 +12,7 @@
       idris2Packages.idris2Lsp
       lua-language-server
       bash-language-server
+      shfmt
       hurl
       cmake-language-server
       kdlfmt
@@ -31,6 +32,7 @@
       alejandra
       vscode-langservers-extracted
       fish-lsp
+      tailwindcss-language-server
       gopls
       golangci-lint-langserver
       tinymist
@@ -40,6 +42,8 @@
       # nil
       haskell-language-server
       neocmakelsp
+      jdt-language-server
+      zls
     ]
   );
 in

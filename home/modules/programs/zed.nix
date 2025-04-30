@@ -16,29 +16,86 @@ in {
     programs.zed-editor = {
       enable = true;
       extensions = [
-        "nix"
-        "html"
-        "java"
-        "git-firely"
-        "make"
+        "asciidoc"
+        "basher"
+        "cargo-tom"
+        "codebook"
         "deno"
-        "java-eclipse-jdtlS"
-        "neocMake"
-        "typst"
-        "toml"
+        "docker-compose"
+        "dockerfile"
+        "fish"
+        "git-firefly"
+        "golangci-lint"
+        "haskell"
+        "html"
+        "hurl"
+        "idris2"
+        "java"
+        "java-eclipse-jdtls"
+        "kdl"
+        "kotlin"
+        "lua"
+        "make"
         "markdown-oxide"
+        "neocmake"
+        "nix"
+        "python-refactoring"
+        "python-requirements"
+        "scheme"
+        "toml"
+        "typst"
+        "xml"
+        "zig"
       ];
       extraPackages = with pkgs; [
-        nixd
-        nil
-        neocmakelsp
-        deno
-        jdt-language-server
+        idris2Packages.idris2Lsp
+        lua-language-server
+        bash-language-server
+        shfmt
+        hurl
+        cmake-language-server
+        kdlfmt
+        rustfmt
+        clang-tools
+        libxml2
+        typstyle
+        pyright
+        ruff
+        gotools
+        yaml-language-server
         taplo
-        alejandra
         markdown-oxide
+        marksman
+        nixd
+        deno
+        alejandra
+        vscode-langservers-extracted
+        fish-lsp
+        tailwindcss-language-server
+        gopls
+        golangci-lint-langserver
+        tinymist
+        delve
+        lldb
+        rust-analyzer
+        # nil
+        haskell-language-server
+        neocmakelsp
+        jdt-language-server
+        zls
       ];
       userSettings = {
+        languages = {
+          Nix = {
+            language_servers = ["nixd" "!nil"];
+            formatter = {
+              external = {
+                command = "alejandra";
+                arguments = ["--quiet" "--"];
+              };
+            };
+          };
+        };
         soft_wrap = "editor_width";
         autosave = "on_focus_change";
         auto_update = false;
