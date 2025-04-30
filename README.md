@@ -14,23 +14,23 @@ Hey, you. This is my nixos configurations.
 
 - david@Tytonidae
 
-| Specialisation | DE / WM   | Shell       | Editor | Termianal | Launcher        | Browser | DM             |
-| -------------- | --------- | ----------- | ------ | --------- | --------------- | ------- | -------------- |
-| default        | niri      | fish + bash | helix  | ghostty   | fuzzel          | firefox | gdm            |
-| cosmic         | cosmic de | fish + bash | helix  | ghostty   | cosmic-launcher | firefox | cosmic-greeter |
-| kde            | kde       | fish + bash | helix  | ghostty   | -               | firefox | sddm           |
+| Specialisation | DE / WM   | Shell       | Editor | Terminal | Launcher        | Browser | DM             |
+| -------------- | --------- | ----------- | ------ | -------- | --------------- | ------- | -------------- |
+| default        | niri      | fish + bash | helix  | ghostty  | fuzzel          | firefox | gdm            |
+| cosmic         | cosmic de | fish + bash | helix  | ghostty  | cosmic-launcher | firefox | cosmic-greeter |
+| kde            | kde       | fish + bash | helix  | ghostty  | -               | firefox | sddm           |
 
 - david@Akun
 
-| Specialisation | DE / WM | Shell       | Editor | Termianal | Launcher | Browser | DM             |
-| -------------- | ------- | ----------- | ------ | --------- | -------- | ------- | -------------- |
-| default        | cosmic  | fish + bash | helix  | ghostty   | -        | firefox | cosmic-greeter |
+| Specialisation | DE / WM | Shell       | Editor | Terminal | Launcher | Browser | DM             |
+| -------------- | ------- | ----------- | ------ | -------- | -------- | ------- | -------------- |
+| default        | cosmic  | fish + bash | helix  | ghostty  | -        | firefox | cosmic-greeter |
 
 - alice@Cape
 
-| Specialisation | DE / WM | Shell       | Editor | Termianal | Launcher | Browser | DM |
-| -------------- | ------- | ----------- | ------ | --------- | -------- | ------- | -- |
-| default        | -       | fish + bash | helix  | -         | -        | -       | -  |
+| Specialisation | DE / WM | Shell       | Editor | Terminal | Launcher | Browser | DM  |
+| -------------- | ------- | ----------- | ------ | -------- | -------- | ------- | --- |
+| default        | -       | fish + bash | helix  | -        | -        | -       | -   |
 
 ## FlakE OutputS and StructurE
 
