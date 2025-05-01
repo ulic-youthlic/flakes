@@ -35,14 +35,6 @@
       };
     };
 
-    oskars-dotfiles = {
-      type = "github";
-      owner = "oskardotglobal";
-      repo = ".dotfiles";
-      ref = "nix";
-      flake = false;
-    };
-
     betterfox-nix = {
       type = "github";
       owner = "HeitorAugustoLN";

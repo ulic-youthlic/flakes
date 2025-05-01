@@ -25,3 +25,7 @@ git.sparseCheckout = ["Serif/OTC"]
 src.github = "notofonts/noto-cjk"
 fetch.github = "notofonts/noto-cjk"
 git.sparseCheckout = ["Sans/OTC"]
+
+[spotx]
+src.git = "https://github.com/SpotX-Official/SpotX-Bash.git"
+fetch.github = "SpotX-Official/SpotX-Bash"

@@ -12,6 +12,7 @@ in
     juicity = callPackage ./juicity.nix {};
     rime-ice = callPackage ./rime-ice.nix {};
     dioxionary = callPackage ./dioxionary.nix {};
+    spotifyx = callPackage ./spotifyx.nix {};
 
     noto-serif-cjk = callPackage ./noto-serif-cjk.nix {};
     noto-sans-cjk = callPackage ./noto-sans-cjk.nix {};
