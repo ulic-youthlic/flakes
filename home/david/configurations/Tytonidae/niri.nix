@@ -14,6 +14,7 @@ in {
           y = 0;
         })
         (leaf "transform" "normal")
+        (flag "focus-at-startup")
       ])
       (output "eDP-1" [
         (leaf "mode" "2560x1440@165.003")

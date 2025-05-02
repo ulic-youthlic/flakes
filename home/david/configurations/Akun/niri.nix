@@ -9,6 +9,7 @@ in {
       (output "eDP-1" [
         (leaf "mode" "1920x1200@60.018")
         (leaf "scale" 1.0)
+        (flag "focus-at-startup")
         (leaf "position" {
           x = 0;
           y = 0;
