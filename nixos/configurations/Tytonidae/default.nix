@@ -2,6 +2,7 @@
   lib,
   pkgs,
   inputs,
+  config,
   ...
 }: {
   imports =
@@ -11,6 +12,7 @@
     ++ [
       ./users
       ./stylix.nix
+      ./gui.nix
 
       # Include the hardware related config
       ./hardware-configuration.nix
@@ -44,7 +46,6 @@
       owncast.enable = true;
       minio.enable = true;
     };
-    gui.enabled = "niri";
   };
 
   # specialisation = {

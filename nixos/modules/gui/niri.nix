@@ -6,6 +6,13 @@
 }: let
   cfg = config.youthlic.gui;
 in {
+  options = {
+    youthlic.gui.niri = {
+      extraConfig = lib.mkOption {
+        type = lib.types.str;
+      };
+    };
+  };
   config = lib.mkIf (cfg.enabled == "niri") {
     qt = {
       enable = true;
@@ -61,20 +68,49 @@ in {
     hardware.bluetooth = {
       enable = true;
     };
-    services.xserver = {
-      enable = true;
-      xkb = {
-        layout = "cn";
-        variant = "";
-      };
-      displayManager.gdm = {
+    services = {
+      greetd = let
+        niriConfig = pkgs.writeText "greetd-niri-config.kdl" (''
+            binds {}
+            hotkey-overlay {
+              skip-at-startup
+            }
+            gestures {
+              hot-corners {
+                off
+              }
+            }
+            spawn-at-startup "${lib.getExe pkgs.swaybg}" "-i" "${config.stylix.image}"
+          ''
+          + config.youthlic.gui.niri.extraConfig);
+      in {
         enable = true;
-        wayland = true;
+        settings = {
+          default_session = {
+            command = "env GTK_USE_PORTAL=0 GDK_DEBUG=no-portals ${lib.getExe' config.programs.niri.package "niri"} --config ${niriConfig} -- ${lib.getExe config.programs.regreet.package}";
+          };
+        };
+      };
+      xserver = {
+        enable = true;
+        xkb = {
+          layout = "us";
+          variant = "";
+        };
+        # displayManager.gdm = {
+        #   enable = true;
+        #   wayland = true;
+        # };
       };
     };
-    programs.niri = {
-      enable = true;
-      package = pkgs.niri-unstable;
+    programs = {
+      regreet = {
+        enable = true;
+      };
+      niri = {
+        enable = true;
+        package = pkgs.niri-unstable;
+      };
     };
   };
 }

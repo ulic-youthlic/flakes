@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./gui.nix
     ./hardware-configuration.nix
     ./stylix.nix
     ./users
@@ -21,7 +22,6 @@
       kanata.enable = true;
       tailscale.enable = true;
     };
-    gui.enabled = "niri";
   };
   programs.gnupg.agent = {
     enable = true;
