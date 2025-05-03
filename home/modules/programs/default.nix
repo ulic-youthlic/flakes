@@ -4,7 +4,8 @@
     ./rustypaste-cli.nix
     ./atuin.nix
     ./firefox.nix
-    ./shell
+    ./bash.nix
+    ./fish.nix
     ./kvm.nix
     ./ghostty.nix
     ./wluma.nix
@@ -25,5 +26,9 @@
     ./waybar.nix
     ./jujutsu.nix
     ./espanso.nix
+    ./yazi.nix
+    ./zoxide.nix
+    ./fzf.nix
+    ./eza.nix
   ];
 }
