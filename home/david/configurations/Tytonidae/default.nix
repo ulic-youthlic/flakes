@@ -88,7 +88,6 @@
     kdePackages.kdenlive
     fd
     viu
-    just
     android-tools
   ];
 }

@@ -195,6 +195,14 @@
             inherit inputs;
           }
         );
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            nixd
+            typos
+            just
+            nvfetcher
+          ];
+        };
       };
       flake =
         {
