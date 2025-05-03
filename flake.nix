@@ -176,6 +176,7 @@
       nixos = importApply ./flake/nixos.nix {inherit rootPath outputs;};
       home = importApply ./flake/home.nix {inherit rootPath outputs;};
       deploy = importApply ./flake/deploy.nix {inherit outputs;};
+      templates = importApply ./flake/templates.nix {inherit rootPath;};
     in {
       systems = flake-utils.lib.defaultSystems;
       imports = [
@@ -183,6 +184,7 @@
         nixos
         home
         deploy
+        templates
       ];
       perSystem = {
         pkgs,
