@@ -14,17 +14,15 @@ Hey, you. This is my nixos configurations.
 
 - david@Tytonidae
 
-| Specialisation | DE / WM   | Shell       | Editor      | Terminal | Launcher        | Browser | DM               |
-| -------------- | --------- | ----------- | ----------- | -------- | --------------- | ------- | ---------------- |
-| default        | niri      | fish + bash | helix + zed | ghostty  | fuzzel          | firefox | greetd + regreet |
-| cosmic         | cosmic de | fish + bash | helix + zed | ghostty  | cosmic-launcher | firefox | cosmic-greeter   |
-| kde            | kde       | fish + bash | helix + zed | ghostty  | -               | firefox | sddm             |
+| Specialisation | DE / WM | Shell       | Editor      | Terminal | Launcher | Browser | DM               |
+| -------------- | ------- | ----------- | ----------- | -------- | -------- | ------- | ---------------- |
+| default        | niri    | fish + bash | helix + zed | ghostty  | fuzzel   | firefox | greetd + regreet |
 
 - david@Akun
 
 | Specialisation | DE / WM | Shell       | Editor      | Terminal | Launcher | Browser | DM               |
 | -------------- | ------- | ----------- | ----------- | -------- | -------- | ------- | ---------------- |
-| default        | niri    | fish + bash | helix + zed | ghostty  | -        | firefox | greetd + regreet |
+| default        | niri    | fish + bash | helix + zed | ghostty  | fuzzel   | firefox | greetd + regreet |
 
 - alice@Cape
 
