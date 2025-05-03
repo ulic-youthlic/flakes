@@ -97,10 +97,6 @@ in {
           layout = "us";
           variant = "";
         };
-        # displayManager.gdm = {
-        #   enable = true;
-        #   wayland = true;
-        # };
       };
     };
     programs = {

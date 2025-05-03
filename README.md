@@ -17,6 +17,7 @@ Hey, you. This is my nixos configurations.
 | Specialisation | DE / WM | Shell       | Editor      | Terminal | Launcher | Browser | DM               |
 | -------------- | ------- | ----------- | ----------- | -------- | -------- | ------- | ---------------- |
 | default        | niri    | fish + bash | helix + zed | ghostty  | fuzzel   | firefox | greetd + regreet |
+| kde            | kde     | fish + bash | helix + zed | ghostty  | kde run  | firefox | sddm             |
 
 - david@Akun
 

@@ -48,20 +48,20 @@
     };
   };
 
-  # specialisation = {
-  #   cosmic = {
-  #     inheritParentConfig = true;
-  #     configuration = {
-  #       youthlic.gui.enabled = lib.mkForce "cosmic";
-  #     };
-  #   };
-  #   kde = {
-  #     inheritParentConfig = true;
-  #     configuration = {
-  #       youthlic.gui.enabled = lib.mkForce "kde";
-  #     };
-  #   };
-  # };
+  specialisation = {
+    # cosmic = {
+    #   inheritParentConfig = true;
+    #   configuration = {
+    #     youthlic.gui.enabled = lib.mkForce "cosmic";
+    #   };
+    # };
+    kde = {
+      inheritParentConfig = true;
+      configuration = {
+        youthlic.gui.enabled = lib.mkForce "kde";
+      };
+    };
+  };
 
   programs.gnupg.agent = {
     enable = true;

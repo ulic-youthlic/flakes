@@ -15,12 +15,18 @@ in {
       };
     };
   };
-  config = lib.mkIf cfg.enable {
-    youthlic.programs.niri = {
-      enable = true;
-      # settings = lib.mkMerge [(import ./settings.nix args) cfg.settings];
-      config = (lib.toList (import ./config.nix args)) ++ (lib.toList cfg.extraConfig);
-    };
-    david.programs.wluma.enable = true;
-  };
+  config = lib.mkMerge [
+    {
+      david.programs.niri.enable = config.youthlic.programs.niri.enable;
+    }
+    (
+      lib.mkIf cfg.enable {
+        youthlic.programs.niri = {
+          # settings = lib.mkMerge [(import ./settings.nix args) cfg.settings];
+          config = (lib.toList (import ./config.nix args)) ++ (lib.toList cfg.extraConfig);
+        };
+        david.programs.wluma.enable = true;
+      }
+    )
+  ];
 }

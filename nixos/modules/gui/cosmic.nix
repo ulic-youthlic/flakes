@@ -13,7 +13,7 @@ in {
       display = 0;
       enable = true;
       xkb = {
-        layout = "cn";
+        layout = "us";
         variant = "";
       };
     };
