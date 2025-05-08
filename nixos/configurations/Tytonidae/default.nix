@@ -27,6 +27,7 @@
       unixName = "david";
       hostName = "Tytonidae";
     };
+    hardware.asus.enable = true;
     i18n.enable = true;
     programs = {
       guix.enable = true;
@@ -42,7 +43,6 @@
       transmission.enable = true;
       nix-ld.enable = true;
       juicity.client.enable = true;
-      asusd.enable = true;
       owncast.enable = true;
       minio.enable = true;
     };

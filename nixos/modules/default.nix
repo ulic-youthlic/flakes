@@ -24,6 +24,7 @@
       ./i18n.nix
       ./gui
       ./programs
+      ./hardware.nix
     ];
 
   config = {

@@ -26,5 +26,6 @@
     ./asusd.nix
     ./owncast.nix
     ./minio.nix
+    ./supergfxd.nix
   ];
 }
