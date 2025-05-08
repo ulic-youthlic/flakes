@@ -1,6 +1,6 @@
-{pkgs, ...}: let
+{lib, ...}: let
   extraConfig = ''
-    output "DP-3" {
+    output "DP-1" {
       mode "2560x1440@169.900"
       scale 1.0
       position x=0 y=0
@@ -15,12 +15,14 @@
     }
     window-rule {
       match app-id="apps.regreet"
-      open-on-output "DP-3"
+      open-on-output "DP-1"
     }
   '';
 in {
-  youthlic.gui = {
-    enabled = "niri";
-    niri.extraConfig = extraConfig;
+  config.specialisation.niri-hybrid = {
+    inheritParentConfig = true;
+    configuration = {
+      youthlic.gui.niri.extraConfig = lib.mkForce extraConfig;
+    };
   };
 }

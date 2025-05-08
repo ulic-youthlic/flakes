@@ -19,6 +19,8 @@
       ./networking.nix
       ./disk-config.nix
       ./hardware.nix
+      ./specialisation/kde.nix
+      ./specialisation/niri-hybrid.nix
     ];
 
   youthlic = {
@@ -45,21 +47,6 @@
       juicity.client.enable = true;
       owncast.enable = true;
       minio.enable = true;
-    };
-  };
-
-  specialisation = {
-    # cosmic = {
-    #   inheritParentConfig = true;
-    #   configuration = {
-    #     youthlic.gui.enabled = lib.mkForce "cosmic";
-    #   };
-    # };
-    kde = {
-      inheritParentConfig = true;
-      configuration = {
-        youthlic.gui.enabled = lib.mkForce "kde";
-      };
     };
   };
 
