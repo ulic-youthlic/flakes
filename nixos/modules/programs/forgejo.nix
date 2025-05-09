@@ -68,7 +68,7 @@ in {
           };
           mailer = {
             ENABLED = true;
-            MAILER_TYPE = "sendmail";
+            PROTOCOL = "sendmail";
             FROM = "do-not-reply@${config.services.forgejo.settings.server.DOMAIN}";
             SENDMAIL_PATH = "${pkgs.system-sendmail}/bin/sendmail";
           };
