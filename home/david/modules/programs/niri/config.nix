@@ -317,34 +317,34 @@ in
         (plain "Mod+Period" [
           (flag "expel-window-from-column")
         ])
-        (plain "Mod+R" [
+        (node "Mod+R" {repeat = false;} [
           (flag "switch-preset-column-width")
         ])
-        (plain "Mod+Shift+R" [
+        (node "Mod+Shift+R" {repeat = false;} [
           (flag "switch-preset-window-height")
         ])
         (plain "Mod+Ctrl+R" [
           (flag "reset-window-height")
         ])
-        (plain "Mod+M" [
+        (node "Mod+M" {repeat = false;} [
           (flag "maximize-column")
         ])
-        (plain "Mod+Shift+M" [
+        (node "Mod+Shift+M" {repeat = false;} [
           (flag "fullscreen-window")
         ])
         (plain "Mod+Z" [
           (flag "center-column")
         ])
-        (plain "Mod+Minus" [
+        (node "Mod+Minus" {repeat = false;} [
           (leaf "set-column-width" "-10%")
         ])
-        (plain "Mod+Equal" [
+        (node "Mod+Equal" {repeat = false;} [
           (leaf "set-column-width" "+10%")
         ])
-        (plain "Mod+Shift+Minus" [
+        (node "Mod+Shift+Minus" {repeat = false;} [
           (leaf "set-window-height" "-10%")
         ])
-        (plain "Mod+Shift+Equal" [
+        (node "Mod+Shift+Equal" {repeat = false;} [
           (leaf "set-window-height" "+10%")
         ])
         (plain "Print" [
