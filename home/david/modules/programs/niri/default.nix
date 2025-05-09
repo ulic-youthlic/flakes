@@ -27,19 +27,6 @@ in {
         home.sessionVariables = {
           inherit (cfg) DISPLAY;
         };
-        david.programs = {
-          xwayland-satellite = {
-            inherit (cfg) DISPLAY;
-            enable = true;
-          };
-          fcitx5-reload = {
-            enable = true;
-          };
-        };
-        systemd.user.services = {
-          "fcitx5-reload".Unit.After = ["xwayland-satellite.service"];
-          "xwayland-satellite".Unit.Before = ["fcitx5-reload.service"];
-        };
         youthlic.programs.niri = {
           # settings = lib.mkMerge [(import ./settings.nix args) cfg.settings];
           config =

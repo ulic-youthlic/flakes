@@ -3,6 +3,7 @@
   pkgs,
   lib,
   inputs,
+  osConfig ? null,
   DISPLAY,
   ...
 }: let
@@ -26,11 +27,14 @@
     plain
     ;
 
-  bash = getExe config.programs.bash.package;
+  sh = getExe' config.programs.bash.package "sh";
   swaylock = getExe config.programs.swaylock.package;
   fuzzel = getExe config.programs.fuzzel.package;
   waybar = getExe config.programs.waybar.package;
   swaync = getExe config.services.swaync.package;
+  fcitx5 = lib.getExe' osConfig.i18n.inputMethod.package "fcitx5";
+  xwayland-satellite = lib.getExe pkgs.xwayland-satellite;
+  sleep = lib.getExe' pkgs.coreutils "sleep";
 
   polkit-kde-agent = getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-agent";
   wpctl = getExe' pkgs.wireplumber "wpctl";
@@ -46,7 +50,7 @@ in
     in [
       (plain "binds" [
         (plain "Mod+V" [
-          (spawn [bash "-c" "${cliphist} list | ${fuzzel} --dmenu | ${cliphist} decode | ${wl-copy}"])
+          (spawn [sh "-c" "${cliphist} list | ${fuzzel} --dmenu | ${cliphist} decode | ${wl-copy}"])
         ])
         (plain "Mod+Shift+P" [
           (spawn [swaylock "--screenshots" "--clock" "--indicator" "--indicator-radius" "100" "--indicator-thickness" "7" "--effect-blur" "7x5" "--effect-vignette" "0.5:0.5" "--grace" "2" "--fade-in" "0.5"])
@@ -388,6 +392,8 @@ in
       (spawn-at-startup [swaybg "-i" "${config.home.homeDirectory}/wallpaper/01.png"])
       (spawn-at-startup [polkit-kde-agent])
       (spawn-at-startup [wl-paste "--watch" cliphist "store"])
+      (spawn-at-startup [xwayland-satellite "${DISPLAY}"])
+      (spawn-at-startup [sh "-c" "${sleep} 10; ${fcitx5} --replace"])
       (plain "input" [
         (plain "touchpad" [
           (leaf "click-method" "clickfinger")
