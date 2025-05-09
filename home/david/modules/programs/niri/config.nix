@@ -2,8 +2,8 @@
   config,
   pkgs,
   lib,
-  osConfig,
   inputs,
+  DISPLAY,
   ...
 }: let
   inherit (lib) getExe getExe';
@@ -26,19 +26,15 @@
     plain
     ;
 
-  DISPLAY = ":1";
-
   bash = getExe config.programs.bash.package;
   swaylock = getExe config.programs.swaylock.package;
   fuzzel = getExe config.programs.fuzzel.package;
   waybar = getExe config.programs.waybar.package;
   swaync = getExe config.services.swaync.package;
-  fcitx5 = getExe' osConfig.i18n.inputMethod.package "fcitx5";
 
   polkit-kde-agent = getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-agent";
   wpctl = getExe' pkgs.wireplumber "wpctl";
   swaybg = getExe pkgs.swaybg;
-  xwayland-satellite = getExe pkgs.xwayland-satellite;
   ghostty = getExe config.programs.ghostty.package;
   wl-paste = getExe' pkgs.wl-clipboard "wl-paste";
   wl-copy = getExe' pkgs.wl-clipboard "wl-copy";
@@ -390,8 +386,6 @@ in
       (spawn-at-startup [waybar])
       (spawn-at-startup [swaync])
       (spawn-at-startup [swaybg "-i" "${config.home.homeDirectory}/wallpaper/01.png"])
-      (spawn-at-startup [fcitx5 "-d" "--replace"])
-      (spawn-at-startup [xwayland-satellite DISPLAY])
       (spawn-at-startup [polkit-kde-agent])
       (spawn-at-startup [wl-paste "--watch" cliphist "store"])
       (plain "input" [
