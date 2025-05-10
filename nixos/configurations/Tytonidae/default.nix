@@ -7,8 +7,9 @@
 }: {
   imports =
     (with inputs.nixos-hardware.nixosModules; [
+      common-hidpi
       common-cpu-intel
-      common-gpu-nvidia
+      common-gpu-nvidia-nonprime
       common-pc-laptop
       common-pc-laptop-ssd
       asus-battery
@@ -104,6 +105,7 @@
     modesetting.enable = true;
     open = true;
     prime = {
+      reverseSync.enable = lib.mkDefault true;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };

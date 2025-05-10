@@ -1,12 +1,22 @@
-{pkgs, ...}: {
-  imports = [
-    ./gui.nix
-    ./hardware-configuration.nix
-    ./stylix.nix
-    ./users
-    ./networking.nix
-    ./disk-config.nix
-  ];
+{
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports =
+    (with inputs.nixos-hardware.nixosModules; [
+      common-cpu-intel
+      common-pc-laptop
+      common-pc-laptop-ssd
+    ])
+    ++ [
+      ./gui.nix
+      ./hardware-configuration.nix
+      ./stylix.nix
+      ./users
+      ./networking.nix
+      ./disk-config.nix
+    ];
 
   youthlic = {
     users.deploy.enable = true;
