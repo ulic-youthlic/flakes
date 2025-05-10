@@ -6,8 +6,12 @@
   ...
 }: {
   imports =
-    (with inputs; [
-      nixos-hardware.nixosModules.asus-fx506hm
+    (with inputs.nixos-hardware.nixosModules; [
+      common-cpu-intel
+      common-gpu-nvidia
+      common-pc-laptop
+      common-pc-laptop-ssd
+      asus-battery
     ])
     ++ [
       ./users
@@ -95,6 +99,14 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     initrd.systemd.enable = true;
+  };
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true;
+    prime = {
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   # This value determines the NixOS release from which the default
