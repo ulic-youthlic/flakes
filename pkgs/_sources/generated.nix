@@ -65,27 +65,27 @@
   };
   rime-ice = {
     pname = "rime-ice";
-    version = "5322bcd86f47d18e0785cac4a5da239664b46235";
+    version = "60cd1631f9f5023cf00e86adc535571d1b86f1b2";
     src = fetchFromGitHub {
       owner = "iDvel";
       repo = "rime-ice";
-      rev = "5322bcd86f47d18e0785cac4a5da239664b46235";
+      rev = "60cd1631f9f5023cf00e86adc535571d1b86f1b2";
       fetchSubmodules = false;
-      sha256 = "sha256-BFS/pMuUlZ6pQEITZ37hotl7YUMmU7kWoHA26L+y7Pc=";
+      sha256 = "sha256-3K25oc4q/5pmZL7WYoSR6RyjgV+7o7W6MzBcIKeRD0Y=";
     };
-    date = "2025-05-01";
+    date = "2025-05-08";
   };
   spotx = {
     pname = "spotx";
-    version = "d5a23bfc64d75979373c5fddc81641dabff051aa";
+    version = "1d16abcbb6cdd0a2882084d91dedc4e1f0e3844c";
     src = fetchFromGitHub {
       owner = "SpotX-Official";
       repo = "SpotX-Bash";
-      rev = "d5a23bfc64d75979373c5fddc81641dabff051aa";
+      rev = "1d16abcbb6cdd0a2882084d91dedc4e1f0e3844c";
       fetchSubmodules = false;
-      sha256 = "sha256-gYr2b9oSOB/kuK6Em3T+gAALgzpRQxvSBJNWoaJ7yvg=";
+      sha256 = "sha256-kSFyKLD8qb4CsbUZuHXA0GgrAsFYdIPF0gxpKwtxTX4=";
     };
-    date = "2025-04-23";
+    date = "2025-05-03";
   };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";
