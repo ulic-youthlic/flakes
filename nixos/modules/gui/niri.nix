@@ -8,9 +8,6 @@
 in {
   options = {
     youthlic.gui.niri = {
-      extraConfig = lib.mkOption {
-        type = lib.types.str;
-      };
     };
   };
   config = lib.mkIf (cfg.enabled == "niri") {
@@ -86,27 +83,8 @@ in {
       enable = true;
     };
     services = {
-      greetd = let
-        niriConfig = pkgs.writeText "greetd-niri-config.kdl" (''
-            binds {}
-            hotkey-overlay {
-              skip-at-startup
-            }
-            gestures {
-              hot-corners {
-                off
-              }
-            }
-            spawn-at-startup "${lib.getExe pkgs.swaybg}" "-i" "${config.stylix.image}"
-          ''
-          + config.youthlic.gui.niri.extraConfig);
-      in {
+      greetd = {
         enable = true;
-        settings = {
-          default_session = {
-            command = "env GTK_USE_PORTAL=0 GDK_DEBUG=no-portals ${lib.getExe' config.programs.niri.package "niri"} --config ${niriConfig} -- ${lib.getExe config.programs.regreet.package}";
-          };
-        };
       };
       xserver = {
         enable = true;
@@ -119,6 +97,7 @@ in {
     programs = {
       regreet = {
         enable = true;
+        cageArgs = ["-s" "-m" "last"];
       };
       niri = {
         enable = true;
