@@ -7,7 +7,7 @@
     ./transfer-sh.nix
     ./rustypaste
     ./mautrix-telegram.nix
-    ./caddy.nix
+    ./caddy
     ./dae
     ./forgejo.nix
     ./kanata.nix

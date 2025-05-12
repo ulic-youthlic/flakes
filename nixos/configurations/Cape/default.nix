@@ -28,6 +28,7 @@
       caddy = {
         enable = true;
         baseDomain = "youthlic.fun";
+        radicle-explorer.enable = true;
       };
       juicity.server.enable = true;
     };

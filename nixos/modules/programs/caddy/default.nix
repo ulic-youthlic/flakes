@@ -5,6 +5,9 @@
 }: let
   cfg = config.youthlic.programs.caddy;
 in {
+  imports = [
+    ./radicle-explorer.nix
+  ];
   options = {
     youthlic.programs.caddy = {
       enable = lib.mkEnableOption "caddy";

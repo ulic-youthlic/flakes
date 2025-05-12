@@ -13,6 +13,7 @@ in
     rime-ice = callPackage ./rime-ice.nix {};
     dioxionary = callPackage ./dioxionary.nix {};
     spotifyx = callPackage ./spotifyx.nix {};
+    radicle-explorer = callPackage ./radicle-explorer.nix {};
 
     noto-serif-cjk = callPackage ./noto-serif-cjk.nix {};
     noto-sans-cjk = callPackage ./noto-sans-cjk.nix {};
