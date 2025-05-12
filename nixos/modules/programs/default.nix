@@ -27,5 +27,6 @@
     ./owncast.nix
     ./minio.nix
     ./supergfxd.nix
+    ./radicle.nix
   ];
 }
