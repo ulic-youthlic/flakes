@@ -85,6 +85,7 @@
     jq
     onefetch
     vesktop
+    zulip
     aria2
 
     juicity

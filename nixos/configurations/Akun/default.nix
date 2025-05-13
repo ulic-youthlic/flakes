@@ -57,6 +57,7 @@
     btop
     spotify
     localsend
+    zulip
   ];
 
   environment.variables.EDITOR = "hx";
