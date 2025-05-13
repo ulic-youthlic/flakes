@@ -1,5 +1,5 @@
 {pkgs, ...}:
-pkgs.radicle-explorer.withConfig {
+(pkgs.radicle-explorer.withConfig {
   preferredSeeds = [
     {
       hostname = "seed.youthlic.fun";
@@ -22,4 +22,11 @@ pkgs.radicle-explorer.withConfig {
       scheme = "https";
     }
   ];
-}
+}).overrideAttrs (prev: {
+  postInstall =
+    (prev.postInstall or "")
+    + ''
+      ln -s ${./youthlic-seed-header.png} $out/images/youthlic-seed-header.png
+      ln -s ${./youthlic-seed-avatar.jpg} $out/images/youthlic-seed-avatar.jpg
+    '';
+})

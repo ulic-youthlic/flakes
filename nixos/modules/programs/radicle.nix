@@ -37,6 +37,9 @@ in {
             "z6MkrLMMsiPWUcNPHcRajuMi9mDfYckSoJyPwwnknocNYPm7@seed.radicle.garden:8776"
           ];
           web = {
+            bannerUrl = "https://radicle.${config.youthlic.programs.caddy.baseDomain}/images/youthlic-seed-header.png";
+            avatarUrl = "https://radicle.${config.youthlic.programs.caddy.baseDomain}/images/youthlic-seed-avatar.jpg";
+            description = "Private Seed Server.";
             pinned = {
               repositories = [
                 "rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5"
