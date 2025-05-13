@@ -120,7 +120,7 @@
       repo = "stylix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
+        flake-parts.follows = "flake-parts";
         home-manager.follows = "home-manager";
       };
     };

@@ -62,8 +62,9 @@ in {
             show-cryptographic-signatures = true;
             pager = "delta";
             diff = {
-              tool = "delta";
-              format = "git";
+              color-words = {
+                conflict = "pair";
+              };
             };
             default-command = "log";
           };
