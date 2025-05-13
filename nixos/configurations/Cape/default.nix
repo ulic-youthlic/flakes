@@ -7,6 +7,7 @@
     ./users
     ./disko-config.nix
     ./miniflux.nix
+    ./radicle.nix
   ];
 
   youthlic = {
