@@ -3,7 +3,6 @@
 in
   [
     ./niri.nix
-    ./ghostty.nix
     ./juicity.nix
     ./dae.nix
     ./jujutsu.nix

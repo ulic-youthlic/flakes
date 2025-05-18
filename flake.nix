@@ -58,16 +58,6 @@
       repo = "nixos-cosmic";
     };
 
-    ghostty = {
-      type = "github";
-      owner = "ghostty-org";
-      repo = "ghostty";
-      inputs = {
-        nixpkgs-unstable.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-
     nixos-hardware = {
       type = "github";
       owner = "NixOS";
