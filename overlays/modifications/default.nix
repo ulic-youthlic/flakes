@@ -5,7 +5,6 @@ in
     ./niri.nix
     ./juicity.nix
     ./dae.nix
-    ./jujutsu.nix
     ./spotifyx.nix
     ./radicle-explorer.nix
   ]
