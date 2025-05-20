@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs}:
 (pkgs.radicle-explorer.withConfig {
   preferredSeeds = [
     {

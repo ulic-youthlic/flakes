@@ -1,4 +1,27 @@
 {
+    "TrackersListCollection": {
+        "cargoLocks": null,
+        "date": "2025-05-20",
+        "extract": null,
+        "name": "TrackersListCollection",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "XIU2",
+            "repo": "TrackersListCollection",
+            "rev": "4625b564bb0bf03e069c4fbaa42df59c84ff0fdf",
+            "sha256": "sha256-1si2rVI2TB0urt6HhLeMot6tAsfii+uc74zxYc9AJk0=",
+            "sparseCheckout": [
+                "all.txt"
+            ],
+            "type": "github"
+        },
+        "version": "4625b564bb0bf03e069c4fbaa42df59c84ff0fdf"
+    },
     "dioxionary": {
         "cargoLocks": {
             "./Cargo.lock": [
@@ -92,7 +115,7 @@
     },
     "rime-ice": {
         "cargoLocks": null,
-        "date": "2025-05-08",
+        "date": "2025-05-19",
         "extract": null,
         "name": "rime-ice",
         "passthru": null,
@@ -104,16 +127,16 @@
             "name": null,
             "owner": "iDvel",
             "repo": "rime-ice",
-            "rev": "60cd1631f9f5023cf00e86adc535571d1b86f1b2",
-            "sha256": "sha256-3K25oc4q/5pmZL7WYoSR6RyjgV+7o7W6MzBcIKeRD0Y=",
+            "rev": "7fab37280f1a90055007f561518c7daf59da9a09",
+            "sha256": "sha256-vWjAJ7UEnuGpYVfqwLt0Cq1jzz+S+DjivQpR9QKyad8=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "60cd1631f9f5023cf00e86adc535571d1b86f1b2"
+        "version": "7fab37280f1a90055007f561518c7daf59da9a09"
     },
     "spotx": {
         "cargoLocks": null,
-        "date": "2025-05-03",
+        "date": "2025-05-12",
         "extract": null,
         "name": "spotx",
         "passthru": null,
@@ -125,12 +148,12 @@
             "name": null,
             "owner": "SpotX-Official",
             "repo": "SpotX-Bash",
-            "rev": "1d16abcbb6cdd0a2882084d91dedc4e1f0e3844c",
-            "sha256": "sha256-kSFyKLD8qb4CsbUZuHXA0GgrAsFYdIPF0gxpKwtxTX4=",
+            "rev": "d756a3f23ddd8bbbeb644f6070a147aaa239ba4a",
+            "sha256": "sha256-QKfSQby0hw2X9mHxLSO4I6Z9nXPNWIHqJkdP23BC+48=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "1d16abcbb6cdd0a2882084d91dedc4e1f0e3844c"
+        "version": "d756a3f23ddd8bbbeb644f6070a147aaa239ba4a"
     },
     "tree-sitter-idris": {
         "cargoLocks": null,

@@ -2,7 +2,6 @@
   nixosTests,
   srcs,
   stdenvNoCC,
-  ...
 }: let
   source = srcs.noto-sans-cjk;
 in

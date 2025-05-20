@@ -1,7 +1,6 @@
 {
   pkgs,
   srcs,
-  ...
 }: let
   inherit (srcs) spotx;
 in

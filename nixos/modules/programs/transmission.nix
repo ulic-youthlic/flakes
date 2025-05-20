@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  inputs,
   rootPath,
   ...
 }: let
@@ -27,7 +26,7 @@ in {
         settings = {
           utp-enabled = true;
           watch-dir-enabled = true;
-          default-trackers = builtins.readFile "${inputs.bt-tracker}/all.txt";
+          default-trackers = builtins.readFile "${pkgs.TrackersListCollection}/all.txt";
           rpc-bind-address = "0.0.0.0";
           speed-limit-up-enabled = true;
           speed-limit-up = 1000;

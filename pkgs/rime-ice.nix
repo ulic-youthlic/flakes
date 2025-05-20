@@ -1,7 +1,6 @@
 {
   srcs,
   stdenvNoCC,
-  ...
 }: let
   source = srcs.rime-ice;
 in

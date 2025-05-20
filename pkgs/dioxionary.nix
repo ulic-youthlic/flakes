@@ -5,7 +5,6 @@
   openssl,
   installShellFiles,
   lib,
-  ...
 }: let
   src = srcs.dioxionary;
 in

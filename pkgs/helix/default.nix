@@ -3,7 +3,6 @@
   pkgs,
   inputs,
   callPackage,
-  ...
 }: let
   inherit (inputs.helix.packages."${pkgs.system}") helix;
   runtime = callPackage ./runtime.nix {};

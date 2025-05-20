@@ -124,13 +124,6 @@
       };
     };
 
-    bt-tracker = {
-      type = "github";
-      owner = "XIU2";
-      repo = "TrackersListCollection";
-      flake = false;
-    };
-
     deploy-rs = {
       type = "github";
       owner = "serokell";

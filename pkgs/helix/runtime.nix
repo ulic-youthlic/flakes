@@ -3,7 +3,6 @@
   srcs,
   stdenv,
   runCommandNoCCLocal,
-  ...
 }: let
   buildGrammar = grammar:
     stdenv.mkDerivation {

@@ -1,7 +1,6 @@
 {
   buildGoModule,
   srcs,
-  ...
 }:
 buildGoModule rec {
   name = "juicity";
