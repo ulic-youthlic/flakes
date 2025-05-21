@@ -3,18 +3,18 @@
 {
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "4625b564bb0bf03e069c4fbaa42df59c84ff0fdf";
+    version = "89d1e855ada9fa4e136759c1f2d9f83e4077fa9b";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "4625b564bb0bf03e069c4fbaa42df59c84ff0fdf";
+      rev = "89d1e855ada9fa4e136759c1f2d9f83e4077fa9b";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-1si2rVI2TB0urt6HhLeMot6tAsfii+uc74zxYc9AJk0=";
+      sha256 = "sha256-2ZctoHyfyDCMuqLlMWoy8BIuZff5fAivtsVPLoVef9I=";
     };
-    date = "2025-05-20";
+    date = "2025-05-22";
   };
   dioxionary = {
     pname = "dioxionary";

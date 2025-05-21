@@ -1,7 +1,7 @@
 {
     "TrackersListCollection": {
         "cargoLocks": null,
-        "date": "2025-05-20",
+        "date": "2025-05-22",
         "extract": null,
         "name": "TrackersListCollection",
         "passthru": null,
@@ -13,14 +13,14 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "4625b564bb0bf03e069c4fbaa42df59c84ff0fdf",
-            "sha256": "sha256-1si2rVI2TB0urt6HhLeMot6tAsfii+uc74zxYc9AJk0=",
+            "rev": "89d1e855ada9fa4e136759c1f2d9f83e4077fa9b",
+            "sha256": "sha256-2ZctoHyfyDCMuqLlMWoy8BIuZff5fAivtsVPLoVef9I=",
             "sparseCheckout": [
                 "all.txt"
             ],
             "type": "github"
         },
-        "version": "4625b564bb0bf03e069c4fbaa42df59c84ff0fdf"
+        "version": "89d1e855ada9fa4e136759c1f2d9f83e4077fa9b"
     },
     "dioxionary": {
         "cargoLocks": {
