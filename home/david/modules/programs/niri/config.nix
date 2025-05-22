@@ -465,36 +465,6 @@ in
         (leaf "clip-to-geometry" true)
       ])
       (window-rule [
-        (match {app-id = "^showmethekey-gtk$";})
-        (leaf "geometry-corner-radius" 0.0)
-        (leaf "clip-to-geometry" false)
-        (leaf "open-floating" true)
-        (leaf "open-focused" false)
-        (plain "default-column-width" [
-          (leaf "fixed" 300)
-        ])
-        (plain "default-window-height" [
-          (leaf "fixed" 70)
-        ])
-        (leaf "draw-border-with-background" true)
-        (leaf "default-floating-position" {
-          relative-to = "bottom-right";
-          x = 20;
-          y = 20;
-        })
-        (plain "focus-ring" [
-          (flag "off")
-        ])
-        (plain "border" [
-          (flag "off")
-        ])
-        (plain "shadow" [
-          (flag "off")
-        ])
-        (leaf "baba-is-float" true)
-        (leaf "tiled-state" false)
-      ])
-      (window-rule [
         (match {app-id = "^org\\.keepassxc\\.KeePassXC$";})
         (match {app-id = "^org\\.gnome\\.World\\.Secrets$";})
         (leaf "block-out-from" "screen-capture")

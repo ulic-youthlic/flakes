@@ -16,7 +16,6 @@
       spacer
       devenv
       just
-      showmethekey
     ];
   };
 }

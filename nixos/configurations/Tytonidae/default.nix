@@ -52,6 +52,7 @@
       juicity.client.enable = true;
       owncast.enable = true;
       minio.enable = true;
+      wshowkeys.enable = true;
     };
   };
 

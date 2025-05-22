@@ -15,6 +15,7 @@ in
     spotifyx = callPackage ./spotifyx.nix {};
     radicle-explorer = callPackage ./radicle-explorer {};
     TrackersListCollection = callPackage ./TrackersListCollection.nix {};
+    wshowkeys-mao = callPackage ./wshowkeys-mao.nix {};
 
     noto-serif-cjk = callPackage ./noto-serif-cjk.nix {};
     noto-sans-cjk = callPackage ./noto-sans-cjk.nix {};

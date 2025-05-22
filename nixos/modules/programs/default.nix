@@ -28,5 +28,6 @@
     ./minio.nix
     ./supergfxd.nix
     ./radicle.nix
+    ./wshowkeys.nix
   ];
 }

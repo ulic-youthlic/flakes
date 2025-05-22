@@ -3,18 +3,18 @@
 {
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "89d1e855ada9fa4e136759c1f2d9f83e4077fa9b";
+    version = "74575fc44d1d22d777806bec075ae0473b46c5ba";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "89d1e855ada9fa4e136759c1f2d9f83e4077fa9b";
+      rev = "74575fc44d1d22d777806bec075ae0473b46c5ba";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-2ZctoHyfyDCMuqLlMWoy8BIuZff5fAivtsVPLoVef9I=";
+      sha256 = "sha256-RqMdfIv/OzhDITkd48b8jNgmsGPJxZR+CAs7flmTrXw=";
     };
-    date = "2025-05-22";
+    date = "2025-05-23";
   };
   dioxionary = {
     pname = "dioxionary";
@@ -116,5 +116,17 @@
     };
     name = "idris";
     date = "2024-11-05";
+  };
+  wshowkeys-mao = {
+    pname = "wshowkeys-mao";
+    version = "24364e5f40b7ccbed728fe88757f559d84fae234";
+    src = fetchFromGitHub {
+      owner = "DreamMaoMao";
+      repo = "wshowkeys";
+      rev = "24364e5f40b7ccbed728fe88757f559d84fae234";
+      fetchSubmodules = false;
+      sha256 = "sha256-I1nnwaE1Wr1b5EzQ4CP5sDCY8ZBaxP2FYZdIsKcVXL4=";
+    };
+    date = "2025-02-03";
   };
 }

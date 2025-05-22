@@ -31,6 +31,7 @@
       openssh.enable = true;
       kanata.enable = true;
       tailscale.enable = true;
+      wshowkeys.enable = true;
     };
   };
   programs.gnupg.agent = {

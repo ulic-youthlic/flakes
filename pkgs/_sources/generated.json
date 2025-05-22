@@ -1,7 +1,7 @@
 {
     "TrackersListCollection": {
         "cargoLocks": null,
-        "date": "2025-05-22",
+        "date": "2025-05-23",
         "extract": null,
         "name": "TrackersListCollection",
         "passthru": null,
@@ -13,14 +13,14 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "89d1e855ada9fa4e136759c1f2d9f83e4077fa9b",
-            "sha256": "sha256-2ZctoHyfyDCMuqLlMWoy8BIuZff5fAivtsVPLoVef9I=",
+            "rev": "74575fc44d1d22d777806bec075ae0473b46c5ba",
+            "sha256": "sha256-RqMdfIv/OzhDITkd48b8jNgmsGPJxZR+CAs7flmTrXw=",
             "sparseCheckout": [
                 "all.txt"
             ],
             "type": "github"
         },
-        "version": "89d1e855ada9fa4e136759c1f2d9f83e4077fa9b"
+        "version": "74575fc44d1d22d777806bec075ae0473b46c5ba"
     },
     "dioxionary": {
         "cargoLocks": {
@@ -176,5 +176,26 @@
             "url": "https://github.com/kayhide/tree-sitter-idris"
         },
         "version": "c56a25cf57c68ff929356db25505c1cc4c7820f6"
+    },
+    "wshowkeys-mao": {
+        "cargoLocks": null,
+        "date": "2025-02-03",
+        "extract": null,
+        "name": "wshowkeys-mao",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "DreamMaoMao",
+            "repo": "wshowkeys",
+            "rev": "24364e5f40b7ccbed728fe88757f559d84fae234",
+            "sha256": "sha256-I1nnwaE1Wr1b5EzQ4CP5sDCY8ZBaxP2FYZdIsKcVXL4=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "24364e5f40b7ccbed728fe88757f559d84fae234"
     }
 }
