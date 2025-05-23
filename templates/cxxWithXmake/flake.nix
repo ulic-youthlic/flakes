@@ -18,13 +18,33 @@
       };
     in {
       formatter = pkgs.alejandra;
+      checks = {
+        inherit (self.packages.${system}) default;
+      };
       devShells.default = pkgs.mkShell {
+        inputsFrom = [] ++ (builtins.attrValues self.checks.${system});
         packages = with pkgs; [
           clang-tools
-
-          gcc
-          xmake
         ];
+      };
+      packages = rec {
+        cxx-demo = pkgs.stdenv.mkDerivation {
+          pname = "cxx-demo";
+          version = "unstable";
+          src = ./.;
+          strictDeps = true;
+          nativeBuildInputs = with pkgs; [
+            xmake
+            gnumake
+          ];
+          preConfigure = ''
+            xmake project -k xmakefile
+          '';
+          env = {
+            INSTALLDIR = "${placeholder "out"}";
+          };
+        };
+        default = cxx-demo;
       };
     });
   nixConfig = {
