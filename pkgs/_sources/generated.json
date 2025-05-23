@@ -13,14 +13,14 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "74575fc44d1d22d777806bec075ae0473b46c5ba",
-            "sha256": "sha256-RqMdfIv/OzhDITkd48b8jNgmsGPJxZR+CAs7flmTrXw=",
+            "rev": "ee8fdda211b4913f7a952fe8ca43b22c3ca2bc54",
+            "sha256": "sha256-e1KUpIR7KcGawZLsd8bD/R0WpOM5evtsMzPxWmJ3WFk=",
             "sparseCheckout": [
                 "all.txt"
             ],
             "type": "github"
         },
-        "version": "74575fc44d1d22d777806bec075ae0473b46c5ba"
+        "version": "ee8fdda211b4913f7a952fe8ca43b22c3ca2bc54"
     },
     "dioxionary": {
         "cargoLocks": {

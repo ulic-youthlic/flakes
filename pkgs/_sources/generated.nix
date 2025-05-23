@@ -3,16 +3,16 @@
 {
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "74575fc44d1d22d777806bec075ae0473b46c5ba";
+    version = "ee8fdda211b4913f7a952fe8ca43b22c3ca2bc54";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "74575fc44d1d22d777806bec075ae0473b46c5ba";
+      rev = "ee8fdda211b4913f7a952fe8ca43b22c3ca2bc54";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-RqMdfIv/OzhDITkd48b8jNgmsGPJxZR+CAs7flmTrXw=";
+      sha256 = "sha256-e1KUpIR7KcGawZLsd8bD/R0WpOM5evtsMzPxWmJ3WFk=";
     };
     date = "2025-05-23";
   };
