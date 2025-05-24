@@ -38,10 +38,14 @@
             gnumake
           ];
           preConfigure = ''
+            xmake config -m release
             xmake project -k xmakefile
           '';
           env = {
             INSTALLDIR = "${placeholder "out"}";
+            NIX_DEBUG = 1;
+            V = 1;
+            D = 1;
           };
         };
         default = cxx-demo;
