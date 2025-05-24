@@ -8,6 +8,7 @@
   runtime = callPackage ./runtime.nix {};
   runtimeInputs = (
     with pkgs; [
+      nixfmt-rfc-style
       idris2Packages.idris2Lsp
       lua-language-server
       bash-language-server
