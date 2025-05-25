@@ -50,26 +50,29 @@
       };
       basicArgs = {
         inherit src;
-        pname = "rust-demo";
         strictDeps = true;
       };
-      cargoArtifacts = craneLib.buildDepsOnly basicArgs;
+      nativeBuildInputs = with pkgs; [];
+      buildInputs =
+        (with pkgs; [])
+        ++ lib.optional pkgs.stdenv.buildPlatform.isDarwin (with pkgs; [
+          darwin.apple_sdk.frameworks.Security
+        ]);
+      cargoArtifacts = craneLib.buildDepsOnly (basicArgs
+        // {
+          inherit buildInputs nativeBuildInputs;
+        });
       commonArgs =
         basicArgs
         // {
-          inherit cargoArtifacts;
-          nativeBuildInputs = with pkgs; [];
-          buildInputs =
-            (with pkgs; [])
-            ++ lib.optional pkgs.stdenv.buildPlatform.isDarwin (with pkgs; [
-              darwin.apple_sdk.frameworks.Security
-            ]);
-          env = {};
+          inherit cargoArtifacts buildInputs nativeBuildInputs;
         };
     in {
       formatter = pkgs.alejandra;
       checks = {
-        inherit (self.packages.${system}) default;
+        package = self.packages.${system}.default.overrideAttrs {
+          doCheck = true;
+        };
         clippy = craneLib.cargoClippy (commonArgs
           // {
             cargoClippyExtraArgs = "--all-targets -- --deny warnings";
@@ -84,7 +87,6 @@
           // {
             partitions = 1;
             partitionType = "count";
-            nativeBuildInputs = [];
             cargoNextestExtraArgs = "--no-tests pass";
             env = {
               CARGO_PROFILE = "dev";
@@ -98,10 +100,10 @@
               (craneLib.crateNameFromCargoToml {
                 cargoToml = "${toString src}/Cargo.toml";
               })
+              pname
+              version
               ;
             doCheck = false;
-            nativeBuildInputs = [];
-            buildInputs = [];
           });
         default = rust-demo;
       };
@@ -109,6 +111,7 @@
         drv = self.packages."${system}".default;
       };
       devShells.default = craneLib.devShell {
+        checks = self.checks.${system};
         packages = with pkgs; [
           rust-analyzer
           cargo-audit
