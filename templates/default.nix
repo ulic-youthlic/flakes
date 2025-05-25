@@ -11,4 +11,8 @@
     path = ./cxxWithXmake;
     description = "C++ template built by xmake.";
   };
+  python = {
+    path = ./python;
+    description = "Python template.";
+  };
 }
