@@ -180,6 +180,7 @@
           packages = with pkgs; [
             nixd
             typos
+            typos-lsp
             just
             nvfetcher
           ];

@@ -11,7 +11,7 @@
       src = grammar.src;
       # sourceRoot = "source";
 
-      dontConfigue = true;
+      dontConfigure = true;
 
       FLAGS = [
         "-Isrc"

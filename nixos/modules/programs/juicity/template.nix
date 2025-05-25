@@ -50,7 +50,7 @@ in {
           description = ''
             A file which JSON configurations for juicity client. See the {option}`settings` option for more information.
 
-            Note: this file will override {options}`settings` option, which is recommanded.
+            Note: this file will override {options}`settings` option, which is recommended.
           '';
         };
         allowedOpenFirewallPorts = lib.mkOption {
@@ -95,7 +95,7 @@ in {
           description = ''
             A file which JSON configurations for juicity server. See the {option}`settings` option for more information.
 
-            Note: this file will override {options}`settings` option, which is recommanded.
+            Note: this file will override {options}`settings` option, which is recommended.
           '';
         };
         allowedOpenFirewallPorts = lib.mkOption {

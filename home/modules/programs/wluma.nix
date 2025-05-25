@@ -21,7 +21,7 @@ in {
         example = pkgs.wluam;
         default = pkgs.wluma;
         description = ''
-          pakcage of wluma
+          package of wluma
         '';
       };
     };

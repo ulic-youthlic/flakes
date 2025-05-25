@@ -1,0 +1,21 @@
+[files]
+ignore-global = true
+ignore-parent = true
+ignore-hidden = false
+ignore-files = true
+ignore-vcs = true
+extend-exclude = ["secrets/", ".git/", "public-key.txt"]
+
+[default]
+check-filename = true
+check-file = true
+unicode = true
+extend-ignore-re = [
+  # Line ignore with trailling `(#|//) spellchecker: disable-line`
+  "(?Rm)^.*(#|//)\\s*spellchecker: disable-line$",
+  # Line block with `# spellchecker: <on|off>`
+  "(?s)(#|//)\\s*spellchecker: off.*?\\n\\s*(#|//)\\s*spellchecker: on",
+]
+extend-ignore-identifiers-re = ["als", "Paket", "ConfiguratioN", "StructurE"]
+
+[default.extend-identifiers]
