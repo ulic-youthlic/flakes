@@ -3,9 +3,7 @@
   srcs,
 }: let
   inherit (srcs) spotx;
-in
-  pkgs.spotify.overrideAttrs (final: prev: {
-    version = prev.version + "_spotx-${spotx.version}";
+  spotifyx = pkgs.spotify.overrideAttrs (final: prev: {
     nativeBuildInputs =
       prev.nativeBuildInputs
       ++ (with pkgs; [
@@ -22,4 +20,9 @@ in
     postInstall = ''
       ./spotx.sh -P $out/share/spotify -h
     '';
-  })
+  });
+in
+  pkgs.symlinkJoin {
+    name = "spotifyx";
+    paths = [spotifyx];
+  }
