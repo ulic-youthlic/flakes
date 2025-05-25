@@ -1,0 +1,25 @@
+[advisories]
+ignore = [] # advisory IDs to ignore e.g. ["RUSTSEC-2019-0001", ...]
+informational_warnings = [
+  "unmaintained",
+] # warn for categories of informational advisories
+severity_threshold = "low" # CVSS severity ("none", "low", "medium", "high", "critical")
+
+[database]
+url = "https://github.com/RustSec/advisory-db.git"
+fetch = true
+stale = false
+
+[output]
+deny = ["unmaintained"] # exit on error if unmaintained dependencies are found
+format = "terminal"     # "terminal" (human readable report) or "json"
+quiet = false           # Only print information on error
+show_tree = true
+
+[target]
+arch = ["x86_64"]
+os = ["linux", "windows"]
+
+[yanked]
+enabled = true
+update_index = true
