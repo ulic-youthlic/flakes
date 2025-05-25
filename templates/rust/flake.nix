@@ -31,12 +31,17 @@
       inherit (pkgs) lib;
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [(import rust-overlay)];
+        overlays = [
+          (import rust-overlay)
+          (final: prev: {
+            lib = prev.lib // (import ./nix/lib.nix prev.lib);
+          })
+        ];
       };
       rustToolchain = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
       craneLib = (crane.mkLib pkgs).overrideToolchain rustToolchain;
       srcFilters = path: type:
-        builtins.any (suffix: lib.hasSuffix suffix path) [
+        builtins.any (lib.flip lib.hasSuffix path) [
           ".sql"
           ".diff"
           ".md"
@@ -52,20 +57,15 @@
         inherit src;
         strictDeps = true;
       };
-      nativeBuildInputs = with pkgs; [];
-      buildInputs =
-        (with pkgs; [])
-        ++ lib.optional pkgs.stdenv.buildPlatform.isDarwin (with pkgs; [
-          darwin.apple_sdk.frameworks.Security
-        ]);
-      cargoArtifacts = craneLib.buildDepsOnly (basicArgs
-        // {
-          inherit buildInputs nativeBuildInputs;
-        });
+      nativeBuildInputs = [];
+      buildInputs = [];
+      genInputs = lib.genInputsWith pkgs;
       commonArgs =
         basicArgs
         // {
-          inherit cargoArtifacts buildInputs nativeBuildInputs;
+          cargoArtifacts = self.packages.${system}.cargo-artifacts;
+          buildInputs = genInputs buildInputs;
+          nativeBuildInputs = genInputs nativeBuildInputs;
         };
     in {
       formatter = pkgs.alejandra;
@@ -93,18 +93,17 @@
             };
           });
       };
-      packages = rec {
-        rust-demo = craneLib.buildPackage (commonArgs
-          // {
-            inherit
-              (craneLib.crateNameFromCargoToml {
-                cargoToml = "${toString src}/Cargo.toml";
-              })
-              pname
-              version
-              ;
-            doCheck = false;
-          });
+      packages = let
+        callPackage = lib.callPackageWith (pkgs // {inherit craneLib callPackage;});
+        packageArgs = {
+          inherit lib basicArgs buildInputs nativeBuildInputs;
+        };
+        importWithArgs = with lib; flip import packageArgs;
+      in rec {
+        cargo-artifacts = callPackage (importWithArgs ./nix/cargo-artifacts.nix) {};
+        rust-demo = callPackage (importWithArgs ./nix/package.nix) {
+          cargoArtifacts = cargo-artifacts;
+        };
         default = rust-demo;
       };
       apps.default = flake-utils.lib.mkApp {
