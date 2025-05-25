@@ -4,7 +4,7 @@
   ...
 }: let
   srcs = pkgs.callPackage ./_sources/generated.nix {};
-  callPackage = fn: args: pkgs.lib.callPackageWith (pkgs // {inherit inputs srcs callPackage;}) fn args;
+  callPackage = pkgs.lib.callPackageWith (pkgs // {inherit inputs srcs callPackage;});
 in
   {
     pinentry-selector = callPackage ./pinentry-selector.nix {};
