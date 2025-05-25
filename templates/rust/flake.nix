@@ -17,6 +17,12 @@
     crane = {
       url = "github:ipetkov/crane";
     };
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
   outputs = {
     self,
@@ -25,6 +31,7 @@
     rust-overlay,
     advisory-db,
     crane,
+    pre-commit-hooks,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
@@ -70,6 +77,24 @@
     in {
       formatter = pkgs.alejandra;
       checks = {
+        pre-commit-check = pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            alejandra = {
+              enable = true;
+            };
+            rustfmt.enable = true;
+            cargo-check = {
+              enable = true;
+              stages = ["pre-push"];
+            };
+            clippy = {
+              enable = true;
+              stages = ["pre-push"];
+              settings.denyWarnings = true;
+            };
+          };
+        };
         package = self.packages.${system}.default.overrideAttrs {
           doCheck = true;
         };
@@ -111,6 +136,9 @@
       };
       devShells.default = craneLib.devShell {
         checks = self.checks.${system};
+        shellHook =
+          ''''
+          + self.checks.${system}.pre-commit-check.shellHook;
         packages = with pkgs; [
           rust-analyzer
           cargo-audit
