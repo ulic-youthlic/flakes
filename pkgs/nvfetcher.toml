@@ -38,3 +38,7 @@ git.sparseCheckout = ["all.txt"]
 [wshowkeys-mao]
 src.git = "https://github.com/DreamMaoMao/wshowkeys.git"
 fetch.github = "DreamMaoMao/wshowkeys"
+
+[OuterWildsTextAdventure]
+src.git = "https://github.com/top-mind/OuterWildsTextAdventureWeb.git"
+fetch.github = "top-mind/OuterWildsTextAdventureWeb"

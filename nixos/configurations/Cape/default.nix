@@ -30,6 +30,7 @@
         enable = true;
         baseDomain = "youthlic.fun";
         radicle-explorer.enable = true;
+        outer-wilds-text-adventure.enable = true;
       };
       juicity.server.enable = true;
     };

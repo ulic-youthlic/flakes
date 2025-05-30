@@ -7,6 +7,7 @@
 in {
   imports = [
     ./radicle-explorer.nix
+    ./OuterWildsTextAdventure.nix
   ];
   options = {
     youthlic.programs.caddy = {

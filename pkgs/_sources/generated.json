@@ -1,7 +1,28 @@
 {
+    "OuterWildsTextAdventure": {
+        "cargoLocks": null,
+        "date": "2024-12-21",
+        "extract": null,
+        "name": "OuterWildsTextAdventure",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "top-mind",
+            "repo": "OuterWildsTextAdventureWeb",
+            "rev": "2a4430a6e53fc2e9979e0f4ebb312d90b92ba119",
+            "sha256": "sha256-sINGUxPj3V257zbuMnT/TK2j8Bwj9Rck4uXx7Y1fTQY=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "2a4430a6e53fc2e9979e0f4ebb312d90b92ba119"
+    },
     "TrackersListCollection": {
         "cargoLocks": null,
-        "date": "2025-05-26",
+        "date": "2025-05-31",
         "extract": null,
         "name": "TrackersListCollection",
         "passthru": null,
@@ -13,14 +34,14 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "1886c4360d2f02eb3ade5abda634f70729137e00",
-            "sha256": "sha256-wLaYJCNWH9dQL7vbq/1ueXd/rNGzJcWt7Eu+U64RX0Q=",
+            "rev": "313c18fc1ae756ea99ae6275e4454ccff95d9b5d",
+            "sha256": "sha256-yCcWx/tnz7JjHs6wniuy6owqIMjZrOS13HBz4MgtiAg=",
             "sparseCheckout": [
                 "all.txt"
             ],
             "type": "github"
         },
-        "version": "1886c4360d2f02eb3ade5abda634f70729137e00"
+        "version": "313c18fc1ae756ea99ae6275e4454ccff95d9b5d"
     },
     "dioxionary": {
         "cargoLocks": {
@@ -115,7 +136,7 @@
     },
     "rime-ice": {
         "cargoLocks": null,
-        "date": "2025-05-25",
+        "date": "2025-05-29",
         "extract": null,
         "name": "rime-ice",
         "passthru": null,
@@ -127,12 +148,12 @@
             "name": null,
             "owner": "iDvel",
             "repo": "rime-ice",
-            "rev": "904aedb7c2097309e4f5a9be29baf6ce5cc64415",
-            "sha256": "sha256-a0b6k0dOwrdxCf+ZcX/fiF4K1LLGuEw5eBriRFkY2AI=",
+            "rev": "2e0d8d9a3ba292ecca3f6dccb5719a06764917ca",
+            "sha256": "sha256-v+j2Bp7+OEbiWImf0/6YbZTTHlaORvtK2foXTfjZW9s=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "904aedb7c2097309e4f5a9be29baf6ce5cc64415"
+        "version": "2e0d8d9a3ba292ecca3f6dccb5719a06764917ca"
     },
     "spotx": {
         "cargoLocks": null,
