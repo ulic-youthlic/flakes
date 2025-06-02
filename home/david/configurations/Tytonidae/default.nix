@@ -33,6 +33,7 @@
       kvm.enable = true;
       atuin.enable = true;
       ion.enable = true;
+      awscli.enable = true;
     };
   };
 

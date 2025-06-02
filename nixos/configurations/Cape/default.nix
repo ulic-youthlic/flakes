@@ -36,6 +36,10 @@
         baseDomain = "youthlic.social";
         radicle-explorer.enable = true;
         outer-wilds-text-adventure.enable = true;
+        garage = {
+          enable = true;
+          target = "100.73.250.25";
+        };
       };
       juicity.server.enable = true;
     };

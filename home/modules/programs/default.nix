@@ -16,5 +16,6 @@
     ./fzf.nix
     ./eza.nix
     ./ion.nix
+    ./awscli.nix
   ];
 }

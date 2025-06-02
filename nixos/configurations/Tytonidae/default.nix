@@ -55,6 +55,7 @@
       owncast.enable = true;
       wshowkeys.enable = true;
       obs.enable = true;
+      garage.enable = true;
     };
   };
 

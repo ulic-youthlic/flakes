@@ -28,5 +28,6 @@
     ./bash.nix
     ./obs.nix
     ./sudo-rs.nix
+    ./garage.nix
   ];
 }
