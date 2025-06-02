@@ -1,58 +1,94 @@
 {
   lib,
-  pkgs,
   inputs,
+  system,
   callPackage,
+  symlinkJoin,
+  makeWrapper,
+  nixfmt-rfc-style,
+  idris2Packages,
+  lua-language-server,
+  bash-language-server,
+  shfmt,
+  hurl,
+  cmake-language-server,
+  kdlfmt,
+  rustfmt,
+  clang-tools,
+  libxml2,
+  typstyle,
+  pyright,
+  ruff,
+  gotools,
+  yaml-language-server,
+  taplo,
+  markdown-oxide,
+  marksman,
+  nixd,
+  deno,
+  alejandra,
+  vscode-langservers-extracted,
+  fish-lsp,
+  tailwindcss-language-server,
+  gopls,
+  golangci-lint-langserver,
+  tinymist,
+  delve,
+  lldb,
+  rust-analyzer,
+  # nil,
+  haskell-language-server,
+  neocmakelsp,
+  jdt-language-server,
+  zls,
 }: let
-  inherit (inputs.helix.packages."${pkgs.system}") helix;
+  inherit (inputs.helix.packages."${system}") helix;
   runtime = callPackage ./runtime.nix {};
-  runtimeInputs = (
-    with pkgs; [
-      nixfmt-rfc-style
-      idris2Packages.idris2Lsp
-      lua-language-server
-      bash-language-server
-      shfmt
-      hurl
-      cmake-language-server
-      kdlfmt
-      rustfmt
-      clang-tools
-      libxml2
-      typstyle
-      pyright
-      ruff
-      gotools
-      yaml-language-server
-      taplo
-      markdown-oxide
-      marksman
-      nixd
-      deno
-      alejandra
-      vscode-langservers-extracted
-      fish-lsp
-      tailwindcss-language-server
-      gopls
-      golangci-lint-langserver
-      tinymist
-      delve
-      lldb
-      rust-analyzer
-      # nil
-      haskell-language-server
-      neocmakelsp
-      jdt-language-server
-      zls
-    ]
-  );
+  runtimeInputs = [
+    nixfmt-rfc-style
+    idris2Packages.idris2Lsp
+    lua-language-server
+    bash-language-server
+    shfmt
+    hurl
+    cmake-language-server
+    kdlfmt
+    rustfmt
+    clang-tools
+    libxml2
+    typstyle
+    pyright
+    ruff
+    gotools
+    yaml-language-server
+    taplo
+    markdown-oxide
+    marksman
+    nixd
+    deno
+    alejandra
+    vscode-langservers-extracted
+    fish-lsp
+    tailwindcss-language-server
+    gopls
+    golangci-lint-langserver
+    tinymist
+    delve
+    lldb
+    rust-analyzer
+    # nil
+    haskell-language-server
+    neocmakelsp
+    jdt-language-server
+    zls
+  ];
 in
-  pkgs.symlinkJoin {
+  symlinkJoin {
     name = "helix-wrapped";
     paths = [helix];
     inherit (helix) meta;
     buildInputs = [
-      pkgs.makeWrapper
+      makeWrapper
     ];
     postBuild = ''
       wrapProgram $out/bin/hx \
