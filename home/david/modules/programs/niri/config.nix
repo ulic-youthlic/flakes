@@ -507,6 +507,10 @@ in
           app-id = "^org\\.telegram\\.desktop$";
           title = "Media viewer";
         })
+        (match {
+          app-id = "^QQ$";
+          title = "图片查看器";
+        })
         (leaf "open-floating" true)
         (leaf "open-fullscreen" false)
       ])
