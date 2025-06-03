@@ -28,5 +28,6 @@
     ./obs.nix
     ./sudo-rs.nix
     ./garage.nix
+    ./nixvim
   ];
 }

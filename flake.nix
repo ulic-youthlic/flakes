@@ -178,5 +178,11 @@
       owner = "AtaraxiaSjel";
       repo = "nur";
     };
+
+    nixvim = {
+      type = "github";
+      owner = "nix-community";
+      repo = "nixvim";
+    };
   };
 }

@@ -12,6 +12,7 @@
     disko.nixosModules.disko
     lix-module.nixosModules.default
     chaotic.nixosModules.default
+    nixvim.nixosModules.nixvim
 
     ./..
   ];
