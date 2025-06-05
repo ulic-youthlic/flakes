@@ -29,5 +29,6 @@
     ./supergfxd.nix
     ./radicle.nix
     ./wshowkeys.nix
+    ./bash.nix
   ];
 }

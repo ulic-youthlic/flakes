@@ -37,6 +37,7 @@
     hardware.asus.enable = true;
     i18n.enable = true;
     programs = {
+      bash.enable = true;
       guix.enable = true;
       dae.enable = true;
       openssh.enable = true;
