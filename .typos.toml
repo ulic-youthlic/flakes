@@ -4,9 +4,10 @@ ignore-parent = true
 ignore-hidden = false
 ignore-files = true
 ignore-vcs = true
-extend-exclude = ["secrets/", ".git/", "public-key.txt"]
+extend-exclude = ["secrets/*", ".git/*", "**/public-key.txt"]
 
 [default]
+binary = false
 check-filename = true
 check-file = true
 unicode = true

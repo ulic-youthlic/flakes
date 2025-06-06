@@ -1,10 +1,11 @@
 {
   pkgs,
   inputs,
+  rootPath,
   ...
 }: let
   srcs = pkgs.callPackage ./_sources/generated.nix {};
-  callPackage = pkgs.lib.callPackageWith (pkgs // {inherit inputs srcs callPackage;});
+  callPackage = pkgs.lib.callPackageWith (pkgs // {inherit inputs srcs callPackage rootPath;});
 in
   {
     pinentry-selector = callPackage ./pinentry-selector.nix {};
@@ -13,7 +14,7 @@ in
     rime-ice = callPackage ./rime-ice.nix {};
     dioxionary = callPackage ./dioxionary.nix {};
     spotifyx = callPackage ./spotifyx.nix {};
-    radicle-explorer = callPackage ./radicle-explorer {};
+    radicle-explorer = callPackage ./radicle-explorer.nix {};
     TrackersListCollection = callPackage ./TrackersListCollection.nix {};
     wshowkeys-mao = callPackage ./wshowkeys-mao.nix {};
     OuterWildsTextAdventure = callPackage ./OuterWildsTextAdventure.nix {};

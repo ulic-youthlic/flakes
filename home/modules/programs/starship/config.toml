@@ -51,7 +51,6 @@ repo_root_style = "bold green"
 use_os_path_sep = false
 read_only = " 󰌾"
 
-
 [aws]
 symbol = "  "
 
@@ -210,4 +209,3 @@ symbol = " "
 
 [zig]
 symbol = " "
-
