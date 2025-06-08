@@ -2,7 +2,6 @@
   inherit (inputs.niri-flake.lib.kdl) node leaf plain flag;
 in {
   david.programs.niri = {
-    DISPLAY = ":1";
     extraConfig = let
       output = node "output";
     in [
@@ -36,33 +35,5 @@ in {
         (leaf "transform" "normal")
       ])
     ];
-    # settings = {
-    #   outputs = {
-    #     DP-1 = {
-    #       mode = {
-    #         width = 2560;
-    #         height = 1440;
-    #         refresh = 169.900;
-    #       };
-    #       scale = 1;
-    #       position = {
-    #         x = 0;
-    #         y = 0;
-    #       };
-    #     };
-    #     eDP-1 = {
-    #       mode = {
-    #         width = 2560;
-    #         height = 1440;
-    #         refresh = 165.003;
-    #       };
-    #       scale = 1.5;
-    #       position = {
-    #         x = 2560;
-    #         y = 0;
-    #       };
-    #     };
-    #   };
-    # };
   };
 }

@@ -23,6 +23,7 @@ in {
       cosmic-files
       kdePackages.qt6ct
       libsForQt5.qt5ct
+      xwayland-satellite-unstable
     ];
     xdg = {
       terminal-exec = {

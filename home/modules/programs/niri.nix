@@ -12,9 +12,6 @@ in {
   options = {
     youthlic.programs.niri = {
       enable = lib.mkEnableOption "niri";
-      # settings = lib.mkOption {
-      #   type = lib.types.attrs;
-      # };
       config = lib.mkOption {
         type = inputs.niri-flake.lib.kdl.types.kdl-document;
       };
@@ -30,7 +27,6 @@ in {
           (with pkgs; [
             swaynotificationcenter
             swaybg
-            xwayland-satellite
             kdePackages.polkit-kde-agent-1
             wl-clipboard
             cliphist
@@ -71,7 +67,6 @@ in {
           swaylock.enable = true;
         };
         programs.niri = {
-          # settings = cfg.settings;
           config = cfg.config;
           package = niri;
         };

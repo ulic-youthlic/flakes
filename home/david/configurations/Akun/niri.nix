@@ -2,7 +2,6 @@
   inherit (inputs.niri-flake.lib.kdl) node leaf plain flag;
 in {
   david.programs.niri = {
-    DISPLAY = ":1";
     extraConfig = let
       output = node "output";
     in [

@@ -4,7 +4,6 @@
   lib,
   inputs,
   osConfig ? null,
-  DISPLAY,
   ...
 }: let
   inherit (lib) getExe getExe';
@@ -33,7 +32,6 @@
   waybar = getExe config.programs.waybar.package;
   swaync = getExe config.services.swaync.package;
   fcitx5 = lib.getExe' osConfig.i18n.inputMethod.package "fcitx5";
-  xwayland-satellite = lib.getExe pkgs.xwayland-satellite;
   sleep = lib.getExe' pkgs.coreutils "sleep";
 
   polkit-kde-agent = getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-agent";
@@ -392,7 +390,6 @@ in
       (spawn-at-startup [swaybg "-i" "${config.home.homeDirectory}/wallpaper/01.png"])
       (spawn-at-startup [polkit-kde-agent])
       (spawn-at-startup [wl-paste "--watch" cliphist "store"])
-      (spawn-at-startup [xwayland-satellite "${DISPLAY}"])
       (spawn-at-startup [sh "-c" "${sleep} 10; ${fcitx5} --replace"])
       (plain "input" [
         (plain "touchpad" [
@@ -446,9 +443,6 @@ in
             epsilon = 0.0001;
           })
         ])
-      ])
-      (plain "environment" [
-        (leaf "DISPLAY" DISPLAY)
       ])
       (plain "overview" [
         ])
