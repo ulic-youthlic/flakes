@@ -6,6 +6,7 @@
   cfg = config.youthlic.programs.starship;
   fish-cfg = config.youthlic.programs.fish;
   bash-cfg = config.youthlic.programs.bash;
+  ion-cfg = config.youthlic.programs.ion;
 in {
   options = {
     youthlic.programs.starship = {
@@ -42,6 +43,9 @@ in {
         bleopt prompt_ps1_final='$(starship module character)'
         bleopt prompt_rps1_final='$(starship module time)'
       '';
+    })
+    (lib.mkIf (cfg.enable && ion-cfg.enable) {
+      programs.starship.enableIonIntegration = true;
     })
   ];
 }

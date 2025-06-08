@@ -30,5 +30,6 @@
     ./zoxide.nix
     ./fzf.nix
     ./eza.nix
+    ./ion.nix
   ];
 }
