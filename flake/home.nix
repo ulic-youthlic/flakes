@@ -1,17 +1,13 @@
 {
-  outputs,
-  rootPath,
-}: {
   lib,
   inputs,
+  self,
   ...
 }: let
+  rootPath = ./..;
+  inherit (self) outputs;
   homeModules =
-    {
-      default = import "${toString rootPath}/home/modules";
-      extra = import "${toString rootPath}/home/extra";
-    }
-    // (
+    (
       (rootPath + "/home")
       |> builtins.readDir
       |> lib.filterAttrs (key: value: value == "directory")
@@ -23,13 +19,13 @@
           ]
       )
       |> builtins.attrNames
-      |> map (name: {
-        name = name;
-        value = import "${toString rootPath}/home/${name}/modules";
-      })
-      |> builtins.listToAttrs
-    );
-  mkHomeConfig = {
+      |> (with lib; flip genAttrs (name: import (rootPath + "/home/${name}/modules")))
+    )
+    // {
+      default = import "${toString rootPath}/home/modules";
+      extra = import "${toString rootPath}/home/extra";
+    };
+  makeHomeConfiguration = {
     hostName,
     unixName ? "david",
     system ? "x86_64-linux",
@@ -37,10 +33,12 @@
     home-manager ? inputs.home-manager,
   }: {
     "${unixName}@${hostName}" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."${system}";
+      pkgs = import nixpkgs {
+        inherit system;
+      };
       modules =
         [
-          "${toString rootPath}/home/${unixName}/configurations/${hostName}"
+          (rootPath + "/home/${unixName}/configurations/${hostName}")
         ]
         ++ (with homeModules; [
           default
@@ -67,7 +65,7 @@ in {
       [
         # Hostname
       ]
-      |> map (hostName: mkHomeConfig {inherit hostName;})
+      |> map (hostName: makeHomeConfiguration {inherit hostName;})
     );
     inherit homeModules;
   };

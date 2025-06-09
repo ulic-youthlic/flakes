@@ -1,9 +1,12 @@
-{outputs}: {
+{
   lib,
   inputs,
   flake-parts-lib,
+  self,
   ...
 }: let
+  inherit (self) outputs;
+  inherit (inputs) deploy-rs;
   mkDeployNode = {
     hostName,
     unixName ? "deploy",
@@ -18,7 +21,7 @@
         system = {
           user = "root";
           path =
-            inputs.deploy-rs.lib."${system}".activate.nixos
+            deploy-rs.lib."${system}".activate.nixos
             outputs.nixosConfigurations."${hostName}";
         };
       };

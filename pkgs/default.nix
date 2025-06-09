@@ -1,11 +1,13 @@
 {
-  pkgs,
   inputs,
   rootPath,
+  callPackages,
+  lib,
+  pkgs,
   ...
 }: let
-  srcs = pkgs.callPackage ./_sources/generated.nix {};
-  callPackage = pkgs.lib.callPackageWith (pkgs // {inherit inputs srcs callPackage rootPath;});
+  srcs = callPackages ./_sources/generated.nix {};
+  callPackage = lib.callPackageWith (pkgs // {inherit inputs srcs callPackage rootPath;});
 in
   {
     pinentry-selector = callPackage ./pinentry-selector.nix {};
@@ -28,5 +30,5 @@ in
     let
       firefox-addons = callPackage "${inputs.nur-rycee}/pkgs/firefox-addons/default.nix" {};
     in
-      pkgs.lib.genAttrs ["immersive-translate" "tridactyl"] (name: firefox-addons."${name}")
+      lib.genAttrs ["immersive-translate" "tridactyl"] (name: firefox-addons."${name}")
   )
