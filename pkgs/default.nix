@@ -19,6 +19,7 @@ in
     wshowkeys-mao = callPackage ./wshowkeys-mao.nix {};
     OuterWildsTextAdventure = callPackage ./OuterWildsTextAdventure.nix {};
     QQ = callPackage ./QQ.nix {};
+    editor-runtime = callPackage ./editor-runtime.nix {};
 
     noto-serif-cjk = callPackage ./noto-serif-cjk.nix {};
     noto-sans-cjk = callPackage ./noto-sans-cjk.nix {};
