@@ -4,37 +4,37 @@ Hey, you. This is my nixos configurations.
 
 ---
 
-| Machine   | Users |
-| --------- | ----- |
-| Tytonidae | david |
-| Akun      | david |
-| Cape      | alice |
+|  Machine  | Users |  OS   |
+| :-------: | :---: | :---: |
+| Tytonidae | david | NixOS |
+|   Akun    | david | NixOS |
+|   Cape    | alice | NixOS |
 
 ---
 
 - david@Tytonidae
 
-| Specialisation | DE / WM | Shell       | Editor      | Terminal | Launcher | Browser | DM               |
-| -------------- | ------- | ----------- | ----------- | -------- | -------- | ------- | ---------------- |
-| default        | niri    | fish + bash | helix + zed | ghostty  | fuzzel   | firefox | greetd + regreet |
-| kde            | kde     | fish + bash | helix + zed | ghostty  | kde run  | firefox | sddm             |
+| Specialisation | DE / WM |    Shell    |   Editor    | Terminal | Launcher | Browser |        DM        |
+| :------------: | :-----: | :---------: | :---------: | :------: | :------: | :-----: | :--------------: |
+|    default     |  niri   | fish + bash | helix + zed | ghostty  |  fuzzel  | firefox | greetd + regreet |
+|      kde       |   kde   | fish + bash | helix + zed | ghostty  | kde run  | firefox |       sddm       |
 
 - david@Akun
 
-| Specialisation | DE / WM | Shell       | Editor      | Terminal | Launcher | Browser | DM               |
-| -------------- | ------- | ----------- | ----------- | -------- | -------- | ------- | ---------------- |
-| default        | niri    | fish + bash | helix + zed | ghostty  | fuzzel   | firefox | greetd + regreet |
+| Specialisation | DE / WM |    Shell    |   Editor    | Terminal | Launcher | Browser |        DM        |
+| :------------: | :-----: | :---------: | :---------: | :------: | :------: | :-----: | :--------------: |
+|    default     |  niri   | fish + bash | helix + zed | ghostty  |  fuzzel  | firefox | greetd + regreet |
 
 - alice@Cape
 
-| Specialisation | DE / WM | Shell       | Editor | Terminal | Launcher | Browser | DM |
-| -------------- | ------- | ----------- | ------ | -------- | -------- | ------- | -- |
-| default        | -       | fish + bash | helix  | -        | -        | -       | -  |
+| Specialisation | DE / WM |    Shell    | Editor | Terminal | Launcher | Browser | DM  |
+| :------------: | :-----: | :---------: | :----: | :------: | :------: | :-----: | :-: |
+|    default     |    -    | fish + bash | helix  |    -     |    -     |    -    |  -  |
 
 ## FlakE OutputS and StructurE
 
 | `outputs` field                           | description                                                                 | source                                   |
-| ----------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------- |
+| :---------------------------------------- | :-------------------------------------------------------------------------- | :--------------------------------------- |
 | `packages`                                | packages imported or wrapped from elsewhere                                 | ./pkgs                                   |
 | `overlays.modifications`                  | the overlays modify `<nixpkgs>`                                             | ./overlays/modifications                 |
 | `overlays.additions`                      | the ovelrays add packages in `<nixpkgs>`                                    | ./overlays/additions                     |
