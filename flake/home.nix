@@ -63,17 +63,12 @@
   };
 in {
   flake = {
-    homeConfigurations =
-      lib.foldr (a: b: a // b) {} (
-        map (hostName: mkHomeConfig {inherit hostName;}) [
-          "Tytonidae"
-          "Akun"
-        ]
-      )
-      // mkHomeConfig {
-        hostName = "Cape";
-        unixName = "alice";
-      };
+    homeConfigurations = lib.foldr (a: b: a // b) {} (
+      [
+        # Hostname
+      ]
+      |> map (hostName: mkHomeConfig {inherit hostName;})
+    );
     inherit homeModules;
   };
 }
