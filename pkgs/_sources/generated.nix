@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "313c18fc1ae756ea99ae6275e4454ccff95d9b5d";
+    version = "ee6c8a19de97a244cf33f618678fe89bd0d3e38c";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "313c18fc1ae756ea99ae6275e4454ccff95d9b5d";
+      rev = "ee6c8a19de97a244cf33f618678fe89bd0d3e38c";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-yCcWx/tnz7JjHs6wniuy6owqIMjZrOS13HBz4MgtiAg=";
+      sha256 = "sha256-KaVR91W/2XbYIxFrE8aKvpJTE10Mfb25ZlMOR2dRL5M=";
     };
-    date = "2025-05-31";
+    date = "2025-06-09";
   };
   dioxionary = {
     pname = "dioxionary";
@@ -92,27 +92,27 @@
   };
   rime-ice = {
     pname = "rime-ice";
-    version = "2e0d8d9a3ba292ecca3f6dccb5719a06764917ca";
+    version = "b86e6147d68c229b45bb1f2a593f8b76155e964d";
     src = fetchFromGitHub {
       owner = "iDvel";
       repo = "rime-ice";
-      rev = "2e0d8d9a3ba292ecca3f6dccb5719a06764917ca";
+      rev = "b86e6147d68c229b45bb1f2a593f8b76155e964d";
       fetchSubmodules = false;
-      sha256 = "sha256-v+j2Bp7+OEbiWImf0/6YbZTTHlaORvtK2foXTfjZW9s=";
+      sha256 = "sha256-ttGHvxv6ZImn6xBifsL4bc+7Q/RvarwPwegx9pT+Hsg=";
     };
-    date = "2025-05-29";
+    date = "2025-06-06";
   };
   spotx = {
     pname = "spotx";
-    version = "5e9b08f91e55c210bbc64715b4ad698186b3c06b";
+    version = "b1de24ec4c23c45da373dcb64a44e372253a0c16";
     src = fetchFromGitHub {
       owner = "SpotX-Official";
       repo = "SpotX-Bash";
-      rev = "5e9b08f91e55c210bbc64715b4ad698186b3c06b";
+      rev = "b1de24ec4c23c45da373dcb64a44e372253a0c16";
       fetchSubmodules = false;
-      sha256 = "sha256-34lqV5p44Iqn2v6UJtVTrxwkHY7JXJueItBu/AhXo6A=";
+      sha256 = "sha256-bIfqqZLMboA5GKxz9EVv8GZQRVejheHw2nLTBS6AKyE=";
     };
-    date = "2025-05-24";
+    date = "2025-05-31";
   };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";
@@ -131,14 +131,14 @@
   };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";
-    version = "24364e5f40b7ccbed728fe88757f559d84fae234";
+    version = "bf18fba01eafd7659e242066abca0fd4938bf417";
     src = fetchFromGitHub {
       owner = "DreamMaoMao";
       repo = "wshowkeys";
-      rev = "24364e5f40b7ccbed728fe88757f559d84fae234";
+      rev = "bf18fba01eafd7659e242066abca0fd4938bf417";
       fetchSubmodules = false;
-      sha256 = "sha256-I1nnwaE1Wr1b5EzQ4CP5sDCY8ZBaxP2FYZdIsKcVXL4=";
+      sha256 = "sha256-KTtrmICFXXYBcPcGfZ32/UjQAEHSXF79PvSLCKbuCPw=";
     };
-    date = "2025-02-03";
+    date = "2025-06-04";
   };
 }
