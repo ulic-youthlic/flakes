@@ -17,7 +17,6 @@
     in {
       firefox.enable = true;
       fuzzel.enable = true;
-      helix.enable = true;
       gpg.enable = true;
       git = {
         inherit name signKey;
@@ -48,6 +47,7 @@
     wallpaper.enable = true;
     accounts.email.enable = true;
     programs = {
+      helix.enable = true;
       openssh.enable = true;
     };
   };

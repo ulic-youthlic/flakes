@@ -20,7 +20,6 @@
       rustypaste-cli.enable = true;
       firefox.enable = true;
       fuzzel.enable = true;
-      helix.enable = true;
       gpg.enable = true;
       jujutsu = {
         enable = true;
@@ -54,6 +53,7 @@
     accounts.email.enable = true;
     programs = {
       openssh.enable = true;
+      helix.enable = true;
     };
   };
 

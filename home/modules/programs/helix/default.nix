@@ -28,14 +28,9 @@
     stylix.targets.helix.enable = false;
     programs.helix = lib.mkIf cfg.enable {
       enable = true;
-      package = outputs.packages."${pkgs.system}".helix;
       defaultEditor = true;
       extraPackages = cfg.extraPackages;
-      settings = let
-        config-file = builtins.readFile ./config.toml;
-        config = builtins.fromTOML config-file;
-      in
-        config;
+      settings = ./config.toml |> builtins.readFile |> builtins.fromTOML;
       languages = {
         language-server = {
           neocmakelsp = {
