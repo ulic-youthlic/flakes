@@ -8,7 +8,7 @@ in
     ./spotifyx.nix
     ./radicle-explorer.nix
     ./wshowkeys.nix
-    ./QQ.nix
+    # ./QQ.nix
     ./helix.nix
     ./cliphist.nix
   ]
