@@ -22,6 +22,7 @@ in
     OuterWildsTextAdventure = callPackage ./OuterWildsTextAdventure.nix {};
     QQ = callPackage ./QQ.nix {};
     editor-runtime = callPackage ./editor-runtime.nix {};
+    cliphist = callPackage ./cliphist.nix {};
 
     noto-serif-cjk = callPackage ./noto-serif-cjk.nix {};
     noto-sans-cjk = callPackage ./noto-sans-cjk.nix {};

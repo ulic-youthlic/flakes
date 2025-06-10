@@ -28,6 +28,18 @@
     };
     date = "2025-06-09";
   };
+  cliphist = {
+    pname = "cliphist";
+    version = "f49bd905cff72d32d62c209224353865436f9a13";
+    src = fetchFromGitHub {
+      owner = "sentriz";
+      repo = "cliphist";
+      rev = "f49bd905cff72d32d62c209224353865436f9a13";
+      fetchSubmodules = false;
+      sha256 = "sha256-waD4AIAAlorW+UBvHKFc5dm/CqP0Fw3pygYqPX5cYNc=";
+    };
+    date = "2025-06-07";
+  };
   dioxionary = {
     pname = "dioxionary";
     version = "4db80d458ff7494967c94ebb1db596abba0775b2";
