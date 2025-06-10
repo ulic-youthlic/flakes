@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "ee6c8a19de97a244cf33f618678fe89bd0d3e38c";
+    version = "01e578ea12a7f00d989dfaf13c5f43875f1ff853";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "ee6c8a19de97a244cf33f618678fe89bd0d3e38c";
+      rev = "01e578ea12a7f00d989dfaf13c5f43875f1ff853";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-KaVR91W/2XbYIxFrE8aKvpJTE10Mfb25ZlMOR2dRL5M=";
+      sha256 = "sha256-npX1g1rvprXLEwkjE7S3hfpUCdmEnolSq4eLki9pvag=";
     };
-    date = "2025-06-09";
+    date = "2025-06-10";
   };
   cliphist = {
     pname = "cliphist";
@@ -104,15 +104,15 @@
   };
   rime-ice = {
     pname = "rime-ice";
-    version = "b86e6147d68c229b45bb1f2a593f8b76155e964d";
+    version = "5b94b7df626bffedc3fe05ee71511aa0272bfc36";
     src = fetchFromGitHub {
       owner = "iDvel";
       repo = "rime-ice";
-      rev = "b86e6147d68c229b45bb1f2a593f8b76155e964d";
+      rev = "5b94b7df626bffedc3fe05ee71511aa0272bfc36";
       fetchSubmodules = false;
-      sha256 = "sha256-ttGHvxv6ZImn6xBifsL4bc+7Q/RvarwPwegx9pT+Hsg=";
+      sha256 = "sha256-RK5togo9YEQVSUL1bpkcsHmzK1V8IMe0adFB1T2hVoI=";
     };
-    date = "2025-06-06";
+    date = "2025-06-09";
   };
   spotx = {
     pname = "spotx";
