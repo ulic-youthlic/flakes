@@ -13,7 +13,13 @@
 in
   cliphist.overrideAttrs (final: prev: {
     inherit src;
-    version = "unstable-${date}-git${version}";
+    version =
+      if prev.version != "0.6.1"
+      then
+        throw ''
+          Please remove <pkgs/cliphist.nix>
+        ''
+      else "0-unstable-${date}-git${version}";
     vendorHash = "sha256-No8d9ztepBO+fgF2XkEf/tyCPDAD57rBkzA8iVyNUmw=";
     buildInputs =
       (prev.buildInputs or [])
