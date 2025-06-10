@@ -72,36 +72,6 @@ in {
               "application/java-archive"
               "application/java-vm"
             ];
-            mine_override = [
-              {
-                mime = "image/jpeg";
-                regex = "^.*\\.jpg$";
-              }
-              {
-                mime = "image/png";
-                regex = "^.*\\.png$";
-              }
-              {
-                mime = "image/svg+xml";
-                regex = "^.*\\.svg$";
-              }
-              {
-                mime = "video/webm";
-                regex = "^.*\\.webm$";
-              }
-              {
-                mime = "video/x-matroska";
-                regex = "^.*\\.mkv$";
-              }
-              {
-                mime = "application/octet-stream";
-                regex = "^.*\\.bin$";
-              }
-              {
-                mime = "text/plain";
-                regex = "^.*\\.(log|txt|diff|sh|rs|toml|py|json|yaml|yml|ts|js|go|c|C|c++|cpp|cxx|patch|toml|bash|fish)$";
-              }
-            ];
           };
           landing_page = {
             content_type = "text/plain; charset=utf-8";
