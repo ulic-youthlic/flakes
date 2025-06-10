@@ -391,8 +391,8 @@ in
       (spawn-at-startup [swaybg "-i" "${config.home.homeDirectory}/wallpaper/01.png"])
       (spawn-at-startup [polkit-kde-agent])
       (spawn-at-startup [wl-paste "--watch" cliphist "store"])
-      (spawn-at-startup [sh "-c" "${sleep} 10; ${fcitx5} --replace"])
       (spawn-at-startup [wl-clip-persist "--clipboard" "regular"])
+      (spawn-at-startup [fcitx5 "--replace"])
       (plain "input" [
         (plain "touchpad" [
           (leaf "click-method" "clickfinger")
