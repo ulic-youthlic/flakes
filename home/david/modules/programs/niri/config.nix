@@ -39,8 +39,8 @@
   swaybg = getExe pkgs.swaybg;
   ghostty = getExe config.programs.ghostty.package;
   wl-paste = getExe' pkgs.wl-clipboard "wl-paste";
-  wl-copy = getExe' pkgs.wl-clipboard "wl-copy";
   cliphist = getExe' pkgs.cliphist "cliphist";
+  cliphist-fuzzel-img = getExe' pkgs.cliphist "cliphist-fuzzel-img";
 in
   (
     let
@@ -48,7 +48,7 @@ in
     in [
       (plain "binds" [
         (plain "Mod+V" [
-          (spawn [sh "-c" "${cliphist} list | ${fuzzel} --dmenu | ${cliphist} decode | ${wl-copy}"])
+          (spawn [cliphist-fuzzel-img])
         ])
         (plain "Mod+Shift+P" [
           (spawn [swaylock "--screenshots" "--clock" "--indicator" "--indicator-radius" "100" "--indicator-thickness" "7" "--effect-blur" "7x5" "--effect-vignette" "0.5:0.5" "--grace" "2" "--fade-in" "0.5"])
