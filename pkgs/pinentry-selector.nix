@@ -1,7 +1,10 @@
-{pkgs}:
-pkgs.writeShellApplication {
+{
+  writeShellApplication,
+  pinentry-all,
+}:
+writeShellApplication {
   name = "pinentry";
-  runtimeInputs = with pkgs; [
+  runtimeInputs = [
     pinentry-all
   ];
   text = ''

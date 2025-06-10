@@ -1,16 +1,20 @@
 {
-  pkgs,
+  spotify,
+  unzip,
+  zip,
+  perl,
+  symlinkJoin,
   srcs,
 }: let
   inherit (srcs) spotx;
-  spotifyx = pkgs.spotify.overrideAttrs (final: prev: {
+  spotifyx = spotify.overrideAttrs (final: prev: {
     nativeBuildInputs =
       prev.nativeBuildInputs
-      ++ (with pkgs; [
+      ++ [
         unzip
         zip
         perl
-      ]);
+      ];
     spotx = spotx.src;
     postUnpack = ''
       cp $spotx/spotx.sh ./spotx.sh
@@ -22,7 +26,7 @@
     '';
   });
 in
-  pkgs.symlinkJoin {
+  symlinkJoin {
     name = "spotifyx";
     paths = [spotifyx];
   }

@@ -1,8 +1,8 @@
 {
-  pkgs,
+  radicle-explorer,
   rootPath,
 }:
-(pkgs.radicle-explorer.withConfig {
+(radicle-explorer.withConfig {
   preferredSeeds = [
     {
       hostname = "seed.youthlic.fun";
