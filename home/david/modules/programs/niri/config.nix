@@ -41,6 +41,7 @@
   wl-paste = getExe' pkgs.wl-clipboard "wl-paste";
   cliphist = getExe' pkgs.cliphist "cliphist";
   cliphist-fuzzel-img = getExe' pkgs.cliphist "cliphist-fuzzel-img";
+  wl-clip-persist = getExe pkgs.wl-clip-persist;
 in
   (
     let
@@ -391,6 +392,7 @@ in
       (spawn-at-startup [polkit-kde-agent])
       (spawn-at-startup [wl-paste "--watch" cliphist "store"])
       (spawn-at-startup [sh "-c" "${sleep} 10; ${fcitx5} --replace"])
+      (spawn-at-startup [wl-clip-persist "--clipboard" "regular"])
       (plain "input" [
         (plain "touchpad" [
           (leaf "click-method" "clickfinger")
