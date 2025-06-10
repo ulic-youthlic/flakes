@@ -19,7 +19,6 @@
     users.deploy.enable = true;
     containers.interface = "ens3";
     programs = {
-      transfer-sh.enable = true;
       rustypaste = {
         enable = true;
         url = "https://paste.youthlic.fun";
