@@ -18,6 +18,9 @@ in {
           logLevel = "trace";
         };
         enable = true;
+        flags = [
+          "--disable-up-arrow"
+        ];
         settings = {
           auto_sync = true;
           update_check = false;
