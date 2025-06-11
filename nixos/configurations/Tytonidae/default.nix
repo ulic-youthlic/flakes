@@ -97,9 +97,10 @@
 
   environment.variables.EDITOR = "hx";
   services.dbus.implementation = "broker";
+  services.scx.enable = true;
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_cachyos-lto;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     initrd.systemd.enable = true;
