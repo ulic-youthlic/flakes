@@ -26,13 +26,11 @@
     plain
     ;
 
-  sh = getExe' config.programs.bash.package "sh";
   swaylock = getExe config.programs.swaylock.package;
   fuzzel = getExe config.programs.fuzzel.package;
   waybar = getExe config.programs.waybar.package;
   swaync = getExe config.services.swaync.package;
   fcitx5 = lib.getExe' osConfig.i18n.inputMethod.package "fcitx5";
-  sleep = lib.getExe' pkgs.coreutils "sleep";
 
   polkit-kde-agent = getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-agent";
   wpctl = getExe' pkgs.wireplumber "wpctl";
