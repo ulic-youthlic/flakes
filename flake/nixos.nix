@@ -12,7 +12,7 @@ in {
   flake = {
     nixosModules.default = defaultNixosModule;
     nixosConfigurations = let
-      makeNixConfiguration = hostName:
+      makeNixosConfiguration = hostName:
         nixpkgs.lib.nixosSystem {
           modules =
             [defaultNixosModule]
@@ -31,7 +31,7 @@ in {
       ]
       |> (
         with lib;
-          flip genAttrs makeNixConfiguration
+          flip genAttrs makeNixosConfiguration
       );
   };
 }
