@@ -66,7 +66,7 @@
   services.scx.enable = true;
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos-lto;
+    kernelPackages = pkgs.linuxPackages_cachyos;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
