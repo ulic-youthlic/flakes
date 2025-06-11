@@ -170,5 +170,11 @@
       owner = "numtide";
       repo = "treefmt-nix";
     };
+
+    chaotic = {
+      type = "github";
+      owner = "chaotic-cx";
+      repo = "nyx";
+    };
   };
 }
