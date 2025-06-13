@@ -23,6 +23,7 @@ in {
     devShells.default = pkgs.mkShell {
       packages = with pkgs; [
         nixd
+        nil
         typos
         typos-lsp
         just

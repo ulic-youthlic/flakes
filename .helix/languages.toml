@@ -1,6 +1,6 @@
 [[language]]
 name = "nix"
-language-servers = ["nixd", "typos-lsp"]
+language-servers = ["nixd", "typos-lsp", "nil"]
 
 [[language]]
 name = "markdown"

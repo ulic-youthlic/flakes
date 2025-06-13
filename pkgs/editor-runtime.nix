@@ -31,7 +31,7 @@
   delve,
   lldb,
   rust-analyzer,
-  # nil,
+  nil,
   haskell-language-server,
   neocmakelsp,
   jdt-language-server,
@@ -71,7 +71,7 @@ symlinkJoin {
     delve
     lldb
     rust-analyzer
-    # nil
+    nil
     haskell-language-server
     neocmakelsp
     jdt-language-server

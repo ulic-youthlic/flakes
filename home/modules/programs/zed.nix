@@ -53,7 +53,7 @@ in {
       userSettings = {
         languages = {
           Nix = {
-            language_servers = ["nixd" "!nil"];
+            language_servers = ["nixd" "nil"];
             formatter = {
               external = {
                 command = "alejandra";
