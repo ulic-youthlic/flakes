@@ -19,7 +19,6 @@ in {
         "asciidoc"
         "basher"
         "cargo-tom"
-        "codebook"
         "deno"
         "docker-compose"
         "dockerfile"
@@ -46,6 +45,7 @@ in {
         "typst"
         "xml"
         "zig"
+        "typos"
         "ty"
         "ruff"
       ];
@@ -109,7 +109,7 @@ in {
         theme = "Gruvbox Dark Hard";
         vim_mode = true;
         vim = {
-          default_mode = "helix_normal";
+          # default_mode = "helix_normal";
         };
       };
     };
