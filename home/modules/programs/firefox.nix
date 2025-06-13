@@ -37,6 +37,14 @@ in {
           immersive-translate
           tridactyl
         ];
+        settings = {
+          "sidebar.verticalTabs" = true;
+          "sidebar.visibility" = "expand-on-hover";
+          "sidebar.main.tools" = "syncedtabs,history,bookmarks,aichat";
+          "sidebar.animation.expand-on-hover.duration-ms" = 150;
+          "sidebar.revamp" = true;
+          "browser.tabs.closeTabByDblclick" = true;
+        };
         search = {
           force = true;
           default = "ddg";
