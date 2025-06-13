@@ -114,6 +114,7 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+  nix = {settings = {system-features = ["gccarch-x86-64-v3"];};};
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
