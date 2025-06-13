@@ -46,12 +46,38 @@ in {
         "typst"
         "xml"
         "zig"
+        "ty"
+        "ruff"
       ];
       extraPackages = with pkgs; [
         editor-runtime
       ];
       userSettings = {
+        lsp = {
+          ty = {
+            binary = {
+              path = lib.getExe pkgs.ty;
+              arguments = ["server"];
+            };
+          };
+        };
         languages = {
+          Python = {
+            language_servers = ["ty" "ruff" "pyright"];
+            formatter = [
+              {
+                language_server = {
+                  name = "ruff";
+                };
+              }
+              {
+                code_actions = {
+                  "source.fixAll.ruff" = true;
+                  "source.organizeImports.ruff" = true;
+                };
+              }
+            ];
+          };
           Nix = {
             language_servers = ["nixd" "nil"];
             formatter = {

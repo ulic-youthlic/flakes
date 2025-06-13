@@ -36,6 +36,7 @@
   neocmakelsp,
   jdt-language-server,
   zls,
+  ty,
 }:
 symlinkJoin {
   name = "editor-runtime";
@@ -76,5 +77,8 @@ symlinkJoin {
     neocmakelsp
     jdt-language-server
     zls
+    ty
   ];
+  postBuild = ''
+  '';
 }

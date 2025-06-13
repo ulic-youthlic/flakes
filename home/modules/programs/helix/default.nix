@@ -45,6 +45,12 @@
               "start"
             ];
           };
+          ty = {
+            command = "ty";
+            args = [
+              "server"
+            ];
+          };
         };
         language = [
           {
@@ -122,6 +128,7 @@
             language-servers = [
               "pyright"
               "ruff"
+              "ty"
             ];
           }
           {
