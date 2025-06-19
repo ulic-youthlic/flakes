@@ -64,24 +64,24 @@ in
           (flag "toggle-column-tabbed-display")
         ])
         (plain "Mod+Space" [
-          (spawn fuzzel)
+          (spawn [fuzzel])
         ])
-        (node "XF86AudioRaiseVolume" {allow-when-locked = true;} [
+        (node "XF86AudioRaiseVolume" [{allow-when-locked = true;}] [
           (spawn [wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"])
         ])
-        (node "XF86AudioLowerVolume" {allow-when-locked = true;} [
+        (node "XF86AudioLowerVolume" [{allow-when-locked = true;}] [
           (spawn [wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"])
         ])
-        (node "XF86AudioMute" {allow-when-locked = true;} [
+        (node "XF86AudioMute" [{allow-when-locked = true;}] [
           (spawn [wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "toggle"])
         ])
-        (node "XF86AudioMicMute" {allow-when-locked = true;} [
+        (node "XF86AudioMicMute" [{allow-when-locked = true;}] [
           (spawn [wpctl "set-volume" "@DEFAULT_AUDIO_SOURCE@" "toggle"])
         ])
         (plain "Mod+Q" [
           (flag "close-window")
         ])
-        (node "Mod+O" {repeat = false;} [
+        (node "Mod+O" [{repeat = false;}] [
           (flag "toggle-overview")
         ])
         (plain "Mod+Left" [
@@ -228,10 +228,10 @@ in
         (plain "Mod+Ctrl+I" [
           (flag "move-workspace-up")
         ])
-        (node "Mod+Shift+WheelScrollDown" {cooldown-ms = 150;} [
+        (node "Mod+Shift+WheelScrollDown" [{cooldown-ms = 150;}] [
           (flag "focus-workspace-down")
         ])
-        (node "Mod+Shift+WheelScrollUp" {cooldown-ms = 150;} [
+        (node "Mod+Shift+WheelScrollUp" [{cooldown-ms = 150;}] [
           (flag "focus-workspace-up")
         ])
         (plain "Mod+WheelScrollDown" [
@@ -241,58 +241,58 @@ in
           (flag "focus-column-left")
         ])
         (plain "Mod+1" [
-          (leaf "focus-workspace" 1)
+          (leaf "focus-workspace" [1])
         ])
         (plain "Mod+2" [
-          (leaf "focus-workspace" 2)
+          (leaf "focus-workspace" [2])
         ])
         (plain "Mod+3" [
-          (leaf "focus-workspace" 3)
+          (leaf "focus-workspace" [3])
         ])
         (plain "Mod+4" [
-          (leaf "focus-workspace" 4)
+          (leaf "focus-workspace" [4])
         ])
         (plain "Mod+5" [
-          (leaf "focus-workspace" 5)
+          (leaf "focus-workspace" [5])
         ])
         (plain "Mod+6" [
-          (leaf "focus-workspace" 6)
+          (leaf "focus-workspace" [6])
         ])
         (plain "Mod+7" [
-          (leaf "focus-workspace" 7)
+          (leaf "focus-workspace" [7])
         ])
         (plain "Mod+8" [
-          (leaf "focus-workspace" 8)
+          (leaf "focus-workspace" [8])
         ])
         (plain "Mod+9" [
-          (leaf "focus-workspace" 9)
+          (leaf "focus-workspace" [9])
         ])
         (plain "Mod+Shift+1" [
-          (leaf "move-column-to-workspace" 1)
+          (leaf "move-column-to-workspace" [1])
         ])
         (plain "Mod+Shift+2" [
-          (leaf "move-column-to-workspace" 2)
+          (leaf "move-column-to-workspace" [2])
         ])
         (plain "Mod+Shift+3" [
-          (leaf "move-column-to-workspace" 3)
+          (leaf "move-column-to-workspace" [3])
         ])
         (plain "Mod+Shift+4" [
-          (leaf "move-column-to-workspace" 4)
+          (leaf "move-column-to-workspace" [4])
         ])
         (plain "Mod+Shift+5" [
-          (leaf "move-column-to-workspace" 5)
+          (leaf "move-column-to-workspace" [5])
         ])
         (plain "Mod+Shift+6" [
-          (leaf "move-column-to-workspace" 6)
+          (leaf "move-column-to-workspace" [6])
         ])
         (plain "Mod+Shift+7" [
-          (leaf "move-column-to-workspace" 7)
+          (leaf "move-column-to-workspace" [7])
         ])
         (plain "Mod+Shift+8" [
-          (leaf "move-column-to-workspace" 8)
+          (leaf "move-column-to-workspace" [8])
         ])
         (plain "Mod+Shift+9" [
-          (leaf "move-column-to-workspace" 9)
+          (leaf "move-column-to-workspace" [9])
         ])
         (plain "Mod+F" [
           (flag "toggle-window-floating")
@@ -318,35 +318,35 @@ in
         (plain "Mod+Period" [
           (flag "expel-window-from-column")
         ])
-        (node "Mod+R" {repeat = false;} [
+        (node "Mod+R" [{repeat = false;}] [
           (flag "switch-preset-column-width")
         ])
-        (node "Mod+Shift+R" {repeat = false;} [
+        (node "Mod+Shift+R" [{repeat = false;}] [
           (flag "switch-preset-window-height")
         ])
         (plain "Mod+Ctrl+R" [
           (flag "reset-window-height")
         ])
-        (node "Mod+M" {repeat = false;} [
+        (node "Mod+M" [{repeat = false;}] [
           (flag "maximize-column")
         ])
-        (node "Mod+Shift+M" {repeat = false;} [
+        (node "Mod+Shift+M" [{repeat = false;}] [
           (flag "fullscreen-window")
         ])
         (plain "Mod+Z" [
           (flag "center-column")
         ])
-        (node "Mod+Minus" {repeat = false;} [
-          (leaf "set-column-width" "-10%")
+        (node "Mod+Minus" [{repeat = false;}] [
+          (leaf "set-column-width" ["-10%"])
         ])
-        (node "Mod+Equal" {repeat = false;} [
-          (leaf "set-column-width" "+10%")
+        (node "Mod+Equal" [{repeat = false;}] [
+          (leaf "set-column-width" ["+10%"])
         ])
-        (node "Mod+Shift+Minus" {repeat = false;} [
-          (leaf "set-window-height" "-10%")
+        (node "Mod+Shift+Minus" [{repeat = false;}] [
+          (leaf "set-window-height" ["-10%"])
         ])
-        (node "Mod+Shift+Equal" {repeat = false;} [
-          (leaf "set-window-height" "+10%")
+        (node "Mod+Shift+Equal" [{repeat = false;}] [
+          (leaf "set-window-height" ["+10%"])
         ])
         (plain "Print" [
           (flag "screenshot")
@@ -379,7 +379,7 @@ in
     let
       spawn-at-startup = leaf "spawn-at-startup";
     in [
-      (leaf "screenshot-path" "${config.xdg.userDirs.pictures}/screenshots/%Y-%m-%d_%H:%M:%S.png")
+      (leaf "screenshot-path" ["${config.xdg.userDirs.pictures}/screenshots/%Y-%m-%d_%H:%M:%S.png"])
       (plain "hotkey-overlay" [
         (flag "skip-at-startup")
       ])
@@ -393,55 +393,57 @@ in
       (spawn-at-startup [fcitx5 "--replace"])
       (plain "input" [
         (plain "touchpad" [
-          (leaf "click-method" "clickfinger")
+          (leaf "click-method" ["clickfinger"])
           (flag "dwt")
-          (leaf "scroll-method" "two-finger")
-          (leaf "tap-button-map" "left-right-middle")
+          (leaf "scroll-method" ["two-finger"])
+          (leaf "tap-button-map" ["left-right-middle"])
         ])
       ])
       (plain "cursor" [
-        (leaf "hide-after-inactive-ms" 3000)
+        (leaf "hide-after-inactive-ms" [3000])
         (flag "hide-when-typing")
       ])
       (plain "layout" [
         (plain "border" [
-          (leaf "width" 4)
-          (leaf "active-color" "#7fc8ff")
-          (leaf "inactive-color" "#505050")
+          (leaf "width" [4])
+          (leaf "active-color" ["#7fc8ff"])
+          (leaf "inactive-color" ["#505050"])
         ])
         (plain "focus-ring" [
           (flag "off")
-          (leaf "width" 4)
-          (leaf "active-color" "#7fc8ff")
-          (leaf "inactive-color" "#505050")
+          (leaf "width" [4])
+          (leaf "active-color" ["#7fc8ff"])
+          (leaf "inactive-color" ["#505050"])
         ])
         (plain "tab-indicator" [
           (flag "hide-when-single-tab")
         ])
         (plain "preset-column-widths" [
-          (leaf "proportion" (1. / 4.))
-          (leaf "proportion" (1. / 3.))
-          (leaf "proportion" (1. / 2.))
-          (leaf "proportion" (2. / 3.))
-          (leaf "proportion" (3. / 4.))
-          (leaf "proportion" (4. / 4.))
+          (leaf "proportion" [(1. / 4.)])
+          (leaf "proportion" [(1. / 3.)])
+          (leaf "proportion" [(1. / 2.)])
+          (leaf "proportion" [(2. / 3.)])
+          (leaf "proportion" [(3. / 4.)])
+          (leaf "proportion" [(4. / 4.)])
         ])
         (flag "always-center-single-column")
-        (leaf "center-focused-column" "never")
-        (leaf "default-column-display" "tabbed")
+        (leaf "center-focused-column" ["never"])
+        (leaf "default-column-display" ["tabbed"])
         (plain "default-column-width" [
-          (leaf "proportion" (1. / 2.))
+          (leaf "proportion" [(1. / 2.)])
         ])
         (flag "empty-workspace-above-first")
-        (leaf "gaps" 16)
+        (leaf "gaps" [16])
       ])
       (plain "animations" [
         (plain "window-close" [
-          (leaf "spring" {
-            damping-ratio = 1.0;
-            stiffness = 800;
-            epsilon = 0.0001;
-          })
+          (leaf "spring" [
+            {
+              damping-ratio = 1.0;
+              stiffness = 800;
+              epsilon = 0.0001;
+            }
+          ])
         ])
       ])
       (plain "overview" [
@@ -454,59 +456,67 @@ in
       match = leaf "match";
     in [
       (window-rule [
-        (leaf "draw-border-with-background" true)
-        (leaf "geometry-corner-radius" 12.0)
-        (leaf "clip-to-geometry" true)
+        (leaf "draw-border-with-background" [true])
+        (leaf "geometry-corner-radius" [12.0])
+        (leaf "clip-to-geometry" [true])
       ])
       (window-rule [
-        (match {app-id = "^org\\.keepassxc\\.KeePassXC$";})
-        (match {app-id = "^org\\.gnome\\.World\\.Secrets$";})
-        (leaf "block-out-from" "screen-capture")
+        (match [{app-id = "^org\\.keepassxc\\.KeePassXC$";}])
+        (match [{app-id = "^org\\.gnome\\.World\\.Secrets$";}])
+        (leaf "block-out-from" ["screen-capture"])
       ])
       (window-rule [
-        (match {
-          app-id = "^com\\.mitchellh\\.ghostty$";
-          is-active = true;
-        })
-        (leaf "draw-border-with-background" false)
+        (match [
+          {
+            app-id = "^com\\.mitchellh\\.ghostty$";
+            is-active = true;
+          }
+        ])
+        (leaf "draw-border-with-background" [false])
       ])
       (window-rule [
-        (match {
-          app-id = "^com\\.mitchellh\\.ghostty$";
-          is-active = false;
-        })
-        (leaf "opacity" 0.8)
-        (leaf "draw-border-with-background" false)
+        (match [
+          {
+            app-id = "^com\\.mitchellh\\.ghostty$";
+            is-active = false;
+          }
+        ])
+        (leaf "opacity" [0.8])
+        (leaf "draw-border-with-background" [false])
       ])
       (window-rule [
-        (match {is-window-cast-target = true;})
+        (match [{is-window-cast-target = true;}])
         (plain "focus-ring" [
-          (leaf "active-color" "#f38ba8")
-          (leaf "inactive-color" "#7d0d2d")
+          (leaf "active-color" ["#f38ba8"])
+          (leaf "inactive-color" ["#7d0d2d"])
         ])
         (plain "border" [
-          (leaf "active-color" "#f38ba8")
-          (leaf "inactive-color" "#7d0d2d")
+          (leaf "active-color" ["#f38ba8"])
+          (leaf "inactive-color" ["#7d0d2d"])
         ])
         (plain "tab-indicator" [
-          (leaf "active-color" "#f38ba8")
-          (leaf "inactive-color" "#7d0d2d")
+          (leaf "active-color" ["#f38ba8"])
+          (leaf "inactive-color" ["#7d0d2d"])
         ])
         (plain "shadow" [
           (flag "on")
         ])
       ])
       (window-rule [
-        (match {
-          app-id = "^org\\.telegram\\.desktop$";
-          title = "Media viewer";
-        })
-        (match {
-          app-id = "^QQ$";
-          title = "图片查看器";
-        })
-        (leaf "open-floating" true)
-        (leaf "open-fullscreen" false)
+        (match [
+          {
+            app-id = "^org\\.telegram\\.desktop$";
+            title = "Media viewer";
+          }
+        ])
+        (match [
+          {
+            app-id = "^QQ$";
+            title = "图片查看器";
+          }
+        ])
+        (leaf "open-floating" [true])
+        (leaf "open-fullscreen" [false])
       ])
     ] # window-rule
   )
@@ -516,16 +526,16 @@ in
       match = leaf "match";
     in [
       (layer-rule [
-        (match {namespace = "^swaync-notification-window$";})
-        (match {namespace = "^swaync-control-center$";})
-        (leaf "block-out-from" "screen-capture")
+        (match [{namespace = "^swaync-notification-window$";}])
+        (match [{namespace = "^swaync-control-center$";}])
+        (leaf "block-out-from" ["screen-capture"])
       ])
       (layer-rule [
-        (match {namespace = "^launcher$";})
+        (match [{namespace = "^launcher$";}])
         (plain "shadow" [
           (flag "on")
         ])
-        (leaf "geometry-corner-radius" 10.0)
+        (leaf "geometry-corner-radius" [10.0])
       ])
     ] # layer-rule
   )
