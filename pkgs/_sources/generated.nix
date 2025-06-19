@@ -40,26 +40,6 @@
     };
     date = "2025-06-07";
   };
-  dioxionary = {
-    pname = "dioxionary";
-    version = "4db80d458ff7494967c94ebb1db596abba0775b2";
-    src = fetchgit {
-      url = "https://github.com/vaaandark/dioxionary.git";
-      rev = "4db80d458ff7494967c94ebb1db596abba0775b2";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ ];
-      sha256 = "sha256-H5uMTtDX9hBV36MtiPPlHPaL//WM11J5kdtEhyJBZIU=";
-    };
-    cargoLock."./Cargo.lock" = {
-      lockFile = ./dioxionary-4db80d458ff7494967c94ebb1db596abba0775b2/./Cargo.lock;
-      outputHashes = {
-        
-      };
-    };
-    date = "2025-04-07";
-  };
   juicity = {
     pname = "juicity";
     version = "4c5e8bd948ba2f72a0dd38681cf13ae532f6c9f5";

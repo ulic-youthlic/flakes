@@ -14,7 +14,6 @@ in
     helix = callPackage ./helix {};
     juicity = callPackage ./juicity.nix {};
     rime-ice = callPackage ./rime-ice.nix {};
-    dioxionary = callPackage ./dioxionary.nix {};
     spotifyx = callPackage ./spotifyx.nix {};
     radicle-explorer = callPackage ./radicle-explorer.nix {};
     TrackersListCollection = callPackage ./TrackersListCollection.nix {};

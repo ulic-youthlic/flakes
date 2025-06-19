@@ -11,11 +11,6 @@ passthru.name = "idris"
 src.git = "https://github.com/iDvel/rime-ice.git"
 fetch.github = "iDvel/rime-ice"
 
-[dioxionary]
-src.git = "https://github.com/vaaandark/dioxionary.git"
-fetch.git = "https://github.com/vaaandark/dioxionary.git"
-cargo_locks = ["./Cargo.lock"]
-
 [noto-serif-cjk]
 src.github = "notofonts/noto-cjk"
 fetch.github = "notofonts/noto-cjk"
