@@ -30,5 +30,5 @@ in
     let
       firefox-addons = callPackage "${inputs.nur-rycee}/pkgs/firefox-addons/default.nix" {};
     in
-      lib.genAttrs ["immersive-translate" "tridactyl"] (name: firefox-addons."${name}")
+      lib.genAttrs ["immersive-translate" "tridactyl" "redirector"] (name: firefox-addons."${name}")
   )

@@ -33,10 +33,38 @@ in {
         };
         name = "default";
         isDefault = true;
-        extensions.packages = with outputs.packages."${system}"; [
-          immersive-translate
-          tridactyl
-        ];
+        extensions = {
+          # settings = {
+          #   "redirector@einaregilsson.com" = {
+          #     settings = {
+          #       redirects = [
+          #         {
+          #           description = "NixOS Wiki";
+          #           exampleUrl = "http://nixos.wiki/wiki/Main_Page";
+          #           exampleResult = "http://wiki.nixos.org/wiki/Main_Page";
+          #           error = null;
+          #           includePattern = "http(s?)://nixos.wiki/wiki/(.*)";
+          #           excludePattern = "";
+          #           patternDesc = "";
+          #           redirectUrl = "http$1://wiki.nixos.org/wiki/$2";
+          #           patternType = "R";
+          #           processMatches = "noProcessing";
+          #           disabled = false;
+          #           grouped = false;
+          #           appliesTo = [
+          #             "main_frame"
+          #           ];
+          #         }
+          #       ];
+          #     };
+          #   };
+          # };
+          packages = with outputs.packages."${system}"; [
+            immersive-translate
+            tridactyl
+            redirector
+          ];
+        };
         settings = {
           "sidebar.verticalTabs" = true;
           "sidebar.visibility" = "expand-on-hover";
