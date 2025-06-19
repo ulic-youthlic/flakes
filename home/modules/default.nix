@@ -7,6 +7,7 @@
     ++ [
       ./programs
       ./xdg-dirs.nix
+      ./i18n
     ];
 
   config = {

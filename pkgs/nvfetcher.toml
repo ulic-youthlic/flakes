@@ -7,10 +7,6 @@ src.git = "https://github.com/kayhide/tree-sitter-idris"
 fetch.git = "https://github.com/kayhide/tree-sitter-idris"
 passthru.name = "idris"
 
-[rime-ice]
-src.git = "https://github.com/iDvel/rime-ice.git"
-fetch.github = "iDvel/rime-ice"
-
 [noto-serif-cjk]
 src.github = "notofonts/noto-cjk"
 fetch.github = "notofonts/noto-cjk"

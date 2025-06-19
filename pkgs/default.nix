@@ -13,7 +13,6 @@ in
     pinentry-selector = callPackage ./pinentry-selector.nix {};
     helix = callPackage ./helix {};
     juicity = callPackage ./juicity.nix {};
-    rime-ice = callPackage ./rime-ice.nix {};
     spotifyx = callPackage ./spotifyx.nix {};
     radicle-explorer = callPackage ./radicle-explorer.nix {};
     TrackersListCollection = callPackage ./TrackersListCollection.nix {};

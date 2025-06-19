@@ -2,7 +2,6 @@
   inherit (prev) lib;
 in
   [
-    ./rime-ice.nix
     ./TrackersListCollection.nix
     ./OuterWildsTextAdventure.nix
     ./editor-runtime.nix
