@@ -32,6 +32,7 @@ in {
           addons = with pkgs; [
             libsForQt5.fcitx5-qt
             fcitx5-gtk
+            fcitx5-gtk
             fcitx5-fluent
             (fcitx5-rime.override {
               rimeDataPkgs = [
