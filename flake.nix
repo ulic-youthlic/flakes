@@ -38,6 +38,20 @@
     # nixpkgs.url = "github:NixOS/nixpkgs/master";
     # nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
+    nixpkgs-hurl = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "refs/pull/418842/head";
+    };
+
+    nixpkgs-handbrake = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      rev = "c74daf34b6de017d7d43196c494f887a2b956f0f";
+    };
+
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module?ref=release-2.93";
       inputs = {
@@ -137,7 +151,7 @@
 
     stylix = {
       type = "github";
-      owner = "danth";
+      owner = "nix-community";
       repo = "stylix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
