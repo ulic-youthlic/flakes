@@ -56,7 +56,11 @@ patch:
         toggle: traditionalization,
         accept: Control+Shift+dollar,
       } # 切换简繁
-    - { when: always, toggle: full_shape, accept: Control+Shift+5 } # 切换全半角
+    - {
+        when: always,
+        toggle: full_shape,
+        accept: Control+Shift+5,
+      } # 切换全半角
     - {
         when: always,
         toggle: full_shape,
