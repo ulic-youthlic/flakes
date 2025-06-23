@@ -644,22 +644,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-handbrake": {
-      "locked": {
-        "lastModified": 1749936441,
-        "narHash": "sha256-MfdTzz/ArELrweWK7FLofbK/NMvbpEhV8QCo6f7UBII=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c74daf34b6de017d7d43196c494f887a2b956f0f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c74daf34b6de017d7d43196c494f887a2b956f0f",
-        "type": "github"
-      }
-    },
     "nixpkgs-hurl": {
       "locked": {
         "lastModified": 1750581657,
@@ -830,7 +814,6 @@
         "nixos-cosmic": "nixos-cosmic",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-handbrake": "nixpkgs-handbrake",
         "nixpkgs-hurl": "nixpkgs-hurl",
         "nur-rycee": "nur-rycee",
         "sops-nix": "sops-nix",
