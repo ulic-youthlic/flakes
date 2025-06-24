@@ -70,6 +70,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
+  nix = {settings = {system-features = ["gccarch-skylake"];};};
 
   system.stateVersion = "24.11";
 }
