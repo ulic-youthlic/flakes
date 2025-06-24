@@ -35,6 +35,9 @@ in {
       mime = {
         enable = true;
         defaultApplications = {
+          "application/pdf" = [
+            "org.gnome.Evince.desktop"
+          ];
           "inode/directory" = [
             "com.system76.CosmicFiles.desktop"
           ];
