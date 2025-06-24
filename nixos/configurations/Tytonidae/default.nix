@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   inputs,
   ...
@@ -104,16 +103,6 @@
     loader.efi.canTouchEfiVariables = true;
     initrd.systemd.enable = true;
   };
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = true;
-    prime = {
-      reverseSync.enable = lib.mkDefault true;
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
-  nix = {settings = {system-features = ["gccarch-alderlake"];};};
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
