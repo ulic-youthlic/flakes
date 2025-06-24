@@ -39,7 +39,6 @@
       kvm.enable = true;
       atuin.enable = true;
       thunderbird.enable = true;
-      obs.enable = true;
       chromium.enable = true;
       espanso.enable = true;
       ion.enable = true;

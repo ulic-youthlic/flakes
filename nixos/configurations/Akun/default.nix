@@ -32,6 +32,7 @@
       kanata.enable = true;
       tailscale.enable = true;
       wshowkeys.enable = true;
+      obs.enable = true;
     };
   };
   programs.gnupg.agent = {

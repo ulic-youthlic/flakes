@@ -51,6 +51,7 @@
       juicity.client.enable = true;
       owncast.enable = true;
       wshowkeys.enable = true;
+      obs.enable = true;
     };
   };
 

@@ -11,7 +11,6 @@
     ./wluma.nix
     ./niri.nix
     ./starship
-    ./obs.nix
     ./fuzzel.nix
     ./mpv.nix
     ./swaylock.nix

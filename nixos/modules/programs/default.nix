@@ -26,5 +26,6 @@
     ./radicle.nix
     ./wshowkeys.nix
     ./bash.nix
+    ./obs.nix
   ];
 }

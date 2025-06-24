@@ -1,7 +1,7 @@
 {
   pkgs,
-  config,
   lib,
+  config,
   ...
 }: let
   cfg = config.youthlic.programs.obs;
@@ -16,11 +16,9 @@ in {
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [
         obs-source-record
-        obs-vaapi
-        obs-vkcapture
-        obs-webkitgtk
         obs-pipewire-audio-capture
       ];
+      enableVirtualCamera = true;
     };
   };
 }
