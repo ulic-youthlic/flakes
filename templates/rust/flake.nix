@@ -40,7 +40,7 @@
         inherit system;
         overlays = [
           (import rust-overlay)
-          (final: prev: {
+          (_final: prev: {
             lib = prev.lib // (import ./nix/lib.nix prev.lib);
           })
         ];

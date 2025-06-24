@@ -10,9 +10,9 @@
     (
       (rootPath + "/home")
       |> builtins.readDir
-      |> lib.filterAttrs (key: value: value == "directory")
+      |> lib.filterAttrs (_key: value: value == "directory")
       |> lib.filterAttrs (
-        key: value:
+        key: _value:
           !builtins.elem key [
             "modules"
             "extra"

@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{...}: let
   extraConfig = ''
     output "DP-3" {
       mode "2560x1440@169.900"

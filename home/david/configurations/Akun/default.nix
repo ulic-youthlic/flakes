@@ -2,7 +2,6 @@
   pkgs,
   unixName,
   config,
-  rootPath,
   ...
 }: {
   imports = [

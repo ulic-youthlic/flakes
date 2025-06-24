@@ -1,8 +1,4 @@
-{
-  rootPath,
-  config,
-  ...
-}: {
+{rootPath, ...}: {
   config = {
     sops.defaultSopsFile = rootPath + "/secrets/general.yaml";
     sops.age = {

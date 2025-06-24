@@ -1,5 +1,5 @@
 {inputs, ...}: let
-  inherit (inputs.niri-flake.lib.kdl) node leaf plain flag;
+  inherit (inputs.niri-flake.lib.kdl) node leaf flag;
 in {
   david.programs.niri = {
     extraConfig = let

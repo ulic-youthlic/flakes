@@ -7,7 +7,7 @@
   srcs,
 }: let
   inherit (srcs) spotx;
-  spotifyx = spotify.overrideAttrs (final: prev: {
+  spotifyx = spotify.overrideAttrs (_final: prev: {
     nativeBuildInputs =
       prev.nativeBuildInputs
       ++ [

@@ -37,6 +37,9 @@ buildHome host=DEFAULT_HOST $USER=DEFAULT_USER:
     @echo HOST: {{ host }}
     nh home build -b backup {{ if host != DEFAULT_HOST { "-c \"" + USER + "@" + host + "\"" } else { "" } }} {{ FLAKE_HOME }}
 
+deadNix:
+    nix run github:astro/deadnix -- . --exclude ./pkgs/_sources/generated.nix ./nixos/configurations/{Akun,Tytonidae,Cape}/hardware-configuration.nix
+
 alias s := switch
 alias u := update
 alias d := deploy

@@ -11,7 +11,7 @@
 }: let
   inherit (srcs.cliphist) src date version;
 in
-  cliphist.overrideAttrs (final: prev: {
+  cliphist.overrideAttrs (_final: prev: {
     inherit src;
     version =
       if prev.version != "0.6.1"

@@ -12,7 +12,6 @@
     ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
-      inherit (pkgs) lib;
       pkgs = import nixpkgs {
         inherit system;
       };

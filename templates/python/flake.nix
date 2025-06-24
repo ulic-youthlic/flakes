@@ -6,7 +6,6 @@
     };
   };
   outputs = {
-    self,
     flake-utils,
     nixpkgs,
     ...

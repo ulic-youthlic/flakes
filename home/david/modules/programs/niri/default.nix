@@ -1,8 +1,8 @@
 {
   config,
   lib,
-  pkgs,
   inputs,
+  pkgs,
   ...
 } @ args: let
   cfg = config.david.programs.niri;
@@ -23,7 +23,7 @@ in {
       lib.mkIf cfg.enable {
         youthlic.programs.niri = {
           config =
-            (lib.toList (import ./config.nix args))
+            (lib.toList (import ./config.nix (args // {inherit pkgs;})))
             ++ (lib.toList cfg.extraConfig);
         };
         david.programs.wluma.enable = true;

@@ -5,7 +5,7 @@
 }: let
   source = srcs.noto-serif-cjk;
 in
-  stdenvNoCC.mkDerivation (finalAttrs: {
+  stdenvNoCC.mkDerivation (_finalAttrs: {
     pname = "noto-serif-cjk";
     version = source.version;
 

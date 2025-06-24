@@ -5,7 +5,7 @@
 }: let
   source = srcs.noto-sans-cjk;
 in
-  stdenvNoCC.mkDerivation (finalAttrs: {
+  stdenvNoCC.mkDerivation (_finalAttrs: {
     pname = "noto-sans-cjk";
     version = source.version;
 
