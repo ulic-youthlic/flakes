@@ -62,6 +62,11 @@
   boot.loader.grub = {
     enable = true;
   };
+  nix = {
+    settings = {
+      system-features = ["gccarch-ivybridge"];
+    };
+  };
 
   system.stateVersion = "24.11";
 }
