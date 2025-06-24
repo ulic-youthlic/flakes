@@ -69,8 +69,16 @@
     kernelPackages = pkgs.linuxPackages_cachyos;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    kernelParams = ["i915.enable_guc=2"];
   };
   nix = {settings = {system-features = ["gccarch-skylake"];};};
+  hardware = {
+    graphics.package = pkgs.mesa_git;
+    intelgpu = {
+      vaapiDriver = "intel-vaapi-driver";
+      enableHybridCodec = true;
+    };
+  };
 
   system.stateVersion = "24.11";
 }
