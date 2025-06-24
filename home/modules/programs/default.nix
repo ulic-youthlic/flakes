@@ -30,5 +30,6 @@
     ./fzf.nix
     ./eza.nix
     ./ion.nix
+    ./alacritty
   ];
 }

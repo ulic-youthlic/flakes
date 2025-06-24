@@ -1,0 +1,27 @@
+[general]
+ipc_socket = true
+live_config_reload = true
+
+[window]
+dynamic_padding = true
+opacity = 0.8
+blur = true
+
+[scrolling]
+history = 100000
+multiplier = 5
+
+[font]
+size = 16
+
+[bell]
+duration = 1
+
+[selection]
+save_to_clipboard = true
+
+[terminal]
+osc52 = "CopyPaste"
+
+[mouse]
+hide_when_typing = true

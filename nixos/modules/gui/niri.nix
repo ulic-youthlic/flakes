@@ -29,7 +29,7 @@ in {
       terminal-exec = {
         enable = true;
         settings = {
-          default = ["com.mitchellh.ghostty.desktop"];
+          default = ["Alacritty.desktop"];
         };
       };
       mime = {

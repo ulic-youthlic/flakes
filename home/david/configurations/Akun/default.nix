@@ -37,6 +37,7 @@
       atuin.enable = true;
       chromium.enable = true;
       thunderbird.enable = true;
+      alacritty.enable = true;
       # espanso.enable = true;
     };
   };

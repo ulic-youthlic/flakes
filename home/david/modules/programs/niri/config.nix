@@ -35,7 +35,7 @@
   polkit-kde-agent = getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-agent";
   wpctl = getExe' pkgs.wireplumber "wpctl";
   swaybg = getExe pkgs.swaybg;
-  ghostty = getExe config.programs.ghostty.package;
+  alacritty = getExe config.programs.alacritty.package;
   wl-paste = getExe' pkgs.wl-clipboard "wl-paste";
   cliphist = getExe' pkgs.cliphist "cliphist";
   cliphist-fuzzel-img = getExe' pkgs.cliphist "cliphist-fuzzel-img";
@@ -57,7 +57,7 @@ in
         ])
         (plain "Mod+T" [
           (spawn [
-            ghostty
+            alacritty
           ])
         ])
         (plain "Mod+Shift+T" [
@@ -471,6 +471,10 @@ in
             app-id = "^com\\.mitchellh\\.ghostty$";
             is-active = true;
           }
+          {
+            app-id = "^Alacritty$";
+            is-active = true;
+          }
         ])
         (leaf "draw-border-with-background" [false])
       ])
@@ -478,6 +482,10 @@ in
         (match [
           {
             app-id = "^com\\.mitchellh\\.ghostty$";
+            is-active = false;
+          }
+          {
+            app-id = "^Alacritty$";
             is-active = false;
           }
         ])

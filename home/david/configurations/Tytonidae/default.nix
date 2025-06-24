@@ -42,6 +42,7 @@
       chromium.enable = true;
       espanso.enable = true;
       ion.enable = true;
+      alacritty.enable = true;
     };
   };
 
