@@ -5,6 +5,7 @@ in
     ./TrackersListCollection.nix
     ./OuterWildsTextAdventure.nix
     ./editor-runtime.nix
+    ./radicle-ci-broker.nix
   ]
   |> map (file: import file args)
   |> (overlays: (lib.composeManyExtensions overlays) final prev)

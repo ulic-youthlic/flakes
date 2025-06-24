@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "5a0135a913cd27cea026bd558d0319da3630f327";
+    version = "f3079ce280d1597cc2b3adfd0a04e0632736e5f7";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "5a0135a913cd27cea026bd558d0319da3630f327";
+      rev = "f3079ce280d1597cc2b3adfd0a04e0632736e5f7";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-YllDv9VEmBCWV0YrdD2yO54foDy/m+9FR2NBwEpSiCY=";
+      sha256 = "sha256-GSG49cgGexdhn87tr8c6bCk0ySzsLWC23cWo6UvHDqE=";
     };
-    date = "2025-06-22";
+    date = "2025-06-25";
   };
   cliphist = {
     pname = "cliphist";
@@ -81,6 +81,20 @@
       sparseCheckout = [ "Serif/OTC" ];
       sha256 = "sha256-mfbBSdJrUCZiUUmsmndtEW6H3z6KfBn+dEftBySf2j4=";
     };
+  };
+  radicle-ci-broker = {
+    pname = "radicle-ci-broker";
+    version = "d824691e1aeccd557b2deeb2cdfb18d275e15f3e";
+    src = fetchgit {
+      url = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git";
+      rev = "d824691e1aeccd557b2deeb2cdfb18d275e15f3e";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ ];
+      sha256 = "sha256-bj+JR26bqBE/WBcIbIUZU0r9JqgkEIGSb8nv3GdF72Q=";
+    };
+    date = "2025-06-18";
   };
   spotx = {
     pname = "spotx";
