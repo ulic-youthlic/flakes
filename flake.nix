@@ -38,13 +38,6 @@
     # nixpkgs.url = "github:NixOS/nixpkgs/master";
     # nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
-    nixpkgs-hurl = {
-      type = "github";
-      owner = "NixOS";
-      repo = "nixpkgs";
-      ref = "refs/pull/418842/head";
-    };
-
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module?ref=release-2.93";
       inputs = {

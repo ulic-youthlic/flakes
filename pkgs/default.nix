@@ -7,11 +7,7 @@
   ...
 }: let
   srcs = callPackages ./_sources/generated.nix {};
-  callPackage = lib.callPackageWith (pkgs
-    // {
-      inherit inputs srcs callPackage rootPath;
-      inherit (inputs.nixpkgs-hurl.legacyPackages.${pkgs.system}) hurl;
-    });
+  callPackage = lib.callPackageWith (pkgs // {inherit inputs srcs callPackage rootPath;});
 in
   {
     pinentry-selector = callPackage ./pinentry-selector.nix {};
