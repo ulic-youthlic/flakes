@@ -22,7 +22,7 @@
     },
     "TrackersListCollection": {
         "cargoLocks": null,
-        "date": "2025-06-25",
+        "date": "2025-06-30",
         "extract": null,
         "name": "TrackersListCollection",
         "passthru": null,
@@ -34,18 +34,18 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "f3079ce280d1597cc2b3adfd0a04e0632736e5f7",
-            "sha256": "sha256-GSG49cgGexdhn87tr8c6bCk0ySzsLWC23cWo6UvHDqE=",
+            "rev": "f2f10c1694d692df5cd88779bba2ba8692c79a87",
+            "sha256": "sha256-cDH/CseZ+ytO+9I0Hg663iShZt7epTrLf18oaqGimXo=",
             "sparseCheckout": [
                 "all.txt"
             ],
             "type": "github"
         },
-        "version": "f3079ce280d1597cc2b3adfd0a04e0632736e5f7"
+        "version": "f2f10c1694d692df5cd88779bba2ba8692c79a87"
     },
     "cliphist": {
         "cargoLocks": null,
-        "date": "2025-06-07",
+        "date": "2025-06-28",
         "extract": null,
         "name": "cliphist",
         "passthru": null,
@@ -57,16 +57,16 @@
             "name": null,
             "owner": "sentriz",
             "repo": "cliphist",
-            "rev": "f49bd905cff72d32d62c209224353865436f9a13",
-            "sha256": "sha256-waD4AIAAlorW+UBvHKFc5dm/CqP0Fw3pygYqPX5cYNc=",
+            "rev": "ff1d247e3521bd7ebcb6463f86349bab71440496",
+            "sha256": "sha256-VclmnL8cYWbstQ/6SvKBC5KGcUFaJ/oL6a0WawbNGMI=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "f49bd905cff72d32d62c209224353865436f9a13"
+        "version": "ff1d247e3521bd7ebcb6463f86349bab71440496"
     },
     "juicity": {
         "cargoLocks": null,
-        "date": "2025-02-20",
+        "date": "2025-06-30",
         "extract": null,
         "name": "juicity",
         "passthru": null,
@@ -76,13 +76,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "4c5e8bd948ba2f72a0dd38681cf13ae532f6c9f5",
-            "sha256": "sha256-s/OYlW66mu/3MHwhZCxvQv8f/rNuCB4SLZ2jYPO5UQQ=",
+            "rev": "412dbe43e091788c5464eb2d6e9c169bdf39f19c",
+            "sha256": "sha256-FU4+PXIyZS0RINEFD7Wylz9SOVEW9EnolaPGgZfhj9Y=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://githuh.com/juicity/juicity"
         },
-        "version": "4c5e8bd948ba2f72a0dd38681cf13ae532f6c9f5"
+        "version": "412dbe43e091788c5464eb2d6e9c169bdf39f19c"
     },
     "noto-sans-cjk": {
         "cargoLocks": null,
@@ -132,7 +132,7 @@
     },
     "radicle-ci-broker": {
         "cargoLocks": null,
-        "date": "2025-06-18",
+        "date": "2025-06-27",
         "extract": null,
         "name": "radicle-ci-broker",
         "passthru": null,
@@ -142,17 +142,17 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "d824691e1aeccd557b2deeb2cdfb18d275e15f3e",
-            "sha256": "sha256-bj+JR26bqBE/WBcIbIUZU0r9JqgkEIGSb8nv3GdF72Q=",
+            "rev": "d5f684b2ec12dc875ec0278c8e2fe71faaa88d38",
+            "sha256": "sha256-Cow3VIeFovUBhARVj8azEVokydajjnLHokhk0pklBhQ=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git"
         },
-        "version": "d824691e1aeccd557b2deeb2cdfb18d275e15f3e"
+        "version": "d5f684b2ec12dc875ec0278c8e2fe71faaa88d38"
     },
     "spotx": {
         "cargoLocks": null,
-        "date": "2025-06-18",
+        "date": "2025-06-28",
         "extract": null,
         "name": "spotx",
         "passthru": null,
@@ -164,12 +164,12 @@
             "name": null,
             "owner": "SpotX-Official",
             "repo": "SpotX-Bash",
-            "rev": "181fd7fc8fe838237660a46ae096570d869bc30f",
-            "sha256": "sha256-tK0ZpyNNI2hDfAhgvrR6s0gaL8VLbHUsHPhnhXD8P40=",
+            "rev": "da5fe58e1436206d2dfce270a1567c5a5805d786",
+            "sha256": "sha256-ZRJgptfJmLDTJbgul7jIRObtdK0ZM6Ah4/pll+k8Xwc=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "181fd7fc8fe838237660a46ae096570d869bc30f"
+        "version": "da5fe58e1436206d2dfce270a1567c5a5805d786"
     },
     "tree-sitter-idris": {
         "cargoLocks": null,

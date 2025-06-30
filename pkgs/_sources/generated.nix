@@ -15,44 +15,44 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "f3079ce280d1597cc2b3adfd0a04e0632736e5f7";
+    version = "f2f10c1694d692df5cd88779bba2ba8692c79a87";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "f3079ce280d1597cc2b3adfd0a04e0632736e5f7";
+      rev = "f2f10c1694d692df5cd88779bba2ba8692c79a87";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-GSG49cgGexdhn87tr8c6bCk0ySzsLWC23cWo6UvHDqE=";
+      sha256 = "sha256-cDH/CseZ+ytO+9I0Hg663iShZt7epTrLf18oaqGimXo=";
     };
-    date = "2025-06-25";
+    date = "2025-06-30";
   };
   cliphist = {
     pname = "cliphist";
-    version = "f49bd905cff72d32d62c209224353865436f9a13";
+    version = "ff1d247e3521bd7ebcb6463f86349bab71440496";
     src = fetchFromGitHub {
       owner = "sentriz";
       repo = "cliphist";
-      rev = "f49bd905cff72d32d62c209224353865436f9a13";
+      rev = "ff1d247e3521bd7ebcb6463f86349bab71440496";
       fetchSubmodules = false;
-      sha256 = "sha256-waD4AIAAlorW+UBvHKFc5dm/CqP0Fw3pygYqPX5cYNc=";
+      sha256 = "sha256-VclmnL8cYWbstQ/6SvKBC5KGcUFaJ/oL6a0WawbNGMI=";
     };
-    date = "2025-06-07";
+    date = "2025-06-28";
   };
   juicity = {
     pname = "juicity";
-    version = "4c5e8bd948ba2f72a0dd38681cf13ae532f6c9f5";
+    version = "412dbe43e091788c5464eb2d6e9c169bdf39f19c";
     src = fetchgit {
       url = "https://githuh.com/juicity/juicity";
-      rev = "4c5e8bd948ba2f72a0dd38681cf13ae532f6c9f5";
+      rev = "412dbe43e091788c5464eb2d6e9c169bdf39f19c";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-s/OYlW66mu/3MHwhZCxvQv8f/rNuCB4SLZ2jYPO5UQQ=";
+      sha256 = "sha256-FU4+PXIyZS0RINEFD7Wylz9SOVEW9EnolaPGgZfhj9Y=";
     };
-    date = "2025-02-20";
+    date = "2025-06-30";
   };
   noto-sans-cjk = {
     pname = "noto-sans-cjk";
@@ -84,29 +84,29 @@
   };
   radicle-ci-broker = {
     pname = "radicle-ci-broker";
-    version = "d824691e1aeccd557b2deeb2cdfb18d275e15f3e";
+    version = "d5f684b2ec12dc875ec0278c8e2fe71faaa88d38";
     src = fetchgit {
       url = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git";
-      rev = "d824691e1aeccd557b2deeb2cdfb18d275e15f3e";
+      rev = "d5f684b2ec12dc875ec0278c8e2fe71faaa88d38";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-bj+JR26bqBE/WBcIbIUZU0r9JqgkEIGSb8nv3GdF72Q=";
+      sha256 = "sha256-Cow3VIeFovUBhARVj8azEVokydajjnLHokhk0pklBhQ=";
     };
-    date = "2025-06-18";
+    date = "2025-06-27";
   };
   spotx = {
     pname = "spotx";
-    version = "181fd7fc8fe838237660a46ae096570d869bc30f";
+    version = "da5fe58e1436206d2dfce270a1567c5a5805d786";
     src = fetchFromGitHub {
       owner = "SpotX-Official";
       repo = "SpotX-Bash";
-      rev = "181fd7fc8fe838237660a46ae096570d869bc30f";
+      rev = "da5fe58e1436206d2dfce270a1567c5a5805d786";
       fetchSubmodules = false;
-      sha256 = "sha256-tK0ZpyNNI2hDfAhgvrR6s0gaL8VLbHUsHPhnhXD8P40=";
+      sha256 = "sha256-ZRJgptfJmLDTJbgul7jIRObtdK0ZM6Ah4/pll+k8Xwc=";
     };
-    date = "2025-06-18";
+    date = "2025-06-28";
   };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";
