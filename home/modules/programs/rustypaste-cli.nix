@@ -22,7 +22,7 @@ in {
         path = "${config.xdg.configHome}/rustypaste/config.toml";
         content = ''
           [server]
-          address = "https://paste.youthlic.fun"
+          address = "https://paste.youthlic.social"
           auth_token = "${config.sops.placeholder."rustypaste/auth"}"
           delete_token = "${config.sops.placeholder."rustypaste/delete"}"
 

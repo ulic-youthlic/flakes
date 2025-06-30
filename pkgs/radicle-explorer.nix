@@ -5,7 +5,7 @@
 (radicle-explorer.withConfig {
   preferredSeeds = [
     {
-      hostname = "seed.youthlic.fun";
+      hostname = "seed.youthlic.social";
       port = 443;
       scheme = "https";
     }

@@ -1,7 +1,7 @@
 {config, ...}: {
   youthlic.containers.forgejo = {
     enable = true;
-    domain = "forgejo.youthlic.fun";
+    domain = "forgejo.youthlic.social";
     sshPort = 2222;
     httpPort = 8480;
   };

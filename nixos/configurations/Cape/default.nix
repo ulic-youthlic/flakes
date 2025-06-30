@@ -21,13 +21,13 @@
     programs = {
       rustypaste = {
         enable = true;
-        url = "https://paste.youthlic.fun";
+        url = "https://paste.youthlic.social";
       };
       openssh.enable = true;
       tailscale.enable = true;
       caddy = {
         enable = true;
-        baseDomain = "youthlic.fun";
+        baseDomain = "youthlic.social";
         radicle-explorer.enable = true;
         outer-wilds-text-adventure.enable = true;
       };
