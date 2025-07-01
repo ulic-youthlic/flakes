@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  outputs,
   ...
 }: {
   imports =
@@ -16,6 +17,8 @@
       ./users
       ./networking.nix
       ./disk-config.nix
+
+      outputs.nixosModules.gui
     ];
 
   youthlic = {

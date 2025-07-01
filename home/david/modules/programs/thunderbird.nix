@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.youthlic.programs.thunderbird;
+  cfg = config.david.programs.thunderbird;
 in {
   options = {
-    youthlic.programs.thunderbird = {
+    david.programs.thunderbird = {
       enable = lib.mkEnableOption "thunderbird";
     };
   };

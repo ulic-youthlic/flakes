@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.youthlic.programs.espanso;
+  cfg = config.david.programs.espanso;
 in {
   options = {
-    youthlic.programs.espanso = {
+    david.programs.espanso = {
       enable = lib.mkEnableOption "espanso";
     };
   };

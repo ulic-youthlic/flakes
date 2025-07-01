@@ -3,10 +3,10 @@
   config,
   ...
 }: let
-  cfg = config.youthlic.programs.mpv;
+  cfg = config.david.programs.mpv;
 in {
   options = {
-    youthlic.programs.mpv = {
+    david.programs.mpv = {
       enable = lib.mkEnableOption "mpv";
     };
   };

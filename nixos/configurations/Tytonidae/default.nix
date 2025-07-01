@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  outputs,
   ...
 }: {
   imports =
@@ -24,6 +25,8 @@
       ./hardware.nix
       ./specialisation/kde.nix
       ./specialisation/niri-hybrid.nix
+
+      outputs.nixosModules.gui
     ];
 
   youthlic = {

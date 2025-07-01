@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.youthlic.programs.waypaper;
+  cfg = config.david.programs.waypaper;
 in {
   options = {
-    youthlic.programs.waypaper = {
+    david.programs.waypaper = {
       enable = lib.mkEnableOption "waypaper";
     };
   };

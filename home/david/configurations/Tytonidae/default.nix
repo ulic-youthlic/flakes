@@ -14,10 +14,7 @@
       inherit (email) name address;
       signKey = email.gpg.key;
     in {
-      zed-editor.enable = true;
       rustypaste-cli.enable = true;
-      firefox.enable = true;
-      fuzzel.enable = true;
       gpg.enable = true;
       jujutsu = {
         enable = true;
@@ -31,18 +28,11 @@
       };
       fish.enable = true;
       bash.enable = true;
-      ghostty.enable = true;
-      foot.enable = false;
       starship.enable = true;
       sops.enable = true;
-      mpv.enable = true;
       kvm.enable = true;
       atuin.enable = true;
-      thunderbird.enable = true;
-      chromium.enable = true;
-      espanso.enable = true;
       ion.enable = true;
-      alacritty.enable = true;
     };
   };
 
@@ -50,6 +40,15 @@
     wallpaper.enable = true;
     accounts.email.enable = true;
     programs = {
+      chromium.enable = true;
+      espanso.enable = true;
+      thunderbird.enable = true;
+      foot.enable = false;
+      mpv.enable = true;
+      ghostty.enable = true;
+      alacritty.enable = true;
+      zed-editor.enable = true;
+      firefox.enable = true;
       openssh.enable = true;
       helix.enable = true;
     };

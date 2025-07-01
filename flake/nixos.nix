@@ -7,18 +7,16 @@
   rootPath = ./..;
   inherit (self) outputs;
   inherit (inputs) nixpkgs;
-  defaultNixosModule = import (rootPath + "/nixos/modules");
 in {
   flake = {
-    nixosModules.default = defaultNixosModule;
+    nixosModules = {
+      default = import (rootPath + "/nixos/modules/top-level");
+      gui = import (rootPath + "/nixos/modules/top-level/gui.nix");
+    };
     nixosConfigurations = let
       makeNixosConfiguration = hostName:
         nixpkgs.lib.nixosSystem {
-          modules =
-            [defaultNixosModule]
-            ++ [
-              (rootPath + "/nixos/configurations/${hostName}")
-            ];
+          modules = [(rootPath + "/nixos/configurations/${hostName}")];
           specialArgs = {
             inherit inputs outputs rootPath;
           };

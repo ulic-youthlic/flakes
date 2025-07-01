@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  cfg = config.youthlic.programs.waybar;
+  cfg = config.david.programs.waybar;
 in {
   options = {
-    youthlic.programs.waybar = {
+    david.programs.waybar = {
       enable = lib.mkEnableOption "waybar";
     };
   };

@@ -3,10 +3,10 @@
   config,
   ...
 }: let
-  cfg = config.youthlic.programs.swaync;
+  cfg = config.david.programs.swaync;
 in {
   options = {
-    youthlic.programs.swaync = {
+    david.programs.swaync = {
       enable = lib.mkEnableOption "swaync";
       systemd.enable = lib.mkEnableOption "systemd service for swaync";
     };

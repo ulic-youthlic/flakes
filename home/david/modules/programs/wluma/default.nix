@@ -11,6 +11,12 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-    youthlic.programs.wluma.config = ./config.toml;
+    services.wluma = {
+      enable = true;
+      settings = ./config.toml |> builtins.readFile |> builtins.fromTOML;
+      systemd = {
+        enable = true;
+      };
+    };
   };
 }

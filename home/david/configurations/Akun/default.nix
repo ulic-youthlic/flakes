@@ -14,15 +14,12 @@
       inherit (email) address name;
       signKey = email.gpg.key;
     in {
-      firefox.enable = true;
-      fuzzel.enable = true;
       gpg.enable = true;
       git = {
         inherit name signKey;
         email = address;
         encrypt-credential = true;
       };
-      zed-editor.enable = true;
       fish.enable = true;
       bash.enable = true;
       jujutsu = {
@@ -30,15 +27,9 @@
         inherit name signKey;
         email = address;
       };
-      ghostty.enable = true;
       starship.enable = true;
       sops.enable = true;
-      mpv.enable = true;
       atuin.enable = true;
-      chromium.enable = true;
-      thunderbird.enable = true;
-      alacritty.enable = true;
-      # espanso.enable = true;
     };
   };
 
@@ -46,8 +37,16 @@
     wallpaper.enable = true;
     accounts.email.enable = true;
     programs = {
+      chromium.enable = true;
+      thunderbird.enable = true;
+      # espanso.enable = true;
+      mpv.enable = true;
+      ghostty.enable = true;
+      zed-editor.enable = true;
+      firefox.enable = true;
       helix.enable = true;
       openssh.enable = true;
+      alacritty.enable = true;
     };
   };
 

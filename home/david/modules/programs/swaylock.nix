@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  cfg = config.youthlic.programs.swaylock;
+  cfg = config.david.programs.swaylock;
 in {
   options = {
-    youthlic.programs.swaylock = {
+    david.programs.swaylock = {
       enable = lib.mkEnableOption "swaylock";
     };
   };

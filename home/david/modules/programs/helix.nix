@@ -12,6 +12,10 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
+    stylix.targets.helix.enable = false;
+    programs.helix.settings = {
+      theme = "gruvbox_dark_hard";
+    };
     youthlic.programs.helix = {
       enable = true;
       extraPackages = with pkgs; [

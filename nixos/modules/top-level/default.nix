@@ -1,0 +1,31 @@
+{
+  pkgs,
+  inputs,
+  outputs,
+  ...
+}: {
+  imports = with inputs; [
+    home-manager.nixosModules.home-manager
+    dae.nixosModules.dae
+    sops-nix.nixosModules.sops
+    stylix.nixosModules.stylix
+    disko.nixosModules.disko
+    lix-module.nixosModules.default
+    chaotic.nixosModules.default
+
+    ./..
+  ];
+
+  config = {
+    nixpkgs = {
+      overlays = with outputs.overlays; [
+        modifications
+        additions
+      ];
+    };
+    system.rebuild.enableNg = true;
+    environment.systemPackages = with pkgs; [
+      deploy-rs
+    ];
+  };
+}

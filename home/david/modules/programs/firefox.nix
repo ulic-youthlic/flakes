@@ -6,10 +6,10 @@
   config,
   ...
 }: let
-  cfg = config.youthlic.programs.firefox;
+  cfg = config.david.programs.firefox;
 in {
   options = {
-    youthlic.programs.firefox = {
+    david.programs.firefox = {
       enable = lib.mkEnableOption "firefox";
     };
   };

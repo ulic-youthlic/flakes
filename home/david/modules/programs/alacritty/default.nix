@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.youthlic.programs.alacritty;
+  cfg = config.david.programs.alacritty;
 in {
   options = {
-    youthlic.programs.alacritty = {
+    david.programs.alacritty = {
       enable = lib.mkEnableOption "alacritty";
     };
   };

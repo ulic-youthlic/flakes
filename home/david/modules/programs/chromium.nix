@@ -3,10 +3,10 @@
   config,
   ...
 }: let
-  cfg = config.youthlic.programs.chromium;
+  cfg = config.david.programs.chromium;
 in {
   options = {
-    youthlic.programs.chromium = {
+    david.programs.chromium = {
       enable = lib.mkEnableOption "chromium";
     };
   };

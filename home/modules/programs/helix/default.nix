@@ -24,7 +24,6 @@
   config = let
     cfg = config.youthlic.programs.helix;
   in {
-    stylix.targets.helix.enable = false;
     programs.helix = lib.mkIf cfg.enable {
       enable = true;
       defaultEditor = true;

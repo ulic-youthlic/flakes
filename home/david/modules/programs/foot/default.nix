@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.youthlic.programs.foot;
+  cfg = config.david.programs.foot;
 in {
   options = {
-    youthlic.programs.foot = {
+    david.programs.foot = {
       enable = lib.mkEnableOption "foot";
     };
   };

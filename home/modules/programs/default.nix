@@ -1,36 +1,20 @@
 {...}: {
   imports = [
-    ./zed.nix
     ./rustypaste-cli.nix
     ./atuin.nix
-    ./firefox.nix
     ./bash.nix
     ./fish.nix
     ./kvm.nix
-    ./ghostty.nix
-    ./wluma.nix
-    ./niri.nix
     ./starship
-    ./fuzzel.nix
-    ./mpv.nix
-    ./swaylock.nix
-    ./thunderbird.nix
-    ./chromium.nix
     ./gpg
-    ./foot
     ./sops.nix
     ./git.nix
-    ./swaync.nix
     ./helix
-    ./waybar.nix
     ./jujutsu.nix
-    ./espanso.nix
     ./yazi.nix
     ./zoxide.nix
     ./fzf.nix
     ./eza.nix
     ./ion.nix
-    ./alacritty
-    ./waypaper.nix
   ];
 }

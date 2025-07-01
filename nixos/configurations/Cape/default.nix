@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  outputs,
+  ...
+}: {
   imports = [
     ./forgejo.nix
     ./networking.nix
@@ -8,6 +12,8 @@
     ./disko-config.nix
     ./miniflux.nix
     ./radicle.nix
+
+    outputs.nixosModules.default
   ];
 
   youthlic = {

@@ -5,12 +5,12 @@
   ...
 }: {
   options = {
-    youthlic.programs.ghostty = {
+    david.programs.ghostty = {
       enable = lib.mkEnableOption "ghostty";
     };
   };
   config = let
-    cfg = config.youthlic.programs.ghostty;
+    cfg = config.david.programs.ghostty;
   in (lib.mkIf cfg.enable {
     programs.ghostty = lib.mkMerge [
       {
