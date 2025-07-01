@@ -31,5 +31,6 @@
     ./eza.nix
     ./ion.nix
     ./alacritty
+    ./waypaper.nix
   ];
 }

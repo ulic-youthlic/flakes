@@ -34,7 +34,7 @@
 
   polkit-kde-agent = getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-agent";
   wpctl = getExe' pkgs.wireplumber "wpctl";
-  swaybg = getExe pkgs.swaybg;
+  waypaper = getExe pkgs.waypaper;
   alacritty = getExe config.programs.alacritty.package;
   wl-paste = getExe' pkgs.wl-clipboard "wl-paste";
   cliphist = getExe' pkgs.cliphist "cliphist";
@@ -386,7 +386,7 @@ in
       (flag "prefer-no-csd")
       (spawn-at-startup [waybar])
       (spawn-at-startup [swaync])
-      (spawn-at-startup [swaybg "-i" "${config.home.homeDirectory}/wallpaper/01.png"])
+      (spawn-at-startup [waypaper "--restore"])
       (spawn-at-startup [polkit-kde-agent])
       (spawn-at-startup [wl-paste "--watch" cliphist "store"])
       (spawn-at-startup [wl-clip-persist "--clipboard" "regular"])

@@ -26,7 +26,6 @@ in {
         home.packages =
           (with pkgs; [
             swaynotificationcenter
-            swaybg
             kdePackages.polkit-kde-agent-1
             wl-clipboard
             cliphist
@@ -65,6 +64,7 @@ in {
           waybar.enable = true;
           swaync.enable = true;
           swaylock.enable = true;
+          waypaper.enable = true;
         };
         programs.niri = {
           config = cfg.config;
