@@ -7,7 +7,7 @@
     enable = true;
     image = rootPath + "/assets/wallpaper/01.png";
     polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     cursor = {
       package = pkgs.rose-pine-cursor;
       name = "BreezeX-RosePineDawn-Linux";
