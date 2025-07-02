@@ -404,6 +404,7 @@ in
         (flag "hide-when-typing")
       ])
       (plain "layout" [
+        (leaf "background-color" ["transparent"])
         (plain "border" [
           (flag "off")
           (leaf "width" [4])
@@ -448,7 +449,10 @@ in
         ])
       ])
       (plain "overview" [
+        (plain "workspace-shadow" [
+          (flag "off")
         ])
+      ])
     ] # others
   )
   ++ (
@@ -532,6 +536,10 @@ in
           (flag "on")
         ])
         (leaf "geometry-corner-radius" [10.0])
+      ])
+      (layer-rule [
+        (match [{namespace = "^mpvpaper$";}])
+        (leaf "place-within-backdrop" [true])
       ])
     ] # layer-rule
   )
