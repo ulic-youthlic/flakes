@@ -27,5 +27,6 @@
     ./wshowkeys.nix
     ./bash.nix
     ./obs.nix
+    ./sudo-rs.nix
   ];
 }
