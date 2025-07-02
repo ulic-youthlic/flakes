@@ -7,7 +7,6 @@
     ./dae
     ./forgejo.nix
     ./kanata.nix
-    ./kvm.nix
     ./nh.nix
     ./open-webui.nix
     ./openssh.nix

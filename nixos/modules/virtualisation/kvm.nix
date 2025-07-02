@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.youthlic.programs.kvm;
+  cfg = config.youthlic.virtualisation.kvm;
 in {
   options = {
-    youthlic.programs.kvm = {
+    youthlic.virtualisation.kvm = {
       enable = lib.mkEnableOption "kvm";
       unixName = lib.mkOption {
         type = lib.types.str;

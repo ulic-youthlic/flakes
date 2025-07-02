@@ -33,3 +33,6 @@ in
     in
       lib.genAttrs ["immersive-translate" "tridactyl" "redirector"] (name: firefox-addons."${name}")
   )
+  // {
+    inherit (inputs.nur-ataraxiasjel.outputs.packages.${pkgs.system}) waydroid-script;
+  }

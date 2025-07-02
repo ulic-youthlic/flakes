@@ -176,5 +176,11 @@
       owner = "chaotic-cx";
       repo = "nyx";
     };
+
+    nur-ataraxiasjel = {
+      type = "github";
+      owner = "ataraxiasjel";
+      repo = "nur";
+    };
   };
 }

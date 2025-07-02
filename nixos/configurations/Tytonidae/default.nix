@@ -37,6 +37,13 @@
     };
     hardware.asus.enable = true;
     i18n.enable = true;
+    virtualisation = {
+      kvm = {
+        enable = true;
+        unixName = "david";
+      };
+      waydroid.enable = true;
+    };
     programs = {
       bash.enable = true;
       guix.enable = true;
@@ -45,10 +52,6 @@
       steam.enable = true;
       tailscale.enable = true;
       kanata.enable = true;
-      kvm = {
-        enable = true;
-        unixName = "david";
-      };
       transmission.enable = true;
       nix-ld.enable = true;
       juicity.client.enable = true;

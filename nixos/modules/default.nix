@@ -9,5 +9,6 @@
     ./gui
     ./programs
     ./hardware.nix
+    ./virtualisation
   ];
 }
