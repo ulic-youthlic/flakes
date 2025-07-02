@@ -405,12 +405,13 @@ in
       ])
       (plain "layout" [
         (plain "border" [
+          (flag "off")
           (leaf "width" [4])
           (leaf "active-color" ["#7fc8ff"])
           (leaf "inactive-color" ["#505050"])
         ])
         (plain "focus-ring" [
-          (flag "off")
+          # (flag "off")
           (leaf "width" [4])
           (leaf "active-color" ["#7fc8ff"])
           (leaf "inactive-color" ["#505050"])
@@ -466,30 +467,17 @@ in
         (leaf "block-out-from" ["screen-capture"])
       ])
       (window-rule [
-        (match [
-          {
-            app-id = "^com\\.mitchellh\\.ghostty$";
-            is-active = true;
-          }
-          {
-            app-id = "^Alacritty$";
-            is-active = true;
-          }
-        ])
+        (match [{is-active = true;}])
+        (leaf "opacity" [0.95])
+      ])
+      (window-rule [
+        (match [{is-active = false;}])
+        (leaf "opacity" [0.8])
         (leaf "draw-border-with-background" [false])
       ])
       (window-rule [
-        (match [
-          {
-            app-id = "^com\\.mitchellh\\.ghostty$";
-            is-active = false;
-          }
-          {
-            app-id = "^Alacritty$";
-            is-active = false;
-          }
-        ])
-        (leaf "opacity" [0.8])
+        (match [{app-id = "^Alacritty$";}])
+        (match [{app-id = "^com\\.mitchellh\\.ghostty$";}])
         (leaf "draw-border-with-background" [false])
       ])
       (window-rule [
