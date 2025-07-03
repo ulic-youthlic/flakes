@@ -6,6 +6,7 @@ in
     ./OuterWildsTextAdventure.nix
     ./editor-runtime.nix
     ./radicle-ci-broker.nix
+    ./wallpapers.nix
   ]
   |> map (file: import file args)
   |> (overlays: (lib.composeManyExtensions overlays) final prev)

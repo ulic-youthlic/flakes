@@ -41,3 +41,11 @@ fetch.github = "sentriz/cliphist"
 [radicle-ci-broker]
 src.git = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git"
 fetch.git = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git"
+
+["wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4"]
+src.cmd = "curl -sL http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4 | sha256sum | cut -d ' ' -f 1"
+fetch.url = "http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4"
+
+["wallpaper_outer-wilds.3840x2160.mp4"]
+src.cmd = "curl -sL http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4 | sha256sum | cut -d ' ' -f 1"
+fetch.url = "http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4"

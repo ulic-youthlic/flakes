@@ -1,7 +1,7 @@
 {
-  rootPath,
   lib,
   config,
+  pkgs,
   ...
 }: let
   cfg = config.david.wallpaper;
@@ -15,7 +15,7 @@ in {
     home.file."wallpaper" = {
       force = true;
       recursive = true;
-      source = rootPath + "/assets/wallpaper";
+      source = toString pkgs.wallpapers;
     };
   };
 }

@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "f2f10c1694d692df5cd88779bba2ba8692c79a87";
+    version = "1d1f4e22d9cbea323bc8e397869d9f62096af0dc";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "f2f10c1694d692df5cd88779bba2ba8692c79a87";
+      rev = "1d1f4e22d9cbea323bc8e397869d9f62096af0dc";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-cDH/CseZ+ytO+9I0Hg663iShZt7epTrLf18oaqGimXo=";
+      sha256 = "sha256-Coax6wd9D4nbyutEzTzrZxPsb2NEZm/HHHvlguy7bIU=";
     };
-    date = "2025-06-30";
+    date = "2025-07-04";
   };
   cliphist = {
     pname = "cliphist";
@@ -98,15 +98,15 @@
   };
   spotx = {
     pname = "spotx";
-    version = "da5fe58e1436206d2dfce270a1567c5a5805d786";
+    version = "a0df4fcaace5efc1b58acd39b2c4d1750bb81057";
     src = fetchFromGitHub {
       owner = "SpotX-Official";
       repo = "SpotX-Bash";
-      rev = "da5fe58e1436206d2dfce270a1567c5a5805d786";
+      rev = "a0df4fcaace5efc1b58acd39b2c4d1750bb81057";
       fetchSubmodules = false;
-      sha256 = "sha256-ZRJgptfJmLDTJbgul7jIRObtdK0ZM6Ah4/pll+k8Xwc=";
+      sha256 = "sha256-H8AG9WOodmPFBoHGwZ8qs55bb4myyKrRLsUmepvzYtQ=";
     };
-    date = "2025-06-28";
+    date = "2025-07-02";
   };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";
@@ -122,6 +122,22 @@
     };
     name = "idris";
     date = "2024-11-05";
+  };
+  "wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4" = {
+    pname = "wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4";
+    version = "346942a88f763c59cc17f7b2a02756cc9d2a0c891585f916e3a4a9c15fe26ac9";
+    src = fetchurl {
+      url = "http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4";
+      sha256 = "sha256-NGlCqI92PFnMF/eyoCdWzJ0qDIkVhfkW46SpwV/iask=";
+    };
+  };
+  "wallpaper_outer-wilds.3840x2160.mp4" = {
+    pname = "wallpaper_outer-wilds.3840x2160.mp4";
+    version = "19e0ccb48483f55f3413201718e8b2ba4a6acd112e1a3e7bb5ad913b87c5f210";
+    src = fetchurl {
+      url = "http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4";
+      sha256 = "sha256-GeDMtISD9V80EyAXGOiyukpqzREuGj57ta2RO4fF8hA=";
+    };
   };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";

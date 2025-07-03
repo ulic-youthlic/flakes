@@ -25,6 +25,7 @@ in
 
     noto-serif-cjk = callPackage ./noto-serif-cjk.nix {};
     noto-sans-cjk = callPackage ./noto-sans-cjk.nix {};
+    wallpapers = callPackage ./wallpapers.nix {};
   }
   // (
     let
