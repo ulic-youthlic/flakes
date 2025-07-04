@@ -82,7 +82,7 @@
     vlc
     btop
     handbrake
-    wechat-uos
+    wechat
     nvtopPackages.full
     spotify
     localsend
