@@ -7,9 +7,17 @@
   services = {
     hardware.bolt.enable = true;
     fstrim.enable = true;
+    input-remapper = {
+      enable = true;
+      enableUdevRules = true;
+    };
   };
   nix = {settings = {system-features = ["gccarch-alderlake"];};};
   hardware = {
+    openrazer = {
+      enable = true;
+      users = ["david"];
+    };
     graphics.package = pkgs.mesa_git;
     intelgpu = {
       driver = "xe";
