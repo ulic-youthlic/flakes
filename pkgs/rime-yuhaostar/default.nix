@@ -7,7 +7,13 @@
 in
   stdenv.mkDerivation {
     pname = "rime-yuhaostar";
-    version = version;
+    version =
+      if version != "v3.8.0"
+      then
+        throw ''
+          Please update 宇浩输入法。
+        ''
+      else version;
     inherit src;
     nativeBuildInputs = [unzip];
 
