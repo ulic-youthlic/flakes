@@ -15,6 +15,6 @@ in {
     virtualisation.waydroid = {
       enable = true;
     };
-    environment.systemPackages = with pkgs; [waydroid-script];
+    environment.systemPackages = [pkgs.nur.repos.ataraxiasjel.waydroid-script];
   };
 }

@@ -11,6 +11,7 @@ in
     # ./QQ.nix
     ./helix.nix
     ./cliphist.nix
+    ./nur.nix
   ]
   |> map (file: import file args)
   |> (overlays: (lib.composeManyExtensions overlays) final prev)

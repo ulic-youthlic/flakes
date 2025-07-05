@@ -1,6 +1,5 @@
 {
   pkgs,
-  outputs,
   system,
   lib,
   config,
@@ -59,7 +58,7 @@ in {
           #     };
           #   };
           # };
-          packages = with outputs.packages."${system}"; [
+          packages = with pkgs.nur.repos.rycee.firefox-addons; [
             immersive-translate
             tridactyl
             redirector

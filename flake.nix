@@ -118,14 +118,6 @@
       repo = "flake-utils";
     };
 
-    nur-rycee = {
-      type = "gitlab";
-      owner = "rycee";
-      repo = "nur-expressions";
-      ref = "master";
-      flake = false;
-    };
-
     sops-nix = {
       type = "github";
       owner = "Mic92";
@@ -177,10 +169,15 @@
       repo = "nyx";
     };
 
-    nur-ataraxiasjel = {
+    nur = {
       type = "github";
-      owner = "ataraxiasjel";
-      repo = "nur";
+      owner = "nix-community";
+      repo = "NUR";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+        flake-parts.follows = "flake-parts";
+      };
     };
   };
 }
