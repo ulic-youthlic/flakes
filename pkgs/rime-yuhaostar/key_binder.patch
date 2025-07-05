@@ -1,0 +1,48 @@
+diff --git a/yuhao_pinyin.schema.yaml b/yuhao_pinyin.schema.yaml
+index 7b5f1cb..d82945d 100644
+--- a/yuhao_pinyin.schema.yaml
++++ b/yuhao_pinyin.schema.yaml
+@@ -75,6 +75,7 @@ punctuator:
+     "|": "|"
+ 
+ key_binder:
++  import_preset: default
+   bindings:
+     - { when: always, accept: "Control+period", toggle: ascii_punct }
+     - { when: always, accept: "Control+Shift+period", toggle: ascii_punct }
+diff --git a/yustar.schema.yaml b/yustar.schema.yaml
+index 96aaded..5f1adaf 100644
+--- a/yustar.schema.yaml
++++ b/yustar.schema.yaml
+@@ -307,6 +307,7 @@ punctuator:
+     "|": "|"
+ 
+ key_binder:
++  import_preset: default
+   bindings:
+     - { when: always, accept: "Control+period", toggle: ascii_punct }
+     - { when: always, accept: "Control+Shift+period", toggle: ascii_punct }
+diff --git a/yustar_sc.schema.yaml b/yustar_sc.schema.yaml
+index c2019b6..5a255ea 100644
+--- a/yustar_sc.schema.yaml
++++ b/yustar_sc.schema.yaml
+@@ -301,6 +301,7 @@ punctuator:
+     "|": "|"
+ 
+ key_binder:
++  import_preset: default
+   bindings:
+     - { when: always, accept: "Control+period", toggle: ascii_punct }
+     - { when: always, accept: "Control+Shift+period", toggle: ascii_punct }
+diff --git a/yustar_tw.schema.yaml b/yustar_tw.schema.yaml
+index aa9bfdd..e08e66e 100644
+--- a/yustar_tw.schema.yaml
++++ b/yustar_tw.schema.yaml
+@@ -298,6 +298,7 @@ punctuator:
+     "|": "|"
+ 
+ key_binder:
++  import_preset: default
+   bindings:
+     - { when: always, accept: "Control+period", toggle: ascii_punct }
+     - { when: always, accept: "Control+Shift+period", toggle: ascii_punct }

@@ -1,0 +1,52 @@
+diff --git a/yuhao_pinyin.schema.yaml b/yuhao_pinyin.schema.yaml
+index 7b5f1cb..f036a64 100644
+--- a/yuhao_pinyin.schema.yaml
++++ b/yuhao_pinyin.schema.yaml
+@@ -60,7 +60,7 @@ translator:
+     - xform/([jqxy])v/$1u/
+ 
+ punctuator:
+-  import_preset: symbols
++  import_preset: default
+   half_shape:
+     "`": "`"
+     "#": "#"
+diff --git a/yustar.schema.yaml b/yustar.schema.yaml
+index 96aaded..2805afc 100644
+--- a/yustar.schema.yaml
++++ b/yustar.schema.yaml
+@@ -292,7 +292,7 @@ yuhao_macro:
+         expr: return require("yuhao.yuhao_core").unicode()
+ 
+ punctuator:
+-  import_preset: symbols
++  import_preset: default
+   half_shape:
+     "`": "`"
+     "#": "#"
+diff --git a/yustar_sc.schema.yaml b/yustar_sc.schema.yaml
+index c2019b6..3a5a434 100644
+--- a/yustar_sc.schema.yaml
++++ b/yustar_sc.schema.yaml
+@@ -286,7 +286,7 @@ yuhao_macro:
+         expr: return require("yuhao.yuhao_core").unicode()
+ 
+ punctuator:
+-  import_preset: symbols
++  import_preset: default
+   half_shape:
+     "`": "`"
+     "#": "#"
+diff --git a/yustar_tw.schema.yaml b/yustar_tw.schema.yaml
+index aa9bfdd..1530250 100644
+--- a/yustar_tw.schema.yaml
++++ b/yustar_tw.schema.yaml
+@@ -283,7 +283,7 @@ yuhao_macro:
+         expr: return require("yuhao.yuhao_core").unicode()
+ 
+ punctuator:
+-  import_preset: symbols
++  import_preset: default
+   half_shape:
+     "`": "`"
+     "#": "#"

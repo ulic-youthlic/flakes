@@ -13,6 +13,8 @@ in
 
     sourceRoot = "schema";
 
+    patches = [./punctuator.patch ./key_binder.patch];
+
     installPhase = ''
       runHook preInstall
 

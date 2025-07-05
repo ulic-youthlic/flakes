@@ -38,6 +38,7 @@ in {
                 rime-ice
                 rime-zhwiki
                 rime-moegirl
+                rime-yuhaostar
               ];
             })
           ];
@@ -46,7 +47,56 @@ in {
           # ignoreUserConfig = false;
           settings = {
             addons = {
-              classicui.globalSection.Theme = "FluentDark-solid";
+              classicui.globalSection = {
+                Theme = "FluentDark-solid";
+                "Vertical Candidate List" = true;
+              };
+              notifications.globalSection = {
+                HiddenNotifications = "";
+              };
+              clipboard.globalSection = {
+                TriggerKey = "";
+                PastePrimaryKey = "";
+              };
+            };
+            globalOptions = {
+              HotKey = {
+                ActivateKeys = "";
+                AltTriggerKeys = "";
+                DeactivateKeys = "";
+                EnumerateBackwardKeys = "";
+                EnumerateForwardKeys = "";
+                EnumerateGroupBackwardKeys = "";
+                EnumerateGroupForwardKeys = "";
+                EnumerateSkipFirst = false;
+                EnumerateWithTriggerKeys = true;
+                ModifierOnlyKeyTimeout = "250";
+                NextCandidate = "";
+                NextPage = "";
+                PrevCandidate = "";
+                PrevPage = "";
+                TogglePreedit = "";
+                TriggerKeys = "";
+              };
+              Behavior = {
+                ActiveByDefault = false;
+                AllowInputMethodForPassword = false;
+                AutoSavePeriod = 30;
+                CompactInputMethodInformation = true;
+                CustomXkbOption = "";
+                DefaultPageSize = 7;
+                DisabledAddons = "";
+                EnabledAddons = "";
+                OverrideXkbOption = false;
+                PreeditEnabledByDefault = true;
+                PreloadInputMethod = true;
+                ShareInputState = "No";
+                ShowFirstInputMethodInformation = true;
+                ShowInputMethodInformation = true;
+                ShowPreeditForPassword = false;
+                resetStateWhenFocusIn = "No";
+                showInputMethodInformationWhenFocusIn = false;
+              };
             };
             inputMethod = {
               "Groups/0" = {
@@ -55,12 +105,11 @@ in {
                 DefaultIM = "keyboard-us";
               };
               "Groups/0/Items/0" = {
-                Name = "keyboard-us";
-                Layout = "";
-              };
-              "Groups/0/Items/1" = {
                 Name = "rime";
                 Layout = "";
+              };
+              "GroupOrder" = {
+                "0" = "Default";
               };
             };
           };
