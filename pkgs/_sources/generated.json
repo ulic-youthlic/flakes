@@ -150,6 +150,21 @@
         },
         "version": "d5f684b2ec12dc875ec0278c8e2fe71faaa88d38"
     },
+    "rime-yuhaostar": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "rime-yuhaostar",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": "yustar_v3.8.0.zip",
+            "sha256": "sha256-aUMsuXkiK/FVVi6qPg+dphAOpRyGiDKsT2wD2VBShKo=",
+            "type": "url",
+            "url": "http://ys-j.ysepan.com/wap/zhuyuhao/91SbOjgNKE7A2PMH8A/we7hF96sa52g4EccbuakeGd8LE3NGc/å®æµ©æé³_v3.8.0.zip"
+        },
+        "version": "v3.8.0"
+    },
     "spotx": {
         "cargoLocks": null,
         "date": "2025-07-02",

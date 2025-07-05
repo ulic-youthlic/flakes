@@ -96,6 +96,15 @@
     };
     date = "2025-06-27";
   };
+  rime-yuhaostar = {
+    pname = "rime-yuhaostar";
+    version = "v3.8.0";
+    src = fetchurl {
+      url = "http://ys-j.ysepan.com/wap/zhuyuhao/91SbOjgNKE7A2PMH8A/we7hF96sa52g4EccbuakeGd8LE3NGc/\23431\28009\26143\38515_v3.8.0.zip";
+      name = "yustar_v3.8.0.zip";
+      sha256 = "sha256-aUMsuXkiK/FVVi6qPg+dphAOpRyGiDKsT2wD2VBShKo=";
+    };
+  };
   spotx = {
     pname = "spotx";
     version = "a0df4fcaace5efc1b58acd39b2c4d1750bb81057";

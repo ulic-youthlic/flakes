@@ -21,6 +21,7 @@ in {
   editor-runtime = callPackage ./editor-runtime.nix {};
   cliphist = callPackage ./cliphist.nix {};
   radicle-ci-broker = callPackage ./radicle-ci-broker.nix {};
+  rime-yuhaostar = callPackage ./rime-yuhaostar.nix {};
 
   noto-serif-cjk = callPackage ./noto-serif-cjk.nix {};
   noto-sans-cjk = callPackage ./noto-sans-cjk.nix {};
