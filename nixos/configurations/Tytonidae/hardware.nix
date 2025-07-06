@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
   nixpkgs.config.cudaSupport = true;
@@ -33,11 +34,46 @@
       };
     };
   };
-  boot.binfmt = {
-    emulatedSystems = [
-      "aarch64-linux"
-      "x86_64-windows"
-      "wasm64-wasi"
-    ];
+  boot = {
+    extraModulePackages = with config.boot.kernelPackages; [ddcci-driver];
+    kernelModules = ["ddcci" "ddcci-backlight" "i2c-dev"];
+    binfmt = {
+      emulatedSystems = [
+        "aarch64-linux"
+        "x86_64-windows"
+        "wasm64-wasi"
+      ];
+    };
   };
+  systemd.services."ddcci@" = {
+    description = "ddcci handler";
+    after = ["graphical.target"];
+    before = ["shutdown.target"];
+    conflicts = ["shutdown.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = let
+        script = pkgs.writeShellApplication {
+          name = "ddcci-handler";
+          runtimeInputs = with pkgs; [coreutils ddcutil];
+          text = ''
+            echo Trying to attach ddcci to "$1"
+            success=0
+            i=0
+            id=$(echo "$1" | cut -d "-" -f 2)
+            while ((success < 1)) && ((i++ < 5)); do
+              if ddcutil getvcp 10 -b "$id"; then
+                success=1
+                echo ddcci 0x37 | tee "/sys/bus/i2c/devices/$1/new_device"
+                echo ddcci attached to "$1"
+              fi
+            done
+          '';
+        };
+      in "${lib.getExe' script "ddcci-handler"} %i";
+    };
+  };
+  services.udev.extraRules = ''
+    SUBSYSTEM=="i2c-dev", ACTION=="add", ATTR{name}=="NVIDIA i2c adapter*", TAG+="ddcci", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ddcci@$kernel.service"
+  '';
 }
