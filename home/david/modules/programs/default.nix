@@ -2,7 +2,7 @@
   imports = [
     ./openssh.nix
     ./niri
-    ./wluma
+    ./wluma.nix
     ./helix.nix
     ./firefox.nix
     ./waybar.nix

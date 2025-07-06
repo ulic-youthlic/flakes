@@ -2,6 +2,17 @@
   inherit (inputs.niri-flake.lib.kdl) node leaf flag;
 in {
   david.programs.niri = {
+    wluma.extraSettings = {
+      output = {
+        backlight = [
+          {
+            name = "eDP-1";
+            path = "/sys/class/backlight/intel_backlight";
+            capturer = "wayland";
+          }
+        ];
+      };
+    };
     extraConfig = let
       output = node "output";
     in [

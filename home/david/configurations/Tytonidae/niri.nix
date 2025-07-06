@@ -2,6 +2,28 @@
   inherit (inputs.niri-flake.lib.kdl) node leaf flag;
 in {
   david.programs.niri = {
+    wluma.extraSettings = {
+      output = {
+        backlight = [
+          {
+            name = "eDP-1";
+            path = "/sys/class/backlight/nvidia_0";
+            capturer = "wayland";
+          }
+          {
+            name = "DP-3";
+            path = "/sys/class/backlight/ddcci13";
+            capturer = "wayland";
+          }
+        ];
+      };
+      keyboard = [
+        {
+          name = "keyboard-asus";
+          path = "/sys/bus/platform/devices/asus-nb-wmi/leds/asus::kbd_backlight";
+        }
+      ];
+    };
     extraConfig = let
       output = node "output";
     in [

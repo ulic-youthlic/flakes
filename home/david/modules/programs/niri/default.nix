@@ -4,6 +4,7 @@
   inputs,
   pkgs,
   osConfig ? null,
+  options,
   ...
 } @ args: let
   cfg = config.david.programs.niri;
@@ -14,6 +15,9 @@ in {
       enable = lib.mkEnableOption "niri";
       extraConfig = lib.mkOption {
         type = inputs.niri-flake.lib.kdl.types.kdl-document;
+      };
+      wluma.extraSettings = lib.mkOption {
+        inherit (options.david.programs.wluma.extraSettings) type;
       };
     };
   };
@@ -62,7 +66,10 @@ in {
         david.programs = {
           fuzzel.enable = true;
           waybar.enable = true;
-          wluma.enable = true;
+          wluma = {
+            enable = true;
+            inherit (cfg.wluma) extraSettings;
+          };
           swaync.enable = true;
           swaylock.enable = true;
           waypaper.enable = true;
