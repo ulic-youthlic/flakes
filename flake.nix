@@ -134,7 +134,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
-        home-manager.follows = "home-manager";
       };
     };
 
@@ -173,11 +172,11 @@
       type = "github";
       owner = "nix-community";
       repo = "NUR";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
-        flake-parts.follows = "flake-parts";
-      };
+    };
+    nur-ataraxiasjel = {
+      type = "github";
+      owner = "AtaraxiaSjel";
+      repo = "nur";
     };
   };
 }
