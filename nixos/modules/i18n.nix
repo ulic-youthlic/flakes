@@ -49,7 +49,7 @@ in {
             addons = {
               classicui.globalSection = {
                 Theme = "FluentDark-solid";
-                "Vertical Candidate List" = true;
+                "Vertical Candidate List" = "True";
               };
               notifications.globalSection = {
                 HiddenNotifications = "";
@@ -61,51 +61,61 @@ in {
             };
             globalOptions = {
               HotKey = {
-                ActivateKeys = "";
+                EnumerateWithTriggerKeys = "True";
                 AltTriggerKeys = "";
-                DeactivateKeys = "";
-                EnumerateBackwardKeys = "";
                 EnumerateForwardKeys = "";
-                EnumerateGroupBackwardKeys = "";
+                EnumerateBackwardKeys = "";
+                EnumerateSkipFirst = "False";
                 EnumerateGroupForwardKeys = "";
-                EnumerateSkipFirst = false;
-                EnumerateWithTriggerKeys = true;
-                ModifierOnlyKeyTimeout = "250";
-                NextCandidate = "";
+                EnumerateGroupBackwardKeys = "";
+                ActivateKeys = "";
+                DeactivateKeys = "";
+                PrevPage = "";
                 NextPage = "";
                 PrevCandidate = "";
-                PrevPage = "";
+                NextCandidate = "";
                 TogglePreedit = "";
-                TriggerKeys = "";
+                ModifierOnlyKeyTimeout = 250;
+              };
+              "Hotkey/TriggerKeys" = {
+                "0" = "Control+space";
               };
               Behavior = {
-                ActiveByDefault = false;
-                AllowInputMethodForPassword = false;
+                ActiveByDefault = "False";
+                AllowInputMethodForPassword = "False";
                 AutoSavePeriod = 30;
-                CompactInputMethodInformation = true;
+                CompactInputMethodInformation = "True";
                 CustomXkbOption = "";
                 DefaultPageSize = 7;
                 DisabledAddons = "";
                 EnabledAddons = "";
-                OverrideXkbOption = false;
-                PreeditEnabledByDefault = true;
-                PreloadInputMethod = true;
+                OverrideXkbOption = "False";
+                PreeditEnabledByDefault = "True";
+                PreloadInputMethod = "True";
                 ShareInputState = "No";
-                ShowFirstInputMethodInformation = true;
-                ShowInputMethodInformation = true;
-                ShowPreeditForPassword = false;
+                ShowFirstInputMethodInformation = "True";
+                ShowInputMethodInformation = "True";
+                ShowPreeditForPassword = "False";
                 resetStateWhenFocusIn = "No";
-                showInputMethodInformationWhenFocusIn = false;
+                showInputMethodInformationWhenFocusIn = "False";
               };
             };
             inputMethod = {
               "Groups/0" = {
                 Name = "Default";
                 "Default Layout" = "us";
-                DefaultIM = "keyboard-us";
+                DefaultIM = "rime";
               };
               "Groups/0/Items/0" = {
+                Name = "keyboard-us";
+                Layout = "";
+              };
+              "Groups/0/Items/1" = {
                 Name = "rime";
+                Layout = "";
+              };
+              "Groups/0/Items/2" = {
+                Name = "keyboard-us-dvp";
                 Layout = "";
               };
               "GroupOrder" = {
