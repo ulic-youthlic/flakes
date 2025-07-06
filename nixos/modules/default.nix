@@ -10,5 +10,6 @@
     ./programs
     ./hardware.nix
     ./virtualisation
+    ./documentation.nix
   ];
 }
