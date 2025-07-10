@@ -64,7 +64,7 @@
             while ((success < 1)) && ((i++ < 5)); do
               if ddcutil getvcp 10 -b "$id"; then
                 success=1
-                echo ddcci 0x37 | tee "/sys/bus/i2c/devices/$1/new_device"
+                echo ddcci 0x37 > "/sys/bus/i2c/devices/$1/new_device"
                 echo ddcci attached to "$1"
               fi
             done
