@@ -40,6 +40,15 @@ buildHome host=DEFAULT_HOST $USER=DEFAULT_USER:
 deadNix:
     nix run github:astro/deadnix -- . --exclude ./pkgs/_sources/generated.nix ./nixos/configurations/{Akun,Tytonidae,Cape}/hardware-configuration.nix
 
+sign:
+    jj sign --revisions '::@ & ~root() & ~signed() & ~@' --ignore-immutable
+
+patch revision="HEAD":
+    git push rad {{ revision }}:refs/patches
+
+rebase revision="dev":
+    jj rebase -b 'all:heads(all()) & ~signed() &~@' -d {{ revision }}
+
 alias s := switch
 alias u := update
 alias d := deploy
