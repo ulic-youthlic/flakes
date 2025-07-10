@@ -7,6 +7,12 @@
   ...
 }: {
   config = {
+    environment.etc =
+      inputs
+      |> lib.mapAttrs' (name: value:
+        lib.nameValuePair "nix/inputs/${name}" {
+          source = value;
+        });
     nixpkgs = {
       config = {
         allowUnfree = true;
@@ -23,7 +29,7 @@
       mode = "0444";
     };
     nix = {
-      nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+      nixPath = ["/etc/nix/inputs"];
       extraOptions = ''
         !include ${config.sops.secrets."access-tokens".path}
       '';
@@ -54,13 +60,14 @@
         builders-use-substitutes = true;
       };
       package = pkgs.nix;
-      registry.sys = lib.mkDefault {
-        from = {
-          type = "indirect";
-          id = "sys";
-        };
-        flake = inputs.nixpkgs;
-      };
+      registry =
+        inputs
+        |> lib.filterAttrs (name: _value: name != "nixpkgs")
+        |> lib.mapAttrs (_name: value: {
+          flake = lib.mkForce {
+            outPath = value;
+          };
+        });
     };
   };
 }
