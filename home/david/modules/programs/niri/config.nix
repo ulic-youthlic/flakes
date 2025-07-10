@@ -485,6 +485,11 @@ in
         (leaf "draw-border-with-background" [false])
       ])
       (window-rule [
+        (match [{app-id = "^swayimg$";}])
+        (leaf "draw-border-with-background" [false])
+        (leaf "open-floating" [true])
+      ])
+      (window-rule [
         (match [{is-window-cast-target = true;}])
         (plain "focus-ring" [
           (leaf "active-color" ["#f38ba8"])

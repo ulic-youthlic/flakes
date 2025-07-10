@@ -29,6 +29,7 @@ in {
             kdePackages.polkit-kde-agent-1
             wl-clipboard
             cliphist
+            swayimg
           ])
           ++ [niri];
         qt = {

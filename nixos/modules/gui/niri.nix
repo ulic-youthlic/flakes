@@ -66,6 +66,18 @@ in {
             "firefox.desktop"
             "chromium-browser.desktop"
           ];
+          "image/gif" = [
+            "swayimg.desktop"
+          ];
+          "image/jpeg" = [
+            "swayimg.desktop"
+          ];
+          "image/png" = [
+            "swayimg.desktop"
+          ];
+          "image/webp" = [
+            "swayimg.desktop"
+          ];
         };
       };
     };
