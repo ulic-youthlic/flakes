@@ -140,6 +140,14 @@
       sha256 = "sha256-NGlCqI92PFnMF/eyoCdWzJ0qDIkVhfkW46SpwV/iask=";
     };
   };
+  "wallpaper_hollow-knight-quest.3840x2160.mp4" = {
+    pname = "wallpaper_hollow-knight-quest.3840x2160.mp4";
+    version = "ecbb31075e7e387cb03a9035298a2b0fbce529d2f4dc91b7bddaa08af570a41b";
+    src = fetchurl {
+      url = "http://wallpaper.youthlic.social/hollow-knight-quest.3840x2160.mp4";
+      sha256 = "sha256-7LsxB15+OHywOpA1KYorD7zlKdL03JG3vdqgivVwpBs=";
+    };
+  };
   "wallpaper_outer-wilds.3840x2160.mp4" = {
     pname = "wallpaper_outer-wilds.3840x2160.mp4";
     version = "19e0ccb48483f55f3413201718e8b2ba4a6acd112e1a3e7bb5ad913b87c5f210";
