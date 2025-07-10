@@ -46,6 +46,10 @@ sign:
 patch revision="HEAD":
     git push rad {{ revision }}:refs/patches
 
+push:
+    jj git push -b dev --remote all
+    jj git fetch --all-remotes
+
 rebase revision="dev":
     jj rebase -b 'all:heads(all()) & ~signed() &~@' -d {{ revision }}
 
