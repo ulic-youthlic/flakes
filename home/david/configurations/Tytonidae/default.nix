@@ -33,7 +33,10 @@
       kvm.enable = true;
       atuin.enable = true;
       ion.enable = true;
-      awscli.enable = true;
+      awscli = {
+        enable = true;
+        url = "http://localhost:8491";
+      };
     };
   };
 

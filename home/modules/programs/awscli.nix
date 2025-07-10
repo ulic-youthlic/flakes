@@ -9,6 +9,10 @@ in {
   options = {
     youthlic.programs.awscli = {
       enable = lib.mkEnableOption "awscli";
+      url = lib.mkOption {
+        type = lib.types.str;
+        default = "https://s3.youthlic.social";
+      };
     };
   };
   config = lib.mkIf cfg.enable {
@@ -23,7 +27,7 @@ in {
       settings = {
         default = {
           region = "garage";
-          endpoint_url = "https://s3.youthlic.social";
+          endpoint_url = cfg.url;
         };
       };
     };
