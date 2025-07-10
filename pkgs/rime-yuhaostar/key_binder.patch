@@ -11,7 +11,7 @@ index 7b5f1cb..d82945d 100644
      - { when: always, accept: "Control+period", toggle: ascii_punct }
      - { when: always, accept: "Control+Shift+period", toggle: ascii_punct }
 diff --git a/yustar.schema.yaml b/yustar.schema.yaml
-index 96aaded..5f1adaf 100644
+index e4b432c..d7a2d64 100644
 --- a/yustar.schema.yaml
 +++ b/yustar.schema.yaml
 @@ -307,6 +307,7 @@ punctuator:
@@ -23,7 +23,7 @@ index 96aaded..5f1adaf 100644
      - { when: always, accept: "Control+period", toggle: ascii_punct }
      - { when: always, accept: "Control+Shift+period", toggle: ascii_punct }
 diff --git a/yustar_sc.schema.yaml b/yustar_sc.schema.yaml
-index c2019b6..5a255ea 100644
+index 806f636..ca8e2aa 100644
 --- a/yustar_sc.schema.yaml
 +++ b/yustar_sc.schema.yaml
 @@ -301,6 +301,7 @@ punctuator:
@@ -35,10 +35,10 @@ index c2019b6..5a255ea 100644
      - { when: always, accept: "Control+period", toggle: ascii_punct }
      - { when: always, accept: "Control+Shift+period", toggle: ascii_punct }
 diff --git a/yustar_tw.schema.yaml b/yustar_tw.schema.yaml
-index aa9bfdd..e08e66e 100644
+index 93943fe..7054eae 100644
 --- a/yustar_tw.schema.yaml
 +++ b/yustar_tw.schema.yaml
-@@ -298,6 +298,7 @@ punctuator:
+@@ -300,6 +300,7 @@ punctuator:
      "|": "|"
  
  key_binder:

@@ -12,7 +12,7 @@ index 7b5f1cb..f036a64 100644
      "`": "`"
      "#": "#"
 diff --git a/yustar.schema.yaml b/yustar.schema.yaml
-index 96aaded..2805afc 100644
+index e4b432c..a2da46c 100644
 --- a/yustar.schema.yaml
 +++ b/yustar.schema.yaml
 @@ -292,7 +292,7 @@ yuhao_macro:
@@ -25,7 +25,7 @@ index 96aaded..2805afc 100644
      "`": "`"
      "#": "#"
 diff --git a/yustar_sc.schema.yaml b/yustar_sc.schema.yaml
-index c2019b6..3a5a434 100644
+index 806f636..c57500c 100644
 --- a/yustar_sc.schema.yaml
 +++ b/yustar_sc.schema.yaml
 @@ -286,7 +286,7 @@ yuhao_macro:
@@ -38,10 +38,10 @@ index c2019b6..3a5a434 100644
      "`": "`"
      "#": "#"
 diff --git a/yustar_tw.schema.yaml b/yustar_tw.schema.yaml
-index aa9bfdd..1530250 100644
+index 93943fe..8370091 100644
 --- a/yustar_tw.schema.yaml
 +++ b/yustar_tw.schema.yaml
-@@ -283,7 +283,7 @@ yuhao_macro:
+@@ -285,7 +285,7 @@ yuhao_macro:
          expr: return require("yuhao.yuhao_core").unicode()
  
  punctuator:

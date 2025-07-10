@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "1d1f4e22d9cbea323bc8e397869d9f62096af0dc";
+    version = "90e0bda7bb2db72793260ad5e62c890232d4a5f1";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "1d1f4e22d9cbea323bc8e397869d9f62096af0dc";
+      rev = "90e0bda7bb2db72793260ad5e62c890232d4a5f1";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-Coax6wd9D4nbyutEzTzrZxPsb2NEZm/HHHvlguy7bIU=";
+      sha256 = "sha256-aiRFQfHA3/cCFwK0WCP6D+Z4Op375ldfem7tyuZ4cOY=";
     };
-    date = "2025-07-04";
+    date = "2025-07-10";
   };
   cliphist = {
     pname = "cliphist";
@@ -98,11 +98,11 @@
   };
   rime-yuhaostar = {
     pname = "rime-yuhaostar";
-    version = "v3.8.0";
+    version = "v3.9.0";
     src = fetchurl {
-      url = "http://ys-j.ysepan.com/wap/zhuyuhao/91SbOjgNKE7A2PMH8A/we7hF96sa52g4EccbuakeGd8LE3NGc/\23431\28009\26143\38515_v3.8.0.zip";
-      name = "yustar_v3.8.0.zip";
-      sha256 = "sha256-aUMsuXkiK/FVVi6qPg+dphAOpRyGiDKsT2wD2VBShKo=";
+      url = "https://github.com/forfudan/yuhao-ime-release/releases/download/v3.9.0/yuhao_star_xingchen_v3.9.0.zip";
+      name = "yustar_v3.9.0.zip";
+      sha256 = "sha256-matIAwJeC9F0WJJZ8Qq6hJjATrLqoHOpAGRyD0eqoa8=";
     };
   };
   spotx = {

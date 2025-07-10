@@ -52,5 +52,5 @@ fetch.url = "http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4"
 
 [rime-yuhaostar]
 src.github = "forfudan/yuhao-ime-release"
-fetch.url = "http://ys-j.ysepan.com/wap/zhuyuhao/91SbOjgNKE7A2PMH8A/we7hF96sa52g4EccbuakeGd8LE3NGc/宇浩星陳_$ver.zip"
+fetch.url = "https://github.com/forfudan/yuhao-ime-release/releases/download/v3.9.0/yuhao_star_xingchen_$ver.zip"
 url.name = "yustar_$ver.zip"
