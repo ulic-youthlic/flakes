@@ -24,6 +24,7 @@ in {
       kdePackages.qt6ct
       libsForQt5.qt5ct
       xwayland-satellite-unstable
+      evince
     ];
     xdg = {
       terminal-exec = {
