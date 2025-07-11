@@ -1,3 +1,3 @@
 {lib, ...}: {
-  imports = with lib; youthlic.loadImports' ./. (filter (name: name != "top-level"));
+  imports = with lib; youthlic.loadImports' ./. (filter (name: !hasSuffix "/top-level" (toString name)));
 }
