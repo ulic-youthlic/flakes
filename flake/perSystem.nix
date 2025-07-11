@@ -23,6 +23,7 @@
       };
     };
     devShells.default = pkgs.mkShell {
+      name = "nixos-shell";
       packages = with pkgs; [
         nixd
         nil
