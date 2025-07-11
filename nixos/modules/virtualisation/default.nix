@@ -1,6 +1,3 @@
-{
-  imports = [
-    ./kvm.nix
-    ./waydroid.nix
-  ];
+{lib, ...}: {
+  imports = lib.youthlic.loadImports ./.;
 }

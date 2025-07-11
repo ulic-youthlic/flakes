@@ -2,9 +2,9 @@
   lib,
   inputs,
   self,
+  rootPath,
   ...
 }: let
-  rootPath = ./..;
   inherit (self) outputs;
   homeModules =
     (
@@ -46,6 +46,11 @@
         ])
         ++ [
           homeModules."${unixName}"
+        ]
+        ++ [
+          {
+            lib = {inherit (lib) youthlic;};
+          }
         ];
       extraSpecialArgs = {
         inherit

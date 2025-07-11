@@ -1,9 +1,9 @@
-{pkgs, ...}: {
-  imports = [
-    ./wallpaper.nix
-    ./programs
-    ./emails.nix
-  ];
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = lib.youthlic.loadImports ./.;
   config = {
     youthlic.programs = {
       zoxide.enable = true;

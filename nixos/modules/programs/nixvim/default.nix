@@ -5,7 +5,7 @@
 }: let
   cfg = config.youthlic.programs.nixvim;
 in {
-  imports = [./option.nix];
+  imports = lib.youthlic.loadImports ./.;
   options = {
     youthlic.programs.nixvim = {
       enable = lib.mkEnableOption "nixvim";

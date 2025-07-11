@@ -6,11 +6,7 @@
 }: let
   cfg = config.youthlic.gui;
 in {
-  imports = [
-    ./niri.nix
-    ./cosmic.nix
-    ./kde.nix
-  ];
+  imports = with lib; youthlic.loadImports ./.;
   options = {
     youthlic.gui = {
       enabled = lib.mkOption {

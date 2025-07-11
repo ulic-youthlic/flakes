@@ -2,11 +2,10 @@
   inputs,
   lib,
   self,
+  rootPath,
   ...
 }: let
-  rootPath = ./..;
   inherit (self) outputs;
-  inherit (inputs) nixpkgs;
 in {
   flake = {
     nixosModules = {
@@ -15,10 +14,10 @@ in {
     };
     nixosConfigurations = let
       makeNixosConfiguration = hostName:
-        nixpkgs.lib.nixosSystem {
+        lib.nixosSystem {
           modules = [(rootPath + "/nixos/configurations/${hostName}")];
           specialArgs = {
-            inherit inputs outputs rootPath;
+            inherit inputs outputs rootPath lib;
           };
         };
     in

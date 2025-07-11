@@ -5,11 +5,7 @@
 }: let
   cfg = config.youthlic.programs.caddy;
 in {
-  imports = [
-    ./radicle-explorer.nix
-    ./OuterWildsTextAdventure.nix
-    ./garage.nix
-  ];
+  imports = lib.youthlic.loadImports ./.;
   options = {
     youthlic.programs.caddy = {
       enable = lib.mkEnableOption "caddy";

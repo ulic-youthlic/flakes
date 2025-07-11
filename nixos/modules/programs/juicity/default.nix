@@ -6,9 +6,7 @@
 }: let
   cfg = config.youthlic.programs.juicity;
 in {
-  imports = [
-    ./template.nix
-  ];
+  imports = lib.youthlic.loadImports ./.;
   options = {
     youthlic.programs.juicity = {
       client = {

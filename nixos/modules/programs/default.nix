@@ -1,33 +1,3 @@
-{...}: {
-  imports = [
-    ./transfer-sh.nix
-    ./rustypaste
-    ./mautrix-telegram.nix
-    ./caddy
-    ./dae
-    ./forgejo.nix
-    ./kanata.nix
-    ./nh.nix
-    ./open-webui.nix
-    ./openssh.nix
-    ./postgresql.nix
-    ./steam.nix
-    ./tailscale.nix
-    ./transmission.nix
-    ./nix-ld.nix
-    ./juicity
-    ./miniflux.nix
-    ./guix.nix
-    ./asusd.nix
-    ./owncast.nix
-    ./minio.nix
-    ./supergfxd.nix
-    ./radicle.nix
-    ./wshowkeys.nix
-    ./bash.nix
-    ./obs.nix
-    ./sudo-rs.nix
-    ./garage.nix
-    ./nixvim
-  ];
+{lib, ...}: {
+  imports = lib.youthlic.loadImports ./.;
 }

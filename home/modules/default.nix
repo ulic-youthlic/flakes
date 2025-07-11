@@ -1,14 +1,14 @@
-{inputs, ...}: {
+{
+  lib,
+  inputs,
+  ...
+}: {
   imports =
     (with inputs; [
       sops-nix.homeManagerModules.sops
       betterfox-nix.homeManagerModules.betterfox
     ])
-    ++ [
-      ./programs
-      ./xdg-dirs.nix
-      ./i18n
-    ];
+    ++ lib.youthlic.loadImports ./.;
 
   config = {
     programs.direnv = {

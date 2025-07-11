@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   outputs,
   ...
@@ -13,21 +14,10 @@
       common-pc-laptop-ssd
       asus-battery
     ])
-    ++ [
-      ./users
-      ./stylix.nix
-      ./gui.nix
-
-      # Include the hardware related config
-      ./hardware-configuration.nix
-      ./networking.nix
-      ./disk-config.nix
-      ./hardware.nix
-      ./specialisation/kde.nix
-      ./specialisation/niri-hybrid.nix
-
-      outputs.nixosModules.gui
-    ];
+    ++ (with outputs; [
+      nixosModules.gui
+    ])
+    ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {
     home-manager = {

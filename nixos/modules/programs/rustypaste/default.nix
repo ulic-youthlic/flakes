@@ -5,9 +5,7 @@
 }: let
   cfg = config.youthlic.programs.rustypaste;
 in {
-  imports = [
-    ./template.nix
-  ];
+  imports = lib.youthlic.loadImports ./.;
 
   options = {
     youthlic.programs.rustypaste = {

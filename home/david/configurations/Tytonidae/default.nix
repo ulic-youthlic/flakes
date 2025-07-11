@@ -1,12 +1,11 @@
 {
   pkgs,
+  lib,
   config,
   unixName,
   ...
 }: {
-  imports = [
-    ./niri.nix
-  ];
+  imports = lib.youthlic.loadImports ./.;
   youthlic = {
     xdg-dirs.enable = true;
     programs = let

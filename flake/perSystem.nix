@@ -1,6 +1,8 @@
-{inputs, ...}: let
-  rootPath = ./..;
-in {
+{
+  inputs,
+  rootPath,
+  ...
+}: {
   imports = [
     (rootPath + "/treefmt.nix")
   ];
@@ -12,7 +14,7 @@ in {
     ...
   }: let
     inherit (inputs) nixpkgs;
-    callPackages = lib.callPackagesWith (pkgs // {inherit callPackages inputs rootPath;});
+    callPackages = lib.callPackagesWith (pkgs // {inherit callPackages inputs rootPath lib;});
   in {
     _module.args.pkgs = import nixpkgs {
       inherit system;

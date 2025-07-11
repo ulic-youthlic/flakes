@@ -1,11 +1,13 @@
-{inputs, ...}: {
+{
+  lib,
+  inputs,
+  ...
+}: {
   imports =
     (with inputs; [
       niri-flake.homeModules.niri
       stylix.homeManagerModules.stylix
       chaotic.homeManagerModules.default
     ])
-    ++ [
-      ./nix.nix
-    ];
+    ++ (lib.youthlic.loadImports ./.);
 }

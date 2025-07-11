@@ -1,10 +1,9 @@
 {
   flake-parts-lib,
   lib,
+  rootPath,
   ...
-}: let
-  rootPath = ./..;
-in {
+}: {
   options = {
     flake = flake-parts-lib.mkSubmoduleOptions {
       templates = lib.mkOption {

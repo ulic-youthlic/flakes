@@ -1,20 +1,14 @@
 {
   pkgs,
+  lib,
   outputs,
   ...
 }: {
-  imports = [
-    ./forgejo.nix
-    ./networking.nix
-    ./stylix.nix
-    ./hardware-configuration.nix
-    ./users
-    ./disko-config.nix
-    ./miniflux.nix
-    ./radicle.nix
-
-    outputs.nixosModules.default
-  ];
+  imports =
+    [
+      outputs.nixosModules.default
+    ]
+    ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {
     home-manager = {

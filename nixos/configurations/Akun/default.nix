@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   outputs,
   ...
 }: {
@@ -11,15 +12,9 @@
       common-pc-laptop-ssd
     ])
     ++ [
-      ./gui.nix
-      ./hardware-configuration.nix
-      ./stylix.nix
-      ./users
-      ./networking.nix
-      ./disk-config.nix
-
       outputs.nixosModules.gui
-    ];
+    ]
+    ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {
     users.deploy.enable = true;

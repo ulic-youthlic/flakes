@@ -5,10 +5,7 @@
 }: let
   cfg = config.youthlic.containers;
 in {
-  imports = [
-    ./forgejo.nix
-    ./miniflux.nix
-  ];
+  imports = lib.youthlic.loadImports ./.;
   options = {
     youthlic.containers = {
       enable = lib.mkEnableOption "containers";

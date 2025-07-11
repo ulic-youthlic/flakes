@@ -2,9 +2,9 @@
   self,
   inputs,
   lib,
+  rootPath,
   ...
 }: let
-  rootPath = ./..;
   inherit (self) outputs;
   importWithArgs = lib.flip import {inherit inputs outputs;};
 in {

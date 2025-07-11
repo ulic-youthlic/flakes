@@ -2,35 +2,45 @@
   description = "A simple NixOS flakes";
 
   outputs = {
-    nixpkgs,
     flake-parts,
     flake-utils,
     home-manager,
     treefmt-nix,
+    nixpkgs,
     ...
-  } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  } @ inputs: let
+    nixpkgs-lib = nixpkgs.lib;
+    lib = nixpkgs-lib.extend (import ./lib);
+  in
+    flake-parts.lib.mkFlake {
+      inherit inputs;
+      specialArgs = {
+        inherit lib;
+        rootPath = ./.;
+      };
+    } ({lib, ...}: {
       systems = flake-utils.lib.defaultSystems;
-      imports = [
-        home-manager.flakeModules.home-manager
-        treefmt-nix.flakeModule
-
-        ./flake
-      ];
+      imports =
+        [
+          home-manager.flakeModules.home-manager
+          treefmt-nix.flakeModule
+        ]
+        ++ lib.youthlic.loadImports ./flake;
       flake = {
+        inherit lib;
         nix.settings = {
           # substituters shared in home-manager and nixos configuration
           substituters = let
             cachix = x: "https://${x}.cachix.org";
           in
-            nixpkgs.lib.flatten [
+            lib.flatten [
               (cachix "nix-community")
               "https://cache.nixos.org"
               (cachix "cosmic")
             ];
         };
       };
-    };
+    });
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
