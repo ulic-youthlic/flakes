@@ -36,6 +36,7 @@ Hey, you. This is my nixos configurations.
 | `outputs` field                           | description                                                                 | source                                   |
 | :---------------------------------------- | :-------------------------------------------------------------------------- | :--------------------------------------- |
 | `packages`                                | packages imported or wrapped from elsewhere                                 | ./pkgs                                   |
+| `lib`                                     | patched nixpkgs.lib to include self-defined helper function                 | ./lib                                    |
 | `overlays.modifications`                  | the overlays modify `<nixpkgs>`                                             | ./overlays/modifications                 |
 | `overlays.additions`                      | the ovelrays add packages in `<nixpkgs>`                                    | ./overlays/additions                     |
 | `nixosModules.default`                    | nixos modules shared on different nixos machines                            | ./nixos/modules                          |
