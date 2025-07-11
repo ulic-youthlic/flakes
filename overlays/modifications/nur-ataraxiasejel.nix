@@ -1,5 +1,5 @@
 {inputs, ...}: final: prev: let
-  inherit (final.stdenv.hostPlatform) system;
+  inherit (prev.stdenv.hostPlatform) system;
 in {
   nur =
     prev.nur
