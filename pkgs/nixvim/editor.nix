@@ -1,12 +1,9 @@
 {...}: {
-  plugins = {
+  youthlic.plugins = {
     #   grug-far = {
     #     enable = true;
     #   };
     #   flash = {
-    #     enable = true;
-    #   };
-    #   which-key = {
     #     enable = true;
     #   };
     #   gitsigns = {
