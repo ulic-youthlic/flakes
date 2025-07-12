@@ -26,6 +26,7 @@
             "olm"
 
             "fluffychat-linux"
+            "immersive-translate"
           ];
       };
     };
