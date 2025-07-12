@@ -117,6 +117,20 @@
       sha256 = "sha256-matIAwJeC9F0WJJZ8Qq6hJjATrLqoHOpAGRyD0eqoa8=";
     };
   };
+  spotifyd = {
+    pname = "spotifyd";
+    version = "f1acee9c6160db92dcd4214e96654cbbaed0e38a";
+    src = fetchgit {
+      url = "https://github.com/ulic-youthlic/spotifyd.git";
+      rev = "f1acee9c6160db92dcd4214e96654cbbaed0e38a";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ ];
+      sha256 = "sha256-dcc+sklPJvV34U1A/eTD1kfIey4o5/kPq4yd72ey7LE=";
+    };
+    date = "2025-09-04";
+  };
   spotx = {
     pname = "spotx";
     version = "8b9a9924cf2f7268337a9bad5e84b0083268f40d";
