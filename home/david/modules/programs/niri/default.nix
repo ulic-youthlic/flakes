@@ -91,6 +91,7 @@ in {
           swaync.enable = true;
           swaylock.enable = true;
           waypaper.enable = true;
+          kanshi.enable = true;
         };
         programs.niri = {
           config =
