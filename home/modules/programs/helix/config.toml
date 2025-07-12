@@ -1,18 +1,19 @@
 [editor]
-line-number = "relative"
-cursorline = true
-cursorcolumn = false
-true-color = true
-undercurl = true
 bufferline = "multiple"
 color-modes = true
+cursorcolumn = false
+cursorline = true
 default-line-ending = "lf"
+line-number = "relative"
 popup-border = "all"
+true-color = true
+undercurl = true
 # letters in the beginning are used first
 # move home raw letters to the beginning
 jump-label-alphabet = "jkdls;aurieowpqnvmcxz"
 
 [editor.statusline]
+center = ["diagnostics"]
 left = [
   "mode",
   "spacer",
@@ -25,7 +26,9 @@ left = [
   "spacer",
   "spinner",
 ]
-center = ["diagnostics"]
+mode.insert = "INSERT"
+mode.normal = "NORMAL"
+mode.select = "SELECT"
 right = [
   "register",
   "file-line-ending",
@@ -36,14 +39,11 @@ right = [
   "position-percentage",
 ]
 separator = "|"
-mode.normal = "NORMAL"
-mode.insert = "INSERT"
-mode.select = "SELECT"
 
 [editor.lsp]
-display-progress-messages = true
-display-messages = true
 display-inlay-hints = true
+display-messages = true
+display-progress-messages = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -54,16 +54,16 @@ select = "underline"
 hidden = false
 
 [editor.whitespace.render]
-space = "none"
-tab = "all"
 nbsp = "all"
 newline = "none"
+space = "none"
+tab = "all"
 
 [editor.whitespace.characters]
-space = "·"
 nbsp = "⍽"
-tab = "→"
 newline = "⏎"
+space = "·"
+tab = "→"
 tabpad = "·"
 
 [editor.indent-guides]

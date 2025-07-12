@@ -23,7 +23,7 @@
                   return "${lib.getExe pkgs.taplo}"
                 end
               end,
-              args = { "format", "-o", "reorder_keys=true", "-o", "reorder_inline_tables=true", "-o", "reorder_arrays=true", "-" },
+              args = { "format", "-o", "reorder_keys=true", "-o", "reorder_inline_tables=true", "-" },
             })
           end
         '';

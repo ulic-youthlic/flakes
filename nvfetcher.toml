@@ -1,64 +1,64 @@
 [juicity]
-src.git = "https://github.com/juicity/juicity"
 fetch.git = "https://githuh.com/juicity/juicity"
+src.git = "https://github.com/juicity/juicity"
 
 [tree-sitter-idris]
-src.git = "https://github.com/kayhide/tree-sitter-idris"
 fetch.git = "https://github.com/kayhide/tree-sitter-idris"
 passthru.name = "idris"
+src.git = "https://github.com/kayhide/tree-sitter-idris"
 
 [noto-serif-cjk]
-src.github = "notofonts/noto-cjk"
 fetch.github = "notofonts/noto-cjk"
 git.sparseCheckout = ["Serif/OTC"]
+src.github = "notofonts/noto-cjk"
 
 [noto-sans-cjk]
-src.github = "notofonts/noto-cjk"
 fetch.github = "notofonts/noto-cjk"
 git.sparseCheckout = ["Sans/OTC"]
+src.github = "notofonts/noto-cjk"
 
 [spotx]
-src.git = "https://github.com/SpotX-Official/SpotX-Bash.git"
 fetch.github = "SpotX-Official/SpotX-Bash"
+src.git = "https://github.com/SpotX-Official/SpotX-Bash.git"
 
 [TrackersListCollection]
-src.git = "https://github.com/XIU2/TrackersListCollection.git"
 fetch.github = "XIU2/TrackersListCollection"
 git.sparseCheckout = ["all.txt"]
+src.git = "https://github.com/XIU2/TrackersListCollection.git"
 
 [wshowkeys-mao]
-src.git = "https://github.com/DreamMaoMao/wshowkeys.git"
 fetch.github = "DreamMaoMao/wshowkeys"
+src.git = "https://github.com/DreamMaoMao/wshowkeys.git"
 
 [OuterWildsTextAdventure]
-src.git = "https://github.com/top-mind/OuterWildsTextAdventureWeb.git"
 fetch.github = "top-mind/OuterWildsTextAdventureWeb"
+src.git = "https://github.com/top-mind/OuterWildsTextAdventureWeb.git"
 
 [cliphist]
-src.git = "https://github.com/sentriz/cliphist.git"
 fetch.github = "sentriz/cliphist"
+src.git = "https://github.com/sentriz/cliphist.git"
 
 [radicle-ci-broker]
-src.git = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git"
 fetch.git = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git"
+src.git = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git"
 
 ["wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4"]
-src.cmd = "curl -sL http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4 | sha256sum | cut -d ' ' -f 1"
 fetch.url = "http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4"
+src.cmd = "curl -sL http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4 | sha256sum | cut -d ' ' -f 1"
 
 ["wallpaper_outer-wilds.3840x2160.mp4"]
-src.cmd = "curl -sL http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4 | sha256sum | cut -d ' ' -f 1"
 fetch.url = "http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4"
+src.cmd = "curl -sL http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4 | sha256sum | cut -d ' ' -f 1"
 
 ["wallpaper_hollow-knight-quest.3840x2160.mp4"]
-src.cmd = "curl -sL http://wallpaper.youthlic.social/hollow-knight-quest.3840x2160.mp4 | sha256sum | cut -d ' ' -f 1"
 fetch.url = "http://wallpaper.youthlic.social/hollow-knight-quest.3840x2160.mp4"
+src.cmd = "curl -sL http://wallpaper.youthlic.social/hollow-knight-quest.3840x2160.mp4 | sha256sum | cut -d ' ' -f 1"
 
 [rime-yuhaostar]
-src.github = "forfudan/yuhao-ime-release"
 fetch.url = "https://github.com/forfudan/yuhao-ime-release/releases/download/$ver/yuhao_star_xingchen_$ver.zip"
+src.github = "forfudan/yuhao-ime-release"
 url.name = "yustar_$ver.zip"
 
 [nvim_vim-startuptime]
-src.git = "https://github.com/dstein64/vim-startuptime.git"
 fetch.github = "dstein64/vim-startuptime"
+src.git = "https://github.com/dstein64/vim-startuptime.git"

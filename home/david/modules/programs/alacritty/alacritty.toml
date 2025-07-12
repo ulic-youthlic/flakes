@@ -3,9 +3,9 @@ ipc_socket = true
 live_config_reload = true
 
 [window]
+blur = true
 dynamic_padding = true
 opacity = 0.8
-blur = true
 
 [scrolling]
 history = 100000

@@ -1,43 +1,43 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 [character]
-success_symbol = '[λ](bold blue)'
 error_symbol = '[λ](bold red)'
-vimcmd_symbol = '[Λ](bold blue)'
+success_symbol = '[λ](bold blue)'
 vimcmd_replace_one_symbol = '[Λ](bold purple)'
 vimcmd_replace_symbol = '[Λ](bold purple)'
+vimcmd_symbol = '[Λ](bold blue)'
 vimcmd_visual_symbol = '[Λ](bold yellow)'
 
 [[battery.display]]
-threshold = 10
 style = 'bold red'
+threshold = 10
 
 [[battery.display]]
-threshold = 30
-style = 'bold yellow'
 discharging_symbol = '💦'
+style = 'bold yellow'
+threshold = 30
 
 [[battery.display]]
-threshold = 100
 style = 'green'
+threshold = 100
 
 [git_branch]
 format = 'on [$symbol$branch(:$remote_branch)]($style) '
 symbol = " "
 
 [git_status]
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-conflicted = "[⚔️${count}](red)"
 ahead = '[⇡${count}](bold green)'
 behind = '[⇣${count}](bold yellow)'
-untracked = '[!${count}](red)'
-stashed = "[📦${count}](purple)"
-modified = '[M${count}](bold yellow)'
-staged = "[+${count}](green)"
-renamed = "[»${count}](bold yellow)"
+conflicted = "[⚔️${count}](red)"
 deleted = '[-${count}](blue)'
-up_to_date = '[✓](green)'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 format = '([(\[$all_status\])(\[$ahead_behind\])]($style) ) '
+modified = '[M${count}](bold yellow)'
+renamed = "[»${count}](bold yellow)"
+staged = "[+${count}](green)"
+stashed = "[📦${count}](purple)"
+untracked = '[!${count}](red)'
+up_to_date = '[✓](green)'
 
 [git_commit]
 format = '([\($hash$tag\)]($style) )'
@@ -45,11 +45,11 @@ only_detached = false
 
 [directory]
 fish_style_pwd_dir_length = 2
-truncation_length = 2
-truncate_to_repo = false
-repo_root_style = "bold green"
-use_os_path_sep = false
 read_only = " 󰌾"
+repo_root_style = "bold green"
+truncate_to_repo = false
+truncation_length = 2
+use_os_path_sep = false
 
 [aws]
 symbol = "  "
@@ -133,9 +133,9 @@ symbol = " "
 symbol = " "
 
 [os.symbols]
+AlmaLinux = " "
 Alpaquita = " "
 Alpine = " "
-AlmaLinux = " "
 Amazon = " "
 Android = " "
 Arch = " "
@@ -162,20 +162,20 @@ Mint = " "
 NetBSD = " "
 NixOS = " "
 OpenBSD = "󰈺 "
-openSUSE = " "
 OracleLinux = "󰌷 "
 Pop = " "
 Raspbian = " "
-Redhat = " "
 RedHatEnterprise = " "
-RockyLinux = " "
+Redhat = " "
 Redox = "󰀘 "
-Solus = "󰠳 "
+RockyLinux = " "
 SUSE = " "
+Solus = "󰠳 "
 Ubuntu = " "
 Unknown = " "
 Void = " "
 Windows = "󰍲 "
+openSUSE = " "
 
 [package]
 symbol = "󰏗 "
