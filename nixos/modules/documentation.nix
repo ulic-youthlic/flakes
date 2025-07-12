@@ -8,7 +8,7 @@ lib.mkMerge [
   {
     environment.systemPackages = with pkgs; [man-pages man-pages-posix];
     documentation = {
-      info.enable = false;
+      info.enable = true;
       nixos.enable = false;
       dev.enable = true;
     };
