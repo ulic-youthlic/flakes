@@ -27,3 +27,13 @@
 (setq doom-theme 'doom-gruvbox)
 ;;; Fix failure to loacate 'Symbols Nerd Font Mono' font
 (setq nerd-icons-font-family "Maple Mono NF CN")
+
+(map! :map global-map
+      "C-c t"
+      telega-prefix-map)
+
+(setq display-line-numbers-type
+      'relative)
+
+(add-hook 'telega-load-hook
+          'telega-notifications-mode)

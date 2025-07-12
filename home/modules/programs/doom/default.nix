@@ -18,6 +18,7 @@ in {
       emacs = pkgs.emacs-pgtk;
       extraPackages = emacsPackages:
         with emacsPackages; [
+          melpaPackages.telega
         ];
       extraBinPackages = with pkgs; [
         editor-runtime
