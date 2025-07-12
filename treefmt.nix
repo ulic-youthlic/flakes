@@ -4,12 +4,12 @@
       programs = {
         alejandra = {
           enable = true;
-          excludes = ["pkgs/_sources/*.nix"];
+          excludes = ["_sources/*.nix"];
         };
         biome = {
           enable = true;
           includes = ["*.json"];
-          excludes = ["pkgs/_sources/*.json"];
+          excludes = ["_sources/*.json"];
           settings = {
             javascript.formatter.enabled = false;
             css.formatter.enabled = false;
