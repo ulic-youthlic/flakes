@@ -28,3 +28,16 @@
 
 (add-hook 'telega-load-hook
           'telega-notifications-mode)
+
+(defvar my/emacs-deps-exec-path (seq-filter
+                                 (lambda (p)
+                                   (string-match-p
+                                    "/nix/store/.*-emacs-packages-deps/bin"
+                                    p))
+                                 exec-path))
+
+(advice-add #'envrc--update
+            :after #'(lambda ()
+                       (setq exec-path
+                             (append exec-path
+                                     my/emacs-deps-exec-path))))
