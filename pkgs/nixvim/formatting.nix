@@ -17,7 +17,7 @@
               end):map(function(val)
                   return val.name
               end):filter(function(name)
-                return string.match(name, ArgLead) ~= nil
+                return string.match(name, "^" .. ArgLead) ~= nil
               end):totable()
             end
           '';
@@ -52,7 +52,7 @@
               return vim.iter(require("conform").list_all_formatters()):map(function(val)
                 return val.name
               end):filter(function(name)
-                return string.match(name, ArgLead) ~= nil
+                return string.match(name, "^" .. ArgLead) ~= nil
               end):totable()
             end
           '';
