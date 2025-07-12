@@ -6,9 +6,6 @@
     #   flash = {
     #     enable = true;
     #   };
-    #   gitsigns = {
-    #     enable = true;
-    #   };
     #   trouble = {
     #     enable = true;
     #   };
