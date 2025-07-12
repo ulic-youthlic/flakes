@@ -1,4 +1,13 @@
 {...}: {
+  globals = {
+    mapleader = {
+      __raw =
+        #lua
+        ''
+          vim.keycode("<Space>")
+        '';
+    };
+  };
   opts = {
     autoindent = true;
     autoread = true;
@@ -38,13 +47,14 @@
     mouse = "a";
 
     number = true;
-    numberwidth = 2;
+    numberwidth = 4;
     relativenumber = true;
 
     scrollback = 100000;
     scrolloff = 5;
     shiftround = true;
     shiftwidth = 2;
+    showmode = false;
     signcolumn = "auto";
     smoothscroll = true;
     splitbelow = true;
