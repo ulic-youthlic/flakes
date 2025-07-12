@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "6afd29280437541da29a843332696f241d570c07";
+    version = "2295f6d2341f291fd169754486b4b0f55fbf1f7a";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "6afd29280437541da29a843332696f241d570c07";
+      rev = "2295f6d2341f291fd169754486b4b0f55fbf1f7a";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-Pay01KNbNXpTxS9q//85/iF5CuveqcU7oHhzJPEbtCM=";
+      sha256 = "sha256-NrZ73NYiVsUWoXAx/a3DR78Jf/92XtNTimh+kqmQidY=";
     };
-    date = "2025-07-13";
+    date = "2025-08-16";
   };
   cliphist = {
     pname = "cliphist";
@@ -96,17 +96,17 @@
   };
   radicle-ci-broker = {
     pname = "radicle-ci-broker";
-    version = "d5f684b2ec12dc875ec0278c8e2fe71faaa88d38";
+    version = "7a27e0c01a732ebdc2d553daec49ab0416d7554d";
     src = fetchgit {
       url = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git";
-      rev = "d5f684b2ec12dc875ec0278c8e2fe71faaa88d38";
+      rev = "7a27e0c01a732ebdc2d553daec49ab0416d7554d";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-Cow3VIeFovUBhARVj8azEVokydajjnLHokhk0pklBhQ=";
+      sha256 = "sha256-YuguUw5MiRvoqTdkx99/xDNZ6i4vrWPpNmv4WjdHJSE=";
     };
-    date = "2025-06-27";
+    date = "2025-08-15";
   };
   rime-yuhaostar = {
     pname = "rime-yuhaostar";
@@ -119,15 +119,15 @@
   };
   spotx = {
     pname = "spotx";
-    version = "0172f4d10bee792adc505551a0b7300df2f16b9b";
+    version = "8b9a9924cf2f7268337a9bad5e84b0083268f40d";
     src = fetchFromGitHub {
       owner = "SpotX-Official";
       repo = "SpotX-Bash";
-      rev = "0172f4d10bee792adc505551a0b7300df2f16b9b";
+      rev = "8b9a9924cf2f7268337a9bad5e84b0083268f40d";
       fetchSubmodules = false;
-      sha256 = "sha256-9Gf6EEJYluO+HTIOdvOQ4pfOnCGm29NwdFEehFGL3Es=";
+      sha256 = "sha256-IyNHes7j0C96j5lGja+SHzqzPM3zoMAgD+gdmVh5vK0=";
     };
-    date = "2025-07-11";
+    date = "2025-07-26";
   };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";

@@ -22,7 +22,7 @@
     },
     "TrackersListCollection": {
         "cargoLocks": null,
-        "date": "2025-07-13",
+        "date": "2025-08-16",
         "extract": null,
         "name": "TrackersListCollection",
         "passthru": null,
@@ -34,14 +34,14 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "6afd29280437541da29a843332696f241d570c07",
-            "sha256": "sha256-Pay01KNbNXpTxS9q//85/iF5CuveqcU7oHhzJPEbtCM=",
+            "rev": "2295f6d2341f291fd169754486b4b0f55fbf1f7a",
+            "sha256": "sha256-NrZ73NYiVsUWoXAx/a3DR78Jf/92XtNTimh+kqmQidY=",
             "sparseCheckout": [
                 "all.txt"
             ],
             "type": "github"
         },
-        "version": "6afd29280437541da29a843332696f241d570c07"
+        "version": "2295f6d2341f291fd169754486b4b0f55fbf1f7a"
     },
     "cliphist": {
         "cargoLocks": null,
@@ -153,7 +153,7 @@
     },
     "radicle-ci-broker": {
         "cargoLocks": null,
-        "date": "2025-06-27",
+        "date": "2025-08-15",
         "extract": null,
         "name": "radicle-ci-broker",
         "passthru": null,
@@ -163,13 +163,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "d5f684b2ec12dc875ec0278c8e2fe71faaa88d38",
-            "sha256": "sha256-Cow3VIeFovUBhARVj8azEVokydajjnLHokhk0pklBhQ=",
+            "rev": "7a27e0c01a732ebdc2d553daec49ab0416d7554d",
+            "sha256": "sha256-YuguUw5MiRvoqTdkx99/xDNZ6i4vrWPpNmv4WjdHJSE=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git"
         },
-        "version": "d5f684b2ec12dc875ec0278c8e2fe71faaa88d38"
+        "version": "7a27e0c01a732ebdc2d553daec49ab0416d7554d"
     },
     "rime-yuhaostar": {
         "cargoLocks": null,
@@ -188,7 +188,7 @@
     },
     "spotx": {
         "cargoLocks": null,
-        "date": "2025-07-11",
+        "date": "2025-07-26",
         "extract": null,
         "name": "spotx",
         "passthru": null,
@@ -200,12 +200,12 @@
             "name": null,
             "owner": "SpotX-Official",
             "repo": "SpotX-Bash",
-            "rev": "0172f4d10bee792adc505551a0b7300df2f16b9b",
-            "sha256": "sha256-9Gf6EEJYluO+HTIOdvOQ4pfOnCGm29NwdFEehFGL3Es=",
+            "rev": "8b9a9924cf2f7268337a9bad5e84b0083268f40d",
+            "sha256": "sha256-IyNHes7j0C96j5lGja+SHzqzPM3zoMAgD+gdmVh5vK0=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "0172f4d10bee792adc505551a0b7300df2f16b9b"
+        "version": "8b9a9924cf2f7268337a9bad5e84b0083268f40d"
     },
     "tree-sitter-idris": {
         "cargoLocks": null,
