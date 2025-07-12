@@ -14,6 +14,7 @@ in {
     programs = {
       fish = {
         enable = true;
+        preferAbbrs = true;
         interactiveShellInit = ''
           fish_vi_key_bindings
         '';
