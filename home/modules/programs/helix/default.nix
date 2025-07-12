@@ -3,10 +3,31 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  cfg = config.youthlic.programs.helix;
+  defaultLanguagesSettings = config.programs.helix.package.passthru.languages.language;
+in {
   options = {
     youthlic.programs.helix = {
       enable = lib.mkEnableOption "helix";
+      languageSettings = lib.mkOption {
+        type = lib.types.attrsOf (lib.types.submodule ({...}: {
+          freeformType = lib.types.anything;
+          options = {
+            language-servers = lib.mkOption {
+              type = lib.types.listOf (lib.types.either lib.types.str lib.types.anything);
+              default = ["typos-lsp"];
+              example = ["rust-analyzer"];
+              apply = lib.unique;
+            };
+          };
+        }));
+        default = lib.pipe defaultLanguagesSettings [
+          (map (lang: lib.nameValuePair lang.name (lib.removeAttrs lang ["name"])))
+          lib.listToAttrs
+        ];
+        apply = lib.mapAttrsToList (name: value: {inherit name;} // value);
+      };
       extraPackages = lib.mkOption {
         type = lib.types.listOf lib.types.package;
         default = [];
@@ -21,45 +42,61 @@
       };
     };
   };
-  config = let
-    cfg = config.youthlic.programs.helix;
-  in {
-    programs.helix = lib.mkIf cfg.enable {
-      enable = true;
-      defaultEditor = true;
-      extraPackages = cfg.extraPackages;
-      settings = ./config.toml |> builtins.readFile |> builtins.fromTOML;
-      languages = {
-        language-server = {
-          neocmakelsp = {
-            command = "neocmakelsp";
-            args = [
-              "stdio"
-            ];
-          };
-          fish-lsp = {
-            command = "fish-lsp";
-            args = [
-              "start"
-            ];
-          };
-          ty = {
-            command = "ty";
-            args = [
-              "server"
-            ];
-          };
-        };
-        language = [
+  config = lib.mkMerge [
+    (lib.mkIf cfg.enable {
+      programs.helix = {
+        enable = true;
+        defaultEditor = true;
+        extraPackages = cfg.extraPackages;
+        settings = ./config.toml |> builtins.readFile |> builtins.fromTOML;
+        languages =
+          lib.recursiveUpdate
           {
-            name = "cmake";
+            language-server = {
+              neocmakelsp = {
+                command = "neocmakelsp";
+                args = [
+                  "stdio"
+                ];
+              };
+              fish-lsp = {
+                command = "fish-lsp";
+                args = [
+                  "start"
+                ];
+              };
+              ty = {
+                command = "ty";
+                args = [
+                  "server"
+                ];
+              };
+              typos-lsp = {
+                command = "typos-lsp";
+              };
+            };
+          }
+          {language = cfg.languageSettings;};
+      };
+    })
+    (lib.mkIf cfg.enable {
+      youthlic.programs.helix.languageSettings = lib.pipe defaultLanguagesSettings [
+        (map ({name, ...}: lib.nameValuePair name {language-servers = ["typos-lsp"];}))
+        lib.listToAttrs
+      ];
+    })
+    (lib.mkIf cfg.enable {
+      youthlic.programs.helix.languageSettings =
+        lib.recursiveUpdate
+        (lib.pipe defaultLanguagesSettings [(map (lang: lib.nameValuePair lang.name (lib.removeAttrs lang ["name"]))) lib.listToAttrs])
+        {
+          cmake = {
             language-servers = [
               "neocmakelsp"
               "cmake-language-server"
             ];
-          }
-          {
-            name = "kdl";
+          };
+          kdl = {
             formatter = {
               command = "kdlfmt";
               args = [
@@ -67,24 +104,21 @@
                 "-"
               ];
             };
-          }
-          {
-            name = "just";
+          };
+          just = {
             formatter = {
               command = "just";
               args = [
                 "--dump"
               ];
             };
-          }
-          {
-            name = "nix";
+          };
+          nix = {
             formatter = {
               command = "alejandra";
             };
-          }
-          {
-            name = "xml";
+          };
+          xml = {
             formatter = {
               command = "xmllint";
               args = [
@@ -92,27 +126,23 @@
                 "-"
               ];
             };
-          }
-          {
-            name = "typst";
+          };
+          typst = {
             formatter = {
               command = "typstyle";
             };
-          }
-          {
-            name = "c";
+          };
+          c = {
             formatter = {
               command = "clang-format";
             };
-          }
-          {
-            name = "cpp";
+          };
+          cpp = {
             formatter = {
               command = "clang-format";
             };
-          }
-          {
-            name = "python";
+          };
+          python = {
             formatter = {
               command = "ruff";
               args = [
@@ -128,15 +158,13 @@
               "ruff"
               "ty"
             ];
-          }
-          {
-            name = "go";
+          };
+          go = {
             formatter = {
               command = "goimports";
             };
-          }
-          {
-            name = "awk";
+          };
+          awk = {
             formatter = {
               command = "awk";
               timeout = 5;
@@ -145,15 +173,13 @@
                 "--pretty-print=/dev/stdout"
               ];
             };
-          }
-          {
-            name = "fish";
+          };
+          fish = {
             language-servers = [
               "fish-lsp"
             ];
-          }
-          {
-            name = "yaml";
+          };
+          yaml = {
             formatter = {
               command = "deno";
               args = [
@@ -163,9 +189,8 @@
                 "yaml"
               ];
             };
-          }
-          {
-            name = "html";
+          };
+          html = {
             formatter = {
               command = "deno";
               args = [
@@ -178,9 +203,8 @@
             language-servers = [
               "vscode-html-language-server"
             ];
-          }
-          {
-            name = "css";
+          };
+          css = {
             formatter = {
               command = "deno";
               args = [
@@ -193,9 +217,8 @@
             language-servers = [
               "vscode-css-language-server"
             ];
-          }
-          {
-            name = "toml";
+          };
+          toml = {
             formatter = {
               command = "taplo";
               args = [
@@ -203,9 +226,8 @@
                 "-"
               ];
             };
-          }
-          {
-            name = "markdown";
+          };
+          markdown = {
             formatter = {
               command = "deno";
               args = [
@@ -215,9 +237,8 @@
                 "md"
               ];
             };
-          }
-          {
-            name = "json";
+          };
+          json = {
             language-servers = [
               "vscode-json-language-server"
             ];
@@ -230,9 +251,8 @@
                 "json"
               ];
             };
-          }
-          {
-            name = "jsonc";
+          };
+          jsonc = {
             language-servers = [
               "vscode-json-language-server"
             ];
@@ -245,9 +265,8 @@
                 "jsonc"
               ];
             };
-          }
-        ];
-      };
-    };
-  };
+          };
+        };
+    })
+  ];
 }
