@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.doom;
-in {
+in
+{
   options = {
     youthlic.programs.doom = {
       enable = lib.mkEnableOption "doom";
@@ -16,8 +18,8 @@ in {
     programs.doom-emacs = {
       enable = true;
       emacs = pkgs.emacs-pgtk;
-      extraPackages = emacsPackages:
-        with emacsPackages; [
+      extraPackages =
+        emacsPackages: with emacsPackages; [
           melpaPackages.telega
         ];
       extraBinPackages = with pkgs; [

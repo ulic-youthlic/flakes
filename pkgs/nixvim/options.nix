@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   globals = {
     mapleader = {
       __raw =
@@ -11,7 +12,11 @@
   opts = {
     autoindent = true;
     autoread = true;
-    backspace = ["indent" "eol" "start"];
+    backspace = [
+      "indent"
+      "eol"
+      "start"
+    ];
     backup = false;
 
     breakindent = true;
@@ -21,18 +26,33 @@
     cdhome = true;
     cedit = "<C-F>";
     cmdheight = 1;
-    completeopt = ["fuzzy" "menuone" "noselect" "popup"];
+    completeopt = [
+      "fuzzy"
+      "menuone"
+      "noselect"
+      "popup"
+    ];
     concealcursor = "v";
     confirm = true;
     cursorline = true;
-    diffopt = ["algorithm:minimal" "closeoff" "context:20" "followwrap" "internal" "linematch:40"];
+    diffopt = [
+      "algorithm:minimal"
+      "closeoff"
+      "context:20"
+      "followwrap"
+      "internal"
+      "linematch:40"
+    ];
     errorbells = true;
     expandtab = true;
     exrc = true;
     foldcolumn = "auto";
     fsync = true;
     gdefault = false;
-    helplang = ["zh" "en"];
+    helplang = [
+      "zh"
+      "en"
+    ];
     history = 10000;
     hlsearch = true;
 
@@ -66,11 +86,17 @@
     termguicolors = true;
     undofile = true;
     undolevels = 100000;
-    virtualedit = ["block" "onemore"];
+    virtualedit = [
+      "block"
+      "onemore"
+    ];
     whichwrap = "b,s,<,>";
     wildmenu = true;
-    wildmode = ["full"];
-    wildoptions = ["fuzzy" "pum"];
+    wildmode = [ "full" ];
+    wildoptions = [
+      "fuzzy"
+      "pum"
+    ];
     winborder = "rounded";
     wrap = true;
   };

@@ -3,12 +3,12 @@
   lib,
   outputs,
   ...
-}: {
-  imports =
-    [
-      outputs.nixosModules.default
-    ]
-    ++ (lib.youthlic.loadImports ./.);
+}:
+{
+  imports = [
+    outputs.nixosModules.default
+  ]
+  ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {
     home-manager = {
@@ -68,7 +68,7 @@
   };
   nix = {
     settings = {
-      system-features = ["gccarch-ivybridge"];
+      system-features = [ "gccarch-ivybridge" ];
     };
   };
 

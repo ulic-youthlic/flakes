@@ -3,9 +3,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.i18n;
-in {
+in
+{
   options = {
     youthlic.i18n = {
       enable = lib.mkEnableOption "zh env";

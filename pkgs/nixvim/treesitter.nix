@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   youthlic.plugins = {
     treesitter = {
       enable = true;

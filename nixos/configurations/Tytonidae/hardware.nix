@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   nixpkgs.config.cudaSupport = true;
   services = {
     hardware.bolt.enable = true;
@@ -13,11 +14,15 @@
       enableUdevRules = true;
     };
   };
-  nix = {settings = {system-features = ["gccarch-alderlake"];};};
+  nix = {
+    settings = {
+      system-features = [ "gccarch-alderlake" ];
+    };
+  };
   hardware = {
     openrazer = {
       enable = true;
-      users = ["david"];
+      users = [ "david" ];
     };
     graphics.package = pkgs.mesa_git;
     intelgpu = {
@@ -35,8 +40,12 @@
     };
   };
   boot = {
-    extraModulePackages = with config.boot.kernelPackages; [ddcci-driver];
-    kernelModules = ["ddcci" "ddcci-backlight" "i2c-dev"];
+    extraModulePackages = with config.boot.kernelPackages; [ ddcci-driver ];
+    kernelModules = [
+      "ddcci"
+      "ddcci-backlight"
+      "i2c-dev"
+    ];
     binfmt = {
       emulatedSystems = [
         "aarch64-linux"
@@ -47,33 +56,38 @@
   };
   systemd.services."ddcci@" = {
     description = "ddcci handler";
-    after = ["graphical.target"];
-    before = ["shutdown.target"];
-    conflicts = ["shutdown.target"];
+    after = [ "graphical.target" ];
+    before = [ "shutdown.target" ];
+    conflicts = [ "shutdown.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = let
-        script = pkgs.writeShellApplication {
-          name = "ddcci-handler";
-          runtimeInputs = with pkgs; [coreutils ddcutil];
-          text = ''
-            echo Trying to attach ddcci to "$1"
-            success=0
-            i=0
-            id=$(echo "$1" | cut -d "-" -f 2)
-            while ((success < 1)) && ((i++ < 5)); do
-              if ddcutil getvcp 10 -b "$id"; then
-                if echo ddcci 0x37 > "/sys/bus/i2c/devices/$1/new_device"; then
-                  success=1
-                  echo ddcci attached to "$1"
+      ExecStart =
+        let
+          script = pkgs.writeShellApplication {
+            name = "ddcci-handler";
+            runtimeInputs = with pkgs; [
+              coreutils
+              ddcutil
+            ];
+            text = ''
+              echo Trying to attach ddcci to "$1"
+              success=0
+              i=0
+              id=$(echo "$1" | cut -d "-" -f 2)
+              while ((success < 1)) && ((i++ < 5)); do
+                if ddcutil getvcp 10 -b "$id"; then
+                  if echo ddcci 0x37 > "/sys/bus/i2c/devices/$1/new_device"; then
+                    success=1
+                    echo ddcci attached to "$1"
+                  fi
                 fi
-              fi
-              echo "Try $i"
-              sleep 1;
-            done
-          '';
-        };
-      in "${lib.getExe' script "ddcci-handler"} %i";
+                echo "Try $i"
+                sleep 1;
+              done
+            '';
+          };
+        in
+        "${lib.getExe' script "ddcci-handler"} %i";
     };
   };
   services.udev.extraRules = ''

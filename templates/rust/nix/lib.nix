@@ -7,7 +7,24 @@
   nameValuePair,
   getAttrFromPath,
   ...
-}: {
-  genFunctionArgs = flip pipe [(map (flip pipe [(splitString ".") head (flip nameValuePair false)])) listToAttrs];
-  genInputsWith = pkgs: map (flip pipe [(splitString ".") (flip getAttrFromPath pkgs)]);
+}:
+{
+  genFunctionArgs = flip pipe [
+    (map (
+      flip pipe [
+        (splitString ".")
+        head
+        (flip nameValuePair false)
+      ]
+    ))
+    listToAttrs
+  ];
+  genInputsWith =
+    pkgs:
+    map (
+      flip pipe [
+        (splitString ".")
+        (flip getAttrFromPath pkgs)
+      ]
+    );
 }

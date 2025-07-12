@@ -2,18 +2,19 @@
   nixosTests,
   srcs,
   stdenvNoCC,
-}: let
+}:
+let
   source = srcs.noto-serif-cjk;
 in
-  stdenvNoCC.mkDerivation (_finalAttrs: {
-    pname = "noto-serif-cjk";
-    version = source.version;
+stdenvNoCC.mkDerivation (_finalAttrs: {
+  pname = "noto-serif-cjk";
+  version = source.version;
 
-    src = source.src;
+  src = source.src;
 
-    installPhase = ''
-      install -m444 -Dt $out/share/fonts/opentype/noto-serif-cjk Serif/OTC/*.ttc
-    '';
+  installPhase = ''
+    install -m444 -Dt $out/share/fonts/opentype/noto-serif-cjk Serif/OTC/*.ttc
+  '';
 
-    passthru.tests.noto-fonts = nixosTests.noto-fonts;
-  })
+  passthru.tests.noto-fonts = nixosTests.noto-fonts;
+})

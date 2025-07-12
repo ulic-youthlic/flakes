@@ -3,9 +3,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.obs;
-in {
+in
+{
   options = {
     youthlic.programs.obs = {
       enable = lib.mkEnableOption "obs";

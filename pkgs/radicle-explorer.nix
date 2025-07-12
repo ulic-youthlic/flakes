@@ -25,11 +25,14 @@
       scheme = "https";
     }
   ];
-}).overrideAttrs (prev: {
-  postInstall =
-    (prev.postInstall or "")
-    + ''
-      ln -s ${rootPath + "/assets/radicle-explorer/youthlic-seed-header.png"} $out/images/youthlic-seed-header.png
-      ln -s ${rootPath + "/assets/radicle-explorer/youthlic-seed-avatar.jpg"} $out/images/youthlic-seed-avatar.jpg
+}).overrideAttrs
+  (prev: {
+    postInstall = (prev.postInstall or "") + ''
+      ln -s ${
+        rootPath + "/assets/radicle-explorer/youthlic-seed-header.png"
+      } $out/images/youthlic-seed-header.png
+      ln -s ${
+        rootPath + "/assets/radicle-explorer/youthlic-seed-avatar.jpg"
+      } $out/images/youthlic-seed-avatar.jpg
     '';
-})
+  })

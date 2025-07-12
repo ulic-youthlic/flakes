@@ -1,5 +1,8 @@
-{inputs, ...}: _final: prev: let
+{ inputs, ... }:
+_final: prev:
+let
   inherit (prev.stdenv.hostPlatform) system;
-in {
+in
+{
   dae = inputs.dae.packages."${system}".dae-unstable;
 }

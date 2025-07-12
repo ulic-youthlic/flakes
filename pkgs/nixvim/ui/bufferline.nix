@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   youthlic.plugins.bufferline = {
     enable = true;
     settings = {

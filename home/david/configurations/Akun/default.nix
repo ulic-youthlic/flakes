@@ -4,32 +4,35 @@
   unixName,
   config,
   ...
-}: {
+}:
+{
   imports = lib.youthlic.loadImports ./.;
   youthlic = {
     xdg-dirs.enable = true;
-    programs = let
-      email = config.accounts.email.accounts.ulic-youthlic;
-      inherit (email) address name;
-      signKey = email.gpg.key;
-    in {
-      gpg.enable = true;
-      git = {
-        inherit name signKey;
-        email = address;
-        encrypt-credential = true;
+    programs =
+      let
+        email = config.accounts.email.accounts.ulic-youthlic;
+        inherit (email) address name;
+        signKey = email.gpg.key;
+      in
+      {
+        gpg.enable = true;
+        git = {
+          inherit name signKey;
+          email = address;
+          encrypt-credential = true;
+        };
+        fish.enable = true;
+        bash.enable = true;
+        jujutsu = {
+          enable = true;
+          inherit name signKey;
+          email = address;
+        };
+        starship.enable = true;
+        sops.enable = true;
+        atuin.enable = true;
       };
-      fish.enable = true;
-      bash.enable = true;
-      jujutsu = {
-        enable = true;
-        inherit name signKey;
-        email = address;
-      };
-      starship.enable = true;
-      sops.enable = true;
-      atuin.enable = true;
-    };
   };
 
   david = {

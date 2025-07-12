@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.hardware;
-in {
+in
+{
   options = {
     youthlic.hardware = {
       asus = {

@@ -2,7 +2,8 @@
   osConfig ? null,
   lib,
   ...
-}: {
+}:
+{
   config = lib.mkIf (osConfig != null) {
     xdg.dataFile = {
       "fcitx5/rime/default.custom.yaml".source = ./default.custom.yaml;

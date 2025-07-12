@@ -5,18 +5,22 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   config = {
     environment.etc =
       inputs
-      |> lib.mapAttrs' (name: value:
+      |> lib.mapAttrs' (
+        name: value:
         lib.nameValuePair "nix/inputs/${name}" {
           source = value;
-        });
+        }
+      );
     nixpkgs = {
       config = {
         allowUnfree = true;
-        allowInsecurePredicate = p:
+        allowInsecurePredicate =
+          p:
           builtins.elem (lib.getName p) [
             # for fluffychat and neochat
             "olm"
@@ -29,7 +33,7 @@
       mode = "0444";
     };
     nix = {
-      nixPath = ["/etc/nix/inputs"];
+      nixPath = [ "/etc/nix/inputs" ];
       extraOptions = ''
         !include ${config.sops.secrets."access-tokens".path}
       '';
@@ -44,13 +48,12 @@
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         ];
         auto-optimise-store = lib.mkDefault true;
-        experimental-features =
-          [
-            "nix-command"
-            "flakes"
-          ]
-          ++ (lib.optional config.lix.enable "pipe-operator")
-          ++ (lib.optional (!config.lix.enable) "pipe-operators");
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ]
+        ++ (lib.optional config.lix.enable "pipe-operator")
+        ++ (lib.optional (!config.lix.enable) "pipe-operators");
         warn-dirty = false;
         system-features = [
           "kvm"
@@ -63,11 +66,13 @@
       registry =
         inputs
         |> lib.filterAttrs (name: _value: name != "nixpkgs")
-        |> lib.mapAttrs (_name: value: {
-          flake = lib.mkForce {
-            outPath = value;
-          };
-        });
+        |> lib.mapAttrs (
+          _name: value: {
+            flake = lib.mkForce {
+              outPath = value;
+            };
+          }
+        );
     };
   };
 }

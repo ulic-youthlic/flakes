@@ -5,27 +5,32 @@
       url = "github:numtide/flake-utils";
     };
   };
-  outputs = {
-    flake-utils,
-    nixpkgs,
-    ...
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-    in {
-      formatter = pkgs.alejandra;
-      devShells.default = pkgs.mkShell {
-        packages = with pkgs; [
-          clang-tools
+  outputs =
+    {
+      flake-utils,
+      nixpkgs,
+      ...
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+        };
+      in
+      {
+        formatter = pkgs.alejandra;
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            clang-tools
 
-          gcc
-          bear
-          gnumake
-        ];
-      };
-    });
+            gcc
+            bear
+            gnumake
+          ];
+        };
+      }
+    );
   nixConfig = {
     keepOutputs = true;
   };

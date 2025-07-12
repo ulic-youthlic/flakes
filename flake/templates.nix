@@ -3,7 +3,8 @@
   lib,
   rootPath,
   ...
-}: {
+}:
+{
   options = {
     flake = flake-parts-lib.mkSubmoduleOptions {
       templates = lib.mkOption {

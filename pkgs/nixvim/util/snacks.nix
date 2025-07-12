@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   youthlic.plugins.snacks = {
     enable = true;
     luaConfig.content =

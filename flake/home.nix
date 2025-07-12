@@ -4,7 +4,8 @@
   self,
   rootPath,
   ...
-}: let
+}:
+let
   inherit (self) outputs;
   homeModules =
     (
@@ -13,10 +14,10 @@
       |> lib.filterAttrs (_key: value: value == "directory")
       |> lib.filterAttrs (
         key: _value:
-          !builtins.elem key [
-            "modules"
-            "extra"
-          ]
+        !builtins.elem key [
+          "modules"
+          "extra"
+        ]
       )
       |> builtins.attrNames
       |> (with lib; flip genAttrs (name: import (rootPath + "/home/${name}/modules")))
@@ -25,19 +26,20 @@
       default = import "${toString rootPath}/home/modules";
       extra = import "${toString rootPath}/home/extra";
     };
-  makeHomeConfiguration = {
-    hostName,
-    unixName ? "david",
-    system ? "x86_64-linux",
-    nixpkgs ? inputs.nixpkgs,
-    home-manager ? inputs.home-manager,
-  }: {
-    "${unixName}@${hostName}" = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-      modules =
-        [
+  makeHomeConfiguration =
+    {
+      hostName,
+      unixName ? "david",
+      system ? "x86_64-linux",
+      nixpkgs ? inputs.nixpkgs,
+      home-manager ? inputs.home-manager,
+    }:
+    {
+      "${unixName}@${hostName}" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          inherit system;
+        };
+        modules = [
           (rootPath + "/home/${unixName}/configurations/${hostName}")
         ]
         ++ (with homeModules; [
@@ -49,28 +51,29 @@
         ]
         ++ [
           {
-            lib = {inherit (lib) youthlic;};
+            lib = { inherit (lib) youthlic; };
           }
         ];
-      extraSpecialArgs = {
-        inherit
-          inputs
-          outputs
-          unixName
-          hostName
-          system
-          rootPath
-          ;
+        extraSpecialArgs = {
+          inherit
+            inputs
+            outputs
+            unixName
+            hostName
+            system
+            rootPath
+            ;
+        };
       };
     };
-  };
-in {
+in
+{
   flake = {
-    homeConfigurations = lib.foldr (a: b: a // b) {} (
+    homeConfigurations = lib.foldr (a: b: a // b) { } (
       [
         # Hostname
       ]
-      |> map (hostName: makeHomeConfiguration {inherit hostName;})
+      |> map (hostName: makeHomeConfiguration { inherit hostName; })
     );
     inherit homeModules;
   };

@@ -3,11 +3,13 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.yazi;
   fish-cfg = config.youthlic.programs.fish;
   bash-cfg = config.youthlic.programs.bash;
-in {
+in
+{
   options = {
     youthlic.programs.yazi = {
       enable = lib.mkEnableOption "yazi";
@@ -21,7 +23,15 @@ in {
       programs.yazi = {
         enable = true;
         plugins = {
-          inherit (pkgs.yaziPlugins) ouch starship piper chmod smart-enter git full-border;
+          inherit (pkgs.yaziPlugins)
+            ouch
+            starship
+            piper
+            chmod
+            smart-enter
+            git
+            full-border
+            ;
         };
         initLua =
           #lua
@@ -63,12 +73,15 @@ in {
           mgr = {
             prepend_keymap = [
               {
-                on = ["c" "m"];
+                on = [
+                  "c"
+                  "m"
+                ];
                 run = "plugin chmod";
                 desc = "Chmod on selected files";
               }
               {
-                on = ["l"];
+                on = [ "l" ];
                 run = "plugin smart-enter";
                 desc = "Enter the child directory, or open the file";
               }

@@ -3,9 +3,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.david.programs.zed-editor;
-in {
+in
+{
   options = {
     david.programs.zed-editor = {
       enable = lib.mkEnableOption "zed-editor";
@@ -57,13 +59,17 @@ in {
           ty = {
             binary = {
               path = lib.getExe pkgs.ty;
-              arguments = ["server"];
+              arguments = [ "server" ];
             };
           };
         };
         languages = {
           Python = {
-            language_servers = ["ty" "ruff" "pyright"];
+            language_servers = [
+              "ty"
+              "ruff"
+              "pyright"
+            ];
             formatter = [
               {
                 language_server = {
@@ -79,11 +85,13 @@ in {
             ];
           };
           Nix = {
-            language_servers = ["nixd" "nil"];
+            language_servers = [
+              "nixd"
+              "nil"
+            ];
             formatter = {
               external = {
-                command = "alejandra";
-                arguments = ["--quiet" "--"];
+                command = "nixfmt";
               };
             };
           };

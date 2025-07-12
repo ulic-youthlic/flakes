@@ -3,9 +3,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.postgresql;
-in {
+in
+{
   options = {
     youthlic.programs.postgresql = {
       enable = lib.mkEnableOption "postgresql";
@@ -27,7 +29,7 @@ in {
     # default socket: /var/lib/postgresql
     services.postgresql = {
       enable = true;
-      ensureDatabases = [cfg.database];
+      ensureDatabases = [ cfg.database ];
       ensureUsers = [
         {
           name = "${cfg.database}";

@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.gui;
-in {
+in
+{
   config = lib.mkIf (cfg.enabled == "cosmic") {
     # Enable the X11 windowing system.
     # You can disable this if you're only using the Wayland session.

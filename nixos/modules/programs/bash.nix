@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.bash;
-in {
+in
+{
   options = {
     youthlic.programs.bash = {
       enable = lib.mkEnableOption "bash";

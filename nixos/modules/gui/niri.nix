@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.gui;
-in {
+in
+{
   options = {
     youthlic.gui.niri = {
     };
@@ -27,7 +29,7 @@ in {
       terminal-exec = {
         enable = true;
         settings = {
-          default = ["Alacritty.desktop"];
+          default = [ "Alacritty.desktop" ];
         };
       };
       mime = {
@@ -59,7 +61,7 @@ in {
             "firefox.desktop"
             "chromium-browser.desktop"
           ];
-          "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
+          "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
           "x-scheme-handler/unknown" = [
             "firefox.desktop"
             "chromium-browser.desktop"
@@ -97,7 +99,11 @@ in {
     programs = {
       regreet = {
         enable = true;
-        cageArgs = ["-s" "-m" "last"];
+        cageArgs = [
+          "-s"
+          "-m"
+          "last"
+        ];
       };
       niri = {
         enable = true;

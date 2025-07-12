@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   youthlic.plugins = {
     lazydev = {
       enable = true;
@@ -6,7 +7,7 @@
         library = [
           {
             path = "$''{3rd}/luv/library";
-            words = ["vim%.uv"];
+            words = [ "vim%.uv" ];
           }
         ];
       };

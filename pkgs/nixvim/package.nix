@@ -11,7 +11,9 @@ makeNixvimWithModule {
     inherit nixvimPlugins;
   };
   module = {
-    imports = with lib; youthlic.loadImports' ./. (filter (name: !hasSuffix "/package.nix" (toString name)));
+    imports =
+      with lib;
+      youthlic.loadImports' ./. (filter (name: !hasSuffix "/package.nix" (toString name)));
     enableMan = true;
     enablePrintInit = true;
     package = neovim_git;

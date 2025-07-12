@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.containers;
-in {
+in
+{
   imports = lib.youthlic.loadImports ./.;
   options = {
     youthlic.containers = {

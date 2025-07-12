@@ -4,10 +4,12 @@
   lib,
   rootPath,
   ...
-}: let
+}:
+let
   inherit (self) outputs;
-  importWithArgs = lib.flip import {inherit inputs outputs;};
-in {
+  importWithArgs = lib.flip import { inherit inputs outputs; };
+in
+{
   flake.overlays =
     [
       "modifications"

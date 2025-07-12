@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   youthlic.plugins.conform-nvim.settings = {
     formatters_by_ft.python = {
       __unkeyed-1 = "ruff_format";

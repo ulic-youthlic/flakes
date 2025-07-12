@@ -6,10 +6,12 @@
   osConfig ? null,
   options,
   ...
-} @ args: let
+}@args:
+let
   cfg = config.david.programs.niri;
   niri = osConfig.programs.niri.package;
-in {
+in
+{
   options = {
     david.programs.niri = {
       enable = lib.mkEnableOption "niri";
@@ -40,37 +42,37 @@ in {
     {
       david.programs.niri.enable = osConfig.youthlic.gui.enabled == "niri";
     }
-    (
-      lib.mkIf cfg.enable {
-        home.packages =
-          (with pkgs; [
-            swaynotificationcenter
-            kdePackages.polkit-kde-agent-1
-            wl-clipboard
-            cliphist
-            swayimg
-          ])
-          ++ [niri];
-        qt = {
-          enable = true;
-        };
-        xdg.portal = {
-          configPackages = [niri];
-          enable = true;
-          extraPortals = lib.mkIf (
-            !niri.cargoBuildNoDefaultFeatures || builtins.elem "xdp-gnome-screencast" niri.cargoBuildFeatures
-          ) [pkgs.xdg-desktop-portal-gnome];
-        };
-        xdg.configFile = let
-          qtctConf =
-            ''
-              [Appearance]
-              standard_dialogs=xdgdesktopportal
-            ''
-            + lib.optionalString (config.qt.style ? name) ''
-              style=${config.qt.style.name}
-            '';
-        in {
+    (lib.mkIf cfg.enable {
+      home.packages =
+        (with pkgs; [
+          swaynotificationcenter
+          kdePackages.polkit-kde-agent-1
+          wl-clipboard
+          cliphist
+          swayimg
+        ])
+        ++ [ niri ];
+      qt = {
+        enable = true;
+      };
+      xdg.portal = {
+        configPackages = [ niri ];
+        enable = true;
+        extraPortals = lib.mkIf (
+          !niri.cargoBuildNoDefaultFeatures || builtins.elem "xdp-gnome-screencast" niri.cargoBuildFeatures
+        ) [ pkgs.xdg-desktop-portal-gnome ];
+      };
+      xdg.configFile =
+        let
+          qtctConf = ''
+            [Appearance]
+            standard_dialogs=xdgdesktopportal
+          ''
+          + lib.optionalString (config.qt.style ? name) ''
+            style=${config.qt.style.name}
+          '';
+        in
+        {
           "qt5ct/qt5ct.conf" = lib.mkForce {
             text = qtctConf;
           };
@@ -78,28 +80,26 @@ in {
             text = qtctConf;
           };
         };
-        david.programs = {
-          fuzzel.enable = true;
-          waybar = {
-            enable = true;
-            inherit (cfg.waybar) settings;
-          };
-          wluma = {
-            enable = true;
-            inherit (cfg.wluma) extraSettings;
-          };
-          swaync.enable = true;
-          swaylock.enable = true;
-          waypaper.enable = true;
-          kanshi.enable = true;
+      david.programs = {
+        fuzzel.enable = true;
+        waybar = {
+          enable = true;
+          inherit (cfg.waybar) settings;
         };
-        programs.niri = {
-          config =
-            (lib.toList (import ./config.nix (args // {inherit pkgs;})))
-            ++ (lib.toList cfg.extraConfig);
-          package = niri;
+        wluma = {
+          enable = true;
+          inherit (cfg.wluma) extraSettings;
         };
-      }
-    )
+        swaync.enable = true;
+        swaylock.enable = true;
+        waypaper.enable = true;
+        kanshi.enable = true;
+      };
+      programs.niri = {
+        config =
+          (lib.toList (import ./config.nix (args // { inherit pkgs; }))) ++ (lib.toList cfg.extraConfig);
+        package = niri;
+      };
+    })
   ];
 }

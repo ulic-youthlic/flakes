@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   sops.secrets."miniflux" = {
   };
   youthlic.containers.miniflux = {

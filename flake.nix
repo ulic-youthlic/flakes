@@ -1,46 +1,53 @@
 {
   description = "A simple NixOS flakes";
 
-  outputs = {
-    flake-parts,
-    flake-utils,
-    home-manager,
-    treefmt-nix,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    nixpkgs-lib = nixpkgs.lib;
-    lib = nixpkgs-lib.extend (import ./lib);
-  in
-    flake-parts.lib.mkFlake {
-      inherit inputs;
-      specialArgs = {
-        inherit lib;
-        rootPath = ./.;
-      };
-    } ({lib, ...}: {
-      systems = flake-utils.lib.defaultSystems;
-      imports =
-        [
-          home-manager.flakeModules.home-manager
-          treefmt-nix.flakeModule
-        ]
-        ++ lib.youthlic.loadImports ./flake;
-      flake = {
-        inherit lib;
-        nix.settings = {
-          # substituters shared in home-manager and nixos configuration
-          substituters = let
-            cachix = x: "https://${x}.cachix.org";
-          in
-            lib.flatten [
-              (cachix "nix-community")
-              "https://cache.nixos.org"
-              (cachix "cosmic")
-            ];
+  outputs =
+    {
+      flake-parts,
+      flake-utils,
+      home-manager,
+      treefmt-nix,
+      nixpkgs,
+      ...
+    }@inputs:
+    let
+      nixpkgs-lib = nixpkgs.lib;
+      lib = nixpkgs-lib.extend (import ./lib);
+    in
+    flake-parts.lib.mkFlake
+      {
+        inherit inputs;
+        specialArgs = {
+          inherit lib;
+          rootPath = ./.;
         };
-      };
-    });
+      }
+      (
+        { lib, ... }:
+        {
+          systems = flake-utils.lib.defaultSystems;
+          imports = [
+            home-manager.flakeModules.home-manager
+            treefmt-nix.flakeModule
+          ]
+          ++ lib.youthlic.loadImports ./flake;
+          flake = {
+            inherit lib;
+            nix.settings = {
+              # substituters shared in home-manager and nixos configuration
+              substituters =
+                let
+                  cachix = x: "https://${x}.cachix.org";
+                in
+                lib.flatten [
+                  (cachix "nix-community")
+                  "https://cache.nixos.org"
+                  (cachix "cosmic")
+                ];
+            };
+          };
+        }
+      );
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

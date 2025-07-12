@@ -4,7 +4,8 @@
   pkgs,
   rootPath,
   ...
-}: {
+}:
+{
   options = {
     youthlic.programs.sops = {
       enable = lib.mkOption {
@@ -24,12 +25,14 @@
       };
     };
   };
-  config = let
-    cfg = config.youthlic.programs.sops;
-  in
+  config =
+    let
+      cfg = config.youthlic.programs.sops;
+    in
     lib.mkIf cfg.enable {
       home.packages = (
-        with pkgs; [
+        with pkgs;
+        [
           sops
           age
         ]

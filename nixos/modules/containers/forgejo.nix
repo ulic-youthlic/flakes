@@ -3,9 +3,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.containers.forgejo;
-in {
+in
+{
   options = {
     youthlic.containers.forgejo = {
       enable = lib.mkEnableOption "forgejo container";
@@ -54,62 +56,64 @@ in {
         }
       ];
 
-      config = {lib, ...}: {
-        imports = [
-          ./../programs/forgejo.nix
-          ./../programs/postgresql.nix
-        ];
+      config =
+        { lib, ... }:
+        {
+          imports = [
+            ./../programs/forgejo.nix
+            ./../programs/postgresql.nix
+          ];
 
-        nixpkgs.pkgs = pkgs;
+          nixpkgs.pkgs = pkgs;
 
-        systemd.tmpfiles.rules = [
-          "d /var/lib/forgejo 770 forgejo forgejo -"
-          "d /var/lib/postgresql 770 postgres postgres -"
-        ];
+          systemd.tmpfiles.rules = [
+            "d /var/lib/forgejo 770 forgejo forgejo -"
+            "d /var/lib/postgresql 770 postgres postgres -"
+          ];
 
-        youthlic.programs = {
-          forgejo = {
-            enable = true;
-            domain = cfg.domain;
-            sshPort = cfg.sshPort;
-            httpPort = cfg.httpPort;
-            database = {
-              user = "forgejo";
+          youthlic.programs = {
+            forgejo = {
+              enable = true;
+              domain = cfg.domain;
+              sshPort = cfg.sshPort;
+              httpPort = cfg.httpPort;
+              database = {
+                user = "forgejo";
+              };
+            };
+            postgresql = {
+              enable = true;
+              database = "forgejo";
+              auth_method = "peer";
+              version = "17";
             };
           };
-          postgresql = {
-            enable = true;
-            database = "forgejo";
-            auth_method = "peer";
-            version = "17";
-          };
-        };
 
-        systemd.services.forgejo = {
-          wants = ["postgresql.service"];
-          requires = ["postgresql.service"];
-          after = ["postgresql.service"];
-          wantedBy = ["default.target"];
-        };
-
-        networking = {
-          defaultGateway = "192.168.111.1";
-          firewall = {
-            enable = true;
-            allowedTCPPorts = [
-              cfg.httpPort
-              cfg.sshPort
-            ];
-            allowedUDPPorts = [
-              cfg.httpPort
-              cfg.sshPort
-            ];
+          systemd.services.forgejo = {
+            wants = [ "postgresql.service" ];
+            requires = [ "postgresql.service" ];
+            after = [ "postgresql.service" ];
+            wantedBy = [ "default.target" ];
           };
-          useHostResolvConf = lib.mkForce false;
+
+          networking = {
+            defaultGateway = "192.168.111.1";
+            firewall = {
+              enable = true;
+              allowedTCPPorts = [
+                cfg.httpPort
+                cfg.sshPort
+              ];
+              allowedUDPPorts = [
+                cfg.httpPort
+                cfg.sshPort
+              ];
+            };
+            useHostResolvConf = lib.mkForce false;
+          };
+          services.resolved.enable = true;
+          system.stateVersion = "24.11";
         };
-        services.resolved.enable = true;
-        system.stateVersion = "24.11";
-      };
     };
   };
 }

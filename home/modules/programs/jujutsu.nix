@@ -3,9 +3,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.jujutsu;
-in {
+in
+{
   options = {
     youthlic.programs.jujutsu = {
       enable = lib.mkEnableOption "jujutsu";

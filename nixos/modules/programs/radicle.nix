@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.radicle;
-in {
+in
+{
   options = {
     youthlic.programs.radicle = {
       enable = lib.mkEnableOption "radicle";
@@ -55,11 +57,11 @@ in {
           };
           node = {
             alias = cfg.domain;
-            listen = [];
+            listen = [ ];
             peers = {
               type = "dynamic";
             };
-            connect = [];
+            connect = [ ];
             externalAddresses = [
               "${cfg.domain}:8776"
             ];

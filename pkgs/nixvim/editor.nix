@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   youthlic.plugins = {
     #   grug-far = {
     #     enable = true;

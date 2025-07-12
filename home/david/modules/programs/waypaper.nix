@@ -3,16 +3,22 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.david.programs.waypaper;
-in {
+in
+{
   options = {
     david.programs.waypaper = {
       enable = lib.mkEnableOption "waypaper";
     };
   };
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [waypaper socat mpvpaper];
+    home.packages = with pkgs; [
+      waypaper
+      socat
+      mpvpaper
+    ];
     systemd.user = {
       timers."waypaper" = {
         Unit = {
@@ -23,7 +29,7 @@ in {
           OnCalendar = "*:0/10";
         };
         Install = {
-          WantedBy = ["timers.target"];
+          WantedBy = [ "timers.target" ];
         };
       };
       services."waypaper" = {

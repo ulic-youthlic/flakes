@@ -3,9 +3,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.steam;
-in {
+in
+{
   options = {
     youthlic.programs.steam = {
       enable = lib.mkEnableOption "steam";

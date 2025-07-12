@@ -1,11 +1,14 @@
-{config, ...}: {
+{ config, ... }:
+{
   david.programs.niri = {
-    waybar.settings = let
-      cfg = config.david.programs.niri.waybar;
-    in [
-      (cfg.template // (cfg.helper.mkBacklight "ddcci13") // {output = "DP-3";})
-      (cfg.template // (cfg.helper.mkBacklight "nvidia_0") // {output = "eDP-1";})
-    ];
+    waybar.settings =
+      let
+        cfg = config.david.programs.niri.waybar;
+      in
+      [
+        (cfg.template // (cfg.helper.mkBacklight "ddcci13") // { output = "DP-3"; })
+        (cfg.template // (cfg.helper.mkBacklight "nvidia_0") // { output = "eDP-1"; })
+      ];
     wluma.extraSettings = {
       output = {
         backlight = [
@@ -28,6 +31,6 @@
         }
       ];
     };
-    extraConfig = [];
+    extraConfig = [ ];
   };
 }

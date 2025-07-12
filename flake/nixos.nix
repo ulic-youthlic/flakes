@@ -4,31 +4,37 @@
   self,
   rootPath,
   ...
-}: let
+}:
+let
   inherit (self) outputs;
-in {
+in
+{
   flake = {
     nixosModules = {
       default = import (rootPath + "/nixos/modules/top-level");
       gui = import (rootPath + "/nixos/modules/top-level/gui.nix");
     };
-    nixosConfigurations = let
-      makeNixosConfiguration = hostName:
-        lib.nixosSystem {
-          modules = [(rootPath + "/nixos/configurations/${hostName}")];
-          specialArgs = {
-            inherit inputs outputs rootPath lib;
+    nixosConfigurations =
+      let
+        makeNixosConfiguration =
+          hostName:
+          lib.nixosSystem {
+            modules = [ (rootPath + "/nixos/configurations/${hostName}") ];
+            specialArgs = {
+              inherit
+                inputs
+                outputs
+                rootPath
+                lib
+                ;
+            };
           };
-        };
-    in
+      in
       [
         "Tytonidae"
         "Cape"
         "Akun"
       ]
-      |> (
-        with lib;
-          flip genAttrs makeNixosConfiguration
-      );
+      |> (with lib; flip genAttrs makeNixosConfiguration);
   };
 }

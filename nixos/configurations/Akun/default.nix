@@ -4,7 +4,8 @@
   lib,
   outputs,
   ...
-}: {
+}:
+{
   imports =
     (with inputs.nixos-hardware.nixosModules; [
       common-cpu-intel
@@ -75,9 +76,13 @@
     kernelPackages = pkgs.linuxPackages_cachyos;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelParams = ["i915.enable_guc=2"];
+    kernelParams = [ "i915.enable_guc=2" ];
   };
-  nix = {settings = {system-features = ["gccarch-skylake"];};};
+  nix = {
+    settings = {
+      system-features = [ "gccarch-skylake" ];
+    };
+  };
   hardware = {
     graphics.package = pkgs.mesa_git;
     intelgpu = {

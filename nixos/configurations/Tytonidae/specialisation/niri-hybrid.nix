@@ -2,7 +2,8 @@
   inputs,
   lib,
   ...
-}: let
+}:
+let
   extraConfig = ''
     output "DP-1" {
       mode "2560x1440@169.900"
@@ -22,11 +23,12 @@
       open-on-output "DP-1"
     }
   '';
-in {
+in
+{
   config.specialisation.niri-hybrid = {
     inheritParentConfig = true;
     configuration = {
-      imports = [inputs.nixos-hardware.nixosModules.common-gpu-nvidia];
+      imports = [ inputs.nixos-hardware.nixosModules.common-gpu-nvidia ];
       youthlic.gui.niri.extraConfig = lib.mkForce extraConfig;
       hardware.nvidia.prime.reverseSync.enable = lib.mkForce false;
     };

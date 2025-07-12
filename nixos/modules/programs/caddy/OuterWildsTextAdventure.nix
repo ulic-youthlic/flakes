@@ -3,10 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.caddy.outer-wilds-text-adventure;
   caddy-cfg = config.youthlic.programs.caddy;
-in {
+in
+{
   options = {
     youthlic.programs.caddy.outer-wilds-text-adventure = {
       enable = lib.mkEnableOption "caddy.OuterWildsTextAdventure";

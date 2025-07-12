@@ -79,6 +79,5 @@ symlinkJoin {
     zls
     ty
   ];
-  postBuild = ''
-  '';
+  postBuild = '''';
 }

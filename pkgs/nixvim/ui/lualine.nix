@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   youthlic.plugins.lualine = {
     enable = true;
     luaConfig.pre =
@@ -16,6 +17,6 @@
           vim.o.laststatus = vim.g.lualine_laststatus
         end
       '';
-    settings = {};
+    settings = { };
   };
 }

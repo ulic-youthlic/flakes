@@ -4,30 +4,32 @@
   flake-parts-lib,
   self,
   ...
-}: let
+}:
+let
   inherit (self) outputs;
   inherit (inputs) deploy-rs;
-  mkDeployNode = {
-    hostName,
-    unixName ? "deploy",
-    system ? "x86_64-linux",
-    sshName ? hostName,
-  }: {
-    "${hostName}" = {
-      hostname = "${sshName}";
-      sshUser = "${unixName}";
-      interactiveSudo = true;
-      profiles = {
-        system = {
-          user = "root";
-          path =
-            deploy-rs.lib."${system}".activate.nixos
-            outputs.nixosConfigurations."${hostName}";
+  mkDeployNode =
+    {
+      hostName,
+      unixName ? "deploy",
+      system ? "x86_64-linux",
+      sshName ? hostName,
+    }:
+    {
+      "${hostName}" = {
+        hostname = "${sshName}";
+        sshUser = "${unixName}";
+        interactiveSudo = true;
+        profiles = {
+          system = {
+            user = "root";
+            path = deploy-rs.lib."${system}".activate.nixos outputs.nixosConfigurations."${hostName}";
+          };
         };
       };
     };
-  };
-in {
+in
+{
   options = {
     flake = flake-parts-lib.mkSubmoduleOptions {
       deploy = lib.mkOption {
@@ -43,10 +45,10 @@ in {
       ]
       |> map (
         hostName:
-          mkDeployNode {
-            inherit hostName;
-          }
+        mkDeployNode {
+          inherit hostName;
+        }
       )
-      |> lib.foldr (a: b: a // b) {};
+      |> lib.foldr (a: b: a // b) { };
   };
 }

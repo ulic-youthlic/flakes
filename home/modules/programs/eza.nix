@@ -2,12 +2,14 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.eza;
   fish-cfg = config.youthlic.programs.fish;
   bash-cfg = config.youthlic.programs.bash;
   ion-cfg = config.youthlic.programs.ion;
-in {
+in
+{
   options = {
     youthlic.programs.eza = {
       enable = lib.mkEnableOption "eza";

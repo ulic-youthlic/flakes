@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.fish;
-in {
+in
+{
   options = {
     youthlic.programs.fish = {
       enable = lib.mkEnableOption "fish";
