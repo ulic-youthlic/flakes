@@ -61,6 +61,7 @@ in {
             graph.style = "curved";
             show-cryptographic-signatures = true;
             pager = "delta";
+            diff-editor = ":builtin";
             diff = {
               color-words = {
                 conflict = "pair";
