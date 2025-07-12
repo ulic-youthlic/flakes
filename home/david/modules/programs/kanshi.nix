@@ -24,7 +24,7 @@ in {
         }
         {
           output = {
-            criteria = "DP-1";
+            criteria = "HKC OVERSEAS LIMITED IG27Q 0000000000001";
             mode = "2560x1440@169.900";
             scale = 1.0;
           };
@@ -44,7 +44,7 @@ in {
               position = "2560,0";
             }
             {
-              criteria = "DP-1";
+              criteria = "HKC OVERSEAS LIMITED IG27Q 0000000000001";
               position = "0,0";
             }
           ];
