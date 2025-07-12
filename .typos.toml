@@ -12,10 +12,10 @@ check-filename = true
 check-file = true
 unicode = true
 extend-ignore-re = [
-  # Line ignore with trailling `(#|//) spellchecker: disable-line`
-  "(?Rm)^.*(#|//)\\s*spellchecker: disable-line$",
-  # Line block with `# spellchecker: <on|off>`
-  "(?s)(#|//)\\s*spellchecker: off.*?\\n\\s*(#|//)\\s*spellchecker: on",
+  # Line ignore with trailling `(#|//|;;) spellchecker: disable-line`
+  "(?Rm)^.*(#|//|;;)\\s*typochecker: disable-line$",
+  # Line block with `(#|;;|//) spellchecker: (on|off)`
+  "(?s)(#|//|;;)\\s*typochecker: off.*?\\n\\s*(#|//|;;)\\s*typochecker: on",
 ]
 extend-ignore-identifiers-re = ["als", "Paket", "ConfiguratioN", "StructurE"]
 
