@@ -142,7 +142,7 @@ in {
         ];
         style = ''
            * {
-            font-family: Libertinus Serif, Maple Mono NF CN;
+            font-family: Libertinus Serif, Source Han Serif;
             font-weight: bold;
             font-size: 16px;
           }
