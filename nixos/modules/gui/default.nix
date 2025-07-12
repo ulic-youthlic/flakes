@@ -31,31 +31,19 @@ in {
     fonts = {
       enableDefaultPackages = false;
       packages = with pkgs; [
-        nerd-fonts.fira-code
         maple-mono.NF-CN
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
         noto-fonts-emoji
-        lxgw-wenkai
-        source-sans
-        source-serif
         source-han-serif
         source-han-sans
+        libertinus
       ];
       fontconfig.defaultFonts = {
         serif = [
-          "LXGW WenKai"
-          "Source Han Serif SC"
-          "Noto Serif CJK SC"
-          "Source Serif 4"
-          "Noto Serif"
+          "Libertinus Serif"
+          "Source Han Serif"
         ];
         sansSerif = [
-          "Source Han Sans SC"
-          "Noto Sans CJK SC"
-          "Source Sans 3"
-          "Noto Sans"
+          "Source Han Sans"
         ];
         monospace = [
           "Maple Mono NF CN"

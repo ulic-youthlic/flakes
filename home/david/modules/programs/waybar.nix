@@ -142,9 +142,9 @@ in {
         ];
         style = ''
            * {
-            font-family: LXGW Wenkai, Maple Mono NF CN;
+            font-family: Libertinus Serif, Maple Mono NF CN;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 16px;
           }
 
           window#waybar {

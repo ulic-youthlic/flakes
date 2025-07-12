@@ -105,7 +105,7 @@ in {
           "cv03" = true;
           "ss08" = true;
         };
-        ui_font_family = "Source Han Sans SC";
+        ui_font_family = "Source Han Sans";
         theme = "Gruvbox Dark Hard";
         vim_mode = true;
         vim = {

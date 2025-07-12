@@ -15,12 +15,12 @@
     };
     fonts = {
       serif = {
-        package = pkgs.lxgw-wenkai;
-        name = "LXGW WenKai";
+        package = pkgs.libertinus;
+        name = "Libertinus Serif";
       };
       sansSerif = {
         package = pkgs.source-han-sans;
-        name = "Source Han Sans SC";
+        name = "Source Han Sans";
       };
       monospace = {
         package = pkgs.maple-mono.NF-CN;

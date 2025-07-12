@@ -36,7 +36,7 @@
           #   "cv30"
           # ];
 
-          # font-family = "Maple Mono SC NF";
+          # font-family = "Maple Mono NF CN";
           font-feature = [
             "calt"
             "zero"
