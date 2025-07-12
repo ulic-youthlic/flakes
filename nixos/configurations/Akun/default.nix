@@ -58,6 +58,7 @@
     spotify
     localsend
     zulip
+    wechat
   ];
 
   environment.variables.EDITOR = "hx";
