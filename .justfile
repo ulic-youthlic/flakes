@@ -38,7 +38,7 @@ buildHome host=DEFAULT_HOST $USER=DEFAULT_USER:
     nh home build -b backup {{ if host != DEFAULT_HOST { "-c \"" + USER + "@" + host + "\"" } else { "" } }} {{ FLAKE_HOME }}
 
 deadNix:
-    nix run github:astro/deadnix -- . --exclude ./pkgs/_sources/generated.nix ./nixos/configurations/{Akun,Tytonidae,Cape}/hardware-configuration.nix
+    nix run github:astro/deadnix -- . --exclude ./_sources/generated.nix ./nixos/configurations/{Akun,Tytonidae,Cape}/hardware-configuration.nix
 
 sign:
     jj sign --revisions '::@ & ~root() & ~signed() & ~@' --ignore-immutable
