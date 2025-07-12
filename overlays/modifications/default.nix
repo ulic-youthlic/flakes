@@ -13,6 +13,7 @@ in
   # ./QQ.nix
   ./helix.nix
   ./cliphist.nix
+  ./zulip.nix
 
   # Nur
   ./nur.nix
