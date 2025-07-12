@@ -1,5 +1,5 @@
 {...}: {
-  plugins = {
+  youthlic.plugins = {
     treesitter = {
       enable = true;
       # folding = true;
@@ -11,9 +11,6 @@
         };
         indent.enable = true;
       };
-    };
-    which-key = {
-      enable = true;
     };
   };
 }
