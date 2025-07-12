@@ -3,24 +3,23 @@
   pkgs,
   ...
 }: {
-  plugins.conform-nvim.settings = {
-    formatters_by_ft.rust = {
-      __unkeyed-1 = "rustfmt";
-      lsp_format = "fallback";
+  youthlic.plugins.conform-nvim.settings = {
+    formatters_by_ft.json = {
+      __unkeyed-1 = "deno_fmt";
     };
-    formatters.rustfmt = {
+    formatters.deno_fmt = {
       __raw =
         #lua
         ''
           function()
-            local defaultFormatter = require("conform.formatters.rustfmt")
+            local defaultFormatter = require("conform.formatters.deno_fmt")
             return vim.tbl_extend("force", defaultFormatter, {
               command = function()
-                local exe = vim.fn["exepath"]("rustfmt")
+                local exe = vim.fn["exepath"]("deno")
                 if exe ~= "" then
                   return exe
                 else
-                  return "${lib.getExe pkgs.rustfmt}"
+                  return "${lib.getExe pkgs.deno}"
                 end
               end
             })

@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  plugins.conform-nvim.settings = {
+  youthlic.plugins.conform-nvim.settings = {
     formatters_by_ft.cpp = {
       __unkeyed-1 = "clang-format";
       lsp_format = "fallback";

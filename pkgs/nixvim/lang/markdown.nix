@@ -3,8 +3,8 @@
   pkgs,
   ...
 }: {
-  plugins.conform-nvim.settings = {
-    formatters_by_ft.yaml = {
+  youthlic.plugins.conform-nvim.settings = {
+    formatters_by_ft.markdown = {
       __unkeyed-1 = "deno_fmt";
     };
     formatters.deno_fmt = {

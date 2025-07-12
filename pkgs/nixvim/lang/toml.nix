@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  plugins.conform-nvim.settings = {
+  youthlic.plugins.conform-nvim.settings = {
     formatters_by_ft.toml = {
       __unkeyed-1 = "taplo";
       lsp_format = "fallback";

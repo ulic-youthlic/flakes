@@ -3,7 +3,15 @@
   pkgs,
   ...
 }: {
-  plugins.conform-nvim.settings = {
+  lsp.servers = {
+    nixd = {
+      enable = true;
+    };
+    nil_ls = {
+      enable = true;
+    };
+  };
+  youthlic.plugins.conform-nvim.settings = {
     formatters_by_ft.nix = {
       __unkeyed-1 = "alejandra";
       __unkeyed-2 = "injected";

@@ -3,7 +3,10 @@
   pkgs,
   ...
 }: {
-  plugins.conform-nvim.settings = {
+  lsp.servers.lua_ls = {
+    enable = true;
+  };
+  youthlic.plugins.conform-nvim.settings = {
     formatters_by_ft.lua = {
       __unkeyed-1 = "stylua";
       lsp_format = "fallback";
