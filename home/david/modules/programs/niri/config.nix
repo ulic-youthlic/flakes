@@ -486,6 +486,10 @@ in
         (leaf "draw-border-with-background" [false])
       ])
       (window-rule [
+        (match [{app-id = "^org\\.kde\\.polkit-kde-authentication-agent-1$";}])
+        (leaf "open-floating" [true])
+      ])
+      (window-rule [
         (match [{app-id = "^swayimg$";}])
         (leaf "draw-border-with-background" [false])
         (leaf "open-floating" [true])
