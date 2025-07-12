@@ -51,7 +51,7 @@ push:
     jj git fetch --all-remotes
 
 rebase revision="dev":
-    jj rebase -b 'all:heads(all()) & ~signed() &~@' -d {{ revision }}
+    jj rebase -b 'heads(all()) & ~signed() &~@' -d {{ revision }}
 
 alias s := switch
 alias u := update

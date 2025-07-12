@@ -47,8 +47,8 @@ in {
             auto-track = "true";
             max-new-file-size = 0;
           };
-          core = {
-            fsmonitor = "watchman";
+          fsmonitor = {
+            backend = "watchman";
             watchman.register-snapshot-trigger = true;
           };
           user = {
