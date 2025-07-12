@@ -16,7 +16,7 @@ update:
     nix flake update --log-format internal-json 2>&1 | nom --json
 
 updatePkgs:
-    cd pkgs && nvfetcher
+    nvfetcher
 
 build specialisation=DEFAULT_SPECIALISATION:
     nh os build {{ FLAKE_HOME }} {{ if specialisation == DEFAULT_SPECIALISATION { "-S" } else { "-s " + specialisation } }}

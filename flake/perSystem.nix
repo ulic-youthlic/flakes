@@ -14,7 +14,6 @@
     ...
   }: let
     inherit (inputs) nixpkgs;
-    callPackages = lib.callPackagesWith (pkgs // {inherit callPackages inputs rootPath lib;});
   in {
     _module.args.pkgs = import nixpkgs {
       inherit system;
@@ -33,7 +32,31 @@
         nvfetcher
       ];
     };
-    packages = callPackages (rootPath + "/pkgs") {};
-    checks = self'.packages;
+    legacyPackages = let
+      inputsScope = lib.makeScope pkgs.newScope (self: {
+        inherit inputs rootPath;
+        srcs = self.callPackage (rootPath + "/_sources/generated.nix") {};
+      });
+    in
+      lib.packagesFromDirectoryRecursive {
+        inherit (inputsScope) callPackage;
+        directory = rootPath + "/pkgs";
+      };
+    packages = let
+      flattenPkgs = path: value:
+        if lib.isDerivation value
+        then {
+          ${lib.concatStringsSep "/" path} = value;
+        }
+        else if lib.isAttrs value
+        then lib.concatMapAttrs (name: flattenPkgs (path ++ [name])) value
+        else {};
+    in
+      flattenPkgs [] self'.legacyPackages;
+    checks =
+      lib.concatMapAttrs (name: value: {
+        "package-${name}" = value;
+      })
+      self'.packages;
   };
 }
