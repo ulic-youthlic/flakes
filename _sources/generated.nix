@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "90e0bda7bb2db72793260ad5e62c890232d4a5f1";
+    version = "6afd29280437541da29a843332696f241d570c07";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "90e0bda7bb2db72793260ad5e62c890232d4a5f1";
+      rev = "6afd29280437541da29a843332696f241d570c07";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-aiRFQfHA3/cCFwK0WCP6D+Z4Op375ldfem7tyuZ4cOY=";
+      sha256 = "sha256-Pay01KNbNXpTxS9q//85/iF5CuveqcU7oHhzJPEbtCM=";
     };
-    date = "2025-07-10";
+    date = "2025-07-13";
   };
   cliphist = {
     pname = "cliphist";
@@ -107,15 +107,15 @@
   };
   spotx = {
     pname = "spotx";
-    version = "a0df4fcaace5efc1b58acd39b2c4d1750bb81057";
+    version = "0172f4d10bee792adc505551a0b7300df2f16b9b";
     src = fetchFromGitHub {
       owner = "SpotX-Official";
       repo = "SpotX-Bash";
-      rev = "a0df4fcaace5efc1b58acd39b2c4d1750bb81057";
+      rev = "0172f4d10bee792adc505551a0b7300df2f16b9b";
       fetchSubmodules = false;
-      sha256 = "sha256-H8AG9WOodmPFBoHGwZ8qs55bb4myyKrRLsUmepvzYtQ=";
+      sha256 = "sha256-9Gf6EEJYluO+HTIOdvOQ4pfOnCGm29NwdFEehFGL3Es=";
     };
-    date = "2025-07-02";
+    date = "2025-07-11";
   };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";
