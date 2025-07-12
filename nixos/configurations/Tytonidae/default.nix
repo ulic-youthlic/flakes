@@ -50,7 +50,7 @@
       wshowkeys.enable = true;
       obs.enable = true;
       garage.enable = true;
-      emacs.enable = true;
+      # emacs.enable = true;
     };
   };
 

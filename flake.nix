@@ -199,13 +199,20 @@
       type = "github";
       owner = "nix-community";
       repo = "neovim-nightly-overlay";
-    }; 
+    };
 
     lanzaboote = {
       type = "github";
       owner = "nix-community";
       repo = "lanzaboote";
       ref = "v0.4.2";
+    };
+
+    nix-doom = {
+      type = "github";
+      owner = "marienz";
+      repo = "nix-doom-emacs-unstraightened";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }
