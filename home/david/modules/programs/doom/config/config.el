@@ -16,6 +16,9 @@
 ;;; Fix failure to loacate 'Symbols Nerd Font Mono' font
 (setq nerd-icons-font-family "Maple Mono NF CN")
 
+(setq telega-emoji-use-images
+      nil)
+
 (map! :map global-map
       "C-c t"
       telega-prefix-map)
