@@ -94,7 +94,11 @@
 
   environment.variables.EDITOR = "hx";
   services.dbus.implementation = "broker";
-  services.scx.enable = true;
+  services.scx = {
+    enable = true;
+    scheduler = "scx_lavd";
+    package = pkgs.scx_git.rustscheds;
+  };
 
   boot = {
     kernelPackages = pkgs.linuxPackages_cachyos;
