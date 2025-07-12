@@ -58,3 +58,7 @@ fetch.url = "http://wallpaper.youthlic.social/hollow-knight-quest.3840x2160.mp4"
 src.github = "forfudan/yuhao-ime-release"
 fetch.url = "https://github.com/forfudan/yuhao-ime-release/releases/download/$ver/yuhao_star_xingchen_$ver.zip"
 url.name = "yustar_$ver.zip"
+
+[nvim_vim-startuptime]
+src.git = "https://github.com/dstein64/vim-startuptime.git"
+fetch.github = "dstein64/vim-startuptime"

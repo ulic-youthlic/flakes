@@ -2,9 +2,13 @@
   makeNixvimWithModule,
   pkgs,
   lib,
+  nixvimPlugins,
 }:
 makeNixvimWithModule {
   inherit pkgs;
+  extraSpecialArgs = {
+    inherit nixvimPlugins;
+  };
   module = {
     imports = with lib; youthlic.loadImports' ./. (filter (name: !hasSuffix "/package.nix" (toString name)));
     enableMan = true;
