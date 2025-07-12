@@ -91,6 +91,7 @@
     wineWow64Packages.waylandFull
     iperf3
     nixvim
+    neovide
 
     sbctl
   ];

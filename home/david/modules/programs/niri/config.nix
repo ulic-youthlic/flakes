@@ -482,6 +482,7 @@ in
       (window-rule [
         (match [{app-id = "^Alacritty$";}])
         (match [{app-id = "^com\\.mitchellh\\.ghostty$";}])
+        (match [{app-id = "^neovide$";}])
         (leaf "draw-border-with-background" [false])
       ])
       (window-rule [

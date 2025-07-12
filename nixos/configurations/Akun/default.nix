@@ -60,6 +60,7 @@
     zulip
     wechat
     nixvim
+    neovide
   ];
 
   environment.variables.EDITOR = "hx";
