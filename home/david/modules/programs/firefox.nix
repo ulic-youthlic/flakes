@@ -22,16 +22,15 @@ in
       package = pkgs.firefox-beta;
       betterfox = {
         enable = true;
+        profiles.default = {
+          enableAllSections = true;
+        };
       };
       languagePacks = [
         "zh-CN"
         "en-US"
       ];
       profiles.default = {
-        betterfox = {
-          enable = true;
-          enableAllSections = true;
-        };
         name = "default";
         isDefault = true;
         extensions = {
@@ -172,6 +171,52 @@ in
                 }
               ];
               definedAliases = [ "nw" ];
+            };
+            "Rust Stdandard Lib" = {
+              urls = [
+                {
+                  template = "https://doc.rust-lang.org/nightly/std/index.html";
+                  params = [
+                    {
+                      name = "search";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              definedAliases = [ "rs" ];
+            };
+            "GitHub" = {
+              urls = [
+                {
+                  template = "https://github.com/search";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                    {
+                      name = "type";
+                      value = "repositories";
+                    }
+                  ];
+                }
+              ];
+              definedAliases = [ "gh" ];
+            };
+            "Rust Reference" = {
+              urls = [
+                {
+                  template = "https://doc.rust-lang.org/nightly/reference";
+                  params = [
+                    {
+                      name = "search";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              definedAliases = [ "rr" ];
             };
             "bing".metaData.hidden = true;
             "google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
