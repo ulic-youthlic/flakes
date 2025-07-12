@@ -87,24 +87,14 @@ in
     services = {
       greetd = {
         enable = true;
-      };
-      xserver = {
-        enable = true;
-        xkb = {
-          layout = "us";
-          variant = "";
+        settings = {
+          default_session = {
+            command = "${lib.getExe pkgs.tuigreet} --time --user-menu -r";
+          };
         };
       };
     };
     programs = {
-      regreet = {
-        enable = true;
-        cageArgs = [
-          "-s"
-          "-m"
-          "last"
-        ];
-      };
       niri = {
         enable = true;
         package = pkgs.niri-unstable;
