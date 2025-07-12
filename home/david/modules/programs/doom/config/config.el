@@ -11,20 +11,7 @@
 
 (setq doom-font (font-spec
                  :family "Maple Mono NF CN"
-                 :size 18)
-      doom-variable-pitch-font (font-spec
-                                :family "Source Han Serif SC"
-                                :size 17)
-      doom-emoji-font (font-spec
-                       :family "Noto Color Emoji")
-      doom-symbol-font (font-spec
-                        :family "Maple Mono NF CN"
-                        :size 18)
-      doom-serif-font (font-spec
-                       :family "Libertinus Serif"
-                       :size 17)
-      doom-big-font (font-spec
-                     :family "Maple Mono NF CN"))
+                 :size 20))
 (setq doom-theme 'doom-gruvbox)
 ;;; Fix failure to loacate 'Symbols Nerd Font Mono' font
 (setq nerd-icons-font-family "Maple Mono NF CN")
