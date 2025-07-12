@@ -49,7 +49,8 @@
     # nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
     lix-module = {
-      url = "git+https://git.lix.systems/lix-project/nixos-module?ref=release-2.93";
+      # url = "git+https://git.lix.systems/lix-project/nixos-module?ref=release-2.93";
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
