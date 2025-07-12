@@ -637,6 +637,24 @@ in
       ])
       (leaf "open-focused" [ false ])
     ])
+    (window-rule [
+      (match [
+        {
+          app-id = "^steam$";
+          title = "^notification.*$";
+        }
+      ])
+      (leaf "open-floating" [ true ])
+      (leaf "open-focused" [ false ])
+      (leaf "default-floating-position" [
+        {
+          x = 0;
+          y = 0;
+          "relative-to" = "bottom-right";
+        }
+      ])
+      (leaf "clip-to-geometry" [ false ])
+    ])
   ] # window-rule
 )
 ++ (
