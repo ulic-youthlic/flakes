@@ -523,6 +523,15 @@ in
         (leaf "open-floating" [true])
         (leaf "open-fullscreen" [false])
       ])
+      (window-rule [
+        (match [
+          {
+            app-id = "^wechat$";
+            title = "^wechat$";
+          }
+        ])
+        (leaf "open-focused" [false])
+      ])
     ] # window-rule
   )
   ++ (
