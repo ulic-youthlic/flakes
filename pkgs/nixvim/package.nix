@@ -13,7 +13,7 @@ makeNixvimWithModule {
   module = {
     imports = with lib; youthlic.loadImports' ./. (filter (name: !hasSuffix "/package.nix" (toString name)));
     enableMan = true;
-    plugins.lualine.enable = true;
+    enablePrintInit = true;
     package = neovim_git;
     performance = {
       # combinePlugins = {
