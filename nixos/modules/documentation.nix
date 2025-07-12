@@ -12,7 +12,7 @@ lib.mkMerge [
     ];
     documentation = {
       info.enable = true;
-      nixos.enable = false;
+      nixos.enable = true;
       dev.enable = true;
     };
   }
