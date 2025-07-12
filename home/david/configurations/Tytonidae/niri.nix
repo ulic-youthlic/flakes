@@ -1,7 +1,17 @@
-{inputs, ...}: let
+{
+  config,
+  inputs,
+  ...
+}: let
   inherit (inputs.niri-flake.lib.kdl) node leaf flag;
 in {
   david.programs.niri = {
+    waybar.settings = let
+      cfg = config.david.programs.niri.waybar;
+    in [
+      (cfg.template // (cfg.helper.mkBacklight "ddcci13") // {output = "DP-3";})
+      (cfg.template // (cfg.helper.mkBacklight "nvidia_0") // {output = "eDP-1";})
+    ];
     wluma.extraSettings = {
       output = {
         backlight = [
@@ -12,7 +22,7 @@ in {
           }
           {
             name = "DP-3";
-            path = "/sys/class/backlight/ddcci15";
+            path = "/sys/class/backlight/ddcci13";
             capturer = "wayland";
           }
         ];

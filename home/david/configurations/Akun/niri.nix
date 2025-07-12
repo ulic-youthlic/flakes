@@ -1,7 +1,14 @@
-{inputs, ...}: let
+{
+  config,
+  inputs,
+  ...
+}: let
   inherit (inputs.niri-flake.lib.kdl) node leaf flag;
 in {
   david.programs.niri = {
+    waybar.settings = let
+      cfg = config.david.programs.niri.waybar;
+    in [(cfg.template // (cfg.mkBacklight "intel_backlight") // {output = "eDP-1";})];
     wluma.extraSettings = {
       output = {
         backlight = [

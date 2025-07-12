@@ -19,6 +19,21 @@ in {
       wluma.extraSettings = lib.mkOption {
         inherit (options.david.programs.wluma.extraSettings) type;
       };
+      waybar = {
+        template = lib.mkOption {
+          readOnly = true;
+          type = lib.types.anything;
+          default = config.david.programs.waybar.template;
+        };
+        helper = lib.mkOption {
+          readOnly = true;
+          type = lib.types.anything;
+          default = config.david.programs.waybar.helper;
+        };
+        settings = lib.mkOption {
+          inherit (options.david.programs.waybar.settings) type;
+        };
+      };
     };
   };
   config = lib.mkMerge [
@@ -65,7 +80,10 @@ in {
         };
         david.programs = {
           fuzzel.enable = true;
-          waybar.enable = true;
+          waybar = {
+            enable = true;
+            inherit (cfg.waybar) settings;
+          };
           wluma = {
             enable = true;
             inherit (cfg.wluma) extraSettings;
