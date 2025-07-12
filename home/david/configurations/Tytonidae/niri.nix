@@ -12,7 +12,7 @@ in {
           }
           {
             name = "DP-3";
-            path = "/sys/class/backlight/ddcci13";
+            path = "/sys/class/backlight/ddcci15";
             capturer = "wayland";
           }
         ];
