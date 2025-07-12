@@ -32,7 +32,7 @@ in {
       enableDefaultPackages = false;
       packages = with pkgs; [
         maple-mono.NF-CN
-        noto-fonts-emoji
+        noto-fonts-emoji-blob-bin
         source-han-serif
         source-han-sans
         libertinus
@@ -48,7 +48,7 @@ in {
         monospace = [
           "Maple Mono NF CN"
         ];
-        emoji = ["Noto Color Emoji"];
+        emoji = ["Blobmoji"];
       };
     };
 
