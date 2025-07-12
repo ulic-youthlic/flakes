@@ -37,7 +37,6 @@
     };
     programs = {
       bash.enable = true;
-      nixvim.enable = true;
       guix.enable = true;
       dae.enable = true;
       openssh.enable = true;
@@ -91,6 +90,7 @@
     waypipe
     wineWow64Packages.waylandFull
     iperf3
+    nixvim
 
     sbctl
   ];

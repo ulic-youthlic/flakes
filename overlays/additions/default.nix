@@ -9,6 +9,7 @@ in
     ./wallpapers.nix
     ./waydroid-script.nix
     ./rime-yuhaostar.nix
+    ./nixvim.nix
 
     ./pkgsNoCuda.nix
   ]

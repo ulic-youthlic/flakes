@@ -11,6 +11,7 @@
     system,
     lib,
     self',
+    inputs',
     ...
   }: let
     inherit (inputs) nixpkgs;
@@ -20,6 +21,7 @@
       config = {
         allowUnfree = true;
       };
+      overlays = [(_final: _prev: {inherit lib;})];
     };
     devShells.default = pkgs.mkShell {
       name = "nixos-shell";
@@ -36,6 +38,7 @@
       inputsScope = lib.makeScope pkgs.newScope (self: {
         inherit inputs rootPath;
         srcs = self.callPackage (rootPath + "/_sources/generated.nix") {};
+        inherit (inputs'.nixvim.legacyPackages) makeNixvim makeNixvimWithModule;
       });
     in
       lib.packagesFromDirectoryRecursive {

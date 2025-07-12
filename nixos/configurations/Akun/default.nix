@@ -59,6 +59,7 @@
     localsend
     zulip
     wechat
+    nixvim
   ];
 
   environment.variables.EDITOR = "hx";
