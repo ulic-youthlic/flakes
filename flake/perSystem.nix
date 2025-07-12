@@ -40,6 +40,7 @@
         srcs = self.callPackage (rootPath + "/_sources/generated.nix") {};
         inherit (inputs'.nixvim.legacyPackages) makeNixvim makeNixvimWithModule;
         inherit (self'.legacyPackages) nixvimPlugins;
+        neovim_git = inputs'.neovim-nightly.packages.default;
       });
     in
       lib.packagesFromDirectoryRecursive {

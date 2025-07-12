@@ -194,6 +194,11 @@
       owner = "nix-community";
       repo = "nixvim";
     };
+    neovim-nightly = {
+      type = "github";
+      owner = "nix-community";
+      repo = "neovim-nightly-overlay";
+    }; 
 
     lanzaboote = {
       type = "github";

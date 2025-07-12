@@ -3,6 +3,7 @@
   pkgs,
   lib,
   nixvimPlugins,
+  neovim_git,
 }:
 makeNixvimWithModule {
   inherit pkgs;
@@ -13,6 +14,7 @@ makeNixvimWithModule {
     imports = with lib; youthlic.loadImports' ./. (filter (name: !hasSuffix "/package.nix" (toString name)));
     enableMan = true;
     plugins.lualine.enable = true;
+    package = neovim_git;
     performance = {
       # combinePlugins = {
       #   enable = true;
