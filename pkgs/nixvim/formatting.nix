@@ -95,7 +95,7 @@
       };
     }
   ];
-  plugins.conform-nvim = {
+  youthlic.plugins.conform-nvim = {
     enable = true;
     settings.formatters.injected.options.ignore_errors = true;
   };

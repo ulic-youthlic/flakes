@@ -1,5 +1,5 @@
 {...}: {
-  plugins.lspconfig.enable = true;
+  youthlic.plugins.lspconfig.enable = true;
   lsp = {
     inlayHints.enable = true;
     servers = {
