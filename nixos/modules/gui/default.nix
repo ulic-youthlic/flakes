@@ -36,6 +36,7 @@ in {
         source-han-serif
         source-han-sans
         libertinus
+        noto-fonts-color-emoji
       ];
       fontconfig.defaultFonts = {
         serif = [
@@ -48,7 +49,10 @@ in {
         monospace = [
           "Maple Mono NF CN"
         ];
-        emoji = ["Blobmoji"];
+        emoji = [
+          "Blobmoji"
+          "Noto Color Emoji"
+        ];
       };
     };
 
