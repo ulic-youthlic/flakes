@@ -27,8 +27,8 @@
         name = "Maple Mono NF CN";
       };
       emoji = {
-        package = pkgs.noto-fonts-emoji-blob-bin;
-        name = "Blobmoji";
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
       };
     };
   };

@@ -37,20 +37,25 @@ in {
         source-han-sans
         libertinus
         noto-fonts-color-emoji
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
+        noto-fonts
       ];
       fontconfig.defaultFonts = {
         serif = [
           "Libertinus Serif"
           "Source Han Serif"
+          "Noto Serif CJK SC"
         ];
         sansSerif = [
           "Source Han Sans"
+          "Noto Sans CJK SC"
         ];
         monospace = [
           "Maple Mono NF CN"
+          "Noto Sans Mono SC"
         ];
         emoji = [
-          "Blobmoji"
           "Noto Color Emoji"
         ];
       };
