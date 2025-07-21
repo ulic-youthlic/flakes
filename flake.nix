@@ -194,5 +194,12 @@
       owner = "nix-community";
       repo = "nixvim";
     };
+
+    lanzaboote = {
+      type = "github";
+      owner = "nix-community";
+      repo = "lanzaboote";
+      ref = "v0.4.2";
+    };
   };
 }

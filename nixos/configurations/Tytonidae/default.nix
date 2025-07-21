@@ -17,6 +17,7 @@
     ++ (with outputs; [
       nixosModules.gui
     ])
+    ++ [inputs.lanzaboote.nixosModules.lanzaboote]
     ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {
@@ -90,6 +91,8 @@
     waypipe
     wineWow64Packages.waylandFull
     iperf3
+
+    sbctl
   ];
 
   environment.variables.EDITOR = "hx";
@@ -102,8 +105,14 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_cachyos;
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
+    loader = {
+      systemd-boot.enable = lib.mkForce false;
+      efi.canTouchEfiVariables = true;
+    };
     initrd.systemd.enable = true;
   };
 
