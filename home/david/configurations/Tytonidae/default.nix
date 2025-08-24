@@ -39,7 +39,6 @@
           enable = true;
           url = "http://localhost:8491";
         };
-        doom.enable = true;
       };
   };
 
@@ -58,6 +57,7 @@
       firefox.enable = true;
       openssh.enable = true;
       helix.enable = true;
+      doom.enable = true;
     };
   };
 

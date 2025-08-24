@@ -5,11 +5,11 @@
   ...
 }:
 let
-  cfg = config.youthlic.programs.doom;
+  cfg = config.david.programs.doom;
 in
 {
   options = {
-    youthlic.programs.doom = {
+    david.programs.doom = {
       enable = lib.mkEnableOption "doom";
     };
   };
