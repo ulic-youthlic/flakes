@@ -3,14 +3,65 @@
   systemd.network = {
     enable = true;
     wait-online.enable = false;
-    networks = {
+    links = {
       "10-eno2" = {
+        matchConfig = {
+          Path = "pci-0000:00:1f.6";
+        };
+        linkConfig = {
+          Name = "eno2";
+        };
+      };
+      "10-wlan0" = {
+        matchConfig = {
+          Path = "pci-0000:00:14.3";
+        };
+        linkConfig = {
+          Name = "wlan0";
+        };
+      };
+    };
+    netdevs = {
+      "20-bond0" = {
+        netdevConfig = {
+          Kind = "bond";
+          Name = "bond0";
+        };
+        bondConfig = {
+          Mode = "active-backup";
+          MIIMonitorSec = "1s";
+          PrimaryReselectPolicy = "better";
+        };
+      };
+    };
+    networks = {
+      "20-eno2" = {
+        networkConfig = {
+          Bond = "bond0";
+          PrimarySlave = true;
+        };
+        matchConfig = {
+          Name = "eno2";
+        };
+      };
+      "20-wlan0" = {
+        networkConfig = {
+          Bond = "bond0";
+        };
+        matchConfig = {
+          Name = "wlan0";
+        };
+      };
+      "20-bond0" = {
         networkConfig = {
           DHCP = "yes";
           IPv6AcceptRA = true;
         };
+        linkConfig = {
+          RequiredForOnline = "routable";
+        };
         matchConfig = {
-          Path = "pci-0000:00:1f.6";
+          Name = "bond0";
         };
       };
     };
@@ -30,7 +81,7 @@
           Enabled = true;
         };
         General = {
-          EnableNetworkConfiguration = true;
+          EnableNetworkConfiguration = false;
         };
         Settings = {
           AutoConnect = true;
