@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; config.el -*- lexical-binding: t; -*-
 
 ;;; Fix non-POSIX SHELL
 (setq shell-file-name
@@ -8,6 +8,7 @@
                 fish-exe)
   (setq-default explicit-shell-file-name
                 fish-exe))
+
 (setq doom-font (font-spec
                  :family "Maple Mono NF CN"
                  :size 18)
