@@ -28,6 +28,13 @@
             "fluffychat-linux"
             "immersive-translate"
           ];
+        packageOverrides = p: {
+          intel-vaapi-driver = p.intel-vaapi-driver.override { enableHybridCodec = true; };
+          onnxruntime = p.onnxruntime.override {
+            cudaSupport = false;
+            ncclSupport = false;
+          };
+        };
       };
     };
     sops.secrets."access-tokens" = {

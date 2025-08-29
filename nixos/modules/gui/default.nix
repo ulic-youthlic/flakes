@@ -28,7 +28,10 @@ in
     environment.systemPackages = with pkgs; [
       fontconfig
     ];
-    programs.firefox.enable = true;
+    programs.firefox = {
+      enable = true;
+      package = pkgs.firefox-beta;
+    };
 
     fonts = {
       enableDefaultPackages = false;

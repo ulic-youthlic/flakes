@@ -42,28 +42,28 @@ in
             "com.system76.CosmicFiles.desktop"
           ];
           "x-scheme-handler/about" = [
-            "firefox.desktop"
+            "firefox-beta.desktop"
             "chromium-browser.desktop"
           ];
           "x-scheme-handler/ftp" = [
-            "firefox.desktop"
+            "firefox-beta.desktop"
             "chromium-browser.desktop"
           ];
           "x-scheme-handler/http" = [
-            "firefox.desktop"
+            "firefox-beta.desktop"
             "chromium-browser.desktop"
           ];
           "x-scheme-handler/https" = [
-            "firefox.desktop"
+            "firefox-beta.desktop"
             "chromium-browser.desktop"
           ];
           "x-scheme-handler/mailto" = [
-            "firefox.desktop"
+            "firefox-beta.desktop"
             "chromium-browser.desktop"
           ];
           "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
           "x-scheme-handler/unknown" = [
-            "firefox.desktop"
+            "firefox-beta.desktop"
             "chromium-browser.desktop"
           ];
           "image/gif" = [
