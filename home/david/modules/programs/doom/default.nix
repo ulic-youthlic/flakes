@@ -14,12 +14,13 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
+    stylix.targets.emacs.enable = false;
     services.emacs.enable = true;
     programs.doom-emacs = {
       enable = true;
       emacs = pkgs.emacs-pgtk;
       extraPackages =
-        emacsPackages: with emacsPackages; [
+        ep: with ep; [
           melpaPackages.telega
         ];
       extraBinPackages = with pkgs; [
@@ -28,8 +29,10 @@ in
         git
         ripgrep
         fd
+        imagemagick
       ];
       doomDir = ./config;
+      provideEmacs = true;
     };
   };
 }

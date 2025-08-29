@@ -24,7 +24,7 @@
       telega-prefix-map)
 
 (setq display-line-numbers-type
-      'visual)
+      'relative)
 
 (add-hook 'telega-load-hook
           'telega-notifications-mode)
