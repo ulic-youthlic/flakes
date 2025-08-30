@@ -74,6 +74,9 @@
           credential = {
             helper = "store --file=${config.sops.secrets."git-credential".path}";
           };
+          core = {
+            commentChar = ";";
+          };
         };
         sops.secrets."git-credential" = {
           mode = "0640";
