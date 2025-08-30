@@ -41,3 +41,41 @@
                        (setq exec-path
                              (append exec-path
                                      my/emacs-deps-exec-path))))
+
+(advice-add #'telega-chatbuf-attach-clipboard
+            :override #'(lambda (doc-p)
+                          (interactive "P")
+                          (let* ((selection-coding-system 'no-conversion) ;for rawdata
+                                 (temporary-file-directory telega-temp-dir)
+                                 (tmpfile (telega-temp-name "clipboard" ".png"))
+                                 (coding-system-for-write 'binary))
+                            (if (eq system-type 'darwin)
+                                (progn
+                                  ;; NOTE: On MacOS, try extracting clipboard using pngpaste
+                                  (unless (executable-find "pngpaste")
+                                    (error "Please install pngpaste to paste images"))
+                                  (unless (= 0 (telega-screenshot-with-pngpaste tmpfile))
+                                    (error "No image in CLIPBOARD")))
+                              (let ((image-data (or (gui-get-selection 'CLIPBOARD 'image/png)
+                                                    (gui-get-selection 'CLIPBOARD 'image/jpeg)
+                                                    (error "No image in CLIPBOARD"))))
+                                (write-region image-data nil tmpfile nil 'quiet)))
+                            (telega-chatbuf-attach-media tmpfile (when doc-p 'preview)))))
+
+(defun +telega-save-file-to-clipboard (msg)
+  "Save file at point to clipboard.
+NOTE: wayland only."
+  (interactive (list (telega-msg-for-interactive)))
+  (let ((file (telega-msg--content-file msg)))
+    (unless file
+      (user-error "No file associated with message"))
+    (telega-file--download file
+                           :priority 32
+                           :update-callback
+                           (lambda (dfile)
+                             (telega-msg-redisplay msg)
+                             (message "Wait for downloading to finish…")
+                             (when (telega-file--downloaded-p dfile)
+                               (let* ((fpath (telega--tl-get dfile :local :path)))
+                                 (shell-command (format "wl-copy < \"%s\"" fpath))
+                                 (message (format "File saved to clipboard: %s" fpath))))))))
