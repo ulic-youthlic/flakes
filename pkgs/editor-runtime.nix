@@ -46,8 +46,8 @@ symlinkJoin {
     lua-language-server
     bash-language-server
     shfmt
-    # hurl
-    # cmake-language-server
+    hurl
+    cmake-language-server
     kdlfmt
     rustfmt
     clang-tools
