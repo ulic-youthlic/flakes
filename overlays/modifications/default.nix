@@ -15,6 +15,7 @@ in
   ./cliphist.nix
   ./zulip.nix
   ./spotifyd.nix
+  ./nautilus.nix
 
   # Nur
   ./nur.nix

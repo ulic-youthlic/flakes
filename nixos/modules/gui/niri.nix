@@ -17,14 +17,23 @@ in
       enable = true;
       platformTheme = "qt5ct";
     };
-    environment.systemPackages = with pkgs; [
-      bluez
-      cosmic-files
-      kdePackages.qt6ct
-      libsForQt5.qt5ct
-      xwayland-satellite-unstable
-      evince
-    ];
+    # Enabled to support trash of nautilus
+    services.gvfs.enable = true;
+    environment = {
+      pathsToLink = [ "share/thumbnailers" ];
+      systemPackages = with pkgs; [
+        nautilus
+        nautilus-open-any-terminal
+        libheif
+        libheif.out
+
+        bluez
+        kdePackages.qt6ct
+        libsForQt5.qt5ct
+        xwayland-satellite-unstable
+        evince
+      ];
+    };
     xdg = {
       terminal-exec = {
         enable = true;
@@ -39,7 +48,7 @@ in
             "org.gnome.Evince.desktop"
           ];
           "inode/directory" = [
-            "com.system76.CosmicFiles.desktop"
+            "org.gnome.Nautilus.desktop"
           ];
           "x-scheme-handler/about" = [
             "firefox-beta.desktop"
