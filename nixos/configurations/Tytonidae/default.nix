@@ -107,7 +107,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = pkgs.linuxPackages_cachyos-gcc;
     lanzaboote = {
       enable = true;
       pkiBundle = "/var/lib/sbctl";
