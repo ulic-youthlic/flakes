@@ -14,7 +14,6 @@ in
   };
   config = lib.mkIf cfg.enable {
     programs.bash = {
-      blesh.enable = true;
     };
   };
 }

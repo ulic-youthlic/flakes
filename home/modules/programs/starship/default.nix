@@ -40,10 +40,6 @@ in
     })
     (lib.mkIf (cfg.enable && bash-cfg.enable) {
       programs.starship.enableBashIntegration = true;
-      programs.bash.bashrcExtra = ''
-        bleopt prompt_ps1_final='$(starship module character)'
-        bleopt prompt_rps1_final='$(starship module time)'
-      '';
     })
     (lib.mkIf (cfg.enable && ion-cfg.enable) {
       programs.starship.enableIonIntegration = true;
