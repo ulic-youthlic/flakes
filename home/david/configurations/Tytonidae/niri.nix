@@ -6,19 +6,19 @@
         cfg = config.david.programs.niri.waybar;
       in
       [
-        (cfg.template // (cfg.helper.mkBacklight "ddcci13") // { output = "DP-3"; })
-        (cfg.template // (cfg.helper.mkBacklight "nvidia_0") // { output = "eDP-1"; })
+        (cfg.template // (cfg.helper.mkBacklight "ddcci13") // { output = "DP-1"; })
+        (cfg.template // (cfg.helper.mkBacklight "nvidia_0") // { output = "eDP-2"; })
       ];
     wluma.extraSettings = {
       output = {
         backlight = [
           {
-            name = "eDP-1";
+            name = "eDP-2";
             path = "/sys/class/backlight/nvidia_0";
             capturer = "wayland";
           }
           {
-            name = "DP-3";
+            name = "DP-1";
             path = "/sys/class/backlight/ddcci13";
             capturer = "wayland";
           }
