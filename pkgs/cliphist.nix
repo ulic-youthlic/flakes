@@ -22,7 +22,7 @@ cliphist.overrideAttrs (
         ''
       else
         "0-unstable-${date}-git${version}";
-    vendorHash = "sha256-No8d9ztepBO+fgF2XkEf/tyCPDAD57rBkzA8iVyNUmw=";
+    vendorHash = "sha256-4XyDLOJHdre/1BpjgFt/W6gOlPOvKztE+MsbwE3JAaQ=";
     buildInputs = (prev.buildInputs or [ ]) ++ [
       makeWrapper
     ];

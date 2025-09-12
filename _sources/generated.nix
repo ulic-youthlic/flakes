@@ -15,30 +15,30 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "2295f6d2341f291fd169754486b4b0f55fbf1f7a";
+    version = "a0bc9f514e2cca7550d1b0b3338a4e3ce37c86c8";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "2295f6d2341f291fd169754486b4b0f55fbf1f7a";
+      rev = "a0bc9f514e2cca7550d1b0b3338a4e3ce37c86c8";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-NrZ73NYiVsUWoXAx/a3DR78Jf/92XtNTimh+kqmQidY=";
+      sha256 = "sha256-XccQFYyZOe2n5jdIjCaYrLwRF8XutBRDAHwRorzwjJ8=";
     };
-    date = "2025-08-16";
+    date = "2025-09-12";
   };
   cliphist = {
     pname = "cliphist";
-    version = "ff1d247e3521bd7ebcb6463f86349bab71440496";
+    version = "6eda526d02119ebc09ec0f64b0a96ed4540f5a83";
     src = fetchFromGitHub {
       owner = "sentriz";
       repo = "cliphist";
-      rev = "ff1d247e3521bd7ebcb6463f86349bab71440496";
+      rev = "6eda526d02119ebc09ec0f64b0a96ed4540f5a83";
       fetchSubmodules = false;
-      sha256 = "sha256-VclmnL8cYWbstQ/6SvKBC5KGcUFaJ/oL6a0WawbNGMI=";
+      sha256 = "sha256-G5Gnr6YkJf+wINifN5xBOA69gWwqXW3XLedw/zfhc9U=";
     };
-    date = "2025-06-28";
+    date = "2025-09-11";
   };
   juicity = {
     pname = "juicity";
@@ -96,17 +96,17 @@
   };
   radicle-ci-broker = {
     pname = "radicle-ci-broker";
-    version = "7a27e0c01a732ebdc2d553daec49ab0416d7554d";
+    version = "d981727b8d81eb9e501a245b97076a016ed667a3";
     src = fetchgit {
       url = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git";
-      rev = "7a27e0c01a732ebdc2d553daec49ab0416d7554d";
+      rev = "d981727b8d81eb9e501a245b97076a016ed667a3";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-YuguUw5MiRvoqTdkx99/xDNZ6i4vrWPpNmv4WjdHJSE=";
+      sha256 = "sha256-KCbNWhzVmJfRbYsL11LqDkdz8MEW3TzTM8ygx+R9+v0=";
     };
-    date = "2025-08-15";
+    date = "2025-09-09";
   };
   rime-yuhaostar = {
     pname = "rime-yuhaostar";
@@ -133,15 +133,15 @@
   };
   spotx = {
     pname = "spotx";
-    version = "8b9a9924cf2f7268337a9bad5e84b0083268f40d";
+    version = "d763ce8858547602c9039c0a54455b54df8d01c4";
     src = fetchFromGitHub {
       owner = "SpotX-Official";
       repo = "SpotX-Bash";
-      rev = "8b9a9924cf2f7268337a9bad5e84b0083268f40d";
+      rev = "d763ce8858547602c9039c0a54455b54df8d01c4";
       fetchSubmodules = false;
-      sha256 = "sha256-IyNHes7j0C96j5lGja+SHzqzPM3zoMAgD+gdmVh5vK0=";
+      sha256 = "sha256-AF7pO1gQjAyrE+j+pnZZTOkN7LBNByVFtrYFOKP4kXI=";
     };
-    date = "2025-07-26";
+    date = "2025-09-06";
   };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";
