@@ -25,7 +25,6 @@
   home.stateVersion = "24.11";
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
-    tealdeer
     ripgrep
     fzf
     file
@@ -42,10 +41,7 @@
     doggo
     ast-grep
     dig
-    lazygit
-    dig
     fend
-    gitoxide
     viu
     fd
   ];

@@ -84,10 +84,9 @@
     doggo
     qq
     telegram-desktop
-    ghostty
     scrcpy
     ast-grep
-    lazygit
+    gitu
     dig
     fend
     gitoxide

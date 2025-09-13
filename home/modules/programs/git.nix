@@ -37,29 +37,28 @@
     in
     lib.mkMerge [
       {
-        programs.lazygit = {
-          enable = true;
-        };
-        programs.gh = {
-          enable = true;
-          gitCredentialHelper.enable = true;
-          settings = {
-            git_protocol = "ssh";
-          };
-        };
-        programs.git = {
-          enable = true;
-          userEmail = cfg.email;
-          userName = cfg.name;
-          delta = {
+        programs = {
+          gh = {
             enable = true;
-            options = {
-              line-number = true;
-              hyperlinks = true;
-              side-by-side = true;
+            gitCredentialHelper.enable = true;
+            settings = {
+              git_protocol = "ssh";
             };
           };
-          lfs.enable = true;
+          git = {
+            enable = true;
+            userEmail = cfg.email;
+            userName = cfg.name;
+            delta = {
+              enable = true;
+              options = {
+                line-number = true;
+                hyperlinks = true;
+                side-by-side = true;
+              };
+            };
+            lfs.enable = true;
+          };
         };
       }
       (lib.mkIf (cfg.signKey != null) {
