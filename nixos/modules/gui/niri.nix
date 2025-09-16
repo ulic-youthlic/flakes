@@ -38,7 +38,7 @@ in
       terminal-exec = {
         enable = true;
         settings = {
-          default = [ "Alacritty.desktop" ];
+          default = [ "com.mitchellh.ghostty.desktop" ];
         };
       };
       mime = {

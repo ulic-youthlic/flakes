@@ -14,16 +14,16 @@ Hey, you. This is my nixos configurations.
 
 - david@Tytonidae
 
-| Specialisation | DE / WM |    Shell    |   Editor    | Terminal  | Launcher | Browser |        DM        |
-| :------------: | :-----: | :---------: | :---------: | :-------: | :------: | :-----: | :--------------: |
-|    default     |  niri   | fish + bash | helix + zed | alacritty |  fuzzel  | firefox | greetd + regreet |
-|      kde       |   kde   | fish + bash | helix + zed | alacritty | kde run  | firefox |       sddm       |
+| Specialisation | DE / WM |    Shell    |   Editor    | Terminal | Launcher | Browser |        DM        |
+| :------------: | :-----: | :---------: | :---------: | :------: | :------: | :-----: | :--------------: |
+|    default     |  niri   | fish + bash | helix + zed | ghostty  |  fuzzel  | firefox | greetd + regreet |
+|      kde       |   kde   | fish + bash | helix + zed | ghostty  | kde run  | firefox |       sddm       |
 
 - david@Akun
 
-| Specialisation | DE / WM |    Shell    |   Editor    | Terminal  | Launcher | Browser |        DM        |
-| :------------: | :-----: | :---------: | :---------: | :-------: | :------: | :-----: | :--------------: |
-|    default     |  niri   | fish + bash | helix + zed | alacritty |  fuzzel  | firefox | greetd + regreet |
+| Specialisation | DE / WM |    Shell    |   Editor    | Terminal | Launcher | Browser |        DM        |
+| :------------: | :-----: | :---------: | :---------: | :------: | :------: | :-----: | :--------------: |
+|    default     |  niri   | fish + bash | helix + zed | ghostty  |  fuzzel  | firefox | greetd + regreet |
 
 - alice@Cape
 

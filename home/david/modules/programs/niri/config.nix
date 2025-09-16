@@ -35,7 +35,7 @@ let
   polkit-kde-agent = getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-agent";
   wpctl = getExe' pkgs.wireplumber "wpctl";
   waypaper = getExe pkgs.waypaper;
-  alacritty = getExe config.programs.alacritty.package;
+  default-terminal = getExe config.programs.ghostty.package;
   wl-paste = getExe' pkgs.wl-clipboard "wl-paste";
   cliphist = getExe' pkgs.cliphist "cliphist";
   cliphist-fuzzel-img = getExe' pkgs.cliphist "cliphist-fuzzel-img";
@@ -75,7 +75,7 @@ in
       ])
       (plain "Mod+T" [
         (spawn [
-          alacritty
+          default-terminal
         ])
       ])
       (plain "Mod+Shift+T" [
