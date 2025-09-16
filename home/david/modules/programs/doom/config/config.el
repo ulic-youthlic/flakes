@@ -79,3 +79,7 @@ NOTE: wayland only."
                                (let* ((fpath (telega--tl-get dfile :local :path)))
                                  (shell-command (format "wl-copy < \"%s\"" fpath))
                                  (message (format "File saved to clipboard: %s" fpath))))))))
+
+(map! :map global-map
+      "C-c n"
+      #'helm-nixos-options)

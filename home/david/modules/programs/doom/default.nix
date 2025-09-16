@@ -2,10 +2,18 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
   cfg = config.david.programs.doom;
+
+  inherit (inputs) emacs-overlay nixpkgs;
+  inherit (pkgs) system;
+  pkgs' = import nixpkgs {
+    inherit system;
+    overlays = [ emacs-overlay.overlays.default ];
+  };
 in
 {
   options = {
@@ -18,10 +26,11 @@ in
     services.emacs.enable = true;
     programs.doom-emacs = {
       enable = true;
-      emacs = pkgs.emacs-pgtk;
+      emacs = pkgs'.emacs-igc-pgtk;
       extraPackages =
         ep: with ep; [
           melpaPackages.telega
+          melpaPackages.nixos-options
         ];
       extraBinPackages = with pkgs; [
         editor-runtime
