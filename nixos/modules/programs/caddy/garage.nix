@@ -29,6 +29,11 @@ in
           reverse_proxy ${cfg.target}:8491
         '';
       };
+      "share.${caddy-cfg.baseDomain}" = {
+        extraConfig = ''
+          reverse_proxy ${cfg.target}:8494
+        '';
+      };
     };
   };
 }
