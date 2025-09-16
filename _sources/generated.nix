@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "a65d194a4f0f87cc3686689ec248874f95aa8722";
+    version = "f7a8601fa13d0e589abd5d4fca521e49aa82bde3";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "a65d194a4f0f87cc3686689ec248874f95aa8722";
+      rev = "f7a8601fa13d0e589abd5d4fca521e49aa82bde3";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-Myad5uSCk/O21f0tF6XDuFoeww4GKnxppW5CGxSWWPc=";
+      sha256 = "sha256-xVloq+IQIxy+4fjzBatcWTsUA2W7Gyx2kf6EdQVjtRA=";
     };
-    date = "2025-09-16";
+    date = "2025-09-17";
   };
   cliphist = {
     pname = "cliphist";
@@ -96,17 +96,17 @@
   };
   radicle-ci-broker = {
     pname = "radicle-ci-broker";
-    version = "4610dcfd3a120b203906f111f39ecd84b99f7b3a";
+    version = "62f1ded7e6f5e5f5c36eca1ad4dfd8eb75e14fbb";
     src = fetchgit {
       url = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git";
-      rev = "4610dcfd3a120b203906f111f39ecd84b99f7b3a";
+      rev = "62f1ded7e6f5e5f5c36eca1ad4dfd8eb75e14fbb";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-fb6CgophH9cUjwTzZZnzKM342/tKjUr45YOzGLpc8vo=";
+      sha256 = "sha256-6S0zhbKV8q2sm2r86MqcMg5yFrx36erDz1bOQBz59yQ=";
     };
-    date = "2025-09-16";
+    date = "2025-09-17";
   };
   rime-yuhaostar = {
     pname = "rime-yuhaostar";
