@@ -9,7 +9,7 @@ in
 stdenv.mkDerivation {
   pname = "rime-yuhaostar";
   version =
-    if version != "v3.9.0" then
+    if version != "v3.10.0" then
       throw ''
         Please update 宇浩输入法。
       ''

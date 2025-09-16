@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "a0bc9f514e2cca7550d1b0b3338a4e3ce37c86c8";
+    version = "a65d194a4f0f87cc3686689ec248874f95aa8722";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "a0bc9f514e2cca7550d1b0b3338a4e3ce37c86c8";
+      rev = "a65d194a4f0f87cc3686689ec248874f95aa8722";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-XccQFYyZOe2n5jdIjCaYrLwRF8XutBRDAHwRorzwjJ8=";
+      sha256 = "sha256-Myad5uSCk/O21f0tF6XDuFoeww4GKnxppW5CGxSWWPc=";
     };
-    date = "2025-09-12";
+    date = "2025-09-16";
   };
   cliphist = {
     pname = "cliphist";
@@ -96,25 +96,25 @@
   };
   radicle-ci-broker = {
     pname = "radicle-ci-broker";
-    version = "d981727b8d81eb9e501a245b97076a016ed667a3";
+    version = "4610dcfd3a120b203906f111f39ecd84b99f7b3a";
     src = fetchgit {
       url = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git";
-      rev = "d981727b8d81eb9e501a245b97076a016ed667a3";
+      rev = "4610dcfd3a120b203906f111f39ecd84b99f7b3a";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-KCbNWhzVmJfRbYsL11LqDkdz8MEW3TzTM8ygx+R9+v0=";
+      sha256 = "sha256-fb6CgophH9cUjwTzZZnzKM342/tKjUr45YOzGLpc8vo=";
     };
-    date = "2025-09-09";
+    date = "2025-09-16";
   };
   rime-yuhaostar = {
     pname = "rime-yuhaostar";
-    version = "v3.9.0";
+    version = "v3.10.0";
     src = fetchurl {
-      url = "https://github.com/forfudan/yuhao-ime-release/releases/download/v3.9.0/yuhao_star_xingchen_v3.9.0.zip";
-      name = "yustar_v3.9.0.zip";
-      sha256 = "sha256-matIAwJeC9F0WJJZ8Qq6hJjATrLqoHOpAGRyD0eqoa8=";
+      url = "https://github.com/forfudan/yuhao-ime-release/releases/download/v3.10.0/star_xingchen_v3.10.0.zip";
+      name = "yustar_v3.10.0.zip";
+      sha256 = "sha256-fw4DxYyONb1ZkoIiLc/TRPw5jBy7RcM1JLF4HfEvgrQ=";
     };
   };
   spotifyd = {
@@ -184,14 +184,14 @@
   };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";
-    version = "bf18fba01eafd7659e242066abca0fd4938bf417";
+    version = "184f55dbc5320c34a56d02353410ad35a0f3e090";
     src = fetchFromGitHub {
       owner = "DreamMaoMao";
       repo = "wshowkeys";
-      rev = "bf18fba01eafd7659e242066abca0fd4938bf417";
+      rev = "184f55dbc5320c34a56d02353410ad35a0f3e090";
       fetchSubmodules = false;
-      sha256 = "sha256-KTtrmICFXXYBcPcGfZ32/UjQAEHSXF79PvSLCKbuCPw=";
+      sha256 = "sha256-N8V6CkCmTlw0rWmDXiKI1Z4YS7T7fWCr9aPRk5OpGHs=";
     };
-    date = "2025-06-04";
+    date = "2025-09-14";
   };
 }

@@ -22,10 +22,9 @@
         allowInsecurePredicate =
           p:
           builtins.elem (lib.getName p) [
-            # for fluffychat and neochat
+            # for neochat
             "olm"
 
-            "fluffychat-linux"
             "immersive-translate"
           ];
         packageOverrides = p: {

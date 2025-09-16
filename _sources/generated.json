@@ -22,7 +22,7 @@
     },
     "TrackersListCollection": {
         "cargoLocks": null,
-        "date": "2025-09-12",
+        "date": "2025-09-16",
         "extract": null,
         "name": "TrackersListCollection",
         "passthru": null,
@@ -34,14 +34,14 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "a0bc9f514e2cca7550d1b0b3338a4e3ce37c86c8",
-            "sha256": "sha256-XccQFYyZOe2n5jdIjCaYrLwRF8XutBRDAHwRorzwjJ8=",
+            "rev": "a65d194a4f0f87cc3686689ec248874f95aa8722",
+            "sha256": "sha256-Myad5uSCk/O21f0tF6XDuFoeww4GKnxppW5CGxSWWPc=",
             "sparseCheckout": [
                 "all.txt"
             ],
             "type": "github"
         },
-        "version": "a0bc9f514e2cca7550d1b0b3338a4e3ce37c86c8"
+        "version": "a65d194a4f0f87cc3686689ec248874f95aa8722"
     },
     "cliphist": {
         "cargoLocks": null,
@@ -153,7 +153,7 @@
     },
     "radicle-ci-broker": {
         "cargoLocks": null,
-        "date": "2025-09-09",
+        "date": "2025-09-16",
         "extract": null,
         "name": "radicle-ci-broker",
         "passthru": null,
@@ -163,13 +163,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "d981727b8d81eb9e501a245b97076a016ed667a3",
-            "sha256": "sha256-KCbNWhzVmJfRbYsL11LqDkdz8MEW3TzTM8ygx+R9+v0=",
+            "rev": "4610dcfd3a120b203906f111f39ecd84b99f7b3a",
+            "sha256": "sha256-fb6CgophH9cUjwTzZZnzKM342/tKjUr45YOzGLpc8vo=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git"
         },
-        "version": "d981727b8d81eb9e501a245b97076a016ed667a3"
+        "version": "4610dcfd3a120b203906f111f39ecd84b99f7b3a"
     },
     "rime-yuhaostar": {
         "cargoLocks": null,
@@ -177,14 +177,14 @@
         "extract": null,
         "name": "rime-yuhaostar",
         "passthru": null,
-        "pinned": true,
+        "pinned": false,
         "src": {
-            "name": "yustar_v3.9.0.zip",
-            "sha256": "sha256-matIAwJeC9F0WJJZ8Qq6hJjATrLqoHOpAGRyD0eqoa8=",
+            "name": "yustar_v3.10.0.zip",
+            "sha256": "sha256-fw4DxYyONb1ZkoIiLc/TRPw5jBy7RcM1JLF4HfEvgrQ=",
             "type": "url",
-            "url": "https://github.com/forfudan/yuhao-ime-release/releases/download/v3.9.0/yuhao_star_xingchen_v3.9.0.zip"
+            "url": "https://github.com/forfudan/yuhao-ime-release/releases/download/v3.10.0/star_xingchen_v3.10.0.zip"
         },
-        "version": "v3.9.0"
+        "version": "v3.10.0"
     },
     "spotifyd": {
         "cargoLocks": null,
@@ -296,7 +296,7 @@
     },
     "wshowkeys-mao": {
         "cargoLocks": null,
-        "date": "2025-06-04",
+        "date": "2025-09-14",
         "extract": null,
         "name": "wshowkeys-mao",
         "passthru": null,
@@ -308,11 +308,11 @@
             "name": null,
             "owner": "DreamMaoMao",
             "repo": "wshowkeys",
-            "rev": "bf18fba01eafd7659e242066abca0fd4938bf417",
-            "sha256": "sha256-KTtrmICFXXYBcPcGfZ32/UjQAEHSXF79PvSLCKbuCPw=",
+            "rev": "184f55dbc5320c34a56d02353410ad35a0f3e090",
+            "sha256": "sha256-N8V6CkCmTlw0rWmDXiKI1Z4YS7T7fWCr9aPRk5OpGHs=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "bf18fba01eafd7659e242066abca0fd4938bf417"
+        "version": "184f55dbc5320c34a56d02353410ad35a0f3e090"
     }
 }
