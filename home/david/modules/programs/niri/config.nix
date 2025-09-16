@@ -514,6 +514,13 @@ in
         # (flag "off")
         (leaf "width" [ 4 ])
         (leaf "active-color" [ "#7fc8ff" ])
+        (leaf "active-gradient" [
+          {
+            from = "#e00a54";
+            to = "#b8de17";
+            angle = 45;
+          }
+        ])
         (leaf "inactive-color" [ "#505050" ])
       ])
       (plain "tab-indicator" [
@@ -562,7 +569,7 @@ in
   [
     (window-rule [
       (leaf "draw-border-with-background" [ true ])
-      (leaf "geometry-corner-radius" [ 12.0 ])
+      (leaf "geometry-corner-radius" [ 0.0 ])
       (leaf "clip-to-geometry" [ true ])
     ])
     (window-rule [
@@ -572,7 +579,7 @@ in
     ])
     (window-rule [
       (match [ { is-active = true; } ])
-      (leaf "opacity" [ 0.95 ])
+      (leaf "opacity" [ 1.0 ])
     ])
     (window-rule [
       (match [ { is-active = false; } ])
