@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -15,16 +16,17 @@ in
   config = lib.mkIf cfg.enable {
     programs.nix-ld = {
       enable = true;
-      # libraries = with pkgs; [
-      #   stdenv.cc.cc
-      #   zlib
-      #   fuse3
-      #   icu
-      #   nss
-      #   openssl
-      #   curl
-      #   expat
-      # ];
+      libraries = with pkgs; [
+        stdenv.cc.cc
+        zlib
+        fuse3
+        icu
+        nss
+        openssl
+        curl
+        expat
+        rustls-libssl
+      ];
     };
   };
 }
