@@ -42,7 +42,6 @@
                 lib.flatten [
                   (cachix "nix-community")
                   "https://cache.nixos.org"
-                  (cachix "cosmic")
                 ];
             };
           };
@@ -53,7 +52,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs.url = "github:NixOS/nixpkgs/master";
-    # nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
     lix-module = {
       # url = "git+https://git.lix.systems/lix-project/nixos-module?ref=release-2.93";
@@ -99,12 +97,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
-    };
-
-    nixos-cosmic = {
-      type = "github";
-      owner = "lilyinstarlight";
-      repo = "nixos-cosmic";
     };
 
     nixos-hardware = {
