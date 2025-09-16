@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "2866c26d653086a2047f9fa62bfd749c5c53e789";
+    version = "8830319bf7b42f4b69e26f6f50189b025064e4c1";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "2866c26d653086a2047f9fa62bfd749c5c53e789";
+      rev = "8830319bf7b42f4b69e26f6f50189b025064e4c1";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-prvOu3J7q7D3cjdaLOKU66mzXarfE+VZuyb6aZKrV9E=";
+      sha256 = "sha256-2HHxgnPIdbrMl3NhfZRsDl6KYgldHp4K7Wm5qIYEgQk=";
     };
-    date = "2025-10-02";
+    date = "2025-10-03";
   };
   cliphist = {
     pname = "cliphist";
@@ -160,7 +160,7 @@
   };
   "wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4" = {
     pname = "wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4";
-    version = "346942a88f763c59cc17f7b2a02756cc9d2a0c891585f916e3a4a9c15fe26ac9";
+    version = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
     src = fetchurl {
       url = "http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4";
       sha256 = "sha256-NGlCqI92PFnMF/eyoCdWzJ0qDIkVhfkW46SpwV/iask=";
@@ -168,7 +168,7 @@
   };
   "wallpaper_hollow-knight-quest.3840x2160.mp4" = {
     pname = "wallpaper_hollow-knight-quest.3840x2160.mp4";
-    version = "ecbb31075e7e387cb03a9035298a2b0fbce529d2f4dc91b7bddaa08af570a41b";
+    version = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
     src = fetchurl {
       url = "http://wallpaper.youthlic.social/hollow-knight-quest.3840x2160.mp4";
       sha256 = "sha256-7LsxB15+OHywOpA1KYorD7zlKdL03JG3vdqgivVwpBs=";
@@ -176,7 +176,7 @@
   };
   "wallpaper_outer-wilds.3840x2160.mp4" = {
     pname = "wallpaper_outer-wilds.3840x2160.mp4";
-    version = "19e0ccb48483f55f3413201718e8b2ba4a6acd112e1a3e7bb5ad913b87c5f210";
+    version = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
     src = fetchurl {
       url = "http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4";
       sha256 = "sha256-GeDMtISD9V80EyAXGOiyukpqzREuGj57ta2RO4fF8hA=";

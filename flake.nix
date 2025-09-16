@@ -208,5 +208,16 @@
       repo = "nix-doom-emacs-unstraightened";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    spacemacs = {
+      type = "github";
+      owner = "syl20bnr";
+      repo = "spacemacs";
+      flake = false;
+    };
+    emacs-overlay = {
+      type = "github";
+      owner = "nix-community";
+      repo = "emacs-overlay";
+    };
   };
 }

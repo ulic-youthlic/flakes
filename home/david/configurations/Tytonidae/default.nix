@@ -58,6 +58,7 @@
       openssh.enable = true;
       helix.enable = true;
       doom.enable = true;
+      # spacemacs.enable = true;
     };
   };
 
