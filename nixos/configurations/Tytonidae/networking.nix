@@ -28,7 +28,7 @@
           Name = "bond0";
         };
         bondConfig = {
-          Mode = "active-backup";
+          Mode = "balance-rr";
           MIIMonitorSec = "1s";
           PrimaryReselectPolicy = "better";
         };
