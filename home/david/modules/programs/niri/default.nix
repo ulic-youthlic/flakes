@@ -50,6 +50,7 @@ in
           wl-clipboard
           cliphist
           swayimg
+          seahorse
         ])
         ++ [ niri ];
       qt = {
