@@ -641,15 +641,15 @@ in
       (match [
         {
           app-id = "^steam$";
-          title = "^notification.*$";
+          title = "^notificationtoasts_\\d+_desktop$";
         }
       ])
       (leaf "open-floating" [ true ])
       (leaf "open-focused" [ false ])
       (leaf "default-floating-position" [
         {
-          x = 0;
-          y = 0;
+          x = 10;
+          y = 10;
           "relative-to" = "bottom-right";
         }
       ])
