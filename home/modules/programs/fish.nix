@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -20,6 +21,17 @@ in
         interactiveShellInit = ''
           fish_vi_key_bindings
         '';
+        plugins = [
+          {
+            name = with pkgs.fishPlugins.foreign-env; pname + "-" + version;
+            src = pkgs.fishPlugins.foreign-env.overrideAttrs {
+              postInstall = # bash
+                ''
+                  ln -s $out/share/fish/vendor_functions.d $out/functions
+                '';
+            };
+          }
+        ];
         functions = {
           __fish_command_not_found_handler = {
             body = "__fish_default_command_not_found_handler $argv[1]";
@@ -31,6 +43,18 @@ in
             '';
           };
         };
+        shellInitLast = # fish
+          ''
+            if test -d ~/.guix-profile
+              set -gx GUIX_PROFILE ~/.guix-profile
+              if test -f $GUIX_PROFILE/etc/profile
+                fenv source $GUIX_PROFILE/etc/profile
+              end
+              if test -d $GUIX_PROFILE/lib/locale
+                set -gx GUIX_LOCPATH $GUIX_PROFILE/lib/locale
+              end
+            end
+          '';
       };
       fastfetch.enable = true;
     };
