@@ -23,29 +23,31 @@ in
         extraDefCfg = ''
           process-unmapped-keys no
         '';
-        config = ''
-          #|
-              Kanata
+        config =
+          #scheme
+          ''
+            #|
+                Kanata
 
-              CapsLock tap to Esc
-              CapsLock hold to Ctrl
-          |#
-          ;; default keyboard layout
-          (defsrc
-              caps  ;; type → esc, hold caps → ctrl
-              esc  ;; type esc → caps, hold esc → esc
-          )
+                CapsLock tap to Esc
+                CapsLock hold to Ctrl
+            |#
+            ;; default keyboard layout
+            (defsrc
+                caps  ;; type → esc, hold caps → ctrl
+                esc  ;; type esc → caps, hold esc → esc
+            )
 
-          (deflayer default
-              @cac
-              @esc-behavior
-          )
+            (deflayer default
+                @cac
+                @esc-behavior
+            )
 
-          (defalias
-              cac (tap-hold 190 190 esc lctrl)  ;; hold CapsLock → Esc, press CapsLock → LCtrl
-              esc-behavior (tap-hold 190 190 esc caps)  ;; hold Esc → CapsLock, press Esc → Esc
-          )
-        '';
+            (defalias
+                cac (tap-hold 190 190 esc lctrl)  ;; hold CapsLock → Esc, press CapsLock → LCtrl
+                esc-behavior (tap-hold 190 190 esc caps)  ;; hold Esc → CapsLock, press Esc → Esc
+            )
+          '';
       };
     };
   };
