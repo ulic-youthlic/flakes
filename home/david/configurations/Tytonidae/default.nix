@@ -48,7 +48,6 @@
     accounts.email.enable = true;
     programs = {
       chromium.enable = true;
-      espanso.enable = true;
       thunderbird.enable = true;
       foot.enable = false;
       mpv.enable = true;
