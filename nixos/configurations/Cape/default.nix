@@ -36,6 +36,10 @@
         };
       };
       juicity.server.enable = true;
+      matrix-tuwunel = {
+        enable = true;
+        serverName = "im.youthlic.social";
+      };
     };
   };
 
