@@ -34,6 +34,7 @@ in
           DATABASE_URL = "user=${cfg.database.user} host=${cfg.database.socket} dbname=miniflux";
           CREATE_ADMIN = 1;
           WATCHDOG = 1;
+          BASE_URL = "https://miniflux.youthlic.social";
         };
         createDatabaseLocally = false;
         adminCredentialsFile = cfg.adminCredentialsFile;
