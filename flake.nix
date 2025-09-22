@@ -191,11 +191,6 @@
       owner = "nix-community";
       repo = "NUR";
     };
-    nur-ataraxiasjel = {
-      type = "github";
-      owner = "AtaraxiaSjel";
-      repo = "nur";
-    };
 
     nixvim = {
       type = "github";

@@ -9,7 +9,6 @@ in
   ./editor-runtime.nix
   ./radicle-ci-broker.nix
   ./wallpapers.nix
-  ./waydroid-script.nix
   ./rime-yuhaostar.nix
   ./nixvim.nix
 

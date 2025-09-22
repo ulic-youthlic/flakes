@@ -19,7 +19,6 @@ in
 
   # Nur
   ./nur.nix
-  ./nur-ataraxiasejel.nix
 ]
 |> map (file: import file args)
 |> (overlays: (lib.composeManyExtensions overlays) final prev)

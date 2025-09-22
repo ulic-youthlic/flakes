@@ -34,7 +34,6 @@
         enable = true;
         unixName = "david";
       };
-      waydroid.enable = true;
     };
     programs = {
       bash.enable = true;
