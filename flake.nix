@@ -219,5 +219,11 @@
       owner = "nix-community";
       repo = "emacs-overlay";
     };
+
+    nix-gaming = {
+      type = "github";
+      owner = "fufexan";
+      repo = "nix-gaming";
+    };
   };
 }
