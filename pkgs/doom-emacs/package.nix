@@ -24,6 +24,7 @@ let
         melpaPackages.telega
         melpaPackages.nixos-options
         melpaPackages.scroll-on-jump
+        melpaPackages.org-modern
       ];
     extraBinPackages =
       (with pkgs; [

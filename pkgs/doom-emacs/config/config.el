@@ -111,3 +111,11 @@ NOTE: wayland only."
 
 (global-set-key (kbd "<C-M-next>") (scroll-on-jump-interactive 'diff-hl-next-hunk))
 (global-set-key (kbd "<C-M-prior>") (scroll-on-jump-interactive 'diff-hl-previous-hunk))
+
+(use-package org-modern-mode
+  :hook
+  (org-mode . org-modern-mode)
+  (org-agenda-finalize . org-modern-agenda)
+  :config
+  (setq org-modern-hide-stars nil
+        org-modern-table nil))
