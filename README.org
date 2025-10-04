@@ -32,7 +32,7 @@ Hey, you. This is my nixos configurations.
 
 ** FlakE OutputS and StructurE
 
-| =outputs= field                       | description                                                                 | source                                   |
+| =outputs= field                           | description                                                                 | source                                   |
 |-------------------------------------------+-----------------------------------------------------------------------------+------------------------------------------|
 | =packages=                                | packages imported or wrapped from elsewhere                                 | ./pkgs                                   |
 | =lib=                                     | patched nixpkgs.lib to include self-defined helper function                 | ./lib                                    |
