@@ -11,6 +11,7 @@ in
   ./wallpapers.nix
   ./rime-yuhaostar.nix
   ./nixvim.nix
+  ./doom-emacs.nix
 
   ./pkgsNoCuda.nix
 ]

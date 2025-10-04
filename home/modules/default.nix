@@ -8,7 +8,6 @@
     (with inputs; [
       sops-nix.homeManagerModules.sops
       betterfox-nix.homeModules.betterfox
-      nix-doom.homeModule
     ])
     ++ lib.youthlic.loadImports ./.;
 
