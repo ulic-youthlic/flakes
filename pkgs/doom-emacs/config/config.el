@@ -13,7 +13,7 @@
                  :family "Maple Mono NF CN"
                  :size 20))
 (setq doom-theme 'doom-gruvbox)
-;;; Fix failure to loacate 'Symbols Nerd Font Mono' font
+;;; Fix failure to locate 'Symbols Nerd Font Mono' font
 (setq nerd-icons-font-family "Maple Mono NF CN")
 
 (setq telega-emoji-use-images
