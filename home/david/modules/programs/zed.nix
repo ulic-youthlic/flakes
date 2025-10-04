@@ -50,6 +50,8 @@ in
         "typos"
         "ty"
         "ruff"
+        "just"
+        "just-ls"
       ];
       extraPackages = with pkgs; [
         editor-runtime
