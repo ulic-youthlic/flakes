@@ -15,30 +15,30 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "8830319bf7b42f4b69e26f6f50189b025064e4c1";
+    version = "673a78b2f5032eed48e03317ab58dfab4f76880c";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "8830319bf7b42f4b69e26f6f50189b025064e4c1";
+      rev = "673a78b2f5032eed48e03317ab58dfab4f76880c";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-2HHxgnPIdbrMl3NhfZRsDl6KYgldHp4K7Wm5qIYEgQk=";
+      sha256 = "sha256-+MvC3IZj8Bi1qvvljNQa9saJFYz5U/s1V8lLAKNARLQ=";
     };
-    date = "2025-10-03";
+    date = "2025-10-14";
   };
   cliphist = {
     pname = "cliphist";
-    version = "6eda526d02119ebc09ec0f64b0a96ed4540f5a83";
+    version = "efb61cb5b5a28d896c05a24ac83b9c39c96575f2";
     src = fetchFromGitHub {
       owner = "sentriz";
       repo = "cliphist";
-      rev = "6eda526d02119ebc09ec0f64b0a96ed4540f5a83";
+      rev = "efb61cb5b5a28d896c05a24ac83b9c39c96575f2";
       fetchSubmodules = false;
-      sha256 = "sha256-G5Gnr6YkJf+wINifN5xBOA69gWwqXW3XLedw/zfhc9U=";
+      sha256 = "sha256-y4FSl/Bj80XqCR0ZwjGEkqYUIF6zJHrYyy01XPFlzjU=";
     };
-    date = "2025-09-11";
+    date = "2025-10-11";
   };
   juicity = {
     pname = "juicity";
@@ -94,20 +94,6 @@
     };
     date = "2025-02-17";
   };
-  radicle-ci-broker = {
-    pname = "radicle-ci-broker";
-    version = "6aced1f715304ea91d583266288983133ab8bb45";
-    src = fetchgit {
-      url = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git";
-      rev = "6aced1f715304ea91d583266288983133ab8bb45";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ ];
-      sha256 = "sha256-4Wo/UOOKMSzQIddEnwsiPWFS1+s2k+rf1nsZ4raz7y0=";
-    };
-    date = "2025-09-26";
-  };
   rime-yuhaostar = {
     pname = "rime-yuhaostar";
     version = "v3.10.0";
@@ -133,15 +119,15 @@
   };
   spotx = {
     pname = "spotx";
-    version = "08b00cf6892ed76d9b4ee3c0cdd401362ad7d99b";
+    version = "12cfe5dcec1d82cb613d8aa8dd60f4cd181dfb06";
     src = fetchFromGitHub {
       owner = "SpotX-Official";
       repo = "SpotX-Bash";
-      rev = "08b00cf6892ed76d9b4ee3c0cdd401362ad7d99b";
+      rev = "12cfe5dcec1d82cb613d8aa8dd60f4cd181dfb06";
       fetchSubmodules = false;
-      sha256 = "sha256-2IDaci4IO+KNe1ApXas0B8hEeY+mXdyz50wuXVHtw7g=";
+      sha256 = "sha256-GPy9/fJhcx1XPS6WRt4yVQQrEt/YQCh2cDzQxb1nvfg=";
     };
-    date = "2025-09-23";
+    date = "2025-10-08";
   };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";
@@ -160,7 +146,7 @@
   };
   "wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4" = {
     pname = "wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4";
-    version = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+    version = "346942a88f763c59cc17f7b2a02756cc9d2a0c891585f916e3a4a9c15fe26ac9";
     src = fetchurl {
       url = "http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4";
       sha256 = "sha256-NGlCqI92PFnMF/eyoCdWzJ0qDIkVhfkW46SpwV/iask=";
@@ -168,7 +154,7 @@
   };
   "wallpaper_hollow-knight-quest.3840x2160.mp4" = {
     pname = "wallpaper_hollow-knight-quest.3840x2160.mp4";
-    version = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+    version = "ecbb31075e7e387cb03a9035298a2b0fbce529d2f4dc91b7bddaa08af570a41b";
     src = fetchurl {
       url = "http://wallpaper.youthlic.social/hollow-knight-quest.3840x2160.mp4";
       sha256 = "sha256-7LsxB15+OHywOpA1KYorD7zlKdL03JG3vdqgivVwpBs=";
@@ -176,7 +162,7 @@
   };
   "wallpaper_outer-wilds.3840x2160.mp4" = {
     pname = "wallpaper_outer-wilds.3840x2160.mp4";
-    version = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+    version = "19e0ccb48483f55f3413201718e8b2ba4a6acd112e1a3e7bb5ad913b87c5f210";
     src = fetchurl {
       url = "http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4";
       sha256 = "sha256-GeDMtISD9V80EyAXGOiyukpqzREuGj57ta2RO4fF8hA=";

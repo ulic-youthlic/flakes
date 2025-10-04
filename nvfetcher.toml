@@ -38,10 +38,6 @@ src.git = "https://github.com/top-mind/OuterWildsTextAdventureWeb.git"
 fetch.github = "sentriz/cliphist"
 src.git = "https://github.com/sentriz/cliphist.git"
 
-[radicle-ci-broker]
-fetch.git = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git"
-src.git = "https://seed.radicle.garden/zwTxygwuz5LDGBq255RA2CbNGrz8.git"
-
 ["wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4"]
 fetch.url = "http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4"
 src.cmd = "curl -sL http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4 | sha256sum | cut -d ' ' -f 1"
