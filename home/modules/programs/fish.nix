@@ -38,9 +38,7 @@ in
             onEvent = "fish_command_not_found";
           };
           fish_greeting = {
-            body = ''
-              fastfetch
-            '';
+            body = '''';
           };
         };
         shellInitLast = # fish
