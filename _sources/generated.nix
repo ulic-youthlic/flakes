@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "673a78b2f5032eed48e03317ab58dfab4f76880c";
+    version = "d03b757d8e1bec4718c2a5afa96149ada983fe61";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "673a78b2f5032eed48e03317ab58dfab4f76880c";
+      rev = "d03b757d8e1bec4718c2a5afa96149ada983fe61";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-+MvC3IZj8Bi1qvvljNQa9saJFYz5U/s1V8lLAKNARLQ=";
+      sha256 = "sha256-xS/u7ySlK7Znr+Gtj6rOf6OKKTLTCIhkTfcKOg/7DZg=";
     };
-    date = "2025-10-14";
+    date = "2025-10-17";
   };
   cliphist = {
     pname = "cliphist";
