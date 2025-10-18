@@ -36,6 +36,7 @@
           typos-lsp
           just
           nvfetcher
+          nixfmt-rfc-style
         ];
       };
       legacyPackages =
