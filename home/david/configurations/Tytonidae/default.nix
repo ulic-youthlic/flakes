@@ -57,6 +57,7 @@
       firefox.enable = true;
       openssh.enable = true;
       helix.enable = true;
+      nvchad.enable = true;
       # spacemacs.enable = true;
     };
   };

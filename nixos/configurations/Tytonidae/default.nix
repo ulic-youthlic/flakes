@@ -91,7 +91,7 @@
     waypipe
     wineWow64Packages.waylandFull
     iperf3
-    nixvim
+    neovim-nightly
     doom-emacs
     neovide
     osu-lazer-bin # typochecker: disable-line

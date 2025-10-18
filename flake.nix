@@ -194,6 +194,19 @@
       owner = "nix-community";
       repo = "neovim-nightly-overlay";
     };
+    nvchad-starter = {
+      url = "path:./nvchad";
+      flake = false;
+    };
+    nix4nvchad = {
+      type = "github";
+      owner = "nix-community";
+      repo = "nix4nvchad";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nvchad-starter.follows = "nvchad-starter";
+      };
+    };
 
     lanzaboote = {
       type = "github";
