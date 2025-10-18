@@ -101,6 +101,7 @@ in
             command = "${lib.getExe pkgs.tuigreet} --time --user-menu -r";
           };
         };
+        useTextGreeter = true;
       };
     };
     programs = {
