@@ -8,7 +8,7 @@
 let
   inherit (inputs) nixpkgs emacs-overlay nix-doom;
   pkgs = import nixpkgs {
-    inherit system;
+    localSystem = { inherit system; };
     overlays = [
       emacs-overlay.overlays.default
       nix-doom.overlays.default

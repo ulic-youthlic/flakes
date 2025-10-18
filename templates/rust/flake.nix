@@ -40,7 +40,7 @@
       let
         inherit (pkgs) lib;
         pkgs = import nixpkgs {
-          inherit system;
+          localSystem = { inherit system; };
           overlays = [
             (import rust-overlay)
             (_final: prev: {

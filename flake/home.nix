@@ -37,7 +37,7 @@ let
     {
       "${unixName}@${hostName}" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
-          inherit system;
+          localSystem = { inherit system; };
         };
         modules = [
           (rootPath + "/home/${unixName}/configurations/${hostName}")

@@ -10,7 +10,7 @@ let
   inherit (pkgs) system;
   cfg = config.david.programs.spacemacs;
   pkgs' = import nixpkgs {
-    inherit system;
+    localSystem = { inherit system; };
     overlays = [ emacs-overlay.overlays.default ];
   };
 in

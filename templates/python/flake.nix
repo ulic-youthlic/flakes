@@ -16,7 +16,7 @@
       let
         inherit (pkgs) lib;
         pkgs = import nixpkgs {
-          inherit system;
+          localSystem = { inherit system; };
           config = {
             cudaSupport = true;
             allowUnfree = true;

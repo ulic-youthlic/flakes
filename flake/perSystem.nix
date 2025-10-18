@@ -21,7 +21,7 @@
     in
     {
       _module.args.pkgs = import nixpkgs {
-        inherit system;
+        localSystem = { inherit system; };
         config = {
           allowUnfree = true;
         };
