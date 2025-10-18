@@ -2,34 +2,34 @@
   inputs,
   system,
   callPackage,
-  symlinkJoin,
-  makeWrapper,
+  buildEnv,
   lib,
 }:
 let
   inherit (inputs.helix.packages."${system}") helix;
-  helixWithPassthru = helix // {
-    passthru = helix.passthru // {
-      languages = lib.pipe "${helix.src}/languages.toml" [
-        builtins.readFile
-        builtins.fromTOML
-      ];
-    };
-  };
   runtime = callPackage ./runtime.nix { };
+  helix' = helix.overrideAttrs (
+    _final: prev:
+    let
+      helix-runtime = buildEnv {
+        name = "helix-runtime";
+        paths = [
+          runtime
+          prev.env.HELIX_DEFAULT_RUNTIME
+        ];
+      };
+    in
+    {
+      env.HELIX_DEFAULT_RUNTIME = toString helix-runtime;
+    }
+  );
 in
-symlinkJoin {
-  name = "helix-wrapped";
-  paths = [ helixWithPassthru ];
-  inherit (helixWithPassthru) meta;
-  buildInputs = [
-    makeWrapper
-  ];
-  postBuild = ''
-    wrapProgram $out/bin/hx \
-    --set HELIX_RUNTIME ${runtime}
-  '';
-  passthru = helixWithPassthru.passthru // {
-    helix-unwrapped = helixWithPassthru;
+helix'
+// {
+  passthru = (helix'.passthru or { }) // {
+    languages = lib.pipe "${helix.src}/languages.toml" [
+      builtins.readFile
+      builtins.fromTOML
+    ];
   };
 }
