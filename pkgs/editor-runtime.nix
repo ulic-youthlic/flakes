@@ -37,6 +37,7 @@
   jdt-language-server,
   zls,
   ty,
+  imagemagick,
 }:
 buildEnv {
   name = "editor-runtime";
@@ -78,6 +79,7 @@ buildEnv {
     jdt-language-server
     zls
     ty
+    imagemagick
   ];
   postBuild = '''';
 }
