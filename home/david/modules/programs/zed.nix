@@ -18,6 +18,7 @@ in
     programs.zed-editor = {
       enable = true;
       extensions = [
+        "catppuccin"
         "asciidoc"
         "basher"
         "cargo-tom"
@@ -52,6 +53,8 @@ in
         "ruff"
         "just"
         "just-ls"
+        "jj-lsp"
+        "org"
       ];
       extraPackages = with pkgs; [
         editor-runtime
@@ -116,11 +119,8 @@ in
           "ss08" = true;
         };
         ui_font_family = "Source Han Sans";
-        theme = "Gruvbox Dark Hard";
-        vim_mode = true;
-        vim = {
-          # default_mode = "helix_normal";
-        };
+        theme = "Catppuccin Latte";
+        helix_mode = true;
       };
     };
   };
