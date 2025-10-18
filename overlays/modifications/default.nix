@@ -16,6 +16,7 @@ in
   ./zulip.nix
   ./spotifyd.nix
   ./nautilus.nix
+  ./neovim-nightly.nix
 
   # Nur
   ./nur.nix
