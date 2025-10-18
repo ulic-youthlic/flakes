@@ -1,5 +1,5 @@
 {
-  symlinkJoin,
+  buildEnv,
   nixfmt-rfc-style,
   idris2Packages,
   lua-language-server,
@@ -38,7 +38,7 @@
   zls,
   ty,
 }:
-symlinkJoin {
+buildEnv {
   name = "editor-runtime";
   paths = [
     nixfmt-rfc-style
