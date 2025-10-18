@@ -404,6 +404,12 @@ in
           (flag "fullscreen-window")
         ]
       )
+      (node "Mod+Ctrl+M"
+        [ { repeat = false; } ]
+        [
+          (flag "maximize-window-to-edges")
+        ]
+      )
       (plain "Mod+Z" [
         (flag "center-column")
       ])
