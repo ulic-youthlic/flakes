@@ -77,6 +77,20 @@ in
           force = true;
           default = "ddg";
           engines = {
+            "Guix Packages" = {
+              urls = [
+                {
+                  template = "https://packages.guix.gnu.org/search/";
+                  params = [
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              definedAliases = [ "@gp" ];
+            };
             "Nix Packages" = {
               urls = [
                 {
@@ -130,15 +144,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "hm" ];
-            };
-            "NUR Packages" = {
-              urls = [
-                {
-                  template = "https://nur.nix-community.org/";
-                }
-              ];
-              definedAliases = [ "nu" ];
+              definedAliases = [ "@hm" ];
             };
             "Nix Flakes" = {
               urls = [
@@ -156,7 +162,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "nf" ];
+              definedAliases = [ "@nf" ];
             };
             "NixOS Wiki" = {
               urls = [
@@ -170,7 +176,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "nw" ];
+              definedAliases = [ "@nw" ];
             };
             "Rust Stdandard Lib" = {
               urls = [
@@ -184,7 +190,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "rs" ];
+              definedAliases = [ "@rs" ];
             };
             "GitHub" = {
               urls = [
@@ -202,7 +208,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "gh" ];
+              definedAliases = [ "@gh" ];
             };
             "Rust Reference" = {
               urls = [
@@ -216,7 +222,39 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "rr" ];
+              definedAliases = [ "@rr" ];
+            };
+            "Rust Crates" = {
+              urls = [
+                {
+                  temaplte = "https://crates.io/search";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              definedAliases = [ "@rc" ];
+            };
+            "C++ Reference" = {
+              urls = [
+                {
+                  template = "https://duckduckgo.com/";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                    {
+                      name = "sites";
+                      value = "cppreference.com";
+                    }
+                  ];
+                }
+              ];
+              definedAliases = [ "@cr" ];
             };
             "bing".metaData.hidden = true;
             "google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
