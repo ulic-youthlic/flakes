@@ -37,6 +37,8 @@
           just
           nvfetcher
           nixfmt-rfc-style
+
+          lua-language-server
         ];
       };
       legacyPackages =
