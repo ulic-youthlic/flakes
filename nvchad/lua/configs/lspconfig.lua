@@ -1,7 +1,14 @@
 require("nvchad.configs.lspconfig").defaults()
 
+vim.diagnostic.config({
+  virtual_lines = {
+    current_line = true,
+    source = "if_many"
+  },
+  virtual_text = false
+})
+
 local servers = {
-  "rust_analyzer",
   "nixd",
   "nil_ls",
   "lua_ls",
