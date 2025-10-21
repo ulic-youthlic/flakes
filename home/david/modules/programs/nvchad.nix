@@ -18,6 +18,8 @@ in
       enable = true;
       extraPackages = with pkgs; [
         editor-runtime
+
+        pkg-config
       ];
       neovim = pkgs.neovim-nightly;
       backup = true;
