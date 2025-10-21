@@ -5,7 +5,6 @@ let
 in
 [
   ./niri.nix
-  ./juicity.nix
   ./dae.nix
   ./spotifyx.nix
   ./radicle-explorer.nix
