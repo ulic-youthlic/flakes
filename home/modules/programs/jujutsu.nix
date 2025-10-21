@@ -38,7 +38,6 @@ in
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
       home.packages = with pkgs; [
-        delta
         watchman
       ];
       programs.jujutsu = {

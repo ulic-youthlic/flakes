@@ -47,17 +47,18 @@
           };
           git = {
             enable = true;
-            userEmail = cfg.email;
-            userName = cfg.name;
-            delta = {
-              enable = true;
-              options = {
-                line-number = true;
-                hyperlinks = true;
-                side-by-side = true;
-              };
+            settings.user = {
+              inherit (cfg) email name;
             };
             lfs.enable = true;
+          };
+          delta = {
+            enable = true;
+            options = {
+              line-number = true;
+              hyperlinks = true;
+              side-by-side = true;
+            };
           };
         };
       }
@@ -69,7 +70,7 @@
         };
       })
       (lib.mkIf cfg.encrypt-credential {
-        programs.git.extraConfig = {
+        programs.git.settings = {
           credential = {
             helper = "store --file=${config.sops.secrets."git-credential".path}";
           };
