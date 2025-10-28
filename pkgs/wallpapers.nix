@@ -1,6 +1,6 @@
 {
   srcs,
-  runCommandNoCCLocal,
+  runCommandLocal,
   rootPath,
   lib,
 }:
@@ -11,7 +11,7 @@ let
     |> filterAttrs (name: _value: hasPrefix "wallpaper" name)
     |> concatMapAttrsStringSep "\n" (name: value: "ln -s ${value.src} $out/${name}");
 in
-runCommandNoCCLocal "wallpapers" { } ''
+runCommandLocal "wallpapers" { } ''
   mkdir -p $out
 
   ${wallpapers}

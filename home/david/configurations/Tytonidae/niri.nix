@@ -1,6 +1,9 @@
-{ config, ... }:
+{ config, lib, ... }:
+let
+  cfg = config.david.programs.niri;
+in
 {
-  david.programs.niri = {
+  david.programs.niri = lib.mkIf cfg.enable {
     waybar.settings =
       let
         cfg = config.david.programs.niri.waybar;

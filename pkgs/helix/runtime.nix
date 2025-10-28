@@ -2,7 +2,7 @@
   lib,
   srcs,
   stdenv,
-  runCommandNoCCLocal,
+  runCommandLocal,
 }:
 let
   buildGrammar =
@@ -80,18 +80,18 @@ let
       }
     )
     |> lib.mapAttrsToList (_: value: "ln -s ${value.value}/${value.name}.so $out/${value.name}.so");
-  grammarDir = runCommandNoCCLocal "helix-grammars" { } ''
+  grammarDir = runCommandLocal "helix-grammars" { } ''
     mkdir -p $out
 
     ${builtins.concatStringsSep "\n" grammarLinks}
   '';
-  queryDir = runCommandNoCCLocal "helix-query" { } ''
+  queryDir = runCommandLocal "helix-query" { } ''
     mkdir -p $out
 
     ${builtins.concatStringsSep "\n" queries}
   '';
 in
-runCommandNoCCLocal "helix-runtime" { } ''
+runCommandLocal "helix-runtime" { } ''
   mkdir -p $out
 
   ln -s ${grammarDir} $out/grammars

@@ -28,6 +28,21 @@
             "immersive-translate"
           ];
         packageOverrides = p: {
+          kdePackages = p.kdePackages // {
+            inherit
+              ((import inputs.nixpkgs-455083 {
+                localSystem = {
+                  inherit (pkgs.stdenv.hostPlatform) system;
+                };
+                config = {
+                  allowUnfree = true;
+                  allowInsecurePredicate = p: builtins.elem (lib.getName p) [ "olm" ];
+                };
+              }).kdePackages
+              )
+              neochat
+              ;
+          };
           intel-vaapi-driver = p.intel-vaapi-driver.override { enableHybridCodec = true; };
           onnxruntime = p.onnxruntime.override {
             cudaSupport = false;

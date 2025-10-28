@@ -1,11 +1,12 @@
 {
   inputs,
-  system,
+  stdenv,
   editor-runtime,
   symlinkJoin,
   makeWrapper,
 }:
 let
+  inherit (stdenv.hostPlatform) system;
   inherit (inputs) nixpkgs emacs-overlay nix-doom;
   pkgs = import nixpkgs {
     localSystem = { inherit system; };
@@ -31,9 +32,10 @@ let
         git
         ripgrep
         fd
-        imagemagick
       ])
-      ++ [ editor-runtime ];
+      ++ [
+        editor-runtime
+      ];
   };
 in
 symlinkJoin {

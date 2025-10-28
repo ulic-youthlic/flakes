@@ -21,7 +21,7 @@
           enable = true;
           enableSshSupport = true;
           pinentry = {
-            package = outputs.packages."${pkgs.system}".pinentry-selector;
+            package = outputs.packages."${pkgs.stdenv.hostPlatform.system}".pinentry-selector;
           };
           # sshKeys = [
           #   "C817E333BF88F16EA0F7ADE27BDCCC16AD25E5A6"

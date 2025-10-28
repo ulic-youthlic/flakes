@@ -14,7 +14,9 @@ in
 {
   options = {
     david.programs.niri = {
-      enable = lib.mkEnableOption "niri";
+      enable = (lib.mkEnableOption "niri") // {
+        default = osConfig.youthlic.gui.enabled == "niri";
+      };
       extraConfig = lib.mkOption {
         type = inputs.niri-flake.lib.kdl.types.kdl-document;
       };
@@ -39,9 +41,6 @@ in
     };
   };
   config = lib.mkMerge [
-    {
-      david.programs.niri.enable = osConfig.youthlic.gui.enabled == "niri";
-    }
     (lib.mkIf cfg.enable {
       home.packages =
         (with pkgs; [
@@ -100,6 +99,12 @@ in
         config =
           (lib.toList (import ./config.nix (args // { inherit pkgs; }))) ++ (lib.toList cfg.extraConfig);
         package = niri;
+      };
+    })
+    (lib.mkIf (!cfg.enable) {
+      programs.niri = {
+        settings = null;
+        config = null;
       };
     })
   ];
