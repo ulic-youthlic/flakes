@@ -64,6 +64,7 @@ in
           repository = {
             DEFAULT_PRIVATE = "last";
             DEFAULT_BRANCH = "master";
+            DISABLE_DOWNLOAD_SOURCE_ARCHIVES = true;
           };
           service = {
             DISABLE_REGISTRATION = true;
