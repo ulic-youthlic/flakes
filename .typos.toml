@@ -17,6 +17,12 @@ extend-ignore-re = [
   # Line block with `(#|;;|//) spellchecker: (on|off)`
   "(?s)(#|//|;;)\\s*typochecker: off.*?\\n\\s*(#|//|;;)\\s*typochecker: on",
 ]
-extend-ignore-identifiers-re = ["als", "Paket", "ConfiguratioN", "StructurE"]
+extend-ignore-identifiers-re = [
+  "als",
+  "Paket",
+  "ConfiguratioN",
+  "StructurE",
+  "lazer",
+]
 
 [default.extend-identifiers]
