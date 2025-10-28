@@ -5,7 +5,6 @@ let
 in
 [
   ./niri.nix
-  ./dae.nix
   ./spotifyx.nix
   ./radicle-explorer.nix
   ./wshowkeys.nix

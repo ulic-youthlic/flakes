@@ -18,13 +18,12 @@ in
     (lib.mkIf cfg.enable {
       services.dae = {
         enable = true;
-        package = pkgs.dae;
         openFirewall = {
           enable = true;
           port = 12345;
         };
         disableTxChecksumIpGeneric = false;
-        config = builtins.readFile ./config.dae;
+        configFile = toString ./config.dae;
       };
       sops.secrets.url = {
         mode = "0444";
@@ -124,6 +123,12 @@ in
                 "${updateForceScript}/bin/update-force.sh"
               ];
             };
+          };
+          dae = {
+            serviceConfig.LoadCredential = [
+              "proxy.d:/etc/dae/proxy.d"
+              "local.d:/etc/dae/local.d"
+            ];
           };
         };
     })

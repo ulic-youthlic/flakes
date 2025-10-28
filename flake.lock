@@ -128,29 +128,6 @@
         "type": "github"
       }
     },
-    "dae": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1758615062,
-        "narHash": "sha256-fX71EN6uogg0fEu/j/iZVjzupMqtuv2DY7Xl/xJQNbo=",
-        "owner": "daeuniverse",
-        "repo": "flake.nix",
-        "rev": "4fa18dd45954f8d56147594029c14822faa8ff42",
-        "type": "github"
-      },
-      "original": {
-        "owner": "daeuniverse",
-        "repo": "flake.nix",
-        "type": "github"
-      }
-    },
     "deploy-rs": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -1430,7 +1407,6 @@
       "inputs": {
         "betterfox-nix": "betterfox-nix",
         "chaotic": "chaotic",
-        "dae": "dae",
         "deploy-rs": "deploy-rs",
         "disko": "disko",
         "emacs-overlay": "emacs-overlay",

@@ -106,16 +106,6 @@
       ref = "master";
     };
 
-    dae = {
-      type = "github";
-      owner = "daeuniverse";
-      repo = "flake.nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
     flake-parts = {
       type = "github";
       owner = "hercules-ci";
