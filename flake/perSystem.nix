@@ -61,7 +61,7 @@
             path: value:
             if lib.isDerivation value then
               {
-                ${lib.concatStringsSep "/" path} = value;
+                ${lib.concatStringsSep ":" path} = value;
               }
             else if lib.isAttrs value then
               lib.concatMapAttrs (name: flattenPkgs (path ++ [ name ])) value
