@@ -32,7 +32,7 @@ in
       enable = true;
       package =
         with pkgs';
-        (emacsPackagesFor emacs-pgtk).emacsWithPackages (epkgs: [
+        (emacsPackagesFor emacs-pgtk).emacsWithPackages (_epkgs: [
           git
           gnutar
           ripgrep
