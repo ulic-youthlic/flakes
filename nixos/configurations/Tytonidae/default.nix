@@ -77,7 +77,7 @@
     vlc
     btop
     handbrake
-    wechat
+    wechat-uos
     nvtopPackages.full
     spotify
     localsend
