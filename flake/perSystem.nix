@@ -47,14 +47,16 @@
             inherit inputs rootPath;
             srcs = self.callPackage (rootPath + "/_sources/generated.nix") { };
             inherit (inputs'.nixvim.legacyPackages) makeNixvim makeNixvimWithModule;
-            inherit (self'.legacyPackages) nixvimPlugins editor-runtime;
             neovim_git = inputs'.neovim-nightly.packages.default;
           });
         in
-        lib.packagesFromDirectoryRecursive {
-          inherit (inputsScope) callPackage;
-          directory = rootPath + "/pkgs";
-        };
+        inputsScope.overrideScope (
+          final: _prev:
+          lib.packagesFromDirectoryRecursive {
+            inherit (final) callPackage;
+            directory = rootPath + "/pkgs";
+          }
+        );
       packages =
         let
           flattenPkgs =
@@ -68,7 +70,23 @@
             else
               { };
         in
-        flattenPkgs [ ] self'.legacyPackages;
+        flattenPkgs [ ] (
+          lib.removeAttrs self'.legacyPackages [
+            "inputs"
+
+            "srcs"
+
+            "rootPath"
+
+            "makeNixvim"
+            "makeNixvimWithModule"
+
+            "newScope"
+            "overrideScope"
+            "packages"
+            "callPackage"
+          ]
+        );
       checks = lib.concatMapAttrs (name: value: {
         "package-${name}" = value;
       }) self'.packages;
