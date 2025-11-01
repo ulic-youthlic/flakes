@@ -37,10 +37,7 @@ in
             fcitx5-fluent
             (fcitx5-rime.override {
               rimeDataPkgs = [
-                rime-ice
-                rime-zhwiki
-                rime-moegirl
-                rime-yuhaostar
+                rime-all
               ];
             })
           ];

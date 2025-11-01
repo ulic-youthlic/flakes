@@ -9,6 +9,7 @@ in
   ./editor-runtime.nix
   ./wallpapers.nix
   ./rime-yuhaostar.nix
+  ./rime-all.nix
   ./nixvim.nix
   ./doom-emacs.nix
   ./osu-lazer-bin.nix # typochecker: disable-line
