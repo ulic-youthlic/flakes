@@ -10,7 +10,7 @@
       scheme = "https";
     }
     {
-      hostname = "ash.radicle.garden";
+      hostname = "rosa.radicle.xyz";
       port = 443;
       scheme = "https";
     }
@@ -20,7 +20,7 @@
       scheme = "https";
     }
     {
-      hostname = "seed.radicle.garden";
+      hostname = "iris.radicle.xyz";
       port = 443;
       scheme = "https";
     }
