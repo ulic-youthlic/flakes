@@ -4,5 +4,5 @@ let
   inherit (prev.stdenv.hostPlatform) system;
 in
 {
-  inherit (outputs.packages."${system}") cliphist';
+  cliphist = outputs.packages."${system}".cliphist';
 }
