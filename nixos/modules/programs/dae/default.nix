@@ -47,7 +47,7 @@ in
               echo "" > ''${config}
               {
                 echo 'subscription {'
-                echo \ \ wget:\ \"file://proxy.d/''${num}.txt\"
+                echo \ \ wget:\ \"file://proxy.d_''${num}.txt\"
                 echo "}"
               } >> ''${config}
               if [[ ! -s ''${txt} ]]; then
