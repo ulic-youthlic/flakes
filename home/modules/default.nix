@@ -13,9 +13,6 @@
     ++ lib.youthlic.loadImports ./.;
 
   config = {
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+    youthlic.programs.direnv.enable = true;
   };
 }
