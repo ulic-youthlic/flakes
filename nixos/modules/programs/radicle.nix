@@ -31,6 +31,45 @@ in
           enable = true;
           listenPort = 8489;
         };
+        ci = {
+          adapters = {
+            native = {
+              instances = {
+                default-native = {
+                  enable = true;
+                  settings = {
+                    # base_url = "";
+                  };
+                };
+              };
+            };
+          };
+          broker = {
+            enable = true;
+            enableHardening = true;
+            settings = {
+              triggers = [
+                {
+                  adapter = "default-native";
+                  filters = [
+                    {
+                      And = [
+                        { HasFile = ".radicle/native.yaml"; }
+                        {
+                          Or = [
+                            "DefaultBranch"
+                            "PatchCreated"
+                            "PatchUpdated"
+                          ];
+                        }
+                      ];
+                    }
+                  ];
+                }
+              ];
+            };
+          };
+        };
         settings = {
           publicExplorer = "https://app.radicle.xyz/nodes/$host/$rid$path";
           preferredSeeds = [
@@ -102,6 +141,14 @@ in
         "${cfg.domain}" = {
           extraConfig = ''
             reverse_proxy 127.0.0.1:8489
+          '';
+        };
+        "ci-${cfg.domain}" = {
+          extraConfig = ''
+            encode zstd gzip
+            root * ${config.services.radicle.ci.broker.settings.report_dir}
+            try_files {path} /index.html
+            file_server
           '';
         };
       };
