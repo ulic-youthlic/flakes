@@ -1,2 +1,0 @@
-shell: |
-  echo "Test Radicle Native CI Adapter"
