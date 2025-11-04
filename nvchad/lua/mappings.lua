@@ -27,3 +27,6 @@ map({ "n", "v" }, "<leader>tm", function()
     image_api.enable()
   end
 end, { desc = "Toggle image.nvim" })
+map("n", "gh", "0")
+map("n", "gl", "$")
+map("n", "gs", "^")

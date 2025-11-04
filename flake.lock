@@ -1277,7 +1277,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-5i6dXIjMmBZZ4WusMd/kCPijOVQR9AkosndKF07QVIo=",
+        "narHash": "sha256-Y6UCxZkTMCxnteIRtuvl49ceQNSu+EIH2PbjOGvvp/I=",
         "path": "./nvchad",
         "type": "path"
       },
