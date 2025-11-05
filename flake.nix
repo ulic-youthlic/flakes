@@ -203,7 +203,7 @@
       type = "github";
       owner = "nix-community";
       repo = "lanzaboote";
-      ref = "v0.4.2";
+      ref = "v0.4.3";
     };
 
     nix-doom = {
