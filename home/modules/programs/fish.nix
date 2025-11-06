@@ -43,6 +43,9 @@ in
         };
         shellInitLast = # fish
           ''
+            if test -e ~/.config/guix/current/bin/guix
+              fish_add_path -pPm ~/.config/guix/current/bin
+            end
             if test -d ~/.guix-profile
               set -gx GUIX_PROFILE ~/.guix-profile
               if test -f $GUIX_PROFILE/etc/profile
