@@ -15,6 +15,7 @@ in
   ./spotifyd.nix
   ./nautilus.nix
   ./neovim-nightly.nix
+  ./vim.nix
 
   # Nur
   ./nur.nix
