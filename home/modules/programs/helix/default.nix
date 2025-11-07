@@ -56,7 +56,12 @@ in
         enable = true;
         defaultEditor = true;
         extraPackages = cfg.extraPackages;
-        settings = ./config.toml |> builtins.readFile |> builtins.fromTOML;
+        settings =
+          with lib;
+          pipe ./config.toml [
+            builtins.readFile
+            builtins.fromTOML
+          ];
         languages = lib.recursiveUpdate {
           language-server = {
             neocmakelsp = {

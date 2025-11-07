@@ -3,22 +3,26 @@ final: prev:
 let
   inherit (prev) lib;
 in
-[
-  ./niri.nix
-  ./spotifyx.nix
-  ./radicle-explorer.nix
-  ./wshowkeys.nix
-  # ./QQ.nix
-  ./helix.nix
-  ./cliphist.nix
-  ./zulip.nix
-  ./spotifyd.nix
-  ./nautilus.nix
-  ./neovim-nightly.nix
-  ./vim.nix
+with lib;
+pipe
+  [
+    ./niri.nix
+    ./spotifyx.nix
+    ./radicle-explorer.nix
+    ./wshowkeys.nix
+    # ./QQ.nix
+    ./helix.nix
+    ./cliphist.nix
+    ./zulip.nix
+    ./spotifyd.nix
+    ./nautilus.nix
+    ./neovim-nightly.nix
+    ./vim.nix
 
-  # Nur
-  ./nur.nix
-]
-|> map (file: import file args)
-|> (overlays: (lib.composeManyExtensions overlays) final prev)
+    # Nur
+    ./nur.nix
+  ]
+  [
+    (map (file: import file args))
+    (overlays: (lib.composeManyExtensions overlays) final prev)
+  ]
