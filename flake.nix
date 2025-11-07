@@ -186,7 +186,9 @@
       repo = "neovim-nightly-overlay";
     };
     nvchad-starter = {
-      url = "path:./nvchad";
+      type = "github";
+      owner = "ulic-youthlic";
+      repo = "nvchad-starter";
       flake = false;
     };
     nix4nvchad = {
