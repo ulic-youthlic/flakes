@@ -7,10 +7,9 @@
 let
   wallpapers =
     with lib;
-    pipe srcs [
-      (filterAttrs (name: _value: hasPrefix "wallpaper" name))
-      (concatMapAttrsStringSep "\n" (name: value: "ln -s ${value.src} $out/${name}"))
-    ];
+    srcs
+    |> filterAttrs (name: _value: hasPrefix "wallpaper" name)
+    |> concatMapAttrsStringSep "\n" (name: value: "ln -s ${value.src} $out/${name}");
 in
 runCommandLocal "wallpapers" { } ''
   mkdir -p $out

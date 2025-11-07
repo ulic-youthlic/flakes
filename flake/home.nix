@@ -9,20 +9,18 @@ let
   inherit (self) outputs;
   homeModules =
     (
-      with lib;
-      pipe (rootPath + "/home") [
-        builtins.readDir
-        (filterAttrs (_key: value: value == "directory"))
-        (filterAttrs (
-          key: _value:
-          !builtins.elem key [
-            "modules"
-            "extra"
-          ]
-        ))
-        builtins.attrNames
-        (flip genAttrs (name: import (rootPath + "/home/${name}/modules")))
-      ]
+      (rootPath + "/home")
+      |> builtins.readDir
+      |> lib.filterAttrs (_key: value: value == "directory")
+      |> lib.filterAttrs (
+        key: _value:
+        !builtins.elem key [
+          "modules"
+          "extra"
+        ]
+      )
+      |> builtins.attrNames
+      |> (with lib; flip genAttrs (name: import (rootPath + "/home/${name}/modules")))
     )
     // {
       default = import "${toString rootPath}/home/modules";
@@ -71,15 +69,12 @@ let
 in
 {
   flake = {
-    homeConfigurations =
-      with lib;
-      foldr (a: b: a // b) { } (
-        pipe
-          [
-            # Hostname
-          ]
-          [ (map (hostName: makeHomeConfiguration { inherit hostName; })) ]
-      );
+    homeConfigurations = lib.foldr (a: b: a // b) { } (
+      [
+        # Hostname
+      ]
+      |> map (hostName: makeHomeConfiguration { inherit hostName; })
+    );
     inherit homeModules;
   };
 }

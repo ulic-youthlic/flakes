@@ -11,11 +11,9 @@ let
 in
 {
   flake.overlays =
-    with lib;
-    pipe
-      [
-        "modifications"
-        "additions"
-      ]
-      [ (flip genAttrs (name: importWithArgs (rootPath + "/overlays/${name}"))) ];
+    [
+      "modifications"
+      "additions"
+    ]
+    |> (with lib; flip genAttrs (name: importWithArgs (rootPath + "/overlays/${name}")));
 }

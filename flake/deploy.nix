@@ -39,20 +39,16 @@ in
   };
   config = {
     flake.deploy.nodes =
-      with lib;
-      pipe
-        [
-          "Cape"
-          "Akun"
-        ]
-        [
-          (map (
-            hostName:
-            mkDeployNode {
-              inherit hostName;
-            }
-          ))
-          (foldr (a: b: a // b) { })
-        ];
+      [
+        "Cape"
+        "Akun"
+      ]
+      |> map (
+        hostName:
+        mkDeployNode {
+          inherit hostName;
+        }
+      )
+      |> lib.foldr (a: b: a // b) { };
   };
 }

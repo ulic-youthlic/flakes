@@ -1,6 +1,6 @@
 {
   perSystem =
-    { pkgs, lib, ... }:
+    { pkgs, ... }:
     {
       treefmt = {
         programs = {
@@ -41,12 +41,7 @@
           };
           typos =
             let
-              config =
-                with lib;
-                pipe ./.typos.toml [
-                  builtins.readFile
-                  builtins.fromTOML
-                ];
+              config = ./.typos.toml |> builtins.readFile |> builtins.fromTOML;
             in
             {
               enable = true;

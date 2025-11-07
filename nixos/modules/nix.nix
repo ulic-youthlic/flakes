@@ -9,15 +9,13 @@
 {
   config = {
     environment.etc =
-      with lib;
-      pipe inputs [
-        (mapAttrs' (
-          name: value:
-          lib.nameValuePair "nix/inputs/${name}" {
-            source = value;
-          }
-        ))
-      ];
+      inputs
+      |> lib.mapAttrs' (
+        name: value:
+        lib.nameValuePair "nix/inputs/${name}" {
+          source = value;
+        }
+      );
     nixpkgs = {
       config = {
         allowUnfree = true;
@@ -74,7 +72,9 @@
         experimental-features = [
           "nix-command"
           "flakes"
-        ];
+        ]
+        ++ (lib.optional config.lix.enable "pipe-operator")
+        ++ (lib.optional (!config.lix.enable) "pipe-operators");
         warn-dirty = false;
         system-features = [
           "kvm"
@@ -85,17 +85,15 @@
       };
       package = pkgs.nix;
       registry =
-        with lib;
-        pipe inputs [
-          (filterAttrs (name: _value: name != "nixpkgs"))
-          (mapAttrs (
-            _name: value: {
-              flake = lib.mkForce {
-                outPath = value;
-              };
-            }
-          ))
-        ];
+        inputs
+        |> lib.filterAttrs (name: _value: name != "nixpkgs")
+        |> lib.mapAttrs (
+          _name: value: {
+            flake = lib.mkForce {
+              outPath = value;
+            };
+          }
+        );
     };
   };
 }

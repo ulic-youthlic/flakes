@@ -30,13 +30,11 @@ in
             };
           };
       in
-      with lib;
-      pipe
-        [
-          "Tytonidae"
-          "Cape"
-          "Akun"
-        ]
-        [ (flip genAttrs makeNixosConfiguration) ];
+      [
+        "Tytonidae"
+        "Cape"
+        "Akun"
+      ]
+      |> (with lib; flip genAttrs makeNixosConfiguration);
   };
 }
