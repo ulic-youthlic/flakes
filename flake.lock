@@ -1260,17 +1260,14 @@
     "nvchad-starter": {
       "flake": false,
       "locked": {
-        "lastModified": 1762537390,
+        "lastModified": 1,
         "narHash": "sha256-Y6UCxZkTMCxnteIRtuvl49ceQNSu+EIH2PbjOGvvp/I=",
-        "owner": "ulic-youthlic",
-        "repo": "nvchad-starter",
-        "rev": "b713ab7064a8aac684e724f82a253e753754d396",
-        "type": "github"
+        "path": "./nvchad",
+        "type": "path"
       },
       "original": {
-        "owner": "ulic-youthlic",
-        "repo": "nvchad-starter",
-        "type": "github"
+        "path": "./nvchad",
+        "type": "path"
       }
     },
     "pre-commit-hooks-nix": {
