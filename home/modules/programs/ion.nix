@@ -2,11 +2,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.ion;
-in
-{
+in {
   options = {
     youthlic.programs.ion = {
       enable = lib.mkEnableOption "ion";

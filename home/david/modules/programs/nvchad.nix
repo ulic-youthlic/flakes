@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.nvchad;
-in
-{
+in {
   options = {
     david.programs.nvchad = {
       enable = lib.mkEnableOption "nvchad";

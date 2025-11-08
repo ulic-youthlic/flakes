@@ -2,11 +2,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.rustypaste;
-in
-{
+in {
   imports = lib.youthlic.loadImports ./.;
 
   options = {

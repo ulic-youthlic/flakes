@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   youthlic.plugins.blink-cmp = {
     enable = true;
     setupLspCapabilities = true;
@@ -26,7 +25,7 @@
         };
         menu = {
           draw = {
-            treesitter = [ "lsp" ];
+            treesitter = ["lsp"];
           };
         };
         documentation = {
@@ -42,7 +41,7 @@
         };
       };
       sources = {
-        compat = [ ];
+        compat = [];
         default = [
           "lsp"
           "path"

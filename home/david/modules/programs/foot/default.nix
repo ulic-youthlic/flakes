@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.foot;
-in
-{
+in {
   options = {
     david.programs.foot = {
       enable = lib.mkEnableOption "foot";

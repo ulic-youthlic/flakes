@@ -1,5 +1,4 @@
-{ srcs }:
-let
+{srcs}: let
   inherit (srcs) TrackersListCollection;
 in
-TrackersListCollection.src
+  TrackersListCollection.src

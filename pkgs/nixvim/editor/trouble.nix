@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   youthlic.plugins.trouble = {
     enable = true;
     settings = {

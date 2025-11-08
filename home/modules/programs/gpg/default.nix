@@ -4,17 +4,15 @@
   lib,
   outputs,
   ...
-}:
-{
+}: {
   options = {
     youthlic.programs.gpg = {
       enable = lib.mkEnableOption "gpg";
     };
   };
-  config =
-    let
-      cfg = config.youthlic.programs.gpg;
-    in
+  config = let
+    cfg = config.youthlic.programs.gpg;
+  in
     lib.mkIf cfg.enable {
       services.gpg-agent = lib.mkMerge [
         {

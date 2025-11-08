@@ -1,8 +1,5 @@
-{ inputs, ... }:
-_final: prev:
-let
+{inputs, ...}: _final: prev: let
   inherit (prev.stdenv.hostPlatform) system;
-in
-{
+in {
   neovim-nightly = inputs.neovim-nightly.packages.${system}.neovim;
 }

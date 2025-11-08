@@ -3,11 +3,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.juicity;
-in
-{
+in {
   imports = lib.youthlic.loadImports ./.;
   options = {
     youthlic.programs.juicity = {
@@ -21,12 +19,12 @@ in
   };
   config = lib.mkMerge [
     (lib.mkIf cfg.client.enable {
-      users.groups.juicity.members = [ "root" ];
+      users.groups.juicity.members = ["root"];
       sops = {
         secrets = {
-          "juicity/serverIp" = { };
-          "juicity/sni" = { };
-          "juicity/certchainSha256" = { };
+          "juicity/serverIp" = {};
+          "juicity/sni" = {};
+          "juicity/certchainSha256" = {};
         };
         templates."juicity-client-config.json" = {
           group = "juicity";
@@ -56,7 +54,7 @@ in
       };
     })
     (lib.mkIf cfg.server.enable {
-      users.groups.juicity.members = [ "root" ];
+      users.groups.juicity.members = ["root"];
       sops = {
         secrets = {
           "juicity/certificate" = {
@@ -96,8 +94,8 @@ in
     })
     (lib.mkIf (cfg.server.enable || cfg.client.enable) {
       sops.secrets = {
-        "juicity/uuid" = { };
-        "juicity/password" = { };
+        "juicity/uuid" = {};
+        "juicity/password" = {};
       };
     })
   ];

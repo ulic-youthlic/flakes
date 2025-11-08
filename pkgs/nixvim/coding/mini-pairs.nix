@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   youthlic.plugins.mini-pairs = {
     enable = true;
     settings = {

@@ -3,8 +3,7 @@
   inputs,
   outputs,
   ...
-}:
-{
+}: {
   imports = with inputs; [
     home-manager.nixosModules.home-manager
     sops-nix.nixosModules.sops

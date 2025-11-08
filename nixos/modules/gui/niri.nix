@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.gui;
-in
-{
+in {
   options = {
     youthlic.gui.niri = {
     };
@@ -20,7 +18,7 @@ in
     # Enabled to support trash of nautilus
     services.gvfs.enable = true;
     environment = {
-      pathsToLink = [ "share/thumbnailers" ];
+      pathsToLink = ["share/thumbnailers"];
       systemPackages = with pkgs; [
         nautilus
         nautilus-open-any-terminal
@@ -38,7 +36,7 @@ in
       terminal-exec = {
         enable = true;
         settings = {
-          default = [ "com.mitchellh.ghostty.desktop" ];
+          default = ["com.mitchellh.ghostty.desktop"];
         };
       };
       mime = {
@@ -70,7 +68,7 @@ in
             "firefox-beta.desktop"
             "chromium-browser.desktop"
           ];
-          "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
+          "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
           "x-scheme-handler/unknown" = [
             "firefox-beta.desktop"
             "chromium-browser.desktop"

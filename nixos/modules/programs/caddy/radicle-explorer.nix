@@ -3,12 +3,10 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.caddy.radicle-explorer;
   caddy-cfg = config.youthlic.programs.caddy;
-in
-{
+in {
   options = {
     youthlic.programs.caddy.radicle-explorer = {
       enable = lib.mkEnableOption "caddy.radicle-explorer";

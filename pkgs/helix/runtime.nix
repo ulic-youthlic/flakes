@@ -3,10 +3,8 @@
   srcs,
   stdenv,
   runCommandLocal,
-}:
-let
-  buildGrammar =
-    grammar:
+}: let
+  buildGrammar = grammar:
     stdenv.mkDerivation {
       pname = "helix-tree-sitter-${grammar.name}";
       version = grammar.version;
@@ -60,10 +58,9 @@ let
         runHook postFixup
       '';
     };
-  grammars = with lib; pipe srcs [ (filterAttrs (key: _: hasPrefix "tree-sitter-" key)) ];
+  grammars = with lib; pipe srcs [(filterAttrs (key: _: hasPrefix "tree-sitter-" key))];
 
-  queries =
-    with lib;
+  queries = with lib;
     pipe grammars [
       (mapAttrsToList (
         _: value: ''
@@ -73,8 +70,7 @@ let
         ''
       ))
     ];
-  grammarLinks =
-    with lib;
+  grammarLinks = with lib;
     pipe grammars [
       (builtins.mapAttrs (
         _: v: {
@@ -84,20 +80,20 @@ let
       ))
       (mapAttrsToList (_: value: "ln -s ${value.value}/${value.name}.so $out/${value.name}.so"))
     ];
-  grammarDir = runCommandLocal "helix-grammars" { } ''
+  grammarDir = runCommandLocal "helix-grammars" {} ''
     mkdir -p $out
 
     ${builtins.concatStringsSep "\n" grammarLinks}
   '';
-  queryDir = runCommandLocal "helix-query" { } ''
+  queryDir = runCommandLocal "helix-query" {} ''
     mkdir -p $out
 
     ${builtins.concatStringsSep "\n" queries}
   '';
 in
-runCommandLocal "helix-runtime" { } ''
-  mkdir -p $out
+  runCommandLocal "helix-runtime" {} ''
+    mkdir -p $out
 
-  ln -s ${grammarDir} $out/grammars
-  ln -s ${queryDir} $out/queries
-''
+    ln -s ${grammarDir} $out/grammars
+    ln -s ${queryDir} $out/queries
+  ''

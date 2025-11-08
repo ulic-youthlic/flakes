@@ -3,11 +3,9 @@
   config,
   options,
   ...
-}:
-let
+}: let
   cfg = config.youthlic;
-in
-{
+in {
   options = {
     youthlic.plugins = lib.mkOption {
       type = lib.types.attrsOf (
@@ -16,8 +14,7 @@ in
             name,
             lib,
             ...
-          }:
-          {
+          }: {
             freeformType = lib.types.anything;
             options = {
               enable = lib.mkEnableOption "nvimPlugins.${name}";
@@ -25,13 +22,12 @@ in
           }
         )
       );
-      default = { };
+      default = {};
     };
   };
-  config =
-    let
-      enabledPlugins = lib.filterAttrs (_name: value: value.enable) cfg.plugins;
-    in
+  config = let
+    enabledPlugins = lib.filterAttrs (_name: value: value.enable) cfg.plugins;
+  in
     lib.mkMerge [
       {
         plugins = enabledPlugins;
@@ -42,13 +38,13 @@ in
           (lib.filter (name: options.plugins.${name} ? luaConfig))
           (map (
             name:
-            lib.nameValuePair name {
-              luaConfig.post =
-                #lua
-                ''
-                  _M.load("${name}")
-                '';
-            }
+              lib.nameValuePair name {
+                luaConfig.post =
+                  #lua
+                  ''
+                    _M.load("${name}")
+                  '';
+              }
           ))
           lib.listToAttrs
         ];

@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.gui;
-in
-{
+in {
   imports = with lib; youthlic.loadImports ./.;
   options = {
     youthlic.gui = {

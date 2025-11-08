@@ -3,11 +3,9 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.virtualisation.waydroid;
-in
-{
+in {
   options = {
     youthlic.virtualisation.waydroid = {
       enable = lib.mkEnableOption "waydroid";
@@ -17,6 +15,6 @@ in
     virtualisation.waydroid = {
       enable = true;
     };
-    environment.systemPackages = [ pkgs.nur.repos.ataraxiasjel.waydroid-script ];
+    environment.systemPackages = [pkgs.nur.repos.ataraxiasjel.waydroid-script];
   };
 }

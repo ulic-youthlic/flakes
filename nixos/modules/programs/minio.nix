@@ -2,11 +2,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.minio;
-in
-{
+in {
   options = {
     youthlic.programs.minio = {
       enable = lib.mkEnableOption "minio";

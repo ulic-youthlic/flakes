@@ -2,36 +2,35 @@
   srcs,
   stdenv,
   unzip,
-}:
-let
+}: let
   inherit (srcs.rime-yuhaostar) src version;
 in
-stdenv.mkDerivation {
-  pname = "rime-yuhaostar";
-  version =
-    if version != "v3.10.0" then
-      throw ''
-        Please update 宇浩输入法。
-      ''
-    else
-      version;
-  inherit src;
-  nativeBuildInputs = [ unzip ];
+  stdenv.mkDerivation {
+    pname = "rime-yuhaostar";
+    version =
+      if version != "v3.10.0"
+      then
+        throw ''
+          Please update 宇浩输入法。
+        ''
+      else version;
+    inherit src;
+    nativeBuildInputs = [unzip];
 
-  sourceRoot = "schema";
+    sourceRoot = "schema";
 
-  patches = [
-    ./punctuator.patch
-    ./key_binder.patch
-  ];
+    patches = [
+      ./punctuator.patch
+      ./key_binder.patch
+    ];
 
-  installPhase = ''
-    runHook preInstall
+    installPhase = ''
+      runHook preInstall
 
-    mkdir -p $out/share/rime-data
-    cp -rt $out/share/rime-data -- ./*
-    rm $out/share/rime-data/default.custom.yaml
+      mkdir -p $out/share/rime-data
+      cp -rt $out/share/rime-data -- ./*
+      rm $out/share/rime-data/default.custom.yaml
 
-    runHook postInstall
-  '';
-}
+      runHook postInstall
+    '';
+  }

@@ -1,1 +1,1 @@
-{ inputs, ... }: inputs.niri-flake.overlays.niri
+{inputs, ...}: inputs.niri-flake.overlays.niri

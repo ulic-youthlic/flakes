@@ -3,22 +3,20 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.rustypaste-cli;
-in
-{
+in {
   options = {
     youthlic.programs.rustypaste-cli = {
       enable = lib.mkEnableOption "rustypaste-cli";
     };
   };
   config = lib.mkIf cfg.enable {
-    home.packages = [ pkgs.rustypaste-cli ];
+    home.packages = [pkgs.rustypaste-cli];
     sops = {
       secrets = {
-        "rustypaste/auth" = { };
-        "rustypaste/delete" = { };
+        "rustypaste/auth" = {};
+        "rustypaste/delete" = {};
       };
       templates."rustypaste-config.toml" = {
         path = "${config.xdg.configHome}/rustypaste/config.toml";

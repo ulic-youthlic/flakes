@@ -2,8 +2,7 @@
   pkgs,
   rootPath,
   ...
-}:
-{
+}: {
   stylix = {
     enable = true;
     image = rootPath + "/assets/wallpaper/01.png";

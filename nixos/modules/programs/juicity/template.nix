@@ -3,27 +3,23 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.services.juicity;
-  settingsFormat = pkgs.formats.json { };
+  settingsFormat = pkgs.formats.json {};
   clientConfigFile =
-    if (cfg.client.configFile != null) then
-      cfg.client.configFile
-    else
-      settingsFormat cfg.client.settings;
+    if (cfg.client.configFile != null)
+    then cfg.client.configFile
+    else settingsFormat cfg.client.settings;
   serverConfigFile =
-    if (cfg.server.configFile != null) then
-      cfg.server.configFile
-    else
-      settingsFormat cfg.server.settings;
-in
-{
+    if (cfg.server.configFile != null)
+    then cfg.server.configFile
+    else settingsFormat cfg.server.settings;
+in {
   options = {
     services.juicity = {
       client = {
         enable = lib.mkEnableOption "juicity-client";
-        package = lib.mkPackageOption pkgs "juicity" { };
+        package = lib.mkPackageOption pkgs "juicity" {};
         group = lib.mkOption {
           type = lib.types.nullOr lib.types.str;
           example = "juicity";
@@ -31,7 +27,7 @@ in
         };
         settings = lib.mkOption {
           type = settingsFormat.type;
-          default = { };
+          default = {};
           example = {
             listen = ":1000";
             server = "112.32.62.11:23182";
@@ -59,7 +55,7 @@ in
         };
         allowedOpenFirewallPorts = lib.mkOption {
           type = lib.types.nullOr (lib.types.listOf lib.types.port);
-          example = [ 23182 ];
+          example = [23182];
           default = null;
           description = ''
             the ports should be open
@@ -68,7 +64,7 @@ in
       };
       server = {
         enable = lib.mkEnableOption "juicity-server";
-        package = lib.mkPackageOption pkgs "juicity" { };
+        package = lib.mkPackageOption pkgs "juicity" {};
         group = lib.mkOption {
           type = lib.types.nullOr lib.types.str;
           example = "juicity";
@@ -76,7 +72,7 @@ in
         };
         settings = lib.mkOption {
           type = settingsFormat.type;
-          default = { };
+          default = {};
           description = ''
             Juicity server configuration, for configuration options
             see example of [server](https://github.com/juicity/juicity/blob/main/install/example-server.json) on github.
@@ -104,7 +100,7 @@ in
         };
         allowedOpenFirewallPorts = lib.mkOption {
           type = lib.types.nullOr (lib.types.listOf lib.types.port);
-          example = [ 23182 ];
+          example = [23182];
           default = null;
           description = ''
             the ports should be open

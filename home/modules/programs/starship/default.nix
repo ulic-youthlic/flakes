@@ -2,14 +2,12 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.starship;
   fish-cfg = config.youthlic.programs.fish;
   bash-cfg = config.youthlic.programs.bash;
   ion-cfg = config.youthlic.programs.ion;
-in
-{
+in {
   options = {
     youthlic.programs.starship = {
       enable = lib.mkEnableOption "starship";
@@ -20,10 +18,9 @@ in
       programs.starship = {
         enable = true;
         enableTransience = true;
-        settings =
-          let
-            config-file = builtins.readFile ./config.toml;
-          in
+        settings = let
+          config-file = builtins.readFile ./config.toml;
+        in
           builtins.fromTOML config-file;
       };
     })

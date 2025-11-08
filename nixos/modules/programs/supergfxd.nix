@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.supergfxd;
-in
-{
+in {
   options = {
     youthlic.programs.supergfxd = {
       enable = lib.mkEnableOption "supergfxd";

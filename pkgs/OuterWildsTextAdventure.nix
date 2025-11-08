@@ -3,29 +3,28 @@
   buildNpmPackage,
   importNpmLock,
   ...
-}:
-let
+}: let
   inherit (srcs.OuterWildsTextAdventure) src date version;
 in
-buildNpmPackage {
-  pname = "OuterWildsTextAdventure";
-  version = "0-unstable.${date}-git${version}";
-  inherit src;
+  buildNpmPackage {
+    pname = "OuterWildsTextAdventure";
+    version = "0-unstable.${date}-git${version}";
+    inherit src;
 
-  npmDeps = importNpmLock {
-    npmRoot = src;
-  };
+    npmDeps = importNpmLock {
+      npmRoot = src;
+    };
 
-  npmBuildScript = "bundle";
+    npmBuildScript = "bundle";
 
-  installPhase = ''
-    runHook preInstall
+    installPhase = ''
+      runHook preInstall
 
-    mkdir -p $out
-    cp -rt $out/ index.html data p5.min.js bundle.js bundle.js.map
+      mkdir -p $out
+      cp -rt $out/ index.html data p5.min.js bundle.js bundle.js.map
 
-    runHook postInstall
-  '';
+      runHook postInstall
+    '';
 
-  npmConfigHook = importNpmLock.npmConfigHook;
-}
+    npmConfigHook = importNpmLock.npmConfigHook;
+  }

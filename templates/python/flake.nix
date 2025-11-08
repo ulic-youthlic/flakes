@@ -5,26 +5,23 @@
       url = "github:numtide/flake-utils";
     };
   };
-  outputs =
-    {
-      flake-utils,
-      nixpkgs,
-      ...
-    }:
+  outputs = {
+    flake-utils,
+    nixpkgs,
+    ...
+  }:
     flake-utils.lib.eachDefaultSystem (
-      system:
-      let
+      system: let
         inherit (pkgs) lib;
         pkgs = import nixpkgs {
-          localSystem = { inherit system; };
+          localSystem = {inherit system;};
           config = {
             cudaSupport = true;
             allowUnfree = true;
           };
         };
         defaultPython = pkgs.python3;
-      in
-      {
+      in {
         formatter = pkgs.alejandra;
         devShells.default = pkgs.mkShell {
           packages =

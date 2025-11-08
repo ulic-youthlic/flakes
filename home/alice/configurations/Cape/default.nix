@@ -2,8 +2,7 @@
   pkgs,
   unixName,
   ...
-}:
-{
+}: {
   youthlic = {
     xdg-dirs.enable = true;
     programs = {

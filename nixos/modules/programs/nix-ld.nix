@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.nix-ld;
-in
-{
+in {
   options = {
     youthlic.programs.nix-ld = {
       enable = lib.mkEnableOption "nix-ld";

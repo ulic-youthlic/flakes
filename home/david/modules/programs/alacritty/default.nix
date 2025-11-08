@@ -3,11 +3,9 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.alacritty;
-in
-{
+in {
   options = {
     david.programs.alacritty = {
       enable = lib.mkEnableOption "alacritty";
@@ -20,13 +18,13 @@ in
       settings =
         (
           with lib;
-          pipe ./alacritty.toml [
-            builtins.readFile
-            builtins.fromTOML
-          ]
+            pipe ./alacritty.toml [
+              builtins.readFile
+              builtins.fromTOML
+            ]
         )
         // {
-          colors = lib.mkForce { };
+          colors = lib.mkForce {};
           font.size = lib.mkForce 16;
           window.opacity = lib.mkForce 0.8;
           general.import = [

@@ -4,17 +4,15 @@
   lib,
   inputs,
   ...
-}:
-let
+}: let
   inherit (inputs) nixpkgs emacs-overlay spacemacs;
   inherit (pkgs) system;
   cfg = config.david.programs.spacemacs;
   pkgs' = import nixpkgs {
-    localSystem = { inherit system; };
-    overlays = [ emacs-overlay.overlays.default ];
+    localSystem = {inherit system;};
+    overlays = [emacs-overlay.overlays.default];
   };
-in
-{
+in {
   options = {
     david.programs.spacemacs = {
       enable = lib.mkEnableOption "spacemacs";
@@ -30,8 +28,7 @@ in
     };
     programs.emacs = {
       enable = true;
-      package =
-        with pkgs';
+      package = with pkgs';
         (emacsPackagesFor emacs-pgtk).emacsWithPackages (_epkgs: [
           git
           gnutar

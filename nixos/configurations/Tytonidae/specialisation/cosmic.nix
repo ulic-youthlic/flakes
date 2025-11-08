@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   config.specialisation.cosmic = {
     inheritParentConfig = true;
     configuration = {

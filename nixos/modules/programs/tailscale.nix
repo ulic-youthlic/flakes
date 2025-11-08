@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.tailscale;
-in
-{
+in {
   options = {
     youthlic.programs.tailscale = {
       enable = lib.mkEnableOption "tailscale";

@@ -2,11 +2,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.kanshi;
-in
-{
+in {
   options = {
     david.programs.kanshi = {
       enable = lib.mkEnableOption "kanshi";

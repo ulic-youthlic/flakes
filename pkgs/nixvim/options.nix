@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   globals = {
     mapleader = {
       __raw =
@@ -92,7 +91,7 @@
     ];
     whichwrap = "b,s,<,>";
     wildmenu = true;
-    wildmode = [ "full" ];
+    wildmode = ["full"];
     wildoptions = [
       "fuzzy"
       "pum"

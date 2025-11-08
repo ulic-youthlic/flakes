@@ -3,17 +3,14 @@
   basicArgs,
   buildInputs,
   nativeBuildInputs,
-}:
-let
-  f =
-    {
-      craneLib,
-      lib,
-      ...
-    }@args:
-    let
-      genInputs = lib.genInputsWith args;
-    in
+}: let
+  f = {
+    craneLib,
+    lib,
+    ...
+  } @ args: let
+    genInputs = lib.genInputsWith args;
+  in
     craneLib.buildDepsOnly (
       basicArgs
       // {
@@ -22,5 +19,5 @@ let
       }
     );
 in
-with lib;
-setFunctionArgs f ((functionArgs f) // (genFunctionArgs (buildInputs ++ nativeBuildInputs)))
+  with lib;
+    setFunctionArgs f ((functionArgs f) // (genFunctionArgs (buildInputs ++ nativeBuildInputs)))

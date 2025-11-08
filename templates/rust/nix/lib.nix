@@ -7,8 +7,7 @@
   nameValuePair,
   getAttrFromPath,
   ...
-}:
-{
+}: {
   genFunctionArgs = flip pipe [
     (map (
       flip pipe [
@@ -19,8 +18,7 @@
     ))
     listToAttrs
   ];
-  genInputsWith =
-    pkgs:
+  genInputsWith = pkgs:
     map (
       flip pipe [
         (splitString ".")

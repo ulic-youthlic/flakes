@@ -2,8 +2,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   users = {
     mutableUsers = true;
     users.david = {

@@ -2,8 +2,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   imports = lib.youthlic.loadImports ./.;
   config = {
     youthlic.programs = {

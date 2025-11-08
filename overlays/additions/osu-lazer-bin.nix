@@ -1,9 +1,6 @@
-{ inputs, ... }:
-_final: prev:
-let
+{inputs, ...}: _final: prev: let
   inherit (inputs) nix-gaming;
   inherit (prev.stdenv.hostPlatform) system;
-in
-{
+in {
   inherit (nix-gaming.packages.${system}) osu-lazer-bin; # typochecker: disable-line
 }

@@ -2,8 +2,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   youthlic.plugins.conform-nvim.settings = {
     formatters_by_ft.toml = {
       __unkeyed-1 = "taplo";

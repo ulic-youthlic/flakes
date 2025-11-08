@@ -4,8 +4,7 @@
   inputs,
   outputs,
   ...
-}:
-{
+}: {
   imports =
     (with inputs.nixos-hardware.nixosModules; [
       common-hidpi
@@ -18,7 +17,7 @@
     ++ (with outputs; [
       nixosModules.gui
     ])
-    ++ [ inputs.lanzaboote.nixosModules.lanzaboote ]
+    ++ [inputs.lanzaboote.nixosModules.lanzaboote]
     ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {

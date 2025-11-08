@@ -3,11 +3,9 @@
   config,
   options,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.wluma;
-in
-{
+in {
   options = {
     david.programs.wluma = {
       enable = lib.mkEnableOption "wluma";
@@ -35,22 +33,23 @@ in
   config = lib.mkIf cfg.enable {
     services.wluma = {
       enable = true;
-      settings = {
-        als = {
-          webcam = {
-            video = 0;
-            thresholds = {
-              "0" = "night";
-              "15" = "dark";
-              "30" = "dim";
-              "45" = "normal";
-              "60" = "bright";
-              "75" = "outdoors";
+      settings =
+        {
+          als = {
+            webcam = {
+              video = 0;
+              thresholds = {
+                "0" = "night";
+                "15" = "dark";
+                "30" = "dim";
+                "45" = "normal";
+                "60" = "bright";
+                "75" = "outdoors";
+              };
             };
           };
-        };
-      }
-      // cfg.extraSettings;
+        }
+        // cfg.extraSettings;
       systemd = {
         enable = true;
       };

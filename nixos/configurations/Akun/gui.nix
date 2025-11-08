@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   youthlic.gui = {
     enabled = "niri";
   };

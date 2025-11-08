@@ -1,4 +1,7 @@
-{ vim-full, vimPlugins }:
+{
+  vim-full,
+  vimPlugins,
+}:
 vim-full.customize {
   name = "vim";
 
@@ -9,7 +12,7 @@ vim-full.customize {
         vim-one
         vim-airline
       ];
-      opt = [ ];
+      opt = [];
     };
   };
 }

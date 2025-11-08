@@ -2,8 +2,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   youthlic.plugins.conform-nvim.settings = {
     formatters_by_ft.rust = {
       __unkeyed-1 = "rustfmt";

@@ -2,13 +2,11 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.fzf;
   fish-cfg = config.youthlic.programs.fish;
   bash-cfg = config.youthlic.programs.bash;
-in
-{
+in {
   options = {
     youthlic.programs.fzf = {
       enable = lib.mkEnableOption "fzf";

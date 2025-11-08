@@ -1,8 +1,7 @@
-{ ... }:
-_final: prev: {
+{...}: _final: prev: {
   zulip = prev.zulip.overrideAttrs (
     _finalAttrs: prevAttrs: {
-      nativeBuildInputs = prevAttrs.nativeBuildInputs ++ [ prev.makeWrapper ];
+      nativeBuildInputs = prevAttrs.nativeBuildInputs ++ [prev.makeWrapper];
       postInstall =
         #bash
         ''

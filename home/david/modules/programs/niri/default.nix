@@ -6,17 +6,17 @@
   osConfig ? null,
   options,
   ...
-}@args:
-let
+} @ args: let
   cfg = config.david.programs.niri;
   niri = osConfig.programs.niri.package;
-in
-{
+in {
   options = {
     david.programs.niri = {
-      enable = (lib.mkEnableOption "niri") // {
-        default = osConfig.youthlic.gui.enabled == "niri";
-      };
+      enable =
+        (lib.mkEnableOption "niri")
+        // {
+          default = osConfig.youthlic.gui.enabled == "niri";
+        };
       extraConfig = lib.mkOption {
         type = inputs.niri-flake.lib.kdl.types.kdl-document;
       };
@@ -51,35 +51,34 @@ in
           swayimg
           seahorse
         ])
-        ++ [ niri ];
+        ++ [niri];
       qt = {
         enable = true;
       };
       xdg.portal = {
-        configPackages = [ niri ];
+        configPackages = [niri];
         enable = true;
         extraPortals = lib.mkIf (
           !niri.cargoBuildNoDefaultFeatures || builtins.elem "xdp-gnome-screencast" niri.cargoBuildFeatures
-        ) [ pkgs.xdg-desktop-portal-gnome ];
+        ) [pkgs.xdg-desktop-portal-gnome];
       };
-      xdg.configFile =
-        let
-          qtctConf = ''
+      xdg.configFile = let
+        qtctConf =
+          ''
             [Appearance]
             standard_dialogs=xdgdesktopportal
           ''
           + lib.optionalString (config.qt.style ? name) ''
             style=${config.qt.style.name}
           '';
-        in
-        {
-          "qt5ct/qt5ct.conf" = lib.mkForce {
-            text = qtctConf;
-          };
-          "qt6ct/qt6ct.conf" = lib.mkForce {
-            text = qtctConf;
-          };
+      in {
+        "qt5ct/qt5ct.conf" = lib.mkForce {
+          text = qtctConf;
         };
+        "qt6ct/qt6ct.conf" = lib.mkForce {
+          text = qtctConf;
+        };
+      };
       david.programs = {
         fuzzel.enable = true;
         waybar = {
@@ -97,7 +96,7 @@ in
       };
       programs.niri = {
         config =
-          (lib.toList (import ./config.nix (args // { inherit pkgs; }))) ++ (lib.toList cfg.extraConfig);
+          (lib.toList (import ./config.nix (args // {inherit pkgs;}))) ++ (lib.toList cfg.extraConfig);
         package = niri;
       };
     })

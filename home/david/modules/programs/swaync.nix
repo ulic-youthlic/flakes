@@ -2,11 +2,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.swaync;
-in
-{
+in {
   options = {
     david.programs.swaync = {
       enable = lib.mkEnableOption "swaync";
@@ -20,7 +18,7 @@ in
       };
     })
     (lib.mkIf (!cfg.systemd.enable) {
-      systemd.user.services.swaync = lib.mkForce { };
+      systemd.user.services.swaync = lib.mkForce {};
     })
   ];
 }

@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   config.specialisation.kde = {
     inheritParentConfig = true;
     configuration = {

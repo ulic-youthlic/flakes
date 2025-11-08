@@ -24,23 +24,21 @@
       };
     };
   };
-  outputs =
-    {
-      self,
-      flake-utils,
-      nixpkgs,
-      rust-overlay,
-      advisory-db,
-      crane,
-      pre-commit-hooks,
-      ...
-    }:
+  outputs = {
+    self,
+    flake-utils,
+    nixpkgs,
+    rust-overlay,
+    advisory-db,
+    crane,
+    pre-commit-hooks,
+    ...
+  }:
     flake-utils.lib.eachDefaultSystem (
-      system:
-      let
+      system: let
         inherit (pkgs) lib;
         pkgs = import nixpkgs {
-          localSystem = { inherit system; };
+          localSystem = {inherit system;};
           overlays = [
             (import rust-overlay)
             (_final: prev: {
@@ -50,8 +48,7 @@
         };
         rustToolchain = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
         craneLib = (crane.mkLib pkgs).overrideToolchain rustToolchain;
-        srcFilters =
-          path: type:
+        srcFilters = path: type:
           builtins.any (lib.flip lib.hasSuffix path) [
             ".sql"
             ".diff"
@@ -68,16 +65,17 @@
           inherit src;
           strictDeps = true;
         };
-        nativeBuildInputs = [ ];
-        buildInputs = [ ];
+        nativeBuildInputs = [];
+        buildInputs = [];
         genInputs = lib.genInputsWith pkgs;
-        commonArgs = basicArgs // {
-          cargoArtifacts = self.packages.${system}.cargo-artifacts;
-          buildInputs = genInputs buildInputs;
-          nativeBuildInputs = genInputs nativeBuildInputs;
-        };
-      in
-      {
+        commonArgs =
+          basicArgs
+          // {
+            cargoArtifacts = self.packages.${system}.cargo-artifacts;
+            buildInputs = genInputs buildInputs;
+            nativeBuildInputs = genInputs nativeBuildInputs;
+          };
+      in {
         formatter = pkgs.alejandra;
         checks = {
           pre-commit-check = pre-commit-hooks.lib.${system}.run {
@@ -89,11 +87,11 @@
               rustfmt.enable = true;
               cargo-check = {
                 enable = true;
-                stages = [ "pre-push" ];
+                stages = ["pre-push"];
               };
               clippy = {
                 enable = true;
-                stages = [ "pre-push" ];
+                stages = ["pre-push"];
                 settings.denyWarnings = true;
               };
             };
@@ -125,26 +123,24 @@
             }
           );
         };
-        packages =
-          let
-            callPackage = lib.callPackageWith (pkgs // { inherit craneLib callPackage; });
-            packageArgs = {
-              inherit
-                lib
-                basicArgs
-                buildInputs
-                nativeBuildInputs
-                ;
-            };
-            importWithArgs = with lib; flip import packageArgs;
-          in
-          rec {
-            cargo-artifacts = callPackage (importWithArgs ./nix/cargo-artifacts.nix) { };
-            rust-demo = callPackage (importWithArgs ./nix/package.nix) {
-              cargoArtifacts = cargo-artifacts;
-            };
-            default = rust-demo;
+        packages = let
+          callPackage = lib.callPackageWith (pkgs // {inherit craneLib callPackage;});
+          packageArgs = {
+            inherit
+              lib
+              basicArgs
+              buildInputs
+              nativeBuildInputs
+              ;
           };
+          importWithArgs = with lib; flip import packageArgs;
+        in rec {
+          cargo-artifacts = callPackage (importWithArgs ./nix/cargo-artifacts.nix) {};
+          rust-demo = callPackage (importWithArgs ./nix/package.nix) {
+            cargoArtifacts = cargo-artifacts;
+          };
+          default = rust-demo;
+        };
         apps.default = flake-utils.lib.mkApp {
           drv = self.packages."${system}".default;
         };

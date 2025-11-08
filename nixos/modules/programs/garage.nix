@@ -3,11 +3,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.garage;
-in
-{
+in {
   options = {
     youthlic.programs.garage = {
       enable = lib.mkEnableOption "garage";

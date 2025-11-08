@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.fish;
-in
-{
+in {
   options = {
     youthlic.programs.fish = {
       enable = lib.mkEnableOption "fish";
@@ -25,7 +23,8 @@ in
           {
             name = with pkgs.fishPlugins.foreign-env; pname + "-" + version;
             src = pkgs.fishPlugins.foreign-env.overrideAttrs {
-              postInstall = # bash
+              postInstall =
+                # bash
                 ''
                   ln -s $out/share/fish/vendor_functions.d $out/functions
                 '';
@@ -41,7 +40,8 @@ in
             body = '''';
           };
         };
-        shellInitLast = # fish
+        shellInitLast =
+          # fish
           ''
             if test -e ~/.config/guix/current/bin/guix
               fish_add_path -pPm ~/.config/guix/current/bin

@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   youthlic.plugins.gitsigns = {
     enable = true;
     luaConfig.post =

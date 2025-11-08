@@ -4,14 +4,12 @@
   callPackage,
   buildEnv,
   lib,
-}:
-let
+}: let
   inherit (stdenv.hostPlatform) system;
   inherit (inputs.helix.packages."${system}") helix;
-  runtime = callPackage ./runtime.nix { };
+  runtime = callPackage ./runtime.nix {};
   helix' = helix.overrideAttrs (
-    _final: prev:
-    let
+    _final: prev: let
       helix-runtime = buildEnv {
         name = "helix-runtime";
         paths = [
@@ -19,18 +17,19 @@ let
           prev.env.HELIX_DEFAULT_RUNTIME
         ];
       };
-    in
-    {
+    in {
       env.HELIX_DEFAULT_RUNTIME = toString helix-runtime;
     }
   );
 in
-helix'
-// {
-  passthru = (helix'.passthru or { }) // {
-    languages = lib.pipe "${helix.src}/languages.toml" [
-      builtins.readFile
-      builtins.fromTOML
-    ];
-  };
-}
+  helix'
+  // {
+    passthru =
+      (helix'.passthru or {})
+      // {
+        languages = lib.pipe "${helix.src}/languages.toml" [
+          builtins.readFile
+          builtins.fromTOML
+        ];
+      };
+  }

@@ -8,37 +8,38 @@
   gnugrep,
   lib,
   makeWrapper,
-}:
-let
+}: let
   inherit (srcs.cliphist) src date version;
 in
-cliphist.overrideAttrs (
-  _final: prev: {
-    inherit src;
-    version =
-      if prev.version != "0.6.1" then
-        throw ''
-          Please remove <pkgs/cliphist.nix>
-        ''
-      else
-        "0-unstable-${date}-git${version}";
-    vendorHash = "sha256-4XyDLOJHdre/1BpjgFt/W6gOlPOvKztE+MsbwE3JAaQ=";
-    buildInputs = (prev.buildInputs or [ ]) ++ [
-      makeWrapper
-    ];
-    postInstall = ''
-      cp -t $out/bin/ $src/contrib/*
-      rm $out/bin/cliphist.service
-      wrapProgram $out/bin/cliphist-fuzzel-img \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          imagemagick
-          wl-clipboard
-          fuzzel
-          gawk
-          gnugrep
-        ]
-      }
-    '';
-  }
-)
+  cliphist.overrideAttrs (
+    _final: prev: {
+      inherit src;
+      version =
+        if prev.version != "0.6.1"
+        then
+          throw ''
+            Please remove <pkgs/cliphist.nix>
+          ''
+        else "0-unstable-${date}-git${version}";
+      vendorHash = "sha256-4XyDLOJHdre/1BpjgFt/W6gOlPOvKztE+MsbwE3JAaQ=";
+      buildInputs =
+        (prev.buildInputs or [])
+        ++ [
+          makeWrapper
+        ];
+      postInstall = ''
+        cp -t $out/bin/ $src/contrib/*
+        rm $out/bin/cliphist.service
+        wrapProgram $out/bin/cliphist-fuzzel-img \
+        --prefix PATH : ${
+          lib.makeBinPath [
+            imagemagick
+            wl-clipboard
+            fuzzel
+            gawk
+            gnugrep
+          ]
+        }
+      '';
+    }
+  )

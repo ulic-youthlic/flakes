@@ -3,13 +3,11 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.yazi;
   fish-cfg = config.youthlic.programs.fish;
   bash-cfg = config.youthlic.programs.bash;
-in
-{
+in {
   options = {
     youthlic.programs.yazi = {
       enable = lib.mkEnableOption "yazi";
@@ -23,7 +21,8 @@ in
       programs.yazi = {
         enable = true;
         plugins = {
-          inherit (pkgs.yaziPlugins)
+          inherit
+            (pkgs.yaziPlugins)
             ouch
             starship
             piper
@@ -81,7 +80,7 @@ in
                 desc = "Chmod on selected files";
               }
               {
-                on = [ "l" ];
+                on = ["l"];
                 run = "plugin smart-enter";
                 desc = "Enter the child directory, or open the file";
               }

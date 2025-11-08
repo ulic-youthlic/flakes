@@ -3,11 +3,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.firefox;
-in
-{
+in {
   options = {
     david.programs.firefox = {
       enable = lib.mkEnableOption "firefox";
@@ -89,7 +87,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "@gp" ];
+              definedAliases = ["@gp"];
             };
             "Nix Packages" = {
               urls = [
@@ -108,7 +106,7 @@ in
                 }
               ];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = [ "@np" ];
+              definedAliases = ["@np"];
             };
             "Nix Options" = {
               urls = [
@@ -126,7 +124,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "@no" ];
+              definedAliases = ["@no"];
             };
             "Home Manager Options" = {
               urls = [
@@ -144,7 +142,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "@hm" ];
+              definedAliases = ["@hm"];
             };
             "Nix Flakes" = {
               urls = [
@@ -162,7 +160,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "@nf" ];
+              definedAliases = ["@nf"];
             };
             "NixOS Wiki" = {
               urls = [
@@ -176,7 +174,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "@nw" ];
+              definedAliases = ["@nw"];
             };
             "Rust Stdandard Lib" = {
               urls = [
@@ -190,7 +188,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "@rs" ];
+              definedAliases = ["@rs"];
             };
             "GitHub" = {
               urls = [
@@ -208,7 +206,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "@gh" ];
+              definedAliases = ["@gh"];
             };
             "Rust Reference" = {
               urls = [
@@ -222,7 +220,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "@rr" ];
+              definedAliases = ["@rr"];
             };
             "Rust Crates" = {
               urls = [
@@ -236,7 +234,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "@rc" ];
+              definedAliases = ["@rc"];
             };
             "C++ Reference" = {
               urls = [
@@ -254,7 +252,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "@cr" ];
+              definedAliases = ["@cr"];
             };
             "bing".metaData.hidden = true;
             "google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias

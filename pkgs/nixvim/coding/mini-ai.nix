@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   youthlic.plugins.mini-ai = {
     enable = true;
     luaConfig.pre =

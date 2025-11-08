@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.kvm;
-in
-{
+in {
   options = {
     youthlic.programs.kvm = {
       enable = lib.mkEnableOption "kvm";
@@ -16,8 +14,8 @@ in
     dconf = {
       settings = {
         "org/virt-manager/virt-manager/connections" = {
-          autoconnect = [ "qemu:///system" ];
-          uris = [ "qemu:///system" ];
+          autoconnect = ["qemu:///system"];
+          uris = ["qemu:///system"];
         };
       };
     };

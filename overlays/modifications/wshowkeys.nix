@@ -1,8 +1,5 @@
-{ outputs, ... }:
-_final: prev:
-let
+{outputs, ...}: _final: prev: let
   inherit (prev.stdenv.hostPlatform) system;
-in
-{
+in {
   wshowkeys = outputs.packages.${system}.wshowkeys-mao;
 }

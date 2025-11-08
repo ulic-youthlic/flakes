@@ -2,11 +2,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.atuin;
-in
-{
+in {
   options = {
     youthlic.programs.atuin = {
       enable = lib.mkEnableOption "atuin";

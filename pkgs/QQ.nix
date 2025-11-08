@@ -6,7 +6,7 @@
 }:
 symlinkJoin {
   name = "QQ";
-  paths = [ qq ];
+  paths = [qq];
   inherit (qq) meta;
   buildInputs = [
     makeWrapper

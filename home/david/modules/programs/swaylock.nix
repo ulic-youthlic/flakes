@@ -3,11 +3,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.swaylock;
-in
-{
+in {
   options = {
     david.programs.swaylock = {
       enable = lib.mkEnableOption "swaylock";

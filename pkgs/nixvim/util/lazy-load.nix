@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   extraConfigLuaPre =
     #lua
     ''

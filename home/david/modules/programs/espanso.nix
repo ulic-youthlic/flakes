@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.espanso;
-in
-{
+in {
   options = {
     david.programs.espanso = {
       enable = lib.mkEnableOption "espanso";
@@ -18,7 +16,7 @@ in
       enable = true;
       package = pkgs.espanso-wayland;
       configs = {
-        default = { };
+        default = {};
       };
       matches = {
         base = {

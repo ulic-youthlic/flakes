@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.fuzzel;
-in
-{
+in {
   options = {
     david.programs.fuzzel = {
       enable = lib.mkEnableOption "fuzzel";

@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.wshowkeys;
-in
-{
+in {
   options = {
     youthlic.programs.wshowkeys = {
       enable = lib.mkEnableOption "wshowkeys";

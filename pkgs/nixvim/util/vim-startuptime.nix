@@ -1,5 +1,4 @@
-{ nixvimPlugins, ... }:
-{
+{nixvimPlugins, ...}: {
   extraPlugins = [
     {
       config =

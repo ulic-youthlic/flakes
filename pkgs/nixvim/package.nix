@@ -11,8 +11,7 @@ makeNixvimWithModule {
     inherit nixvimPlugins;
   };
   module = {
-    imports =
-      with lib;
+    imports = with lib;
       youthlic.loadImports' ./. (filter (name: !hasSuffix "/package.nix" (toString name)));
     enableMan = true;
     enablePrintInit = true;

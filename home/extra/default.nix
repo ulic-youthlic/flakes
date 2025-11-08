@@ -2,8 +2,7 @@
   lib,
   inputs,
   ...
-}:
-{
+}: {
   imports =
     (with inputs; [
       niri-flake.homeModules.niri

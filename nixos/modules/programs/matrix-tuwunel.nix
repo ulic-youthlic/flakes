@@ -2,11 +2,9 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.youthlic.programs.matrix-tuwunel;
-in
-{
+in {
   options = {
     youthlic.programs.matrix-tuwunel = {
       enable = lib.mkEnableOption "tuwunel";
@@ -28,7 +26,7 @@ in
         enable = true;
         settings = {
           global = {
-            port = [ 8481 ];
+            port = [8481];
             address = [
               "0.0.0.0"
               "::"

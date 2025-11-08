@@ -2,11 +2,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.david.programs.chromium;
-in
-{
+in {
   options = {
     david.programs.chromium = {
       enable = lib.mkEnableOption "chromium";
