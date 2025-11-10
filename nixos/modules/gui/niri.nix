@@ -11,12 +11,11 @@ in {
     };
   };
   config = lib.mkIf (cfg.enabled == "niri") {
-    qt = {
-      enable = true;
-      platformTheme = "qt5ct";
-    };
     # Enabled to support trash of nautilus
     services.gvfs.enable = true;
+
+    systemd.user.services.niri-flake-polkit.serviceConfig.ExecStart = lib.mkForce "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
+
     environment = {
       pathsToLink = ["share/thumbnailers"];
       systemPackages = with pkgs; [
@@ -26,8 +25,6 @@ in {
         libheif.out
 
         bluez
-        kdePackages.qt6ct
-        libsForQt5.qt5ct
         xwayland-satellite-unstable
         evince
       ];

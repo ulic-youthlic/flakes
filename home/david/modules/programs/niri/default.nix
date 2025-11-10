@@ -3,13 +3,15 @@
   lib,
   inputs,
   pkgs,
-  osConfig ? null,
+  osConfig ? (throw "Trying to access osConfig, the home-manager module is not being used in the nixos module"),
   options,
   ...
-} @ args: let
+}: let
   cfg = config.david.programs.niri;
-  niri = osConfig.programs.niri.package;
 in {
+  imports = [
+    ./config.nix
+  ];
   options = {
     david.programs.niri = {
       enable =
@@ -17,7 +19,7 @@ in {
         // {
           default = osConfig.youthlic.gui.enabled == "niri";
         };
-      extraConfig = lib.mkOption {
+      config = lib.mkOption {
         type = inputs.niri-flake.lib.kdl.types.kdl-document;
       };
       wluma.extraSettings = lib.mkOption {
@@ -42,40 +44,23 @@ in {
   };
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
-      home.packages =
-        (with pkgs; [
-          swaynotificationcenter
-          kdePackages.polkit-kde-agent-1
-          wl-clipboard
-          cliphist
-          swayimg
-          seahorse
-        ])
-        ++ [niri];
-      qt = {
-        enable = true;
-      };
-      xdg.portal = {
-        configPackages = [niri];
-        enable = true;
-        extraPortals = lib.mkIf (
-          !niri.cargoBuildNoDefaultFeatures || builtins.elem "xdp-gnome-screencast" niri.cargoBuildFeatures
-        ) [pkgs.xdg-desktop-portal-gnome];
-      };
+      home.packages = with pkgs; [
+        swaynotificationcenter
+        wl-clipboard
+        cliphist
+        swayimg
+        seahorse
+      ];
       xdg.configFile = let
-        qtctConf =
-          ''
-            [Appearance]
-            standard_dialogs=xdgdesktopportal
-          ''
-          + lib.optionalString (config.qt.style ? name) ''
-            style=${config.qt.style.name}
-          '';
+        qtctConf = ''
+          [Appearance]
+          standard_dialogs=xdgdesktopportal
+        '';
       in {
-        "qt5ct/qt5ct.conf" = lib.mkForce {
+        "qt5ct/qt5ct.conf" = {
           text = qtctConf;
         };
-        "qt6ct/qt6ct.conf" = lib.mkForce {
+        "qt6ct/qt6ct.conf" = {
           text = qtctConf;
         };
       };
@@ -95,9 +80,7 @@ in {
         kanshi.enable = true;
       };
       programs.niri = {
-        config =
-          (lib.toList (import ./config.nix (args // {inherit pkgs;}))) ++ (lib.toList cfg.extraConfig);
-        package = niri;
+        inherit (cfg) config;
       };
     })
     (lib.mkIf (!cfg.enable) {
