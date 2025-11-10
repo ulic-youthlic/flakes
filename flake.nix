@@ -65,9 +65,6 @@
       owner = "helix-editor";
       repo = "helix";
       ref = "master";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
     };
 
     home-manager = {
@@ -227,6 +224,22 @@
       type = "github";
       owner = "fufexan";
       repo = "nix-gaming";
+    };
+
+    quickshell = {
+      type = "github";
+      owner = "outfoxxed";
+      repo = "quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      type = "github";
+      owner = "noctalia-dev";
+      repo = "noctalia-shell";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        quickshell.follows = "quickshell";
+      };
     };
   };
 }

@@ -22,6 +22,22 @@ in {
       config = lib.mkOption {
         type = inputs.niri-flake.lib.kdl.types.kdl-document;
       };
+      configHelper = lib.mkOption {
+        type = lib.types.anything;
+        default = {
+          validated-config-for = configuration:
+            pkgs.runCommand "config.kdl" {
+              inherit configuration;
+              passAsFile = ["configuration"];
+              buildInputs = [config.programs.niri.package];
+            }
+            #bash
+            ''
+              niri validate -c $configurationPath
+              cp $configurationPath $out
+            '';
+        };
+      };
       wluma.extraSettings = lib.mkOption {
         inherit (options.david.programs.wluma.extraSettings) type;
       };
@@ -45,9 +61,9 @@ in {
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
       home.packages = with pkgs; [
-        swaynotificationcenter
+        # swaynotificationcenter
         wl-clipboard
-        cliphist
+        # cliphist
         swayimg
         seahorse
       ];
@@ -65,22 +81,29 @@ in {
         };
       };
       david.programs = {
-        fuzzel.enable = true;
-        waybar = {
-          enable = true;
-          inherit (cfg.waybar) settings;
-        };
-        wluma = {
-          enable = true;
-          inherit (cfg.wluma) extraSettings;
-        };
-        swaync.enable = true;
-        swaylock.enable = true;
-        waypaper.enable = true;
+        # fuzzel.enable = true;
+        # waybar = {
+        #   enable = true;
+        #   inherit (cfg.waybar) settings;
+        # };
+        # wluma = {
+        #   enable = true;
+        #   inherit (cfg.wluma) extraSettings;
+        # };
+        # swaync.enable = true;
+        # swaylock.enable = true;
+        # waypaper.enable = true;
         kanshi.enable = true;
+        noctalia.enable = true;
       };
-      programs.niri = {
-        inherit (cfg) config;
+      programs = {
+        niri = {
+          config =
+            cfg.config
+            ++ [
+              (inputs.niri-flake.lib.kdl.leaf "include" [(toString config.david.programs.noctalia.niriExtraConfig)])
+            ];
+        };
       };
     })
     (lib.mkIf (!cfg.enable) {
