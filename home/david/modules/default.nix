@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   imports = lib.youthlic.loadImports ./.;
   config = {
     youthlic.programs = {
@@ -12,10 +8,5 @@
       eza.enable = true;
     };
     services.mpris-proxy.enable = true;
-    home.packages = with pkgs; [
-      spacer
-      devenv
-      just
-    ];
   };
 }
