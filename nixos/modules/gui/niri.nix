@@ -30,6 +30,11 @@ in {
       ];
     };
     xdg = {
+      portal = {
+        extraPortals = [
+          pkgs.xdg-desktop-portal-gtk
+        ];
+      };
       terminal-exec = {
         enable = true;
         settings = {
