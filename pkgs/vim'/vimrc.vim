@@ -64,3 +64,7 @@ set wildmenu
 set wildmode=full
 set wildoptions=fuzzy,pum
 set wrap
+
+map gh 0
+map gl $
+map gs ^
