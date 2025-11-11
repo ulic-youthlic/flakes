@@ -17,6 +17,8 @@ in {
     (lib.mkIf cfg.enable {
       programs.eza = {
         enable = true;
+        colors = "auto";
+        icons = "auto";
       };
     })
     (lib.mkIf (cfg.enable && fish-cfg.enable) {
