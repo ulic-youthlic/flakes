@@ -31,6 +31,7 @@ in {
           enter_accept = false;
           keymap_mode = "vim-insert";
           sync.records = true;
+          search_mode = "skim";
         };
       };
     })
