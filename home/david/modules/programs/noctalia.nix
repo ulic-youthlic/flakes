@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  pkgs,
   ...
 }: let
   cfg = config.david.programs.noctalia;
@@ -45,6 +46,7 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
+    home.packages = [pkgs.app2unit];
     programs.noctalia-shell = {
       enable = true;
       systemd.enable = true;
@@ -55,6 +57,7 @@ in {
           position = "center";
           sortByMostUsed = true;
           terminalCommand = "ghostty -e";
+          useApp2Unit = true;
         };
         audio = {
           volumeStep = 1;
