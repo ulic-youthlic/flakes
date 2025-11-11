@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   cfg = config.david.programs.mpv;
@@ -13,6 +14,10 @@ in {
   config = lib.mkIf cfg.enable {
     programs.mpv = {
       enable = true;
+      scripts = [
+        pkgs.mpvScripts.uosc
+        pkgs.mpvScripts.thumbfast
+      ];
     };
   };
 }
