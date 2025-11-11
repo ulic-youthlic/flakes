@@ -63,7 +63,7 @@ in {
       enable = true;
       systemd.enable = true;
       settings = {
-        settingsVersion = 21;
+        settingsVersion = 23;
         appLauncher = {
           enableClipboardHistory = true;
           position = "center";
@@ -116,7 +116,7 @@ in {
               {
                 id = "Tray";
                 drawerEnabled = true;
-                favorites = [
+                pinned = [
                   "Fcitx"
                 ];
               }
@@ -172,7 +172,7 @@ in {
           animationSpeed = 2;
           avatarImage = "${config.home.homeDirectory}/.face";
           compactLockScreen = false;
-          dimDesktop = false;
+          dimmerOpacity = 0;
           enableShadows = true;
           forceBlackScreenCorners = false;
           language = "zh-CN";
