@@ -40,6 +40,18 @@ in {
             (match [{namespace = "^noctalia-notifications-.*$";}])
             (leaf "block-out-from" ["screen-capture"])
           ])
+          (plain "layout" [
+            (plain "focus-ring" [
+              (leaf "active-gradient" [
+                {
+                  from = "#8288fcff";
+                  to = "#8288fc00";
+                  angle = 45;
+                  "in" = "oklch";
+                }
+              ])
+            ])
+          ])
         ];
         apply = configuration: config.david.programs.niri.configHelper.validated-config-for (inputs.niri-flake.lib.kdl.serialize.nodes configuration);
       };
