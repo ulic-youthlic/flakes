@@ -22,7 +22,7 @@
     },
     "TrackersListCollection": {
         "cargoLocks": null,
-        "date": "2025-11-07",
+        "date": "2025-11-11",
         "extract": null,
         "name": "TrackersListCollection",
         "passthru": null,
@@ -34,14 +34,14 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "8a2547cee4f92f12ec58923ce4ec065b73357f2b",
-            "sha256": "sha256-Y9o86dtvuu4ELF816ln4+jLXduUvBVhTJQcb5mB9ij8=",
+            "rev": "732ee83a7f9fc03a527e2b3e6dbb05e94335a3de",
+            "sha256": "sha256-jijgOp6SLzoIB3Vt94brwF316HwqYU8JppwTpXF+Y+A=",
             "sparseCheckout": [
                 "all.txt"
             ],
             "type": "github"
         },
-        "version": "8a2547cee4f92f12ec58923ce4ec065b73357f2b"
+        "version": "732ee83a7f9fc03a527e2b3e6dbb05e94335a3de"
     },
     "cliphist": {
         "cargoLocks": null,
@@ -188,7 +188,7 @@
     },
     "spotx": {
         "cargoLocks": null,
-        "date": "2025-10-22",
+        "date": "2025-11-07",
         "extract": null,
         "name": "spotx",
         "passthru": null,
@@ -200,12 +200,12 @@
             "name": null,
             "owner": "SpotX-Official",
             "repo": "SpotX-Bash",
-            "rev": "de9c99a1f2c74ee722b3216ca28c8f7f76ac206d",
-            "sha256": "sha256-p93UHSAZGskvt26vtDipXFBN/Biola1gK1QHS6EsYAE=",
+            "rev": "a2bd8479a2a80a068e749530aa5a78b2918358b8",
+            "sha256": "sha256-pQgXi6AU0OlJgOe3GB+m1fivchzbfTp6UWF54hx+QNU=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "de9c99a1f2c74ee722b3216ca28c8f7f76ac206d"
+        "version": "a2bd8479a2a80a068e749530aa5a78b2918358b8"
     },
     "tree-sitter-idris": {
         "cargoLocks": null,

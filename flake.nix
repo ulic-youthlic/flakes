@@ -49,7 +49,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs.url = "github:NixOS/nixpkgs/master";
-    nixpkgs-455083.url = "github:NixOS/nixpkgs?ref=pull/455083/head";
 
     lix-module = {
       # url = "git+https://git.lix.systems/lix-project/nixos-module?ref=release-2.93";
