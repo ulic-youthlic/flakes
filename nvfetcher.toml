@@ -58,8 +58,3 @@ url.name = "yustar_$ver.zip"
 [nvim_vim-startuptime]
 fetch.github = "dstein64/vim-startuptime"
 src.git = "https://github.com/dstein64/vim-startuptime.git"
-
-[spotifyd]
-fetch.git = "https://github.com/ulic-youthlic/spotifyd.git"
-src.git = "https://github.com/ulic-youthlic/spotifyd.git"
-src.branch = "push-mrxqoqwxqsqt"

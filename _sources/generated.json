@@ -166,26 +166,6 @@
         },
         "version": "v3.10.0"
     },
-    "spotifyd": {
-        "cargoLocks": null,
-        "date": "2025-09-04",
-        "extract": null,
-        "name": "spotifyd",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "rev": "f1acee9c6160db92dcd4214e96654cbbaed0e38a",
-            "sha256": "sha256-dcc+sklPJvV34U1A/eTD1kfIey4o5/kPq4yd72ey7LE=",
-            "sparseCheckout": [],
-            "type": "git",
-            "url": "https://github.com/ulic-youthlic/spotifyd.git"
-        },
-        "version": "f1acee9c6160db92dcd4214e96654cbbaed0e38a"
-    },
     "spotx": {
         "cargoLocks": null,
         "date": "2025-11-07",

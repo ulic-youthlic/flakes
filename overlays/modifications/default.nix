@@ -12,7 +12,6 @@ in
       ./helix.nix
       ./cliphist.nix
       ./zulip.nix
-      ./spotifyd.nix
       ./nautilus.nix
       ./neovim-nightly.nix
       ./vim.nix
