@@ -178,7 +178,7 @@ in {
             "Rust Crates" = {
               urls = [
                 {
-                  temaplte = "https://crates.io/search";
+                  template = "https://crates.io/search";
                   params = [
                     {
                       name = "q";
