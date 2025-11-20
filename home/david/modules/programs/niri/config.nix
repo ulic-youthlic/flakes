@@ -6,7 +6,7 @@
 }: {
   config.david.programs.niri.config =
     let
-      inherit (lib) getExe;
+      inherit (lib) getExe getExe';
       inherit
         (inputs.niri-flake.lib.kdl)
         # node with args, props and children
@@ -34,6 +34,7 @@
       # wpctl = getExe' pkgs.wireplumber "wpctl";
       # waypaper = getExe pkgs.waypaper;
       default-terminal = getExe config.programs.ghostty.package;
+      default-browser = getExe' config.programs.zen-browser.package "zen";
       # wl-paste = getExe' pkgs.wl-clipboard "wl-paste";
       # cliphist = getExe' pkgs.cliphist "cliphist";
       # cliphist-fuzzel-img = getExe' pkgs.cliphist "cliphist-fuzzel-img";
@@ -67,6 +68,9 @@
             #     "0.5"
             #   ])
             # ])
+            (plain "Mod+B" [
+              (spawn [default-browser])
+            ])
             (plain "Mod+Shift+Slash" [
               (flag "show-hotkey-overlay")
             ])

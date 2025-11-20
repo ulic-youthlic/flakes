@@ -41,7 +41,12 @@ in {
           default = ["com.mitchellh.ghostty.desktop"];
         };
       };
-      mime = {
+      mime = let
+        browsers = [
+          "zen-twilight.desktop"
+          "chromium-browser.desktop"
+        ];
+      in {
         enable = true;
         defaultApplications = {
           "application/pdf" = [
@@ -50,31 +55,14 @@ in {
           "inode/directory" = [
             "org.gnome.Nautilus.desktop"
           ];
-          "x-scheme-handler/about" = [
-            "firefox-beta.desktop"
-            "chromium-browser.desktop"
-          ];
-          "x-scheme-handler/ftp" = [
-            "firefox-beta.desktop"
-            "chromium-browser.desktop"
-          ];
-          "x-scheme-handler/http" = [
-            "firefox-beta.desktop"
-            "chromium-browser.desktop"
-          ];
-          "x-scheme-handler/https" = [
-            "firefox-beta.desktop"
-            "chromium-browser.desktop"
-          ];
-          "x-scheme-handler/mailto" = [
-            "firefox-beta.desktop"
-            "chromium-browser.desktop"
-          ];
+          "text/html" = browsers;
+          "x-scheme-handler/about" = browsers;
+          "x-scheme-handler/ftp" = browsers;
+          "x-scheme-handler/http" = browsers;
+          "x-scheme-handler/https" = browsers;
+          "x-scheme-handler/mailto" = browsers;
           "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
-          "x-scheme-handler/unknown" = [
-            "firefox-beta.desktop"
-            "chromium-browser.desktop"
-          ];
+          "x-scheme-handler/unknown" = browsers;
           "image/gif" = [
             "swayimg.desktop"
           ];
