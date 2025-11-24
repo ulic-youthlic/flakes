@@ -131,7 +131,7 @@ in {
         };
         colorSchemes = {
           generateTemplatesForPredefined = false;
-          predefineScheme = "Catppuccin";
+          predefinedScheme = "Catppuccin";
           schedulingMode = "location";
           useWallpaperColors = false;
           darkMode = false;

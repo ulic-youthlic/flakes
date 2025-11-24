@@ -21,7 +21,7 @@
     emacs = emacs;
     extraPackages = ep:
       with ep; [
-        melpaPackages.telega
+        melpaStablePackages.telega
         melpaPackages.nixos-options
         melpaPackages.scroll-on-jump
         melpaPackages.org-modern

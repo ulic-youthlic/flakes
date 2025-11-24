@@ -32,6 +32,7 @@
             cudaSupport = false;
             ncclSupport = false;
           };
+          awscli2 = inputs.nixpkgs-fix-awscli2.legacyPackages.${p.stdenv.hostPlatform.system}.awscli2;
         };
       };
     };

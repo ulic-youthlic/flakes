@@ -49,6 +49,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs.url = "github:NixOS/nixpkgs/master";
+    nixpkgs-fix-awscli2.url = "github:NixOS/nixpkgs/master";
 
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module?ref=release-2.93";
@@ -234,19 +235,12 @@
       repo = "nix-gaming";
     };
 
-    quickshell = {
-      type = "github";
-      owner = "outfoxxed";
-      repo = "quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     noctalia = {
       type = "github";
       owner = "noctalia-dev";
       repo = "noctalia-shell";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        quickshell.follows = "quickshell";
       };
     };
   };
