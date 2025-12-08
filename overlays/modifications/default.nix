@@ -15,6 +15,7 @@ in
       ./nautilus.nix
       ./neovim-nightly.nix
       ./vim.nix
+      ./prismlauncher.nix
 
       # Nur
       ./nur.nix
