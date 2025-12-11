@@ -23,12 +23,14 @@
       enable = true;
       users = ["david"];
     };
-    graphics.package = pkgs.mesa_git;
+    graphics.package = pkgs.mesa;
     intelgpu = {
       driver = "xe";
       vaapiDriver = "intel-media-driver";
     };
     nvidia = {
+      # Fix Nvidia API Change, See <https://github.com/NixOS/nixpkgs/issues/467814/>
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
       modesetting.enable = true;
       open = true;
       prime = {

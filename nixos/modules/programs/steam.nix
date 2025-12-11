@@ -14,7 +14,7 @@ in {
   config = lib.mkIf cfg.enable {
     hardware.graphics.enable32Bit = true;
     environment.systemPackages = with pkgs; [
-      gamescope_git
+      gamescope
     ];
     programs.steam = {
       enable = true;

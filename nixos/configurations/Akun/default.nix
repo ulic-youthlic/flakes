@@ -72,7 +72,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelParams = ["i915.enable_guc=2"];
@@ -83,7 +83,7 @@
     };
   };
   hardware = {
-    graphics.package = pkgs.mesa_git;
+    graphics.package = pkgs.mesa;
     intelgpu = {
       vaapiDriver = "intel-vaapi-driver";
       enableHybridCodec = true;

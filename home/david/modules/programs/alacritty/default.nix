@@ -14,7 +14,6 @@ in {
   config = lib.mkIf cfg.enable {
     programs.alacritty = {
       enable = true;
-      package = pkgs.alacritty_git;
       settings =
         (
           with lib;

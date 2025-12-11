@@ -49,7 +49,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs.url = "github:NixOS/nixpkgs/master";
-    nixpkgs-fix-awscli2.url = "github:NixOS/nixpkgs/master";
 
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module?ref=release-2.93";
@@ -166,12 +165,6 @@
       repo = "treefmt-nix";
     };
 
-    chaotic = {
-      type = "github";
-      owner = "chaotic-cx";
-      repo = "nyx";
-    };
-
     nur = {
       type = "github";
       owner = "nix-community";
@@ -208,7 +201,7 @@
       type = "github";
       owner = "nix-community";
       repo = "lanzaboote";
-      ref = "v0.4.3";
+      ref = "v1.0.0";
     };
 
     nix-doom = {
