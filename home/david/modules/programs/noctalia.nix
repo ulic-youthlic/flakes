@@ -58,6 +58,7 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
+    stylix.targets.noctalia-shell.enable = false;
     home.packages = [pkgs.app2unit];
     programs.noctalia-shell = {
       enable = true;

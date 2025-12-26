@@ -22,7 +22,6 @@
         additions
       ];
     };
-    system.rebuild.enableNg = true;
     environment.systemPackages = with pkgs; [
       deploy-rs
     ];
