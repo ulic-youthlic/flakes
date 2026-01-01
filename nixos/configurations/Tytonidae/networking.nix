@@ -20,49 +20,56 @@
         };
       };
     };
-    netdevs = {
-      "20-bond0" = {
-        netdevConfig = {
-          Kind = "bond";
-          Name = "bond0";
-        };
-        bondConfig = {
-          Mode = "balance-alb";
-          MIIMonitorSec = "1s";
-          PrimaryReselectPolicy = "better";
-        };
-      };
-    };
+    # netdevs = {
+    #   "20-bond0" = {
+    #     netdevConfig = {
+    #       Kind = "bond";
+    #       Name = "bond0";
+    #     };
+    #     bondConfig = {
+    #       Mode = "balance-alb";
+    #       MIIMonitorSec = "1s";
+    #       PrimaryReselectPolicy = "better";
+    #     };
+   #   };
+    # };
     networks = {
       "20-eno2" = {
         networkConfig = {
-          Bond = "bond0";
-          PrimarySlave = true;
-        };
-        matchConfig = {
-          Name = "eno2";
-        };
-      };
-      "20-wlan0" = {
-        networkConfig = {
-          Bond = "bond0";
-        };
-        matchConfig = {
-          Name = "wlan0";
-        };
-      };
-      "20-bond0" = {
-        networkConfig = {
-          DHCP = "yes";
+          # Bond = "bond0";
+          # PrimarySlave = true;
+
+          DHCP = "ipv4";
           IPv6AcceptRA = true;
         };
         linkConfig = {
           RequiredForOnline = "routable";
         };
         matchConfig = {
-          Name = "bond0";
+          Name = "eno2";
         };
       };
+      # "20-wlan0" = {
+      #   networkConfig = {
+      #     # Bond = "bond0";
+      #   };
+      #   matchConfig = {
+      #     Name = "wlan0";
+      #   };
+      # };
+
+      # "20-bond0" = {
+      #   networkConfig = {
+      #     DHCP = "yes";
+      #     IPv6AcceptRA = true;
+      #   };
+      #   linkConfig = {
+      #     RequiredForOnline = "routable";
+      #   };
+      #   matchConfig = {
+      #     Name = "bond0";
+      #   };
+      # };
     };
   };
 
@@ -80,7 +87,8 @@
           Enabled = true;
         };
         General = {
-          EnableNetworkConfiguration = false;
+          # EnableNetworkConfiguration = false;
+          EnableNetworkConfiguration = true;
         };
         Settings = {
           AutoConnect = true;
