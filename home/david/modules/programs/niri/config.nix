@@ -514,9 +514,12 @@
         # ])
         (plain "input" [
           (plain "touchpad" [
-            (leaf "click-method" ["clickfinger"])
-            (flag "dwt")
             (leaf "scroll-method" ["two-finger"])
+            (flag "middle-emulation")
+            (flag "tap")
+            (flag "dwt")
+            (leaf "drag" [true])
+            (leaf "click-method" ["clickfinger"])
             (leaf "tap-button-map" ["left-right-middle"])
           ])
         ])
