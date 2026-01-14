@@ -31,7 +31,7 @@
     #       MIIMonitorSec = "1s";
     #       PrimaryReselectPolicy = "better";
     #     };
-   #   };
+    #   };
     # };
     networks = {
       "20-eno2" = {
