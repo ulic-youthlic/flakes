@@ -41,21 +41,6 @@ in {
       wluma.extraSettings = lib.mkOption {
         inherit (options.david.programs.wluma.extraSettings) type;
       };
-      waybar = {
-        template = lib.mkOption {
-          readOnly = true;
-          type = lib.types.anything;
-          default = config.david.programs.waybar.template;
-        };
-        helper = lib.mkOption {
-          readOnly = true;
-          type = lib.types.anything;
-          default = config.david.programs.waybar.helper;
-        };
-        settings = lib.mkOption {
-          inherit (options.david.programs.waybar.settings) type;
-        };
-      };
     };
   };
   config = lib.mkMerge [
