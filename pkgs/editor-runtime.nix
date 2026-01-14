@@ -1,6 +1,6 @@
 {
   buildEnv,
-  nixfmt-rfc-style,
+  nixfmt,
   idris2Packages,
   lua-language-server,
   bash-language-server,
@@ -42,7 +42,7 @@
 buildEnv {
   name = "editor-runtime";
   paths = [
-    nixfmt-rfc-style
+    nixfmt
     idris2Packages.idris2Lsp
     lua-language-server
     bash-language-server

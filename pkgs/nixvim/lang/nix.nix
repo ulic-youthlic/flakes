@@ -49,7 +49,7 @@
                     if exe ~= "" then
                       return exe
                     else
-                      return "${lib.getExe pkgs.nixfmt-rfc-style}"
+                      return "${lib.getExe pkgs.nixfmt}"
                     end
                   end
                 })
