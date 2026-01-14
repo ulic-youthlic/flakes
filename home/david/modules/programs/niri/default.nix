@@ -71,10 +71,10 @@ in {
         #   enable = true;
         #   inherit (cfg.waybar) settings;
         # };
-        # wluma = {
-        #   enable = true;
-        #   inherit (cfg.wluma) extraSettings;
-        # };
+        wluma = {
+          enable = true;
+          inherit (cfg.wluma) extraSettings;
+        };
         # swaync.enable = true;
         # swaylock.enable = true;
         # waypaper.enable = true;

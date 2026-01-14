@@ -10,12 +10,12 @@ in {
       output = {
         backlight = [
           {
-            name = "eDP-2";
+            name = "eDP";
             path = "/sys/class/backlight/nvidia_0";
             capturer = "wayland";
           }
           {
-            name = "DP-1";
+            name = "DP";
             path = "/sys/class/backlight/ddcci13";
             capturer = "wayland";
           }
