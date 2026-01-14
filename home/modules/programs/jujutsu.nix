@@ -42,6 +42,12 @@ in {
         enable = true;
         settings = {
           "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json";
+          aliases = {
+            dlog = ["log" "-r"];
+            l = ["log" "-r" "(trunk()..@):: | (trunk()..@)-"];
+            fresh = ["new" "trunk()"];
+            tug = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "closest_pushable(@)"];
+          };
           snapshot = {
             auto-track = "true";
             max-new-file-size = 0;
@@ -77,8 +83,18 @@ in {
             "format_short_signature(signature)" = "signature";
           };
           revset-aliases = {
-            "immutable_heads()" = ''
-              builtin_immutable_heads() | (trunk().. & ~mine())
+            "closest_bookmark(to)" = "heads(::to & bookmarks())";
+            "closest_pushable(to)" = "heads(::to & mutable() & ~description(exact:\"\") & (~empty() | merges()))";
+            "desc(x)" = "description(x)";
+            "pending()" = ".. ~ ::tags() ~ ::remote_bookmarks() ~ @ ~ private()";
+            "private()" = ''
+              description(glob:'wip:*') |
+              description(glob:'private:*') |
+              description(glob:'WIP:*') |
+              description(glob:'PRIVATE:*') |
+              conflicts() |
+              (empty() ~ merges()) |
+              description(substring-i:"DO NOT NAIL")
             '';
           };
           git = {

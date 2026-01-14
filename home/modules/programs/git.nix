@@ -45,8 +45,11 @@
           };
           git = {
             enable = true;
-            settings.user = {
-              inherit (cfg) email name;
+            settings = {
+              alias.patch = "push rad HEAD:refs/patches";
+              user = {
+                inherit (cfg) email name;
+              };
             };
             lfs.enable = true;
           };
