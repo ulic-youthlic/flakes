@@ -34,18 +34,6 @@ src.git = "https://github.com/top-mind/OuterWildsTextAdventureWeb.git"
 fetch.github = "sentriz/cliphist"
 src.git = "https://github.com/sentriz/cliphist.git"
 
-["wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4"]
-fetch.url = "http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4"
-src.cmd = "curl -sL http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4 | sha256sum | cut -d ' ' -f 1"
-
-["wallpaper_outer-wilds.3840x2160.mp4"]
-fetch.url = "http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4"
-src.cmd = "curl -sL http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4 | sha256sum | cut -d ' ' -f 1"
-
-["wallpaper_hollow-knight-quest.3840x2160.mp4"]
-fetch.url = "http://wallpaper.youthlic.social/hollow-knight-quest.3840x2160.mp4"
-src.cmd = "curl -sL http://wallpaper.youthlic.social/hollow-knight-quest.3840x2160.mp4 | sha256sum | cut -d ' ' -f 1"
-
 [rime-yuhaostar]
 fetch.url = "https://github.com/forfudan/yuhao-ime-release/releases/download/$ver/star_xingchen_$ver.zip"
 src.github = "forfudan/yuhao-ime-release"

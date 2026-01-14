@@ -236,11 +236,5 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-
-    ghostty = {
-      type = "github";
-      owner = "ghostty-org";
-      repo = "ghostty";
-    };
   };
 }

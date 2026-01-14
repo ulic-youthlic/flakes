@@ -46,7 +46,7 @@
           config = with lib;
             pipe ./.typos.toml [
               builtins.readFile
-              builtins.fromTOML
+              fromTOML
             ];
         in {
           enable = true;

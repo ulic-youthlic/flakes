@@ -1,8 +1,6 @@
 {
-  pkgs,
   config,
   lib,
-  inputs,
   ...
 }: {
   options = {
@@ -16,7 +14,6 @@
     programs.ghostty = lib.mkMerge [
       {
         enable = true;
-        package = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
         settings = {
           # font-family = "Maple Mono NF CN";
           font-feature = [

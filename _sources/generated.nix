@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "78cfe5f48e3cceaa10d5b66ad30b13863d6740b9";
+    version = "aa13bda89bcd7deb9be26dc11a4cfb49543274b0";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "78cfe5f48e3cceaa10d5b66ad30b13863d6740b9";
+      rev = "aa13bda89bcd7deb9be26dc11a4cfb49543274b0";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-oJ7gVWcuc1QrK+reTlwnsqWsxcisTGaWKJJAd/FD1rg=";
+      sha256 = "sha256-HWami8LfjIawAJkSAAYgK+ifz9h4HZx8AvOTl4K5HC8=";
     };
-    date = "2025-12-27";
+    date = "2026-01-14";
   };
   cliphist = {
     pname = "cliphist";
@@ -91,15 +91,15 @@
   };
   spotx = {
     pname = "spotx";
-    version = "7c016872bf24ee5357f9621f1136955443f0a8a3";
+    version = "b70121d23c0ca9ddc13dec4d3addcba2799a1a4b";
     src = fetchFromGitHub {
       owner = "SpotX-Official";
       repo = "SpotX-Bash";
-      rev = "7c016872bf24ee5357f9621f1136955443f0a8a3";
+      rev = "b70121d23c0ca9ddc13dec4d3addcba2799a1a4b";
       fetchSubmodules = false;
-      sha256 = "sha256-hCTggx0hm9W9MGQp4MDD8IStfJbmsA0s+SNH0hU24P8=";
+      sha256 = "sha256-SyrdV5RENFEYQZcd7MTtegvPcuGKzTmWQiwPcbnoWpY=";
     };
-    date = "2025-12-26";
+    date = "2026-01-10";
   };
   tree-sitter-idris = {
     pname = "tree-sitter-idris";
@@ -115,30 +115,6 @@
     };
     name = "idris";
     date = "2024-11-05";
-  };
-  "wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4" = {
-    pname = "wallpaper_hieda-no-akyuu-touhou.1920x1080.mp4";
-    version = "346942a88f763c59cc17f7b2a02756cc9d2a0c891585f916e3a4a9c15fe26ac9";
-    src = fetchurl {
-      url = "http://wallpaper.youthlic.social/hieda-no-akyuu-touhou.1920x1080.mp4";
-      sha256 = "sha256-NGlCqI92PFnMF/eyoCdWzJ0qDIkVhfkW46SpwV/iask=";
-    };
-  };
-  "wallpaper_hollow-knight-quest.3840x2160.mp4" = {
-    pname = "wallpaper_hollow-knight-quest.3840x2160.mp4";
-    version = "ecbb31075e7e387cb03a9035298a2b0fbce529d2f4dc91b7bddaa08af570a41b";
-    src = fetchurl {
-      url = "http://wallpaper.youthlic.social/hollow-knight-quest.3840x2160.mp4";
-      sha256 = "sha256-7LsxB15+OHywOpA1KYorD7zlKdL03JG3vdqgivVwpBs=";
-    };
-  };
-  "wallpaper_outer-wilds.3840x2160.mp4" = {
-    pname = "wallpaper_outer-wilds.3840x2160.mp4";
-    version = "19e0ccb48483f55f3413201718e8b2ba4a6acd112e1a3e7bb5ad913b87c5f210";
-    src = fetchurl {
-      url = "http://wallpaper.youthlic.social/outer-wilds.3840x2160.mp4";
-      sha256 = "sha256-GeDMtISD9V80EyAXGOiyukpqzREuGj57ta2RO4fF8hA=";
-    };
   };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";
