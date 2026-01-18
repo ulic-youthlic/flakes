@@ -72,7 +72,7 @@ in {
                 conflict = "pair";
               };
             };
-            default-command = "log";
+            default-command = "l";
           };
           templates = {
             log = ''
