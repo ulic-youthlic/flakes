@@ -82,9 +82,6 @@
       ],
       "right": [
         {
-          "id": "plugin:timer"
-        },
-        {
           "displayMode": "onhover",
           "id": "Brightness"
         },
@@ -407,7 +404,7 @@
       "lowSoundFile": "",
       "excludedApps": "discord,firefox,chrome,chromium,edge"
     },
-    "enableMediaToast": true
+    "enableMediaToast": false
   },
   "osd": {
     "enabled": true,
