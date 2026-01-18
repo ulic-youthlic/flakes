@@ -87,6 +87,7 @@
     vesktop
     zulip
     aria2
+    bitwarden-desktop
 
     juicity
     waypipe
