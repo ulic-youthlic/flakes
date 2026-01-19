@@ -109,13 +109,10 @@ in {
         "format_on_save" = "off";
         ui_font_size = 20;
         buffer_font_size = 20;
-        buffer_font_family = "Maple Mono NF CN";
-        buffer_font_features = {
-          "calt" = true;
-          "zero" = true;
-          "cv03" = true;
-          "ss08" = true;
-        };
+        buffer_font_family = "MonoLisa";
+        buffer_font_fallback = [
+          "Source Han Sans"
+        ];
         ui_font_family = "Source Han Sans";
         theme = "Catppuccin Latte";
         helix_mode = true;

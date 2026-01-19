@@ -14,6 +14,7 @@ in {
   config = lib.mkIf cfg.enable {
     i18n = {
       defaultLocale = "C.UTF-8";
+      extraLocales = ["zh_CN.UTF-8/UTF-8"];
       extraLocaleSettings = {
         LC_ADDRESS = "zh_CN.UTF-8";
         LC_IDENTIFICATION = "zh_CN.UTF-8";

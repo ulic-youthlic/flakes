@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  rootPath,
   ...
 }: let
   cfg = config.youthlic.gui;
@@ -31,6 +32,19 @@ in {
       package = pkgs.firefox-beta;
     };
 
+    sops.secrets = with lib;
+    with builtins;
+      pipe (rootPath + "/secrets/dummy_font") [
+        readDir
+        attrNames
+        (flip genAttrs (name: {
+          sopsFile = rootPath + "/secrets/dummy_font/${name}";
+          format = "binary";
+          path = "/run/fonts/${name}";
+          mode = "0444";
+        }))
+      ];
+
     fonts = {
       enableDefaultPackages = false;
       packages = with pkgs; [
@@ -44,23 +58,35 @@ in {
         noto-fonts-cjk-serif
         noto-fonts
       ];
-      fontconfig.defaultFonts = {
-        serif = [
-          "Libertinus Serif"
-          "Source Han Serif"
-          "Noto Serif CJK SC"
-        ];
-        sansSerif = [
-          "Source Han Sans"
-          "Noto Sans CJK SC"
-        ];
-        monospace = [
-          "Maple Mono NF CN"
-          "Noto Sans Mono SC"
-        ];
-        emoji = [
-          "Noto Color Emoji"
-        ];
+      fontconfig = {
+        localConf =
+          #xml
+          ''
+            <?xml version="1.0"?>
+            <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+            <fontconfig>
+            <dir>/run/fonts</dir>
+            </fontconfig>
+          '';
+        defaultFonts = {
+          serif = [
+            "Libertinus Serif"
+            "Source Han Serif"
+            "Noto Serif CJK SC"
+          ];
+          sansSerif = [
+            "Source Han Sans"
+            "Noto Sans CJK SC"
+          ];
+          monospace = [
+            "MonoLisa"
+            "Maple Mono NF CN"
+            "Noto Sans Mono SC"
+          ];
+          emoji = [
+            "Noto Color Emoji"
+          ];
+        };
       };
     };
 

@@ -11,20 +11,18 @@
   config = let
     cfg = config.david.programs.ghostty;
   in (lib.mkIf cfg.enable {
+    stylix.targets.ghostty.enable = false;
     programs.ghostty = lib.mkMerge [
       {
         enable = true;
         settings = {
-          # font-family = "Maple Mono NF CN";
-          font-feature = [
-            "calt"
-            "zero"
-            "cv03"
-            "ss08"
+          font-family = [
+            "MonoLisa"
+            "Source Han Sans"
           ];
           font-size = lib.mkForce 17;
-          theme = lib.mkForce "Atom One Dark";
-          background-opacity = lib.mkForce 0.8;
+          theme = "Atom One Dark";
+          background-opacity = 0.8;
           confirm-close-surface = "false";
         };
       }

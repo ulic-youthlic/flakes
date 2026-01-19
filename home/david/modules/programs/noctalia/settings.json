@@ -147,7 +147,7 @@
   },
   "ui": {
     "fontDefault": "Source Han Serif SC",
-    "fontFixed": "Maple Mono NF CN",
+    "fontFixed": "MonoLisa",
     "fontDefaultScale": 1,
     "fontFixedScale": 1,
     "tooltipsEnabled": true,

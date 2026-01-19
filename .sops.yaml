@@ -9,3 +9,9 @@ creation_rules:
           - *master
           - *machine_Akun
           - *machine_Cape
+  - path_regex: secrets/dummy_fonts/[^/]+\.(ttf|otf)$
+    key_groups:
+      - age:
+          - *master
+          - *machine_Akun
+          - *machine_Cape

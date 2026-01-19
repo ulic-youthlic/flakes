@@ -10,7 +10,7 @@
                 fish-exe))
 
 (setq doom-font (font-spec
-                 :family "Maple Mono NF CN"
+                 :family "MonoLisa"
                  :size 20))
 (setq doom-theme 'doom-one-light)
 ;;; Fix failure to locate 'Symbols Nerd Font Mono' font

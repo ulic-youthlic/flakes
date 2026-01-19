@@ -3,7 +3,7 @@
     #lua
     ''
       if vim.g.neovide then
-        vim.o.guifont = [[Maple Mono NF CN,Noto Color Emoji:h16]]
+        vim.o.guifont = [[MonoLisa,Source Han Sans,Noto Color Emoji:h16]]
         vim.g.neovide_opacity = 0.9
         vim.g.linespace = 0.2
         vim.g.neovide_text_gamma = 0.8

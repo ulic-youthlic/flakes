@@ -24,7 +24,7 @@
       };
       monospace = {
         package = pkgs.maple-mono.NF-CN;
-        name = "Maple Mono NF CN";
+        name = "MonoLisa";
       };
       emoji = {
         package = pkgs.noto-fonts-color-emoji;
