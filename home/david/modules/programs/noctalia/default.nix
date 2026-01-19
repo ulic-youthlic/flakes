@@ -63,7 +63,7 @@ in {
     programs.noctalia-shell = {
       enable = true;
       systemd.enable = true;
-      plugins = toString ./plugins.json;
+      plugins = builtins.fromJSON (builtins.readFile ./plugins.json);
       settings =
         lib.recursiveUpdate
         (builtins.fromJSON (builtins.readFile ./settings.json))

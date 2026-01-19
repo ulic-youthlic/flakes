@@ -82,6 +82,9 @@
       ],
       "right": [
         {
+          "id": "plugin:timer"
+        },
+        {
           "displayMode": "onhover",
           "id": "Brightness"
         },
