@@ -56,6 +56,7 @@
       helix.enable = true;
       nvchad.enable = true;
       # spacemacs.enable = true;
+      radicle.enable = true;
     };
   };
 
