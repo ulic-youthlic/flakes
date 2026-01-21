@@ -66,7 +66,6 @@
   services.printing.enable = true;
 
   environment.systemPackages = with pkgs; [
-    radicle-node
     radicle-desktop
     nix-output-monitor
     wget

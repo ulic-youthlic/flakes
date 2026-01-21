@@ -44,7 +44,7 @@
   services.printing.enable = true;
 
   environment.systemPackages = with pkgs; [
-    radicle-node
+    radicle-desktop
     nix-output-monitor
     wget
     git
@@ -59,7 +59,6 @@
     localsend
     zulip
     wechat
-    nixvim
     neovide
   ];
 
@@ -68,7 +67,7 @@
   services.scx = {
     enable = true;
     scheduler = "scx_lavd";
-    package = pkgs.scx_git.rustscheds;
+    package = pkgs.scx.rustscheds;
   };
 
   boot = {

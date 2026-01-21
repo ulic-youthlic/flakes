@@ -38,11 +38,10 @@
     programs = {
       chromium.enable = true;
       thunderbird.enable = true;
-      # espanso.enable = true;
       mpv.enable = true;
       ghostty.enable = true;
       zed-editor.enable = true;
-      firefox.enable = true;
+      zen-browser.enable = true;
       helix.enable = true;
       openssh.enable = true;
       alacritty.enable = true;
@@ -74,11 +73,9 @@
     telegram-desktop
     scrcpy
     ast-grep
-    gitu
     dig
     fend
     gitoxide
-    kdePackages.kdenlive
     fd
     viu
   ];

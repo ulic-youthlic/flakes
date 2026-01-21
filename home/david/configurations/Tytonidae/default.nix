@@ -84,7 +84,6 @@
     telegram-desktop
     scrcpy
     ast-grep
-    gitu
     dig
     fend
     gitoxide
