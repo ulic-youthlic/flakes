@@ -28,18 +28,6 @@
     };
     date = "2026-01-14";
   };
-  cliphist = {
-    pname = "cliphist";
-    version = "efb61cb5b5a28d896c05a24ac83b9c39c96575f2";
-    src = fetchFromGitHub {
-      owner = "sentriz";
-      repo = "cliphist";
-      rev = "efb61cb5b5a28d896c05a24ac83b9c39c96575f2";
-      fetchSubmodules = false;
-      sha256 = "sha256-y4FSl/Bj80XqCR0ZwjGEkqYUIF6zJHrYyy01XPFlzjU=";
-    };
-    date = "2025-10-11";
-  };
   noto-sans-cjk = {
     pname = "noto-sans-cjk";
     version = "Serif2.003";

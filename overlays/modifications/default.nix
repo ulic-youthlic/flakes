@@ -10,7 +10,6 @@ in
       ./wshowkeys.nix
       # ./QQ.nix
       ./helix.nix
-      ./cliphist.nix
       ./zulip.nix
       ./nautilus.nix
       ./neovim-nightly.nix

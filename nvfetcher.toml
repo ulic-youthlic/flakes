@@ -30,10 +30,6 @@ src.git = "https://github.com/DreamMaoMao/wshowkeys.git"
 fetch.github = "top-mind/OuterWildsTextAdventureWeb"
 src.git = "https://github.com/top-mind/OuterWildsTextAdventureWeb.git"
 
-[cliphist]
-fetch.github = "sentriz/cliphist"
-src.git = "https://github.com/sentriz/cliphist.git"
-
 [rime-yuhaostar]
 fetch.url = "https://github.com/forfudan/yuhao-ime-release/releases/download/$ver/star_xingchen_$ver.zip"
 src.github = "forfudan/yuhao-ime-release"

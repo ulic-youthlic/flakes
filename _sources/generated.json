@@ -43,27 +43,6 @@
         },
         "version": "aa13bda89bcd7deb9be26dc11a4cfb49543274b0"
     },
-    "cliphist": {
-        "cargoLocks": null,
-        "date": "2025-10-11",
-        "extract": null,
-        "name": "cliphist",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "sentriz",
-            "repo": "cliphist",
-            "rev": "efb61cb5b5a28d896c05a24ac83b9c39c96575f2",
-            "sha256": "sha256-y4FSl/Bj80XqCR0ZwjGEkqYUIF6zJHrYyy01XPFlzjU=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "efb61cb5b5a28d896c05a24ac83b9c39c96575f2"
-    },
     "noto-sans-cjk": {
         "cargoLocks": null,
         "date": null,
