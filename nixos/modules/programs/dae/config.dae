@@ -4,8 +4,8 @@ include {
 }
 
 global {
-  lan_interface: auto
-  wan_interface: auto
+  lan_interface: wlan0,eno2
+  wan_interface: eno2
 
   log_level: trace
   allow_insecure: false

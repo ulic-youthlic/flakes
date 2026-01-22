@@ -39,14 +39,35 @@
           # Bond = "bond0";
           # PrimarySlave = true;
 
-          DHCP = "ipv4";
+          DHCP = "yes";
           IPv6AcceptRA = true;
+
+          IPMasquerade = "yes";
+          IPv4Forwarding = "yes";
         };
         linkConfig = {
           RequiredForOnline = "routable";
         };
         matchConfig = {
           Name = "eno2";
+        };
+      };
+      "20-wlan0" = {
+        matchConfig = {
+          Name = "wlan0";
+        };
+
+        address = ["192.168.110.1/24"];
+        networkConfig = {
+          DHCPServer = "yes";
+          IPMasquerade = "yes";
+          IPv4Forwarding = "yes";
+        };
+        dhcpServerConfig = {
+          PoolOffset = 100;
+          PoolSize = 20;
+          EmitDNS = "yes";
+          DNS = "8.8.8.8";
         };
       };
       # "20-wlan0" = {
@@ -87,8 +108,8 @@
           Enabled = true;
         };
         General = {
-          # EnableNetworkConfiguration = false;
-          EnableNetworkConfiguration = true;
+          EnableNetworkConfiguration = false;
+          # EnableNetworkConfiguration = true;
         };
         Settings = {
           AutoConnect = true;
