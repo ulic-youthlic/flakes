@@ -62,6 +62,24 @@ in {
           tls.enable = true;
         };
       };
+      "Showoff6558" = {
+        address = "Showoff6558@outlook.com";
+        flavor = "outlook.office365.com";
+        thunderbird = {
+          enable = true;
+          settings = id: {
+            "mail.server.server_${id}.type" = "imap";
+            "mail.smtpserver.smtp_${id}.authMethod" = 10; # 10 for OAuth2
+            "mail.server.server_${id}.authMethod" = 10;
+            "mail.server.server_${id}.socketType" = 3; # 3 for SSL/TLS
+          };
+        };
+        realName = "Showoff6558";
+        imap = {
+          host = "outlook.office365.com";
+          tls.enable = true;
+        };
+      };
     };
   };
 }
