@@ -29,7 +29,7 @@ in
       // {
         languages = lib.pipe "${helix.src}/languages.toml" [
           builtins.readFile
-          builtins.fromTOML
+          fromTOML
         ];
       };
   }

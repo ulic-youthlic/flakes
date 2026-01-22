@@ -15,18 +15,18 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "aa13bda89bcd7deb9be26dc11a4cfb49543274b0";
+    version = "61e90fe4cbf20204a0b5590df7c6d48556512185";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "aa13bda89bcd7deb9be26dc11a4cfb49543274b0";
+      rev = "61e90fe4cbf20204a0b5590df7c6d48556512185";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-HWami8LfjIawAJkSAAYgK+ifz9h4HZx8AvOTl4K5HC8=";
+      sha256 = "sha256-vJfyx/rjlLf8mJnV8Trx+hppCRyu1BfBmCOvA6YjjZc=";
     };
-    date = "2026-01-14";
+    date = "2026-01-23";
   };
   noto-sans-cjk = {
     pname = "noto-sans-cjk";
@@ -79,30 +79,15 @@
   };
   spotx = {
     pname = "spotx";
-    version = "b70121d23c0ca9ddc13dec4d3addcba2799a1a4b";
+    version = "37ffdc78ba3ded6af6550895bfc687f44f1c4af6";
     src = fetchFromGitHub {
       owner = "SpotX-Official";
       repo = "SpotX-Bash";
-      rev = "b70121d23c0ca9ddc13dec4d3addcba2799a1a4b";
+      rev = "37ffdc78ba3ded6af6550895bfc687f44f1c4af6";
       fetchSubmodules = false;
-      sha256 = "sha256-SyrdV5RENFEYQZcd7MTtegvPcuGKzTmWQiwPcbnoWpY=";
+      sha256 = "sha256-W6TGdLFPMcfaYG55fKu3ieKROBArFTg9KwW8VRBFcnI=";
     };
-    date = "2026-01-10";
-  };
-  tree-sitter-idris = {
-    pname = "tree-sitter-idris";
-    version = "c56a25cf57c68ff929356db25505c1cc4c7820f6";
-    src = fetchgit {
-      url = "https://github.com/kayhide/tree-sitter-idris";
-      rev = "c56a25cf57c68ff929356db25505c1cc4c7820f6";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ ];
-      sha256 = "sha256-aOAxb0KjhSwlNX/IDvGwEysYvImgUEIDeNDOWRl1qNk=";
-    };
-    name = "idris";
-    date = "2024-11-05";
+    date = "2026-01-14";
   };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";

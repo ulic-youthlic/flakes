@@ -22,7 +22,7 @@
     },
     "TrackersListCollection": {
         "cargoLocks": null,
-        "date": "2026-01-14",
+        "date": "2026-01-23",
         "extract": null,
         "name": "TrackersListCollection",
         "passthru": null,
@@ -34,14 +34,14 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "aa13bda89bcd7deb9be26dc11a4cfb49543274b0",
-            "sha256": "sha256-HWami8LfjIawAJkSAAYgK+ifz9h4HZx8AvOTl4K5HC8=",
+            "rev": "61e90fe4cbf20204a0b5590df7c6d48556512185",
+            "sha256": "sha256-vJfyx/rjlLf8mJnV8Trx+hppCRyu1BfBmCOvA6YjjZc=",
             "sparseCheckout": [
                 "all.txt"
             ],
             "type": "github"
         },
-        "version": "aa13bda89bcd7deb9be26dc11a4cfb49543274b0"
+        "version": "61e90fe4cbf20204a0b5590df7c6d48556512185"
     },
     "noto-sans-cjk": {
         "cargoLocks": null,
@@ -127,7 +127,7 @@
     },
     "spotx": {
         "cargoLocks": null,
-        "date": "2026-01-10",
+        "date": "2026-01-14",
         "extract": null,
         "name": "spotx",
         "passthru": null,
@@ -139,34 +139,12 @@
             "name": null,
             "owner": "SpotX-Official",
             "repo": "SpotX-Bash",
-            "rev": "b70121d23c0ca9ddc13dec4d3addcba2799a1a4b",
-            "sha256": "sha256-SyrdV5RENFEYQZcd7MTtegvPcuGKzTmWQiwPcbnoWpY=",
+            "rev": "37ffdc78ba3ded6af6550895bfc687f44f1c4af6",
+            "sha256": "sha256-W6TGdLFPMcfaYG55fKu3ieKROBArFTg9KwW8VRBFcnI=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "b70121d23c0ca9ddc13dec4d3addcba2799a1a4b"
-    },
-    "tree-sitter-idris": {
-        "cargoLocks": null,
-        "date": "2024-11-05",
-        "extract": null,
-        "name": "tree-sitter-idris",
-        "passthru": {
-            "name": "idris"
-        },
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "rev": "c56a25cf57c68ff929356db25505c1cc4c7820f6",
-            "sha256": "sha256-aOAxb0KjhSwlNX/IDvGwEysYvImgUEIDeNDOWRl1qNk=",
-            "sparseCheckout": [],
-            "type": "git",
-            "url": "https://github.com/kayhide/tree-sitter-idris"
-        },
-        "version": "c56a25cf57c68ff929356db25505c1cc4c7820f6"
+        "version": "37ffdc78ba3ded6af6550895bfc687f44f1c4af6"
     },
     "wshowkeys-mao": {
         "cargoLocks": null,

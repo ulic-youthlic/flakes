@@ -1,8 +1,3 @@
-[tree-sitter-idris]
-fetch.git = "https://github.com/kayhide/tree-sitter-idris"
-passthru.name = "idris"
-src.git = "https://github.com/kayhide/tree-sitter-idris"
-
 [noto-serif-cjk]
 fetch.github = "notofonts/noto-cjk"
 git.sparseCheckout = ["Serif/OTC"]
