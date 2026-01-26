@@ -15,6 +15,7 @@
           includes = ["*.json"];
           excludes = ["_sources/*.json"];
           settings = {
+            formatter.indentStyle = "space";
             javascript.formatter.enabled = false;
             css.formatter.enabled = false;
           };
