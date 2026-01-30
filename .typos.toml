@@ -23,6 +23,7 @@ extend-ignore-identifiers-re = [
   "ConfiguratioN",
   "StructurE",
   "lazer",
+  "substituters",
 ]
 
 [default.extend-identifiers]
