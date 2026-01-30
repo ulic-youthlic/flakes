@@ -1,6 +1,6 @@
 {
     "OuterWildsTextAdventure": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": "2024-12-21",
         "extract": null,
         "name": "OuterWildsTextAdventure",
@@ -21,8 +21,8 @@
         "version": "2a4430a6e53fc2e9979e0f4ebb312d90b92ba119"
     },
     "TrackersListCollection": {
-        "cargoLocks": null,
-        "date": "2026-01-23",
+        "cargoLock": null,
+        "date": "2026-01-31",
         "extract": null,
         "name": "TrackersListCollection",
         "passthru": null,
@@ -34,17 +34,17 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "61e90fe4cbf20204a0b5590df7c6d48556512185",
-            "sha256": "sha256-vJfyx/rjlLf8mJnV8Trx+hppCRyu1BfBmCOvA6YjjZc=",
+            "rev": "0c7a32db6974f0c58f30a0753f4a8d164a22262d",
+            "sha256": "sha256-cydLc8KSt/Qy9n9Cq+eY6v14pZhjmQmqV16rWQda8Gw=",
             "sparseCheckout": [
                 "all.txt"
             ],
             "type": "github"
         },
-        "version": "61e90fe4cbf20204a0b5590df7c6d48556512185"
+        "version": "0c7a32db6974f0c58f30a0753f4a8d164a22262d"
     },
     "noto-sans-cjk": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "noto-sans-cjk",
@@ -67,7 +67,7 @@
         "version": "Serif2.003"
     },
     "noto-serif-cjk": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "noto-serif-cjk",
@@ -90,7 +90,7 @@
         "version": "Serif2.003"
     },
     "nvim_vim-startuptime": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": "2025-02-17",
         "extract": null,
         "name": "nvim_vim-startuptime",
@@ -111,7 +111,7 @@
         "version": "b6f0d93f6b8cf6eee0b4c94450198ba2d6a05ff6"
     },
     "rime-yuhaostar": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "rime-yuhaostar",
@@ -126,8 +126,8 @@
         "version": "v3.10.0"
     },
     "spotx": {
-        "cargoLocks": null,
-        "date": "2026-01-14",
+        "cargoLock": null,
+        "date": "2026-01-27",
         "extract": null,
         "name": "spotx",
         "passthru": null,
@@ -139,15 +139,15 @@
             "name": null,
             "owner": "SpotX-Official",
             "repo": "SpotX-Bash",
-            "rev": "37ffdc78ba3ded6af6550895bfc687f44f1c4af6",
-            "sha256": "sha256-W6TGdLFPMcfaYG55fKu3ieKROBArFTg9KwW8VRBFcnI=",
+            "rev": "ca98eef240cd26b90ff423a836229275d4a1594f",
+            "sha256": "sha256-7u4ewbrBWu9AizkTJDW+Mo/syAmJEz5yH2vA4Zodi9c=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "37ffdc78ba3ded6af6550895bfc687f44f1c4af6"
+        "version": "ca98eef240cd26b90ff423a836229275d4a1594f"
     },
     "wshowkeys-mao": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": "2025-09-14",
         "extract": null,
         "name": "wshowkeys-mao",
