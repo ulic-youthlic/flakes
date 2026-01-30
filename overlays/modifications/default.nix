@@ -21,5 +21,5 @@ in
     ]
     [
       (map (file: import file args))
-      (overlays: (lib.composeManyExtensions overlays) final prev)
+      (overlays: (composeManyExtensions overlays) final prev)
     ]
