@@ -52,6 +52,11 @@
       # emacs.enable = true;
       sunshine.enable = true;
       kdeconnect.enable = true;
+      rqbit = {
+        enable = true;
+        unixName = "david";
+        ratelimitUpload = 10;
+      };
     };
   };
 
