@@ -30,6 +30,7 @@ in {
       httpPort = 9092;
     };
     users.groups.rqbit.members = [cfg.unixName];
+    sops.secrets."rqbit.secrets.env" = {};
     systemd.services."rqbit" = {
       serviceConfig = {
         EnvironmentFile = [
@@ -51,6 +52,7 @@ in {
                   '')
               )
             ))
+          config.sops.secrets."rqbit.secrets.env".path
         ];
       };
     };
