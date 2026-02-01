@@ -49,11 +49,19 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs.url = "github:NixOS/nixpkgs/master";
+    ## fix ffmpeg_7-full
     nixpkgs-485356 = {
       type = "github";
       owner = "nixos";
       repo = "nixpkgs";
       ref = "refs/pull/485356/head";
+    };
+    ## update rqbit
+    nixpkgs-485603 = {
+      type = "github";
+      owner = "nixos";
+      repo = "nixpkgs";
+      ref = "refs/pull/485603/head";
     };
 
     lix-module = {

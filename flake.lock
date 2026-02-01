@@ -809,6 +809,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-485603": {
+      "locked": {
+        "lastModified": 1769860058,
+        "narHash": "sha256-xiC+Y8ylTYFhY2KaGs1p/bSinsBHQ42nrjsFDn9EajQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b9c50b93fcf500dbd398ddc84829f6751b97fb47",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "refs/pull/485603/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1765674936,
@@ -1142,6 +1158,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_6",
         "nixpkgs-485356": "nixpkgs-485356",
+        "nixpkgs-485603": "nixpkgs-485603",
         "nixvim": "nixvim",
         "noctalia": "noctalia",
         "nur": "nur",

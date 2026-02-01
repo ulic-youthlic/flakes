@@ -19,6 +19,8 @@ in
       ./fix-ffmpeg_7-full.nix
       ./fix-kdePackages.kdenlive.nix
 
+      ./fix-rqbit.nix
+
       # Nur
       ./nur.nix
     ]
