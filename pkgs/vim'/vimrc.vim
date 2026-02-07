@@ -4,7 +4,7 @@ colorscheme one
 set background=light
 
 " Set airline
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#formatter = "unique_tail_improved"
 let g:airline_powerline_fonts = 1
 
@@ -68,3 +68,4 @@ set wrap
 map gh 0
 map gl $
 map gs ^
+map ge G
