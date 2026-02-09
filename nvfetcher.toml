@@ -14,7 +14,6 @@ src.git = "https://github.com/SpotX-Official/SpotX-Bash.git"
 
 [TrackersListCollection]
 fetch.github = "XIU2/TrackersListCollection"
-git.sparseCheckout = ["all.txt"]
 src.git = "https://github.com/XIU2/TrackersListCollection.git"
 
 [wshowkeys-mao]

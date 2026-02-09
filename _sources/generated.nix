@@ -20,18 +20,15 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "0c7a32db6974f0c58f30a0753f4a8d164a22262d";
+    version = "3f782e96279b2ea8f051fcf8a782f6b67613bf75";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "0c7a32db6974f0c58f30a0753f4a8d164a22262d";
+      rev = "3f782e96279b2ea8f051fcf8a782f6b67613bf75";
       fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ "all.txt" ];
-      sha256 = "sha256-cydLc8KSt/Qy9n9Cq+eY6v14pZhjmQmqV16rWQda8Gw=";
+      sha256 = "sha256-+YNTJlhYK1YD5VL7DgCbVco+60rhuFdZtD2Cs/Jk9wU=";
     };
-    date = "2026-01-31";
+    date = "2026-02-09";
   };
   noto-sans-cjk = {
     pname = "noto-sans-cjk";
@@ -84,15 +81,15 @@
   };
   spotx = {
     pname = "spotx";
-    version = "ca98eef240cd26b90ff423a836229275d4a1594f";
+    version = "41c8d9cd29b1b201b5495f1839a140e05def8fd1";
     src = fetchFromGitHub {
       owner = "SpotX-Official";
       repo = "SpotX-Bash";
-      rev = "ca98eef240cd26b90ff423a836229275d4a1594f";
+      rev = "41c8d9cd29b1b201b5495f1839a140e05def8fd1";
       fetchSubmodules = false;
-      sha256 = "sha256-7u4ewbrBWu9AizkTJDW+Mo/syAmJEz5yH2vA4Zodi9c=";
+      sha256 = "sha256-gCatmzChRhFEPzE476hi9BMgVacvCrXCQpD3QMxEKpU=";
     };
-    date = "2026-01-27";
+    date = "2026-02-08";
   };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";
