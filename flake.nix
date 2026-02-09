@@ -39,6 +39,7 @@
               lib.flatten [
                 (cachix "nix-community")
                 "https://cache.nixos.org"
+                "https://cache.nixos-cuda.org"
               ];
           };
         };
