@@ -35,7 +35,7 @@
   haskell-language-server,
   neocmakelsp,
   jdt-language-server,
-  zls,
+  # zls,
   ty,
   imagemagick,
 }:
@@ -77,7 +77,7 @@ buildEnv {
     haskell-language-server
     neocmakelsp
     jdt-language-server
-    zls
+    # zls
     ty
     imagemagick
   ];
