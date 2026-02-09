@@ -18,7 +18,7 @@
         settings = {
           font-family = [
             "MonoLisa"
-            "Source Han Sans"
+            "Source Han Sans SC"
           ];
           font-size = lib.mkForce 17;
           theme = "Atom One Dark";

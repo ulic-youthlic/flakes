@@ -159,7 +159,7 @@ in {
         settings = cfg.settings;
         style = ''
            * {
-            font-family: Libertinus Serif, Source Han Serif;
+            font-family: Libertinus Serif, Source Han Serif SC;
             font-weight: bold;
             font-size: 16px;
           }

@@ -39,6 +39,18 @@ in {
           fish_greeting = {
             body = '''';
           };
+          nani = {
+            body =
+              # fish
+              ''
+                for command in $argv
+                    echo "$command:"
+                    for path in $(which --all "$command" 2>/dev/null)
+                        realpath $path
+                    end
+                end
+              '';
+          };
         };
         shellInitLast =
           # fish

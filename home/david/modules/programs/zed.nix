@@ -31,7 +31,6 @@ in {
         "hurl"
         "idris2"
         "java"
-        "java-eclipse-jdtls"
         "kdl"
         "kotlin"
         "lua"
@@ -111,9 +110,9 @@ in {
         buffer_font_size = 20;
         buffer_font_family = "MonoLisa";
         buffer_font_fallback = [
-          "Source Han Sans"
+          "Source Han Sans SC"
         ];
-        ui_font_family = "Source Han Sans";
+        ui_font_family = "Source Han Sans SC";
         theme = "Catppuccin Latte";
         helix_mode = true;
       };

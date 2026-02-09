@@ -71,11 +71,11 @@ in {
         defaultFonts = {
           serif = [
             "Libertinus Serif"
-            "Source Han Serif"
+            "Source Han Serif SC"
             "Noto Serif CJK SC"
           ];
           sansSerif = [
-            "Source Han Sans"
+            "Source Han Sans SC"
             "Noto Sans CJK SC"
           ];
           monospace = [
