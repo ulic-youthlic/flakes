@@ -45,7 +45,6 @@
       transmission.enable = true;
       nix-ld.enable = true;
       juicity.client.enable = true;
-      owncast.enable = true;
       wshowkeys.enable = true;
       obs.enable = true;
       garage.enable = true;
