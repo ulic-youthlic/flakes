@@ -1,43 +1,18 @@
 {
-  perSystem = {
-    pkgs,
-    lib,
-    ...
-  }: {
+  perSystem = {lib, ...}: {
     treefmt = {
       programs = {
         alejandra = {
           enable = true;
           excludes = ["_sources/*.nix"];
         };
-        biome = {
+        oxfmt = let
+          oxfmtConfig = with lib;
+            pipe ./.oxfmtrc.json [builtins.readFile builtins.fromJSON];
+        in {
           enable = true;
-          includes = ["*.json"];
-          excludes = ["_sources/*.json"];
-          settings = {
-            formatter.indentStyle = "space";
-            javascript.formatter.enabled = false;
-            css.formatter.enabled = false;
-          };
-        };
-        dprint = {
-          enable = true;
-          includes = [
-            "*.md"
-            "*.toml"
-            "*.yaml"
-          ];
-          excludes = ["secrets/*.yaml"];
-          settings = {
-            plugins = pkgs.dprint-plugins.getPluginList (
-              plugins:
-                with plugins; [
-                  dprint-plugin-toml
-                  dprint-plugin-markdown
-                  g-plane-pretty_yaml
-                ]
-            );
-          };
+          includes = ["*.json" "*.md" "*.toml" "*.yaml"];
+          excludes = oxfmtConfig.ignorePatterns;
         };
         just = {
           enable = true;
@@ -45,10 +20,7 @@
         };
         typos = let
           config = with lib;
-            pipe ./.typos.toml [
-              builtins.readFile
-              fromTOML
-            ];
+            pipe ./.typos.toml [builtins.readFile fromTOML];
         in {
           enable = true;
           includes = ["*"];

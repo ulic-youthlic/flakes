@@ -1,0 +1,3 @@
+{
+  "ignorePatterns": ["_sources/*.json", "secrets/*.yaml"]
+}

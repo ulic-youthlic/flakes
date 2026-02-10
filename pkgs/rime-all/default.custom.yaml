@@ -29,36 +29,12 @@ patch:
     - { when: has_menu, accept: minus, send: Page_Up }
     - { when: has_menu, accept: equal, send: Page_Down }
 
-    - {
-        when: always,
-        toggle: ascii_punct,
-        accept: Control+Shift+3,
-      } # 切换中英标点
-    - {
-        when: always,
-        toggle: ascii_punct,
-        accept: Control+Shift+numbersign,
-      } # 切换中英标点
-    - {
-        when: always,
-        toggle: traditionalization,
-        accept: Control+Shift+4,
-      } # 切换简繁
-    - {
-        when: always,
-        toggle: traditionalization,
-        accept: Control+Shift+dollar,
-      } # 切换简繁
-    - {
-        when: always,
-        toggle: full_shape,
-        accept: Control+Shift+5,
-      } # 切换全半角
-    - {
-        when: always,
-        toggle: full_shape,
-        accept: Control+Shift+percent,
-      } # 切换全半角
+    - { when: always, toggle: ascii_punct, accept: Control+Shift+3 } # 切换中英标点
+    - { when: always, toggle: ascii_punct, accept: Control+Shift+numbersign } # 切换中英标点
+    - { when: always, toggle: traditionalization, accept: Control+Shift+4 } # 切换简繁
+    - { when: always, toggle: traditionalization, accept: Control+Shift+dollar } # 切换简繁
+    - { when: always, toggle: full_shape, accept: Control+Shift+5 } # 切换全半角
+    - { when: always, toggle: full_shape, accept: Control+Shift+percent } # 切换全半角
 
     # 将小键盘 0~9 . 映射到主键盘，数字金额大写的 Lua 如 R1234.5678 可使用小键盘输入
     - { accept: KP_0, send: 0, when: composing }
