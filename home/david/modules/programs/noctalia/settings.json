@@ -118,9 +118,7 @@
           "drawerEnabled": true,
           "hidePassive": false,
           "id": "Tray",
-          "pinned": [
-            "Fcitx"
-          ]
+          "pinned": ["Fcitx"]
         },
         {
           "clockColor": "none",
@@ -457,12 +455,7 @@
     "autoHideMs": 2000,
     "overlayLayer": true,
     "backgroundOpacity": 1,
-    "enabledTypes": [
-      0,
-      1,
-      2,
-      3
-    ],
+    "enabledTypes": [0, 1, 2, 3],
     "monitors": []
   },
   "audio": {
