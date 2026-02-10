@@ -54,9 +54,10 @@ in {
         source-han-sans
         libertinus
         noto-fonts-color-emoji
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
+        noto-fonts-cjk-sans-static
+        noto-fonts-cjk-serif-static
         noto-fonts
+        nerd-fonts.symbols-only
       ];
       fontconfig = {
         localConf =
