@@ -33,6 +33,10 @@
         enable = true;
         unixName = "david";
       };
+      virtualbox = {
+        enable = true;
+        unixName = "david";
+      };
     };
     programs = {
       bash.enable = true;
