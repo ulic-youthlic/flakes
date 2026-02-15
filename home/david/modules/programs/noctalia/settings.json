@@ -1,5 +1,5 @@
 {
-  "settingsVersion": 49,
+  "settingsVersion": 53,
   "bar": {
     "barType": "simple",
     "position": "right",
@@ -42,7 +42,7 @@
           "showSwapUsage": true,
           "textColor": "none",
           "useMonospaceFont": true,
-          "usePrimaryColor": false
+          "usePadding": false
         },
         {
           "compactMode": false,
@@ -88,6 +88,11 @@
       ],
       "right": [
         {
+          "defaultSettings": {
+            "compactMode": false,
+            "defaultDuration": 0,
+            "iconColor": "none"
+          },
           "id": "plugin:timer"
         },
         {
@@ -127,8 +132,7 @@
           "formatVertical": "HH mm - MM dd",
           "id": "Clock",
           "tooltipFormat": "HH:mm:ss ddd, MMM dd yyyy",
-          "useCustomFont": false,
-          "usePrimaryColor": true
+          "useCustomFont": false
         }
       ]
     },
@@ -164,7 +168,18 @@
     "allowPasswordWithFprintd": false,
     "clockStyle": "digital",
     "clockFormat": "hh\\nmm",
-    "lockScreenMonitors": []
+    "lockScreenMonitors": [],
+    "lockScreenBlur": 0.7000000000000001,
+    "lockScreenTint": 0,
+    "keybinds": {
+      "keyUp": ["Ctrl+N"],
+      "keyDown": ["Ctrl+P"],
+      "keyLeft": ["Ctrl+H"],
+      "keyRight": ["Ctrl+L"],
+      "keyEnter": ["Return"],
+      "keyEscape": ["Esc"],
+      "keyRemove": ["Del"]
+    }
   },
   "ui": {
     "fontDefault": "Source Han Serif SC",
@@ -219,7 +234,7 @@
     "viewMode": "recursive",
     "setWallpaperOnAllMonitors": true,
     "fillMode": "crop",
-    "fillColor": "#000000",
+    "fillColor": "#313244",
     "useSolidColor": false,
     "solidColor": "#1a1a2e",
     "automationEnabled": true,
@@ -227,9 +242,12 @@
     "randomIntervalSec": 900,
     "transitionDuration": 1500,
     "transitionType": "random",
+    "skipStartupTransition": true,
     "transitionEdgeSmoothness": 0.05,
     "panelPosition": "center",
     "hideWallpaperFilenames": false,
+    "overviewBlur": 0.4,
+    "overviewTint": 0.6,
     "useWallhaven": false,
     "wallhavenQuery": "",
     "wallhavenSorting": "relevance",
@@ -241,7 +259,8 @@
     "wallhavenResolutionMode": "atleast",
     "wallhavenResolutionWidth": "",
     "wallhavenResolutionHeight": "",
-    "sortOrder": "name"
+    "sortOrder": "name",
+    "favorites": []
   },
   "appLauncher": {
     "enableClipboardHistory": true,
@@ -263,9 +282,11 @@
     "showIconBackground": true,
     "enableSettingsSearch": true,
     "enableWindowsSearch": true,
+    "enableSessionSearch": true,
     "ignoreMouseInput": false,
     "screenshotAnnotationTool": "",
-    "overviewLayer": false
+    "overviewLayer": false,
+    "density": "default"
   },
   "controlCenter": {
     "position": "close_to_bar_button",
@@ -332,13 +353,7 @@
     "diskAvailCriticalThreshold": 10,
     "batteryWarningThreshold": 20,
     "batteryCriticalThreshold": 5,
-    "cpuPollingInterval": 1000,
-    "gpuPollingInterval": 3000,
     "enableDgpuMonitoring": true,
-    "memPollingInterval": 1000,
-    "diskPollingInterval": 3000,
-    "networkPollingInterval": 1000,
-    "loadAvgPollingInterval": 3000,
     "useCustomColors": false,
     "warningColor": "",
     "criticalColor": "",
@@ -362,58 +377,67 @@
   },
   "network": {
     "wifiEnabled": false,
+    "airplaneModeEnabled": false,
     "bluetoothRssiPollingEnabled": true,
     "bluetoothRssiPollIntervalMs": 10000,
     "wifiDetailsViewMode": "grid",
     "bluetoothDetailsViewMode": "grid",
-    "bluetoothHideUnnamedDevices": false
+    "bluetoothHideUnnamedDevices": false,
+    "disableDiscoverability": false
   },
   "sessionMenu": {
     "enableCountdown": true,
     "countdownDuration": 5000,
     "position": "center",
     "showHeader": true,
+    "showKeybinds": true,
     "largeButtonsStyle": true,
     "largeButtonsLayout": "grid",
-    "showNumberLabels": true,
     "powerOptions": [
       {
         "action": "lock",
         "command": "",
         "countdownEnabled": true,
         "enabled": true,
-        "keybind": ""
+        "keybind": "1"
       },
       {
         "action": "suspend",
         "command": "",
         "countdownEnabled": true,
         "enabled": true,
-        "keybind": ""
+        "keybind": "2"
       },
       {
         "action": "hibernate",
         "command": "",
         "countdownEnabled": true,
         "enabled": true,
-        "keybind": ""
+        "keybind": "3"
       },
       {
         "action": "reboot",
         "command": "",
         "countdownEnabled": true,
         "enabled": true,
-        "keybind": ""
+        "keybind": "4"
       },
       {
         "action": "logout",
         "command": "",
         "countdownEnabled": true,
         "enabled": true,
-        "keybind": ""
+        "keybind": "5"
       },
       {
         "action": "shutdown",
+        "command": "",
+        "countdownEnabled": true,
+        "enabled": true,
+        "keybind": "6"
+      },
+      {
+        "action": "rebootToUefi",
         "command": "",
         "countdownEnabled": true,
         "enabled": true,
@@ -423,6 +447,7 @@
   },
   "notifications": {
     "enabled": true,
+    "density": "default",
     "monitors": [],
     "location": "bottom_right",
     "overlayLayer": true,
@@ -475,10 +500,10 @@
   "colorSchemes": {
     "useWallpaperColors": false,
     "predefinedScheme": "Catppuccin",
-    "darkMode": false,
-    "schedulingMode": "location",
+    "darkMode": true,
+    "schedulingMode": "manual",
     "manualSunrise": "06:30",
-    "manualSunset": "18:30",
+    "manualSunset": "17:30",
     "generationMethod": "tonal-spot",
     "monitorForColors": ""
   },
