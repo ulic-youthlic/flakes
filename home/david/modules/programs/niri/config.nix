@@ -34,7 +34,7 @@
       # wpctl = getExe' pkgs.wireplumber "wpctl";
       # waypaper = getExe pkgs.waypaper;
       default-terminal = getExe config.programs.ghostty.package;
-      default-browser = getExe' config.programs.zen-browser.package "zen";
+      default-browser = getExe' config.programs.zen-browser.package "zen-twilight";
       # wl-paste = getExe' pkgs.wl-clipboard "wl-paste";
       # cliphist = getExe' pkgs.cliphist "cliphist";
       # cliphist-fuzzel-img = getExe' pkgs.cliphist "cliphist-fuzzel-img";
