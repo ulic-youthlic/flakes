@@ -172,8 +172,8 @@
     "lockScreenBlur": 0.7000000000000001,
     "lockScreenTint": 0,
     "keybinds": {
-      "keyUp": ["Ctrl+N"],
-      "keyDown": ["Ctrl+P"],
+      "keyUp": ["Ctrl+P"],
+      "keyDown": ["Ctrl+N"],
       "keyLeft": ["Ctrl+H"],
       "keyRight": ["Ctrl+L"],
       "keyEnter": ["Return"],
@@ -500,7 +500,6 @@
   "colorSchemes": {
     "useWallpaperColors": false,
     "predefinedScheme": "Catppuccin",
-    "darkMode": true,
     "schedulingMode": "manual",
     "manualSunrise": "06:30",
     "manualSunset": "17:30",
