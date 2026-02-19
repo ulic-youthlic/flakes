@@ -3,6 +3,7 @@
   lib,
   inputs,
   outputs,
+  config,
   ...
 }: {
   imports =
@@ -39,6 +40,19 @@
       };
     };
     programs = {
+      miniserve = {
+        enable = true;
+        apps = let
+          cinny-template = config.youthlic.programs.miniserve.templates.cinny;
+        in {
+          cinny-1 = cinny-template {
+            port = 9093;
+          };
+          cinny-2 = cinny-template {
+            port = 9094;
+          };
+        };
+      };
       bash.enable = true;
       guix.enable = true;
       dae.enable = true;
