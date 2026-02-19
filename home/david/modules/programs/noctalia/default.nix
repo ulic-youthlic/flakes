@@ -59,11 +59,29 @@ in {
   };
   config = lib.mkIf cfg.enable {
     stylix.targets.noctalia-shell.enable = false;
-    home.packages = [pkgs.app2unit];
+    home.packages = [pkgs.app2unit pkgs.gpu-screen-recorder];
     programs.noctalia-shell = {
       enable = true;
       systemd.enable = true;
       plugins = builtins.fromJSON (builtins.readFile ./plugins.json);
+      pluginSettings = let
+        enabledPlugins = with lib;
+          flip pipe [
+            (filterAttrs (_name: settings: settings.enabled or false))
+            builtins.attrNames
+          ]
+          config.programs.noctalia-shell.plugins.states;
+        staticSettings = lib.genAttrs enabledPlugins (name: let
+          pluginSettingPath = ./plugin + "/${name}.json";
+        in
+          if lib.pathIsRegularFile pluginSettingPath
+          then builtins.fromJSON (builtins.readFile pluginSettingPath)
+          else {});
+      in
+        lib.recursiveUpdate
+        staticSettings {
+          screen-recorder.directory = "${config.xdg.userDirs.videos}/records";
+        };
       settings =
         lib.recursiveUpdate
         (builtins.fromJSON (builtins.readFile ./settings.json))

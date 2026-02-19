@@ -1,0 +1,15 @@
+{
+  "hideInactive": false,
+  "iconColor": "none",
+  "filenamePattern": "recording_yyyy-MM-dd_HH:mm:ss",
+  "frameRate": "165",
+  "audioCodec": "opus",
+  "videoCodec": "hevc",
+  "quality": "ultra",
+  "colorRange": "full",
+  "showCursor": true,
+  "copyToClipboard": false,
+  "audioSource": "default_output",
+  "videoSource": "portal",
+  "resolution": "2560x1440"
+}

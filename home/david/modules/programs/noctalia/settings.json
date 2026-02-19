@@ -96,6 +96,9 @@
           "id": "plugin:timer"
         },
         {
+          "id": "plugin:screen-recorder"
+        },
+        {
           "displayMode": "onhover",
           "iconColor": "none",
           "id": "Brightness",
@@ -490,7 +493,7 @@
     "visualizerType": "mirrored",
     "mprisBlacklist": [],
     "preferredPlayer": "spotify, mpv",
-    "volumeFeedback": false
+    "volumeFeedback": true
   },
   "brightness": {
     "brightnessStep": 1,
