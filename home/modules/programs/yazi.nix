@@ -20,6 +20,7 @@ in {
       ];
       programs.yazi = {
         enable = true;
+        shellWrapperName = "y";
         plugins = {
           inherit
             (pkgs.yaziPlugins)

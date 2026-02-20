@@ -15,6 +15,7 @@ in {
     stylix.targets.zen-browser.enable = false;
     programs.zen-browser = {
       enable = true;
+      suppressXdgMigrationWarning = true;
       profiles.default = {
         name = "default";
         isDefault = true;
