@@ -51,6 +51,9 @@
           cinny-2 = cinny-template {
             port = 9094;
           };
+          cinny-3 = cinny-template {
+            port = 9095;
+          };
         };
       };
       bash.enable = true;
