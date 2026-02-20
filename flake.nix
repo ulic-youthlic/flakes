@@ -3,14 +3,14 @@
 
   outputs = {
     flake-parts,
-    flake-utils,
     home-manager,
     treefmt-nix,
     nixpkgs,
+    nixpkgs-patcher,
     ...
   } @ inputs: let
     nixpkgs-lib = nixpkgs.lib;
-    lib = nixpkgs-lib.extend (import ./lib);
+    lib = nixpkgs-lib.extend (final: prev: nixpkgs-lib.recursiveUpdate {nixpkgs-patcher = nixpkgs-patcher.lib;} (import ./lib final prev));
   in
     flake-parts.lib.mkFlake
     {
@@ -22,7 +22,7 @@
     }
     (
       {lib, ...}: {
-        systems = flake-utils.lib.defaultSystems;
+        systems = ["x86_64-linux"];
         imports =
           [
             home-manager.flakeModules.home-manager
@@ -51,11 +51,14 @@
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs.url = "github:NixOS/nixpkgs/master";
     ## update rqbit
-    nixpkgs-485603 = {
+    nixpkgs-patch-rqbit-bump = {
+      url = "https://github.com/nixos/nixpkgs/pull/485603.diff";
+      flake = false;
+    };
+    nixpkgs-patcher = {
       type = "github";
-      owner = "nixos";
-      repo = "nixpkgs";
-      ref = "refs/pull/485603/head";
+      owner = "gepbird";
+      repo = "nixpkgs-patcher";
     };
 
     lix-module = {
@@ -63,7 +66,6 @@
       # url = "git+https://git.lix.systems/lix-project/nixos-module";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
       };
     };
 
@@ -124,12 +126,6 @@
       inputs."nixpkgs-lib".follows = "nixpkgs";
     };
 
-    flake-utils = {
-      type = "github";
-      owner = "numtide";
-      repo = "flake-utils";
-    };
-
     sops-nix = {
       type = "github";
       owner = "Mic92";
@@ -164,7 +160,6 @@
       repo = "deploy-rs";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
       };
     };
 

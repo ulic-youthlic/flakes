@@ -14,9 +14,11 @@
     inputs',
     ...
   }: let
-    inherit (inputs) nixpkgs;
+    patchedNixpkgs = lib.nixpkgs-patcher.patchNixpkgs {
+      inherit system inputs;
+    };
   in {
-    _module.args.pkgs = import nixpkgs {
+    _module.args.pkgs = import patchedNixpkgs {
       localSystem = {inherit system;};
       config = {
         allowUnfree = true;

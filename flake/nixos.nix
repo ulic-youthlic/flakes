@@ -14,7 +14,8 @@ in {
     };
     nixosConfigurations = let
       makeNixosConfiguration = hostName:
-        lib.nixosSystem {
+        lib.nixpkgs-patcher.nixosSystem {
+          nixpkgsPatcher.inputs = inputs;
           modules = [(rootPath + "/nixos/configurations/${hostName}")];
           specialArgs = {
             inherit

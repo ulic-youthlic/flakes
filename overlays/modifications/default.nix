@@ -16,8 +16,6 @@ in
       ./vim.nix
       ./prismlauncher.nix
 
-      ./fix-rqbit.nix
-
       # Nur
       ./nur.nix
     ]
