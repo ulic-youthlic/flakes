@@ -63,8 +63,10 @@ in {
     services.radicle.node = {
       enable = true;
       args = "--log-logger systemd";
-      lazy.enable = true;
     };
-    systemd.user.services."radicle-node".Service.EnvironmentFile = [config.sops.secrets."radicle/Tytonidae".path];
+    systemd.user.services."radicle-node" = {
+      Unit.After = ["default.target"];
+      Service.EnvironmentFile = [config.sops.secrets."radicle/Tytonidae".path];
+    };
   };
 }
