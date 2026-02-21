@@ -105,7 +105,6 @@
     handbrake
     wechat-uos
     nvtopPackages.full
-    spotify
     localsend
     jq
     onefetch

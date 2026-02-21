@@ -240,5 +240,11 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+
+    spicetify-nix = {
+      type = "github";
+      owner = "Gerg-L";
+      repo = "spicetify-nix";
+    };
   };
 }

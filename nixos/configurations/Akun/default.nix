@@ -55,7 +55,6 @@
     kdePackages.neochat
     vlc
     btop
-    spotify
     localsend
     zulip
     wechat

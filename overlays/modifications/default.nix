@@ -5,7 +5,6 @@ in
     pipe
     [
       ./niri.nix
-      ./spotifyx.nix
       ./radicle-explorer.nix
       ./wshowkeys.nix
       # ./QQ.nix

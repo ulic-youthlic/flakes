@@ -43,6 +43,7 @@
     wallpaper.enable = true;
     accounts.email.enable = true;
     programs = {
+      spotify.enable = true;
       chromium.enable = true;
       thunderbird.enable = true;
       foot.enable = false;
