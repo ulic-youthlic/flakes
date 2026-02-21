@@ -69,6 +69,7 @@ routing {
   domain(full: time.windows.com) -> must_direct
   domain(regex: ".*wgetcloud.*v2ray.*") -> must_direct
   domain(suffix: "hit.edu.cn") -> must_direct
+  domain(geosite: netflix) -> hk
   domain(geosite: microsoft) -> proxy
   # domain(geosite: onedrive) -> must_direct
   domain(geosite: "category-ai-!cn") -> us
