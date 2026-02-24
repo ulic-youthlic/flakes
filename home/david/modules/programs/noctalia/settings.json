@@ -45,6 +45,17 @@
           "usePadding": false
         },
         {
+          "defaultSettings": {
+            "activeColor": "primary",
+            "enableToast": true,
+            "hideInactive": false,
+            "iconSpacing": 4,
+            "inactiveColor": "none",
+            "removeMargins": false
+          },
+          "id": "plugin:privacy-indicator"
+        },
+        {
           "compactMode": false,
           "compactShowAlbumArt": true,
           "compactShowVisualizer": false,
@@ -79,7 +90,6 @@
           "labelMode": "index",
           "occupiedColor": "secondary",
           "pillSize": 0.6,
-          "reverseScroll": false,
           "showApplications": true,
           "showBadge": true,
           "showLabelsOnlyWhenOccupied": true,
@@ -96,13 +106,23 @@
           "id": "plugin:timer"
         },
         {
+          "defaultSettings": {
+            "audioCodec": "opus",
+            "audioSource": "default_output",
+            "colorRange": "limited",
+            "copyToClipboard": false,
+            "directory": "",
+            "filenamePattern": "recording_yyyyMMdd_HHmmss",
+            "frameRate": "60",
+            "hideInactive": false,
+            "iconColor": "none",
+            "quality": "very_high",
+            "resolution": "original",
+            "showCursor": true,
+            "videoCodec": "h264",
+            "videoSource": "portal"
+          },
           "id": "plugin:screen-recorder"
-        },
-        {
-          "displayMode": "onhover",
-          "iconColor": "none",
-          "id": "Brightness",
-          "textColor": "none"
         },
         {
           "hideWhenZero": false,
@@ -171,6 +191,7 @@
     "allowPasswordWithFprintd": false,
     "clockStyle": "digital",
     "clockFormat": "hh\\nmm",
+    "passwordChars": false,
     "lockScreenMonitors": [],
     "lockScreenBlur": 0.7000000000000001,
     "lockScreenTint": 0,
@@ -182,7 +203,8 @@
       "keyEnter": ["Return"],
       "keyEscape": ["Esc"],
       "keyRemove": ["Del"]
-    }
+    },
+    "reverseScroll": false
   },
   "ui": {
     "fontDefault": "Source Han Serif SC",
@@ -366,6 +388,7 @@
     "enabled": false,
     "position": "bottom",
     "displayMode": "auto_hide",
+    "dockType": "floating",
     "backgroundOpacity": 1,
     "floatingRatio": 1,
     "size": 1,
@@ -373,10 +396,14 @@
     "monitors": [],
     "pinnedApps": [],
     "colorizeIcons": false,
+    "showLauncherIcon": false,
+    "launcherPosition": "end",
     "pinnedStatic": false,
     "inactiveIndicators": false,
     "deadOpacity": 0.6,
-    "animationSpeed": 1
+    "animationSpeed": 1,
+    "sitOnFrame": false,
+    "showFrameIndicator": true
   },
   "network": {
     "wifiEnabled": false,
@@ -450,6 +477,7 @@
   },
   "notifications": {
     "enabled": true,
+    "enableMarkdown": false,
     "density": "default",
     "monitors": [],
     "location": "bottom_right",
@@ -459,6 +487,7 @@
     "lowUrgencyDuration": 3,
     "normalUrgencyDuration": 8,
     "criticalUrgencyDuration": 15,
+    "clearDismissed": true,
     "saveToHistory": {
       "low": true,
       "normal": true,
