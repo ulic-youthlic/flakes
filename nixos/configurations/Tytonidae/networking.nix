@@ -52,24 +52,24 @@
           Name = "eno2";
         };
       };
-      "20-wlan0" = {
-        matchConfig = {
-          Name = "wlan0";
-        };
+      # "20-wlan0" = {
+      #   matchConfig = {
+      #     Name = "wlan0";
+      #   };
 
-        address = ["192.168.110.1/24"];
-        networkConfig = {
-          DHCPServer = "yes";
-          IPMasquerade = "yes";
-          IPv4Forwarding = "yes";
-        };
-        dhcpServerConfig = {
-          PoolOffset = 100;
-          PoolSize = 20;
-          EmitDNS = "yes";
-          DNS = "8.8.8.8";
-        };
-      };
+      #   address = ["192.168.110.1/24"];
+      #   networkConfig = {
+      #     DHCPServer = "yes";
+      #     IPMasquerade = "yes";
+      #     IPv4Forwarding = "yes";
+      #   };
+      #   dhcpServerConfig = {
+      #     PoolOffset = 100;
+      #     PoolSize = 20;
+      #     EmitDNS = "yes";
+      #     DNS = "8.8.8.8";
+      #   };
+      # };
       # "20-wlan0" = {
       #   networkConfig = {
       #     # Bond = "bond0";
@@ -108,8 +108,8 @@
           Enabled = true;
         };
         General = {
-          EnableNetworkConfiguration = false;
-          # EnableNetworkConfiguration = true;
+          # EnableNetworkConfiguration = false;
+          EnableNetworkConfiguration = true;
         };
         Settings = {
           AutoConnect = true;
