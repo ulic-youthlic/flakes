@@ -685,6 +685,16 @@
             ])
             (leaf "clip-to-geometry" [false])
           ])
+          (window-rule [
+            (match [
+              {
+                app-id = "^zen-twilight$";
+                title = "^画中画$";
+              }
+            ])
+            (leaf "open-floating" [true])
+            (leaf "open-focused" [false])
+          ])
         ] # window-rule
       )
     # ++ (
