@@ -13,7 +13,6 @@ in {
   config = lib.mkIf cfg.enable {
     services.asusd = {
       enable = true;
-      enableUserService = true;
     };
   };
 }

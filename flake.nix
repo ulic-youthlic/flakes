@@ -60,13 +60,12 @@
       owner = "gepbird";
       repo = "nixpkgs-patcher";
     };
-
-    lix-module = {
-      url = "git+https://git.lix.systems/lix-project/nixos-module?ref=release-2.93";
-      # url = "git+https://git.lix.systems/lix-project/nixos-module";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+    ## fix guix/guile-zlib
+    nixpkgs-0182a361324364ae3f436a63005877674cf45efb = {
+      type = "github";
+      owner = "nixos";
+      repo = "nixpkgs";
+      rev = "0182a361324364ae3f436a63005877674cf45efb";
     };
 
     helix = {

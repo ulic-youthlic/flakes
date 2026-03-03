@@ -62,7 +62,6 @@
         use-xdg-base-directories = true;
         builders-use-substitutes = true;
       };
-      package = pkgs.nix;
       registry = with lib;
         pipe inputs [
           (filterAttrs (name: _value: name != "nixpkgs"))

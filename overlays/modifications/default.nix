@@ -15,6 +15,8 @@ in
       ./vim.nix
       ./prismlauncher.nix
 
+      ./fix-guix.nix
+
       # Nur
       ./nur.nix
     ]

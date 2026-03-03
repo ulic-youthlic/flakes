@@ -22,6 +22,7 @@
     ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {
+    lix.enable = true;
     home-manager = {
       enable = true;
       unixName = "david";
