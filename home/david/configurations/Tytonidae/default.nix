@@ -51,7 +51,6 @@
       ghostty.enable = true;
       alacritty.enable = true;
       zed-editor.enable = true;
-      firefox.enable = true;
       zen-browser.enable = true;
       openssh.enable = true;
       helix.enable = true;

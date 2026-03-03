@@ -84,14 +84,6 @@
       };
     };
 
-    betterfox-nix = {
-      type = "github";
-      owner = "HeitorAugustoLN";
-      repo = "betterfox-nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     zen-browser = {
       type = "github";
       owner = "0xc000022070";

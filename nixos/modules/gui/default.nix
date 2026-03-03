@@ -27,10 +27,6 @@ in {
     environment.systemPackages = with pkgs; [
       fontconfig
     ];
-    programs.firefox = {
-      enable = true;
-      package = pkgs.firefox-beta;
-    };
 
     sops.secrets = with lib;
     with builtins;
