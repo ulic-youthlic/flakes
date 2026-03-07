@@ -15,6 +15,7 @@ in
       ./osu-lazer-bin.nix # typochecker: disable-line
 
       ./pkgsNoCuda.nix
+      ./linux-cachyos.nix
     ]
     [
       (map (file: import file args))

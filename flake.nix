@@ -40,6 +40,7 @@
                 (cachix "nix-community")
                 "https://cache.nixos.org"
                 "https://cache.nixos-cuda.org"
+                "https://attic.xuyh0120.win/lantian"
               ];
           };
         };
@@ -66,6 +67,12 @@
       owner = "nixos";
       repo = "nixpkgs";
       rev = "0182a361324364ae3f436a63005877674cf45efb";
+    };
+
+    nix-cachyos-kernel = {
+      type = "github";
+      owner = "xddxdd";
+      repo = "nix-cachyos-kernel";
     };
 
     helix = {

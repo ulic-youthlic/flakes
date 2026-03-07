@@ -35,10 +35,10 @@
         enable = true;
         unixName = "david";
       };
-      virtualbox = {
-        enable = true;
-        unixName = "david";
-      };
+      # virtualbox = {
+      #   enable = true;
+      #   unixName = "david";
+      # };
     };
     programs = {
       miniserve = {
@@ -136,7 +136,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
     lanzaboote = {
       enable = true;
       pkiBundle = "/var/lib/sbctl";
