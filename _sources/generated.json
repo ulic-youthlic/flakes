@@ -22,7 +22,7 @@
     },
     "TrackersListCollection": {
         "cargoLock": null,
-        "date": "2026-02-09",
+        "date": "2026-03-17",
         "extract": null,
         "name": "TrackersListCollection",
         "passthru": null,
@@ -34,62 +34,16 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "3f782e96279b2ea8f051fcf8a782f6b67613bf75",
-            "sha256": "sha256-+YNTJlhYK1YD5VL7DgCbVco+60rhuFdZtD2Cs/Jk9wU=",
+            "rev": "9a296881f7b90e4022c594fa824185a4c02ccb25",
+            "sha256": "sha256-EOjTGf9OHslTSzRbosPcuQDxauQ2dqT/I6W+k80s3XE=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "3f782e96279b2ea8f051fcf8a782f6b67613bf75"
-    },
-    "noto-sans-cjk": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "noto-sans-cjk",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "notofonts",
-            "repo": "noto-cjk",
-            "rev": "Serif2.003",
-            "sha256": "sha256-UxbwdY2w3u6i1kBWwr5vMKvsnD3eCllN+kBrCH38KlY=",
-            "sparseCheckout": [
-                "Sans/OTC"
-            ],
-            "type": "github"
-        },
-        "version": "Serif2.003"
-    },
-    "noto-serif-cjk": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "noto-serif-cjk",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "notofonts",
-            "repo": "noto-cjk",
-            "rev": "Serif2.003",
-            "sha256": "sha256-mfbBSdJrUCZiUUmsmndtEW6H3z6KfBn+dEftBySf2j4=",
-            "sparseCheckout": [
-                "Serif/OTC"
-            ],
-            "type": "github"
-        },
-        "version": "Serif2.003"
+        "version": "9a296881f7b90e4022c594fa824185a4c02ccb25"
     },
     "nvim_vim-startuptime": {
         "cargoLock": null,
-        "date": "2025-02-17",
+        "date": "2026-02-15",
         "extract": null,
         "name": "nvim_vim-startuptime",
         "passthru": null,
@@ -101,12 +55,12 @@
             "name": null,
             "owner": "dstein64",
             "repo": "vim-startuptime",
-            "rev": "b6f0d93f6b8cf6eee0b4c94450198ba2d6a05ff6",
-            "sha256": "sha256-0YLDkU1y89O5z7tgxaH5USQpJDfTuN0fsPJOAp6pa5Y=",
+            "rev": "c12649b2458e34ec6dde8f1bdfe830661a613a6b",
+            "sha256": "sha256-S5Zw0IGhTFykdxk+znYiSh+G6ru7YrjhEB1xJwKnF54=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "b6f0d93f6b8cf6eee0b4c94450198ba2d6a05ff6"
+        "version": "c12649b2458e34ec6dde8f1bdfe830661a613a6b"
     },
     "rime-yuhaostar": {
         "cargoLock": null,
@@ -122,27 +76,6 @@
             "url": "https://github.com/forfudan/yuhao-ime-release/releases/download/v3.10.0/star_xingchen_v3.10.0.zip"
         },
         "version": "v3.10.0"
-    },
-    "spotx": {
-        "cargoLock": null,
-        "date": "2026-02-08",
-        "extract": null,
-        "name": "spotx",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "SpotX-Official",
-            "repo": "SpotX-Bash",
-            "rev": "41c8d9cd29b1b201b5495f1839a140e05def8fd1",
-            "sha256": "sha256-gCatmzChRhFEPzE476hi9BMgVacvCrXCQpD3QMxEKpU=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "41c8d9cd29b1b201b5495f1839a140e05def8fd1"
     },
     "wshowkeys-mao": {
         "cargoLock": null,

@@ -61,13 +61,6 @@
       owner = "gepbird";
       repo = "nixpkgs-patcher";
     };
-    ## fix guix/guile-zlib
-    nixpkgs-0182a361324364ae3f436a63005877674cf45efb = {
-      type = "github";
-      owner = "nixos";
-      repo = "nixpkgs";
-      rev = "0182a361324364ae3f436a63005877674cf45efb";
-    };
 
     nix-cachyos-kernel = {
       type = "github";

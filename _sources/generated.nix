@@ -20,55 +20,27 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "3f782e96279b2ea8f051fcf8a782f6b67613bf75";
+    version = "9a296881f7b90e4022c594fa824185a4c02ccb25";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "3f782e96279b2ea8f051fcf8a782f6b67613bf75";
+      rev = "9a296881f7b90e4022c594fa824185a4c02ccb25";
       fetchSubmodules = false;
-      sha256 = "sha256-+YNTJlhYK1YD5VL7DgCbVco+60rhuFdZtD2Cs/Jk9wU=";
+      sha256 = "sha256-EOjTGf9OHslTSzRbosPcuQDxauQ2dqT/I6W+k80s3XE=";
     };
-    date = "2026-02-09";
-  };
-  noto-sans-cjk = {
-    pname = "noto-sans-cjk";
-    version = "Serif2.003";
-    src = fetchFromGitHub {
-      owner = "notofonts";
-      repo = "noto-cjk";
-      rev = "Serif2.003";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ "Sans/OTC" ];
-      sha256 = "sha256-UxbwdY2w3u6i1kBWwr5vMKvsnD3eCllN+kBrCH38KlY=";
-    };
-  };
-  noto-serif-cjk = {
-    pname = "noto-serif-cjk";
-    version = "Serif2.003";
-    src = fetchFromGitHub {
-      owner = "notofonts";
-      repo = "noto-cjk";
-      rev = "Serif2.003";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ "Serif/OTC" ];
-      sha256 = "sha256-mfbBSdJrUCZiUUmsmndtEW6H3z6KfBn+dEftBySf2j4=";
-    };
+    date = "2026-03-17";
   };
   nvim_vim-startuptime = {
     pname = "nvim_vim-startuptime";
-    version = "b6f0d93f6b8cf6eee0b4c94450198ba2d6a05ff6";
+    version = "c12649b2458e34ec6dde8f1bdfe830661a613a6b";
     src = fetchFromGitHub {
       owner = "dstein64";
       repo = "vim-startuptime";
-      rev = "b6f0d93f6b8cf6eee0b4c94450198ba2d6a05ff6";
+      rev = "c12649b2458e34ec6dde8f1bdfe830661a613a6b";
       fetchSubmodules = false;
-      sha256 = "sha256-0YLDkU1y89O5z7tgxaH5USQpJDfTuN0fsPJOAp6pa5Y=";
+      sha256 = "sha256-S5Zw0IGhTFykdxk+znYiSh+G6ru7YrjhEB1xJwKnF54=";
     };
-    date = "2025-02-17";
+    date = "2026-02-15";
   };
   rime-yuhaostar = {
     pname = "rime-yuhaostar";
@@ -78,18 +50,6 @@
       name = "yustar_v3.10.0.zip";
       sha256 = "sha256-fw4DxYyONb1ZkoIiLc/TRPw5jBy7RcM1JLF4HfEvgrQ=";
     };
-  };
-  spotx = {
-    pname = "spotx";
-    version = "41c8d9cd29b1b201b5495f1839a140e05def8fd1";
-    src = fetchFromGitHub {
-      owner = "SpotX-Official";
-      repo = "SpotX-Bash";
-      rev = "41c8d9cd29b1b201b5495f1839a140e05def8fd1";
-      fetchSubmodules = false;
-      sha256 = "sha256-gCatmzChRhFEPzE476hi9BMgVacvCrXCQpD3QMxEKpU=";
-    };
-    date = "2026-02-08";
   };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";

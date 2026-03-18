@@ -1,8 +1,8 @@
 {
-  "hideInactive": true,
-  "enableToast": false,
-  "iconSpacing": 4,
-  "removeMargins": false,
   "activeColor": "primary",
-  "inactiveColor": "none"
+  "enableToast": true,
+  "hideInactive": true,
+  "iconSpacing": 4,
+  "inactiveColor": "none",
+  "removeMargins": false
 }
