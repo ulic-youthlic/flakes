@@ -16,12 +16,13 @@ in {
     (lib.mkIf cfg.enable {
       services.dae = {
         enable = true;
+        package = pkgs.dae;
         openFirewall = {
           enable = true;
           port = 12345;
         };
         disableTxChecksumIpGeneric = false;
-        configFile = toString ./config.dae;
+        config = builtins.readFile ./config.dae;
       };
       sops.secrets.url = {
         mode = "0444";
@@ -44,7 +45,7 @@ in {
             echo "" > ''${config}
             {
               echo 'subscription {'
-              echo \ \ wget:\ \"file://proxy.d_''${num}.txt\"
+              echo \ \ wget:\ \"file://proxy.d/''${num}.txt\"
               echo "}"
             } >> ''${config}
             if [[ ! -s ''${txt} ]]; then
@@ -119,12 +120,6 @@ in {
               "${updateForceScript}/bin/update-force.sh"
             ];
           };
-        };
-        dae = {
-          serviceConfig.LoadCredential = [
-            "proxy.d:/etc/dae/proxy.d"
-            "local.d:/etc/dae/local.d"
-          ];
         };
       };
     })

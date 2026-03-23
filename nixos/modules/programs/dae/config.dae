@@ -1,6 +1,6 @@
 include {
-  proxy.d_*.dae
-  local.d_*.dae
+  proxy.d/*.dae
+  local.d/*.dae
 }
 
 global {

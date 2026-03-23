@@ -41,6 +41,7 @@
                 "https://cache.nixos.org"
                 "https://cache.nixos-cuda.org"
                 "https://attic.xuyh0120.win/lantian"
+                "https://cache.garnix.io"
               ];
           };
         };
@@ -236,6 +237,12 @@
       type = "github";
       owner = "Gerg-L";
       repo = "spicetify-nix";
+    };
+
+    dae-flake = {
+      type = "github";
+      owner = "daeuniverse";
+      repo = "flake.nix";
     };
   };
 }

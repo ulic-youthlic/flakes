@@ -8,6 +8,7 @@ in
       ./radicle-explorer.nix
       ./wshowkeys.nix
       # ./QQ.nix
+      ./dae.nix
       ./helix.nix
       ./zulip.nix
       ./nautilus.nix
