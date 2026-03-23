@@ -59,7 +59,8 @@
       };
       bash.enable = true;
       guix.enable = true;
-      dae.enable = true;
+      # dae.enable = true;
+      clash-verge.enable = true;
       openssh.enable = true;
       steam.enable = true;
       tailscale.enable = true;
