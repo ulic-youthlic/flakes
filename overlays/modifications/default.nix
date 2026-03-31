@@ -16,7 +16,6 @@ in
       ./vim.nix
       ./prismlauncher.nix
 
-
       # Nur
       ./nur.nix
     ]
