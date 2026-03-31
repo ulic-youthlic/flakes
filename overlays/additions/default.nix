@@ -13,6 +13,7 @@ in
       ./nixvim.nix
       ./doom-emacs.nix
       ./osu-lazer-bin.nix # typochecker: disable-line
+      ./iosevka-serif_fixed.nix
 
       ./pkgsNoCuda.nix
       ./linux-cachyos.nix

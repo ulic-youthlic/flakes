@@ -54,6 +54,7 @@ in {
         noto-fonts-cjk-serif-static
         noto-fonts
         nerd-fonts.symbols-only
+        iosevka-serif_fixed
       ];
       fontconfig = {
         localConf =
