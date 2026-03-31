@@ -49,8 +49,6 @@
     };
   };
 
-  lix.enable = false;
-
   programs.gnupg.agent = {
     enable = true;
   };
