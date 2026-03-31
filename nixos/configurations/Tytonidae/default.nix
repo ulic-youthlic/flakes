@@ -130,11 +130,6 @@
 
   environment.variables.EDITOR = "hx";
   services.dbus.implementation = "broker";
-  services.scx = {
-    enable = true;
-    scheduler = "scx_lavd";
-    package = pkgs.scx.rustscheds;
-  };
 
   boot = {
     kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
