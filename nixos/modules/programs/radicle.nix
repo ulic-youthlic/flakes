@@ -8,7 +8,7 @@ in {
   options = {
     youthlic.programs.radicle = {
       enable = lib.mkEnableOption "radicle";
-      privateKeyFile = lib.mkOption {
+      privateKey = lib.mkOption {
         type = with lib.types; either path str;
       };
       publicKey = lib.mkOption {
@@ -23,7 +23,7 @@ in {
     (lib.mkIf cfg.enable {
       services.radicle = {
         enable = true;
-        inherit (cfg) publicKey privateKeyFile;
+        inherit (cfg) publicKey privateKey;
         node.openFirewall = true;
         httpd = {
           enable = true;

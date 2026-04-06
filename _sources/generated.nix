@@ -20,15 +20,15 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "9a296881f7b90e4022c594fa824185a4c02ccb25";
+    version = "f1d702310217435824f0c41a3ce79939bc753dba";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "9a296881f7b90e4022c594fa824185a4c02ccb25";
+      rev = "f1d702310217435824f0c41a3ce79939bc753dba";
       fetchSubmodules = false;
-      sha256 = "sha256-EOjTGf9OHslTSzRbosPcuQDxauQ2dqT/I6W+k80s3XE=";
+      sha256 = "sha256-LnrSroalPV1izwZxWHIPoQ9Sj7MBeAUpeowPeRSlGAU=";
     };
-    date = "2026-03-17";
+    date = "2026-04-06";
   };
   nvim_vim-startuptime = {
     pname = "nvim_vim-startuptime";

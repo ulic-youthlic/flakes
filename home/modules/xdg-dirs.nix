@@ -12,6 +12,7 @@ in {
   };
   config = lib.mkIf cfg.enable {
     xdg.userDirs = {
+      setSessionVariables = false;
       enable = true;
       download = "${config.home.homeDirectory}/dls";
       documents = "${config.home.homeDirectory}/doc";

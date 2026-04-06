@@ -15,7 +15,6 @@
     "enableExclusionZoneInset": true,
     "backgroundOpacity": 0.93,
     "useSeparateOpacity": false,
-    "floating": false,
     "marginVertical": 4,
     "marginHorizontal": 4,
     "frameThickness": 8,
@@ -151,7 +150,7 @@
           "drawerEnabled": true,
           "hidePassive": false,
           "id": "Tray",
-          "pinned": ["Fcitx"]
+          "pinned": ["Fcitx", "Keyboard - English (US)"]
         },
         {
           "clockColor": "none",
@@ -225,7 +224,8 @@
       "keyEscape": ["Esc"],
       "keyRemove": ["Del"]
     },
-    "reverseScroll": false
+    "reverseScroll": false,
+    "smoothScrollEnabled": true
   },
   "ui": {
     "fontDefault": "Source Han Serif SC",
@@ -244,6 +244,7 @@
   "location": {
     "weatherEnabled": true,
     "weatherShowEffects": true,
+    "weatherTaliaMascotAlways": false,
     "useFahrenheit": false,
     "use12hourFormat": false,
     "showWeekNumberInCalendar": true,
@@ -252,7 +253,8 @@
     "analogClockInCalendar": false,
     "firstDayOfWeek": 1,
     "hideWeatherTimezone": false,
-    "hideWeatherCityName": true
+    "hideWeatherCityName": true,
+    "autoLocate": false
   },
   "calendar": {
     "cards": [
@@ -278,6 +280,7 @@
     "showHiddenFiles": false,
     "viewMode": "recursive",
     "setWallpaperOnAllMonitors": true,
+    "linkLightAndDarkWallpapers": true,
     "fillMode": "crop",
     "fillColor": "#313244",
     "useSolidColor": false,
@@ -291,6 +294,7 @@
     "transitionEdgeSmoothness": 0.05,
     "panelPosition": "center",
     "hideWallpaperFilenames": false,
+    "useOriginalImages": false,
     "overviewBlur": 0.4,
     "overviewTint": 0.6,
     "useWallhaven": false,
@@ -441,8 +445,6 @@
     "indicatorOpacity": 0.6
   },
   "network": {
-    "wifiEnabled": false,
-    "airplaneModeEnabled": false,
     "bluetoothRssiPollingEnabled": true,
     "bluetoothRssiPollIntervalMs": 10000,
     "networkPanelView": "wifi",
@@ -564,6 +566,7 @@
     "volumeOverdrive": true,
     "spectrumFrameRate": 165,
     "visualizerType": "mirrored",
+    "spectrumMirrored": true,
     "mprisBlacklist": [],
     "preferredPlayer": "spotify, mpv",
     "volumeFeedback": true,
@@ -587,7 +590,8 @@
     "manualSunrise": "06:30",
     "manualSunset": "17:30",
     "generationMethod": "tonal-spot",
-    "monitorForColors": ""
+    "monitorForColors": "",
+    "syncGsettings": true
   },
   "templates": {
     "activeTemplates": [],
