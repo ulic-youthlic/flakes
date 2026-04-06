@@ -67,13 +67,14 @@
       type = "github";
       owner = "xddxdd";
       repo = "nix-cachyos-kernel";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     helix = {
       type = "github";
-      owner = "helix-editor";
+      owner = "mattwparas";
       repo = "helix";
-      ref = "master";
+      ref = "steel-event-system";
     };
 
     home-manager = {
@@ -222,6 +223,7 @@
       type = "github";
       owner = "fufexan";
       repo = "nix-gaming";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     noctalia = {
@@ -243,6 +245,7 @@
       type = "github";
       owner = "daeuniverse";
       repo = "flake.nix";
+      inputs.flake-parts.follows = "flake-parts";
     };
   };
 }

@@ -19,6 +19,12 @@
       };
     in {
       env.HELIX_DEFAULT_RUNTIME = toString helix-runtime;
+      cargoBuildFeatures =
+        (prev.cargoBuildFeatures or [])
+        ++ [
+          "git"
+          "steel"
+        ];
     }
   );
 in

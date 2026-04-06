@@ -48,6 +48,7 @@ in {
   };
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
+      home.packages = lib.singleton pkgs.steel;
       programs.helix = {
         enable = true;
         defaultEditor = true;
@@ -55,7 +56,7 @@ in {
         settings = with lib;
           pipe ./config.toml [
             builtins.readFile
-            builtins.fromTOML
+            fromTOML
           ];
         languages = lib.recursiveUpdate {
           language-server = {
