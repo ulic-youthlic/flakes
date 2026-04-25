@@ -19,6 +19,7 @@ in {
       niriExtraConfig = lib.mkOption {
         type = inputs.niri-flake.lib.kdl.types.kdl-document;
         default = [
+          (leaf "spawn-at-startup" [(lib.getExe config.programs.noctalia-shell.package)])
           (plain "binds" [
             (plain "Mod+V" [(noctalia ["launcher" "clipboard"])])
             (plain "Mod+Shift+P" [(noctalia ["lockScreen" "lock"])])
@@ -62,7 +63,6 @@ in {
     home.packages = [pkgs.app2unit pkgs.gpu-screen-recorder];
     programs.noctalia-shell = {
       enable = true;
-      systemd.enable = true;
       plugins = builtins.fromJSON (builtins.readFile ./plugins.json);
       pluginSettings = let
         enabledPlugins = with lib;

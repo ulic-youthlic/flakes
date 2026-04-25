@@ -14,7 +14,6 @@
   typstyle,
   pyright,
   ruff,
-  gotools,
   yaml-language-server,
   taplo,
   markdown-oxide,
@@ -56,7 +55,6 @@ buildEnv {
     typstyle
     pyright
     ruff
-    gotools
     yaml-language-server
     taplo
     markdown-oxide
