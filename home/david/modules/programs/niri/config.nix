@@ -584,6 +584,12 @@
             (flag "off")
           ])
         ])
+        (plain "blur" [
+          (leaf "passes" [4])
+          (leaf "offset" [4])
+          (leaf "noise" [0.02])
+          (leaf "saturation" [1.0])
+        ])
       ] # others
       ++ (
         let
@@ -601,6 +607,11 @@
             (leaf "block-out-from" ["screen-capture"])
           ])
           (window-rule [
+            (plain "background-effect" [
+              (leaf "blur" [true])
+            ])
+          ])
+          (window-rule [
             (match [{is-active = true;}])
             (leaf "opacity" [1.0])
           ])
@@ -614,6 +625,7 @@
             (match [{app-id = "^com\\.mitchellh\\.ghostty$";}])
             (match [{app-id = "^neovide$";}])
             (leaf "draw-border-with-background" [false])
+            (leaf "opacity" [0.65])
           ])
           (window-rule [
             (match [{app-id = "^org\\.kde\\.polkit-kde-authentication-agent-1$";}])
