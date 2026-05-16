@@ -22,6 +22,7 @@ in {
       templates = "${config.home.homeDirectory}/tpl";
       publicShare = "${config.home.homeDirectory}/pub";
       desktop = "${config.home.homeDirectory}/dsk";
+      projects = "${config.home.homeDirectory}/prj";
       createDirectories = true;
     };
   };
