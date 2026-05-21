@@ -12,6 +12,7 @@
       enable = true;
       enableUdevRules = true;
     };
+    xserver.videoDrivers = ["nvidia"];
   };
   nix = {
     settings = {
@@ -34,7 +35,8 @@
       modesetting.enable = true;
       open = true;
       prime = {
-        reverseSync.enable = lib.mkDefault true;
+        reverseSync.enable = lib.mkDefault false;
+        offload.enable = lib.mkDefault true;
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:1:0:0";
       };
