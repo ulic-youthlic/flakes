@@ -12,7 +12,7 @@
       enable = true;
       enableUdevRules = true;
     };
-    xserver.videoDrivers = ["nvidia"];
+    # xserver.videoDrivers = ["nvidia"];
   };
   nix = {
     settings = {
@@ -29,26 +29,50 @@
       driver = "xe";
       vaapiDriver = "intel-media-driver";
     };
-    nvidia = {
-      # Fix Nvidia API Change, See <https://github.com/NixOS/nixpkgs/issues/467814/>
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-      modesetting.enable = true;
-      open = true;
-      prime = {
-        reverseSync.enable = lib.mkDefault false;
-        offload.enable = lib.mkDefault true;
-        intelBusId = "PCI:0:2:0";
-        nvidiaBusId = "PCI:1:0:0";
-      };
-    };
+    # nvidia = {
+    #   # Fix Nvidia API Change, See <https://github.com/NixOS/nixpkgs/issues/467814/>
+    #   package = config.boot.kernelPackages.nvidiaPackages.beta;
+    #   modesetting.enable = true;
+    #   open = true;
+    #   prime = {
+    #     reverseSync.enable = lib.mkDefault false;
+    #     offload.enable = lib.mkDefault true;
+    #     intelBusId = "PCI:0:2:0";
+    #     nvidiaBusId = "PCI:1:0:0";
+    #   };
+    # };
   };
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [ddcci-driver];
+    kernelParams = [
+      "intel_iommu=on"
+      "iommu=pt"
+    ];
     kernelModules = [
       "ddcci"
       "ddcci-backlight"
       "i2c-dev"
+      "vfio-pci.ids=10de:2520,10de:228e"
     ];
+    initrd.kernelModules = [
+      "vfio_pci"
+      "vfio"
+      "vfio_iommu_type1"
+    ];
+    blacklistedKernelModules = [
+      "nouveau"
+      "nvidia"
+      "nvidia_drm"
+      "nvidia_modeset"
+      "nvidia_uvm"
+    ];
+    extraModprobeConfig = ''
+      options vfio-pci ids=10de:2520,10de:228e
+      softdep nvidia pre: vfio-pci
+      softdep nouveau pre: vfio-pci
+      softdep nvidia_drm pre: vfio-pci
+      softdep nvidia_modeset pre: vfio-pci
+    '';
     binfmt = {
       emulatedSystems = [
         "aarch64-linux"

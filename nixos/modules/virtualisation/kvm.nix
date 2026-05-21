@@ -23,10 +23,15 @@ in {
       enable = true;
     };
     users.groups.libvirtd.members = [cfg.unixName];
+    users.groups.kvm.members = [cfg.unixName];
     virtualisation = {
       libvirtd = {
         enable = true;
-        qemu.vhostUserPackages = with pkgs; [virtiofsd];
+        qemu = {
+          runAsRoot = true;
+          swtpm.enable = true;
+          vhostUserPackages = with pkgs; [virtiofsd];
+        };
       };
       spiceUSBRedirection = {
         enable = true;

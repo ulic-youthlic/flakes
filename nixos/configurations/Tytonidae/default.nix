@@ -10,7 +10,7 @@
     (with inputs.nixos-hardware.nixosModules; [
       common-hidpi
       common-cpu-intel
-      common-gpu-nvidia
+      # common-gpu-nvidia
       common-pc-laptop
       common-pc-laptop-ssd
       asus-battery
