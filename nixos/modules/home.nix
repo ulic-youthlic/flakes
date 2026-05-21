@@ -55,6 +55,7 @@
           inherit (pkgs) system;
         };
         backupFileExtension = "backup";
+        overwriteBackup = true;
         sharedModules = [outputs.homeModules.default];
       };
     };
