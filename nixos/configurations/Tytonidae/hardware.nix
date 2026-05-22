@@ -4,6 +4,29 @@
   config,
   ...
 }: {
+  virtualisation.libvirtd.hooks.qemu = {
+    "dynamic-cpu-isolation" =
+      pkgs.writeShellScript "dynamic-cpu-isolation.sh"
+      #bash
+      ''
+        VM_NAME="$1"
+        ACTION="$2"
+
+        if [ "$VM_NAME" != "win11" ]; then
+          exit 0
+        fi
+
+        if [ "$ACTION" == "prepare" ]; then
+          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- system.slice AllowedCPUs=0-1,12-19
+          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- user.slice AllowedCPUs=0-1,12-19
+          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- init.scope AllowedCPUs=0-1,12-19
+        elif [ "$ACTION" == "release" ]; then
+          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- system.slice AllowedCPUs=0-19
+          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- user.slice AllowedCPUs=0-19
+          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- init.scope AllowedCPUs=0-19
+        fi
+      '';
+  };
   nixpkgs.config.cudaSupport = true;
   services = {
     hardware.bolt.enable = true;
