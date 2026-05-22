@@ -20,21 +20,27 @@
         };
       };
     };
-    # netdevs = {
-    #   "20-bond0" = {
-    #     netdevConfig = {
-    #       Kind = "bond";
-    #       Name = "bond0";
-    #     };
-    #     bondConfig = {
-    #       Mode = "balance-alb";
-    #       MIIMonitorSec = "1s";
-    #       PrimaryReselectPolicy = "better";
-    #     };
-    #   };
-    # };
+    netdevs = {
+      #   "20-bond0" = {
+      #     netdevConfig = {
+      #       Kind = "bond";
+      #       Name = "bond0";
+      #     };
+      #     bondConfig = {
+      #       Mode = "balance-alb";
+      #       MIIMonitorSec = "1s";
+      #       PrimaryReselectPolicy = "better";
+      #     };
+      #   };
+      "20-br0" = {
+        netdevConfig = {
+          Kind = "bridge";
+          Name = "br0";
+        };
+      };
+    };
     networks = {
-      "20-eno2" = {
+      "20-br0" = {
         networkConfig = {
           # Bond = "bond0";
           # PrimarySlave = true;
@@ -49,7 +55,15 @@
           RequiredForOnline = "routable";
         };
         matchConfig = {
+          Name = "br0";
+        };
+      };
+      "20-eno2" = {
+        matchConfig = {
           Name = "eno2";
+        };
+        networkConfig = {
+          Bridge = "br0";
         };
       };
       # "20-wlan0" = {
