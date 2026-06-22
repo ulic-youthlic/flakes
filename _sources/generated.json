@@ -62,21 +62,6 @@
         },
         "version": "c12649b2458e34ec6dde8f1bdfe830661a613a6b"
     },
-    "rime-yuhaostar": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "rime-yuhaostar",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": "yustar_v3.10.0.zip",
-            "sha256": "sha256-fw4DxYyONb1ZkoIiLc/TRPw5jBy7RcM1JLF4HfEvgrQ=",
-            "type": "url",
-            "url": "https://github.com/forfudan/yuhao-ime-release/releases/download/v3.10.0/star_xingchen_v3.10.0.zip"
-        },
-        "version": "v3.10.0"
-    },
     "wshowkeys-mao": {
         "cargoLock": null,
         "date": "2025-09-14",

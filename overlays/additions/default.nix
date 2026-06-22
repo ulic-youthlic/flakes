@@ -8,7 +8,6 @@ in
       ./OuterWildsTextAdventure.nix
       ./editor-runtime.nix
       ./wallpapers.nix
-      ./rime-yuhaostar.nix
       ./rime-all.nix
       ./nixvim.nix
       ./doom-emacs.nix

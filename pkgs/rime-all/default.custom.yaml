@@ -2,7 +2,6 @@ patch:
   "__include": rime_ice_suggestion:/
   "schema_list":
     - schema: double_pinyin_flypy
-    - schema: yustar_sc
   "menu/page_size": 7
   "switcher/caption": 「方案选单」
   "switcher/hotkeys":

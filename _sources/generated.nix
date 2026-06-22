@@ -42,15 +42,6 @@
     };
     date = "2026-02-15";
   };
-  rime-yuhaostar = {
-    pname = "rime-yuhaostar";
-    version = "v3.10.0";
-    src = fetchurl {
-      url = "https://github.com/forfudan/yuhao-ime-release/releases/download/v3.10.0/star_xingchen_v3.10.0.zip";
-      name = "yustar_v3.10.0.zip";
-      sha256 = "sha256-fw4DxYyONb1ZkoIiLc/TRPw5jBy7RcM1JLF4HfEvgrQ=";
-    };
-  };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";
     version = "184f55dbc5320c34a56d02353410ad35a0f3e090";
