@@ -24,7 +24,5 @@ buildEnv {
     for s in *.schema.yaml; do
       rime_deployer --compile "$s" . "${rime-data}/share/rime-data/" ./build
     done
-
-    rm ./build/*.txt
   '';
 }

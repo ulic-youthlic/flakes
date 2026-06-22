@@ -99,11 +99,8 @@
     vim
     helix
 
-    fluffychat
-    kdePackages.neochat
     vlc
     btop
-    handbrake
     wechat-uos
     nvtopPackages.full
     localsend
@@ -116,7 +113,6 @@
 
     juicity
     waypipe
-    wineWow64Packages.waylandFull
     iperf3
     neovim-nightly
     doom-emacs

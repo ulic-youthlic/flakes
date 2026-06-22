@@ -20,8 +20,7 @@
         allowUnfree = true;
         allowInsecurePredicate = p:
           builtins.elem (lib.getName p) [
-            # for neochat
-            "olm"
+            "electron"
 
             "immersive-translate"
           ];

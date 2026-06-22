@@ -1,52 +1,57 @@
 {
   description = "A simple NixOS flakes";
 
-  outputs = {
-    flake-parts,
-    home-manager,
-    treefmt-nix,
-    nixpkgs,
-    nixpkgs-patcher,
-    ...
-  } @ inputs: let
-    nixpkgs-lib = nixpkgs.lib;
-    lib = nixpkgs-lib.extend (final: prev: nixpkgs-lib.recursiveUpdate {nixpkgs-patcher = nixpkgs-patcher.lib;} (import ./lib final prev));
-  in
-    flake-parts.lib.mkFlake
+  outputs =
     {
-      inherit inputs;
-      specialArgs = {
-        inherit lib;
-        rootPath = ./.;
-      };
-    }
-    (
-      {lib, ...}: {
-        systems = ["x86_64-linux"];
-        imports =
-          [
+      flake-parts,
+      home-manager,
+      treefmt-nix,
+      nixpkgs,
+      nixpkgs-patcher,
+      ...
+    }@inputs:
+    let
+      nixpkgs-lib = nixpkgs.lib;
+      lib = nixpkgs-lib.extend (
+        final: prev:
+        nixpkgs-lib.recursiveUpdate { nixpkgs-patcher = nixpkgs-patcher.lib; } (import ./lib final prev)
+      );
+    in
+    flake-parts.lib.mkFlake
+      {
+        inherit inputs;
+        specialArgs = {
+          inherit lib;
+          rootPath = ./.;
+        };
+      }
+      (
+        { lib, ... }: {
+          systems = [ "x86_64-linux" ];
+          imports = [
             home-manager.flakeModules.home-manager
             treefmt-nix.flakeModule
           ]
           ++ lib.youthlic.loadImports ./flake;
-        flake = {
-          inherit lib;
-          nix.settings = {
-            # substituters shared in home-manager and nixos configuration
-            substituters = let
-              cachix = x: "https://${x}.cachix.org";
-            in
-              lib.flatten [
-                (cachix "nix-community")
-                "https://cache.nixos.org"
-                "https://cache.nixos-cuda.org"
-                "https://attic.xuyh0120.win/lantian"
-                "https://cache.garnix.io"
-              ];
+          flake = {
+            inherit lib;
+            nix.settings = {
+              # substituters shared in home-manager and nixos configuration
+              substituters =
+                let
+                  cachix = x: "https://${x}.cachix.org";
+                in
+                lib.flatten [
+                  (cachix "nix-community")
+                  "https://cache.nixos.org"
+                  "https://cache.nixos-cuda.org"
+                  "https://attic.xuyh0120.win/lantian"
+                  "https://cache.garnix.io"
+                ];
+            };
           };
-        };
-      }
-    );
+        }
+      );
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -61,6 +66,13 @@
       type = "github";
       owner = "gepbird";
       repo = "nixpkgs-patcher";
+    };
+
+    nixpkgs-b12141ef619e0a9c1c84dc8c684040326f27cdcc = {
+      type = "github";
+      owner = "nixos";
+      repo = "nixpkgs";
+      ref = "b12141ef619e0a9c1c84dc8c684040326f27cdcc";
     };
 
     nix-cachyos-kernel = {
@@ -198,7 +210,7 @@
       type = "github";
       owner = "nix-community";
       repo = "lanzaboote";
-      ref = "v1.0.0";
+      ref = "v1.1.0";
     };
 
     nix-doom = {
@@ -223,6 +235,7 @@
       type = "github";
       owner = "noctalia-dev";
       repo = "noctalia-shell";
+      ref = "legacy-v4";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };

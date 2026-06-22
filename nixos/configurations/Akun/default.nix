@@ -51,8 +51,6 @@
     vim
     helix
 
-    fluffychat
-    kdePackages.neochat
     vlc
     btop
     localsend
