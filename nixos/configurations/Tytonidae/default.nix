@@ -121,7 +121,6 @@
     neovim-nightly
     doom-emacs
     neovide
-    osu-lazer-bin # typochecker: disable-line
     prismlauncher
 
     sbctl

@@ -219,13 +219,6 @@
       repo = "emacs-overlay";
     };
 
-    nix-gaming = {
-      type = "github";
-      owner = "fufexan";
-      repo = "nix-gaming";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-
     noctalia = {
       type = "github";
       owner = "noctalia-dev";
