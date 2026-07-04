@@ -54,7 +54,6 @@
       zen-browser.enable = true;
       openssh.enable = true;
       helix.enable = true;
-      # spacemacs.enable = true;
       radicle.enable = true;
     };
   };

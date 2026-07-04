@@ -114,7 +114,6 @@
     juicity
     waypipe
     iperf3
-    doom-emacs
     neovide
     prismlauncher
 
