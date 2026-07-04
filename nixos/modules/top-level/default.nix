@@ -9,7 +9,6 @@
     sops-nix.nixosModules.sops
     stylix.nixosModules.stylix
     disko.nixosModules.disko
-    nixvim.nixosModules.nixvim
     dae-flake.nixosModules.dae
 
     ./..

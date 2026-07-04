@@ -9,7 +9,6 @@ in
       ./editor-runtime.nix
       ./wallpapers.nix
       ./rime-all.nix
-      ./nixvim.nix
       ./doom-emacs.nix
       ./iosevka-serif_fixed.nix
 

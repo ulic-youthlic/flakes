@@ -44,7 +44,6 @@
       inputsScope = lib.makeScope pkgs.newScope (self: {
         inherit inputs rootPath;
         srcs = self.callPackage (rootPath + "/_sources/generated.nix") {};
-        inherit (inputs'.nixvim.legacyPackages) makeNixvim makeNixvimWithModule;
         neovim_git = inputs'.neovim-nightly.packages.default;
       });
     in
@@ -72,9 +71,6 @@
           "srcs"
 
           "rootPath"
-
-          "makeNixvim"
-          "makeNixvimWithModule"
 
           "newScope"
           "overrideScope"

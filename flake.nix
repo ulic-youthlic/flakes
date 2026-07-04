@@ -173,11 +173,6 @@
       repo = "NUR";
     };
 
-    nixvim = {
-      type = "github";
-      owner = "nix-community";
-      repo = "nixvim";
-    };
     neovim-nightly = {
       type = "github";
       owner = "nix-community";
