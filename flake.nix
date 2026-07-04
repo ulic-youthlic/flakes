@@ -195,12 +195,5 @@
       owner = "Gerg-L";
       repo = "spicetify-nix";
     };
-
-    dae-flake = {
-      type = "github";
-      owner = "daeuniverse";
-      repo = "flake.nix";
-      inputs.flake-parts.follows = "flake-parts";
-    };
   };
 }
