@@ -15,7 +15,6 @@ in
       ./neovim-nightly.nix
       ./vim.nix
       ./prismlauncher.nix
-      ./fix-clash-verge.nix
 
       # Nur
       ./nur.nix

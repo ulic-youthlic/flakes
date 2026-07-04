@@ -68,13 +68,6 @@
       repo = "nixpkgs-patcher";
     };
 
-    nixpkgs-b12141ef619e0a9c1c84dc8c684040326f27cdcc = {
-      type = "github";
-      owner = "nixos";
-      repo = "nixpkgs";
-      ref = "b12141ef619e0a9c1c84dc8c684040326f27cdcc";
-    };
-
     nix-cachyos-kernel = {
       type = "github";
       owner = "xddxdd";

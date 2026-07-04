@@ -735,22 +735,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-b12141ef619e0a9c1c84dc8c684040326f27cdcc": {
-      "locked": {
-        "lastModified": 1776548001,
-        "narHash": "sha256-ZSK0NL4a1BwVbbTBoSnWgbJy9HeZFXLYQizjb2DPF24=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "b12141ef619e0a9c1c84dc8c684040326f27cdcc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "b12141ef619e0a9c1c84dc8c684040326f27cdcc",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-patch-rqbit-bump": {
       "flake": false,
       "locked": {
@@ -1145,7 +1129,6 @@
         "nix4nvchad": "nix4nvchad",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_8",
-        "nixpkgs-b12141ef619e0a9c1c84dc8c684040326f27cdcc": "nixpkgs-b12141ef619e0a9c1c84dc8c684040326f27cdcc",
         "nixpkgs-patch-rqbit-bump": "nixpkgs-patch-rqbit-bump",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
