@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.users.deploy;
-in {
+in
+{
   options = {
     youthlic.users.deploy = {
       enable = lib.mkEnableOption "deploy";

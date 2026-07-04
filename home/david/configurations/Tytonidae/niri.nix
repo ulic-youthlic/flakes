@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.david.programs.niri;
-in {
+in
+{
   david.programs.niri = lib.mkIf cfg.enable {
     wluma.extraSettings = {
       output = {

@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options = {
     youthlic.programs.git = {
       email = lib.mkOption {
@@ -13,7 +14,7 @@
       };
       name = lib.mkOption {
         type = lib.types.str;
-        example = ''youthlic'';
+        example = "youthlic";
         description = ''
           git name
         '';
@@ -30,9 +31,10 @@
       encrypt-credential = lib.mkEnableOption "encrypt git credential";
     };
   };
-  config = let
-    cfg = config.youthlic.programs.git;
-  in
+  config =
+    let
+      cfg = config.youthlic.programs.git;
+    in
     lib.mkMerge [
       {
         programs = {

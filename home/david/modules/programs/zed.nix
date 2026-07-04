@@ -3,9 +3,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.david.programs.zed-editor;
-in {
+in
+{
   options = {
     david.programs.zed-editor = {
       enable = lib.mkEnableOption "zed-editor";
@@ -61,7 +63,7 @@ in {
           ty = {
             binary = {
               path = lib.getExe pkgs.ty;
-              arguments = ["server"];
+              arguments = [ "server" ];
             };
           };
         };

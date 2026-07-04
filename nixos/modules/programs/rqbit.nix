@@ -4,9 +4,11 @@
   config,
   options,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.rqbit;
-in {
+in
+{
   options = {
     youthlic.programs.rqbit = {
       enable = lib.mkEnableOption "rqbit";
@@ -29,29 +31,28 @@ in {
       openFirewall = true;
       httpPort = 9092;
     };
-    users.groups.rqbit.members = [cfg.unixName];
-    sops.secrets."rqbit.secrets.env" = {};
+    users.groups.rqbit.members = [ cfg.unixName ];
+    sops.secrets."rqbit.secrets.env" = { };
     systemd.services."rqbit" = {
       serviceConfig = {
         EnvironmentFile = [
-          (toString
-            (
-              pkgs.writeText
-              "rqbit-env.env"
-              ( # env
-                # ''
-                #   RQBIT_TRACKERS_FILENAME=${pkgs.trackerslist}/trackers_all.txt
-                # ''
+          (toString (
+            pkgs.writeText "rqbit-env.env" (
+              # env
+              # ''
+              #   RQBIT_TRACKERS_FILENAME=${pkgs.trackerslist}/trackers_all.txt
+              # ''
+              ''
+                RQBIT_TRACKERS_FILENAME=${pkgs.TrackersListCollection}/all.txt
+              ''
+              + (lib.optionalString (cfg.ratelimitUpload != 0)
+                # env
                 ''
-                  RQBIT_TRACKERS_FILENAME=${pkgs.TrackersListCollection}/all.txt
+                  RQBIT_RATELIMIT_UPLOAD=${toString (cfg.ratelimitUpload * 1024 * 1024)}
                 ''
-                + (lib.optionalString (cfg.ratelimitUpload != 0)
-                  # env
-                  ''
-                    RQBIT_RATELIMIT_UPLOAD=${toString (cfg.ratelimitUpload * 1024 * 1024)}
-                  '')
               )
-            ))
+            )
+          ))
           config.sops.secrets."rqbit.secrets.env".path
         ];
       };

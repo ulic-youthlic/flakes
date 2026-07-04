@@ -2,9 +2,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.david.programs.radicle;
-in {
+in
+{
   options = {
     david.programs.radicle = {
       enable = lib.mkEnableOption "radicle";

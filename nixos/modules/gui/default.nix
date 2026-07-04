@@ -4,9 +4,11 @@
   pkgs,
   rootPath,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.gui;
-in {
+in
+{
   imports = with lib; youthlic.loadImports ./.;
   options = {
     youthlic.gui = {
@@ -28,8 +30,9 @@ in {
       fontconfig
     ];
 
-    sops.secrets = with lib;
-    with builtins;
+    sops.secrets =
+      with lib;
+      with builtins;
       pipe (rootPath + "/secrets/dummy_font") [
         readDir
         attrNames

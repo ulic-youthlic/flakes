@@ -6,7 +6,8 @@
   pkgs,
   rootPath,
   ...
-}: {
+}:
+{
   options.youthlic.home-manager = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -32,17 +33,18 @@
       '';
     };
   };
-  config = let
-    cfg = config.youthlic.home-manager;
-    unixName = cfg.unixName;
-    hostName = cfg.hostName;
-  in
+  config =
+    let
+      cfg = config.youthlic.home-manager;
+      unixName = cfg.unixName;
+      hostName = cfg.hostName;
+    in
     lib.mkIf cfg.enable {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
         users."${cfg.unixName}" = (
-          {...}: {
+          { ... }: {
             imports = [
               outputs.homeModules."${unixName}"
               (rootPath + "/home/${unixName}/configurations/${hostName}")
@@ -56,7 +58,7 @@
         };
         backupFileExtension = "backup";
         overwriteBackup = true;
-        sharedModules = [outputs.homeModules.default];
+        sharedModules = [ outputs.homeModules.default ];
       };
     };
 }

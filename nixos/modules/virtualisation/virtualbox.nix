@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.virtualisation.virtualbox;
-in {
+in
+{
   options = {
     youthlic.virtualisation.virtualbox = {
       enable = lib.mkEnableOption "virtualbox";
@@ -14,7 +16,7 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-    users.groups."vboxusers".members = [cfg.unixName];
+    users.groups."vboxusers".members = [ cfg.unixName ];
     virtualisation.virtualbox = {
       host = {
         enableKvm = true;

@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.mautrix-telegram;
-in {
+in
+{
   options = {
     youthlic.programs.mautrix-telegram = {
       enable = lib.mkEnableOption "mautrix-telegram";
@@ -19,11 +21,11 @@ in {
         '';
       }
     ];
-    sops.secrets.matrix-telegram-bot = {};
+    sops.secrets.matrix-telegram-bot = { };
     services.mautrix-telegram = {
       enable = true;
       environmentFile = "${config.sops.secrets.matrix-telegram-bot.path}";
-      serviceDependencies = ["tuwunel.service"];
+      serviceDependencies = [ "tuwunel.service" ];
       settings = {
         bridge = {
           displayname_template = "{displayname} | Telegram";

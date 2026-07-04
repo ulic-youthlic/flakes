@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.awscli;
-in {
+in
+{
   options = {
     youthlic.programs.awscli = {
       enable = lib.mkEnableOption "awscli";
@@ -16,7 +18,7 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-    sops.secrets."awscli" = {};
+    sops.secrets."awscli" = { };
     programs.awscli = {
       enable = true;
       credentials = {

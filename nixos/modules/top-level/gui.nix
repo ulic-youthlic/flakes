@@ -1,9 +1,8 @@
-{inputs, ...}: {
-  imports =
-    [
-      ./.
-    ]
-    ++ (with inputs; [
-      niri-flake.nixosModules.niri
-    ]);
+{ inputs, ... }: {
+  imports = [
+    ./.
+  ]
+  ++ (with inputs; [
+    niri-flake.nixosModules.niri
+  ]);
 }

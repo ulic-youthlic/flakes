@@ -3,9 +3,11 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.david.programs.waypaper;
-in {
+in
+{
   options = {
     david.programs.waypaper = {
       enable = lib.mkEnableOption "waypaper";
@@ -27,7 +29,7 @@ in {
           OnCalendar = "*:0/10";
         };
         Install = {
-          WantedBy = ["timers.target"];
+          WantedBy = [ "timers.target" ];
         };
       };
       services."waypaper" = {

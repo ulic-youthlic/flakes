@@ -2,11 +2,13 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.zoxide;
   fish-cfg = config.youthlic.programs.fish;
   bash-cfg = config.youthlic.programs.bash;
-in {
+in
+{
   options = {
     youthlic.programs.zoxide = {
       enable = lib.mkEnableOption "zoxide";

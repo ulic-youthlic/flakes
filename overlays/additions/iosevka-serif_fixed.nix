@@ -1,4 +1,4 @@
-{...}: final: _prev: {
+{ ... }: final: _prev: {
   iosevka-serif_fixed = final.iosevka.override {
     set = "SerifFixed";
     privateBuildPlan =

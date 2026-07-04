@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.clash-verge;
-in {
+in
+{
   options = {
     youthlic.programs.clash-verge = {
       enable = lib.mkEnableOption "clash-verge";

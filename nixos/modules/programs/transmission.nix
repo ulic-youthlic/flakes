@@ -4,9 +4,11 @@
   lib,
   rootPath,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.transmission;
-in {
+in
+{
   options = {
     youthlic.programs.transmission = {
       enable = lib.mkEnableOption "transmission";
@@ -40,21 +42,21 @@ in {
       let
         caddy-cfg = config.youthlic.programs.caddy;
       in
-        lib.mkIf (cfg.enable && caddy-cfg.enable) {
-          services.transmission = {
-            openRPCPort = lib.mkForce false;
-            settings = {
-              rpc-bind-address = lib.mkForce "127.0.0.1";
-            };
+      lib.mkIf (cfg.enable && caddy-cfg.enable) {
+        services.transmission = {
+          openRPCPort = lib.mkForce false;
+          settings = {
+            rpc-bind-address = lib.mkForce "127.0.0.1";
           };
-          services.caddy.virtualHosts = {
-            "transmission.${caddy-cfg.baseDomain}" = {
-              extraConfig = ''
-                reverse_proxy 127.0.0.1:9091
-              '';
-            };
+        };
+        services.caddy.virtualHosts = {
+          "transmission.${caddy-cfg.baseDomain}" = {
+            extraConfig = ''
+              reverse_proxy 127.0.0.1:9091
+            '';
           };
-        }
+        };
+      }
     )
   ];
 }

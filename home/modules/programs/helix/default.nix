@@ -3,23 +3,25 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.helix;
   defaultLanguagesSettings = config.programs.helix.package.passthru.languages.language;
-in {
+in
+{
   options = {
     youthlic.programs.helix = {
       enable = lib.mkEnableOption "helix";
       languageSettings = lib.mkOption {
         type = lib.types.attrsOf (
           lib.types.submodule (
-            {...}: {
+            { ... }: {
               freeformType = lib.types.anything;
               options = {
                 language-servers = lib.mkOption {
                   type = lib.types.listOf (lib.types.either lib.types.str lib.types.anything);
-                  default = ["typos-lsp"];
-                  example = ["rust-analyzer"];
+                  default = [ "typos-lsp" ];
+                  example = [ "rust-analyzer" ];
                   apply = lib.unique;
                 };
               };
@@ -27,16 +29,17 @@ in {
           )
         );
         default = lib.pipe defaultLanguagesSettings [
-          (map (lang: lib.nameValuePair lang.name (lib.removeAttrs lang ["name"])))
+          (map (lang: lib.nameValuePair lang.name (lib.removeAttrs lang [ "name" ])))
           lib.listToAttrs
         ];
-        apply = lib.mapAttrsToList (name: value: {inherit name;} // value);
+        apply = lib.mapAttrsToList (name: value: { inherit name; } // value);
       };
       extraPackages = lib.mkOption {
         type = lib.types.listOf lib.types.package;
-        default = [];
+        default = [ ];
         example = (
-          with pkgs; [
+          with pkgs;
+          [
             deno
           ]
         );
@@ -53,7 +56,8 @@ in {
         enable = true;
         defaultEditor = true;
         extraPackages = cfg.extraPackages;
-        settings = with lib;
+        settings =
+          with lib;
           pipe ./config.toml [
             builtins.readFile
             fromTOML
@@ -82,200 +86,200 @@ in {
               command = "typos-lsp";
             };
           };
-        } {language = cfg.languageSettings;};
+        } { language = cfg.languageSettings; };
       };
     })
     (lib.mkIf cfg.enable {
       youthlic.programs.helix.languageSettings = lib.pipe defaultLanguagesSettings [
-        (map ({name, ...}: lib.nameValuePair name {language-servers = ["typos-lsp"];}))
+        (map ({ name, ... }: lib.nameValuePair name { language-servers = [ "typos-lsp" ]; }))
         lib.listToAttrs
       ];
     })
     (lib.mkIf cfg.enable {
       youthlic.programs.helix.languageSettings =
         lib.recursiveUpdate
-        (lib.pipe defaultLanguagesSettings [
-          (map (lang: lib.nameValuePair lang.name (lib.removeAttrs lang ["name"])))
-          lib.listToAttrs
-        ])
-        {
-          cmake = {
-            language-servers = [
-              "neocmakelsp"
-              "cmake-language-server"
-            ];
-          };
-          kdl = {
-            formatter = {
-              command = "kdlfmt";
-              args = [
-                "format"
-                "-"
+          (lib.pipe defaultLanguagesSettings [
+            (map (lang: lib.nameValuePair lang.name (lib.removeAttrs lang [ "name" ])))
+            lib.listToAttrs
+          ])
+          {
+            cmake = {
+              language-servers = [
+                "neocmakelsp"
+                "cmake-language-server"
               ];
             };
-          };
-          just = {
-            formatter = {
-              command = "just";
-              args = [
-                "--dump"
+            kdl = {
+              formatter = {
+                command = "kdlfmt";
+                args = [
+                  "format"
+                  "-"
+                ];
+              };
+            };
+            just = {
+              formatter = {
+                command = "just";
+                args = [
+                  "--dump"
+                ];
+              };
+            };
+            nix = {
+              formatter = {
+                command = "nixfmt";
+              };
+            };
+            xml = {
+              formatter = {
+                command = "xmllint";
+                args = [
+                  "--format"
+                  "-"
+                ];
+              };
+            };
+            typst = {
+              formatter = {
+                command = "typstyle";
+              };
+            };
+            c = {
+              formatter = {
+                command = "clang-format";
+              };
+            };
+            cpp = {
+              formatter = {
+                command = "clang-format";
+              };
+            };
+            python = {
+              formatter = {
+                command = "ruff";
+                args = [
+                  "format"
+                  "-s"
+                  "--line-length"
+                  "88"
+                  "-"
+                ];
+              };
+              language-servers = [
+                "pyright"
+                "ruff"
+                "ty"
               ];
             };
-          };
-          nix = {
-            formatter = {
-              command = "nixfmt";
+            go = {
+              formatter = {
+                command = "goimports";
+              };
             };
-          };
-          xml = {
-            formatter = {
-              command = "xmllint";
-              args = [
-                "--format"
-                "-"
+            awk = {
+              formatter = {
+                command = "awk";
+                timeout = 5;
+                args = [
+                  "--file=/dev/stdin"
+                  "--pretty-print=/dev/stdout"
+                ];
+              };
+            };
+            fish = {
+              language-servers = [
+                "fish-lsp"
               ];
             };
-          };
-          typst = {
-            formatter = {
-              command = "typstyle";
+            yaml = {
+              formatter = {
+                command = "deno";
+                args = [
+                  "fmt"
+                  "-"
+                  "--ext"
+                  "yaml"
+                ];
+              };
             };
-          };
-          c = {
-            formatter = {
-              command = "clang-format";
-            };
-          };
-          cpp = {
-            formatter = {
-              command = "clang-format";
-            };
-          };
-          python = {
-            formatter = {
-              command = "ruff";
-              args = [
-                "format"
-                "-s"
-                "--line-length"
-                "88"
-                "-"
+            html = {
+              formatter = {
+                command = "deno";
+                args = [
+                  "fmt"
+                  "-"
+                  "--ext"
+                  "html"
+                ];
+              };
+              language-servers = [
+                "vscode-html-language-server"
               ];
             };
-            language-servers = [
-              "pyright"
-              "ruff"
-              "ty"
-            ];
-          };
-          go = {
-            formatter = {
-              command = "goimports";
-            };
-          };
-          awk = {
-            formatter = {
-              command = "awk";
-              timeout = 5;
-              args = [
-                "--file=/dev/stdin"
-                "--pretty-print=/dev/stdout"
+            css = {
+              formatter = {
+                command = "deno";
+                args = [
+                  "fmt"
+                  "-"
+                  "--ext"
+                  "css"
+                ];
+              };
+              language-servers = [
+                "vscode-css-language-server"
               ];
             };
-          };
-          fish = {
-            language-servers = [
-              "fish-lsp"
-            ];
-          };
-          yaml = {
-            formatter = {
-              command = "deno";
-              args = [
-                "fmt"
-                "-"
-                "--ext"
-                "yaml"
+            toml = {
+              formatter = {
+                command = "taplo";
+                args = [
+                  "fmt"
+                  "-"
+                ];
+              };
+            };
+            markdown = {
+              formatter = {
+                command = "deno";
+                args = [
+                  "fmt"
+                  "-"
+                  "--ext"
+                  "md"
+                ];
+              };
+            };
+            json = {
+              language-servers = [
+                "vscode-json-language-server"
               ];
+              formatter = {
+                command = "deno";
+                args = [
+                  "fmt"
+                  "-"
+                  "--ext"
+                  "json"
+                ];
+              };
+            };
+            jsonc = {
+              language-servers = [
+                "vscode-json-language-server"
+              ];
+              formatter = {
+                command = "deno";
+                args = [
+                  "fmt"
+                  "-"
+                  "--ext"
+                  "jsonc"
+                ];
+              };
             };
           };
-          html = {
-            formatter = {
-              command = "deno";
-              args = [
-                "fmt"
-                "-"
-                "--ext"
-                "html"
-              ];
-            };
-            language-servers = [
-              "vscode-html-language-server"
-            ];
-          };
-          css = {
-            formatter = {
-              command = "deno";
-              args = [
-                "fmt"
-                "-"
-                "--ext"
-                "css"
-              ];
-            };
-            language-servers = [
-              "vscode-css-language-server"
-            ];
-          };
-          toml = {
-            formatter = {
-              command = "taplo";
-              args = [
-                "fmt"
-                "-"
-              ];
-            };
-          };
-          markdown = {
-            formatter = {
-              command = "deno";
-              args = [
-                "fmt"
-                "-"
-                "--ext"
-                "md"
-              ];
-            };
-          };
-          json = {
-            language-servers = [
-              "vscode-json-language-server"
-            ];
-            formatter = {
-              command = "deno";
-              args = [
-                "fmt"
-                "-"
-                "--ext"
-                "json"
-              ];
-            };
-          };
-          jsonc = {
-            language-servers = [
-              "vscode-json-language-server"
-            ];
-            formatter = {
-              command = "deno";
-              args = [
-                "fmt"
-                "-"
-                "--ext"
-                "jsonc"
-              ];
-            };
-          };
-        };
     })
   ];
 }

@@ -4,36 +4,40 @@
   self,
   rootPath,
   ...
-}: let
+}:
+let
   inherit (self) outputs;
-in {
+in
+{
   flake = {
     nixosModules = {
       default = import (rootPath + "/nixos/modules/top-level");
       gui = import (rootPath + "/nixos/modules/top-level/gui.nix");
     };
-    nixosConfigurations = let
-      makeNixosConfiguration = hostName:
-        lib.nixpkgs-patcher.nixosSystem {
-          nixpkgsPatcher.inputs = inputs;
-          modules = [(rootPath + "/nixos/configurations/${hostName}")];
-          specialArgs = {
-            inherit
-              inputs
-              outputs
-              rootPath
-              lib
-              ;
+    nixosConfigurations =
+      let
+        makeNixosConfiguration =
+          hostName:
+          lib.nixpkgs-patcher.nixosSystem {
+            nixpkgsPatcher.inputs = inputs;
+            modules = [ (rootPath + "/nixos/configurations/${hostName}") ];
+            specialArgs = {
+              inherit
+                inputs
+                outputs
+                rootPath
+                lib
+                ;
+            };
           };
-        };
-    in
+      in
       with lib;
-        pipe
+      pipe
         [
           "Tytonidae"
           "Cape"
           "Akun"
         ]
-        [(flip genAttrs makeNixosConfiguration)];
+        [ (flip genAttrs makeNixosConfiguration) ];
   };
 }

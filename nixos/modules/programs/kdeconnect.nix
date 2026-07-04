@@ -2,9 +2,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.kdeconnect;
-in {
+in
+{
   options = {
     youthlic.programs.kdeconnect = {
       enable = lib.mkEnableOption "kdeconnect";

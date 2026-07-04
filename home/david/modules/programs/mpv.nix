@@ -3,9 +3,11 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.david.programs.mpv;
-in {
+in
+{
   options = {
     david.programs.mpv = {
       enable = lib.mkEnableOption "mpv";

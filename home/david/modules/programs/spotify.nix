@@ -4,10 +4,12 @@
   inputs,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.david.programs.spotify;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in {
+in
+{
   options = {
     david.programs.spotify = {
       enable = lib.mkEnableOption "spotify";

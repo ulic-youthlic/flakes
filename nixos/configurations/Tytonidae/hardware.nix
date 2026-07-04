@@ -3,29 +3,30 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   virtualisation.libvirtd.hooks.qemu = {
     "dynamic-cpu-isolation" =
       pkgs.writeShellScript "dynamic-cpu-isolation.sh"
-      #bash
-      ''
-        VM_NAME="$1"
-        ACTION="$2"
+        #bash
+        ''
+          VM_NAME="$1"
+          ACTION="$2"
 
-        if [ "$VM_NAME" != "win11" ]; then
-          exit 0
-        fi
+          if [ "$VM_NAME" != "win11" ]; then
+            exit 0
+          fi
 
-        if [ "$ACTION" == "prepare" ]; then
-          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- system.slice AllowedCPUs=0-1,12-19
-          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- user.slice AllowedCPUs=0-1,12-19
-          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- init.scope AllowedCPUs=0-1,12-19
-        elif [ "$ACTION" == "release" ]; then
-          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- system.slice AllowedCPUs=0-19
-          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- user.slice AllowedCPUs=0-19
-          ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- init.scope AllowedCPUs=0-19
-        fi
-      '';
+          if [ "$ACTION" == "prepare" ]; then
+            ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- system.slice AllowedCPUs=0-1,12-19
+            ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- user.slice AllowedCPUs=0-1,12-19
+            ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- init.scope AllowedCPUs=0-1,12-19
+          elif [ "$ACTION" == "release" ]; then
+            ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- system.slice AllowedCPUs=0-19
+            ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- user.slice AllowedCPUs=0-19
+            ${lib.getExe' pkgs.systemd "systemctl"} set-property --runtime -- init.scope AllowedCPUs=0-19
+          fi
+        '';
   };
   nixpkgs.config.cudaSupport = true;
   services = {
@@ -39,13 +40,13 @@
   };
   nix = {
     settings = {
-      system-features = ["gccarch-alderlake"];
+      system-features = [ "gccarch-alderlake" ];
     };
   };
   hardware = {
     openrazer = {
       enable = true;
-      users = ["david"];
+      users = [ "david" ];
     };
     graphics.package = pkgs.mesa;
     intelgpu = {
@@ -66,7 +67,7 @@
     # };
   };
   boot = {
-    extraModulePackages = with config.boot.kernelPackages; [ddcci-driver];
+    extraModulePackages = with config.boot.kernelPackages; [ ddcci-driver ];
     kernelParams = [
       "intel_iommu=on"
       "iommu=pt"
@@ -106,36 +107,38 @@
   };
   systemd.services."ddcci@" = {
     description = "ddcci handler";
-    after = ["graphical.target"];
-    before = ["shutdown.target"];
-    conflicts = ["shutdown.target"];
+    after = [ "graphical.target" ];
+    before = [ "shutdown.target" ];
+    conflicts = [ "shutdown.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = let
-        script = pkgs.writeShellApplication {
-          name = "ddcci-handler";
-          runtimeInputs = with pkgs; [
-            coreutils
-            ddcutil
-          ];
-          text = ''
-            echo Trying to attach ddcci to "$1"
-            success=0
-            i=0
-            id=$(echo "$1" | cut -d "-" -f 2)
-            while ((success < 1)) && ((i++ < 5)); do
-              if ddcutil getvcp 10 -b "$id"; then
-                if echo ddcci 0x37 > "/sys/bus/i2c/devices/$1/new_device"; then
-                  success=1
-                  echo ddcci attached to "$1"
+      ExecStart =
+        let
+          script = pkgs.writeShellApplication {
+            name = "ddcci-handler";
+            runtimeInputs = with pkgs; [
+              coreutils
+              ddcutil
+            ];
+            text = ''
+              echo Trying to attach ddcci to "$1"
+              success=0
+              i=0
+              id=$(echo "$1" | cut -d "-" -f 2)
+              while ((success < 1)) && ((i++ < 5)); do
+                if ddcutil getvcp 10 -b "$id"; then
+                  if echo ddcci 0x37 > "/sys/bus/i2c/devices/$1/new_device"; then
+                    success=1
+                    echo ddcci attached to "$1"
+                  fi
                 fi
-              fi
-              echo "Try $i"
-              sleep 1;
-            done
-          '';
-        };
-      in "${lib.getExe' script "ddcci-handler"} %i";
+                echo "Try $i"
+                sleep 1;
+              done
+            '';
+          };
+        in
+        "${lib.getExe' script "ddcci-handler"} %i";
     };
   };
   services.udev.extraRules = ''

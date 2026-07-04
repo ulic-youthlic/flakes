@@ -4,9 +4,11 @@
   lib,
   options,
   ...
-}: let
+}:
+let
   cfg = config.david.programs.waybar;
-in {
+in
+{
   options = {
     david.programs.waybar = {
       enable = lib.mkEnableOption "waybar";
@@ -23,7 +25,7 @@ in {
             "niri/workspaces"
             "wlr/taskbar"
           ];
-          modules-center = ["clock"];
+          modules-center = [ "clock" ];
           modules-right = [
             "tray"
             "idle_inhibitor"
@@ -37,7 +39,7 @@ in {
             on-click = "activate";
           };
 
-          "niri/worksapces" = {};
+          "niri/worksapces" = { };
           "niri/taskbar" = {
             icon-size = 15;
             on-click = "activate";

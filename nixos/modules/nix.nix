@@ -4,28 +4,31 @@
   outputs,
   lib,
   ...
-}: {
+}:
+{
   config = {
-    environment.etc = with lib;
+    environment.etc =
+      with lib;
       pipe inputs [
         (mapAttrs' (
           name: value:
-            lib.nameValuePair "nix/inputs/${name}" {
-              source = value;
-            }
+          lib.nameValuePair "nix/inputs/${name}" {
+            source = value;
+          }
         ))
       ];
     nixpkgs = {
       config = {
         allowUnfree = true;
-        allowInsecurePredicate = p:
+        allowInsecurePredicate =
+          p:
           builtins.elem (lib.getName p) [
             "electron"
 
             "immersive-translate"
           ];
         packageOverrides = p: {
-          intel-vaapi-driver = p.intel-vaapi-driver.override {enableHybridCodec = true;};
+          intel-vaapi-driver = p.intel-vaapi-driver.override { enableHybridCodec = true; };
         };
       };
     };
@@ -33,7 +36,7 @@
       mode = "0444";
     };
     nix = {
-      nixPath = ["/etc/nix/inputs"];
+      nixPath = [ "/etc/nix/inputs" ];
       extraOptions = ''
         !include ${config.sops.secrets."access-tokens".path}
       '';
@@ -62,7 +65,8 @@
         use-xdg-base-directories = true;
         builders-use-substitutes = true;
       };
-      registry = with lib;
+      registry =
+        with lib;
         pipe inputs [
           (filterAttrs (name: _value: name != "nixpkgs"))
           (mapAttrs (

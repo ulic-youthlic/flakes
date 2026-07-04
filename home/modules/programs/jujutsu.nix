@@ -3,9 +3,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.jujutsu;
-in {
+in
+{
   options = {
     youthlic.programs.jujutsu = {
       enable = lib.mkEnableOption "jujutsu";
@@ -26,7 +28,7 @@ in {
       };
       name = lib.mkOption {
         type = lib.types.str;
-        example = ''youthlic'';
+        example = "youthlic";
         description = ''
           jujutsu name
         '';
@@ -43,10 +45,27 @@ in {
         settings = {
           "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json";
           aliases = {
-            dlog = ["log" "-r"];
-            l = ["log" "-r" "(trunk()..@):: | (trunk()..@)-"];
-            fresh = ["new" "trunk()"];
-            tug = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "closest_pushable(@)"];
+            dlog = [
+              "log"
+              "-r"
+            ];
+            l = [
+              "log"
+              "-r"
+              "(trunk()..@):: | (trunk()..@)-"
+            ];
+            fresh = [
+              "new"
+              "trunk()"
+            ];
+            tug = [
+              "bookmark"
+              "move"
+              "--from"
+              "closest_bookmark(@)"
+              "--to"
+              "closest_pushable(@)"
+            ];
           };
           snapshot = {
             auto-track = "true";
@@ -84,7 +103,8 @@ in {
           };
           revset-aliases = {
             "closest_bookmark(to)" = "heads(::to & bookmarks())";
-            "closest_pushable(to)" = "heads(::to & mutable() & ~description(exact:\"\") & (~empty() | merges()))";
+            "closest_pushable(to)" =
+              "heads(::to & mutable() & ~description(exact:\"\") & (~empty() | merges()))";
             "desc(x)" = "description(x)";
             "pending()" = ".. ~ ::tags() ~ ::remote_bookmarks() ~ @ ~ private()";
             "private()" = ''

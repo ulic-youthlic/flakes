@@ -3,10 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.caddy.cinny;
   caddy-cfg = config.youthlic.programs.caddy;
-in {
+in
+{
   options = {
     youthlic.programs.caddy.cinny = {
       enable = lib.mkEnableOption "caddy.cinny";

@@ -1,7 +1,6 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment.systemPackages = builtins.attrValues {
-    inherit
-      (pkgs)
+    inherit (pkgs)
       man-pages
       man-pages-posix
       ;

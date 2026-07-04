@@ -4,39 +4,42 @@
   config,
   unixName,
   ...
-}: {
+}:
+{
   imports = lib.youthlic.loadImports ./.;
   youthlic = {
     xdg-dirs.enable = true;
-    programs = let
-      email = config.accounts.email.accounts.ulic-youthlic;
-      inherit (email) name address;
-      signKey = email.gpg.key;
-    in {
-      rustypaste-cli.enable = true;
-      gpg.enable = true;
-      jujutsu = {
-        enable = true;
-        inherit name signKey;
-        email = address;
+    programs =
+      let
+        email = config.accounts.email.accounts.ulic-youthlic;
+        inherit (email) name address;
+        signKey = email.gpg.key;
+      in
+      {
+        rustypaste-cli.enable = true;
+        gpg.enable = true;
+        jujutsu = {
+          enable = true;
+          inherit name signKey;
+          email = address;
+        };
+        git = {
+          inherit name signKey;
+          email = address;
+          encrypt-credential = true;
+        };
+        fish.enable = true;
+        bash.enable = true;
+        starship.enable = true;
+        sops.enable = true;
+        kvm.enable = true;
+        atuin.enable = true;
+        ion.enable = true;
+        awscli = {
+          enable = true;
+          url = "http://localhost:8491";
+        };
       };
-      git = {
-        inherit name signKey;
-        email = address;
-        encrypt-credential = true;
-      };
-      fish.enable = true;
-      bash.enable = true;
-      starship.enable = true;
-      sops.enable = true;
-      kvm.enable = true;
-      atuin.enable = true;
-      ion.enable = true;
-      awscli = {
-        enable = true;
-        url = "http://localhost:8491";
-      };
-    };
   };
 
   david = {

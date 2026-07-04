@@ -2,9 +2,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.xdg-dirs;
-in {
+in
+{
   options = {
     youthlic.xdg-dirs = {
       enable = lib.mkEnableOption "xdg-dirs";

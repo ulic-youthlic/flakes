@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.spotifyd;
-in {
+in
+{
   options = {
     youthlic.programs.spotifyd = {
       enable = lib.mkEnableOption "spotifyd";

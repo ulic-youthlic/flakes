@@ -2,9 +2,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.caddy;
-in {
+in
+{
   imports = lib.youthlic.loadImports ./.;
   options = {
     youthlic.programs.caddy = {
@@ -20,7 +22,7 @@ in {
       enable = true;
     };
     networking.firewall = {
-      allowedTCPPorts = [443];
+      allowedTCPPorts = [ 443 ];
     };
   };
 }

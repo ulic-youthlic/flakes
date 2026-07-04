@@ -5,7 +5,8 @@
   outputs,
   config,
   ...
-}: {
+}:
+{
   imports =
     (with inputs.nixos-hardware.nixosModules; [
       common-hidpi
@@ -18,7 +19,7 @@
     ++ (with outputs; [
       nixosModules.gui
     ])
-    ++ [inputs.lanzaboote.nixosModules.lanzaboote]
+    ++ [ inputs.lanzaboote.nixosModules.lanzaboote ]
     ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {
@@ -43,19 +44,21 @@
     programs = {
       miniserve = {
         enable = true;
-        apps = let
-          cinny-template = config.youthlic.programs.miniserve.templates.cinny;
-        in {
-          cinny-1 = cinny-template {
-            port = 9093;
+        apps =
+          let
+            cinny-template = config.youthlic.programs.miniserve.templates.cinny;
+          in
+          {
+            cinny-1 = cinny-template {
+              port = 9093;
+            };
+            cinny-2 = cinny-template {
+              port = 9094;
+            };
+            cinny-3 = cinny-template {
+              port = 9095;
+            };
           };
-          cinny-2 = cinny-template {
-            port = 9094;
-          };
-          cinny-3 = cinny-template {
-            port = 9095;
-          };
-        };
       };
       bash.enable = true;
       guix.enable = true;

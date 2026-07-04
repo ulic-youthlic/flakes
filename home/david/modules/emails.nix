@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.david.accounts.email;
-in {
+in
+{
   options = {
     david.accounts.email = {
       enable = lib.mkEnableOption "emails";

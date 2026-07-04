@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.fish;
-in {
+in
+{
   options = {
     youthlic.programs.fish = {
       enable = lib.mkEnableOption "fish";
@@ -37,7 +39,7 @@ in {
             onEvent = "fish_command_not_found";
           };
           fish_greeting = {
-            body = '''';
+            body = "";
           };
           nani = {
             body =

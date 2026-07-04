@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.direnv;
-in {
+in
+{
   options = {
     youthlic.programs.direnv = {
       enable = lib.mkEnableOption "direnv";

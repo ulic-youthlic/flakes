@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   # config.specialisation.niri-dgpu = {
   #   inheritParentConfig = true;
   #   configuration = {

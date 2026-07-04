@@ -2,9 +2,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.radicle;
-in {
+in
+{
   options = {
     youthlic.programs.radicle = {
       enable = lib.mkEnableOption "radicle";
@@ -59,14 +61,14 @@ in {
         };
       };
     };
-    sops.secrets."radicle/Tytonidae" = {};
+    sops.secrets."radicle/Tytonidae" = { };
     services.radicle.node = {
       enable = true;
       args = "--log-logger systemd";
     };
     systemd.user.services."radicle-node" = {
-      Unit.After = ["default.target"];
-      Service.EnvironmentFile = [config.sops.secrets."radicle/Tytonidae".path];
+      Unit.After = [ "default.target" ];
+      Service.EnvironmentFile = [ config.sops.secrets."radicle/Tytonidae".path ];
     };
   };
 }

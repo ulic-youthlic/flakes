@@ -1,1 +1,1 @@
-{inputs, ...}: inputs.nix-cachyos-kernel.overlays.pinned
+{ inputs, ... }: inputs.nix-cachyos-kernel.overlays.pinned

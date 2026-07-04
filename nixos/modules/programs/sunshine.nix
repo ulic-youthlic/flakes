@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.sunshine;
-in {
+in
+{
   options = {
     youthlic.programs.sunshine = {
       enable = lib.mkEnableOption "sunsine";

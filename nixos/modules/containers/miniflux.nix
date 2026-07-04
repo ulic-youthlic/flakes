@@ -3,9 +3,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.containers.miniflux;
-in {
+in
+{
   options = {
     youthlic.containers.miniflux = {
       enable = lib.mkEnableOption "miniflux container";
@@ -36,7 +38,7 @@ in {
         };
       };
 
-      config = {lib, ...}: {
+      config = { lib, ... }: {
         imports = [
           ./../programs/miniflux.nix
           ./../programs/postgresql.nix
@@ -67,18 +69,18 @@ in {
         };
 
         systemd.services.miniflux = {
-          wants = ["postgresql.service"];
-          requires = ["postgresql.service"];
-          after = ["postgresql.service"];
-          wantedBy = ["default.target"];
+          wants = [ "postgresql.service" ];
+          requires = [ "postgresql.service" ];
+          after = [ "postgresql.service" ];
+          wantedBy = [ "default.target" ];
         };
 
         networking = {
           defaultGateway = "192.168.111.1";
           firewall = {
             enable = true;
-            allowedTCPPorts = [8485];
-            allowedUDPPorts = [8485];
+            allowedTCPPorts = [ 8485 ];
+            allowedUDPPorts = [ 8485 ];
           };
           useHostResolvConf = lib.mkForce false;
         };

@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.david.programs.thunderbird;
-in {
+in
+{
   options = {
     david.programs.thunderbird = {
       enable = lib.mkEnableOption "thunderbird";

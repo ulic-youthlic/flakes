@@ -4,15 +4,18 @@
   lib,
   rootPath,
   ...
-}: let
+}:
+let
   inherit (self) outputs;
-  importWithArgs = lib.flip import {inherit inputs outputs;};
-in {
-  flake.overlays = with lib;
+  importWithArgs = lib.flip import { inherit inputs outputs; };
+in
+{
+  flake.overlays =
+    with lib;
     pipe
-    [
-      "modifications"
-      "additions"
-    ]
-    [(flip genAttrs (name: importWithArgs (rootPath + "/overlays/${name}")))];
+      [
+        "modifications"
+        "additions"
+      ]
+      [ (flip genAttrs (name: importWithArgs (rootPath + "/overlays/${name}"))) ];
 }

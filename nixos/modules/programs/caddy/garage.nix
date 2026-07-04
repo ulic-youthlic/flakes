@@ -2,10 +2,12 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.caddy.garage;
   caddy-cfg = config.youthlic.programs.caddy;
-in {
+in
+{
   options = {
     youthlic.programs.caddy.garage = {
       enable = lib.mkEnableOption "caddy.garage";

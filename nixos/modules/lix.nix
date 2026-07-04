@@ -3,9 +3,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.lix;
-in {
+in
+{
   options = {
     youthlic.lix = {
       enable = lib.mkEnableOption "lix";
@@ -13,18 +15,19 @@ in {
   };
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [
-      (lib.mkBefore (final: _prev: {
-        inherit
-          (final.lixPackageSets.latest)
-          nixpkgs-review
-          nixpkgs-reviewFull
-          nurl
-          nix-update
-          nix-eval-jobs
-          nix-fast-build
-          colmena
-          ;
-      }))
+      (lib.mkBefore (
+        final: _prev: {
+          inherit (final.lixPackageSets.latest)
+            nixpkgs-review
+            nixpkgs-reviewFull
+            nurl
+            nix-update
+            nix-eval-jobs
+            nix-fast-build
+            colmena
+            ;
+        }
+      ))
     ];
     nix.package = pkgs.lixPackageSets.latest.lix;
   };

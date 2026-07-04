@@ -3,9 +3,11 @@
   config,
   options,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.guix;
-in {
+in
+{
   options = {
     youthlic.programs.guix = {
       enable = lib.mkEnableOption "guix";
@@ -18,11 +20,10 @@ in {
         enable = true;
         dates = "weekly";
       };
-      substituters.urls =
-        [
-          "https://mirror.sjtu.edu.cn/guix/"
-        ]
-        ++ options.services.guix.substituters.urls.default;
+      substituters.urls = [
+        "https://mirror.sjtu.edu.cn/guix/"
+      ]
+      ++ options.services.guix.substituters.urls.default;
     };
   };
 }

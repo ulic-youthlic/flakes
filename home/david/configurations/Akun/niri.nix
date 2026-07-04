@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   david.programs.niri = {
     wluma.extraSettings = {
       output = {

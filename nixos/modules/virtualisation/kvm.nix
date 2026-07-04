@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.virtualisation.kvm;
-in {
+in
+{
   options = {
     youthlic.virtualisation.kvm = {
       enable = lib.mkEnableOption "kvm";
@@ -22,15 +24,15 @@ in {
     programs.virt-manager = {
       enable = true;
     };
-    users.groups.libvirtd.members = [cfg.unixName];
-    users.groups.kvm.members = [cfg.unixName];
+    users.groups.libvirtd.members = [ cfg.unixName ];
+    users.groups.kvm.members = [ cfg.unixName ];
     virtualisation = {
       libvirtd = {
         enable = true;
         qemu = {
           runAsRoot = true;
           swtpm.enable = true;
-          vhostUserPackages = with pkgs; [virtiofsd];
+          vhostUserPackages = with pkgs; [ virtiofsd ];
         };
       };
       spiceUSBRedirection = {

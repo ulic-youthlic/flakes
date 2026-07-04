@@ -3,9 +3,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.containers.forgejo;
-in {
+in
+{
   options = {
     youthlic.containers.forgejo = {
       enable = lib.mkEnableOption "forgejo container";
@@ -54,7 +56,7 @@ in {
         }
       ];
 
-      config = {lib, ...}: {
+      config = { lib, ... }: {
         imports = [
           ./../programs/forgejo.nix
           ./../programs/postgresql.nix
@@ -86,10 +88,10 @@ in {
         };
 
         systemd.services.forgejo = {
-          wants = ["postgresql.service"];
-          requires = ["postgresql.service"];
-          after = ["postgresql.service"];
-          wantedBy = ["default.target"];
+          wants = [ "postgresql.service" ];
+          requires = [ "postgresql.service" ];
+          after = [ "postgresql.service" ];
+          wantedBy = [ "default.target" ];
         };
 
         networking = {

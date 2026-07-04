@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   stylix = {
     enable = false;
   };

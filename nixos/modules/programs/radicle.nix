@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.youthlic.programs.radicle;
-in {
+in
+{
   options = {
     youthlic.programs.radicle = {
       enable = lib.mkEnableOption "radicle";
@@ -52,7 +54,7 @@ in {
                   filters = [
                     {
                       And = [
-                        {HasFile = ".radicle/native.yaml";}
+                        { HasFile = ".radicle/native.yaml"; }
                         {
                           Or = [
                             "DefaultBranch"
@@ -94,11 +96,11 @@ in {
           };
           node = {
             alias = cfg.domain;
-            listen = [];
+            listen = [ ];
             peers = {
               type = "dynamic";
             };
-            connect = [];
+            connect = [ ];
             externalAddresses = [
               "${cfg.domain}:8776"
             ];

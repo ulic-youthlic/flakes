@@ -2,85 +2,91 @@
   inputs,
   rootPath,
   ...
-}: {
+}:
+{
   imports = [
     (rootPath + "/treefmt.nix")
   ];
-  perSystem = {
-    pkgs,
-    system,
-    lib,
-    self',
-    inputs',
-    ...
-  }: let
-    patchedNixpkgs = lib.nixpkgs-patcher.patchNixpkgs {
-      inherit system inputs;
-    };
-  in {
-    _module.args.pkgs = import patchedNixpkgs {
-      localSystem = {inherit system;};
-      config = {
-        allowUnfree = true;
+  perSystem =
+    {
+      pkgs,
+      system,
+      lib,
+      self',
+      inputs',
+      ...
+    }:
+    let
+      patchedNixpkgs = lib.nixpkgs-patcher.patchNixpkgs {
+        inherit system inputs;
       };
-      overlays = [(_final: _prev: {inherit lib;})];
-    };
-    devShells.default = pkgs.mkShell {
-      name = "nixos-shell";
-      packages = with pkgs; [
-        nixd
-        nil
-        typos
-        typos-lsp
-        just
-        nvfetcher
-        alejandra
-        oxfmt
-
-        lua-language-server
-      ];
-    };
-    legacyPackages = let
-      inputsScope = lib.makeScope pkgs.newScope (self: {
-        inherit inputs rootPath;
-        srcs = self.callPackage (rootPath + "/_sources/generated.nix") {};
-      });
     in
-      inputsScope.overrideScope (
-        final: _prev:
+    {
+      _module.args.pkgs = import patchedNixpkgs {
+        localSystem = { inherit system; };
+        config = {
+          allowUnfree = true;
+        };
+        overlays = [ (_final: _prev: { inherit lib; }) ];
+      };
+      devShells.default = pkgs.mkShell {
+        name = "nixos-shell";
+        packages = with pkgs; [
+          nixd
+          nil
+          typos
+          typos-lsp
+          just
+          nvfetcher
+          alejandra
+          oxfmt
+
+          lua-language-server
+        ];
+      };
+      legacyPackages =
+        let
+          inputsScope = lib.makeScope pkgs.newScope (self: {
+            inherit inputs rootPath;
+            srcs = self.callPackage (rootPath + "/_sources/generated.nix") { };
+          });
+        in
+        inputsScope.overrideScope (
+          final: _prev:
           lib.packagesFromDirectoryRecursive {
             inherit (final) callPackage;
             directory = rootPath + "/pkgs";
           }
-      );
-    packages = let
-      flattenPkgs = path: value:
-        if lib.isDerivation value
-        then {
-          ${lib.concatStringsSep ":" path} = value;
-        }
-        else if lib.isAttrs value
-        then lib.concatMapAttrs (name: flattenPkgs (path ++ [name])) value
-        else {};
-    in
-      flattenPkgs [] (
-        lib.removeAttrs self'.legacyPackages [
-          "inputs"
+        );
+      packages =
+        let
+          flattenPkgs =
+            path: value:
+            if lib.isDerivation value then
+              {
+                ${lib.concatStringsSep ":" path} = value;
+              }
+            else if lib.isAttrs value then
+              lib.concatMapAttrs (name: flattenPkgs (path ++ [ name ])) value
+            else
+              { };
+        in
+        flattenPkgs [ ] (
+          lib.removeAttrs self'.legacyPackages [
+            "inputs"
 
-          "srcs"
+            "srcs"
 
-          "rootPath"
+            "rootPath"
 
-          "newScope"
-          "overrideScope"
-          "packages"
-          "callPackage"
-        ]
-      );
-    checks =
-      lib.concatMapAttrs (name: value: {
+            "newScope"
+            "overrideScope"
+            "packages"
+            "callPackage"
+          ]
+        );
+      checks = lib.concatMapAttrs (name: value: {
         "package-${name}" = value;
-      })
-      self'.packages;
-  };
+      }) self'.packages;
+    };
 }

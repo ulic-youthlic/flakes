@@ -12,7 +12,7 @@ vim-full.customize {
         vim-one
         vim-airline
       ];
-      opt = [];
+      opt = [ ];
     };
   };
 }

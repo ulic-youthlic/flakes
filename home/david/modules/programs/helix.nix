@@ -3,9 +3,11 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.david.programs.helix;
-in {
+in
+{
   options = {
     david.programs.helix = {
       enable = lib.mkEnableOption "helix";

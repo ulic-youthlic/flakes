@@ -79,5 +79,5 @@ buildEnv {
     ty
     imagemagick
   ];
-  postBuild = '''';
+  postBuild = "";
 }
