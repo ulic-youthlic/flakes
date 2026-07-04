@@ -44,7 +44,6 @@
       inputsScope = lib.makeScope pkgs.newScope (self: {
         inherit inputs rootPath;
         srcs = self.callPackage (rootPath + "/_sources/generated.nix") {};
-        neovim_git = inputs'.neovim-nightly.packages.default;
       });
     in
       inputsScope.overrideScope (

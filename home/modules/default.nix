@@ -6,7 +6,6 @@
   imports =
     (with inputs; [
       sops-nix.homeManagerModules.sops
-      nix4nvchad.homeManagerModule
       noctalia.homeModules.default
       zen-browser.homeModules.twilight
       spicetify-nix.homeManagerModules.spicetify

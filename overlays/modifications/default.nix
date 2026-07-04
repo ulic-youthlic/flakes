@@ -12,7 +12,6 @@ in
       ./helix.nix
       ./zulip.nix
       ./nautilus.nix
-      ./neovim-nightly.nix
       ./vim.nix
       ./prismlauncher.nix
 
