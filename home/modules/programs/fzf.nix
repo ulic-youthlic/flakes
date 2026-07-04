@@ -26,5 +26,8 @@ in
     (lib.mkIf (cfg.enable && bash-cfg.enable) {
       programs.fzf.enableBashIntegration = true;
     })
+    (lib.mkIf (cfg.enable && config.youthlic.programs.atuin.enable) {
+      programs.fzf.historyWidget.command = "";
+    })
   ];
 }

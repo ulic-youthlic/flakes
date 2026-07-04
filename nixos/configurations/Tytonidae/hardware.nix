@@ -28,7 +28,7 @@
           fi
         '';
   };
-  nixpkgs.config.cudaSupport = true;
+  # nixpkgs.config.cudaSupport = true;
   services = {
     hardware.bolt.enable = true;
     fstrim.enable = true;

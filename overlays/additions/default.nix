@@ -13,7 +13,7 @@ pipe
     ./rime-all.nix
     ./iosevka-serif_fixed.nix
 
-    ./pkgsNoCuda.nix
+    # ./pkgsNoCuda.nix
     ./linux-cachyos.nix
   ]
   [
