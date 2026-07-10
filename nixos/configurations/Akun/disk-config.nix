@@ -29,7 +29,6 @@
                 # passwordFile = "/tmp/secret.key"; # Interactive
                 settings = {
                   allowDiscards = true;
-                  fallbackToPassword = true;
                   keyFile = "/dev/disk/by-label/LUKS_DECR";
                   keyFileSize = 512 * 64;
                   keyFileOffset = 512 * 128;
