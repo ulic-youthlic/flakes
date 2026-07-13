@@ -66,7 +66,6 @@
       openssh.enable = true;
       steam.enable = true;
       tailscale.enable = true;
-      transmission.enable = true;
       nix-ld.enable = true;
       juicity.client.enable = true;
       wshowkeys.enable = true;
