@@ -46,7 +46,6 @@
                   "https://cache.nixos.org"
                   "https://cache.nixos-cuda.org"
                   "https://attic.xuyh0120.win/lantian"
-                  "https://cache.garnix.io"
                 ];
             };
           };
