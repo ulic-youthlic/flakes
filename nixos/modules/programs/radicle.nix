@@ -31,51 +31,51 @@ in
           enable = true;
           listenPort = 8489;
         };
-        ci = {
-          adapters = {
-            native = {
-              instances = {
-                default-native = {
-                  enable = true;
-                  settings = {
-                    # base_url = "";
-                  };
-                };
-              };
-            };
-          };
-          broker = {
-            enable = true;
-            enableHardening = true;
-            settings = {
-              triggers = [
-                {
-                  adapter = "default-native";
-                  filters = [
-                    {
-                      And = [
-                        { HasFile = ".radicle/native.yaml"; }
-                        {
-                          Or = [
-                            "DefaultBranch"
-                            "PatchCreated"
-                            "PatchUpdated"
-                          ];
-                        }
-                      ];
-                    }
-                  ];
-                }
-              ];
-            };
-          };
-        };
+        # ci = {
+        #   adapters = {
+        #     native = {
+        #       instances = {
+        #         default-native = {
+        #           enable = true;
+        #           settings = {
+        #             # base_url = "";
+        #           };
+        #         };
+        #       };
+        #     };
+        #   };
+        #   broker = {
+        #     enable = true;
+        #     enableHardening = true;
+        #     settings = {
+        #       triggers = [
+        #         {
+        #           adapter = "default-native";
+        #           filters = [
+        #             {
+        #               And = [
+        #                 { HasFile = ".radicle/native.yaml"; }
+        #                 {
+        #                   Or = [
+        #                     "DefaultBranch"
+        #                     "PatchCreated"
+        #                     "PatchUpdated"
+        #                   ];
+        #                 }
+        #               ];
+        #             }
+        #           ];
+        #         }
+        #       ];
+        #     };
+        #   };
+        # };
         settings = {
-          publicExplorer = "https://app.radicle.xyz/nodes/$host/$rid$path";
+          publicExplorer = "https://radicle.network/nodes/$host/$rid$path";
           preferredSeeds = [
-            "z6Mkmqogy2qEM2ummccUthFEaaHvyYmYBYh3dbe9W4ebScxo@rosa.radicle.xyz:8776"
-            "z6MksmpU5b1dS7oaqF2bHXhQi1DWy2hB7Mh9CuN7y1DN6QSz@seed.radicle.xyz:8776"
-            "z6MkrLMMsiPWUcNPHcRajuMi9mDfYckSoJyPwwnknocNYPm7@iris.radicle.xyz:8776"
+            "z6Mkmqogy2qEM2ummccUthFEaaHvyYmYBYh3dbe9W4ebScxo@rosa.radicle.network:58776"
+            "z6MksmpU5b1dS7oaqF2bHXhQi1DWy2hB7Mh9CuN7y1DN6QSz@seed.radicle.dev:58776"
+            "z6MkrLMMsiPWUcNPHcRajuMi9mDfYckSoJyPwwnknocNYPm7@iris.radicle.network:58776"
           ];
           web = {
             bannerUrl = "https://radicle.${config.youthlic.programs.caddy.baseDomain}/images/youthlic-seed-header.png";
@@ -143,14 +143,14 @@ in
             reverse_proxy 127.0.0.1:8489
           '';
         };
-        "ci-${cfg.domain}" = {
-          extraConfig = ''
-            encode zstd gzip
-            root * ${config.services.radicle.ci.broker.settings.report_dir}
-            try_files {path} /index.html
-            file_server
-          '';
-        };
+        # "ci-${cfg.domain}" = {
+        #   extraConfig = ''
+        #     encode zstd gzip
+        #     root * ${config.services.radicle.ci.broker.settings.report_dir}
+        #     try_files {path} /index.html
+        #     file_server
+        #   '';
+        # };
       };
     })
   ];

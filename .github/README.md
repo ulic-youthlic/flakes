@@ -10,4 +10,4 @@ GitHub, but only via Radicle directly. However, pull requests are still
 accepted.
 
 To view existing issues and patches with your web browser, navigate to
-[app.radicle.xyz](https://app.radicle.xyz/nodes/ash.radicle.garden/rad:zd6cNdwUA58H71AXf6cvspv3X1R2).
+[radicle.network](https://radicle.network/nodes/rosa.radicle.network/rad%3Azd6cNdwUA58H71AXf6cvspv3X1R2).
