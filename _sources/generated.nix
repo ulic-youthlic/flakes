@@ -30,18 +30,6 @@
     };
     date = "2026-04-06";
   };
-  nvim_vim-startuptime = {
-    pname = "nvim_vim-startuptime";
-    version = "c12649b2458e34ec6dde8f1bdfe830661a613a6b";
-    src = fetchFromGitHub {
-      owner = "dstein64";
-      repo = "vim-startuptime";
-      rev = "c12649b2458e34ec6dde8f1bdfe830661a613a6b";
-      fetchSubmodules = false;
-      sha256 = "sha256-S5Zw0IGhTFykdxk+znYiSh+G6ru7YrjhEB1xJwKnF54=";
-    };
-    date = "2026-02-15";
-  };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";
     version = "184f55dbc5320c34a56d02353410ad35a0f3e090";

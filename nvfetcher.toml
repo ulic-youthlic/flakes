@@ -9,7 +9,3 @@ src.git = "https://github.com/DreamMaoMao/wshowkeys.git"
 [OuterWildsTextAdventure]
 fetch.github = "top-mind/OuterWildsTextAdventureWeb"
 src.git = "https://github.com/top-mind/OuterWildsTextAdventureWeb.git"
-
-[nvim_vim-startuptime]
-fetch.github = "dstein64/vim-startuptime"
-src.git = "https://github.com/dstein64/vim-startuptime.git"

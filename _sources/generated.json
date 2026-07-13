@@ -41,27 +41,6 @@
         },
         "version": "f1d702310217435824f0c41a3ce79939bc753dba"
     },
-    "nvim_vim-startuptime": {
-        "cargoLock": null,
-        "date": "2026-02-15",
-        "extract": null,
-        "name": "nvim_vim-startuptime",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "dstein64",
-            "repo": "vim-startuptime",
-            "rev": "c12649b2458e34ec6dde8f1bdfe830661a613a6b",
-            "sha256": "sha256-S5Zw0IGhTFykdxk+znYiSh+G6ru7YrjhEB1xJwKnF54=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "c12649b2458e34ec6dde8f1bdfe830661a613a6b"
-    },
     "wshowkeys-mao": {
         "cargoLock": null,
         "date": "2025-09-14",
