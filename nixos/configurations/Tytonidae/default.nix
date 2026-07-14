@@ -62,7 +62,6 @@
       };
       bash.enable = true;
       guix.enable = true;
-      clash-verge.enable = true;
       openssh.enable = true;
       steam.enable = true;
       tailscale.enable = true;
@@ -79,6 +78,7 @@
         unixName = "david";
         ratelimitUpload = 10;
       };
+      sing-box.enable = true;
     };
   };
 
