@@ -49,22 +49,24 @@ in
             prepend_fetchers = [
               {
                 id = "git";
-                name = "*";
+                url = "*";
                 run = "git";
+                group = "star";
               }
               {
                 id = "git";
-                name = "*/";
+                url = "*/";
                 run = "git";
+                group = "star-slash";
               }
             ];
             prepend_previewers = [
               {
-                name = "*.md";
+                mime = "text/markdown";
                 run = "piper -- CLICOLOR_FORCE=1 ${lib.getExe pkgs.glow} --style dark --width $w $1";
               }
               {
-                name = "*/";
+                url = "*/";
                 run = "piper -- ${lib.getExe pkgs.eza} '-TL=3' '--color=always' '--icons=always' --group-directories-first --no-quotes \"$1\"";
               }
             ];
