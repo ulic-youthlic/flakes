@@ -165,7 +165,7 @@ in
             enabled = true;
             timeout = "3d";
           }; # enable optimistic dns cache, when dns cache expired but without timeout, return the cache and toggle refresh in the background
-          timeout = "10s"; # default timeout for every dns query. can be overrided by `rules.[].timeout` or `domain_resolver.timeout`
+          timeout = "10s"; # default timeout for every dns query. can be overrode by `rules.[].timeout` or `domain_resolver.timeout`
           reverse_mapping = false; # store reverse mapping of dns record, to provide domain name when route traffic
         };
         ntp = {
@@ -242,7 +242,7 @@ in
               action = "resolve";
             }
           ];
-          final = "proxy-out"; # tag of defualt outbound
+          final = "proxy-out"; # tag of default outbound
           auto_detect_interface = true;
           default_domain_resolver = {
             server = "alidns";
@@ -290,6 +290,16 @@ in
           _secret = "${config.sops.templates."sing-box-outbounds.json".path}";
           quote = false;
         };
+        services = [
+          {
+            type = "api";
+            listen = "127.0.0.1";
+            listen_port = 9199;
+            access_control_allow_private_network = true;
+            dashboard.enabled = true;
+            tls.enabled = false;
+          }
+        ];
         experimental = {
           cache_file = {
             enabled = true;
@@ -297,7 +307,7 @@ in
           };
           clash_api = {
             external_controller = "127.0.0.1:9099";
-            secret = "clash";
+            external_ui = "clash_dashboard";
             default_mode = "Rule";
           };
         };
