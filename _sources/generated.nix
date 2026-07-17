@@ -20,15 +20,15 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "f1d702310217435824f0c41a3ce79939bc753dba";
+    version = "47ecabb3dd9cb3064822d08f6934a59e11615511";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "f1d702310217435824f0c41a3ce79939bc753dba";
+      rev = "47ecabb3dd9cb3064822d08f6934a59e11615511";
       fetchSubmodules = false;
-      sha256 = "sha256-LnrSroalPV1izwZxWHIPoQ9Sj7MBeAUpeowPeRSlGAU=";
+      sha256 = "sha256-RaSOr95dySHZm+2r9JQbkkSpwqJKjeGGJshiPO8lFqY=";
     };
-    date = "2026-04-06";
+    date = "2026-07-17";
   };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";

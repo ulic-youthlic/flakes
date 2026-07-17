@@ -22,7 +22,7 @@
     },
     "TrackersListCollection": {
         "cargoLock": null,
-        "date": "2026-04-06",
+        "date": "2026-07-17",
         "extract": null,
         "name": "TrackersListCollection",
         "passthru": null,
@@ -34,12 +34,12 @@
             "name": null,
             "owner": "XIU2",
             "repo": "TrackersListCollection",
-            "rev": "f1d702310217435824f0c41a3ce79939bc753dba",
-            "sha256": "sha256-LnrSroalPV1izwZxWHIPoQ9Sj7MBeAUpeowPeRSlGAU=",
+            "rev": "47ecabb3dd9cb3064822d08f6934a59e11615511",
+            "sha256": "sha256-RaSOr95dySHZm+2r9JQbkkSpwqJKjeGGJshiPO8lFqY=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "f1d702310217435824f0c41a3ce79939bc753dba"
+        "version": "47ecabb3dd9cb3064822d08f6934a59e11615511"
     },
     "wshowkeys-mao": {
         "cargoLock": null,
