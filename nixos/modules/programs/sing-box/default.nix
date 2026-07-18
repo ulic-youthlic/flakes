@@ -105,13 +105,20 @@ in
               # dialer
               domain_resolver = "local";
             }
+            # {
+            #   type = "https";
+            #   tag = "google";
+            #   server = "dns.google";
+
+            #   # dialer
+            #   domain_resolver = "alidns";
+            #   detour = "proxy-out";
+            # }
             {
               type = "https";
-              tag = "google";
-              server = "dns.google";
+              tag = "cloudflare";
+              server = "1.1.1.1";
 
-              # dialer
-              domain_resolver = "alidns";
               detour = "proxy-out";
             }
           ];
@@ -149,7 +156,7 @@ in
                 }
               ];
               action = "route";
-              server = "google";
+              server = "cloudflare";
             }
             {
               match_response = true;
@@ -157,7 +164,7 @@ in
               action = "respond";
             }
           ];
-          final = "google";
+          final = "cloudflare";
           # strategy = "prefer_ipv4";
           strategy = "ipv4_only";
           cache_capacity = 1000;
@@ -219,7 +226,12 @@ in
               outbound = "direct-out";
             }
             {
-              rule_set = "geosite-google-gemini";
+              type = "logical";
+              mode = "or";
+              rules = [
+                { rule_set = "geosite-google-gemini"; }
+                { rule_set = "geosite-local-gemini"; }
+              ];
               action = "route";
               outbound = "limited-out";
             }
@@ -283,6 +295,12 @@ in
               tag = "geosite-google-gemini";
               format = "binary";
               url = "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-google-gemini.srs";
+            }
+            {
+              type = "local";
+              tag = "geosite-local-gemini";
+              format = "source";
+              path = toString ./gemini.json;
             }
           ];
         };

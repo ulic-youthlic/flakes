@@ -1,0 +1,13 @@
+{
+  "rules": [
+    {
+      "domain": [
+        "ogs.google.com",
+        "accounts.google.com",
+        "ogads-pa.clients6.google.com",
+        "waa-pa.clients6.google.com"
+      ]
+    }
+  ],
+  "version": 1
+}
