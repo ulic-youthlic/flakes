@@ -23,11 +23,15 @@ in
         "tags" = {
           sopsFile = rootPath + "/secrets/sing-box.yaml";
         };
+        "limited-tags" = {
+          sopsFile = rootPath + "/secrets/sing-box.yaml";
+        };
       };
       templates."sing-box-outbounds.json" = {
         content =
           let
             tags = config.sops.placeholder."tags";
+            limited-tags = config.sops.placeholder."limited-tags";
           in
           # json
           ''
@@ -55,12 +59,12 @@ in
                 "type": "selector"
               },
               {
-                "outbounds": ${tags},
+                "outbounds": ${limited-tags},
                 "tag": "limited-auto",
                 "type": "urltest"
               },
               {
-                "outbounds": ${tags},
+                "outbounds": ${limited-tags},
                 "tag": "limited-manual",
                 "type": "selector"
               },
@@ -174,11 +178,6 @@ in
           }; # enable optimistic dns cache, when dns cache expired but without timeout, return the cache and toggle refresh in the background
           timeout = "10s"; # default timeout for every dns query. can be overrode by `rules.[].timeout` or `domain_resolver.timeout`
           reverse_mapping = false; # store reverse mapping of dns record, to provide domain name when route traffic
-        };
-        ntp = {
-          enabled = true;
-          server = "time.windows.com";
-          interval = "30m";
         };
         inbounds = [
           {
