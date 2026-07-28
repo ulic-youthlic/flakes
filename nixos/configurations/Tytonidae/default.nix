@@ -125,7 +125,7 @@
   services.dbus.implementation = "broker";
 
   boot = {
-    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
     lanzaboote = {
       enable = true;
       pkiBundle = "/var/lib/sbctl";
