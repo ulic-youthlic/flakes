@@ -44,7 +44,7 @@
         enable = true;
         unixName = "alice";
         ratelimitUpload = 0;
-        httpHost = "100.76.229.45";
+        httpHost = "0.0.0.0";
       };
     };
   };
