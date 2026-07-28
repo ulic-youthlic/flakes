@@ -47,6 +47,7 @@
         apps =
           let
             cinny-template = config.youthlic.programs.miniserve.templates.cinny;
+            ariang-template = config.youthlic.programs.miniserve.templates.ariang;
           in
           {
             cinny-1 = cinny-template {
@@ -57,6 +58,9 @@
             };
             cinny-3 = cinny-template {
               port = 9095;
+            };
+            ariang = ariang-template {
+              port = 9096;
             };
           };
       };

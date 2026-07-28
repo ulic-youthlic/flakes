@@ -39,6 +39,7 @@
           enable = true;
           url = "http://localhost:8491";
         };
+        aria2.enable = true;
       };
   };
 
