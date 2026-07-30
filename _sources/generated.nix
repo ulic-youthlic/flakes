@@ -20,26 +20,26 @@
   };
   TrackersListCollection = {
     pname = "TrackersListCollection";
-    version = "47ecabb3dd9cb3064822d08f6934a59e11615511";
+    version = "d11e2ca1f45618a9ac0756368255154b1e50f022";
     src = fetchFromGitHub {
       owner = "XIU2";
       repo = "TrackersListCollection";
-      rev = "47ecabb3dd9cb3064822d08f6934a59e11615511";
+      rev = "d11e2ca1f45618a9ac0756368255154b1e50f022";
       fetchSubmodules = false;
-      sha256 = "sha256-RaSOr95dySHZm+2r9JQbkkSpwqJKjeGGJshiPO8lFqY=";
+      sha256 = "sha256-anzausb5SPuFIswZdeHcq8xK8ZE2bdhvEMP1EIcP8tE=";
     };
-    date = "2026-07-17";
+    date = "2026-07-30";
   };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";
-    version = "184f55dbc5320c34a56d02353410ad35a0f3e090";
+    version = "35d70762ab9af4ea301853e79b3b925d5fe9e920";
     src = fetchFromGitHub {
       owner = "DreamMaoMao";
       repo = "wshowkeys";
-      rev = "184f55dbc5320c34a56d02353410ad35a0f3e090";
+      rev = "35d70762ab9af4ea301853e79b3b925d5fe9e920";
       fetchSubmodules = false;
-      sha256 = "sha256-N8V6CkCmTlw0rWmDXiKI1Z4YS7T7fWCr9aPRk5OpGHs=";
+      sha256 = "sha256-8upkB3179A8wP5Hph0EanE0VuIxe7VsmsqzcRaOq5y0=";
     };
-    date = "2025-09-14";
+    date = "2026-07-28";
   };
 }
