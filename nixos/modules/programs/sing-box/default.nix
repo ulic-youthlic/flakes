@@ -207,6 +207,11 @@ in
               outbound = "direct-out";
             }
             {
+              process_path_regex = ".*juicity-client.*";
+              action = "bypass";
+              outbound = "direct-out";
+            }
+            {
               clash_mode = "Global";
               action = "route";
               outbound = "proxy-out";
