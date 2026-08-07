@@ -250,6 +250,11 @@ in
               outbound = "limited-out";
             }
             {
+              domain_suffix = "caaa.tech";
+              action = "route";
+              outbound = "direct-out";
+            }
+            {
               domain_keyword = "factorio";
               action = "route";
               outbound = "direct-out";
