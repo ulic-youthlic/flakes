@@ -498,6 +498,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-multiverse": {
+      "locked": {
+        "lastModified": 1786424963,
+        "narHash": "sha256-1Dxdr/wvZYz2hBbDwdTbeGRRuRSGyFNeCbmxvrsMgIo=",
+        "owner": "fzakaria",
+        "repo": "nixpkgs-multiverse",
+        "rev": "d5598a8e81f7bc9c7292b1e999692f3560fac407",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fzakaria",
+        "repo": "nixpkgs-multiverse",
+        "type": "github"
+      }
+    },
     "nixpkgs-patch-rqbit-bump": {
       "flake": false,
       "locked": {
@@ -771,6 +786,7 @@
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
+        "nixpkgs-multiverse": "nixpkgs-multiverse",
         "nixpkgs-patch-rqbit-bump": "nixpkgs-patch-rqbit-bump",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "noctalia": "noctalia",

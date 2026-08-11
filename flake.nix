@@ -66,6 +66,11 @@
       owner = "gepbird";
       repo = "nixpkgs-patcher";
     };
+    nixpkgs-multiverse = {
+      type = "github";
+      owner = "fzakaria";
+      repo = "nixpkgs-multiverse";
+    };
 
     nix-cachyos-kernel = {
       type = "github";
