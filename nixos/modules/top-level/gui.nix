@@ -3,6 +3,5 @@
     ./.
   ]
   ++ (with inputs; [
-    niri-flake.nixosModules.niri
   ]);
 }

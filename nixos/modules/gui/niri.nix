@@ -16,8 +16,8 @@ in
     # Enabled to support trash of nautilus
     services.gvfs.enable = true;
 
-    systemd.user.services.niri-flake-polkit.serviceConfig.ExecStart =
-      lib.mkForce "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
+    # systemd.user.services.niri-flake-polkit.serviceConfig.ExecStart =
+    #   lib.mkForce "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
 
     environment = {
       pathsToLink = [ "share/thumbnailers" ];
@@ -28,7 +28,6 @@ in
         libheif.out
 
         bluez
-        xwayland-satellite-unstable
         evince
       ];
     };
@@ -100,7 +99,7 @@ in
     programs = {
       niri = {
         enable = true;
-        package = pkgs.niri-unstable;
+        package = pkgs.niri;
       };
     };
   };

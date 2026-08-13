@@ -101,7 +101,7 @@
       emulatedSystems = [
         "aarch64-linux"
         "x86_64-windows"
-        "wasm64-wasi"
+        "wasm64-wasip1"
       ];
     };
   };

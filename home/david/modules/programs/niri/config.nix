@@ -1,726 +1,521 @@
 {
   config,
   lib,
-  inputs,
   ...
 }:
 {
   config.david.programs.niri.config =
     let
       inherit (lib) getExe getExe';
-      inherit (inputs.niri-flake.lib.kdl)
-        # node with args, props and children
-        # node:: \lambda name -> [argOrProp] -> [child] -> Output
-        # arg: single value
-        # prop: attr contains one or more key-value pair
-        # children: node
-        node
-        # node without children
-        # leaf:: \lambda name -> [argOrProp] -> Output
-        leaf
-        # node only name
-        # flag:: \lambda name -> Output
-        flag
-        # node without args/props
-        # plain:: \lambda name -> [child] -> Output
-        plain
-        ;
+      inherit (lib.nix-kdl.dsl) n;
 
-      # swaylock = getExe config.programs.swaylock.package;
-      # fuzzel = getExe config.programs.fuzzel.package;
-      # waybar = getExe config.programs.waybar.package;
-      # swaync = getExe config.services.swaync.package;
-
-      # wpctl = getExe' pkgs.wireplumber "wpctl";
-      # waypaper = getExe pkgs.waypaper;
       default-terminal = getExe config.programs.ghostty.package;
       default-browser = getExe' config.programs.zen-browser.package "zen-twilight";
-      # wl-paste = getExe' pkgs.wl-clipboard "wl-paste";
-      # cliphist = getExe' pkgs.cliphist "cliphist";
-      # cliphist-fuzzel-img = getExe' pkgs.cliphist "cliphist-fuzzel-img";
-      # wl-clip-persist = getExe pkgs.wl-clip-persist;
     in
     (
       let
-        spawn = leaf "spawn";
+        spawn = n "spawn";
       in
       [
-        (plain "binds" [
-          # (plain "Mod+V" [
-          #   (spawn [cliphist-fuzzel-img])
-          # ])
-          # (plain "Mod+Shift+P" [
-          #   (spawn [
-          #     swaylock
-          #     "--screenshots"
-          #     "--clock"
-          #     "--indicator"
-          #     "--indicator-radius"
-          #     "100"
-          #     "--indicator-thickness"
-          #     "7"
-          #     "--effect-blur"
-          #     "7x5"
-          #     "--effect-vignette"
-          #     "0.5:0.5"
-          #     "--grace"
-          #     "2"
-          #     "--fade-in"
-          #     "0.5"
-          #   ])
-          # ])
-          (plain "Mod+B" [
-            (spawn [ default-browser ])
-          ])
-          (plain "Mod+Shift+Slash" [
-            (flag "show-hotkey-overlay")
-          ])
-          (plain "Mod+T" [
-            (spawn [
-              default-terminal
-            ])
-          ])
-          (plain "Mod+Shift+T" [
-            (flag "toggle-column-tabbed-display")
-          ])
-          # (plain "Mod+Space" [
-          #   (spawn [fuzzel])
-          # ])
-          # (
-          #   node "XF86AudioRaiseVolume"
-          #   [{allow-when-locked = true;}]
-          #   [
-          #     (spawn [
-          #       wpctl
-          #       "set-volume"
-          #       "@DEFAULT_AUDIO_SINK@"
-          #       "0.1+"
-          #     ])
-          #   ]
-          # )
-          # (
-          #   node "XF86AudioLowerVolume"
-          #   [{allow-when-locked = true;}]
-          #   [
-          #     (spawn [
-          #       wpctl
-          #       "set-volume"
-          #       "@DEFAULT_AUDIO_SINK@"
-          #       "0.1-"
-          #     ])
-          #   ]
-          # )
-          # (
-          #   node "XF86AudioMute"
-          #   [{allow-when-locked = true;}]
-          #   [
-          #     (spawn [
-          #       wpctl
-          #       "set-volume"
-          #       "@DEFAULT_AUDIO_SINK@"
-          #       "toggle"
-          #     ])
-          #   ]
-          # )
-          # (
-          #   node "XF86AudioMicMute"
-          #   [{allow-when-locked = true;}]
-          #   [
-          #     (spawn [
-          #       wpctl
-          #       "set-volume"
-          #       "@DEFAULT_AUDIO_SOURCE@"
-          #       "toggle"
-          #     ])
-          #   ]
-          # )
-          (plain "Mod+Q" [
-            (flag "close-window")
-          ])
-          (node "Mod+O"
-            [ { repeat = false; } ]
-            [
-              (flag "toggle-overview")
-            ]
-          )
-          (plain "Mod+Left" [
-            (flag "focus-column-left")
-          ])
-          (plain "Mod+Down" [
-            (flag "focus-window-down")
+        (n "binds" [
+          (n "Mod+B" [
+            (spawn default-browser)
           ])
-          (plain "Mod+Up" [
-            (flag "focus-window-up")
+          (n "Mod+Shift+Slash" [
+            (n "show-hotkey-overlay")
           ])
-          (plain "Mod+Right" [
-            (flag "focus-column-right")
+          (n "Mod+T" [
+            (spawn default-terminal)
           ])
-          (plain "Mod+H" [
-            (flag "focus-column-or-monitor-left")
+          (n "Mod+Shift+T" [
+            (n "toggle-column-tabbed-display")
           ])
-          (plain "Mod+J" [
-            (flag "focus-window-or-workspace-down")
+          (n "Mod+Q" [
+            (n "close-window")
           ])
-          (plain "Mod+K" [
-            (flag "focus-window-or-workspace-up")
+          (n "Mod+O" { repeat = false; } [
+            (n "toggle-overview")
           ])
-          (plain "Mod+L" [
-            (flag "focus-column-or-monitor-right")
+          (n "Mod+Left" [
+            (n "focus-column-left")
           ])
-          (plain "Mod+Shift+Left" [
-            (flag "move-column-left")
+          (n "Mod+Down" [
+            (n "focus-window-down")
           ])
-          (plain "Mod+Shift+Down" [
-            (flag "move-window-down")
+          (n "Mod+Up" [
+            (n "focus-window-up")
           ])
-          (plain "Mod+Shift+Up" [
-            (flag "move-window-up")
+          (n "Mod+Right" [
+            (n "focus-column-right")
           ])
-          (plain "Mod+Shift+Right" [
-            (flag "move-column-right")
+          (n "Mod+H" [
+            (n "focus-column-or-monitor-left")
           ])
-          (plain "Mod+Shift+H" [
-            (flag "move-column-left-or-to-monitor-left")
+          (n "Mod+J" [
+            (n "focus-window-or-workspace-down")
           ])
-          (plain "Mod+Shift+J" [
-            (flag "move-window-down-or-to-workspace-down")
+          (n "Mod+K" [
+            (n "focus-window-or-workspace-up")
           ])
-          (plain "Mod+Shift+K" [
-            (flag "move-window-up-or-to-workspace-up")
+          (n "Mod+L" [
+            (n "focus-column-or-monitor-right")
           ])
-          (plain "Mod+Shift+L" [
-            (flag "move-column-right-or-to-monitor-right")
+          (n "Mod+Shift+Left" [
+            (n "move-column-left")
           ])
-          (plain "Mod+Home" [
-            (flag "focus-column-first")
+          (n "Mod+Shift+Down" [
+            (n "move-window-down")
           ])
-          (plain "Mod+End" [
-            (flag "focus-column-last")
+          (n "Mod+Shift+Up" [
+            (n "move-window-up")
           ])
-          (plain "Mod+Ctrl+Home" [
-            (flag "move-column-to-first")
+          (n "Mod+Shift+Right" [
+            (n "move-column-right")
           ])
-          (plain "Mod+Ctrl+End" [
-            (flag "move-column-to-last")
+          (n "Mod+Shift+H" [
+            (n "move-column-left-or-to-monitor-left")
           ])
-          (plain "Mod+Ctrl+Left" [
-            (flag "focus-monitor-left")
+          (n "Mod+Shift+J" [
+            (n "move-window-down-or-to-workspace-down")
           ])
-          (plain "Mod+Ctrl+Down" [
-            (flag "focus-monitor-down")
+          (n "Mod+Shift+K" [
+            (n "move-window-up-or-to-workspace-up")
           ])
-          (plain "Mod+Ctrl+Up" [
-            (flag "focus-monitor-up")
+          (n "Mod+Shift+L" [
+            (n "move-column-right-or-to-monitor-right")
           ])
-          (plain "Mod+Ctrl+Right" [
-            (flag "focus-monitor-right")
+          (n "Mod+Home" [
+            (n "focus-column-first")
           ])
-          (plain "Mod+Ctrl+H" [
-            (flag "focus-monitor-left")
+          (n "Mod+End" [
+            (n "focus-column-last")
           ])
-          (plain "Mod+Ctrl+J" [
-            (flag "focus-monitor-down")
+          (n "Mod+Ctrl+Home" [
+            (n "move-column-to-first")
           ])
-          (plain "Mod+Ctrl+K" [
-            (flag "focus-monitor-up")
+          (n "Mod+Ctrl+End" [
+            (n "move-column-to-last")
           ])
-          (plain "Mod+Ctrl+L" [
-            (flag "focus-monitor-right")
+          (n "Mod+Ctrl+Left" [
+            (n "focus-monitor-left")
           ])
-          (plain "Mod+Shift+Ctrl+Left" [
-            (flag "move-column-to-monitor-left")
+          (n "Mod+Ctrl+Down" [
+            (n "focus-monitor-down")
           ])
-          (plain "Mod+Shift+Ctrl+Down" [
-            (flag "move-column-to-monitor-down")
+          (n "Mod+Ctrl+Up" [
+            (n "focus-monitor-up")
           ])
-          (plain "Mod+Shift+Ctrl+Up" [
-            (flag "move-column-to-monitor-up")
+          (n "Mod+Ctrl+Right" [
+            (n "focus-monitor-right")
           ])
-          (plain "Mod+Shift+Ctrl+Right" [
-            (flag "move-column-to-monitor-right")
+          (n "Mod+Ctrl+H" [
+            (n "focus-monitor-left")
           ])
-          (plain "Mod+Shift+Ctrl+H" [
-            (flag "move-column-to-monitor-left")
+          (n "Mod+Ctrl+J" [
+            (n "focus-monitor-down")
           ])
-          (plain "Mod+Shift+Ctrl+J" [
-            (flag "move-column-to-monitor-down")
+          (n "Mod+Ctrl+K" [
+            (n "focus-monitor-up")
           ])
-          (plain "Mod+Shift+Ctrl+K" [
-            (flag "move-column-to-monitor-up")
+          (n "Mod+Ctrl+L" [
+            (n "focus-monitor-right")
           ])
-          (plain "Mod+Shift+Ctrl+L" [
-            (flag "move-column-to-monitor-right")
+          (n "Mod+Shift+Ctrl+Left" [
+            (n "move-column-to-monitor-left")
           ])
-          (plain "Mod+Page_Down" [
-            (flag "focus-workspace-down")
+          (n "Mod+Shift+Ctrl+Down" [
+            (n "move-column-to-monitor-down")
           ])
-          (plain "Mod+Page_Up" [
-            (flag "focus-workspace-up")
+          (n "Mod+Shift+Ctrl+Up" [
+            (n "move-column-to-monitor-up")
           ])
-          (plain "Mod+U" [
-            (flag "focus-workspace-down")
+          (n "Mod+Shift+Ctrl+Right" [
+            (n "move-column-to-monitor-right")
           ])
-          (plain "Mod+I" [
-            (flag "focus-workspace-up")
+          (n "Mod+Shift+Ctrl+H" [
+            (n "move-column-to-monitor-left")
           ])
-          (plain "Mod+Shift+Page_Down" [
-            (flag "move-column-to-workspace-down")
+          (n "Mod+Shift+Ctrl+J" [
+            (n "move-column-to-monitor-down")
           ])
-          (plain "Mod+Shift+Page_Up" [
-            (flag "move-column-to-workspace-up")
+          (n "Mod+Shift+Ctrl+K" [
+            (n "move-column-to-monitor-up")
           ])
-          (plain "Mod+Shift+U" [
-            (flag "move-column-to-workspace-down")
+          (n "Mod+Shift+Ctrl+L" [
+            (n "move-column-to-monitor-right")
           ])
-          (plain "Mod+Shift+I" [
-            (flag "move-column-to-workspace-up")
+          (n "Mod+Page_Down" [
+            (n "focus-workspace-down")
           ])
-          (plain "Mod+Ctrl+Page_Down" [
-            (flag "move-workspace-down")
+          (n "Mod+Page_Up" [
+            (n "focus-workspace-up")
           ])
-          (plain "Mod+Ctrl+Page_Up" [
-            (flag "move-workspace-up")
+          (n "Mod+U" [
+            (n "focus-workspace-down")
           ])
-          (plain "Mod+Ctrl+U" [
-            (flag "move-workspace-down")
+          (n "Mod+I" [
+            (n "focus-workspace-up")
           ])
-          (plain "Mod+Ctrl+I" [
-            (flag "move-workspace-up")
+          (n "Mod+Shift+Page_Down" [
+            (n "move-column-to-workspace-down")
           ])
-          (node "Mod+Shift+WheelScrollDown"
-            [ { cooldown-ms = 150; } ]
-            [
-              (flag "focus-workspace-down")
-            ]
-          )
-          (node "Mod+Shift+WheelScrollUp"
-            [ { cooldown-ms = 150; } ]
-            [
-              (flag "focus-workspace-up")
-            ]
-          )
-          (plain "Mod+WheelScrollDown" [
-            (flag "focus-column-right")
+          (n "Mod+Shift+Page_Up" [
+            (n "move-column-to-workspace-up")
           ])
-          (plain "Mod+WheelScrollUp" [
-            (flag "focus-column-left")
+          (n "Mod+Shift+U" [
+            (n "move-column-to-workspace-down")
           ])
-          (plain "Mod+1" [
-            (leaf "focus-workspace" [ 1 ])
+          (n "Mod+Shift+I" [
+            (n "move-column-to-workspace-up")
           ])
-          (plain "Mod+2" [
-            (leaf "focus-workspace" [ 2 ])
+          (n "Mod+Ctrl+Page_Down" [
+            (n "move-workspace-down")
           ])
-          (plain "Mod+3" [
-            (leaf "focus-workspace" [ 3 ])
+          (n "Mod+Ctrl+Page_Up" [
+            (n "move-workspace-up")
           ])
-          (plain "Mod+4" [
-            (leaf "focus-workspace" [ 4 ])
+          (n "Mod+Ctrl+U" [
+            (n "move-workspace-down")
           ])
-          (plain "Mod+5" [
-            (leaf "focus-workspace" [ 5 ])
+          (n "Mod+Ctrl+I" [
+            (n "move-workspace-up")
           ])
-          (plain "Mod+6" [
-            (leaf "focus-workspace" [ 6 ])
+          (n "Mod+Shift+WheelScrollDown" { cooldown-ms = 150; } [
+            (n "focus-workspace-down")
           ])
-          (plain "Mod+7" [
-            (leaf "focus-workspace" [ 7 ])
+          (n "Mod+Shift+WheelScrollUp" { cooldown-ms = 150; } [
+            (n "focus-workspace-up")
           ])
-          (plain "Mod+8" [
-            (leaf "focus-workspace" [ 8 ])
+          (n "Mod+WheelScrollDown" [
+            (n "focus-column-right")
           ])
-          (plain "Mod+9" [
-            (leaf "focus-workspace" [ 9 ])
+          (n "Mod+WheelScrollUp" [
+            (n "focus-column-left")
           ])
-          (plain "Mod+Shift+1" [
-            (leaf "move-column-to-workspace" [ 1 ])
+          (n "Mod+1" [
+            (n "focus-workspace" 1)
           ])
-          (plain "Mod+Shift+2" [
-            (leaf "move-column-to-workspace" [ 2 ])
+          (n "Mod+2" [
+            (n "focus-workspace" 2)
           ])
-          (plain "Mod+Shift+3" [
-            (leaf "move-column-to-workspace" [ 3 ])
+          (n "Mod+3" [
+            (n "focus-workspace" 3)
           ])
-          (plain "Mod+Shift+4" [
-            (leaf "move-column-to-workspace" [ 4 ])
+          (n "Mod+4" [
+            (n "focus-workspace" 4)
           ])
-          (plain "Mod+Shift+5" [
-            (leaf "move-column-to-workspace" [ 5 ])
+          (n "Mod+5" [
+            (n "focus-workspace" 5)
           ])
-          (plain "Mod+Shift+6" [
-            (leaf "move-column-to-workspace" [ 6 ])
+          (n "Mod+6" [
+            (n "focus-workspace" 6)
           ])
-          (plain "Mod+Shift+7" [
-            (leaf "move-column-to-workspace" [ 7 ])
+          (n "Mod+7" [
+            (n "focus-workspace" 7)
           ])
-          (plain "Mod+Shift+8" [
-            (leaf "move-column-to-workspace" [ 8 ])
+          (n "Mod+8" [
+            (n "focus-workspace" 8)
           ])
-          (plain "Mod+Shift+9" [
-            (leaf "move-column-to-workspace" [ 9 ])
+          (n "Mod+9" [
+            (n "focus-workspace" 9)
           ])
-          (plain "Mod+F" [
-            (flag "toggle-window-floating")
+          (n "Mod+Shift+1" [
+            (n "move-column-to-workspace" 1)
           ])
-          (plain "Mod+Shift+F" [
-            (flag "toggle-windowed-fullscreen")
+          (n "Mod+Shift+2" [
+            (n "move-column-to-workspace" 2)
           ])
-          (plain "Mod+Tab" [
-            (flag "focus-window-previous")
+          (n "Mod+Shift+3" [
+            (n "move-column-to-workspace" 3)
           ])
-          (plain "Mod+Shift+Tab" [
-            (flag "switch-focus-between-floating-and-tiling")
+          (n "Mod+Shift+4" [
+            (n "move-column-to-workspace" 4)
           ])
-          (plain "Mod+BracketLeft" [
-            (flag "consume-or-expel-window-left")
+          (n "Mod+Shift+5" [
+            (n "move-column-to-workspace" 5)
           ])
-          (plain "Mod+BracketRight" [
-            (flag "consume-or-expel-window-right")
+          (n "Mod+Shift+6" [
+            (n "move-column-to-workspace" 6)
           ])
-          (plain "Mod+Comma" [
-            (flag "consume-window-into-column")
+          (n "Mod+Shift+7" [
+            (n "move-column-to-workspace" 7)
           ])
-          (plain "Mod+Period" [
-            (flag "expel-window-from-column")
+          (n "Mod+Shift+8" [
+            (n "move-column-to-workspace" 8)
           ])
-          (node "Mod+R"
-            [ { repeat = false; } ]
-            [
-              (flag "switch-preset-column-width")
-            ]
-          )
-          (node "Mod+Shift+R"
-            [ { repeat = false; } ]
-            [
-              (flag "switch-preset-window-height")
-            ]
-          )
-          (plain "Mod+Ctrl+R" [
-            (flag "reset-window-height")
+          (n "Mod+Shift+9" [
+            (n "move-column-to-workspace" 9)
           ])
-          (node "Mod+M"
-            [ { repeat = false; } ]
-            [
-              (flag "maximize-column")
-            ]
-          )
-          (node "Mod+Shift+M"
-            [ { repeat = false; } ]
-            [
-              (flag "fullscreen-window")
-            ]
-          )
-          (node "Mod+Ctrl+M"
-            [ { repeat = false; } ]
-            [
-              (flag "maximize-window-to-edges")
-            ]
-          )
-          (plain "Mod+Z" [
-            (flag "center-column")
+          (n "Mod+F" [
+            (n "toggle-window-floating")
           ])
-          (node "Mod+Minus"
-            [ { repeat = false; } ]
-            [
-              (leaf "set-column-width" [ "-10%" ])
-            ]
-          )
-          (node "Mod+Equal"
-            [ { repeat = false; } ]
-            [
-              (leaf "set-column-width" [ "+10%" ])
-            ]
-          )
-          (node "Mod+Shift+Minus"
-            [ { repeat = false; } ]
-            [
-              (leaf "set-window-height" [ "-10%" ])
-            ]
-          )
-          (node "Mod+Shift+Equal"
-            [ { repeat = false; } ]
-            [
-              (leaf "set-window-height" [ "+10%" ])
-            ]
-          )
-          (plain "Print" [
-            (flag "screenshot")
+          (n "Mod+Shift+F" [
+            (n "toggle-windowed-fullscreen")
           ])
-          (plain "Ctrl+Print" [
-            (flag "screenshot-screen")
+          (n "Mod+Tab" [
+            (n "focus-window-previous")
           ])
-          (plain "Alt+Print" [
-            (flag "screenshot-window")
+          (n "Mod+Shift+Tab" [
+            (n "switch-focus-between-floating-and-tiling")
           ])
-          (plain "Mod+Shift+Q" [
-            (flag "quit")
+          (n "Mod+BracketLeft" [
+            (n "consume-or-expel-window-left")
           ])
-          (plain "Mod+E" [
-            (flag "expand-column-to-available-width")
+          (n "Mod+BracketRight" [
+            (n "consume-or-expel-window-right")
           ])
-          (plain "Mod+Shift+S" [
-            (flag "toggle-keyboard-shortcuts-inhibit")
+          (n "Mod+Comma" [
+            (n "consume-window-into-column")
           ])
-          (plain "Mod+Shift+C" [
-            (flag "set-dynamic-cast-window")
+          (n "Mod+Period" [
+            (n "expel-window-from-column")
           ])
-          (plain "Mod+Shift+Ctrl+C" [
-            (flag "clear-dynamic-cast-target")
+          (n "Mod+R" { repeat = false; } [
+            (n "switch-preset-column-width")
+          ])
+          (n "Mod+Shift+R" { repeat = false; } [
+            (n "switch-preset-window-height")
+          ])
+          (n "Mod+Ctrl+R" [
+            (n "reset-window-height")
+          ])
+          (n "Mod+M" { repeat = false; } [
+            (n "maximize-column")
+          ])
+          (n "Mod+Shift+M" { repeat = false; } [
+            (n "fullscreen-window")
+          ])
+          (n "Mod+Ctrl+M" { repeat = false; } [
+            (n "maximize-window-to-edges")
+          ])
+          (n "Mod+Z" [
+            (n "center-column")
+          ])
+          (n "Mod+Minus" { repeat = false; } [
+            (n "set-column-width" "-10%")
+          ])
+          (n "Mod+Equal" { repeat = false; } [
+            (n "set-column-width" "+10%")
+          ])
+          (n "Mod+Shift+Minus" { repeat = false; } [
+            (n "set-window-height" "-10%")
+          ])
+          (n "Mod+Shift+Equal" { repeat = false; } [
+            (n "set-window-height" "+10%")
+          ])
+          (n "Print" [
+            (n "screenshot")
+          ])
+          (n "Ctrl+Print" [
+            (n "screenshot-screen")
+          ])
+          (n "Alt+Print" [
+            (n "screenshot-window")
+          ])
+          (n "Mod+Shift+Q" [
+            (n "quit")
+          ])
+          (n "Mod+E" [
+            (n "expand-column-to-available-width")
+          ])
+          (n "Mod+Shift+S" [
+            (n "toggle-keyboard-shortcuts-inhibit")
+          ])
+          (n "Mod+Shift+C" [
+            (n "set-dynamic-cast-window")
+          ])
+          (n "Mod+Shift+Ctrl+C" [
+            (n "clear-dynamic-cast-target")
           ])
         ])
       ] # binds
     )
-    ++
-      # let
-      #   spawn-at-startup = leaf "spawn-at-startup";
-      # in
-      [
-        (leaf "screenshot-path" [ "${config.xdg.userDirs.pictures}/screenshots/%Y-%m-%d_%H:%M:%S.png" ])
-        (plain "hotkey-overlay" [
-          (flag "skip-at-startup")
+    ++ [
+      (n "screenshot-path" "${config.xdg.userDirs.pictures}/screenshots/%Y-%m-%d_%H:%M:%S.png")
+      (n "hotkey-overlay" [
+        (n "skip-at-startup")
+      ])
+      (n "prefer-no-csd")
+      (n "input" [
+        (n "touchpad" [
+          (n "scroll-method" "two-finger")
+          (n "middle-emulation")
+          (n "tap")
+          (n "dwt")
+          (n "drag" true)
+          (n "click-method" "clickfinger")
+          (n "tap-button-map" "left-right-middle")
         ])
-        (flag "prefer-no-csd")
-        # (spawn-at-startup [waybar])
-        # (spawn-at-startup [swaync])
-        # (spawn-at-startup [
-        #   waypaper
-        #   "--restore"
-        # ])
-        # (spawn-at-startup [
-        #   wl-paste
-        #   "--watch"
-        #   cliphist
-        #   "store"
-        # ])
-        # (spawn-at-startup [
-        #   wl-clip-persist
-        #   "--clipboard"
-        #   "regular"
-        # ])
-        # (spawn-at-startup [
-        #   fcitx5
-        #   "--replace"
-        # ])
-        (plain "input" [
-          (plain "touchpad" [
-            (leaf "scroll-method" [ "two-finger" ])
-            (flag "middle-emulation")
-            (flag "tap")
-            (flag "dwt")
-            (leaf "drag" [ true ])
-            (leaf "click-method" [ "clickfinger" ])
-            (leaf "tap-button-map" [ "left-right-middle" ])
-          ])
+      ])
+      (n "cursor" [
+        (n "hide-after-inactive-ms" 3000)
+        (n "hide-when-typing")
+      ])
+      (n "layout" [
+        (n "background-color" "transparent")
+        (n "border" [
+          (n "off")
+          (n "width" 4)
+          (n "active-color" "#7fc8ff")
+          (n "inactive-color" "#505050")
         ])
-        (plain "cursor" [
-          (leaf "hide-after-inactive-ms" [ 3000 ])
-          (flag "hide-when-typing")
+        (n "focus-ring" [
+          # (n "off")
+          (n "width" 4)
+          (n "active-color" "#7fc8ff")
+          (n "active-gradient" {
+            from = "#e00a54";
+            to = "#b8de17";
+            angle = 45;
+          })
+          (n "inactive-color" "#505050")
         ])
-        (plain "layout" [
-          (leaf "background-color" [ "transparent" ])
-          (plain "border" [
-            (flag "off")
-            (leaf "width" [ 4 ])
-            (leaf "active-color" [ "#7fc8ff" ])
-            (leaf "inactive-color" [ "#505050" ])
-          ])
-          (plain "focus-ring" [
-            # (flag "off")
-            (leaf "width" [ 4 ])
-            (leaf "active-color" [ "#7fc8ff" ])
-            (leaf "active-gradient" [
-              {
-                from = "#e00a54";
-                to = "#b8de17";
-                angle = 45;
-              }
-            ])
-            (leaf "inactive-color" [ "#505050" ])
-          ])
-          (plain "tab-indicator" [
-            (flag "hide-when-single-tab")
-          ])
-          (plain "preset-column-widths" [
-            (leaf "proportion" [ (1. / 4.) ])
-            (leaf "proportion" [ (1. / 3.) ])
-            (leaf "proportion" [ (1. / 2.) ])
-            (leaf "proportion" [ (2. / 3.) ])
-            (leaf "proportion" [ (3. / 4.) ])
-            (leaf "proportion" [ (4. / 4.) ])
-          ])
-          (flag "always-center-single-column")
-          (leaf "center-focused-column" [ "never" ])
-          (leaf "default-column-display" [ "tabbed" ])
-          (plain "default-column-width" [
-            (leaf "proportion" [ (1. / 2.) ])
-          ])
-          (flag "empty-workspace-above-first")
-          (leaf "gaps" [ 16 ])
+        (n "tab-indicator" [
+          (n "hide-when-single-tab")
         ])
-        (plain "animations" [
-          (plain "window-close" [
-            (leaf "spring" [
-              {
-                damping-ratio = 1.0;
-                stiffness = 800;
-                epsilon = 0.0001;
-              }
-            ])
-          ])
+        (n "preset-column-widths" [
+          (n "proportion" (1. / 4.))
+          (n "proportion" (1. / 3.))
+          (n "proportion" (1. / 2.))
+          (n "proportion" (2. / 3.))
+          (n "proportion" (3. / 4.))
+          (n "proportion" (4. / 4.))
         ])
-        (plain "overview" [
-          (plain "workspace-shadow" [
-            (flag "off")
-          ])
+        (n "always-center-single-column")
+        (n "center-focused-column" "never")
+        (n "default-column-display" "tabbed")
+        (n "default-column-width" [
+          (n "proportion" (1. / 2.))
         ])
-        (plain "blur" [
-          (leaf "passes" [ 4 ])
-          (leaf "offset" [ 4 ])
-          (leaf "noise" [ 0.02 ])
-          (leaf "saturation" [ 1.0 ])
+        (n "empty-workspace-above-first")
+        (n "gaps" 16)
+      ])
+      (n "animations" [
+        (n "window-close" [
+          (n "spring" {
+            damping-ratio = 1.0;
+            stiffness = 800;
+            epsilon = 0.0001;
+          })
         ])
-      ] # others
+      ])
+      (n "overview" [
+        (n "workspace-shadow" [
+          (n "off")
+        ])
+      ])
+      (n "blur" [
+        (n "passes" 4)
+        (n "offset" 4)
+        (n "noise" 0.02)
+        (n "saturation" 1.0)
+      ])
+    ] # others
     ++ (
       let
-        window-rule = plain "window-rule";
-        match = leaf "match";
+        window-rule = n "window-rule";
+        match = n "match";
       in
       [
         (window-rule [
-          (leaf "draw-border-with-background" [ true ])
-          (leaf "geometry-corner-radius" [ 0.0 ])
-          (leaf "clip-to-geometry" [ true ])
+          (n "draw-border-with-background" true)
+          (n "geometry-corner-radius" 0.0)
+          (n "clip-to-geometry" true)
         ])
         (window-rule [
-          (match [ { app-id = "^org\\.keepassxc\\.KeePassXC$"; } ])
-          (match [ { app-id = "^org\\.gnome\\.World\\.Secrets$"; } ])
-          (leaf "block-out-from" [ "screen-capture" ])
+          (match { app-id = "^org\\.keepassxc\\.KeePassXC$"; })
+          (match { app-id = "^org\\.gnome\\.World\\.Secrets$"; })
+          (n "block-out-from" "screen-capture")
         ])
         (window-rule [
-          (plain "background-effect" [
-            (leaf "blur" [ true ])
+          (n "background-effect" [
+            (n "blur" true)
           ])
         ])
         (window-rule [
-          (match [ { is-active = true; } ])
-          (leaf "opacity" [ 1.0 ])
+          (match { is-active = true; })
+          (n "opacity" 1.0)
         ])
         (window-rule [
-          (match [ { is-active = false; } ])
-          (leaf "opacity" [ 0.8 ])
-          (leaf "draw-border-with-background" [ false ])
+          (match { is-active = false; })
+          (n "opacity" 0.8)
+          (n "draw-border-with-background" false)
         ])
         (window-rule [
-          (match [ { app-id = "^Alacritty$"; } ])
-          (match [ { app-id = "^com\\.mitchellh\\.ghostty$"; } ])
-          (match [ { app-id = "^neovide$"; } ])
-          (leaf "draw-border-with-background" [ false ])
-          (leaf "opacity" [ 0.65 ])
+          (match { app-id = "^Alacritty$"; })
+          (match { app-id = "^com\\.mitchellh\\.ghostty$"; })
+          (match { app-id = "^neovide$"; })
+          (n "draw-border-with-background" false)
+          (n "opacity" 0.65)
         ])
         (window-rule [
-          (match [ { app-id = "^org\\.kde\\.polkit-kde-authentication-agent-1$"; } ])
-          (leaf "open-floating" [ true ])
+          (match { app-id = "^org\\.kde\\.polkit-kde-authentication-agent-1$"; })
+          (n "open-floating" true)
         ])
         (window-rule [
-          (match [ { app-id = "^swayimg$"; } ])
-          (leaf "draw-border-with-background" [ false ])
-          (leaf "open-floating" [ true ])
+          (match { app-id = "^swayimg$"; })
+          (n "draw-border-with-background" false)
+          (n "open-floating" true)
         ])
         (window-rule [
-          (match [ { is-window-cast-target = true; } ])
-          (plain "focus-ring" [
-            (leaf "active-color" [ "#f38ba8" ])
-            (leaf "inactive-color" [ "#7d0d2d" ])
+          (match { is-window-cast-target = true; })
+          (n "focus-ring" [
+            (n "active-color" "#f38ba8")
+            (n "inactive-color" "#7d0d2d")
           ])
-          (plain "border" [
-            (leaf "active-color" [ "#f38ba8" ])
-            (leaf "inactive-color" [ "#7d0d2d" ])
+          (n "border" [
+            (n "active-color" "#f38ba8")
+            (n "inactive-color" "#7d0d2d")
           ])
-          (plain "tab-indicator" [
-            (leaf "active-color" [ "#f38ba8" ])
-            (leaf "inactive-color" [ "#7d0d2d" ])
+          (n "tab-indicator" [
+            (n "active-color" "#f38ba8")
+            (n "inactive-color" "#7d0d2d")
           ])
-          (plain "shadow" [
-            (flag "on")
+          (n "shadow" [
+            (n "on")
           ])
         ])
         (window-rule [
-          (match [
-            {
-              app-id = "^org\\.telegram\\.desktop$";
-              title = "Media viewer";
-            }
-          ])
-          (match [
-            {
-              app-id = "^QQ$";
-              title = "图片查看器";
-            }
-          ])
-          (leaf "open-floating" [ true ])
-          (leaf "open-fullscreen" [ false ])
+          (match {
+            app-id = "^org\\.telegram\\.desktop$";
+            title = "Media viewer";
+          })
+          (match {
+            app-id = "^QQ$";
+            title = "图片查看器";
+          })
+          (n "open-floating" true)
+          (n "open-fullscreen" false)
         ])
         (window-rule [
-          (match [
-            {
-              app-id = "^wechat$";
-              title = "^wechat$";
-            }
-          ])
-          (leaf "open-focused" [ false ])
+          (match {
+            app-id = "^wechat$";
+            title = "^wechat$";
+          })
+          (n "open-focused" false)
         ])
         (window-rule [
-          (match [
-            {
-              app-id = "^steam$";
-              title = "^notificationtoasts_\\d+_desktop$";
-            }
-          ])
-          (leaf "open-floating" [ true ])
-          (leaf "open-focused" [ false ])
-          (leaf "default-floating-position" [
-            {
-              x = 10;
-              y = 10;
-              "relative-to" = "bottom-right";
-            }
-          ])
-          (leaf "clip-to-geometry" [ false ])
+          (match {
+            app-id = "^steam$";
+            title = "^notificationtoasts_\\d+_desktop$";
+          })
+          (n "open-floating" true)
+          (n "open-focused" false)
+          (n "default-floating-position" {
+            x = 10;
+            y = 10;
+            "relative-to" = "bottom-right";
+          })
+          (n "clip-to-geometry" false)
         ])
         (window-rule [
-          (match [
-            {
-              app-id = "^zen-twilight$";
-              title = "^画中画$";
-            }
-          ])
-          (leaf "open-floating" [ true ])
-          (leaf "open-focused" [ false ])
+          (match {
+            app-id = "^zen-twilight$";
+            title = "^画中画$";
+          })
+          (n "open-floating" true)
+          (n "open-focused" false)
         ])
       ] # window-rule
-    )
-  # ++ (
-  #   let
-  #     layer-rule = plain "layer-rule";
-  #     match = leaf "match";
-  #   in [
-  #     (layer-rule [
-  #       (match [{namespace = "^swaync-notification-window$";}])
-  #       (match [{namespace = "^swaync-control-center$";}])
-  #       (leaf "block-out-from" ["screen-capture"])
-  #     ])
-  #     (layer-rule [
-  #       (match [{namespace = "^launcher$";}])
-  #       (plain "shadow" [
-  #         (flag "on")
-  #       ])
-  #       (leaf "geometry-corner-radius" [10.0])
-  #     ])
-  #     (layer-rule [
-  #       (match [{namespace = "^mpvpaper$";}])
-  #       (leaf "place-within-backdrop" [true])
-  #     ])
-  #   ] # layer-rule
-  # )
-  ;
+    );
 }

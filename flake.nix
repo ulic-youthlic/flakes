@@ -8,13 +8,17 @@
       treefmt-nix,
       nixpkgs,
       nixpkgs-patcher,
+      nix-kdl,
       ...
     }@inputs:
     let
       nixpkgs-lib = nixpkgs.lib;
       lib = nixpkgs-lib.extend (
         final: prev:
-        nixpkgs-lib.recursiveUpdate { nixpkgs-patcher = nixpkgs-patcher.lib; } (import ./lib final prev)
+        nixpkgs-lib.recursiveUpdate {
+          nixpkgs-patcher = nixpkgs-patcher.lib;
+          nix-kdl = nix-kdl.kdl;
+        } (import ./lib final prev)
       );
     in
     flake-parts.lib.mkFlake
@@ -105,13 +109,22 @@
       };
     };
 
-    niri-flake = {
+    nix-kdl = {
       type = "github";
-      owner = "sodiboo";
-      repo = "niri-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      owner = "Lhcfl";
+      repo = "nix-kdl";
+    };
+    niri = {
+      type = "github";
+      owner = "niri-wm";
+      repo = "niri";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    xwayland-satellite = {
+      type = "github";
+      owner = "Supreeeme";
+      repo = "xwayland-satellite";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-hardware = {

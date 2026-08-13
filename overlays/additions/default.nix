@@ -14,6 +14,7 @@ pipe
     ./iosevka-serif_fixed.nix
 
     # ./pkgsNoCuda.nix
+    ./mv.nix
     ./linux-cachyos.nix
   ]
   [

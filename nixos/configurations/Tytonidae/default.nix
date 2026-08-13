@@ -118,7 +118,7 @@
     bitwarden-desktop
 
     juicity
-    waypipe
+    (mv.version "waypipe" "0.10.6")
     iperf3
     neovide
     prismlauncher

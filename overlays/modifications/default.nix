@@ -6,7 +6,6 @@ in
 with lib;
 pipe
   [
-    ./niri.nix
     ./radicle-explorer.nix
     ./wshowkeys.nix
     # ./QQ.nix
@@ -15,6 +14,8 @@ pipe
     ./nautilus.nix
     ./vim.nix
     ./prismlauncher.nix
+    ./niri.nix
+    ./xwayland-satellite.nix
 
     # Nur
     ./nur.nix

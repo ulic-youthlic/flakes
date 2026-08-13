@@ -37,8 +37,8 @@ in
   };
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
-      home.packages = with pkgs; [
-        watchman
+      home.packages = [
+        (pkgs.mv.version "watchman" "2025.10.13.00")
       ];
       programs.jujutsu = {
         enable = true;

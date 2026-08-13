@@ -1,12 +1,10 @@
 {
   config,
   lib,
-  inputs,
   pkgs,
   osConfig ? (
     throw "Trying to access osConfig, the home-manager module is not being used in the nixos module"
   ),
-  options,
   ...
 }:
 let
@@ -22,7 +20,8 @@ in
         default = osConfig.youthlic.gui.enabled == "niri";
       };
       config = lib.mkOption {
-        type = inputs.niri-flake.lib.kdl.types.kdl-document;
+        type = lib.types.listOf lib.types.anything;
+        apply = lib.nix-kdl.formats.v1;
       };
       configHelper = lib.mkOption {
         type = lib.types.anything;
@@ -33,7 +32,7 @@ in
               {
                 inherit configuration;
                 passAsFile = [ "configuration" ];
-                buildInputs = [ config.programs.niri.package ];
+                buildInputs = [ config.wayland.windowManager.niri.package ];
               }
               #bash
               ''
@@ -42,20 +41,25 @@ in
               '';
         };
       };
-      wluma.extraSettings = lib.mkOption {
-        inherit (options.david.programs.wluma.extraSettings) type;
-      };
     };
   };
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
+      assertions = [
+        {
+          assertion = lib.strings.isStorePath (cfg.configHelper.validated-config-for cfg.config);
+          message = "david.programs.niri.config must pass validation of wayland.windowManager.niri.package";
+        }
+      ];
+      david.programs.niri.config = lib.mkAfter [
+        (lib.nix-kdl.dsl.n "include" (toString config.david.programs.noctalia.niriExtraConfig))
+      ];
       home.packages = with pkgs; [
-        # swaynotificationcenter
         wl-clipboard
-        # cliphist
         swayimg
         seahorse
       ];
+      services.gnome-keyring.enable = true;
       xdg.configFile =
         let
           qtctConf = ''
@@ -72,35 +76,21 @@ in
           };
         };
       david.programs = {
-        # fuzzel.enable = true;
-        # waybar = {
-        #   enable = true;
-        #   inherit (cfg.waybar) settings;
-        # };
-        # wluma = {
-        #   enable = true;
-        #   inherit (cfg.wluma) extraSettings;
-        # };
-        # swaync.enable = true;
-        # swaylock.enable = true;
-        # waypaper.enable = true;
         kanshi.enable = true;
         noctalia.enable = true;
       };
-      programs = {
-        niri = {
-          config = cfg.config ++ [
-            (inputs.niri-flake.lib.kdl.leaf "include" [
-              (toString config.david.programs.noctalia.niriExtraConfig)
-            ])
-          ];
+      wayland.windowManager.niri = {
+        enable = true;
+        package = osConfig.programs.niri.package;
+        settings = { };
+        extraConfig = cfg.config;
+        checkConfig = true;
+        systemd = {
+          enable = true;
+          variables = [ ];
         };
-      };
-    })
-    (lib.mkIf (!cfg.enable) {
-      programs.niri = {
-        settings = null;
-        config = null;
+        portalPackage = pkgs.xdg-desktop-portal-gnome;
+        xwaylandSatellitePackage = pkgs.xwayland-satellite;
       };
     })
   ];
