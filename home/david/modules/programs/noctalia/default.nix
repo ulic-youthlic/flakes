@@ -18,9 +18,8 @@ let
     args:
     (spawn (
       [
-        "noctalia-shell"
-        "ipc"
-        "call"
+        "noctalia"
+        "msg"
       ]
       ++ args
     ));
@@ -35,32 +34,30 @@ in
       niriExtraConfig = lib.mkOption {
         type = inputs.niri-flake.lib.kdl.types.kdl-document;
         default = [
-          (leaf "spawn-at-startup" [ (lib.getExe config.programs.noctalia-shell.package) ])
           (plain "binds" [
             (plain "Mod+V" [
               (noctalia [
-                "launcher"
+                "panel-toggle"
                 "clipboard"
               ])
             ])
             (plain "Mod+Shift+P" [
               (noctalia [
-                "lockScreen"
+                "session"
                 "lock"
               ])
             ])
             (plain "Mod+Space" [
               (noctalia [
+                "panel-toggle"
                 "launcher"
-                "toggle"
               ])
             ])
             (node "XF86AudioRaiseVolume"
               [ { allow-when-locked = true; } ]
               [
                 (noctalia [
-                  "volume"
-                  "increase"
+                  "volume-up"
                 ])
               ]
             )
@@ -68,8 +65,7 @@ in
               [ { allow-when-locked = true; } ]
               [
                 (noctalia [
-                  "volume"
-                  "decrease"
+                  "volume-down"
                 ])
               ]
             )
@@ -77,8 +73,7 @@ in
               [ { allow-when-locked = true; } ]
               [
                 (noctalia [
-                  "volume"
-                  "muteOutput"
+                  "volume-mute"
                 ])
               ]
             )
@@ -86,21 +81,44 @@ in
               [ { allow-when-locked = true; } ]
               [
                 (noctalia [
-                  "volume"
-                  "muteInput"
+                  "mic-mute"
+                ])
+              ]
+            )
+            (node "XF86MonBrightnessUp"
+              [ { allow-when-locked = true; } ]
+              [
+                (noctalia [
+                  "brightness-up"
+                ])
+              ]
+            )
+            (node "XF86MonBrightnessDown"
+              [ { allow-when-locked = true; } ]
+              [
+                (noctalia [
+                  "brightness-down"
                 ])
               ]
             )
           ])
           (layer-rule [
-            (match [ { namespace = "^noctalia-wallpaper-.*$"; } ])
+            (match [ { namespace = "^noctalia-wallpaper"; } ])
             (leaf "place-within-backdrop" [ true ])
           ])
           (layer-rule [
-            (match [ { namespace = "^noctalia-notifications-.*$"; } ])
+            (match [ { namespace = "^noctalia-(notification|attached-panel)$"; } ])
             (leaf "block-out-from" [ "screen-capture" ])
           ])
+          (plain "overview" [
+            (plain "workspace-shadow" [
+              (flag "off")
+            ])
+          ])
           (plain "layout" [
+            (leaf "background-color" [
+              "transparent"
+            ])
             (plain "focus-ring" [
               (leaf "active-gradient" [
                 {
@@ -109,6 +127,14 @@ in
                   angle = 45;
                   "in" = "oklch";
                 }
+              ])
+            ])
+          ])
+          (plain "switch-events" [
+            (plain "lid-close" [
+              (noctalia [
+                "session"
+                "lock-and-suspend"
               ])
             ])
           ])
@@ -122,38 +148,12 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    stylix.targets.noctalia-shell.enable = false;
-    home.packages = [
-      pkgs.app2unit
-      pkgs.gpu-screen-recorder
-    ];
-    programs.noctalia-shell = {
+    stylix.targets.noctalia.enable = false;
+    programs.noctalia = {
       enable = true;
-      plugins = builtins.fromJSON (builtins.readFile ./plugins.json);
-      pluginSettings =
-        let
-          enabledPlugins =
-            with lib;
-            flip pipe [
-              (filterAttrs (_name: settings: settings.enabled or false))
-              builtins.attrNames
-            ] config.programs.noctalia-shell.plugins.states;
-          staticSettings = lib.genAttrs enabledPlugins (
-            name:
-            let
-              pluginSettingPath = ./plugin + "/${name}.json";
-            in
-            if lib.pathIsRegularFile pluginSettingPath then
-              builtins.fromJSON (builtins.readFile pluginSettingPath)
-            else
-              { }
-          );
-        in
-        lib.recursiveUpdate staticSettings {
-          screen-recorder.directory = "${config.xdg.userDirs.videos}/records";
-        };
-      settings = lib.recursiveUpdate (builtins.fromJSON (builtins.readFile ./settings.json)) {
-        general.avatarImage = "${config.home.homeDirectory}/.face";
+      systemd.enable = true;
+      settings = lib.recursiveUpdate (fromTOML (builtins.readFile ./noctalia-config.toml)) {
+        shell.avatar_path = "${config.home.homeDirectory}/.face";
         wallpaper.directory = "${config.home.homeDirectory}/${config.david.wallpaper.path}";
       };
     };

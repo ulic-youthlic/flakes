@@ -188,7 +188,6 @@
       type = "github";
       owner = "noctalia-dev";
       repo = "noctalia-shell";
-      ref = "legacy-v4";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };

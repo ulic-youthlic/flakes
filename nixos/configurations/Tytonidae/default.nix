@@ -42,6 +42,7 @@
       # };
     };
     programs = {
+      upower.enable = true;
       miniserve = {
         enable = true;
         apps =
