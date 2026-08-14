@@ -58,8 +58,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    # nixpkgs.url = "github:NixOS/nixpkgs/master";
     ## update rqbit
     nixpkgs-patch-rqbit-bump = {
       url = "https://github.com/nixos/nixpkgs/pull/485603.diff";
@@ -94,9 +92,7 @@
       type = "github";
       owner = "nix-community";
       repo = "home-manager";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     zen-browser = {
@@ -145,9 +141,7 @@
       type = "github";
       owner = "Mic92";
       repo = "sops-nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {
@@ -164,18 +158,14 @@
       type = "github";
       owner = "nix-community";
       repo = "disko";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     deploy-rs = {
       type = "github";
       owner = "serokell";
       repo = "deploy-rs";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     treefmt-nix = {
@@ -201,9 +191,7 @@
       type = "github";
       owner = "noctalia-dev";
       repo = "noctalia-shell";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     spicetify-nix = {
