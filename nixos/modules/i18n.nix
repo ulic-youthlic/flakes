@@ -62,26 +62,50 @@ in
             globalOptions = {
               HotKey = {
                 EnumerateWithTriggerKeys = "True";
-                AltTriggerKeys = "";
-                EnumerateForwardKeys = "";
-                EnumerateBackwardKeys = "";
                 EnumerateSkipFirst = "False";
-                EnumerateGroupForwardKeys = "";
-                EnumerateGroupBackwardKeys = "";
-                ActivateKeys = "";
-                DeactivateKeys = "";
-                PrevPage = "";
-                NextPage = "";
-                PrevCandidate = "";
-                NextCandidate = "";
-                TogglePreedit = "";
                 ModifierOnlyKeyTimeout = 250;
               };
+              "Hotkey/TogglePreedit" = {
+                "0" = "Control+Shift+P";
+              };
+              "Hotkey/NextCandidate" = {
+                "0" = "VoidSymbol";
+              };
+              "Hotkey/PrevCandidate" = {
+                "0" = "VoidSymbol";
+              };
+              "Hotkey/NextPage" = {
+                "0" = "VoidSymbol";
+              };
+              "Hotkey/PrevPage" = {
+                "0" = "VoidSymbol";
+              };
+              "Hotkey/ActivateKeys" = {
+                "0" = "VoidSymbol";
+              };
+              "Hotkey/EnumerateGroupBackwardKeys" = {
+                "0" = "VoidSymbol";
+              };
+              "Hotkey/EnumerateGroupForwardKeys" = {
+                "0" = "VoidSymbol";
+              };
+              "Hotkey/EnumerateBackwardKeys" = {
+                "0" = "VoidSymbol";
+              };
+              "Hotkey/EnumerateForwardKeys" = {
+                "0" = "VoidSymbol";
+              };
+              "Hotkey/AltTriggerKeys" = {
+                "0" = "VoidSymbol";
+              };
+              "Hotkey/DeactivateKeys" = {
+                "0" = "VoidSymbol";
+              };
               "Hotkey/TriggerKeys" = {
-                "0" = "Control+space";
+                "0" = "Shift+space";
               };
               Behavior = {
-                ActiveByDefault = "False";
+                ActiveByDefault = "True";
                 AllowInputMethodForPassword = "False";
                 AutoSavePeriod = 30;
                 CompactInputMethodInformation = "True";
@@ -94,7 +118,7 @@ in
                 PreloadInputMethod = "True";
                 ShareInputState = "No";
                 ShowFirstInputMethodInformation = "True";
-                ShowInputMethodInformation = "True";
+                ShowInputMethodInformation = "False";
                 ShowPreeditForPassword = "False";
                 resetStateWhenFocusIn = "No";
                 showInputMethodInformationWhenFocusIn = "False";
@@ -112,10 +136,6 @@ in
               };
               "Groups/0/Items/1" = {
                 Name = "rime";
-                Layout = "";
-              };
-              "Groups/0/Items/2" = {
-                Name = "keyboard-us-dvp";
                 Layout = "";
               };
               "GroupOrder" = {
