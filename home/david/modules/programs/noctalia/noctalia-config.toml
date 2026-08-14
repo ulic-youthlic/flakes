@@ -107,9 +107,11 @@ background_opacity = 1.0
 position = "bottom_right"
 
 [osd]
-background_opacity = 1.0
-position = "bottom_center"
-position_vertical = "bottom_center"
+background_opacity = 0.9
+border = false
+position = "top_center"
+position_vertical = "center_left"
+scale = 0.8
 
 [shell]
 button_borders = false
