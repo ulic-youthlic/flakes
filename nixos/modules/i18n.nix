@@ -105,7 +105,7 @@ in
                 "0" = "Shift+space";
               };
               Behavior = {
-                ActiveByDefault = "True";
+                ActiveByDefault = "False";
                 AllowInputMethodForPassword = "False";
                 AutoSavePeriod = 30;
                 CompactInputMethodInformation = "True";
