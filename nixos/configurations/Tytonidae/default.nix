@@ -107,7 +107,7 @@
 
     vlc
     btop
-    wechat-uos
+    wechat
     nvtopPackages.full
     localsend
     jq
