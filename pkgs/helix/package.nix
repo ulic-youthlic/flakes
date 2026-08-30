@@ -1,13 +1,12 @@
 {
   inputs,
-  stdenv,
   callPackage,
   buildEnv,
   lib,
+  pkgs,
 }:
 let
-  inherit (stdenv.hostPlatform) system;
-  inherit (inputs.helix.packages."${system}") helix;
+  inherit (inputs.helix.overlays.default pkgs pkgs) helix;
   runtime = callPackage ./runtime.nix { };
   helix' = helix.overrideAttrs (
     _final: prev:
