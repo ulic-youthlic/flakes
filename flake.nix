@@ -58,11 +58,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    ## update rqbit
-    nixpkgs-patch-rqbit-bump = {
-      url = "https://github.com/nixos/nixpkgs/pull/485603.diff";
-      flake = false;
-    };
     nixpkgs-patcher = {
       type = "github";
       owner = "gepbird";

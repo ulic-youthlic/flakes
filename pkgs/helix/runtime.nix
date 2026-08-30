@@ -52,7 +52,7 @@ let
         runHook postInstall
       '';
 
-      fixupPhase = lib.optionalString stdenv.isLinux ''
+      fixupPhase = lib.optionalString stdenv.hostPlatform.isLinux ''
         runHook preFixup
 
         $STRIP $out/$NAME.so
