@@ -378,11 +378,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1786559454,
-        "narHash": "sha256-G6tXhePQUPnsEKraOuAoT/tsaAV3Ip0fbMyss9q13TY=",
+        "lastModified": 1788120143,
+        "narHash": "sha256-ouPVgkdLz4sASglBqhxxRZpeFjEaK3xwgggyfrqKtdI=",
         "owner": "xddxdd",
         "repo": "nix-cachyos-kernel",
-        "rev": "ec4895e556bd30af5b2a79ad7ec9b37367c81ebd",
+        "rev": "1aaa1157d53a765dc30e8e9a59b18f667d15f923",
         "type": "github"
       },
       "original": {
@@ -456,6 +456,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-ddcci-driver-fix": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-DTc6hH7DLTn/Ssf3At3eHic2tTqCD8pIBnFVgzhEJTg=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/556080.diff"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/556080.diff"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1787266535,
@@ -489,11 +501,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1786548149,
-        "narHash": "sha256-pBv1JbhCqqMcF5ciyLi8D9nzVyw4Gv2sk/tcGF4mBHA=",
+        "lastModified": 1788127064,
+        "narHash": "sha256-fC4A4mde4WeGSynrHUkLZtV/lmValH6Idw/QJn0MUDs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5df1f9ae934fe1bffbd3867a1ae2870ab22302ed",
+        "rev": "3633f4ab859cd646d244802286d916f107ffeda7",
         "type": "github"
       },
       "original": {
@@ -678,6 +690,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-multiverse": "nixpkgs-multiverse",
+        "nixpkgs-patch-ddcci-driver-fix": "nixpkgs-patch-ddcci-driver-fix",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "noctalia": "noctalia",
         "nur": "nur",

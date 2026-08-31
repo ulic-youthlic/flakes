@@ -58,6 +58,11 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Fix build of ddcci-driver
+    nixpkgs-patch-ddcci-driver-fix = {
+      url = "https://github.com/NixOS/nixpkgs/pull/556080.diff";
+      flake = false;
+    };
     nixpkgs-patcher = {
       type = "github";
       owner = "gepbird";
