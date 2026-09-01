@@ -83,7 +83,6 @@
     duf
     doggo
     qq
-    telegram-desktop
     scrcpy
     ast-grep
     dig

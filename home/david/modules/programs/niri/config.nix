@@ -477,10 +477,6 @@
         ])
         (window-rule [
           (match {
-            app-id = "^org\\.telegram\\.desktop$";
-            title = "Media viewer";
-          })
-          (match {
             app-id = "^QQ$";
             title = "图片查看器";
           })

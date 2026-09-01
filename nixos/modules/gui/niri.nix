@@ -65,7 +65,6 @@ in
             "x-scheme-handler/http" = browsers;
             "x-scheme-handler/https" = browsers;
             "x-scheme-handler/mailto" = browsers;
-            "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
             "x-scheme-handler/unknown" = browsers;
             "image/gif" = [
               "swayimg.desktop"
