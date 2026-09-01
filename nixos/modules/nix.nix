@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  pkgs,
   outputs,
   lib,
   ...
@@ -37,6 +38,7 @@
     };
     nix = {
       nixPath = [ "/etc/nix/inputs" ];
+      package = pkgs.nixVersions.latest;
       extraOptions = ''
         !include ${config.sops.secrets."access-tokens".path}
       '';
