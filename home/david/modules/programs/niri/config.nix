@@ -444,7 +444,6 @@
         (window-rule [
           (match { app-id = "^Alacritty$"; })
           (match { app-id = "^com\\.mitchellh\\.ghostty$"; })
-          (match { app-id = "^neovide$"; })
           (n "draw-border-with-background" false)
           (n "opacity" 0.65)
         ])

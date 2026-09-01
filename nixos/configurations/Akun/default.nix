@@ -56,7 +56,6 @@
     localsend
     zulip
     wechat
-    neovide
   ];
 
   environment.variables.EDITOR = "hx";

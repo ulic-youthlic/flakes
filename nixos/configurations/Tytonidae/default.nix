@@ -120,7 +120,6 @@
     juicity
     waypipe
     iperf3
-    neovide
     prismlauncher
 
     sbctl
