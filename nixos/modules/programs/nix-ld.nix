@@ -26,6 +26,25 @@ in
         curl
         expat
         rustls-libssl
+        glib
+        nspr
+        at-spi2-core
+        dbus
+        cups
+        expat
+        libxcb
+        libxkbcommon
+        alsa-lib
+        libgbm
+        libx11
+        libxext
+        cairo
+        pango
+        systemdLibs
+        libxcomposite
+        libxdamage
+        libxfixes
+        libxrandr
       ];
     };
   };
