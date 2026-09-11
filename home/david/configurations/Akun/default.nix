@@ -39,7 +39,6 @@
     wallpaper.enable = true;
     accounts.email.enable = true;
     programs = {
-      chromium.enable = true;
       thunderbird.enable = true;
       mpv.enable = true;
       ghostty.enable = true;
@@ -80,5 +79,6 @@
     gitoxide
     fd
     viu
+    helium
   ];
 }

@@ -199,5 +199,11 @@
       owner = "Gerg-L";
       repo = "spicetify-nix";
     };
+
+    helium-nix = {
+      type = "github";
+      owner = "tomsch";
+      repo = "helium-nix";
+    };
   };
 }

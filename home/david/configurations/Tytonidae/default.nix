@@ -48,7 +48,6 @@
     accounts.email.enable = true;
     programs = {
       spotify.enable = true;
-      chromium.enable = true;
       thunderbird.enable = true;
       foot.enable = false;
       mpv.enable = true;
@@ -92,5 +91,6 @@
     fd
     viu
     android-tools
+    helium
   ];
 }

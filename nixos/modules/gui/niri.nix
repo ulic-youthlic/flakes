@@ -47,7 +47,7 @@ in
         let
           browsers = [
             "zen-twilight.desktop"
-            "chromium-browser.desktop"
+            "helium.desktop"
           ];
         in
         {

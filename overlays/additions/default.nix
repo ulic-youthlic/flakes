@@ -12,6 +12,7 @@ pipe
     ./wallpapers.nix
     ./rime-all.nix
     ./iosevka-serif_fixed.nix
+    ./helium.nix
 
     # ./pkgsNoCuda.nix
     ./mv.nix
