@@ -76,7 +76,7 @@ in
     };
     services.sing-box = {
       enable = true;
-      package = pkgs.nur.repos.prince213.sing-box-beta;
+      package = pkgs.sing-box;
       settings = {
         log = {
           disabled = false;
