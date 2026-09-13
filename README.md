@@ -14,10 +14,10 @@ Hey, you. This is my nixos configurations.
 
 - david@Tytonidae
 
-| Specialisation | DE / WM |    Shell    |   Editor    | Terminal | Launcher |   Browser   |        DM        |
-| :------------: | :-----: | :---------: | :---------: | :------: | :------: | :---------: | :--------------: |
-|    default     |  niri   | fish + bash | helix + zed | ghostty  |  fuzzel  | zen-browser | greetd + regreet |
-|      kde       |   kde   | fish + bash | helix + zed | ghostty  | kde run  | zen-browser |       sddm       |
+| Specialisation | DE / WM |    Shell    |   Editor    |      Terminal       |     Launcher      |   Browser   |        DM         |
+| :------------: | :-----: | :---------: | :---------: | :-----------------: | :---------------: | :---------: | :---------------: |
+|    default     |  niri   | fish + bash | helix + zed | ghostty + alacritty | noctalia launcher | zen-browser | greetd + tuigreet |
+|      kde       |   kde   | fish + bash | helix + zed |       ghostty       |      kde run      | zen-browser |       sddm        |
 
 - david@Akun
 
