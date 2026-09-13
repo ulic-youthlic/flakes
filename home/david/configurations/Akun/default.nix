@@ -75,7 +75,7 @@
     scrcpy
     ast-grep
     dig
-    fend
+    numbat
     gitoxide
     fd
     viu

@@ -85,7 +85,7 @@
     scrcpy
     ast-grep
     dig
-    fend
+    numbat
     gitoxide
     kdePackages.kdenlive
     fd

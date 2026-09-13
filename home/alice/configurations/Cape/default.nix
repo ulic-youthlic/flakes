@@ -41,7 +41,7 @@
     doggo
     ast-grep
     dig
-    fend
+    numbat
     viu
     fd
   ];
