@@ -1,1 +1,1 @@
-{ inputs, ... }: inputs.nix-cachyos-kernel.overlays.default
+{ inputs, ... }: inputs.nix-cachyos-kernel.overlays.pinned
