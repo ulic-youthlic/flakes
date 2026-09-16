@@ -84,17 +84,7 @@ in
     hardware.bluetooth = {
       enable = true;
     };
-    services = {
-      greetd = {
-        enable = true;
-        settings = {
-          default_session = {
-            command = "${lib.getExe pkgs.tuigreet} --time --user-menu -r";
-          };
-        };
-        useTextGreeter = true;
-      };
-    };
+    youthlic.programs.ly.enable = true;
     programs = {
       niri = {
         enable = true;

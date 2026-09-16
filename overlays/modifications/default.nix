@@ -15,6 +15,7 @@ pipe
     ./vim.nix
     ./prismlauncher.nix
     ./niri.nix
+    ./ly.nix
     ./xwayland-satellite.nix
 
     # Nur
