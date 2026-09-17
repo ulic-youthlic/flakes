@@ -13,6 +13,7 @@ pipe
     ./rime-all.nix
     ./iosevka-serif_fixed.nix
     ./helium.nix
+    ./fcitx5-vinput.nix
 
     # ./pkgsNoCuda.nix
     ./mv.nix

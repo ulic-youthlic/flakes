@@ -36,6 +36,7 @@ in
             libsForQt5.fcitx5-qt
             fcitx5-gtk
             fcitx5-fluent
+            fcitx5-vinput
             (fcitx5-rime.override {
               rimeDataPkgs = [
                 rime-all

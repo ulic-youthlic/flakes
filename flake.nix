@@ -201,5 +201,11 @@
       owner = "tomsch";
       repo = "helium-nix";
     };
+
+    fcitx5-vinput = {
+      type = "github";
+      owner = "xifan2333";
+      repo = "fcitx5-vinput";
+    };
   };
 }
