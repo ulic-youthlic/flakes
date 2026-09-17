@@ -94,7 +94,10 @@
 
   time.timeZone = "Asia/Shanghai";
 
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplipWithPlugin ];
+  };
 
   environment.systemPackages = with pkgs; [
     radicle-desktop
