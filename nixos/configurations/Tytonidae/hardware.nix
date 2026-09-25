@@ -36,7 +36,10 @@
       enable = true;
       enableUdevRules = true;
     };
-    xserver.videoDrivers = [ "nvidia" ];
+    xserver.videoDrivers = [
+      "nvidia"
+      "modesetting"
+    ];
   };
   nix = {
     settings = {
@@ -50,7 +53,6 @@
     };
     graphics.package = pkgs.mesa;
     intelgpu = {
-      driver = "xe";
       vaapiDriver = "intel-media-driver";
     };
     nvidia = {

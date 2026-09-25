@@ -21,7 +21,7 @@ in
             criteria = "Chimei Innolux Corporation 0x1540 Unknown";
             mode = "2560x1440@165.003Hz";
             scale = 1.5;
-            adaptiveSync = true;
+            adaptiveSync = false;
           };
         }
         {
