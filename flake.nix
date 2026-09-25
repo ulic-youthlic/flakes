@@ -140,16 +140,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      type = "github";
-      owner = "nix-community";
-      repo = "stylix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
     disko = {
       type = "github";
       owner = "nix-community";

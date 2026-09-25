@@ -14,7 +14,6 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    stylix.targets.zed.enable = false;
     programs.zed-editor = {
       enable = true;
       extensions = [

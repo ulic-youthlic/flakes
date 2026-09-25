@@ -153,62 +153,57 @@ in
       };
     };
   };
-  config = lib.mkMerge [
-    (lib.mkIf cfg.enable {
-      programs.waybar = {
-        enable = true;
-        systemd.enable = false;
-        settings = cfg.settings;
-        style = ''
-           * {
-            font-family: Libertinus Serif, Source Han Serif SC;
-            font-weight: bold;
-            font-size: 16px;
-          }
+  config = lib.mkIf cfg.enable {
+    programs.waybar = {
+      enable = true;
+      systemd.enable = false;
+      settings = cfg.settings;
+      style = ''
+         * {
+          font-family: Libertinus Serif, Source Han Serif SC;
+          font-weight: bold;
+          font-size: 16px;
+        }
 
-          window#waybar {
-            background: alpha(@theme_base_color, 0.9);
-            color: @theme_text_color;
-          }
+        window#waybar {
+          background: alpha(@theme_base_color, 0.9);
+          color: @theme_text_color;
+        }
 
-          #custom-notification,
-          #workspaces,
-          #taskbar button,
-          #mode,
-          #clock,
-          #tray,
-          #mpris,
-          #idle_inhibitor,
-          #custom-backlight,
-          #cpu,
-          #memory,
-          #pulseaudio,
-          #battery {
-            padding: 0 6px;
-          }
+        #custom-notification,
+        #workspaces,
+        #taskbar button,
+        #mode,
+        #clock,
+        #tray,
+        #mpris,
+        #idle_inhibitor,
+        #custom-backlight,
+        #cpu,
+        #memory,
+        #pulseaudio,
+        #battery {
+          padding: 0 6px;
+        }
 
-          #workspaces button {
-            padding: 3px 6px;
-          }
-          #workspaces button.focused,
-          #workspaces button.active {
-            color: #78aeed;
-          }
+        #workspaces button {
+          padding: 3px 6px;
+        }
+        #workspaces button.focused,
+        #workspaces button.active {
+          color: #78aeed;
+        }
 
-          #battery.warning {
-            color: #f8e45c;
-          }
-          #battery.critical {
-            color: #ff7b63;
-          }
-          #battery.charging {
-            color: #8ff0a4;
-          }
-        '';
-      };
-    })
-    (lib.mkIf (cfg.enable && config.stylix.enable) {
-      stylix.targets.waybar.enable = false;
-    })
-  ];
+        #battery.warning {
+          color: #f8e45c;
+        }
+        #battery.critical {
+          color: #ff7b63;
+        }
+        #battery.charging {
+          color: #8ff0a4;
+        }
+      '';
+    };
+  };
 }

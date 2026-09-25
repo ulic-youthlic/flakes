@@ -60,21 +60,6 @@ in
         seahorse
       ];
       services.gnome-keyring.enable = true;
-      xdg.configFile =
-        let
-          qtctConf = ''
-            [Appearance]
-            standard_dialogs=xdgdesktopportal
-          '';
-        in
-        {
-          "qt5ct/qt5ct.conf" = {
-            text = qtctConf;
-          };
-          "qt6ct/qt6ct.conf" = {
-            text = qtctConf;
-          };
-        };
       david.programs = {
         kanshi.enable = true;
         noctalia.enable = true;

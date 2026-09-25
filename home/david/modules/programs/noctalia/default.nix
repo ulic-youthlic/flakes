@@ -86,7 +86,6 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    stylix.targets.noctalia.enable = false;
     programs.noctalia = {
       enable = true;
       systemd.enable = true;

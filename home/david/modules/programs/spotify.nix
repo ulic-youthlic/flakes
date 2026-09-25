@@ -16,7 +16,6 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    stylix.targets.spicetify.enable = false;
     programs.spicetify = {
       enable = true;
       wayland = true;

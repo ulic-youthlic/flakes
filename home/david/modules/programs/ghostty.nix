@@ -14,7 +14,6 @@
       cfg = config.david.programs.ghostty;
     in
     (lib.mkIf cfg.enable {
-      stylix.targets.ghostty.enable = false;
       programs.ghostty = lib.mkMerge [
         {
           enable = true;

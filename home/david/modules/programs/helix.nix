@@ -14,7 +14,6 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    stylix.targets.helix.enable = false;
     programs.helix.settings = {
       theme = "papercolor-light";
     };

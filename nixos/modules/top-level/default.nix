@@ -8,7 +8,6 @@
   imports = with inputs; [
     home-manager.nixosModules.home-manager
     sops-nix.nixosModules.sops
-    stylix.nixosModules.stylix
     disko.nixosModules.disko
 
     ./..
