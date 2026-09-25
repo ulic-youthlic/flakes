@@ -17,6 +17,7 @@ in
   };
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
+      catppuccin.yazi.flavor = "mocha";
       home.packages = with pkgs; [
         starship
       ];

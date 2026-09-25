@@ -17,6 +17,7 @@ in
   };
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
+      catppuccin.eza.flavor = "mocha";
       programs.eza = {
         enable = true;
         colors = "auto";

@@ -14,6 +14,7 @@
       cfg = config.david.programs.ghostty;
     in
     (lib.mkIf cfg.enable {
+      catppuccin.ghostty.enable = false;
       programs.ghostty = lib.mkMerge [
         {
           enable = true;

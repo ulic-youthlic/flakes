@@ -9,6 +9,7 @@
     home-manager.nixosModules.home-manager
     sops-nix.nixosModules.sops
     disko.nixosModules.disko
+    catppuccin.nixosModules.catppuccin
 
     ./..
   ];

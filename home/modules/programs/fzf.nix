@@ -16,6 +16,7 @@ in
   };
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
+      catppuccin.fzf.flavor = "mocha";
       programs.fzf = {
         enable = true;
       };

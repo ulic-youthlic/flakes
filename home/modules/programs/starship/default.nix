@@ -17,6 +17,7 @@ in
   };
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
+      catppuccin.starship.flavor = "mocha";
       programs.starship = {
         enable = true;
         enableTransience = true;

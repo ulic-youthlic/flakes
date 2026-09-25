@@ -107,14 +107,12 @@
     vim
     helix
 
-    vlc
     btop
     wechat
     nvtopPackages.full
     localsend
     jq
     onefetch
-    vesktop
     zulip
     aria2
     bitwarden-desktop

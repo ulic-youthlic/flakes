@@ -14,6 +14,7 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
+    catppuccin.helix.enable = false;
     programs.helix.settings = {
       theme = "papercolor-light";
     };

@@ -14,6 +14,7 @@ in
   };
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
+      catppuccin.atuin.flavor = "mocha";
       programs.atuin = {
         daemon = {
           enable = true;

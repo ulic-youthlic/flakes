@@ -14,6 +14,7 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
+    catppuccin.mpv.flavor = "mocha";
     programs.mpv = {
       enable = true;
       scripts = [

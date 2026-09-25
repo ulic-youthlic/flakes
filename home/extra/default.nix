@@ -5,7 +5,5 @@
 }:
 {
   imports =
-    (with inputs; [
-    ])
-    ++ (lib.youthlic.loadImports ./.);
+    (lib.singleton inputs.catppuccin.homeModules.catppuccin) ++ (lib.youthlic.loadImports ./.);
 }

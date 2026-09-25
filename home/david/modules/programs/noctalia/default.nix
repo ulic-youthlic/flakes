@@ -14,6 +14,7 @@ let
 in
 {
   options = {
+    catppuccin.noctalia.enable = false;
     david.programs.noctalia = {
       enable = lib.mkEnableOption "noctalia";
       niriExtraConfig = lib.mkOption {

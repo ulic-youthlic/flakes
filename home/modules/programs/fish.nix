@@ -14,6 +14,7 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
+    catppuccin.fish.flavor = "mocha";
     programs = {
       fish = {
         enable = true;

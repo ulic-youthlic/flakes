@@ -10,6 +10,7 @@
       noctalia.homeModules.default
       zen-browser.homeModules.twilight
       spicetify-nix.homeManagerModules.spicetify
+      catppuccin.homeModules.catppuccin
     ])
     ++ lib.youthlic.loadImports ./.;
 

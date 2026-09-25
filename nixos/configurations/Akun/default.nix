@@ -51,7 +51,6 @@
     vim
     helix
 
-    vlc
     btop
     localsend
     zulip

@@ -34,8 +34,9 @@ in
         fcitx5 = {
           addons = with pkgs; [
             libsForQt5.fcitx5-qt
+            qt6Packages.fcitx5-qt
+            kdePackages.fcitx5-qt
             fcitx5-gtk
-            fcitx5-fluent
             fcitx5-vinput
             (fcitx5-rime.override {
               rimeDataPkgs = [
@@ -49,7 +50,6 @@ in
           settings = {
             addons = {
               classicui.globalSection = {
-                Theme = "FluentDark-solid";
                 "Vertical Candidate List" = "True";
               };
               notifications.globalSection = {

@@ -14,6 +14,7 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
+    catppuccin.zed.enable = false;
     programs.zed-editor = {
       enable = true;
       extensions = [

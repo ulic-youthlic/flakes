@@ -197,5 +197,11 @@
       owner = "xifan2333";
       repo = "fcitx5-vinput";
     };
+
+    catppuccin = {
+      type = "github";
+      owner = "catppuccin";
+      repo = "nix";
+    };
   };
 }
