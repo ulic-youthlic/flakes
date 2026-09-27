@@ -109,15 +109,6 @@ in
               # dialer
               domain_resolver = "local";
             }
-            # {
-            #   type = "https";
-            #   tag = "google";
-            #   server = "dns.google";
-
-            #   # dialer
-            #   domain_resolver = "alidns";
-            #   detour = "proxy-out";
-            # }
             {
               type = "https";
               tag = "cloudflare";
@@ -220,12 +211,20 @@ in
               action = "sniff";
             }
             {
+              action = "resolve";
+            }
+            {
               protocol = "bittorrent";
               action = "bypass";
               outbound = "direct-out";
             }
             {
               rule_set = "geosite-geolocation-cn";
+              action = "route";
+              outbound = "direct-out";
+            }
+            {
+              rule_set = "geoip-cn";
               action = "route";
               outbound = "direct-out";
             }
@@ -258,9 +257,6 @@ in
               domain_keyword = "factorio";
               action = "route";
               outbound = "direct-out";
-            }
-            {
-              action = "resolve";
             }
           ];
           final = "proxy-out"; # tag of default outbound
