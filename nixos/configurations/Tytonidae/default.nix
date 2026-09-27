@@ -100,6 +100,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    comma
     radicle-desktop
     nix-output-monitor
     wget
