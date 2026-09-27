@@ -4,6 +4,7 @@
   pkgs,
   outputs,
   lib,
+  rootPath,
   ...
 }:
 {
@@ -67,17 +68,26 @@
         builders-use-substitutes = true;
       };
       registry =
-        with lib;
-        pipe inputs [
-          (filterAttrs (name: _value: name != "nixpkgs"))
-          (mapAttrs (
-            _name: value: {
-              flake = lib.mkForce {
-                outPath = value;
-              };
-            }
-          ))
-        ];
+        (
+          with lib;
+          pipe inputs [
+            (filterAttrs (name: _value: name != "nixpkgs"))
+            (mapAttrs (
+              _name: value: {
+                flake = lib.mkForce {
+                  outPath = value;
+                };
+              }
+            ))
+          ]
+        )
+        // {
+          p = {
+            flake = {
+              outPath = rootPath;
+            };
+          };
+        };
     };
   };
 }
