@@ -1,6 +1,7 @@
 {
   inputs,
   rootPath,
+  config,
   ...
 }:
 {
@@ -13,22 +14,40 @@
       system,
       lib,
       self',
-      inputs',
       ...
     }:
     let
       patchedNixpkgs = lib.nixpkgs-patcher.patchNixpkgs {
         inherit system inputs;
       };
-    in
-    {
-      _module.args.pkgs = import patchedNixpkgs {
-        localSystem = { inherit system; };
+      overlay = config.flake.overlays.default;
+      nixpkgsArgs = {
+        localSystem = {
+          inherit system;
+        };
         config = {
           allowUnfree = true;
         };
-        overlays = [ (_final: _prev: { inherit lib; }) ];
       };
+      original = import patchedNixpkgs nixpkgsArgs;
+      added =
+        let
+          result = overlay result original;
+        in
+        result;
+    in
+    {
+      _module.args.pkgs = import patchedNixpkgs (
+        nixpkgsArgs
+        // {
+          overlays = [
+            (_: _: { inherit lib; })
+            overlay
+          ];
+        }
+      );
+      packages = lib.filterAttrs (_: lib.isDerivation) (lib.intersectAttrs added pkgs);
+      legacyPackages = pkgs;
       devShells.default = pkgs.mkShell {
         name = "nixos-shell";
         packages = with pkgs; [
@@ -44,47 +63,6 @@
           lua-language-server
         ];
       };
-      legacyPackages =
-        let
-          inputsScope = lib.makeScope pkgs.newScope (self: {
-            inherit inputs rootPath;
-            srcs = self.callPackage (rootPath + "/_sources/generated.nix") { };
-          });
-        in
-        inputsScope.overrideScope (
-          final: _prev:
-          lib.packagesFromDirectoryRecursive {
-            inherit (final) callPackage;
-            directory = rootPath + "/pkgs";
-          }
-        );
-      packages =
-        let
-          flattenPkgs =
-            path: value:
-            if lib.isDerivation value then
-              {
-                ${lib.concatStringsSep ":" path} = value;
-              }
-            else if lib.isAttrs value then
-              lib.concatMapAttrs (name: flattenPkgs (path ++ [ name ])) value
-            else
-              { };
-        in
-        flattenPkgs [ ] (
-          lib.removeAttrs self'.legacyPackages [
-            "inputs"
-
-            "srcs"
-
-            "rootPath"
-
-            "newScope"
-            "overrideScope"
-            "packages"
-            "callPackage"
-          ]
-        );
       checks = lib.concatMapAttrs (name: value: {
         "package-${name}" = value;
       }) self'.packages;

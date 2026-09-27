@@ -104,7 +104,7 @@
     nix-output-monitor
     wget
     git
-    vim
+    vim-full
     helix
 
     btop

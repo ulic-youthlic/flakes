@@ -13,8 +13,7 @@
         allowUnfreePredicate = _: true;
       };
       overlays = [
-        outputs.overlays.modifications
-        outputs.overlays.additions
+        outputs.overlays.default
       ];
     };
     nix = {

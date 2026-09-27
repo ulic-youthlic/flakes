@@ -203,5 +203,15 @@
       owner = "catppuccin";
       repo = "nix";
     };
+
+    den-overlays = {
+      type = "github";
+      owner = "ulic-youthlic";
+      repo = "den-overlays";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
   };
 }

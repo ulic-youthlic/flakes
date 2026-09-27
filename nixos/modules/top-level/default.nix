@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   outputs,
+  lib,
   ...
 }:
 {
@@ -16,10 +17,7 @@
 
   config = {
     nixpkgs = {
-      overlays = with outputs.overlays; [
-        modifications
-        additions
-      ];
+      overlays = lib.singleton outputs.overlays.default;
     };
     environment.systemPackages = with pkgs; [
       deploy-rs

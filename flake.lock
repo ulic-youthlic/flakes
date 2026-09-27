@@ -33,6 +33,30 @@
         "type": "github"
       }
     },
+    "den-overlays": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nix-effects": "nix-effects",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787043570,
+        "narHash": "sha256-RfZeVTjewLAwVM1mnh1baZl89NzvxssMyUm5aPU/pLM=",
+        "owner": "ulic-youthlic",
+        "repo": "den-overlays",
+        "rev": "b044b9bb193182e5ffc053f97f2daca7b29e1b14",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ulic-youthlic",
+        "repo": "den-overlays",
+        "type": "github"
+      }
+    },
     "deploy-rs": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -145,6 +169,29 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
+          "den-overlays",
+          "nix-effects",
+          "nix-unit",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772408722,
+        "narHash": "sha256-rHuJtdcOjK7rAHpHphUb1iCvgkU3GpfvicLMwwnfMT0=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f20dc5d9b8027381c474144ecabc9034d6a839a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
+      "inputs": {
+        "nixpkgs-lib": [
           "nixpkgs"
         ]
       },
@@ -162,7 +209,7 @@
         "type": "github"
       }
     },
-    "flake-parts_2": {
+    "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": [
           "nur",
@@ -328,6 +375,28 @@
         "type": "github"
       }
     },
+    "nix-effects": {
+      "inputs": {
+        "nix-unit": "nix-unit",
+        "nixpkgs": [
+          "den-overlays",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778686186,
+        "narHash": "sha256-oxjrcHFSV2+Rxg4LE4Hupa5HjleTvU1Ir6jp5SburLE=",
+        "owner": "denful",
+        "repo": "nix-effects",
+        "rev": "c3c68a45deb892d028711eeff8b80937e30a90dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "denful",
+        "repo": "nix-effects",
+        "type": "github"
+      }
+    },
     "nix-kdl": {
       "locked": {
         "lastModified": 1788764683,
@@ -340,6 +409,37 @@
       "original": {
         "owner": "Lhcfl",
         "repo": "nix-kdl",
+        "type": "github"
+      }
+    },
+    "nix-unit": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nix-github-actions": [
+          "den-overlays",
+          "nix-effects"
+        ],
+        "nixpkgs": [
+          "den-overlays",
+          "nix-effects",
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "den-overlays",
+          "nix-effects"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762774186,
+        "narHash": "sha256-hRADkHjNt41+JUHw2EiSkMaL4owL83g5ZppjYUdF/Dc=",
+        "owner": "nix-community",
+        "repo": "nix-unit",
+        "rev": "1c9ab50554eed0b768f9e5b6f646d63c9673f0f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-unit",
         "type": "github"
       }
     },
@@ -578,7 +678,7 @@
     },
     "nur": {
       "inputs": {
-        "flake-parts": "flake-parts_2",
+        "flake-parts": "flake-parts_3",
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
@@ -621,10 +721,11 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "den-overlays": "den-overlays",
         "deploy-rs": "deploy-rs",
         "disko": "disko",
         "fcitx5-vinput": "fcitx5-vinput",
-        "flake-parts": "flake-parts",
+        "flake-parts": "flake-parts_2",
         "helium-nix": "helium-nix",
         "helix": "helix",
         "home-manager": "home-manager",
