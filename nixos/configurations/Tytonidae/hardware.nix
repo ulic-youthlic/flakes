@@ -30,6 +30,18 @@
   };
   nixpkgs.config.cudaSupport = true;
   services = {
+    tlp = {
+      pd.enable = true;
+      settings = {
+        TLP_AUTO_SWITCH = 2; # automatic AC/battery switch, but keep a profile you pick by hand
+        PLATFORM_PROFILE_ON_AC = "performance";
+        PLATFORM_PROFILE_ON_BAT = "balanced";
+        PLATFORM_PROFILE_ON_SAV = "quiet"; # your firmware calls power saving "quiet"
+        CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+        CPU_ENERGY_PERF_POLICY_ON_SAV = "power";
+      };
+    };
     hardware.bolt.enable = true;
     fstrim.enable = true;
     input-remapper = {
