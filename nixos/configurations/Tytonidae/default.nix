@@ -75,7 +75,6 @@
       obs.enable = true;
       garage.enable = true;
       # emacs.enable = true;
-      sunshine.enable = true;
       kdeconnect.enable = true;
       rqbit = {
         enable = true;
