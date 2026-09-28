@@ -123,29 +123,33 @@
                     "-d single"
                     "/dev/mapper/crypto1"
                   ];
-                  subvolumes = {
-                    "@root" = {
-                      mountpoint = "/";
+                  # Only @root and @home are snapshotted/backed up by btrbk (see ./filesystem.nix).
+                  # Everything else lives in its own subvolume so it is excluded from those snapshots.
+                  subvolumes =
+                    let
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
                       ];
+                      subvol = mountpoint: { inherit mountpoint mountOptions; };
+                    in
+                    {
+                      "@root" = subvol "/";
+                      "@home" = subvol "/home";
+                      "@nix" = subvol "/nix";
+                      "@gnu" = subvol "/gnu";
+                      "@log" = subvol "/var/log";
+                      "@tmp" = subvol "/tmp";
+                      # nodatacow is set with `chattr +C` on the subvolume root, not as a mount option
+                      "@torrents" = subvol "/var/lib/rqbit";
+                      "@cache" = subvol "/home/david/.cache";
+                      "@downloads" = subvol "/home/david/dls";
+                      "@steam" = subvol "/home/david/.local/share/Steam";
+                      "@prismlauncher" = subvol "/home/david/.local/share/PrismLauncher";
+                      "@bottles" = subvol "/home/david/.local/share/bottles";
+                      # btrbk snapshot_dir, reached through /mnt/btr_pool
+                      "@snapshots" = { };
                     };
-                    "@nix" = {
-                      mountpoint = "/nix";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
-                    };
-                    "@home" = {
-                      mountpoint = "/home";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
-                    };
-                  };
                 };
               };
             };
