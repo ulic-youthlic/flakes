@@ -40,6 +40,9 @@
         CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
         CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
         CPU_ENERGY_PERF_POLICY_ON_SAV = "power";
+        # soft-block wifi on boot; unblock manually with `rfkill unblock wifi`
+        DEVICES_TO_DISABLE_ON_STARTUP = "wifi";
+        RESTORE_DEVICE_STATE_ON_STARTUP = 0;
       };
     };
     hardware.bolt.enable = true;
