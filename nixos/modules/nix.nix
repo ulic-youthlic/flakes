@@ -28,6 +28,8 @@
             "electron"
 
             "immersive-translate"
+
+            "radicle-node"
           ];
         packageOverrides = p: {
           intel-vaapi-driver = p.intel-vaapi-driver.override { enableHybridCodec = true; };
