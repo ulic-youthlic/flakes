@@ -77,13 +77,6 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    helix = {
-      type = "github";
-      owner = "mattwparas";
-      repo = "helix";
-      ref = "steel-event-system";
-    };
-
     home-manager = {
       type = "github";
       owner = "nix-community";

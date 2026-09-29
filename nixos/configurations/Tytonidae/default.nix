@@ -105,7 +105,7 @@
     wget
     git
     vim-full
-    helix
+    steelix
 
     btop
     wechat

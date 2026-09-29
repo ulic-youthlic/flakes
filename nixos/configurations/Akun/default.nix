@@ -49,7 +49,7 @@
     wget
     git
     vim-full
-    helix
+    steelix
 
     btop
     localsend

@@ -54,6 +54,7 @@ in
       home.packages = lib.singleton pkgs.steel;
       programs.helix = {
         enable = true;
+        package = pkgs.steelix;
         defaultEditor = true;
         extraPackages = cfg.extraPackages;
         settings =
