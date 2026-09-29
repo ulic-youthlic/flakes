@@ -22,7 +22,6 @@ in
         extensions = {
           packages = with pkgs.nur.repos.rycee.firefox-addons; [
             immersive-translate
-            tridactyl
             redirector
           ];
         };
