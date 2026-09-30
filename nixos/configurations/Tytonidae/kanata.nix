@@ -7,6 +7,7 @@
     kanata.keyboards.default = {
       devices = [
         "/dev/input/by-id/usb-RDR_Crush_80-event-kbd"
+        "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
       ];
       extraDefCfg = ''
         linux-output-device-name "kanata-virtual-kbd"
