@@ -28,6 +28,20 @@ in
           force = true;
           default = "ddg";
           engines = {
+            "Hackage Packages" = {
+              urls = [
+                {
+                  template = "https://hackage-content.haskell.org/packages/search";
+                  params = [
+                    {
+                      name = "terms";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              definedAliases = [ "@hp" ];
+            };
             "Guix Packages" = {
               urls = [
                 {
