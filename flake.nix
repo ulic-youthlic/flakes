@@ -68,6 +68,10 @@
       owner = "fzakaria";
       repo = "nixpkgs-multiverse";
     };
+    nixpkgs-patch-cuda-fix = {
+      url = "https://github.com/Nixos/nixpkgs/pull/568318.patch";
+      flake = false;
+    };
 
     nix-cachyos-kernel = {
       type = "github";

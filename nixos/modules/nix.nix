@@ -27,8 +27,6 @@
           builtins.elem (lib.getName p) [
             "electron"
 
-            "immersive-translate"
-
             "radicle-node"
           ];
         packageOverrides = p: {
@@ -40,12 +38,12 @@
       mode = "0444";
     };
     nix = {
-      nixPath = [ "/etc/nix/inputs" ];
       package = pkgs.nixVersions.latest;
       extraOptions = ''
         !include ${config.sops.secrets."access-tokens".path}
       '';
       settings = {
+        nix-path = [ "/etc/nix/inputs" ];
         inherit (outputs.nix.settings) substituters;
         trusted-users = [
           "root"
