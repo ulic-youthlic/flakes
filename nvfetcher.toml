@@ -9,3 +9,8 @@ src.git = "https://github.com/DreamMaoMao/wshowkeys.git"
 [OuterWildsTextAdventure]
 fetch.github = "top-mind/OuterWildsTextAdventureWeb"
 src.git = "https://github.com/top-mind/OuterWildsTextAdventureWeb.git"
+
+[readest]
+fetch.github = "AndyScarlet233/readest"
+src.git = "https://github.com/AndyScarlet233/readest.git"
+git.fetchSubmodules = true

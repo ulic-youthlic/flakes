@@ -41,6 +41,27 @@
         },
         "version": "d11e2ca1f45618a9ac0756368255154b1e50f022"
     },
+    "readest": {
+        "cargoLock": null,
+        "date": "2026-09-24",
+        "extract": null,
+        "name": "readest",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": true,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "AndyScarlet233",
+            "repo": "readest",
+            "rev": "9e782d8a2168fcc18f228f132cf52863f372036e",
+            "sha256": "sha256-L6uI9tq52u/FmNxI3rmOjA1SgX4wkgNtMcxTYfwum+A=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "9e782d8a2168fcc18f228f132cf52863f372036e"
+    },
     "wshowkeys-mao": {
         "cargoLock": null,
         "date": "2026-07-28",

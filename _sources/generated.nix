@@ -30,6 +30,18 @@
     };
     date = "2026-07-30";
   };
+  readest = {
+    pname = "readest";
+    version = "9e782d8a2168fcc18f228f132cf52863f372036e";
+    src = fetchFromGitHub {
+      owner = "AndyScarlet233";
+      repo = "readest";
+      rev = "9e782d8a2168fcc18f228f132cf52863f372036e";
+      fetchSubmodules = true;
+      sha256 = "sha256-L6uI9tq52u/FmNxI3rmOjA1SgX4wkgNtMcxTYfwum+A=";
+    };
+    date = "2026-09-24";
+  };
   wshowkeys-mao = {
     pname = "wshowkeys-mao";
     version = "35d70762ab9af4ea301853e79b3b925d5fe9e920";
