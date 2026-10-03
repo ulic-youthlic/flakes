@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   den.aspects.david.zen-browser.homeManager =
     {
@@ -7,6 +8,13 @@
       ...
     }:
     {
+      # Keyed so a second import into the same home is deduplicated.
+      imports = [
+        {
+          key = "inputs:zen-browser/homeModules.twilight";
+          imports = [ inputs.zen-browser.homeModules.twilight ];
+        }
+      ];
       config = {
         programs.zen-browser = {
           enable = true;

@@ -2,7 +2,13 @@
 {
   den.aspects.base.catppuccin = {
     nixos = {
-      imports = [ inputs.catppuccin.nixosModules.catppuccin ];
+      # Keyed so a second import into the same system is deduplicated.
+      imports = [
+        {
+          key = "inputs:catppuccin/nixosModules.catppuccin";
+          imports = [ inputs.catppuccin.nixosModules.catppuccin ];
+        }
+      ];
       catppuccin = {
         enable = true;
         flavor = "latte";
@@ -11,7 +17,13 @@
       };
     };
     homeManager = {
-      imports = [ inputs.catppuccin.homeModules.catppuccin ];
+      # Keyed so a second import into the same home is deduplicated.
+      imports = [
+        {
+          key = "inputs:catppuccin/homeModules.catppuccin";
+          imports = [ inputs.catppuccin.homeModules.catppuccin ];
+        }
+      ];
       catppuccin = {
         enable = true;
         flavor = "latte";

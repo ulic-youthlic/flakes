@@ -26,6 +26,7 @@
       shell.starship
       shell.yazi
       shell.zoxide
+      tty.cli-tools
     ];
     nixos =
       { lib, pkgs, ... }:
@@ -45,9 +46,35 @@
         };
         programs.fish.enable = lib.mkDefault true;
       };
-    homeManager = {
-      imports = [ ../_legacy/home/david/modules ];
-      services.mpris-proxy.enable = true;
-    };
+    homeManager =
+      { config, pkgs, ... }:
+      {
+        imports = [ ../_legacy/home/david/modules ];
+        services.mpris-proxy.enable = true;
+        youthlic.programs =
+          let
+            email = config.accounts.email.accounts.ulic-youthlic;
+            inherit (email) name address;
+            signKey = email.gpg.key;
+          in
+          {
+            git = {
+              inherit name signKey;
+              email = address;
+              encrypt-credential = true;
+            };
+            jujutsu = {
+              inherit name signKey;
+              email = address;
+            };
+          };
+        home.packages = with pkgs; [
+          tealdeer
+          qq
+          scrcpy
+          gitoxide
+          helium
+        ];
+      };
   };
 }

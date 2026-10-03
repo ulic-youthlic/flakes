@@ -17,7 +17,6 @@
           users.alice.openssh.authorizedKeys.keyFiles = [ ./Cape/cape.pub ];
         };
       };
-      provides.alice.homeManager.imports = [ ../_legacy/home/alice/configurations/Cape ];
     };
   };
 }

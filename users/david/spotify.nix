@@ -11,6 +11,13 @@
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
     in
     {
+      # Keyed so a second import into the same home is deduplicated.
+      imports = [
+        {
+          key = "inputs:spicetify-nix/homeManagerModules.spicetify";
+          imports = [ inputs.spicetify-nix.homeManagerModules.spicetify ];
+        }
+      ];
       config = {
         programs.spicetify = {
           enable = true;

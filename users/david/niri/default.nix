@@ -4,6 +4,8 @@
     includes = with den.aspects; [
       david.kanshi
       david.noctalia
+      # _config.nix launches zen-browser as niri's default browser.
+      david.zen-browser
       desktop.niri
     ];
     homeManager =

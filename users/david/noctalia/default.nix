@@ -1,4 +1,4 @@
-{ den, ... }:
+{ den, inputs, ... }:
 {
   den.aspects.david.noctalia = {
     # The wallpaper directory noctalia shows comes from david.wallpaper.
@@ -18,6 +18,13 @@
         match = n "match";
       in
       {
+        # Keyed so a second import into the same home is deduplicated.
+        imports = [
+          {
+            key = "inputs:noctalia/homeModules.default";
+            imports = [ inputs.noctalia.homeModules.default ];
+          }
+        ];
         options = {
           catppuccin.noctalia.enable = false;
           david.programs.noctalia = {

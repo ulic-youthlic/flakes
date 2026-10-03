@@ -1,4 +1,7 @@
-{ den, ... }:
+{ den, inputs, ... }:
+let
+  inherit (inputs.nix-kdl.kdl.dsl) n;
+in
 {
   den = {
     hosts.x86_64-linux.Tytonidae.users.david = { };
@@ -34,7 +37,21 @@
           tty.rustypaste-cli
           virt.kvm
         ];
-        homeManager.imports = [ ../_legacy/home/david/configurations/Tytonidae ];
+        homeManager =
+          { pkgs, ... }:
+          {
+            youthlic.programs.awscli.url = "http://localhost:8491";
+            david.programs.niri.config = [
+              (n "debug" [
+                (n "render-drm-device" "/dev/dri/by-path/pci-0000:00:02.0-render") # Intel
+                (n "ignore-drm-device" "/dev/dri/by-path/pci-0000:01:00.0-render") # NVIDIA
+              ])
+            ];
+            home.packages = with pkgs; [
+              kdePackages.kdenlive
+              android-tools
+            ];
+          };
       };
     };
   };
