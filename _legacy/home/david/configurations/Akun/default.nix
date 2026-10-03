@@ -27,21 +27,6 @@
       };
   };
 
-  david = {
-    wallpaper.enable = true;
-    accounts.email.enable = true;
-    programs = {
-      thunderbird.enable = true;
-      mpv.enable = true;
-      ghostty.enable = true;
-      zed-editor.enable = true;
-      zen-browser.enable = true;
-      helix.enable = true;
-      openssh.enable = true;
-      alacritty.enable = true;
-    };
-  };
-
   home.username = "${unixName}";
   home.homeDirectory = "/home/${unixName}";
   home.stateVersion = "24.11";

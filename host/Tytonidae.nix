@@ -25,7 +25,8 @@
       };
       provides.david = {
         includes = with den.aspects; [
-          dev.radicle
+          david.radicle
+          david.spotify
           shell.ion
           tty.aria2
           tty.awscli

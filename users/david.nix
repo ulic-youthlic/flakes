@@ -2,9 +2,19 @@
 {
   den.aspects.david = {
     includes = with den.aspects; [
+      david.alacritty
+      david.cursor
+      david.email
+      david.ghostty
+      david.helix
+      david.mpv
+      david.openssh
+      david.thunderbird
+      david.wallpaper
+      david.zed
+      david.zen-browser
       dev.git
       dev.gpg
-      dev.helix
       dev.jujutsu
       home.xdg-dirs
       shell.atuin
@@ -35,6 +45,9 @@
         };
         programs.fish.enable = lib.mkDefault true;
       };
-    homeManager.imports = [ ../_legacy/home/david/modules ];
+    homeManager = {
+      imports = [ ../_legacy/home/david/modules ];
+      services.mpris-proxy.enable = true;
+    };
   };
 }

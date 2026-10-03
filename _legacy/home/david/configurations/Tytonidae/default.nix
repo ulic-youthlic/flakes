@@ -31,20 +31,8 @@
   };
 
   david = {
-    wallpaper.enable = true;
-    accounts.email.enable = true;
     programs = {
-      spotify.enable = true;
-      thunderbird.enable = true;
       foot.enable = false;
-      mpv.enable = true;
-      ghostty.enable = true;
-      alacritty.enable = true;
-      zed-editor.enable = true;
-      zen-browser.enable = true;
-      openssh.enable = true;
-      helix.enable = true;
-      radicle.enable = true;
     };
   };
 

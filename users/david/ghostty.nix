@@ -1,19 +1,7 @@
 {
-  config,
-  lib,
-  ...
-}:
-{
-  options = {
-    david.programs.ghostty = {
-      enable = lib.mkEnableOption "ghostty";
-    };
-  };
-  config =
-    let
-      cfg = config.david.programs.ghostty;
-    in
-    (lib.mkIf cfg.enable {
+  den.aspects.david.ghostty.homeManager =
+    { config, lib, ... }:
+    {
       catppuccin.ghostty.enable = false;
       programs.ghostty = lib.mkMerge [
         {
@@ -36,5 +24,5 @@
           enableBashIntegration = true;
         })
       ];
-    });
+    };
 }
