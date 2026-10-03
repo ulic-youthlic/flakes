@@ -28,11 +28,6 @@
       obs.enable = true;
     };
   };
-  programs.gnupg.agent = {
-    enable = true;
-  };
-
-  networking.hostName = "Akun";
 
   time.timeZone = "Asia/Shanghai";
 
@@ -52,8 +47,6 @@
     wechat
   ];
 
-  environment.variables.EDITOR = "hx";
-  services.dbus.implementation = "broker";
   services.scx = {
     enable = true;
     scheduler = "scx_lavd";
@@ -79,5 +72,4 @@
     };
   };
 
-  system.stateVersion = "24.11";
 }
