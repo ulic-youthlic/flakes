@@ -13,7 +13,7 @@ in
       enable = true;
       settings = {
         animation = "dur_file";
-        dur_file_path = toString ./blackhole-smooth-240x67.dur;
+        dur_file_path = "${./blackhole-smooth-240x67.dur}";
         full_color = true;
         animation_frame_delay = 5;
         animation_timeout_sec = 0;

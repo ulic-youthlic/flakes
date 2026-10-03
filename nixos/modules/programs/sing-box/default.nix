@@ -305,7 +305,7 @@ in
               type = "local";
               tag = "geosite-local-gemini";
               format = "source";
-              path = toString ./gemini.json;
+              path = "${./gemini.json}";
             }
           ];
         };
