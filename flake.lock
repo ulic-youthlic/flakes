@@ -482,6 +482,18 @@
         "url": "https://github.com/Nixos/nixpkgs/pull/568318.patch"
       }
     },
+    "nixpkgs-patch-helix-fix": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-bcMBXOQB6d2AVVOeTREPF2wzkzCcfn64YiVzXj/C6UA=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/569589.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/569589.patch"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1789143781,
@@ -712,6 +724,7 @@
         "nixpkgs": "nixpkgs_7",
         "nixpkgs-multiverse": "nixpkgs-multiverse",
         "nixpkgs-patch-cuda-fix": "nixpkgs-patch-cuda-fix",
+        "nixpkgs-patch-helix-fix": "nixpkgs-patch-helix-fix",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "noctalia": "noctalia",
         "nur": "nur",
