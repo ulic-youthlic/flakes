@@ -18,8 +18,6 @@
         enable = true;
         url = "https://paste.youthlic.social";
       };
-      openssh.enable = true;
-      tailscale.enable = true;
       caddy = {
         enable = true;
         baseDomain = "youthlic.social";

@@ -21,11 +21,6 @@
     users.deploy.enable = true;
     i18n.enable = true;
     programs = {
-      openssh.enable = true;
-      kanata.enable = true;
-      tailscale.enable = true;
-      wshowkeys.enable = true;
-      obs.enable = true;
     };
   };
 

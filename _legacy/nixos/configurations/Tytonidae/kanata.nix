@@ -1,5 +1,4 @@
 { lib, ... }: {
-  youthlic.programs.kanata.enable = true;
   services = {
     udev.extraRules = ''
       KERNEL=="event*", ATTRS{name}=="kanata-virtual-kbd", SYMLINK+="input/kanata-kbd"

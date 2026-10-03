@@ -36,7 +36,6 @@
       # };
     };
     programs = {
-      upower.enable = true;
       miniserve = {
         enable = true;
         apps =
@@ -69,18 +68,9 @@
         upstream = "https://toi.teracloud.jp";
         allowedOrigins = [ "http://127.0.0.1:9097" ];
       };
-      bash.enable = true;
-      guix.enable = true;
-      openssh.enable = true;
-      steam.enable = true;
-      tailscale.enable = true;
-      nix-ld.enable = true;
       juicity.client.enable = true;
-      wshowkeys.enable = true;
-      obs.enable = true;
       garage.enable = true;
       # emacs.enable = true;
-      kdeconnect.enable = true;
       rqbit = {
         enable = true;
         unixName = "david";
