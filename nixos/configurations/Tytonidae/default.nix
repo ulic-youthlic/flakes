@@ -64,6 +64,16 @@
             };
           };
       };
+      readest = {
+        enable = true;
+        port = 9097;
+        environment.SITE_URL = "http://127.0.0.1:9097";
+      };
+      webdav-proxy = {
+        enable = true;
+        upstream = "https://toi.teracloud.jp";
+        allowedOrigins = [ "http://127.0.0.1:9097" ];
+      };
       bash.enable = true;
       guix.enable = true;
       openssh.enable = true;
