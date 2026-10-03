@@ -11,8 +11,8 @@ in
 {
   flake = {
     nixosModules = {
-      default = import (rootPath + "/nixos/modules/top-level");
-      gui = import (rootPath + "/nixos/modules/top-level/gui.nix");
+      default = import (rootPath + "/_legacy/nixos/modules/top-level");
+      gui = import (rootPath + "/_legacy/nixos/modules/top-level/gui.nix");
     };
     nixosConfigurations =
       let
@@ -20,7 +20,7 @@ in
           hostName:
           lib.nixpkgs-patcher.nixosSystem {
             nixpkgsPatcher.inputs = inputs;
-            modules = [ (rootPath + "/nixos/configurations/${hostName}") ];
+            modules = [ (rootPath + "/_legacy/nixos/configurations/${hostName}") ];
             specialArgs = {
               inherit
                 inputs

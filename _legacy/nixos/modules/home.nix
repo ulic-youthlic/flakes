@@ -47,7 +47,7 @@
           { ... }: {
             imports = [
               outputs.homeModules."${unixName}"
-              (rootPath + "/home/${unixName}/configurations/${hostName}")
+              (rootPath + "/_legacy/home/${unixName}/configurations/${hostName}")
             ];
           }
         );

@@ -10,7 +10,7 @@ let
   homeModules =
     (
       with lib;
-      pipe (rootPath + "/home") [
+      pipe (rootPath + "/_legacy/home") [
         builtins.readDir
         (filterAttrs (_key: value: value == "directory"))
         (filterAttrs (
@@ -21,12 +21,12 @@ let
           ]
         ))
         builtins.attrNames
-        (flip genAttrs (name: import (rootPath + "/home/${name}/modules")))
+        (flip genAttrs (name: import (rootPath + "/_legacy/home/${name}/modules")))
       ]
     )
     // {
-      default = import "${toString rootPath}/home/modules";
-      extra = import "${toString rootPath}/home/extra";
+      default = import "${toString rootPath}/_legacy/home/modules";
+      extra = import "${toString rootPath}/_legacy/home/extra";
     };
   makeHomeConfiguration =
     {
@@ -42,7 +42,7 @@ let
           localSystem = { inherit system; };
         };
         modules = [
-          (rootPath + "/home/${unixName}/configurations/${hostName}")
+          (rootPath + "/_legacy/home/${unixName}/configurations/${hostName}")
         ]
         ++ (with homeModules; [
           default

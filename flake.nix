@@ -18,7 +18,7 @@
         nixpkgs-lib.recursiveUpdate {
           nixpkgs-patcher = nixpkgs-patcher.lib;
           nix-kdl = nix-kdl.kdl;
-        } (import ./lib final prev)
+        } (import ./_legacy/lib final prev)
       );
     in
     flake-parts.lib.mkFlake
