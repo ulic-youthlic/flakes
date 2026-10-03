@@ -1,0 +1,69 @@
+# Readest web app
+
+`pkgs.readest-web` builds the unmodified `AndyScarlet233/readest` fork using its
+`BUILD_STANDALONE=true` configuration. The package includes the Next.js server,
+traced dependencies, public assets, and static assets.
+
+```sh
+nix build .#readest-web
+```
+
+Enable the Deno service with the repo's NixOS module:
+
+```nix
+youthlic.programs.readest = {
+  enable = true;
+  port = 3000;
+  environment.SITE_URL = "https://readest.example.com";
+  environmentFile = "/run/secrets/readest-env";
+};
+```
+
+The service listens on localhost by default. When `youthlic.programs.caddy` is
+enabled, it also configures `readest.<baseDomain>` as a reverse proxy. Enable the
+module on whichever host should serve the app.
+
+Configure Supabase and object storage through the runtime environment or the
+environment file for authentication and cloud sync; this module runs the web app
+only. See the fork's `docker/.env.example` for the available settings. Keep secrets
+in the environment file, outside the Nix store.
+
+For local use on port 9097, set:
+
+```nix
+youthlic.programs.readest = {
+  enable = true;
+  port = 9097;
+  environment.SITE_URL = "http://127.0.0.1:9097";
+};
+```
+
+`SITE_URL` sets the production login callback to
+`http://127.0.0.1:9097/auth/callback` and routes client API requests to the local
+server. Without it, the app defaults to `https://web.readest.com`. Rebuild and
+switch the NixOS configuration, then reload the page to load the runtime setting.
+
+OAuth, confirmation emails, magic links, and password reset links also require
+the callback URL to be allowed by the Supabase auth backend. The app defaults to
+Readest's official Supabase backend, whose redirect allowlist is controlled by its
+operator. Existing-account email/password sign-in uses `signInWithPassword` and
+does not require a callback, so it can stay on the local app. For an independently
+configured backend, set `SUPABASE_PUBLIC_URL` and `SUPABASE_ANON_KEY`, then add the
+local callback in Supabase's Authentication URL Configuration (or
+`ADDITIONAL_REDIRECT_URLS` for the fork's Docker deployment). The local server's
+cloud APIs need the corresponding backend and storage settings as well.
+
+The web app connects to WebDAV directly from the browser; those requests do not
+pass through the Deno service or appear in its journal. The WebDAV endpoint must
+support CORS for the app's origin, including an unauthenticated `OPTIONS`
+preflight that allows `PROPFIND` and the `Authorization`, `Content-Type`, and
+`Depth` headers. File sync also needs the other WebDAV methods and headers used
+by the client. Running the app server with Deno does not remove this browser
+requirement. If the provider does not support CORS, use a local reverse proxy to
+the fixed WebDAV endpoint with suitable CORS headers, or serve that proxy under
+the same origin as Readest and enter its URL in the WebDAV form. The native app
+uses Tauri's HTTP client and can connect without browser CORS support.
+
+Source updates use `nvfetcher --filter '^readest$'`. When the lockfile changes,
+regenerate `pnpmDeps.hash` in `package.nix` by setting it to `lib.fakeHash`, building,
+and copying the reported hash.
