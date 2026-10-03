@@ -13,7 +13,6 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    youthlic.programs.radicle.enable = true;
     programs.radicle.uri = {
       rad.browser = {
         enable = true;

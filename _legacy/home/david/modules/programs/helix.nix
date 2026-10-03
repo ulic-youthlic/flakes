@@ -19,7 +19,6 @@ in
       theme = "papercolor-light";
     };
     youthlic.programs.helix = {
-      enable = true;
       extraPackages = with pkgs; [
         editor-runtime
       ];

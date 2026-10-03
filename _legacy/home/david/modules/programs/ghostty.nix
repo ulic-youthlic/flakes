@@ -29,10 +29,10 @@
             confirm-close-surface = "false";
           };
         }
-        (lib.mkIf config.youthlic.programs.fish.enable {
+        (lib.mkIf config.programs.fish.enable {
           enableFishIntegration = true;
         })
-        (lib.mkIf config.youthlic.programs.bash.enable {
+        (lib.mkIf config.programs.bash.enable {
           enableBashIntegration = true;
         })
       ];

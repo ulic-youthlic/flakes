@@ -5,14 +5,7 @@
 }:
 {
   youthlic = {
-    xdg-dirs.enable = true;
     programs = {
-      gpg.enable = true;
-      fish.enable = true;
-      bash.enable = true;
-      starship.enable = true;
-      sops.enable = true;
-      atuin.enable = true;
       git = {
         email = "ulic.youthlic@gmail.com";
         name = "ulic-youthlic";

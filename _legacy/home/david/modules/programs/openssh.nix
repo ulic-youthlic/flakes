@@ -34,7 +34,7 @@ in
         };
       };
     })
-    (lib.mkIf (cfg.enable && config.youthlic.programs.sops.enable) {
+    (lib.mkIf cfg.enable {
       programs.ssh.includes = [ config.sops.secrets.ssh-config.path ];
       sops.secrets = {
         "ssh-private-key/tytonidae" = {

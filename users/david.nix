@@ -1,5 +1,22 @@
+{ den, ... }:
 {
   den.aspects.david = {
+    includes = with den.aspects; [
+      dev.git
+      dev.gpg
+      dev.helix
+      dev.jujutsu
+      home.xdg-dirs
+      shell.atuin
+      shell.bash
+      shell.direnv
+      shell.eza
+      shell.fish
+      shell.fzf
+      shell.starship
+      shell.yazi
+      shell.zoxide
+    ];
     nixos =
       { lib, pkgs, ... }:
       {

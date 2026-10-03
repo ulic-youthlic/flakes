@@ -23,7 +23,17 @@
           openssh.authorizedKeys.keyFiles = [ ./Tytonidae/tytonidae.pub ];
         };
       };
-      provides.david.homeManager.imports = [ ../_legacy/home/david/configurations/Tytonidae ];
+      provides.david = {
+        includes = with den.aspects; [
+          dev.radicle
+          shell.ion
+          tty.aria2
+          tty.awscli
+          tty.rustypaste-cli
+          virt.kvm
+        ];
+        homeManager.imports = [ ../_legacy/home/david/configurations/Tytonidae ];
+      };
     };
   };
 }
