@@ -130,6 +130,15 @@ export function createHandler(
       target.pathname = url.pathname;
       target.search = url.search;
       const headers = new Headers(request.headers);
+      // Deno.serve exposes an empty stream for bodyless MKCOL/DELETE
+      // requests. Forwarding it would add chunked encoding, which Apache
+      // mod_dav treats as an unsupported MKCOL body (HTTP 415).
+      const hasFramedBody = Number(headers.get("content-length") ?? 0) > 0 ||
+        headers.has("transfer-encoding");
+      const body = ["GET", "HEAD"].includes(request.method) ||
+          (["MKCOL", "DELETE"].includes(request.method) && !hasFramedBody)
+        ? null
+        : request.body;
       stripHopHeaders(headers);
       for (
         const name of [
@@ -137,12 +146,14 @@ export function createHandler(
           "origin",
           "referer",
           "cookie",
-          "content-length",
           "accept-encoding",
         ]
       ) {
         headers.delete(name);
       }
+      // Preserve a known upload size when streaming PUT bodies. WebDAV
+      // servers may reject chunked uploads without Content-Length.
+      if (body === null) headers.delete("content-length");
       // Let Deno negotiate compression so fetch decodes the upstream body.
       const deadline = AbortSignal.timeout(300_000);
       const signal = AbortSignal.any([request.signal, deadline]);
@@ -151,7 +162,7 @@ export function createHandler(
         response = await fetch(target, {
           method: request.method,
           headers,
-          body: ["GET", "HEAD"].includes(request.method) ? null : request.body,
+          body,
           redirect: "manual",
           signal,
         });

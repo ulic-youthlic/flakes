@@ -23,6 +23,7 @@ writeShellApplication {
 
     exec ${lib.getExe deno} run \
       --no-config --no-lock --cached-only --no-remote --no-prompt \
+      --unstable-no-legacy-abort \
       --allow-net="$proxy_network" \
       ${../../scripts/ts/webdav-proxy/proxy.ts} "$1"
   '';

@@ -9,6 +9,7 @@ configuration belongs in `nixos/modules/`.
 
 ```sh
 nix build .#webdav-proxy
-nix shell nixpkgs#deno -c deno test --no-config --no-lock --cached-only \
+nix shell nixpkgs#deno -c deno test --unstable-no-legacy-abort \
+  --no-config --no-lock --cached-only \
   --allow-net=127.0.0.1 scripts/ts/webdav-proxy/proxy_test.ts
 ```

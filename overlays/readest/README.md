@@ -97,10 +97,35 @@ Use the same `127.0.0.1` address when opening Readest; `localhost` is a differen
 browser origin unless explicitly added to `allowedOrigins`. Changing the proxy
 URL fixes CORS; it does not validate the account's credentials.
 
+When using the original Teracloud URL on Android and the proxy URL in the web
+app, disable settings sync on the web instance before restoring either URL:
+
+1. Open **User → Manage Sync** in the web app.
+2. Turn off **Dictionaries**, then **App settings**. Dictionaries must be off
+   before the App settings toggle can be changed.
+3. Reload the web app, then set its WebDAV Server URL to
+   `http://127.0.0.1:9098/dav/` and reconnect.
+4. Restore `https://toi.teracloud.jp/dav/` on Android if it was overwritten.
+
+The fork includes `webdav.serverUrl` in app-settings sync, so disabling
+**Credentials** alone does not prevent URL conflicts. These category toggles
+are local in the pinned fork. Keep App settings and Dictionaries sync off on
+the web instance while it uses a different URL. This also stops other app
+settings and imported dictionaries from syncing to or from that instance;
+WebDAV books, reading progress, and annotations can remain enabled. The Readest
+source remains unmodified.
+
 ```sh
 systemctl status webdav-proxy.service
 journalctl -u webdav-proxy.service -f
 ```
+
+If the journal shows `MKCOL` returning `415` and no subsequent `PUT`, update
+the proxy and run `just switch`. The proxy keeps empty directory-creation
+requests bodyless to avoid Apache WebDAV's rejection of chunked empty bodies.
+It preserves known upload lengths when streaming book files. Its Deno launcher
+also disables legacy request-signal abort behavior so successful requests do
+not abort streamed responses.
 
 The proxy source and tests live in `scripts/ts/webdav-proxy/`. Its overlay in
 `overlays/webdav-proxy/` provides `pkgs.webdav-proxy`; the NixOS module launches
@@ -111,7 +136,8 @@ against a temporary local mock server:
 
 ```sh
 nix build .#webdav-proxy
-nix shell nixpkgs#deno -c deno test --no-config --no-lock --cached-only \
+nix shell nixpkgs#deno -c deno test --unstable-no-legacy-abort \
+  --no-config --no-lock --cached-only \
   --allow-net=127.0.0.1 scripts/ts/webdav-proxy/proxy_test.ts
 ```
 

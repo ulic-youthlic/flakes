@@ -268,3 +268,70 @@ Deno.test("decoded upstream content has no stale compression headers", async () 
     assert(await response.text() === content);
   });
 });
+
+Deno.test("HTTP MKCOL stays bodyless through directory redirects before a book upload", async () => {
+  let sawChunkedMkcol = false;
+  let uploaded: ArrayBuffer | undefined;
+  await withUpstream(async (incoming) => {
+    const url = new URL(incoming.url);
+    if (incoming.method === "MKCOL") {
+      if (!url.pathname.endsWith("/")) {
+        return new Response(null, {
+          status: 301,
+          headers: { Location: `${url.pathname}/` },
+        });
+      }
+      // Apache mod_dav rejects an unsupported MKCOL request body, even
+      // when a chunked transfer contains zero bytes.
+      sawChunkedMkcol = incoming.headers.get("transfer-encoding") === "chunked";
+      await incoming.body?.cancel();
+      return new Response(null, { status: sawChunkedMkcol ? 415 : 201 });
+    }
+    assert(
+      incoming.headers.get("content-length") === "262144",
+      "Upload size was lost",
+    );
+    uploaded = await incoming.arrayBuffer();
+    return new Response(null, { status: 201 });
+  }, async (_handler, upstream) => {
+    const proxy = Deno.serve({
+      hostname: "127.0.0.1",
+      port: 0,
+      onListen: () => {},
+    }, (incoming) => handler(incoming));
+    const base = `http://127.0.0.1:${proxy.addr.port}`;
+    const handler = createHandler({
+      port: proxy.addr.port,
+      upstream,
+      pathPrefix: "/dav",
+      allowedOrigins: [ORIGIN],
+    });
+    try {
+      const created = await fetch(`${base}/dav/books`, {
+        method: "MKCOL",
+        headers: { Origin: ORIGIN, Authorization: AUTH },
+      });
+      await created.body?.cancel();
+      assert(created.status === 201, `MKCOL returned ${created.status}`);
+      assert(!sawChunkedMkcol, "A bodyless MKCOL acquired chunked encoding");
+      const bytes = new Uint8Array(262_144).map((_, index) => index % 251);
+      const put = await fetch(`${base}/dav/books/book.epub`, {
+        method: "PUT",
+        headers: {
+          Origin: ORIGIN,
+          Authorization: AUTH,
+          "Content-Type": "application/octet-stream",
+        },
+        body: bytes,
+      });
+      await put.body?.cancel();
+      assert(put.status === 201);
+      assert(uploaded?.byteLength === bytes.byteLength);
+      assert(
+        new Uint8Array(uploaded).every((byte, index) => byte === bytes[index]),
+      );
+    } finally {
+      await proxy.shutdown();
+    }
+  });
+});
