@@ -2,6 +2,7 @@
   lib,
   inputs,
   config,
+  den,
   flake-parts-lib,
   ...
 }:
@@ -11,7 +12,9 @@ let
   hosts = lib.concatMap lib.attrValues (lib.attrValues config.den.hosts);
   mkDeployNode = host: {
     "${host.name}" = {
-      inherit (host.deploy) hostname sshUser;
+      inherit (host.deploy) hostname;
+      # Account defined by den.aspects.admin.deploy.
+      sshUser = "deploy";
       interactiveSudo = true;
       profiles = {
         system = {
@@ -23,6 +26,19 @@ let
   };
 in
 {
+  imports = [
+    {
+      # Hosts deployed with deploy-rs get the account it logs in as.
+      den.schema.host.includes = [
+        (
+          { host, ... }:
+          lib.optionalAttrs host.deploy.enable {
+            includes = [ den.aspects.admin.deploy ];
+          }
+        )
+      ];
+    }
+  ];
   options = {
     flake = flake-parts-lib.mkSubmoduleOptions {
       deploy = lib.mkOption {
@@ -40,11 +56,6 @@ in
             type = lib.types.str;
             default = config.hostName;
             description = "Address deploy-rs connects to over SSH.";
-          };
-          sshUser = lib.mkOption {
-            type = lib.types.str;
-            default = "deploy";
-            description = "User deploy-rs logs in as before escalating to root.";
           };
         };
       };

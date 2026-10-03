@@ -11,7 +11,6 @@
   ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {
-    users.deploy.enable = true;
     containers.interface = "ens3";
     programs = {
       rustypaste = {

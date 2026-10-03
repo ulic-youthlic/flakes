@@ -18,7 +18,6 @@
     ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {
-    users.deploy.enable = true;
     i18n.enable = true;
     programs = {
     };

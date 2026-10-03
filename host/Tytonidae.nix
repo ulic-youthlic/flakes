@@ -4,6 +4,7 @@
     hosts.x86_64-linux.Tytonidae.users.david = { };
     aspects.Tytonidae = {
       includes = with den.aspects; [
+        desktop.backlight
         desktop.kanata
         desktop.kdeconnect
         desktop.obs
@@ -15,7 +16,13 @@
         tty.guix
         tty.nix-ld
       ];
-      nixos.imports = [ ../_legacy/nixos/configurations/Tytonidae ];
+      nixos = {
+        imports = [ ../_legacy/nixos/configurations/Tytonidae ];
+        users.users.david = {
+          extraGroups = [ "audio" ];
+          openssh.authorizedKeys.keyFiles = [ ./Tytonidae/tytonidae.pub ];
+        };
+      };
       provides.david.homeManager.imports = [ ../_legacy/home/david/configurations/Tytonidae ];
     };
   };

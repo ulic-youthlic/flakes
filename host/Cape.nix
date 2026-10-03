@@ -10,7 +10,13 @@
         net.openssh
         net.tailscale
       ];
-      nixos.imports = [ ../_legacy/nixos/configurations/Cape ];
+      nixos = {
+        imports = [ ../_legacy/nixos/configurations/Cape ];
+        users = {
+          mutableUsers = false;
+          users.alice.openssh.authorizedKeys.keyFiles = [ ./Cape/cape.pub ];
+        };
+      };
       provides.alice.homeManager.imports = [ ../_legacy/home/alice/configurations/Cape ];
     };
   };
