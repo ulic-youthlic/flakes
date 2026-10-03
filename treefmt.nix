@@ -41,7 +41,7 @@
           enable = true;
           includes = [ "*" ];
           excludes = [ "assets/*" ] ++ config.files.extend-exclude;
-          configFile = toString ./.typos.toml;
+          configFile = "${./.typos.toml}";
           # Disable all extra option in treefmt module.
           # Use config file.
           sort = false;
