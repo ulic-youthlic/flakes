@@ -64,6 +64,57 @@ the fixed WebDAV endpoint with suitable CORS headers, or serve that proxy under
 the same origin as Readest and enter its URL in the WebDAV form. The native app
 uses Tauri's HTTP client and can connect without browser CORS support.
 
+For Teracloud, enable the separate Deno proxy:
+
+```nix
+youthlic.programs.webdav-proxy = {
+  enable = true;
+  port = 9098;
+  upstream = "https://toi.teracloud.jp";
+  pathPrefix = "/dav";
+  allowedOrigins = [ "http://127.0.0.1:9097" ];
+};
+```
+
+This starts `webdav-proxy.service`, listening only on `127.0.0.1:9098`. It allows
+browser requests from the configured origin, handles preflight locally, and
+forwards WebDAV requests and credentials to the fixed HTTPS upstream. It
+preserves `/dav/` paths and streams file transfers. The proxy does not store
+passwords, enable Caddy, or open firewall ports. Request logs contain methods,
+statuses, and timing, without headers, query parameters, or bodies.
+
+Apply the configuration with `just switch`, then enter these Readest WebDAV
+settings:
+
+| Field          | Value                          |
+| -------------- | ------------------------------ |
+| Server URL     | `http://127.0.0.1:9098/dav/`   |
+| Root directory | `/`                            |
+| Username       | Your Teracloud WebDAV username |
+| Password       | Your Teracloud WebDAV password |
+
+Use the same `127.0.0.1` address when opening Readest; `localhost` is a different
+browser origin unless explicitly added to `allowedOrigins`. Changing the proxy
+URL fixes CORS; it does not validate the account's credentials.
+
+```sh
+systemctl status webdav-proxy.service
+journalctl -u webdav-proxy.service -f
+```
+
+The proxy source and tests live in `scripts/ts/webdav-proxy/`. Its overlay in
+`overlays/webdav-proxy/` provides `pkgs.webdav-proxy`; the NixOS module launches
+that package. The package handles Deno startup and restricts network permissions
+to the configured localhost port and upstream. It has no external JavaScript
+dependencies. Build it independently or run its forwarding and CORS checks
+against a temporary local mock server:
+
+```sh
+nix build .#webdav-proxy
+nix shell nixpkgs#deno -c deno test --no-config --no-lock --cached-only \
+  --allow-net=127.0.0.1 scripts/ts/webdav-proxy/proxy_test.ts
+```
+
 Source updates use `nvfetcher --filter '^readest$'`. When the lockfile changes,
 regenerate `pnpmDeps.hash` in `package.nix` by setting it to `lib.fakeHash`, building,
 and copying the reported hash.

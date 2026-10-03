@@ -25,6 +25,7 @@ extend-ignore-identifiers-re = [
   "lazer",
   "substituters",
   "SAV",
+  "toi",
 ]
 
 [default.extend-identifiers]
