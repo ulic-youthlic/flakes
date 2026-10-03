@@ -19,11 +19,6 @@
 
   youthlic = {
     users.deploy.enable = true;
-    home-manager = {
-      enable = true;
-      unixName = "david";
-      hostName = "Akun";
-    };
     i18n.enable = true;
     programs = {
       openssh.enable = true;

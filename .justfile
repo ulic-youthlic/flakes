@@ -3,8 +3,6 @@
 FLAKE_HOME := justfile_directory()
 DEFAULT_SPECIALISATION := "default"
 DEFAULT_KEEP_SINCE := "1w"
-DEFAULT_USER := env('USER')
-DEFAULT_HOST := shell('hostname')
 
 default:
     @just --list
@@ -27,16 +25,6 @@ deploy host:
 clean keepSince=DEFAULT_KEEP_SINCE:
     nh clean all --verbose -K {{ keepSince }} -k 5
 
-switchHome host=DEFAULT_HOST $USER=DEFAULT_USER:
-    @echo USER: $USER
-    @echo HOST: {{ host }}
-    nh home switch -b backup {{ if host != DEFAULT_HOST { "-c \"" + USER + "@" + host + "\"" } else { "" } }} {{ FLAKE_HOME }}
-
-buildHome host=DEFAULT_HOST $USER=DEFAULT_USER:
-    @echo USER: $USER
-    @echo HOST: {{ host }}
-    nh home build -b backup {{ if host != DEFAULT_HOST { "-c \"" + USER + "@" + host + "\"" } else { "" } }} {{ FLAKE_HOME }}
-
 deadNix:
     nix run github:astro/deadnix -- . --exclude ./_sources/generated.nix ./_legacy/nixos/configurations/{Akun,Tytonidae,Cape}/hardware-configuration.nix
 
@@ -58,6 +46,4 @@ alias u := update
 alias d := deploy
 alias c := clean
 alias b := build
-alias H := switchHome
-alias B := buildHome
 alias U := updatePkgs

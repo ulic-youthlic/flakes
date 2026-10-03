@@ -11,11 +11,6 @@
   ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {
-    home-manager = {
-      enable = true;
-      unixName = "alice";
-      hostName = "Cape";
-    };
     users.deploy.enable = true;
     containers.interface = "ens3";
     programs = {

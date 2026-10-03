@@ -16,9 +16,9 @@ in
   };
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
-      users.groups."${config.services.transmission.group}".members = [
-        config.youthlic.home-manager.unixName
-      ];
+      users.groups."${config.services.transmission.group}".members = lib.attrNames (
+        config.home-manager.users or { }
+      );
       sops.secrets."transmission-config" = {
         sopsFile = rootPath + "/secrets/transmission.yaml";
       };

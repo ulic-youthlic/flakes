@@ -4,6 +4,9 @@
       users.david = { };
       deploy.enable = true;
     };
-    aspects.Akun.nixos.imports = [ ../_legacy/nixos/configurations/Akun ];
+    aspects.Akun = {
+      nixos.imports = [ ../_legacy/nixos/configurations/Akun ];
+      provides.david.homeManager.imports = [ ../_legacy/home/david/configurations/Akun ];
+    };
   };
 }

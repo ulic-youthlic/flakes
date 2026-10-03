@@ -23,11 +23,6 @@
     ++ (lib.youthlic.loadImports ./.);
 
   youthlic = {
-    home-manager = {
-      enable = true;
-      unixName = "david";
-      hostName = "Tytonidae";
-    };
     hardware.asus.enable = true;
     i18n.enable = true;
     virtualisation = {

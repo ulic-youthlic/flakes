@@ -4,6 +4,9 @@
       users.alice = { };
       deploy.enable = true;
     };
-    aspects.Cape.nixos.imports = [ ../_legacy/nixos/configurations/Cape ];
+    aspects.Cape = {
+      nixos.imports = [ ../_legacy/nixos/configurations/Cape ];
+      provides.alice.homeManager.imports = [ ../_legacy/home/alice/configurations/Cape ];
+    };
   };
 }
