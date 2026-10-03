@@ -33,6 +33,21 @@
         "type": "github"
       }
     },
+    "den": {
+      "locked": {
+        "lastModified": 1786475005,
+        "narHash": "sha256-gp7Q7rMEjsqAyW4Uwz+sms8j+XegD5P/lzRCuMW2fNI=",
+        "owner": "denful",
+        "repo": "den",
+        "rev": "e8e8de1e32646456cfc613f152175a7a548508ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "denful",
+        "repo": "den",
+        "type": "github"
+      }
+    },
     "den-overlays": {
       "inputs": {
         "flake-parts": [
@@ -712,6 +727,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "den": "den",
         "den-overlays": "den-overlays",
         "deploy-rs": "deploy-rs",
         "disko": "disko",

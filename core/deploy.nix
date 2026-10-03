@@ -1,33 +1,26 @@
 {
   lib,
   inputs,
+  config,
   flake-parts-lib,
-  self,
   ...
 }:
 let
-  inherit (self) outputs;
   inherit (inputs) deploy-rs;
-  mkDeployNode =
-    {
-      hostName,
-      unixName ? "deploy",
-      system ? "x86_64-linux",
-      sshName ? hostName,
-    }:
-    {
-      "${hostName}" = {
-        hostname = "${sshName}";
-        sshUser = "${unixName}";
-        interactiveSudo = true;
-        profiles = {
-          system = {
-            user = "root";
-            path = deploy-rs.lib."${system}".activate.nixos outputs.nixosConfigurations."${hostName}";
-          };
+  inherit (config.flake) nixosConfigurations;
+  hosts = lib.concatMap lib.attrValues (lib.attrValues config.den.hosts);
+  mkDeployNode = host: {
+    "${host.name}" = {
+      inherit (host.deploy) hostname sshUser;
+      interactiveSudo = true;
+      profiles = {
+        system = {
+          user = "root";
+          path = deploy-rs.lib."${host.system}".activate.nixos nixosConfigurations."${host.name}";
         };
       };
     };
+  };
 in
 {
   options = {
@@ -38,21 +31,27 @@ in
     };
   };
   config = {
-    flake.deploy.nodes =
-      with lib;
-      pipe
-        [
-          "Cape"
-          "Akun"
-        ]
-        [
-          (map (
-            hostName:
-            mkDeployNode {
-              inherit hostName;
-            }
-          ))
-          (foldr (a: b: a // b) { })
-        ];
+    den.schema.host =
+      { config, lib, ... }:
+      {
+        options.deploy = {
+          enable = lib.mkEnableOption "deploying this host with deploy-rs";
+          hostname = lib.mkOption {
+            type = lib.types.str;
+            default = config.hostName;
+            description = "Address deploy-rs connects to over SSH.";
+          };
+          sshUser = lib.mkOption {
+            type = lib.types.str;
+            default = "deploy";
+            description = "User deploy-rs logs in as before escalating to root.";
+          };
+        };
+      };
+    flake.deploy.nodes = lib.pipe hosts [
+      (lib.filter (host: host.deploy.enable))
+      (map mkDeployNode)
+      lib.mergeAttrsList
+    ];
   };
 }

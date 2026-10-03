@@ -156,6 +156,12 @@
       repo = "import-tree";
     };
 
+    den = {
+      type = "github";
+      owner = "denful";
+      repo = "den";
+    };
+
     den-overlays = {
       type = "github";
       owner = "ulic-youthlic";
