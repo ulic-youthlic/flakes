@@ -25,6 +25,7 @@
       };
       provides.david = {
         includes = with den.aspects; [
+          david.niri
           david.radicle
           david.spotify
           shell.ion

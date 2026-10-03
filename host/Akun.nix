@@ -21,7 +21,12 @@
           users.david.openssh.authorizedKeys.keyFiles = [ ./Akun/akun.pub ];
         };
       };
-      provides.david.homeManager.imports = [ ../_legacy/home/david/configurations/Akun ];
+      provides.david = {
+        includes = with den.aspects; [
+          david.niri
+        ];
+        homeManager.imports = [ ../_legacy/home/david/configurations/Akun ];
+      };
     };
   };
 }
