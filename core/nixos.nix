@@ -1,12 +1,13 @@
 {
   inputs,
   lib,
+  config,
   self,
-  rootPath,
   ...
 }:
 let
   inherit (self) outputs;
+  rootPath = ../.;
 in
 {
   flake = {
@@ -18,7 +19,7 @@ in
       let
         makeNixosConfiguration =
           hostName:
-          lib.nixpkgs-patcher.nixosSystem {
+          inputs.nixpkgs-patcher.lib.nixosSystem {
             nixpkgsPatcher.inputs = inputs;
             modules = [ (rootPath + "/_legacy/nixos/configurations/${hostName}") ];
             specialArgs = {
@@ -26,8 +27,8 @@ in
                 inputs
                 outputs
                 rootPath
-                lib
                 ;
+              inherit (config.flake) lib;
             };
           };
       in

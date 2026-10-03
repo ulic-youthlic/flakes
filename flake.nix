@@ -2,59 +2,8 @@
   description = "A simple NixOS flakes";
 
   outputs =
-    {
-      flake-parts,
-      home-manager,
-      treefmt-nix,
-      nixpkgs,
-      nixpkgs-patcher,
-      nix-kdl,
-      ...
-    }@inputs:
-    let
-      nixpkgs-lib = nixpkgs.lib;
-      lib = nixpkgs-lib.extend (
-        final: prev:
-        nixpkgs-lib.recursiveUpdate {
-          nixpkgs-patcher = nixpkgs-patcher.lib;
-          nix-kdl = nix-kdl.kdl;
-        } (import ./_legacy/lib final prev)
-      );
-    in
-    flake-parts.lib.mkFlake
-      {
-        inherit inputs;
-        specialArgs = {
-          inherit lib;
-          rootPath = ./.;
-        };
-      }
-      (
-        { lib, ... }: {
-          systems = [ "x86_64-linux" ];
-          imports = [
-            home-manager.flakeModules.home-manager
-            treefmt-nix.flakeModule
-          ]
-          ++ lib.youthlic.loadImports ./flake;
-          flake = {
-            inherit lib;
-            nix.settings = {
-              # substituters shared in home-manager and nixos configuration
-              substituters =
-                let
-                  cachix = x: "https://${x}.cachix.org";
-                in
-                lib.flatten [
-                  (cachix "nix-community")
-                  "https://cache.nixos.org"
-                  "https://cache.nixos-cuda.org"
-                  "https://attic.xuyh0120.win/lantian"
-                ];
-            };
-          };
-        }
-      );
+    { flake-parts, import-tree, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } (import-tree.matchNot ".*/flake\\.nix" ./.);
 
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
@@ -199,6 +148,12 @@
       type = "github";
       owner = "catppuccin";
       repo = "nix";
+    };
+
+    import-tree = {
+      type = "github";
+      owner = "denful";
+      repo = "import-tree";
     };
 
     den-overlays = {

@@ -1,4 +1,6 @@
+{ inputs, ... }:
 {
+  imports = [ inputs.treefmt-nix.flakeModule ];
   perSystem = { lib, ... }: {
     treefmt.programs = {
       nixfmt = {
@@ -9,7 +11,7 @@
         let
           oxfmtConfig =
             with lib;
-            pipe ./.oxfmtrc.json [
+            pipe ../.oxfmtrc.json [
               builtins.readFile
               builtins.fromJSON
             ];
@@ -32,7 +34,7 @@
         let
           config =
             with lib;
-            pipe ./.typos.toml [
+            pipe ../.typos.toml [
               builtins.readFile
               fromTOML
             ];
@@ -41,7 +43,7 @@
           enable = true;
           includes = [ "*" ];
           excludes = [ "assets/*" ] ++ config.files.extend-exclude;
-          configFile = "${./.typos.toml}";
+          configFile = "${../.typos.toml}";
           # Disable all extra option in treefmt module.
           # Use config file.
           sort = false;

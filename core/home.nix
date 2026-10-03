@@ -1,12 +1,13 @@
 {
   lib,
+  config,
   inputs,
   self,
-  rootPath,
   ...
 }:
 let
   inherit (self) outputs;
+  rootPath = ../.;
   homeModules =
     (
       with lib;
@@ -53,7 +54,7 @@ let
         ]
         ++ [
           {
-            lib = { inherit (lib) youthlic; };
+            lib = { inherit (config.flake.lib) youthlic; };
           }
         ];
         extraSpecialArgs = {
@@ -70,6 +71,7 @@ let
     };
 in
 {
+  imports = [ inputs.home-manager.flakeModules.home-manager ];
   flake = {
     homeConfigurations =
       with lib;

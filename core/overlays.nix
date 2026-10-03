@@ -1,14 +1,11 @@
 {
   inputs,
-  rootPath,
   lib,
   config,
   ...
 }:
 {
-  imports =
-    (lib.singleton inputs.den-overlays.flakeModules.default)
-    ++ lib.youthlic.loadImports (rootPath + "/overlays");
+  imports = [ inputs.den-overlays.flakeModules.default ];
   flake.overlays.default =
     let
       others = removeAttrs config.flake.overlays [ "default" ];

@@ -142,5 +142,5 @@ nix shell nixpkgs#deno -c deno test --unstable-no-legacy-abort \
 ```
 
 Source updates use `nvfetcher --filter '^readest$'`. When the lockfile changes,
-regenerate `pnpmDeps.hash` in `package.nix` by setting it to `lib.fakeHash`, building,
+regenerate `pnpmDeps.hash` in `_package.nix` by setting it to `lib.fakeHash`, building,
 and copying the reported hash.
