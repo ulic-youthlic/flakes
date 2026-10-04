@@ -7,9 +7,6 @@
       pkgs,
       ...
     }:
-    let
-      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-    in
     {
       # Keyed so a second import into the same home is deduplicated.
       imports = [
@@ -23,7 +20,7 @@
           enable = true;
           wayland = true;
           windowManagerPatch = true;
-          enabledExtensions = with spicePkgs.extensions; [
+          enabledExtensions = with pkgs.spicePkgs.extensions; [
             sort-play
             allOfArtist
             sleepTimer
@@ -37,7 +34,7 @@
             songStats
             playNext
           ];
-          theme = spicePkgs.themes.catppuccin;
+          theme = pkgs.spicePkgs.themes.catppuccin;
           colorScheme = "mocha";
         };
       };
