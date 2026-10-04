@@ -14,7 +14,7 @@
               with lib;
               pipe ./alacritty.toml [
                 builtins.readFile
-                builtins.fromTOML
+                fromTOML
               ]
             )
             // {
