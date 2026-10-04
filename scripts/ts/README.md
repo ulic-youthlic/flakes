@@ -2,10 +2,10 @@
 
 Keep TypeScript program sources and their tests here, with a separate directory
 for each program. Nix packaging belongs in `overlays/`, and NixOS service
-configuration belongs in `nixos/modules/`.
+configuration in an aspect under `aspects/server/`.
 
 `webdav-proxy/` contains the local WebDAV CORS proxy. Its overlay provides
-`pkgs.webdav-proxy`, used by the NixOS module of the same name.
+`pkgs.webdav-proxy`, used by the `server.webdav-proxy` aspect.
 
 ```sh
 nix build .#webdav-proxy

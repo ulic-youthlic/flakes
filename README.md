@@ -33,14 +33,27 @@ Hey, you. This is my nixos configurations.
 
 ## FlakE OutputS and StructurE
 
-| `outputs` field                           | description                                                                 | source                                   |
-| :---------------------------------------- | :-------------------------------------------------------------------------- | :--------------------------------------- |
-| `packages`                                | packages imported or wrapped from elsewhere                                 | ./pkgs                                   |
-| `lib`                                     | patched nixpkgs.lib to include self-defined helper function                 | ./lib                                    |
-| `nixosModules.default`                    | nixos modules shared on different nixos machines                            | ./nixos/modules                          |
-| `nixosConfigurations.${machine}`          | machine-local nixos config                                                  | ./nixos/configurations/${machine}        |
-| `homeModules.default`                     | home-manager modules shared between different user and machine combinations | ./home/modules                           |
-| `homeModules.extra`                       | home-manager modules only for non-nixos                                     | ./home/extra                             |
-| `homeModules.${user}`                     | home-manager modules shared between different users                         | ./home/${user}/modules                   |
-| `homeConfigurations."${user}@${machine}"` | home-manager config for different user and machine combinations             | ./home/${user}/configurations/${machine} |
-| `deploy.nodes.${machine}.system`          | deploy-rs profile for deploying `nixosConfiguration.${machine}` remotely    | -                                        |
+The flake is built with [den](https://github.com/denful/den) on flake-parts.
+`flake.nix` loads every `.nix` file in the repository with import-tree, except
+paths containing `/_`, which hold plain NixOS or home-manager modules.
+
+| path                       | contents                                                                                    |
+| :------------------------- | :------------------------------------------------------------------------------------------ |
+| `./core`                   | flake-level wiring: den, `den.default`, deploy-rs nodes, packages, overlays, formatter      |
+| `./host/${machine}.nix`    | the machine in `den.hosts`, the aspects it includes and its settings                        |
+| `./host/${machine}/_*.nix` | machine-local NixOS modules: hardware, disks, boot, networking                              |
+| `./users/${user}.nix`      | the user account and the aspects the user includes on every machine                         |
+| `./users/${user}/*.nix`    | the user's own aspects, `den.aspects.${user}.<name>`                                        |
+| `./aspects/${group}/`      | shared aspects, `den.aspects.${group}.<name>`, each with `nixos` and/or `homeManager` parts |
+| `./overlays`               | overlays, defined with den-overlays and composed into `overlays.default`                    |
+
+A machine-specific setting for a user goes in the machine's
+`den.aspects.${machine}.provides.${user}`.
+
+| `outputs` field                           | description                                                            | source                |
+| :---------------------------------------- | :--------------------------------------------------------------------- | :-------------------- |
+| `nixosConfigurations.${machine}`          | machine NixOS configuration, home-manager included                     | `./host/${machine}*`  |
+| `deploy.nodes.${machine}.profiles.system` | deploy-rs profile for machines with `deploy.enable`                    | `./core/deploy.nix`   |
+| `overlays`                                | each overlay, plus `default` composing all of them                     | `./overlays`          |
+| `packages`, `legacyPackages`              | packages the overlays add or change, and the patched, overlaid nixpkgs | `./core/packages.nix` |
+| `checks`, `formatter`, `devShells`        | package builds and treefmt; the development shell                      | `./core`              |
