@@ -3,12 +3,8 @@
     nixos =
       {
         lib,
-        config,
         ...
       }:
-      let
-        cfg = config.youthlic.programs.caddy;
-      in
       {
         options = {
           youthlic.programs.caddy = {

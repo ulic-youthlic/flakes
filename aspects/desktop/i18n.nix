@@ -2,8 +2,6 @@
   den.aspects.desktop.i18n.nixos =
     {
       pkgs,
-      lib,
-      config,
       ...
     }:
     {

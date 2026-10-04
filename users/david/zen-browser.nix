@@ -2,8 +2,6 @@
 {
   den.aspects.david.zen-browser.homeManager =
     {
-      lib,
-      config,
       pkgs,
       ...
     }:

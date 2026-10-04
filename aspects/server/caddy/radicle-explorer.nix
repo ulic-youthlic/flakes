@@ -5,7 +5,6 @@
     nixos =
       {
         config,
-        lib,
         pkgs,
         ...
       }:

@@ -1,7 +1,6 @@
 {
   den.aspects.dev.radicle.homeManager =
     {
-      lib,
       config,
       ...
     }:

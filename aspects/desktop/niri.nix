@@ -7,8 +7,6 @@
     ];
     nixos =
       {
-        config,
-        lib,
         pkgs,
         ...
       }:

@@ -1,8 +1,6 @@
 {
   den.aspects.david.mpv.homeManager =
     {
-      lib,
-      config,
       pkgs,
       ...
     }:

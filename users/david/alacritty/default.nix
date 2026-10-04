@@ -2,7 +2,6 @@
   den.aspects.david.alacritty.homeManager =
     {
       lib,
-      config,
       pkgs,
       ...
     }:

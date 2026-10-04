@@ -1,4 +1,3 @@
-{ self, ... }:
 {
   den.aspects.dev.gpg.homeManager =
     {

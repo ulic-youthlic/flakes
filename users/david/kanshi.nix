@@ -2,8 +2,6 @@
   den.aspects.david.kanshi = {
     homeManager =
       {
-        lib,
-        config,
         ...
       }:
       {

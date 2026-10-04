@@ -2,7 +2,6 @@
   den.aspects.server.garage.nixos =
     {
       pkgs,
-      lib,
       config,
       ...
     }:

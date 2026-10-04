@@ -1,8 +1,6 @@
 {
   den.aspects.david.email.homeManager =
     {
-      config,
-      lib,
       ...
     }:
     {

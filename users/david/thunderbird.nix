@@ -1,8 +1,6 @@
 {
   den.aspects.david.thunderbird.homeManager =
     {
-      config,
-      lib,
       pkgs,
       ...
     }:

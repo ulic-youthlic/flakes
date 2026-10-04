@@ -2,7 +2,6 @@
   den.aspects.david.zed.homeManager =
     {
       pkgs,
-      config,
       lib,
       ...
     }:

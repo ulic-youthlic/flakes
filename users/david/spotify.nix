@@ -2,8 +2,6 @@
 {
   den.aspects.david.spotify.homeManager =
     {
-      config,
-      lib,
       pkgs,
       ...
     }:
