@@ -1,7 +1,7 @@
+{ kdl }:
 {
   config,
   lib,
-  kdl,
   ...
 }:
 {

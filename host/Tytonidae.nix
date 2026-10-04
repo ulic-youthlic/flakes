@@ -1,4 +1,9 @@
-{ den, inputs, ... }:
+{
+  den,
+  inputs,
+  kdl,
+  ...
+}:
 {
   den = {
     hosts.x86_64-linux.Tytonidae.users.david = { };
@@ -86,7 +91,7 @@
           virt.kvm
         ];
         homeManager =
-          { pkgs, kdl, ... }:
+          { pkgs, ... }:
           let
             inherit (kdl.dsl) n;
           in

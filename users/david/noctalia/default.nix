@@ -1,4 +1,9 @@
-{ den, inputs, ... }:
+{
+  den,
+  inputs,
+  kdl,
+  ...
+}:
 {
   den.aspects.david.noctalia = {
     # The wallpaper directory noctalia shows comes from david.wallpaper.
@@ -7,7 +12,6 @@
       {
         config,
         lib,
-        kdl,
         ...
       }:
       let

@@ -3,7 +3,6 @@
   # Included by every host and user.
   den.default.includes = [
     den.batteries.hostname
-    den.aspects.base.args
     den.aspects.base.catppuccin
     den.aspects.base.disko
     den.aspects.base.documentation

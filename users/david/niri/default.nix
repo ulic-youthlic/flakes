@@ -1,4 +1,4 @@
-{ den, ... }:
+{ den, kdl, ... }:
 {
   den.aspects.david.niri = {
     includes = with den.aspects; [
@@ -13,7 +13,6 @@
         config,
         lib,
         pkgs,
-        kdl,
         osConfig ? (
           throw "Trying to access osConfig, the home-manager module is not being used in the nixos module"
         ),
@@ -24,7 +23,7 @@
       in
       {
         imports = [
-          ./_config.nix
+          (lib.modules.importApply ./_config.nix { inherit kdl; })
         ];
         options = {
           david.programs.niri = {
