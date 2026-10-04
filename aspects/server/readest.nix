@@ -79,7 +79,7 @@
             };
           };
         })
-        (lib.mkIf caddy-cfg.enable {
+        (lib.mkIf config.services.caddy.enable {
           services.caddy.virtualHosts."readest.${caddy-cfg.baseDomain}".extraConfig = ''
             reverse_proxy ${cfg.listen}:${toString cfg.port}
           '';

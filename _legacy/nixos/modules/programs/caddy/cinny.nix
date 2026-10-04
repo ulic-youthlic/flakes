@@ -14,7 +14,7 @@ in
       enable = lib.mkEnableOption "caddy.cinny";
     };
   };
-  config = lib.mkIf (cfg.enable && caddy-cfg.enable) {
+  config = lib.mkIf (cfg.enable && config.services.caddy.enable) {
     services.caddy.virtualHosts = {
       "cinny.${caddy-cfg.baseDomain}" = {
         extraConfig = ''

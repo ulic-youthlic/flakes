@@ -15,7 +15,7 @@ in
   config = lib.mkIf cfg.enable {
     assertions = [
       {
-        assertion = config.youthlic.programs.matrix-tuwunel.enable;
+        assertion = config.services.matrix-tuwunel.enable;
         message = ''
           The bridge bot needs to be registered as appservice for home server. So need enable tuwunel.
         '';

@@ -93,7 +93,7 @@ in
       let
         caddy-cfg = config.youthlic.programs.caddy;
       in
-      lib.mkIf (cfg.enable && caddy-cfg.enable) {
+      lib.mkIf (cfg.enable && config.services.caddy.enable) {
         services.caddy.virtualHosts = {
           "forgejo.${caddy-cfg.baseDomain}" = {
             extraConfig = ''

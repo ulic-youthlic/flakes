@@ -2,7 +2,6 @@
   sops.secrets."miniflux" = {
   };
   youthlic.containers.miniflux = {
-    enable = true;
     adminCredentialsFile = config.sops.secrets."miniflux".path;
   };
   services.caddy.virtualHosts = {

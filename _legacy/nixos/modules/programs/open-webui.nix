@@ -27,7 +27,7 @@ in
       let
         caddy-cfg = config.youthlic.programs.caddy;
       in
-      lib.mkIf (cfg.enable && caddy-cfg.enable) {
+      lib.mkIf (cfg.enable && config.services.caddy.enable) {
         services.caddy.virtualHosts = {
           "open-webui.${caddy-cfg.baseDomain}" = {
             extraConfig = ''

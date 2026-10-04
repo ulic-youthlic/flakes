@@ -24,7 +24,7 @@ in
         };
       };
     })
-    (lib.mkIf (cfg.enable && config.youthlic.programs.caddy.enable) {
+    (lib.mkIf (cfg.enable && config.services.caddy.enable) {
       services.caddy.virtualHosts = {
         "transfer.${config.youthlic.programs.caddy.baseDomain}" = {
           extraConfig = ''
