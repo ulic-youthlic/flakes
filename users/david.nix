@@ -49,7 +49,6 @@
     homeManager =
       { config, pkgs, ... }:
       {
-        imports = [ ../_legacy/home/david/modules ];
         services.mpris-proxy.enable = true;
         youthlic.programs =
           let

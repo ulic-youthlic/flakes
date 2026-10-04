@@ -32,7 +32,6 @@ in
             useUserPackages = true;
             backupFileExtension = "backup";
             overwriteBackup = true;
-            sharedModules = [ ../_legacy/home/modules ];
           };
         }
       ];
