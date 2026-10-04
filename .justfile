@@ -26,7 +26,7 @@ clean keepSince=DEFAULT_KEEP_SINCE:
     nh clean all --verbose -K {{ keepSince }} -k 5
 
 deadNix:
-    nix run github:astro/deadnix -- . --exclude ./_sources/generated.nix ./_legacy/nixos/configurations/{Akun,Tytonidae,Cape}/hardware-configuration.nix
+    nix run github:astro/deadnix -- . --exclude ./_sources/generated.nix ./host/{Akun,Tytonidae,Cape}/_hardware-configuration.nix
 
 sign:
     jj sign --revisions '::@ & ~root() & ~signed() & ~@' --ignore-immutable

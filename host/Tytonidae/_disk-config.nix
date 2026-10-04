@@ -123,7 +123,7 @@
                     "-d single"
                     "/dev/mapper/crypto1"
                   ];
-                  # Only @root and @home are snapshotted/backed up by btrbk (see ./filesystem.nix).
+                  # Only @root and @home are snapshotted/backed up by btrbk (see ./_filesystem.nix).
                   # Everything else lives in its own subvolume so it is excluded from those snapshots.
                   subvolumes =
                     let

@@ -31,7 +31,26 @@ in
       nixos =
         { config, ... }:
         {
-          imports = [ ../_legacy/nixos/configurations/Tytonidae ];
+          imports = [
+            ./Tytonidae/_configuration.nix
+          ]
+          ++ (with inputs.nixos-hardware.nixosModules; [
+            common-hidpi
+            common-cpu-intel
+            common-gpu-nvidia
+            common-pc-laptop
+            common-pc-laptop-ssd
+            asus-battery
+          ])
+          ++ [
+            inputs.lanzaboote.nixosModules.lanzaboote
+            ./Tytonidae/_disk-config.nix
+            ./Tytonidae/_filesystem.nix
+            ./Tytonidae/_hardware-configuration.nix
+            ./Tytonidae/_hardware.nix
+            ./Tytonidae/_kanata.nix
+            ./Tytonidae/_networking.nix
+          ];
           users.users.david = {
             extraGroups = [ "audio" ];
             openssh.authorizedKeys.keyFiles = [ ./Tytonidae/tytonidae.pub ];

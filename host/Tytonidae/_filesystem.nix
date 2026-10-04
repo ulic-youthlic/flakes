@@ -21,7 +21,7 @@ in
     ];
   };
 
-  # /tmp is the @tmp subvolume (see ./disk-config.nix): big nix builds don't eat RAM,
+  # /tmp is the @tmp subvolume (see ./_disk-config.nix): big nix builds don't eat RAM,
   # and it is emptied on every boot like a tmpfs would be.
   boot.tmp.cleanOnBoot = true;
 

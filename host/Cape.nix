@@ -22,7 +22,15 @@
         server.rustypaste
       ];
       nixos = {
-        imports = [ ../_legacy/nixos/configurations/Cape ];
+        imports = [
+          ./Cape/_configuration.nix
+          ./Cape/_disko-config.nix
+          ./Cape/_forgejo.nix
+          ./Cape/_hardware-configuration.nix
+          ./Cape/_miniflux.nix
+          ./Cape/_networking.nix
+          ./Cape/_radicle.nix
+        ];
         users = {
           mutableUsers = false;
           users.alice.openssh.authorizedKeys.keyFiles = [ ./Cape/cape.pub ];

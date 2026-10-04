@@ -1,14 +1,9 @@
 {
   pkgs,
   lib,
-  outputs,
   ...
 }:
 {
-  imports = [
-    outputs.nixosModules.default
-  ]
-  ++ (lib.youthlic.loadImports ./.);
 
   time.timeZone = "America/New_York";
 

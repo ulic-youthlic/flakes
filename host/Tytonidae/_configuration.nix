@@ -1,26 +1,10 @@
 {
   pkgs,
   lib,
-  inputs,
-  outputs,
   config,
   ...
 }:
 {
-  imports =
-    (with inputs.nixos-hardware.nixosModules; [
-      common-hidpi
-      common-cpu-intel
-      common-gpu-nvidia
-      common-pc-laptop
-      common-pc-laptop-ssd
-      asus-battery
-    ])
-    ++ (with outputs; [
-      nixosModules.gui
-    ])
-    ++ [ inputs.lanzaboote.nixosModules.lanzaboote ]
-    ++ (lib.youthlic.loadImports ./.);
 
   time.timeZone = "Asia/Shanghai";
 

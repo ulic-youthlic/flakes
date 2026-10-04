@@ -1,21 +1,9 @@
 {
-  inputs,
   pkgs,
   lib,
-  outputs,
   ...
 }:
 {
-  imports =
-    (with inputs.nixos-hardware.nixosModules; [
-      common-cpu-intel
-      common-pc-laptop
-      common-pc-laptop-ssd
-    ])
-    ++ [
-      outputs.nixosModules.gui
-    ]
-    ++ (lib.youthlic.loadImports ./.);
 
   time.timeZone = "Asia/Shanghai";
 
