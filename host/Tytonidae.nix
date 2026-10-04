@@ -8,24 +8,56 @@ in
     aspects.Tytonidae = {
       includes = with den.aspects; [
         desktop.backlight
+        desktop.i18n
         desktop.kanata
         desktop.kdeconnect
         desktop.obs
         desktop.steam
         desktop.upower
         desktop.wshowkeys
+        hardware.asus
+        net.juicity.client
         net.openssh
+        net.sing-box
         net.tailscale
+        server.garage
+        server.miniserve
+        server.readest
+        server.rqbit
+        server.webdav-proxy
         tty.guix
         tty.nix-ld
       ];
-      nixos = {
-        imports = [ ../_legacy/nixos/configurations/Tytonidae ];
-        users.users.david = {
-          extraGroups = [ "audio" ];
-          openssh.authorizedKeys.keyFiles = [ ./Tytonidae/tytonidae.pub ];
+      nixos =
+        { config, ... }:
+        {
+          imports = [ ../_legacy/nixos/configurations/Tytonidae ];
+          users.users.david = {
+            extraGroups = [ "audio" ];
+            openssh.authorizedKeys.keyFiles = [ ./Tytonidae/tytonidae.pub ];
+          };
+          youthlic.programs = {
+            miniserve.apps =
+              let
+                inherit (config.youthlic.programs.miniserve.templates) cinny ariang;
+              in
+              {
+                cinny-1 = cinny { port = 9093; };
+                cinny-2 = cinny { port = 9094; };
+                cinny-3 = cinny { port = 9095; };
+                ariang = ariang { port = 9096; };
+              };
+            readest = {
+              port = 9097;
+              environment.SITE_URL = "http://127.0.0.1:9097";
+            };
+            webdav-proxy = {
+              upstream = "https://toi.teracloud.jp";
+              allowedOrigins = [ "http://127.0.0.1:9097" ];
+            };
+            rqbit.ratelimitUpload = 10;
+          };
         };
-      };
       provides.david = {
         includes = with den.aspects; [
           david.niri

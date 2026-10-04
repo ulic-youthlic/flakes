@@ -1,19 +1,8 @@
 {
-  config,
-  lib,
-  ...
-}:
-let
-  cfg = config.youthlic.programs.asusd;
-in
-{
-  options = {
-    youthlic.programs.asusd = {
-      enable = lib.mkEnableOption "asusd";
-    };
-  };
-  config = lib.mkIf cfg.enable {
-    services.asusd = {
+  # ASUS laptop daemons: asusd for platform profiles, supergfxd for the
+  # hybrid GPU.
+  den.aspects.hardware.asus.nixos.services = {
+    asusd = {
       enable = true;
       asusdConfig.text =
         # ron
@@ -36,6 +25,9 @@ in
                   armoury_settings: { PanelOverdrive: 1 },
               )
         '';
+    };
+    supergfxd = {
+      enable = true;
     };
   };
 }

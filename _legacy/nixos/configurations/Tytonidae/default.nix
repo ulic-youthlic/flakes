@@ -22,64 +22,6 @@
     ++ [ inputs.lanzaboote.nixosModules.lanzaboote ]
     ++ (lib.youthlic.loadImports ./.);
 
-  youthlic = {
-    hardware.asus.enable = true;
-    i18n.enable = true;
-    virtualisation = {
-      kvm = {
-        enable = true;
-        unixName = "david";
-      };
-      # virtualbox = {
-      #   enable = true;
-      #   unixName = "david";
-      # };
-    };
-    programs = {
-      miniserve = {
-        enable = true;
-        apps =
-          let
-            cinny-template = config.youthlic.programs.miniserve.templates.cinny;
-            ariang-template = config.youthlic.programs.miniserve.templates.ariang;
-          in
-          {
-            cinny-1 = cinny-template {
-              port = 9093;
-            };
-            cinny-2 = cinny-template {
-              port = 9094;
-            };
-            cinny-3 = cinny-template {
-              port = 9095;
-            };
-            ariang = ariang-template {
-              port = 9096;
-            };
-          };
-      };
-      readest = {
-        enable = true;
-        port = 9097;
-        environment.SITE_URL = "http://127.0.0.1:9097";
-      };
-      webdav-proxy = {
-        enable = true;
-        upstream = "https://toi.teracloud.jp";
-        allowedOrigins = [ "http://127.0.0.1:9097" ];
-      };
-      juicity.client.enable = true;
-      garage.enable = true;
-      # emacs.enable = true;
-      rqbit = {
-        enable = true;
-        unixName = "david";
-        ratelimitUpload = 10;
-      };
-      sing-box.enable = true;
-    };
-  };
-
   time.timeZone = "Asia/Shanghai";
 
   services.printing = {

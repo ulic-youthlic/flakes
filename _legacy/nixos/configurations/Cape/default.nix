@@ -27,16 +27,9 @@
           target = "100.73.250.25";
         };
       };
-      juicity.server.enable = true;
       matrix-tuwunel = {
         enable = true;
         serverName = "im.youthlic.social";
-      };
-      rqbit = {
-        enable = true;
-        unixName = "alice";
-        ratelimitUpload = 0;
-        httpHost = "0.0.0.0";
       };
     };
   };

@@ -8,6 +8,7 @@
     aspects.Akun = {
       includes = with den.aspects; [
         desktop.backlight
+        desktop.i18n
         desktop.kanata
         desktop.obs
         desktop.wshowkeys

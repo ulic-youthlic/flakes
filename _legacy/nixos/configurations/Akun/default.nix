@@ -17,12 +17,6 @@
     ]
     ++ (lib.youthlic.loadImports ./.);
 
-  youthlic = {
-    i18n.enable = true;
-    programs = {
-    };
-  };
-
   time.timeZone = "Asia/Shanghai";
 
   services.printing.enable = true;
