@@ -36,10 +36,7 @@
       _module.args.pkgs = import patchedNixpkgs (
         nixpkgsArgs
         // {
-          overlays = [
-            (_: _: { inherit (config.flake) lib; })
-            overlay
-          ];
+          overlays = [ overlay ];
         }
       );
       packages = lib.filterAttrs (_: lib.isDerivation) (lib.intersectAttrs added pkgs);

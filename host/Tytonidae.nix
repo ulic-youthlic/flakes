@@ -1,7 +1,4 @@
 { den, inputs, ... }:
-let
-  inherit (inputs.nix-kdl.kdl.dsl) n;
-in
 {
   den = {
     hosts.x86_64-linux.Tytonidae.users.david = { };
@@ -89,7 +86,10 @@ in
           virt.kvm
         ];
         homeManager =
-          { pkgs, ... }:
+          { pkgs, kdl, ... }:
+          let
+            inherit (kdl.dsl) n;
+          in
           {
             youthlic.programs.awscli.url = "http://localhost:8491";
             david.programs.niri.config = [

@@ -13,6 +13,7 @@
         config,
         lib,
         pkgs,
+        kdl,
         osConfig ? (
           throw "Trying to access osConfig, the home-manager module is not being used in the nixos module"
         ),
@@ -29,7 +30,7 @@
           david.programs.niri = {
             config = lib.mkOption {
               type = lib.types.listOf lib.types.anything;
-              apply = lib.nix-kdl.formats.v1;
+              apply = kdl.formats.v1;
             };
             configHelper = lib.mkOption {
               type = lib.types.anything;
@@ -60,7 +61,7 @@
               }
             ];
             david.programs.niri.config = lib.mkAfter [
-              (lib.nix-kdl.dsl.n "include" (toString config.david.programs.noctalia.niriExtraConfig))
+              (kdl.dsl.n "include" (toString config.david.programs.noctalia.niriExtraConfig))
             ];
             home.packages = with pkgs; [
               wl-clipboard

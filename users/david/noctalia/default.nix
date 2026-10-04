@@ -7,10 +7,11 @@
       {
         config,
         lib,
+        kdl,
         ...
       }:
       let
-        inherit (lib.nix-kdl.dsl) n;
+        inherit (kdl.dsl) n;
         spawn = n "spawn";
         noctalia = spawn "noctalia" "msg";
 
@@ -91,7 +92,7 @@
                 ])
               ];
               apply = lib.flip lib.pipe [
-                lib.nix-kdl.formats.v1
+                kdl.formats.v1
                 config.david.programs.niri.configHelper.validated-config-for
               ];
             };

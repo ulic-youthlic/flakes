@@ -1,13 +1,14 @@
 {
   config,
   lib,
+  kdl,
   ...
 }:
 {
   config.david.programs.niri.config =
     let
       inherit (lib) getExe getExe';
-      inherit (lib.nix-kdl.dsl) n;
+      inherit (kdl.dsl) n;
 
       default-terminal = getExe config.programs.ghostty.package;
       default-browser = getExe' config.programs.zen-browser.package "zen-twilight";
