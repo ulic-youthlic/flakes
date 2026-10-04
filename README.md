@@ -14,16 +14,15 @@ Hey, you. This is my nixos configurations.
 
 - david@Tytonidae
 
-| Specialisation | DE / WM |    Shell    |   Editor    |      Terminal       |     Launcher      |   Browser   |  DM  |
-| :------------: | :-----: | :---------: | :---------: | :-----------------: | :---------------: | :---------: | :--: |
-|    default     |  niri   | fish + bash | helix + zed | ghostty + alacritty | noctalia launcher | zen-browser |  ly  |
-|      kde       |   kde   | fish + bash | helix + zed |       ghostty       |      kde run      | zen-browser | sddm |
+| Specialisation | DE / WM |       Shell       |   Editor    |      Terminal       |     Launcher      |   Browser   | DM  |
+| :------------: | :-----: | :---------------: | :---------: | :-----------------: | :---------------: | :---------: | :-: |
+|    default     |  niri   | fish + bash + ion | helix + zed | ghostty + alacritty | noctalia launcher | zen-browser | ly  |
 
 - david@Akun
 
-| Specialisation | DE / WM |    Shell    |   Editor    | Terminal | Launcher | Browser |        DM        |
-| :------------: | :-----: | :---------: | :---------: | :------: | :------: | :-----: | :--------------: |
-|    default     |  niri   | fish + bash | helix + zed | ghostty  |  fuzzel  | firefox | greetd + regreet |
+| Specialisation | DE / WM |    Shell    |   Editor    |      Terminal       |     Launcher      |   Browser   | DM  |
+| :------------: | :-----: | :---------: | :---------: | :-----------------: | :---------------: | :---------: | :-: |
+|    default     |  niri   | fish + bash | helix + zed | ghostty + alacritty | noctalia launcher | zen-browser | ly  |
 
 - alice@Cape
 
