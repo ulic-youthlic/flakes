@@ -31,7 +31,6 @@
           }
         ];
         options = {
-          catppuccin.noctalia.enable = false;
           david.programs.noctalia = {
             niriExtraConfig = lib.mkOption {
               type = lib.types.listOf lib.types.anything;
