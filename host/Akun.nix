@@ -7,13 +7,13 @@
     };
     aspects.Akun = {
       includes = with den.aspects; [
-        desktop.backlight
-        desktop.i18n
-        desktop.kanata
-        desktop.obs
-        desktop.wshowkeys
-        net.openssh
-        net.tailscale
+        backlight
+        i18n
+        kanata
+        obs
+        wshowkeys
+        openssh
+        tailscale
       ];
       nixos = {
         imports = [

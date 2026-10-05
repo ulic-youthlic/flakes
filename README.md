@@ -36,15 +36,15 @@ The flake is built with [den](https://github.com/denful/den) on flake-parts.
 `flake.nix` loads every `.nix` file in the repository with import-tree, except
 paths containing `/_`, which hold plain NixOS or home-manager modules.
 
-| path                       | contents                                                                                    |
-| :------------------------- | :------------------------------------------------------------------------------------------ |
-| `./core`                   | flake-level wiring: den, `den.default`, deploy-rs nodes, packages, overlays, formatter      |
-| `./host/${machine}.nix`    | the machine in `den.hosts`, the aspects it includes and its settings                        |
-| `./host/${machine}/_*.nix` | machine-local NixOS modules: hardware, disks, boot, networking                              |
-| `./users/${user}.nix`      | the user account and the aspects the user includes on every machine                         |
-| `./users/${user}/*.nix`    | the user's own aspects, `den.aspects.${user}.<name>`                                        |
-| `./aspects/${group}/`      | shared aspects, `den.aspects.${group}.<name>`, each with `nixos` and/or `homeManager` parts |
-| `./overlays`               | overlays, defined with den-overlays and composed into `overlays.default`                    |
+| path                       | contents                                                                                   |
+| :------------------------- | :----------------------------------------------------------------------------------------- |
+| `./core`                   | flake-level wiring: den, `den.default`, deploy-rs nodes, packages, overlays, formatter     |
+| `./host/${machine}.nix`    | the machine in `den.hosts`, the aspects it includes and its settings                       |
+| `./host/${machine}/_*.nix` | machine-local NixOS modules: hardware, disks, boot, networking                             |
+| `./users/${user}.nix`      | the user account and the aspects the user includes on every machine                        |
+| `./users/${user}/*.nix`    | the user's own aspects, `den.aspects.${user}.<name>`                                       |
+| `./aspects/<feature>*`     | shared feature aspects, `den.aspects.<name>`, each with `nixos` and/or `homeManager` parts |
+| `./overlays`               | overlays, defined with den-overlays and composed into `overlays.default`                   |
 
 A machine-specific setting for a user goes in the machine's
 `den.aspects.${machine}.provides.${user}`.

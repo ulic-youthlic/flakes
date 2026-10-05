@@ -9,26 +9,26 @@
     hosts.x86_64-linux.Tytonidae.users.david = { };
     aspects.Tytonidae = {
       includes = with den.aspects; [
-        desktop.backlight
-        desktop.i18n
-        desktop.kanata
-        desktop.kdeconnect
-        desktop.obs
-        desktop.steam
-        desktop.upower
-        desktop.wshowkeys
-        hardware.asus
-        net.juicity.client
-        net.openssh
-        net.sing-box
-        net.tailscale
-        server.garage
-        server.miniserve
-        server.readest
-        server.rqbit
-        server.webdav-proxy
-        tty.guix
-        tty.nix-ld
+        backlight
+        i18n
+        kanata
+        kdeconnect
+        obs
+        steam
+        upower
+        wshowkeys
+        asus
+        juicity.client
+        openssh
+        sing-box
+        tailscale
+        garage
+        miniserve
+        readest
+        rqbit
+        webdav-proxy
+        guix
+        nix-ld
       ];
       nixos =
         { config, ... }:
@@ -84,11 +84,11 @@
           david.niri
           david.radicle
           david.spotify
-          shell.ion
-          tty.aria2
-          tty.awscli
-          tty.rustypaste-cli
-          virt.kvm
+          ion
+          aria2
+          awscli
+          rustypaste-cli
+          kvm
         ];
         homeManager =
           { pkgs, ... }:

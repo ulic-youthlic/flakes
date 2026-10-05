@@ -8,7 +8,7 @@ traced dependencies, public assets, and static assets.
 nix build .#readest-web
 ```
 
-Run the Deno service by including the `server.readest` aspect in a host's
+Run the Deno service by including the `readest` aspect in a host's
 `includes` and setting its options in the host's `nixos` block:
 
 ```nix
@@ -20,7 +20,7 @@ youthlic.programs.readest = {
 ```
 
 The service listens on localhost by default. When the host also runs Caddy
-(`server.caddy`), it configures `readest.<baseDomain>` as a reverse proxy.
+(`caddy`), it configures `readest.<baseDomain>` as a reverse proxy.
 Include the aspect on whichever host should serve the app.
 
 Configure Supabase and object storage through the runtime environment or the
@@ -63,7 +63,7 @@ the fixed WebDAV endpoint with suitable CORS headers, or serve that proxy under
 the same origin as Readest and enter its URL in the WebDAV form. The native app
 uses Tauri's HTTP client and can connect without browser CORS support.
 
-For Teracloud, also include the `server.webdav-proxy` aspect and set:
+For Teracloud, also include the `webdav-proxy` aspect and set:
 
 ```nix
 youthlic.programs.webdav-proxy = {
@@ -126,7 +126,7 @@ also disables legacy request-signal abort behavior so successful requests do
 not abort streamed responses.
 
 The proxy source and tests live in `scripts/ts/webdav-proxy/`. Its overlay in
-`overlays/webdav-proxy/` provides `pkgs.webdav-proxy`; the `server.webdav-proxy`
+`overlays/webdav-proxy/` provides `pkgs.webdav-proxy`; the `webdav-proxy`
 aspect launches that package. The package handles Deno startup and restricts
 network permissions to the configured localhost port and upstream. It has no
 external JavaScript dependencies. Build it independently or run its forwarding

@@ -2,7 +2,7 @@
 {
   # The shared radicle node plus how david opens rad links.
   den.aspects.david.radicle = {
-    includes = [ den.aspects.dev.radicle ];
+    includes = [ den.aspects.radicle ];
     homeManager.programs.radicle.uri = {
       rad.browser = {
         enable = true;

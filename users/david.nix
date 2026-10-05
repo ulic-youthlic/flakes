@@ -13,20 +13,20 @@
       david.wallpaper
       david.zed
       david.zen-browser
-      dev.git
-      dev.gpg
-      dev.jujutsu
-      home.xdg-dirs
-      shell.atuin
-      shell.bash
-      shell.direnv
-      shell.eza
-      shell.fish
-      shell.fzf
-      shell.starship
-      shell.yazi
-      shell.zoxide
-      tty.cli-tools
+      git
+      gpg
+      jujutsu
+      xdg-dirs
+      atuin
+      bash
+      direnv
+      eza
+      fish
+      fzf
+      starship
+      yazi
+      zoxide
+      cli-tools
     ];
     nixos =
       { lib, pkgs, ... }:

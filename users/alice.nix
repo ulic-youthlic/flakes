@@ -2,15 +2,15 @@
 {
   den.aspects.alice = {
     includes = with den.aspects; [
-      dev.git
-      dev.gpg
-      home.xdg-dirs
-      shell.atuin
-      shell.bash
-      shell.direnv
-      shell.fish
-      shell.starship
-      tty.cli-tools
+      git
+      gpg
+      xdg-dirs
+      atuin
+      bash
+      direnv
+      fish
+      starship
+      cli-tools
     ];
     nixos =
       { lib, pkgs, ... }:

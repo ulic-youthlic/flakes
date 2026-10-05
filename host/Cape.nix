@@ -7,19 +7,19 @@
     };
     aspects.Cape = {
       includes = with den.aspects; [
-        net.juicity.server
-        net.openssh
-        net.tailscale
-        server.caddy
-        server.caddy.garage
-        server.caddy.outer-wilds
-        server.caddy.radicle-explorer
-        server.forgejo
-        server.matrix-tuwunel
-        server.miniflux
-        server.radicle
-        server.rqbit
-        server.rustypaste
+        juicity.server
+        openssh
+        tailscale
+        caddy
+        caddy.garage
+        caddy.outer-wilds
+        caddy.radicle-explorer
+        forgejo
+        matrix-tuwunel
+        miniflux
+        radicle-seed
+        rqbit
+        rustypaste
       ];
       nixos = {
         imports = [

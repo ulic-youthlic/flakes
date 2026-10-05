@@ -13,7 +13,7 @@ let
   mkDeployNode = host: {
     "${host.name}" = {
       inherit (host.deploy) hostname;
-      # Account defined by den.aspects.admin.deploy.
+      # Account defined by den.aspects.deploy.
       sshUser = "deploy";
       interactiveSudo = true;
       profiles = {
@@ -33,7 +33,7 @@ in
         (
           { host, ... }:
           lib.optionalAttrs host.deploy.enable {
-            includes = [ den.aspects.admin.deploy ];
+            includes = [ den.aspects.deploy ];
           }
         )
       ];
