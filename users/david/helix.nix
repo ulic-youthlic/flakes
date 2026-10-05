@@ -10,11 +10,7 @@
         programs.helix.settings = {
           theme = "papercolor-light";
         };
-        youthlic.programs.helix = {
-          extraPackages = with pkgs; [
-            editor-runtime
-          ];
-        };
+        programs.helix.extraPackages = with pkgs; [ editor-runtime ];
       };
   };
 }
