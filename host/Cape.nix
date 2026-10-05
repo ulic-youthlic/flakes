@@ -2,7 +2,7 @@
 {
   den = {
     hosts.x86_64-linux.Cape = {
-      users.alice = { };
+      users.alice = den.users.alice;
       deploy.enable = true;
     };
     aspects.Cape = {

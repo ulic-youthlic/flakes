@@ -1,5 +1,12 @@
 { den, ... }:
 {
+  den.users.alice = {
+    identity = {
+      name = "ulic-youthlic";
+      email = "ulic.youthlic@gmail.com";
+    };
+  };
+
   den.aspects.alice = {
     includes = with den.aspects; [
       git
@@ -30,11 +37,6 @@
         programs.fish.enable = lib.mkDefault true;
       };
     homeManager = {
-      youthlic.programs.git = {
-        email = "ulic.youthlic@gmail.com";
-        name = "ulic-youthlic";
-        encrypt-credential = false;
-      };
       programs.ssh = {
         enable = true;
         extraOptionOverrides = {

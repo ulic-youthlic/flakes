@@ -2,7 +2,7 @@
 {
   den = {
     hosts.x86_64-linux.Akun = {
-      users.david = { };
+      users.david = den.users.david;
       deploy.enable = true;
     };
     aspects.Akun = {

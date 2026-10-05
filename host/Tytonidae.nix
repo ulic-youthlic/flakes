@@ -1,12 +1,15 @@
 {
   den,
+  lib,
   inputs,
   kdl,
   ...
 }:
 {
   den = {
-    hosts.x86_64-linux.Tytonidae.users.david = { };
+    hosts.x86_64-linux.Tytonidae.users.david = lib.recursiveUpdate den.users.david {
+      awscli.endpoint = "http://localhost:8491";
+    };
     aspects.Tytonidae = {
       includes = with den.aspects; [
         niri
@@ -104,7 +107,6 @@
         homeManager =
           { pkgs, ... }:
           {
-            youthlic.programs.awscli.url = "http://localhost:8491";
             home.packages = with pkgs; [
               kdePackages.kdenlive
               android-tools

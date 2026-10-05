@@ -1,21 +1,29 @@
 {
   den.aspects.david.email.homeManager =
     {
+      user,
       ...
     }:
+    let
+      identity = user.identity;
+    in
     {
       config = {
         accounts.email.accounts = {
           "ulic-youthlic" = {
-            address = "ulic.youthlic@gmail.com";
+            address = identity.email;
             aliases = [
               "ulic.youthlic+nixpkgs@gmail.com"
             ];
             flavor = "gmail.com";
-            gpg = {
-              signByDefault = true;
-              key = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
-            };
+            gpg =
+              if (identity.signingKey or null) == null then
+                null
+              else
+                {
+                  signByDefault = true;
+                  key = identity.signingKey;
+                };
             primary = true;
             thunderbird = {
               enable = true;

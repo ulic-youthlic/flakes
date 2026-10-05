@@ -1,5 +1,21 @@
 { den, ... }:
 {
+  den.users.david = {
+    identity = {
+      name = "ulic-youthlic";
+      email = "ulic.youthlic@gmail.com";
+      signingKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
+    };
+    git.sops = {
+      secret = "git-credential";
+      path = "/home/david/.config/sops-nix/secrets/git-credential";
+    };
+    awscli.sops = {
+      secret = "awscli";
+      path = "/home/david/.config/sops-nix/secrets/awscli";
+    };
+  };
+
   den.aspects.david = {
     includes = with den.aspects; [
       david.alacritty
@@ -47,26 +63,9 @@
         programs.fish.enable = lib.mkDefault true;
       };
     homeManager =
-      { config, pkgs, ... }:
+      { pkgs, ... }:
       {
         services.mpris-proxy.enable = true;
-        youthlic.programs =
-          let
-            email = config.accounts.email.accounts.ulic-youthlic;
-            inherit (email) name address;
-            signKey = email.gpg.key;
-          in
-          {
-            git = {
-              inherit name signKey;
-              email = address;
-              encrypt-credential = true;
-            };
-            jujutsu = {
-              inherit name signKey;
-              email = address;
-            };
-          };
         home.packages = with pkgs; [
           tealdeer
           qq

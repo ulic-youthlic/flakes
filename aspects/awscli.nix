@@ -1,37 +1,27 @@
 {
   den.aspects.awscli.homeManager =
     {
-      config,
       lib,
       pkgs,
+      user,
       ...
     }:
     let
-      cfg = config.youthlic.programs.awscli;
+      cfg = user.awscli;
     in
     {
-      options = {
-        youthlic.programs.awscli = {
-          url = lib.mkOption {
-            type = lib.types.str;
-            default = "https://s3.youthlic.social";
+      sops.secrets.${cfg.sops.secret}.path = cfg.sops.path;
+      programs.awscli = {
+        enable = true;
+        credentials = {
+          default = {
+            credential_process = "${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${cfg.sops.path}";
           };
         };
-      };
-      config = {
-        sops.secrets."awscli" = { };
-        programs.awscli = {
-          enable = true;
-          credentials = {
-            default = {
-              credential_process = "${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.awscli.path}";
-            };
-          };
-          settings = {
-            default = {
-              region = "garage";
-              endpoint_url = cfg.url;
-            };
+        settings = {
+          default = {
+            region = "garage";
+            endpoint_url = cfg.endpoint;
           };
         };
       };

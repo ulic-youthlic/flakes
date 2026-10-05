@@ -1,43 +1,16 @@
+{ den, lib, ... }:
 {
-  den.aspects.git.homeManager =
+  den.aspects.git =
+    { user, ... }:
+    let
+      identity = user.identity;
+      signingKey = identity.signingKey or null;
+      credential = user.git.sops or null;
+    in
     {
-      config,
-      lib,
-      ...
-    }:
-    {
-      options = {
-        youthlic.programs.git = {
-          email = lib.mkOption {
-            type = lib.types.str;
-            description = ''
-              git email
-            '';
-          };
-          name = lib.mkOption {
-            type = lib.types.str;
-            example = "youthlic";
-            description = ''
-              git name
-            '';
-          };
-          signKey = lib.mkOption {
-            type = lib.types.addCheck (lib.types.nullOr lib.types.str) (
-              x: (x == null || config.programs.gpg.enable)
-            );
-            default = null;
-            description = ''
-              key fingerprint for sign commit
-            '';
-          };
-          encrypt-credential = lib.mkEnableOption "encrypt git credential";
-        };
-      };
-      config =
-        let
-          cfg = config.youthlic.programs.git;
-        in
-        lib.mkMerge [
+      includes = lib.optional (signingKey != null) den.aspects.gpg;
+      homeManager = {
+        config = lib.mkMerge [
           {
             programs = {
               gh = {
@@ -51,9 +24,7 @@
                 enable = true;
                 settings = {
                   alias.patch = "push rad HEAD:refs/patches";
-                  user = {
-                    inherit (cfg) email name;
-                  };
+                  user = { inherit (identity) name email; };
                 };
                 lfs.enable = true;
               };
@@ -67,26 +38,24 @@
               };
             };
           }
-          (lib.mkIf (cfg.signKey != null) {
+          (lib.mkIf (signingKey != null) {
             programs.git.signing = {
               signByDefault = true;
-              key = cfg.signKey;
+              key = signingKey;
               format = "openpgp";
             };
           })
-          (lib.mkIf cfg.encrypt-credential {
-            programs.git.settings = {
-              credential = {
-                helper = "store --file=${config.sops.secrets."git-credential".path}";
-              };
-              core = {
-                commentChar = ";";
-              };
-            };
-            sops.secrets."git-credential" = {
+          (lib.mkIf (credential != null) {
+            sops.secrets.${credential.secret} = {
+              inherit (credential) path;
               mode = "0640";
+            };
+            programs.git.settings = {
+              credential.helper = "store --file=${credential.path}";
+              core.commentChar = ";";
             };
           })
         ];
+      };
     };
 }
