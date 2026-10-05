@@ -7,6 +7,7 @@
     };
     aspects.Akun = {
       includes = with den.aspects; [
+        niri
         backlight
         i18n
         kanata
@@ -34,9 +35,6 @@
           users.david.openssh.authorizedKeys.keyFiles = [ ./Akun/akun.pub ];
         };
       };
-      provides.david.includes = with den.aspects; [
-        david.niri
-      ];
     };
   };
 }

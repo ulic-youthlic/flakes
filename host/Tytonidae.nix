@@ -9,6 +9,7 @@
     hosts.x86_64-linux.Tytonidae.users.david = { };
     aspects.Tytonidae = {
       includes = with den.aspects; [
+        niri
         backlight
         i18n
         kanata
@@ -31,7 +32,10 @@
         nix-ld
       ];
       nixos =
-        { config, ... }:
+        { config, lib, ... }:
+        let
+          inherit (kdl.dsl) n;
+        in
         {
           imports = [
             ./Tytonidae/_configuration.nix
@@ -57,6 +61,14 @@
             extraGroups = [ "audio" ];
             openssh.authorizedKeys.keyFiles = [ ./Tytonidae/tytonidae.pub ];
           };
+          environment.etc."niri/config.kdl".text = lib.mkAfter (
+            kdl.formats.v1 [
+              (n "debug" [
+                (n "render-drm-device" "/dev/dri/by-path/pci-0000:00:02.0-render") # Intel
+                (n "ignore-drm-device" "/dev/dri/by-path/pci-0000:01:00.0-render") # NVIDIA
+              ])
+            ]
+          );
           youthlic.programs = {
             miniserve.apps =
               let
@@ -81,7 +93,6 @@
         };
       provides.david = {
         includes = with den.aspects; [
-          david.niri
           david.radicle
           david.spotify
           ion
@@ -92,17 +103,8 @@
         ];
         homeManager =
           { pkgs, ... }:
-          let
-            inherit (kdl.dsl) n;
-          in
           {
             youthlic.programs.awscli.url = "http://localhost:8491";
-            david.programs.niri.config = [
-              (n "debug" [
-                (n "render-drm-device" "/dev/dri/by-path/pci-0000:00:02.0-render") # Intel
-                (n "ignore-drm-device" "/dev/dri/by-path/pci-0000:01:00.0-render") # NVIDIA
-              ])
-            ];
             home.packages = with pkgs; [
               kdePackages.kdenlive
               android-tools
