@@ -11,12 +11,12 @@ let
     if (cfg.client.configFile != null) then
       cfg.client.configFile
     else
-      settingsFormat cfg.client.settings;
+      settingsFormat.generate "juicity-client.json" cfg.client.settings;
   serverConfigFile =
     if (cfg.server.configFile != null) then
       cfg.server.configFile
     else
-      settingsFormat cfg.server.settings;
+      settingsFormat.generate "juicity-server.json" cfg.server.settings;
 in
 {
   options = {
