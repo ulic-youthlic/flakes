@@ -1,39 +1,24 @@
 {
   den.aspects.readest.nixos =
     {
-      config,
       lib,
       pkgs,
+      host,
       ...
     }:
     let
-      cfg = config.youthlic.programs.readest;
-      caddy-cfg = config.youthlic.programs.caddy;
+      cfg = {
+        package = pkgs.readest-web;
+        denoPackage = pkgs.deno;
+        listen = "127.0.0.1";
+        port = 3000;
+        environment = { };
+        environmentFile = null;
+      }
+      // (host.readest or { });
+      caddy-cfg = host.caddy;
     in
     {
-      options.youthlic.programs.readest = {
-        package = lib.mkPackageOption pkgs "readest-web" { };
-        denoPackage = lib.mkPackageOption pkgs "deno" { };
-        listen = lib.mkOption {
-          type = lib.types.str;
-          default = "127.0.0.1";
-        };
-        port = lib.mkOption {
-          type = lib.types.port;
-          default = 3000;
-        };
-        environment = lib.mkOption {
-          type = lib.types.attrsOf lib.types.str;
-          default = { };
-          description = "Readest runtime settings, such as SITE_URL and SUPABASE_PUBLIC_URL.";
-        };
-        environmentFile = lib.mkOption {
-          type = lib.types.nullOr lib.types.str;
-          default = null;
-          description = "Path to a runtime environment file containing Readest credentials.";
-        };
-      };
-
       config = lib.mkMerge [
         ({
           systemd.services.readest = {
@@ -79,7 +64,7 @@
             };
           };
         })
-        (lib.mkIf config.services.caddy.enable {
+        (lib.mkIf (host.caddy.enable or false) {
           services.caddy.virtualHosts."readest.${caddy-cfg.baseDomain}".extraConfig = ''
             reverse_proxy ${cfg.listen}:${toString cfg.port}
           '';

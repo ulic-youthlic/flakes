@@ -1,14 +1,19 @@
 {
   den.aspects.webdav-proxy.nixos =
     {
-      config,
       lib,
       pkgs,
       utils,
+      host,
       ...
     }:
     let
-      cfg = config.youthlic.programs.webdav-proxy;
+      cfg = {
+        package = pkgs.webdav-proxy;
+        port = 9098;
+        pathPrefix = "/dav";
+      }
+      // host.webdav-proxy;
       upstream = lib.removeSuffix "/" cfg.upstream;
       proxyConfig = builtins.toJSON {
         inherit (cfg) port pathPrefix allowedOrigins;
@@ -16,30 +21,6 @@
       };
     in
     {
-      options.youthlic.programs.webdav-proxy = {
-        package = lib.mkPackageOption pkgs "webdav-proxy" { };
-        port = lib.mkOption {
-          type = lib.types.port;
-          default = 9098;
-          description = "Proxy port on 127.0.0.1.";
-        };
-        upstream = lib.mkOption {
-          type = lib.types.str;
-          example = "https://toi.teracloud.jp";
-          description = "HTTPS origin of the WebDAV server, without a path or credentials.";
-        };
-        pathPrefix = lib.mkOption {
-          type = lib.types.str;
-          default = "/dav";
-          description = "WebDAV path prefix, preserved when forwarding requests.";
-        };
-        allowedOrigins = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
-          example = [ "http://127.0.0.1:9097" ];
-          description = "Browser origins allowed to access the proxy.";
-        };
-      };
-
       config = {
         assertions = [
           {

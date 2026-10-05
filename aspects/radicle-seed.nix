@@ -5,76 +5,26 @@
     includes = [ den.aspects.caddy.radicle-explorer ];
     nixos =
       {
-        config,
         lib,
+        host,
         ...
       }:
       let
-        cfg = config.youthlic.programs.radicle;
+        cfg = host.radicle-seed;
       in
       {
-        options = {
-          youthlic.programs.radicle = {
-            privateKey = lib.mkOption {
-              type = with lib.types; either path str;
-            };
-            publicKey = lib.mkOption {
-              type = with lib.types; either path str;
-            };
-            domain = lib.mkOption {
-              type = lib.types.str;
-            };
-          };
-        };
         config = lib.mkMerge [
-          ({
+          {
+            sops.secrets.${cfg.sops.secret}.path = cfg.sops.path;
             services.radicle = {
               enable = true;
-              inherit (cfg) publicKey privateKey;
+              inherit (cfg) publicKey;
+              privateKey = cfg.sops.path;
               node.openFirewall = true;
               httpd = {
                 enable = true;
                 listenPort = 8489;
               };
-              # ci = {
-              #   adapters = {
-              #     native = {
-              #       instances = {
-              #         default-native = {
-              #           enable = true;
-              #           settings = {
-              #             # base_url = "";
-              #           };
-              #         };
-              #       };
-              #     };
-              #   };
-              #   broker = {
-              #     enable = true;
-              #     enableHardening = true;
-              #     settings = {
-              #       triggers = [
-              #         {
-              #           adapter = "default-native";
-              #           filters = [
-              #             {
-              #               And = [
-              #                 { HasFile = ".radicle/native.yaml"; }
-              #                 {
-              #                   Or = [
-              #                     "DefaultBranch"
-              #                     "PatchCreated"
-              #                     "PatchUpdated"
-              #                   ];
-              #                 }
-              #               ];
-              #             }
-              #           ];
-              #         }
-              #       ];
-              #     };
-              #   };
-              # };
               settings = {
                 publicExplorer = "https://radicle.network/nodes/$host/$rid$path";
                 preferredSeeds = [
@@ -83,8 +33,8 @@
                   "z6MkrLMMsiPWUcNPHcRajuMi9mDfYckSoJyPwwnknocNYPm7@iris.radicle.network:58776"
                 ];
                 web = {
-                  bannerUrl = "https://radicle.${config.youthlic.programs.caddy.baseDomain}/images/youthlic-seed-header.png";
-                  avatarUrl = "https://radicle.${config.youthlic.programs.caddy.baseDomain}/images/youthlic-seed-avatar.jpg";
+                  bannerUrl = "https://radicle.${host.caddy.baseDomain}/images/youthlic-seed-header.png";
+                  avatarUrl = "https://radicle.${host.caddy.baseDomain}/images/youthlic-seed-avatar.jpg";
                   description = "Private Seed Server.";
                   pinned = {
                     repositories = [
@@ -140,22 +90,14 @@
                 };
               };
             };
-          })
-          (lib.mkIf config.services.caddy.enable {
+          }
+          (lib.mkIf (host.caddy.enable or false) {
             services.caddy.virtualHosts = {
               "${cfg.domain}" = {
                 extraConfig = ''
                   reverse_proxy 127.0.0.1:8489
                 '';
               };
-              # "ci-${cfg.domain}" = {
-              #   extraConfig = ''
-              #     encode zstd gzip
-              #     root * ${config.services.radicle.ci.broker.settings.report_dir}
-              #     try_files {path} /index.html
-              #     file_server
-              #   '';
-              # };
             };
           })
         ];

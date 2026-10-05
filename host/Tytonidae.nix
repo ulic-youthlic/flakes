@@ -7,8 +7,43 @@
 }:
 {
   den = {
-    hosts.x86_64-linux.Tytonidae.users.david = lib.recursiveUpdate den.users.david {
-      awscli.endpoint = "http://localhost:8491";
+    hosts.x86_64-linux.Tytonidae = {
+      users.david = lib.recursiveUpdate den.users.david {
+        awscli.endpoint = "http://localhost:8491";
+      };
+      miniserve.apps = {
+        cinny-1 = {
+          template = "cinny";
+          port = 9093;
+        };
+        cinny-2 = {
+          template = "cinny";
+          port = 9094;
+        };
+        cinny-3 = {
+          template = "cinny";
+          port = 9095;
+        };
+        ariang = {
+          template = "ariang";
+          port = 9096;
+        };
+      };
+      readest = {
+        port = 9097;
+        environment.SITE_URL = "http://127.0.0.1:9097";
+      };
+      webdav-proxy = {
+        upstream = "https://toi.teracloud.jp";
+        allowedOrigins = [ "http://127.0.0.1:9097" ];
+      };
+      rqbit = {
+        ratelimitUpload = 10;
+        sops = {
+          secret = "rqbit.secrets.env";
+          path = "/run/secrets/rqbit.secrets.env";
+        };
+      };
     };
     aspects.Tytonidae = {
       includes = with den.aspects; [
@@ -35,7 +70,7 @@
         nix-ld
       ];
       nixos =
-        { config, lib, ... }:
+        { lib, ... }:
         let
           inherit (kdl.dsl) n;
         in
@@ -72,27 +107,6 @@
               ])
             ]
           );
-          youthlic.programs = {
-            miniserve.apps =
-              let
-                inherit (config.youthlic.programs.miniserve.templates) cinny ariang;
-              in
-              {
-                cinny-1 = cinny { port = 9093; };
-                cinny-2 = cinny { port = 9094; };
-                cinny-3 = cinny { port = 9095; };
-                ariang = ariang { port = 9096; };
-              };
-            readest = {
-              port = 9097;
-              environment.SITE_URL = "http://127.0.0.1:9097";
-            };
-            webdav-proxy = {
-              upstream = "https://toi.teracloud.jp";
-              allowedOrigins = [ "http://127.0.0.1:9097" ];
-            };
-            rqbit.ratelimitUpload = 10;
-          };
         };
       provides.david = {
         includes = with den.aspects; [

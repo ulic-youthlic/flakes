@@ -3,36 +3,22 @@
     {
       pkgs,
       lib,
-      config,
-      options,
       host,
       ...
     }:
     let
-      cfg = config.youthlic.programs.rqbit;
+      cfg = host.rqbit;
     in
     {
-      options = {
-        youthlic.programs.rqbit = {
-          ratelimitUpload = lib.mkOption {
-            type = lib.types.int;
-            description = ''
-              Limit upload to mega-bytes-per-second
-            '';
-          };
-          httpHost = options.services.rqbit.httpHost;
-        };
-      };
       config = {
         services.rqbit = {
-          inherit (cfg) httpHost;
           enable = true;
           openFirewall = true;
           httpPort = 9092;
         };
         # The host's users may manage the downloads.
         users.groups.rqbit.members = map (user: user.userName) (lib.attrValues host.users);
-        sops.secrets."rqbit.secrets.env" = { };
+        sops.secrets.${cfg.sops.secret}.path = cfg.sops.path;
         systemd.services."rqbit" = {
           serviceConfig = {
             EnvironmentFile = [
@@ -53,7 +39,7 @@
                   )
                 )
               ))
-              config.sops.secrets."rqbit.secrets.env".path
+              cfg.sops.path
             ];
           };
         };

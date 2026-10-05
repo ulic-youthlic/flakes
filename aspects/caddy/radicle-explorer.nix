@@ -4,24 +4,22 @@
     includes = [ den.aspects.caddy ];
     nixos =
       {
-        config,
+        host,
         pkgs,
         ...
       }:
       let
-        caddy-cfg = config.youthlic.programs.caddy;
+        caddy-cfg = host.caddy;
       in
       {
-        config = {
-          services.caddy.virtualHosts = {
-            "radicle.${caddy-cfg.baseDomain}" = {
-              extraConfig = ''
-                root * ${pkgs.radicle-explorer}
-                encode zstd gzip
-                try_files {path} /index.html
-                file_server
-              '';
-            };
+        services.caddy.virtualHosts = {
+          "radicle.${caddy-cfg.baseDomain}" = {
+            extraConfig = ''
+              root * ${pkgs.radicle-explorer}
+              encode zstd gzip
+              try_files {path} /index.html
+              file_server
+            '';
           };
         };
       };

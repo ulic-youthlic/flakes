@@ -3,39 +3,31 @@
     nixos =
       {
         lib,
-        config,
+        host,
         ...
       }:
       let
-        cfg = config.youthlic.programs.rustypaste;
+        cfg = {
+          listen = "127.0.0.1";
+          url = null;
+        }
+        // (host.rustypaste or { });
       in
       {
         imports = [ ./_service.nix ];
 
-        options = {
-          youthlic.programs.rustypaste = {
-            listen = lib.mkOption {
-              type = lib.types.nonEmptyStr;
-              example = "0.0.0.0";
-              default = "127.0.0.1";
-            };
-            url = lib.mkOption {
-              type = lib.types.nullOr lib.types.nonEmptyStr;
-              example = "https://paste.example.com";
-              default = null;
-            };
-          };
-        };
         config = lib.mkMerge [
-          ({
+          {
             sops.secrets = {
-              "rustypaste/auth" = {
+              ${cfg.sops.auth.secret} = {
                 group = "rustypaste";
                 mode = "0440";
+                inherit (cfg.sops.auth) path;
               };
-              "rustypaste/delete" = {
+              ${cfg.sops.delete.secret} = {
                 group = "rustypaste";
                 mode = "0440";
+                inherit (cfg.sops.delete) path;
               };
             };
             services.rustypaste = {
@@ -102,15 +94,15 @@
                 };
               };
               env = {
-                AUTH_TOKENS_FILE = "${config.sops.secrets."rustypaste/auth".path}";
-                DELETE_TOKENS_FILE = "${config.sops.secrets."rustypaste/delete".path}";
+                AUTH_TOKENS_FILE = cfg.sops.auth.path;
+                DELETE_TOKENS_FILE = cfg.sops.delete.path;
               };
               openFirewall = true;
             };
-          })
-          (lib.mkIf config.services.caddy.enable {
+          }
+          (lib.mkIf (host.caddy.enable or false) {
             services.caddy.virtualHosts = {
-              "paste.${config.youthlic.programs.caddy.baseDomain}" = {
+              "paste.${host.caddy.baseDomain}" = {
                 extraConfig = ''
                   reverse_proxy 127.0.0.1:8483
                 '';

@@ -2,29 +2,22 @@
   den.aspects.matrix-tuwunel = {
     nixos =
       {
-        config,
         lib,
+        host,
         ...
       }:
       let
-        cfg = config.youthlic.programs.matrix-tuwunel;
+        cfg = host.matrix-tuwunel;
       in
       {
-        options = {
-          youthlic.programs.matrix-tuwunel = {
-            serverName = lib.mkOption {
-              type = lib.types.nonEmptyStr;
-              example = "example.com";
-            };
-          };
-        };
         config = lib.mkMerge [
-          ({
-            sops.secrets."matrix-reg-token" = {
+          {
+            sops.secrets.${cfg.sops.secret} = {
               owner = "tuwunel";
+              inherit (cfg.sops) path;
             };
             systemd.services.tuwunel.serviceConfig = {
-              EnvironmentFile = "${config.sops.secrets.matrix-reg-token.path}";
+              EnvironmentFile = cfg.sops.path;
             };
             services.matrix-tuwunel = {
               enable = true;
@@ -51,8 +44,8 @@
                 };
               };
             };
-          })
-          (lib.mkIf config.services.caddy.enable {
+          }
+          (lib.mkIf (host.caddy.enable or false) {
             services.caddy.virtualHosts = {
               "${cfg.serverName}" = {
                 extraConfig = ''

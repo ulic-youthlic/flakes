@@ -1,32 +1,36 @@
 { den, ... }:
 {
   den.aspects.miniflux = {
-    includes = [ den.aspects.containers ];
+    includes = with den.aspects; [
+      containers
+      caddy
+    ];
     nixos =
       {
         pkgs,
-        config,
-        lib,
+        host,
         ...
       }:
       let
-        cfg = config.youthlic.containers.miniflux;
+        cfg = {
+          httpPort = 8485;
+        }
+        // host.miniflux;
+        containerAddress = "192.168.111.102";
+        adminCredentialsFile = cfg.sops.path;
       in
       {
-        options = {
-          youthlic.containers.miniflux = {
-            adminCredentialsFile = lib.mkOption {
-              type = lib.types.nonEmptyStr;
-            };
-          };
-        };
         config = {
+          sops.secrets.${cfg.sops.secret}.path = cfg.sops.path;
+          services.caddy.virtualHosts.${cfg.domain}.extraConfig = ''
+            reverse_proxy ${containerAddress}:${toString cfg.httpPort}
+          '';
           containers."miniflux" = {
             ephemeral = true;
             autoStart = true;
             privateNetwork = true;
-            hostBridge = "${config.youthlic.containers.bridgeName}";
-            localAddress = "192.168.111.102/24";
+            hostBridge = host.containers.bridgeName;
+            localAddress = "${containerAddress}/24";
             bindMounts = {
               "/var/lib/miniflux" = {
                 hostPath = "/mnt/containers/miniflux/state";
@@ -36,17 +40,12 @@
                 hostPath = "/mnt/containers/miniflux/database";
                 isReadOnly = false;
               };
-              "${cfg.adminCredentialsFile}" = {
+              "${adminCredentialsFile}" = {
                 isReadOnly = true;
               };
             };
 
             config = { lib, ... }: {
-              imports = [
-                ./_service.nix
-                ../_postgresql.nix
-              ];
-
               nixpkgs.pkgs = pkgs;
 
               systemd.tmpfiles.rules = [
@@ -55,19 +54,33 @@
                 "d /run/secrets 770 root miniflux -"
               ];
 
-              youthlic.programs = {
+              services = {
                 miniflux = {
                   enable = true;
-                  database = {
-                    user = "miniflux";
+                  config = {
+                    LISTEN_ADDR = "0.0.0.0:${toString cfg.httpPort}";
+                    DATABASE_URL = "user=miniflux host=/run/postgresql dbname=miniflux";
+                    CREATE_ADMIN = 1;
+                    WATCHDOG = 1;
+                    BASE_URL = "https://${cfg.domain}";
                   };
-                  adminCredentialsFile = cfg.adminCredentialsFile;
+                  createDatabaseLocally = false;
+                  inherit adminCredentialsFile;
                 };
                 postgresql = {
                   enable = true;
-                  database = "miniflux";
-                  auth_method = "peer";
-                  version = "17";
+                  package = pkgs.postgresql_17;
+                  ensureDatabases = [ "miniflux" ];
+                  ensureUsers = [
+                    {
+                      name = "miniflux";
+                      ensureDBOwnership = true;
+                    }
+                  ];
+                  authentication = ''
+                    #type database DBuser auth-method
+                    local sameuser all    peer
+                  '';
                 };
               };
 
@@ -82,8 +95,8 @@
                 defaultGateway = "192.168.111.1";
                 firewall = {
                   enable = true;
-                  allowedTCPPorts = [ 8485 ];
-                  allowedUDPPorts = [ 8485 ];
+                  allowedTCPPorts = [ cfg.httpPort ];
+                  allowedUDPPorts = [ cfg.httpPort ];
                 };
                 useHostResolvConf = lib.mkForce false;
               };

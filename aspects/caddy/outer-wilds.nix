@@ -4,24 +4,22 @@
     includes = [ den.aspects.caddy ];
     nixos =
       {
-        config,
+        host,
         pkgs,
         ...
       }:
       let
-        caddy-cfg = config.youthlic.programs.caddy;
+        caddy-cfg = host.caddy;
       in
       {
-        config = {
-          services.caddy.virtualHosts = {
-            "outer-wilds.${caddy-cfg.baseDomain}" = {
-              extraConfig = ''
-                root * ${pkgs.OuterWildsTextAdventure}
-                encode zstd gzip
-                try_files {path} /index.html
-                file_server
-              '';
-            };
+        services.caddy.virtualHosts = {
+          "outer-wilds.${caddy-cfg.baseDomain}" = {
+            extraConfig = ''
+              root * ${pkgs.OuterWildsTextAdventure}
+              encode zstd gzip
+              try_files {path} /index.html
+              file_server
+            '';
           };
         };
       };
