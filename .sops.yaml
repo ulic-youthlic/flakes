@@ -7,7 +7,7 @@ creation_rules:
       - age:
           - *master
           - *machine_Cape
-  - path_regex: secrets/dummy_font/[^/]+\.(ttf|otf)$
+  - path_regex: assets/fonts/dummy/[^/]+\.(ttf|otf)$
     key_groups:
       - age:
           - *master

@@ -32,11 +32,11 @@
           sops.secrets =
             with lib;
             with builtins;
-            pipe ../secrets/dummy_font [
+            pipe ../assets/fonts/dummy [
               readDir
               attrNames
               (flip genAttrs (name: {
-                sopsFile = ../secrets/dummy_font + "/${name}";
+                sopsFile = ../assets/fonts/dummy + "/${name}";
                 format = "binary";
                 path = "/run/fonts/${name}";
                 mode = "0444";

@@ -32,8 +32,8 @@
         }).overrideAttrs
           (finalAttrs: {
             postInstall = (finalAttrs.postInstall or "") + ''
-              ln -s ${./../assets/radicle-explorer/youthlic-seed-header.png} $out/images/youthlic-seed-header.png
-              ln -s ${./../assets/radicle-explorer/youthlic-seed-avatar.jpg} $out/images/youthlic-seed-avatar.jpg
+              ln -s ${./../assets/radicle-seed/images/youthlic-seed-header.png} $out/images/youthlic-seed-header.png
+              ln -s ${./../assets/radicle-seed/images/youthlic-seed-avatar.jpg} $out/images/youthlic-seed-avatar.jpg
             '';
           });
     };
