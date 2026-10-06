@@ -1,4 +1,13 @@
 {
+  den.aspects.helix.nixos =
+    { pkgs, ... }:
+    {
+      environment = {
+        systemPackages = [ pkgs.steelix ];
+        variables.EDITOR = "hx";
+      };
+    };
+
   den.aspects.helix.homeManager =
     {
       lib,

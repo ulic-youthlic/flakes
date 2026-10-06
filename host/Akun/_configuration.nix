@@ -14,7 +14,6 @@
     wget
     git
     vim-full
-    steelix
 
     btop
     localsend

@@ -13,7 +13,6 @@
     wget
     git
     vim-full
-    steelix
     btop
   ];
 

@@ -3,7 +3,6 @@
     nixos =
       { lib, ... }:
       {
-        environment.variables.EDITOR = "hx";
         services.dbus.implementation = "broker";
 
         # This value determines the NixOS release from which the default

@@ -19,7 +19,6 @@
     wget
     git
     vim-full
-    steelix
 
     btop
     wechat

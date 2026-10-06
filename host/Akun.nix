@@ -8,6 +8,7 @@
     aspects.Akun = {
       includes = with den.aspects; [
         niri
+        helix
         backlight
         i18n
         kanata
