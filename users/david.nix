@@ -3,8 +3,36 @@
   den.users.david = {
     identity = {
       name = "ulic-youthlic";
-      email = "ulic.youthlic@gmail.com";
+      email = {
+        name = "ulic-youthlic";
+        address = "ulic.youthlic@gmail.com";
+        aliases = [ "ulic.youthlic+nixpkgs@gmail.com" ];
+        flavor = "gmail.com";
+        realName = "youthlic";
+      };
       signingKey = "C6FCBD7F49E1CBBABD6661F7FC02063F04331A95";
+    };
+    email.accounts = {
+      youthlic146 = {
+        address = "youthlic146@gmail.com";
+        flavor = "gmail.com";
+        realName = "youthlic";
+      };
+      moqixianli = {
+        address = "moqixianli@gmail.com";
+        flavor = "gmail.com";
+        realName = "youthlic";
+      };
+      youthlic = {
+        address = "youthlic@outlook.com";
+        flavor = "outlook.office365.com";
+        realName = "youthlic";
+      };
+      Showoff6558 = {
+        address = "Showoff6558@outlook.com";
+        flavor = "outlook.office365.com";
+        realName = "Showoff6558";
+      };
     };
     git.sops = {
       secret = "git-credential";
@@ -20,18 +48,17 @@
     includes = with den.aspects; [
       david.alacritty
       david.cursor
-      david.email
       david.ghostty
       david.helix
       david.mpv
       david.openssh
-      david.thunderbird
       david.wallpaper
       david.zed
       david.zen-browser
       git
       gpg
       jujutsu
+      thunderbird
       xdg-dirs
       atuin
       bash

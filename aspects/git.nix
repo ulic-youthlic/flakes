@@ -24,7 +24,10 @@
                 enable = true;
                 settings = {
                   alias.patch = "push rad HEAD:refs/patches";
-                  user = { inherit (identity) name email; };
+                  user = {
+                    inherit (identity) name;
+                    email = identity.email.address;
+                  };
                 };
                 lfs.enable = true;
               };

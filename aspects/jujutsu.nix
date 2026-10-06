@@ -20,7 +20,10 @@
                 enable = true;
                 settings = {
                   "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json";
-                  user = { inherit (identity) name email; };
+                  user = {
+                    inherit (identity) name;
+                    email = identity.email.address;
+                  };
                   aliases = {
                     dlog = [
                       "log"

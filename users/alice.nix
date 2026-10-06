@@ -3,7 +3,7 @@
   den.users.alice = {
     identity = {
       name = "ulic-youthlic";
-      email = "ulic.youthlic@gmail.com";
+      email.address = "ulic.youthlic@gmail.com";
     };
   };
 
