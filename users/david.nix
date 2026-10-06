@@ -61,7 +61,7 @@
     includes = with den.aspects; [
       david.alacritty
       david.cursor
-      david.ghostty
+      ghostty
       david.helix
       david.mpv
       david.openssh

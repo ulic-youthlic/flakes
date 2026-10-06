@@ -45,7 +45,7 @@
       includes = with den.aspects; [
         david.kanshi
         david.noctalia
-        david.ghostty
+        ghostty
         david.zen-browser
       ];
       homeManager =
