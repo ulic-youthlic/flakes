@@ -14,6 +14,13 @@
           secret = "radicle/Tytonidae";
           path = "/home/david/.config/sops-nix/secrets/radicle/Tytonidae";
         };
+        rustypaste-cli = {
+          url = den.hosts.x86_64-linux.Cape.rustypaste.url;
+          sops = {
+            auth.secret = "rustypaste/auth";
+            delete.secret = "rustypaste/delete";
+          };
+        };
       };
       miniserve.apps = {
         cinny-1 = {

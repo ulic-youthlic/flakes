@@ -48,6 +48,8 @@
         };
       };
       rustypaste = {
+        listen = "127.0.0.1";
+        port = 8483;
         url = "https://paste.youthlic.social";
         sops.auth = {
           secret = "rustypaste/auth";
