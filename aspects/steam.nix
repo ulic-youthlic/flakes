@@ -1,4 +1,9 @@
 {
+  den.aspects.steam.xdg-mime = {
+    "x-scheme-handler/steam" = [ "steam.desktop" ];
+    "x-scheme-handler/steamlink" = [ "steam.desktop" ];
+  };
+
   den.aspects.steam.nixos =
     { pkgs, ... }:
     {

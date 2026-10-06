@@ -92,11 +92,12 @@
       david.cursor
       ghostty
       david.helix
-      david.mpv
+      mpv
       openssh.client
       david.wallpaper
-      david.zed
-      david.zen-browser
+      zed
+      zen-browser
+      helium
       git
       gpg
       jujutsu
@@ -140,7 +141,6 @@
           qq
           scrcpy
           gitoxide
-          helium
         ];
       };
   };

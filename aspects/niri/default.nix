@@ -4,7 +4,10 @@
     includes = with den.aspects; [
       gui
       ly
-      xdg
+      nautilus
+      evince
+      swayimg
+      seahorse
     ];
     nixos =
       {
@@ -12,22 +15,10 @@
         ...
       }:
       {
-        # Enabled to support trash of nautilus
-        services.gvfs.enable = true;
         environment = {
-          pathsToLink = [ "share/thumbnailers" ];
           systemPackages = with pkgs; [
             wl-clipboard
-            swayimg
-            seahorse
-
-            nautilus
-            nautilus-open-any-terminal
-            libheif
-            libheif.out
-
             bluez
-            evince
           ];
         };
         xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -46,7 +37,8 @@
         david.kanshi
         david.noctalia
         ghostty
-        david.zen-browser
+        zen-browser
+        helium
       ];
       homeManager =
         {

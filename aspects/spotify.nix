@@ -1,6 +1,8 @@
 { inputs, ... }:
 {
-  den.aspects.david.spotify.homeManager =
+  den.aspects.spotify.xdg-mime."x-scheme-handler/spotify" = [ "spotify.desktop" ];
+
+  den.aspects.spotify.homeManager =
     {
       pkgs,
       ...

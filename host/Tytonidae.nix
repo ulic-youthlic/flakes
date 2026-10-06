@@ -67,6 +67,8 @@
         kdeconnect
         obs
         steam
+        bitwarden
+        prismlauncher
         upower
         wshowkeys
         asus
@@ -123,7 +125,8 @@
       provides.david = {
         includes = with den.aspects; [
           radicle
-          david.spotify
+          spotify
+          kdenlive
           ion
           aria2
           awscli
@@ -134,7 +137,6 @@
           { pkgs, ... }:
           {
             home.packages = with pkgs; [
-              kdePackages.kdenlive
               android-tools
             ];
           };

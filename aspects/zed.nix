@@ -1,5 +1,11 @@
 {
-  den.aspects.david.zed.homeManager =
+  den.aspects.zed.xdg-mime = {
+    "text/plain" = [ "dev.zed.Zed.desktop" ];
+    "application/x-zerosize" = [ "dev.zed.Zed.desktop" ];
+    "x-scheme-handler/zed" = [ "dev.zed.Zed.desktop" ];
+  };
+
+  den.aspects.zed.homeManager =
     {
       pkgs,
       lib,

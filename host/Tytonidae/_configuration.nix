@@ -28,12 +28,10 @@
     onefetch
     zulip
     aria2
-    bitwarden-desktop
 
     juicity
     waypipe
     iperf3
-    prismlauncher
 
     sbctl
   ];

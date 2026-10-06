@@ -1,4 +1,9 @@
 {
+  den.aspects.ghostty.nixos.xdg.terminal-exec = {
+    enable = true;
+    settings.default = [ "com.mitchellh.ghostty.desktop" ];
+  };
+
   den.aspects.ghostty.homeManager =
     { lib, ... }:
     {

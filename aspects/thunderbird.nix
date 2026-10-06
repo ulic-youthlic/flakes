@@ -40,6 +40,13 @@
     in
     {
       includes = lib.optional withExternalGnupg den.aspects.gpg;
+      xdg-mime = lib.genAttrs [
+        "x-scheme-handler/mailto"
+        "message/rfc822"
+        "text/calendar"
+        "text/vcard"
+        "text/x-vcard"
+      ] (_: [ "thunderbird.desktop" ]);
       homeManager =
         { pkgs, ... }:
         {

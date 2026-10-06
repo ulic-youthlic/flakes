@@ -1,4 +1,41 @@
+{ lib, ... }:
 {
+  den.aspects.helix.xdg-mime = lib.genAttrs [
+    "text/plain"
+    "text/english"
+    "text/markdown"
+    "text/csv"
+    "text/tab-separated-values"
+    "text/css"
+    "text/javascript"
+    "text/xml"
+    "text/yaml"
+    "text/x-c"
+    "text/x-c++"
+    "text/x-chdr"
+    "text/x-c++hdr"
+    "text/x-csrc"
+    "text/x-c++src"
+    "text/x-java"
+    "text/x-makefile"
+    "text/x-nix"
+    "text/x-python"
+    "text/x-rust"
+    "text/x-go"
+    "text/x-lua"
+    "text/x-sh"
+    "text/x-tex"
+    "application/javascript"
+    "application/json"
+    "application/ld+json"
+    "application/toml"
+    "application/xml"
+    "application/yaml"
+    "application/x-yaml"
+    "application/x-shellscript"
+    "application/x-zerosize"
+  ] (_: lib.mkBefore [ "Helix.desktop" ]);
+
   den.aspects.helix.nixos =
     { pkgs, ... }:
     {
