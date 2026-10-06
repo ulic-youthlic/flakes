@@ -42,6 +42,19 @@
       secret = "awscli";
       path = "/home/david/.config/sops-nix/secrets/awscli";
     };
+    radicle = {
+      alias = "youthlic";
+      uri = {
+        rad.browser = {
+          enable = true;
+          preferredNode = "iris.radicle.xyz";
+        };
+        web-rad = {
+          browser = "zen-twilight.desktop";
+          enable = true;
+        };
+      };
+    };
   };
 
   den.aspects.david = {

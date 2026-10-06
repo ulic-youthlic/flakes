@@ -10,6 +10,10 @@
     hosts.x86_64-linux.Tytonidae = {
       users.david = lib.recursiveUpdate den.users.david {
         awscli.endpoint = "http://localhost:8491";
+        radicle.sops = {
+          secret = "radicle/Tytonidae";
+          path = "/home/david/.config/sops-nix/secrets/radicle/Tytonidae";
+        };
       };
       miniserve.apps = {
         cinny-1 = {
@@ -110,7 +114,7 @@
         };
       provides.david = {
         includes = with den.aspects; [
-          david.radicle
+          radicle
           david.spotify
           ion
           aria2

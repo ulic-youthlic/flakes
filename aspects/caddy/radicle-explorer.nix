@@ -15,10 +15,12 @@
         services.caddy.virtualHosts = {
           "radicle.${caddy-cfg.baseDomain}" = {
             extraConfig = ''
-              root * ${pkgs.radicle-explorer}
               encode zstd gzip
-              try_files {path} /index.html
-              file_server
+              handle {
+                root * ${pkgs.radicle-explorer}
+                try_files {path} /index.html
+                file_server
+              }
             '';
           };
         };
