@@ -1,19 +1,15 @@
 {
   den.aspects.gpg.homeManager =
+    { lib, pkgs, ... }:
     {
-      pkgs,
-      ...
-    }:
-    {
+      # pinentry-gnome3 uses GCR's D-Bus prompt service.
+      home.packages = lib.optional pkgs.stdenv.hostPlatform.isLinux pkgs.gcr_3;
+
       services.gpg-agent = {
         enable = true;
         enableSshSupport = true;
-        pinentry = {
-          package = pkgs.pinentry-selector;
-        };
-        # sshKeys = [
-        #   "C817E333BF88F16EA0F7ADE27BDCCC16AD25E5A6"
-        # ];
+        pinentry.package =
+          if pkgs.stdenv.hostPlatform.isDarwin then pkgs.pinentry_mac else pkgs.pinentry-selector;
       };
       programs.gpg = {
         enable = true;
@@ -21,7 +17,7 @@
         mutableTrust = true;
         publicKeys = [
           {
-            source = ./public-key.txt;
+            source = ../assets/gpg/public-key.txt;
             trust = "ultimate";
           }
         ];

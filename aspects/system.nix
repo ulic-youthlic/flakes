@@ -3,10 +3,6 @@
     nixos =
       { lib, ... }:
       {
-        programs.gnupg.agent = {
-          enable = true;
-        };
-
         environment.variables.EDITOR = "hx";
         services.dbus.implementation = "broker";
 
