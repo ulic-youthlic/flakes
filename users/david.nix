@@ -42,6 +42,35 @@
       secret = "awscli";
       path = "/home/david/.config/sops-nix/secrets/awscli";
     };
+    openssh = {
+      settings."github.com".AddKeysToAgent = "yes";
+      sops = {
+        keys = {
+          tytonidae = {
+            secret = "ssh-private-key/tytonidae";
+            path = "/home/david/.ssh/id_ed25519_tytonidae";
+          };
+          akun = {
+            secret = "ssh-private-key/akun";
+            path = "/home/david/.ssh/id_ed25519_akun";
+          };
+          cape = {
+            secret = "ssh-private-key/cape";
+            path = "/home/david/.ssh/id_ed25519_cape";
+          };
+          deploy = {
+            secret = "ssh-private-key/deploy";
+            path = "/home/david/.ssh/id_ed25519_deploy";
+          };
+        };
+        config = {
+          secret = "ssh-config";
+          path = "/home/david/.config/sops-nix/secrets/ssh-config";
+          format = "yaml";
+          sopsFile = ../secrets/ssh-config.yaml;
+        };
+      };
+    };
     radicle = {
       alias = "youthlic";
       uri = {
@@ -64,7 +93,7 @@
       ghostty
       david.helix
       david.mpv
-      david.openssh
+      openssh.client
       david.wallpaper
       david.zed
       david.zen-browser
