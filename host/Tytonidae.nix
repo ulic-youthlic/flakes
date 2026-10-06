@@ -29,13 +29,14 @@
           port = 9096;
         };
       };
-      readest = {
+      readest = rec {
         port = 9097;
-        environment.SITE_URL = "http://127.0.0.1:9097";
-      };
-      webdav-proxy = {
-        upstream = "https://toi.teracloud.jp";
-        allowedOrigins = [ "http://127.0.0.1:9097" ];
+        listen = "127.0.0.1";
+        webdavProxy = {
+          enable = true;
+          upstream = "https://toi.teracloud.jp";
+          allowedOrigins = [ "http://${listen}:${toString port}" ];
+        };
       };
       rqbit = {
         ratelimitUpload = 10;
@@ -65,7 +66,6 @@
         miniserve
         readest
         rqbit
-        webdav-proxy
         guix
         nix-ld
       ];

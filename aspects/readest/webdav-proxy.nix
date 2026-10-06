@@ -1,5 +1,5 @@
 {
-  den.aspects.webdav-proxy.nixos =
+  den.aspects.readest.webdav-proxy.nixos =
     {
       lib,
       pkgs,
@@ -13,7 +13,7 @@
         port = 9098;
         pathPrefix = "/dav";
       }
-      // host.webdav-proxy;
+      // host.readest.webdavProxy;
       upstream = lib.removeSuffix "/" cfg.upstream;
       proxyConfig = builtins.toJSON {
         inherit (cfg) port pathPrefix allowedOrigins;
