@@ -33,6 +33,7 @@
         wayland.windowManager.niri.extraConfig = lib.mkBefore (
           kdl.formats.v1 (
             [
+              (n "include" "/etc/niri/config.kdl")
               (n "layer-rule" [
                 (n "match" { namespace = "^noctalia-wallpaper"; })
                 (n "place-within-backdrop" true)
