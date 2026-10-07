@@ -89,9 +89,9 @@
   den.aspects.david = {
     includes = with den.aspects; [
       david.alacritty
-      david.cursor
+      pointerCursor
       ghostty
-      david.helix
+      helix
       mpv
       openssh.client
       david.wallpaper

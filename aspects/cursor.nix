@@ -1,5 +1,5 @@
 {
-  den.aspects.david.cursor.homeManager =
+  den.aspects.pointerCursor.homeManager =
     { pkgs, ... }:
     {
       home.pointerCursor = {

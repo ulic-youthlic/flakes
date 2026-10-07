@@ -239,11 +239,13 @@
     in
     {
       home.packages = [ pkgs.steel ];
+      catppuccin.helix.enable = false;
       programs.helix = {
         enable = true;
         inherit package;
         defaultEditor = true;
         settings = lib.fromTOML (builtins.readFile ./config.toml);
+        extraPackages = [ pkgs.editor-runtime ];
         languages = {
           language-server = {
             neocmakelsp = {
