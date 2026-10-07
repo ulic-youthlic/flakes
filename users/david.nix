@@ -94,7 +94,7 @@
       helix
       mpv
       openssh.client
-      david.wallpaper
+      wallpaper
       zed
       zen-browser
       helium

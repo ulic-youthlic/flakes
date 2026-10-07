@@ -1,8 +1,8 @@
 { den, inputs, ... }:
 {
   den.aspects.david.noctalia = {
-    # The wallpaper directory noctalia shows comes from david.wallpaper.
-    includes = [ den.aspects.david.wallpaper ];
+    # The wallpaper directory noctalia shows comes from wallpaper.
+    includes = [ den.aspects.wallpaper ];
     homeManager =
       { config, lib, ... }:
       {
@@ -18,7 +18,7 @@
           systemd.enable = true;
           settings = lib.recursiveUpdate (fromTOML (builtins.readFile ./noctalia-config.toml)) {
             shell.avatar_path = "${config.home.homeDirectory}/.face";
-            wallpaper.directory = "${config.home.homeDirectory}/${config.david.wallpaper.path}";
+            wallpaper.directory = "${config.home.homeDirectory}/pic/wallpapers";
           };
         };
       };
