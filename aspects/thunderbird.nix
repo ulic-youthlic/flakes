@@ -53,7 +53,7 @@
           accounts.email.accounts = accounts;
           programs.thunderbird = {
             enable = true;
-            package = pkgs.thunderbird-latest;
+            package = pkgs.thunderbird-latest-bin;
             profiles.default = {
               inherit withExternalGnupg;
               isDefault = true;
