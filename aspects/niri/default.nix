@@ -34,7 +34,7 @@
       };
     provides.to-users = {
       includes = with den.aspects; [
-        david.kanshi
+        kanshi
         david.noctalia
         ghostty
         zen-browser
