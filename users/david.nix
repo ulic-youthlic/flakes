@@ -88,7 +88,7 @@
 
   den.aspects.david = {
     includes = with den.aspects; [
-      david.alacritty
+      alacritty
       pointerCursor
       ghostty
       helix
