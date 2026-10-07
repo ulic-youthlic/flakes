@@ -1,6 +1,6 @@
 { den, inputs, ... }:
 {
-  den.aspects.david.noctalia = {
+  den.aspects.noctalia = {
     # The wallpaper directory noctalia shows comes from wallpaper.
     includes = [ den.aspects.wallpaper ];
     homeManager =

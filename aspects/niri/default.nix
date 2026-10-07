@@ -35,7 +35,7 @@
     provides.to-users = {
       includes = with den.aspects; [
         kanshi
-        david.noctalia
+        noctalia
         ghostty
         zen-browser
         helium
