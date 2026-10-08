@@ -16,6 +16,23 @@ update:
 updatePkgs:
     nvfetcher
 
+# Check every Go package in the shared root module.
+go-check:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    packages=$(go list ./...)
+    if [[ -z "$packages" ]]; then
+        echo "No Go packages yet."
+        exit 0
+    fi
+    go vet ./...
+    go test ./...
+
+# Resolve dependencies and regenerate the root gomod2nix.toml.
+go-lock:
+    go mod tidy
+    gomod2nix
+
 build specialisation=DEFAULT_SPECIALISATION:
     nh os build {{ FLAKE_HOME }} {{ if specialisation == DEFAULT_SPECIALISATION { "-S" } else { "-s " + specialisation } }}
 

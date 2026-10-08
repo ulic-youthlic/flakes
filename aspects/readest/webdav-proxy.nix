@@ -46,14 +46,12 @@
           after = [ "network-online.target" ];
           wants = [ "network-online.target" ];
           wantedBy = [ "multi-user.target" ];
-          environment.DENO_DIR = "/var/cache/webdav-proxy";
           serviceConfig = {
             ExecStart = utils.escapeSystemdExecArgs [
               (lib.getExe cfg.package)
               proxyConfig
             ];
             DynamicUser = true;
-            CacheDirectory = "webdav-proxy";
             Restart = "on-failure";
             RestartSec = "5s";
             NoNewPrivileges = true;

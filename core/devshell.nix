@@ -13,6 +13,10 @@
           nvfetcher
           alejandra
           oxfmt
+
+          # for go modules
+          go
+          gomod2nix
         ];
       };
     };
