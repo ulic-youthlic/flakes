@@ -13,8 +13,6 @@
           nvfetcher
           alejandra
           oxfmt
-
-          lua-language-server
         ];
       };
     };
