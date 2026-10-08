@@ -22,6 +22,16 @@
           };
         };
       };
+      niri.extraConfig =
+        let
+          inherit (kdl.dsl) n;
+        in
+        kdl.formats.v1 [
+          (n "debug" [
+            (n "render-drm-device" "/dev/dri/by-path/pci-0000:00:02.0-render") # Intel
+            (n "ignore-drm-device" "/dev/dri/by-path/pci-0000:01:00.0-render") # NVIDIA
+          ])
+        ];
       miniserve.apps = {
         cinny-1 = {
           template = "cinny";
@@ -83,45 +93,32 @@
         guix
         nix-ld
       ];
-      nixos =
-        { lib, ... }:
-        let
-          inherit (kdl.dsl) n;
-        in
-        {
-          imports = [
-            ./Tytonidae/_configuration.nix
-          ]
-          ++ (with inputs.nixos-hardware.nixosModules; [
-            common-hidpi
-            common-cpu-intel
-            common-gpu-nvidia
-            common-pc-laptop
-            common-pc-laptop-ssd
-            asus-battery
-          ])
-          ++ [
-            inputs.lanzaboote.nixosModules.lanzaboote
-            ./Tytonidae/_disk-config.nix
-            ./Tytonidae/_filesystem.nix
-            ./Tytonidae/_hardware-configuration.nix
-            ./Tytonidae/_hardware.nix
-            ./Tytonidae/_kanata.nix
-            ./Tytonidae/_networking.nix
-          ];
-          users.users.david = {
-            extraGroups = [ "audio" ];
-            openssh.authorizedKeys.keyFiles = [ ./Tytonidae/tytonidae.pub ];
-          };
-          environment.etc."niri/config.kdl".text = lib.mkAfter (
-            kdl.formats.v1 [
-              (n "debug" [
-                (n "render-drm-device" "/dev/dri/by-path/pci-0000:00:02.0-render") # Intel
-                (n "ignore-drm-device" "/dev/dri/by-path/pci-0000:01:00.0-render") # NVIDIA
-              ])
-            ]
-          );
+      nixos = {
+        imports = [
+          ./Tytonidae/_configuration.nix
+        ]
+        ++ (with inputs.nixos-hardware.nixosModules; [
+          common-hidpi
+          common-cpu-intel
+          common-gpu-nvidia
+          common-pc-laptop
+          common-pc-laptop-ssd
+          asus-battery
+        ])
+        ++ [
+          inputs.lanzaboote.nixosModules.lanzaboote
+          ./Tytonidae/_disk-config.nix
+          ./Tytonidae/_filesystem.nix
+          ./Tytonidae/_hardware-configuration.nix
+          ./Tytonidae/_hardware.nix
+          ./Tytonidae/_kanata.nix
+          ./Tytonidae/_networking.nix
+        ];
+        users.users.david = {
+          extraGroups = [ "audio" ];
+          openssh.authorizedKeys.keyFiles = [ ./Tytonidae/tytonidae.pub ];
         };
+      };
       provides.david = {
         includes = with den.aspects; [
           radicle
