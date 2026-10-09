@@ -3,6 +3,7 @@
   imports = [ inputs.treefmt-nix.flakeModule ];
   perSystem = { lib, ... }: {
     treefmt.programs = {
+      goimports.enable = true;
       nixfmt = {
         enable = true;
         excludes = [ "_sources/*.nix" ];
