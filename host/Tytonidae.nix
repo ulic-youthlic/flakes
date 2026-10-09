@@ -22,6 +22,7 @@
           };
         };
       };
+      incus.httpsAddress = "127.0.0.1:8443";
       niri.extraConfig =
         let
           inherit (kdl.dsl) n;
@@ -129,7 +130,7 @@
           aria2
           awscli
           rustypaste-cli
-          kvm
+          incus
         ];
         homeManager =
           { pkgs, ... }:
