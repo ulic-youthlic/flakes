@@ -111,9 +111,6 @@
   networking = {
     networkmanager.enable = false;
     useDHCP = false;
-    nftables = {
-      enable = true;
-    };
 
     wireless.iwd = {
       enable = true;

@@ -92,6 +92,7 @@
         rqbit
         guix
         nix-ld
+        nftables
       ];
       nixos = {
         imports = [

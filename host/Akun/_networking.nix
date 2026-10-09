@@ -17,9 +17,6 @@
     networkmanager.enable = false;
     useNetworkd = true;
     useDHCP = false;
-    nftables = {
-      enable = true;
-    };
 
     wireless.iwd = {
       enable = true;

@@ -77,6 +77,7 @@
         radicle-seed
         rqbit
         rustypaste
+        nftables
       ];
       nixos = {
         imports = [

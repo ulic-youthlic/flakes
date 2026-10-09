@@ -16,6 +16,7 @@
         wshowkeys
         openssh
         tailscale
+        nftables
       ];
       nixos = {
         imports = [
