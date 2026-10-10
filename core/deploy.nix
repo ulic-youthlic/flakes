@@ -10,6 +10,11 @@ let
   inherit (inputs) deploy-rs;
   inherit (config.flake) nixosConfigurations;
   hosts = lib.concatMap lib.attrValues (lib.attrValues config.den.hosts);
+  # deploy-rs's activation helpers over the host's own pkgs, with nixpkgs'
+  # deploy-rs (the CLI aspects/nix.nix installs) providing activate-rs.
+  deployLib =
+    pkgs:
+    (deploy-rs.overlays.default (pkgs // { deploy-rs.deploy-rs = pkgs.deploy-rs; }) pkgs).deploy-rs.lib;
   mkDeployNode = host: {
     "${host.name}" = {
       inherit (host.deploy) hostname;
@@ -19,7 +24,11 @@ let
       profiles = {
         system = {
           user = "root";
-          path = deploy-rs.lib."${host.system}".activate.nixos nixosConfigurations."${host.name}";
+          path =
+            let
+              system = nixosConfigurations."${host.name}";
+            in
+            (deployLib system.pkgs).activate.nixos system;
         };
       };
     };
