@@ -26,6 +26,8 @@
       flake = false;
     };
 
+    # Keeps its own nixpkgs: overlays.pinned takes the kernels built
+    # against it, which is what the lantian cache serves.
     nix-cachyos-kernel = {
       type = "github";
       owner = "xddxdd";
@@ -74,6 +76,7 @@
       owner = "NixOS";
       repo = "nixos-hardware";
       ref = "master";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     flake-parts = {
@@ -108,12 +111,14 @@
       type = "github";
       owner = "numtide";
       repo = "treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur = {
       type = "github";
       owner = "nix-community";
       repo = "NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     lanzaboote = {
@@ -140,6 +145,7 @@
       type = "github";
       owner = "tomsch";
       repo = "helium-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     fcitx5-vinput = {
