@@ -5,7 +5,6 @@
   ...
 }:
 {
-  nixpkgs.config.cudaSupport = true;
   services = {
     tlp = {
       pd.enable = true;

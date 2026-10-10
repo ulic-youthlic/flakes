@@ -1,23 +1,11 @@
-{ self, ... }:
+{ withSystem, ... }:
 {
+  # Hosts share the flake's nixpkgs instance (core/nixpkgs.nix).
   den.aspects.nixpkgs.nixos =
-    { lib, ... }:
+    { host, ... }:
     {
-      nixpkgs = {
-        overlays = [ self.overlays.default ];
-        config = {
-          allowUnfree = true;
-          allowInsecurePredicate =
-            p:
-            builtins.elem (lib.getName p) [
-              "electron"
-
-              "radicle-node"
-            ];
-          packageOverrides = p: {
-            intel-vaapi-driver = p.intel-vaapi-driver.override { enableHybridCodec = true; };
-          };
-        };
-      };
+      nixpkgs.pkgs = withSystem host.system (
+        { pkgs, ... }: if host.cudaSupport then pkgs.pkgsCuda else pkgs
+      );
     };
 }

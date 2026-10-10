@@ -8,6 +8,7 @@
 {
   den = {
     hosts.x86_64-linux.Tytonidae = {
+      cudaSupport = true;
       users.david = lib.recursiveUpdate den.users.david {
         awscli.endpoint = "http://localhost:8491";
         radicle.sops = {

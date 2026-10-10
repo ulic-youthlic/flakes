@@ -1,45 +1,17 @@
-{
-  inputs,
-  config,
-  ...
-}:
+{ config, ... }:
 {
   perSystem =
     {
       pkgs,
-      system,
       lib,
       self',
       ...
     }:
-    let
-      patchedNixpkgs = inputs.nixpkgs-patcher.lib.patchNixpkgs {
-        inherit system inputs;
-      };
-      overlay = config.flake.overlays.default;
-      nixpkgsArgs = {
-        localSystem = {
-          inherit system;
-        };
-        config = {
-          allowUnfree = true;
-        };
-      };
-      original = import patchedNixpkgs nixpkgsArgs;
-      added =
-        let
-          result = overlay result original;
-        in
-        result;
-    in
     {
-      _module.args.pkgs = import patchedNixpkgs (
-        nixpkgsArgs
-        // {
-          overlays = [ overlay ];
-        }
+      # The derivations the overlays add (or replace).
+      packages = lib.filterAttrs (_: lib.isDerivation) (
+        lib.intersectAttrs (config.flake.overlays.default pkgs pkgs) pkgs
       );
-      packages = lib.filterAttrs (_: lib.isDerivation) (lib.intersectAttrs added pkgs);
       legacyPackages = pkgs;
       checks = lib.concatMapAttrs (name: value: {
         "package-${name}" = value;
