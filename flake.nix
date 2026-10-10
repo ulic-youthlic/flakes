@@ -159,6 +159,7 @@
       type = "github";
       owner = "catppuccin";
       repo = "nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     import-tree = {
