@@ -126,6 +126,7 @@
       owner = "nix-community";
       repo = "lanzaboote";
       ref = "v1.1.0";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     noctalia = {
