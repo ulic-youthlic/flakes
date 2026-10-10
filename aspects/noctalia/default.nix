@@ -4,7 +4,12 @@
     # The wallpaper directory noctalia shows comes from wallpaper.
     includes = [ den.aspects.wallpaper ];
     homeManager =
-      { config, lib, ... }:
+      {
+        config,
+        lib,
+        pkgs,
+        ...
+      }:
       {
         # Keyed so a second import into the same home is deduplicated.
         imports = [
@@ -15,6 +20,8 @@
         ];
         config.programs.noctalia = {
           enable = true;
+          # The module defaults to the flake's own build; use the overlay's.
+          package = pkgs.noctalia;
           systemd.enable = true;
           settings = lib.recursiveUpdate (fromTOML (builtins.readFile ./noctalia-config.toml)) {
             shell.avatar_path = "${config.home.homeDirectory}/.face";

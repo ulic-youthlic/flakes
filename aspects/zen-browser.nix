@@ -16,6 +16,7 @@
 
   den.aspects.zen-browser.homeManager =
     {
+      config,
       pkgs,
       ...
     }:
@@ -30,6 +31,11 @@
       config = {
         programs.zen-browser = {
           enable = true;
+          # The overlay's build instead of the flake's own. The module only
+          # applies these two settings to its own build, so pass them here.
+          unwrappedPackage = pkgs.zen-browser.twilight-unwrapped.override {
+            inherit (config.programs.zen-browser) policies enablePrivateDesktopEntry;
+          };
           profiles.default = {
             name = "default";
             isDefault = true;
