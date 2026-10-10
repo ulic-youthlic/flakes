@@ -152,6 +152,7 @@
       type = "github";
       owner = "xifan2333";
       repo = "fcitx5-vinput";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     catppuccin = {
