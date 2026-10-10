@@ -139,6 +139,7 @@
       type = "github";
       owner = "Gerg-L";
       repo = "spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     helium-nix = {
