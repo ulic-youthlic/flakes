@@ -1,4 +1,4 @@
-{ inputs, self, ... }:
+{ inputs, ... }:
 {
   den.aspects.nix.nixos =
     {
@@ -31,7 +31,13 @@
         '';
         settings = {
           nix-path = [ "/etc/nix/inputs" ];
-          inherit (self.nix.settings) substituters;
+          substituters = [
+            "https://cache.nixos.org"
+            "https://cache.nixos-cuda.org"
+            "https://cache.flox.dev"
+            "https://attic.xuyh0120.win/lantian"
+            "https://nix-community.cachix.org"
+          ];
           trusted-users = [
             "root"
             "@wheel"
@@ -40,6 +46,7 @@
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
             "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
             "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+            "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
           ];
           auto-optimise-store = lib.mkDefault true;
           experimental-features = [
