@@ -7,9 +7,6 @@
       ...
     }:
     {
-      environment.systemPackages = with pkgs; [
-        deploy-rs
-      ];
       sops.secrets."access-tokens" = {
         mode = "0444";
       };
