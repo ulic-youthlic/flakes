@@ -21,10 +21,6 @@
       owner = "fzakaria";
       repo = "nixpkgs-multiverse";
     };
-    nixpkgs-patch-helix-fix = {
-      url = "https://github.com/NixOS/nixpkgs/pull/569589.patch";
-      flake = false;
-    };
 
     # Keeps its own nixpkgs: overlays.pinned takes the kernels built
     # against it, which is what the lantian cache serves.
