@@ -60,7 +60,6 @@
               end
             '';
         };
-        fastfetch.enable = true;
       };
     };
 }

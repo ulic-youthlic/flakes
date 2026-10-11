@@ -13,13 +13,6 @@
         config = lib.mkMerge [
           {
             programs = {
-              gh = {
-                enable = true;
-                gitCredentialHelper.enable = true;
-                settings = {
-                  git_protocol = "ssh";
-                };
-              };
               git = {
                 enable = true;
                 settings = {

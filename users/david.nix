@@ -99,6 +99,7 @@
       zen-browser
       helium
       git
+      gh
       gpg
       jujutsu
       thunderbird
@@ -108,11 +109,13 @@
       direnv
       eza
       fish
+      fastfetch
       fzf
       starship
       yazi
       zoxide
       cli-tools
+      sops.cli
     ];
     nixos =
       { lib, pkgs, ... }:
@@ -141,6 +144,7 @@
           qq
           scrcpy
           gitoxide
+          ast-grep
         ];
       };
   };

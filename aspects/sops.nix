@@ -10,24 +10,25 @@
         generateKey = false;
       };
     };
-    homeManager =
+    homeManager = {
+      imports = [ inputs.sops-nix.homeManagerModules.sops ];
+      sops = {
+        age = {
+          keyFile = "/var/sops/key.txt";
+          generateKey = false;
+        };
+        defaultSopsFile = ../secrets/general.yaml;
+      };
+    };
+
+    # The CLIs for editing secrets, for users who do.
+    cli.homeManager =
       { pkgs, ... }:
       {
-        imports = [ inputs.sops-nix.homeManagerModules.sops ];
-        home.packages = (
-          with pkgs;
-          [
-            sops
-            age
-          ]
-        );
-        sops = {
-          age = {
-            keyFile = "/var/sops/key.txt";
-            generateKey = false;
-          };
-          defaultSopsFile = ../secrets/general.yaml;
-        };
+        home.packages = with pkgs; [
+          sops
+          age
+        ];
       };
   };
 }

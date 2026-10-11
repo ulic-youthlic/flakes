@@ -17,7 +17,6 @@
         dust
         duf
         doggo
-        ast-grep
         dig
         numbat
         viu
