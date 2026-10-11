@@ -9,7 +9,7 @@
         let
           cfg = {
             package = pkgs.readest-web;
-            denoPackage = pkgs.deno;
+            nodePackage = pkgs.nodejs_24;
           }
           // host.readest;
           caddy-cfg = host.caddy;
@@ -28,7 +28,6 @@
                   PORT = toString cfg.port;
                   SELF_HOSTED = "true";
                   NEXT_TELEMETRY_DISABLED = "1";
-                  DENO_DIR = "/var/cache/readest/deno";
                 }
                 // {
                   SITE_URL = cfg.origin or "http://${cfg.listen}:${toString cfg.port}";
@@ -41,7 +40,7 @@
                 '';
                 serviceConfig = {
                   ExecStart = ''
-                    ${lib.getExe cfg.denoPackage} run --no-config --no-lock --cached-only --node-modules-dir=manual --no-prompt --allow-read --allow-write=/run/readest,/var/cache/readest,/tmp --allow-env --allow-net --allow-sys --allow-ffi /run/readest/apps/readest-app/server.js
+                    ${lib.getExe cfg.nodePackage} /run/readest/apps/readest-app/server.js
                   '';
                   WorkingDirectory = "/run/readest";
                   RuntimeDirectory = "readest";

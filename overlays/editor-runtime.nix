@@ -22,7 +22,7 @@
         markdown-oxide
         marksman
         nixd
-        deno
+        oxfmt
         alejandra
         vscode-langservers-extracted
         fish-lsp

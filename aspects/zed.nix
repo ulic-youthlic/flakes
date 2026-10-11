@@ -21,7 +21,6 @@
             "asciidoc"
             "basher"
             "cargo-tom"
-            "deno"
             "docker-compose"
             "dockerfile"
             "fish"

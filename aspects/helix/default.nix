@@ -150,23 +150,19 @@
         };
         yaml = {
           formatter = {
-            command = "deno";
+            command = "oxfmt";
             args = [
-              "fmt"
-              "-"
-              "--ext"
-              "yaml"
+              "--stdin-filepath"
+              "%{buffer_name}"
             ];
           };
         };
         html = {
           formatter = {
-            command = "deno";
+            command = "oxfmt";
             args = [
-              "fmt"
-              "-"
-              "--ext"
-              "html"
+              "--stdin-filepath"
+              "%{buffer_name}"
             ];
           };
           language-servers = [
@@ -175,12 +171,10 @@
         };
         css = {
           formatter = {
-            command = "deno";
+            command = "oxfmt";
             args = [
-              "fmt"
-              "-"
-              "--ext"
-              "css"
+              "--stdin-filepath"
+              "%{buffer_name}"
             ];
           };
           language-servers = [
@@ -198,12 +192,10 @@
         };
         markdown = {
           formatter = {
-            command = "deno";
+            command = "oxfmt";
             args = [
-              "fmt"
-              "-"
-              "--ext"
-              "md"
+              "--stdin-filepath"
+              "%{buffer_name}"
             ];
           };
         };
@@ -212,12 +204,10 @@
             "vscode-json-language-server"
           ];
           formatter = {
-            command = "deno";
+            command = "oxfmt";
             args = [
-              "fmt"
-              "-"
-              "--ext"
-              "json"
+              "--stdin-filepath"
+              "%{buffer_name}"
             ];
           };
         };
@@ -226,12 +216,10 @@
             "vscode-json-language-server"
           ];
           formatter = {
-            command = "deno";
+            command = "oxfmt";
             args = [
-              "fmt"
-              "-"
-              "--ext"
-              "jsonc"
+              "--stdin-filepath"
+              "%{buffer_name}"
             ];
           };
         };
