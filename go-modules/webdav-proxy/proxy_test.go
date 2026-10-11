@@ -457,7 +457,7 @@ func TestLogsDoNotContainCredentialsOrURLs(t *testing.T) {
 	}))
 	r := request("GET", "/dav/private?token=secret", nil)
 	w := httptest.NewRecorder()
-	p.ServeHTTP(w, r)
+	logRequests(p).ServeHTTP(w, r)
 	for _, secret := range []string{auth, "example.com", "private", "token", "secret"} {
 		if strings.Contains(logs.String(), secret) {
 			t.Errorf("request log contains %q", secret)

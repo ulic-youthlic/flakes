@@ -5,180 +5,251 @@ import (
 	"errors"
 	"io"
 	"log"
-	"log/slog"
 	"net/http"
 	"net/http/httputil"
-	"net/url"
-	"regexp"
 	"slices"
-	"strconv"
 	"strings"
 	"time"
 )
 
+// methods are the HTTP and WebDAV methods the proxy accepts.
 var methods = []string{
 	"OPTIONS", "GET", "HEAD", "PROPFIND", "PROPPATCH", "MKCOL", "PUT", "DELETE",
 	"COPY", "MOVE", "LOCK", "UNLOCK",
 }
 
+// requestHeaders are the headers a browser may send, in lower case as they
+// appear in Access-Control-Request-Headers.
 var requestHeaders = []string{
 	"authorization", "content-type", "depth", "range", "destination", "overwrite",
 	"if", "if-match", "if-none-match", "if-modified-since", "if-unmodified-since",
 	"lock-token", "timeout",
 }
 
-var taggedURI = regexp.MustCompile(`<([^<>]*)>`)
-var errLocation = errors.New("upstream location is outside the configured WebDAV endpoint")
+var (
+	allowMethods = strings.Join(methods, ", ")
+	allowHeaders = strings.Join(requestHeaders, ", ")
+)
 
+// exposeHeaders are the response headers scripts on an allowed origin may read.
+const exposeHeaders = "ETag, Content-Length, Last-Modified, Content-Range, Accept-Ranges, DAV, Allow, Lock-Token, Location"
+
+// webdavProxy forwards WebDAV requests from the allowed browser origins to the
+// upstream, and gives those origins CORS access to the responses.
 type webdavProxy struct {
-	upstream *url.URL
-	local    *url.URL
-	prefix   string
-	origins  map[string]bool
-	proxy    *httputil.ReverseProxy
-	timeout  time.Duration
+	settings
+	timeout time.Duration // limit for one proxied request
+	proxy   *httputil.ReverseProxy
 }
 
-func parseOrigin(raw string) (*url.URL, error) {
-	u, err := url.Parse(raw)
-	if err != nil || u.Hostname() == "" || (u.Scheme != "http" && u.Scheme != "https") ||
-		u.User != nil || u.Opaque != "" || (u.Path != "" && u.Path != "/") ||
-		u.RawQuery != "" || u.ForceQuery || u.Fragment != "" {
-		return nil, errors.New("expected an HTTP(S) origin without credentials, path, query, or fragment")
-	}
-	if port := u.Port(); port != "" {
-		n, err := strconv.Atoi(port)
-		if err != nil || n < 1 || n > 65535 {
-			return nil, errors.New("invalid origin port")
-		}
-	}
-	u.Path = ""
-	u.RawPath = ""
-	return u, nil
-}
-
+// newProxy validates cfg and builds the proxy. A nil transport means direct
+// connections to the upstream.
 func newProxy(cfg config, transport http.RoundTripper) (*webdavProxy, error) {
-	if cfg.Port < 1 || cfg.Port > 65535 {
-		return nil, errors.New("port must be between 1 and 65535")
-	}
-	upstream, err := parseOrigin(cfg.Upstream)
+	s, err := cfg.validate()
 	if err != nil {
-		return nil, errors.New("upstream must be an HTTP(S) origin without credentials or a path")
+		return nil, err
 	}
-	prefix, err := url.ParseRequestURI(cfg.PathPrefix)
-	if err != nil || !strings.HasPrefix(cfg.PathPrefix, "/") || prefix.Host != "" ||
-		prefix.RawQuery != "" || prefix.ForceQuery || strings.Contains(cfg.PathPrefix, "#") || !safePath(prefix.Path) {
-		return nil, errors.New("pathPrefix must be an absolute path without traversal, query, or fragment")
-	}
-	p := &webdavProxy{
-		upstream: upstream,
-		local:    &url.URL{Scheme: "http", Host: "127.0.0.1:" + strconv.Itoa(cfg.Port)},
-		prefix:   strings.TrimRight(prefix.Path, "/"),
-		origins:  make(map[string]bool),
-		timeout:  5 * time.Minute,
-	}
-	for _, raw := range cfg.AllowedOrigins {
-		origin, err := parseOrigin(raw)
-		if err != nil || origin.String() != raw {
-			return nil, errors.New("allowedOrigins must contain HTTP(S) origins without trailing slashes")
-		}
-		p.origins[raw] = true
-	}
-	if len(p.origins) == 0 {
-		return nil, errors.New("allowedOrigins must not be empty")
-	}
+	p := &webdavProxy{settings: s, timeout: transferTimeout}
 	if transport == nil {
-		t := http.DefaultTransport.(*http.Transport).Clone()
-		t.Proxy = nil
-		// Keep compressed bytes and their metadata together; the browser decodes them.
-		t.DisableCompression = true
-		t.ResponseHeaderTimeout = p.timeout
-		transport = t
+		transport = newTransport(p.timeout)
 	}
 	p.proxy = &httputil.ReverseProxy{
-		Transport: transport,
-		ErrorLog:  log.New(io.Discard, "", 0),
-		Rewrite: func(r *httputil.ProxyRequest) {
-			// Copy paths directly, including RawPath, instead of resolving against a base URL.
-			r.Out.URL.Scheme = p.upstream.Scheme
-			r.Out.URL.Host = p.upstream.Host
-			r.Out.Host = p.upstream.Host
-			r.Out.URL.RawQuery = r.In.URL.RawQuery
-			for name := range r.Out.Header {
-				lower := strings.ToLower(name)
-				if lower == "origin" || lower == "referer" || lower == "cookie" ||
-					lower == "forwarded" || strings.HasPrefix(lower, "x-forwarded-") {
-					r.Out.Header.Del(name)
-				}
-			}
-		},
-		ModifyResponse: func(response *http.Response) error {
-			if location := response.Header.Get("Location"); location != "" {
-				u, err := url.Parse(location)
-				if err != nil {
-					return errLocation
-				}
-				u = response.Request.URL.ResolveReference(u)
-				if u.User != nil || !sameOrigin(u, p.upstream) || !p.matchesPath(u.Path) {
-					return errLocation
-				}
-				u.Scheme, u.Host = p.local.Scheme, p.local.Host
-				response.Header.Set("Location", u.String())
-			}
-			response.Header.Del("Set-Cookie")
-			p.addCORS(response.Header, browserOrigin(response.Request))
-			return nil
-		},
-		ErrorHandler: func(w http.ResponseWriter, r *http.Request, err error) {
-			code := http.StatusBadGateway
-			if errors.Is(err, context.DeadlineExceeded) || errors.Is(r.Context().Err(), context.DeadlineExceeded) {
-				code = http.StatusGatewayTimeout
-			}
-			p.reply(w, r, code, "Unable to reach the configured WebDAV endpoint")
-		},
+		Transport:      transport,
+		Rewrite:        p.rewrite,
+		ModifyResponse: p.modifyResponse,
+		ErrorHandler:   p.handleError,
+		// handleError answers every error; don't log URLs.
+		ErrorLog: log.New(io.Discard, "", 0),
 	}
 	return p, nil
 }
 
-// A distinct key keeps the validated browser origin available after Rewrite removes its header.
-type originKey struct{}
-
-func browserOrigin(r *http.Request) string {
-	if origin, ok := r.Context().Value(originKey{}).(string); ok {
-		return origin
-	}
-	return r.Header.Get("Origin")
+func newTransport(responseHeaderTimeout time.Duration) *http.Transport {
+	t := http.DefaultTransport.(*http.Transport).Clone()
+	// Never send the browser's credentials through an environment proxy.
+	t.Proxy = nil
+	// Keep compressed bytes and their metadata together; the browser decodes them.
+	t.DisableCompression = true
+	t.ResponseHeaderTimeout = responseHeaderTimeout
+	return t
 }
 
-func safePath(path string) bool {
-	if !strings.HasPrefix(path, "/") || strings.ContainsAny(path, "\\\x00\r\n") {
-		return false
+// ServeHTTP answers CORS preflights and rejected requests itself, and
+// forwards all other requests.
+func (p *webdavProxy) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if err := p.checkRequest(r); err != nil {
+		p.fail(w, r, err)
+		return
 	}
-	for _, segment := range strings.Split(path, "/") {
-		if segment == "." || segment == ".." {
-			return false
+	if r.Method == http.MethodOptions {
+		p.servePreflight(w, r)
+		return
+	}
+	ctx, cancel := context.WithTimeout(r.Context(), p.timeout)
+	defer cancel()
+	out := r.Clone(context.WithValue(ctx, originKey{}, r.Header.Get("Origin")))
+	if err := p.rewriteDAVHeaders(out.Header); err != nil {
+		p.fail(w, r, err)
+		return
+	}
+	p.proxy.ServeHTTP(w, out)
+}
+
+// An httpError is a request error the proxy answers itself.
+type httpError struct {
+	code int
+	msg  string
+}
+
+func (e *httpError) Error() string { return e.msg }
+
+// checkRequest rejects requests for another host, from an untrusted origin,
+// outside the served path, or with a method the proxy doesn't forward.
+func (p *webdavProxy) checkRequest(r *http.Request) error {
+	if r.Host != p.listen.Host || (r.URL.IsAbs() && !sameOrigin(r.URL, p.listen)) {
+		return &httpError{http.StatusMisdirectedRequest, "Unexpected proxy host"}
+	}
+	if origin := r.Header.Get("Origin"); len(r.Header.Values("Origin")) > 1 || (origin != "" && !p.origins[origin]) {
+		return &httpError{http.StatusForbidden, "Browser origin is not allowed"}
+	}
+	if !p.matchesPath(r.URL.Path) {
+		return &httpError{http.StatusNotFound, "Outside the WebDAV path"}
+	}
+	if !slices.Contains(methods, r.Method) {
+		return &httpError{http.StatusMethodNotAllowed, "Method is not allowed"}
+	}
+	return nil
+}
+
+// servePreflight answers OPTIONS requests, CORS preflights included, without
+// asking the upstream.
+func (p *webdavProxy) servePreflight(w http.ResponseWriter, r *http.Request) {
+	method := strings.ToUpper(strings.TrimSpace(r.Header.Get("Access-Control-Request-Method")))
+	if method != "" && !slices.Contains(methods, method) {
+		p.fail(w, r, &httpError{http.StatusMethodNotAllowed, "Requested method is not allowed"})
+		return
+	}
+	for name := range strings.SplitSeq(strings.Join(r.Header.Values("Access-Control-Request-Headers"), ","), ",") {
+		name = strings.ToLower(strings.TrimSpace(name))
+		if name != "" && !slices.Contains(requestHeaders, name) {
+			p.fail(w, r, &httpError{http.StatusBadRequest, "Requested header is not allowed"})
+			return
 		}
 	}
-	return true
-}
-
-func (p *webdavProxy) matchesPath(path string) bool {
-	return safePath(path) && (p.prefix == "" || path == p.prefix || strings.HasPrefix(path, p.prefix+"/"))
-}
-
-func sameOrigin(a, b *url.URL) bool {
-	port := func(u *url.URL) string {
-		if u.Port() != "" {
-			return u.Port()
-		}
-		if u.Scheme == "https" {
-			return "443"
-		}
-		return "80"
+	origin := r.Header.Get("Origin")
+	h := w.Header()
+	p.addCORS(h, origin)
+	h.Add("Vary", "Access-Control-Request-Method, Access-Control-Request-Headers, Access-Control-Request-Private-Network")
+	h.Set("Allow", allowMethods)
+	h.Set("Access-Control-Allow-Methods", allowMethods)
+	h.Set("Access-Control-Allow-Headers", allowHeaders)
+	h.Set("Access-Control-Max-Age", "600")
+	if p.origins[origin] && r.Header.Get("Access-Control-Request-Private-Network") == "true" {
+		h.Set("Access-Control-Allow-Private-Network", "true")
 	}
-	return a.Scheme == b.Scheme && strings.EqualFold(a.Hostname(), b.Hostname()) && port(a) == port(b)
+	w.WriteHeader(http.StatusNoContent)
 }
 
+// rewriteDAVHeaders points the URLs in the Destination and If headers at the
+// upstream. Each header may appear only once: forwarding a repeated one would
+// let its unchecked copies through.
+func (p *webdavProxy) rewriteDAVHeaders(h http.Header) error {
+	for _, name := range []string{"Destination", "If"} {
+		if len(h.Values(name)) > 1 {
+			return &httpError{http.StatusBadRequest, "Repeated " + name + " header"}
+		}
+	}
+	if destination := h.Get("Destination"); destination != "" {
+		target, err := p.upstreamURL(destination)
+		if err != nil {
+			return &httpError{http.StatusBadRequest, "Invalid WebDAV destination"}
+		}
+		h.Set("Destination", target)
+	}
+	if condition := h.Get("If"); condition != "" {
+		rewritten, err := p.rewriteIf(condition)
+		if err != nil {
+			return &httpError{http.StatusBadRequest, "Invalid WebDAV resource tag"}
+		}
+		h.Set("If", rewritten)
+	}
+	return nil
+}
+
+// rewrite sends the request to the upstream with its path and query exactly as
+// received, and without the headers that describe the browser's context.
+func (p *webdavProxy) rewrite(r *httputil.ProxyRequest) {
+	// Set the URL fields directly; ProxyRequest.SetURL would join and
+	// re-encode the path.
+	r.Out.URL.Scheme = p.upstream.Scheme
+	r.Out.URL.Host = p.upstream.Host
+	r.Out.Host = p.upstream.Host
+	// ReverseProxy drops query parameters it can't parse before calling
+	// Rewrite; forward the query as the client sent it.
+	r.Out.URL.RawQuery = r.In.URL.RawQuery
+	for name := range r.Out.Header {
+		if browserContextHeader(name) {
+			r.Out.Header.Del(name)
+		}
+	}
+}
+
+func browserContextHeader(name string) bool {
+	switch name = strings.ToLower(name); name {
+	case "origin", "referer", "cookie", "forwarded":
+		return true
+	}
+	return strings.HasPrefix(name, "x-forwarded-")
+}
+
+// modifyResponse keeps redirects on the proxy, drops cookies, and replaces the
+// upstream's CORS headers with the proxy's.
+func (p *webdavProxy) modifyResponse(resp *http.Response) error {
+	if location := resp.Header.Get("Location"); location != "" {
+		local, err := p.localURL(resp.Request.URL, location)
+		if err != nil {
+			return err
+		}
+		resp.Header.Set("Location", local)
+	}
+	resp.Header.Del("Set-Cookie")
+	p.addCORS(resp.Header, browserOrigin(resp.Request))
+	return nil
+}
+
+// handleError answers a failed upstream request, or a response modifyResponse
+// rejected.
+func (p *webdavProxy) handleError(w http.ResponseWriter, r *http.Request, err error) {
+	switch {
+	case errors.Is(err, errLocation):
+		p.fail(w, r, &httpError{http.StatusBadGateway, "The WebDAV endpoint redirected outside its path"})
+	case errors.Is(err, context.DeadlineExceeded), errors.Is(r.Context().Err(), context.DeadlineExceeded):
+		p.fail(w, r, &httpError{http.StatusGatewayTimeout, "The WebDAV endpoint did not answer in time"})
+	default:
+		p.fail(w, r, &httpError{http.StatusBadGateway, "Unable to reach the configured WebDAV endpoint"})
+	}
+}
+
+// fail answers r with err as plain text, keeping the CORS headers so that the
+// browser app can read the error.
+func (p *webdavProxy) fail(w http.ResponseWriter, r *http.Request, err error) {
+	he := &httpError{http.StatusInternalServerError, "Internal error"}
+	errors.As(err, &he)
+	h := w.Header()
+	if he.code == http.StatusMethodNotAllowed {
+		h.Set("Allow", allowMethods)
+	}
+	p.addCORS(h, browserOrigin(r))
+	h.Set("Content-Type", "text/plain; charset=utf-8")
+	h.Set("Cache-Control", "no-store")
+	w.WriteHeader(he.code)
+	if r.Method != http.MethodHead {
+		_, _ = io.WriteString(w, he.msg+"\n")
+	}
+}
+
+// addCORS replaces any CORS headers in h with the proxy's, which grant access
+// to allowed origins only.
 func (p *webdavProxy) addCORS(h http.Header, origin string) {
 	for name := range h {
 		if strings.HasPrefix(strings.ToLower(name), "access-control-") {
@@ -188,136 +259,17 @@ func (p *webdavProxy) addCORS(h http.Header, origin string) {
 	h.Add("Vary", "Origin")
 	if p.origins[origin] {
 		h.Set("Access-Control-Allow-Origin", origin)
-		h.Set("Access-Control-Expose-Headers", "ETag, Content-Length, Last-Modified, Content-Range, Accept-Ranges, DAV, Allow, Lock-Token, Location")
+		h.Set("Access-Control-Expose-Headers", exposeHeaders)
 	}
 }
 
-func (p *webdavProxy) reply(w http.ResponseWriter, r *http.Request, code int, message string) {
-	p.addCORS(w.Header(), browserOrigin(r))
-	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-	w.Header().Set("Cache-Control", "no-store")
-	w.WriteHeader(code)
-	if r.Method != http.MethodHead {
-		_, _ = io.WriteString(w, message+"\n")
-	}
-}
+// originKey carries the browser origin past rewrite, which removes the Origin
+// header from the forwarded request.
+type originKey struct{}
 
-func (p *webdavProxy) destination(raw string) (string, error) {
-	u, err := url.Parse(raw)
-	if err != nil {
-		return "", errors.New("invalid destination")
+func browserOrigin(r *http.Request) string {
+	if origin, ok := r.Context().Value(originKey{}).(string); ok {
+		return origin
 	}
-	u = p.local.ResolveReference(u)
-	if u.User != nil || u.Fragment != "" || !p.matchesPath(u.Path) ||
-		(!sameOrigin(u, p.local) && !sameOrigin(u, p.upstream)) {
-		return "", errors.New("destination is outside the configured WebDAV endpoint")
-	}
-	u.Scheme, u.Host = p.upstream.Scheme, p.upstream.Host
-	return u.String(), nil
+	return r.Header.Get("Origin")
 }
-
-func (p *webdavProxy) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	started := time.Now()
-	recorded := &statusWriter{ResponseWriter: w}
-	w = recorded
-	defer func() {
-		// Never log paths, query parameters, credentials, request headers, or bodies.
-		slog.Info("request", "method", r.Method, "status", recorded.status, "durationMs", time.Since(started).Milliseconds())
-	}()
-	if r.Host != p.local.Host || (r.URL.IsAbs() && !sameOrigin(r.URL, p.local)) {
-		p.reply(w, r, http.StatusMisdirectedRequest, "Unexpected proxy host")
-		return
-	}
-	origin := r.Header.Get("Origin")
-	if len(r.Header.Values("Origin")) > 1 || (origin != "" && !p.origins[origin]) {
-		p.reply(w, r, http.StatusForbidden, "Browser origin is not allowed")
-		return
-	}
-	if !p.matchesPath(r.URL.Path) {
-		p.reply(w, r, http.StatusNotFound, "Outside the WebDAV path")
-		return
-	}
-	if !slices.Contains(methods, r.Method) {
-		w.Header().Set("Allow", strings.Join(methods, ", "))
-		p.reply(w, r, http.StatusMethodNotAllowed, "Method is not allowed")
-		return
-	}
-	if r.Method == http.MethodOptions {
-		method := strings.ToUpper(strings.TrimSpace(r.Header.Get("Access-Control-Request-Method")))
-		if method != "" && !slices.Contains(methods, method) {
-			p.reply(w, r, http.StatusMethodNotAllowed, "Requested method is not allowed")
-			return
-		}
-		for _, name := range strings.Split(strings.Join(r.Header.Values("Access-Control-Request-Headers"), ","), ",") {
-			name = strings.ToLower(strings.TrimSpace(name))
-			if name != "" && !slices.Contains(requestHeaders, name) {
-				p.reply(w, r, http.StatusBadRequest, "Requested header is not allowed")
-				return
-			}
-		}
-		p.addCORS(w.Header(), origin)
-		w.Header().Add("Vary", "Access-Control-Request-Method, Access-Control-Request-Headers, Access-Control-Request-Private-Network")
-		w.Header().Set("Allow", strings.Join(methods, ", "))
-		w.Header().Set("Access-Control-Allow-Methods", strings.Join(methods, ", "))
-		w.Header().Set("Access-Control-Allow-Headers", strings.Join(requestHeaders, ", "))
-		w.Header().Set("Access-Control-Max-Age", "600")
-		if p.origins[origin] && r.Header.Get("Access-Control-Request-Private-Network") == "true" {
-			w.Header().Set("Access-Control-Allow-Private-Network", "true")
-		}
-		w.WriteHeader(http.StatusNoContent)
-		return
-	}
-	ctx, cancel := context.WithTimeout(r.Context(), p.timeout)
-	defer cancel()
-	r = r.Clone(context.WithValue(ctx, originKey{}, origin))
-	if destination := r.Header.Get("Destination"); destination != "" {
-		target, err := p.destination(destination)
-		if err != nil {
-			p.reply(w, r, http.StatusBadRequest, "Invalid WebDAV destination")
-			return
-		}
-		r.Header.Set("Destination", target)
-	}
-	// DAV If headers may contain resource URLs as well as opaque lock tokens.
-	var invalidTag bool
-	ifHeader := taggedURI.ReplaceAllStringFunc(r.Header.Get("If"), func(tag string) string {
-		raw := tag[1 : len(tag)-1]
-		if !strings.HasPrefix(raw, "http://") && !strings.HasPrefix(raw, "https://") {
-			return tag
-		}
-		target, err := p.destination(raw)
-		if err != nil {
-			invalidTag = true
-		}
-		return "<" + target + ">"
-	})
-	if invalidTag {
-		p.reply(w, r, http.StatusBadRequest, "Invalid WebDAV resource tag")
-		return
-	}
-	if ifHeader != "" {
-		r.Header.Set("If", ifHeader)
-	}
-	p.proxy.ServeHTTP(w, r)
-}
-
-type statusWriter struct {
-	http.ResponseWriter
-	status int
-}
-
-func (w *statusWriter) WriteHeader(code int) {
-	if code >= 200 && w.status == 0 {
-		w.status = code
-	}
-	w.ResponseWriter.WriteHeader(code)
-}
-
-func (w *statusWriter) Write(b []byte) (int, error) {
-	if w.status == 0 {
-		w.WriteHeader(http.StatusOK)
-	}
-	return w.ResponseWriter.Write(b)
-}
-
-func (w *statusWriter) Unwrap() http.ResponseWriter { return w.ResponseWriter }
