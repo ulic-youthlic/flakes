@@ -18,6 +18,7 @@
         // host.miniflux;
         containerAddress = "192.168.111.102";
         adminCredentialsFile = cfg.sops.path;
+        inherit (host.containers) gateway prefixLength;
       in
       {
         config = {
@@ -30,7 +31,6 @@
             autoStart = true;
             privateNetwork = true;
             hostBridge = host.containers.bridgeName;
-            localAddress = "${containerAddress}/24";
             bindMounts = {
               "/var/lib/miniflux" = {
                 hostPath = "/mnt/containers/miniflux/state";
@@ -92,13 +92,24 @@
               };
 
               networking = {
-                defaultGateway = "192.168.111.1";
+                useNetworkd = true;
                 firewall = {
                   enable = true;
                   allowedTCPPorts = [ cfg.httpPort ];
                   allowedUDPPorts = [ cfg.httpPort ];
                 };
+                # The container has its own network namespace, so the host's
+                # /etc/resolv.conf is not reachable; resolved serves DNS.
                 useHostResolvConf = lib.mkForce false;
+              };
+
+              # The container's interface, set up here rather than by
+              # networking.interfaces: nspawn renames the veth to eth0 before
+              # systemd starts.
+              systemd.network.networks."10-eth0" = {
+                matchConfig.Name = "eth0";
+                address = [ "${containerAddress}/${toString prefixLength}" ];
+                routes = [ { Gateway = gateway; } ];
               };
               services.resolved.enable = true;
               system.stateVersion = "24.11";

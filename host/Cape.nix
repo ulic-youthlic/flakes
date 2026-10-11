@@ -12,6 +12,9 @@
       containers = {
         interface = "ens3";
         bridgeName = "br0";
+        # Address of the bridge, which is the containers' gateway.
+        gateway = "192.168.111.1";
+        prefixLength = 24;
       };
       caddy = {
         enable = true;

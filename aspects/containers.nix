@@ -31,8 +31,8 @@
             useDHCP = true;
             ipv4.addresses = [
               {
-                address = "192.168.111.1";
-                prefixLength = 24;
+                address = cfg.gateway;
+                inherit (cfg) prefixLength;
               }
             ];
           };
