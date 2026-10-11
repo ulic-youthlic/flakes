@@ -2,13 +2,14 @@
   den.overlays.pinentry-selector =
     { prev }:
     let
-      inherit (prev) writeShellApplication pinentry-all;
+      inherit (prev) writeShellApplication pinentry-gnome3;
     in
     {
       pinentry-selector = writeShellApplication {
         name = "pinentry";
+        # pinentry-gnome3 also ships pinentry-tty.
         runtimeInputs = [
-          pinentry-all
+          pinentry-gnome3
         ];
         text = # bash
           ''
