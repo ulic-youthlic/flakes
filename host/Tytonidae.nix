@@ -122,25 +122,25 @@
           openssh.authorizedKeys.keyFiles = [ ./Tytonidae/tytonidae.pub ];
         };
       };
-      provides.david = {
-        includes = with den.aspects; [
-          radicle
-          spotify
-          kdenlive
-          ion
-          aria2
-          awscli
-          rustypaste-cli
-          incus
-        ];
-        homeManager =
-          { pkgs, ... }:
-          {
-            home.packages = with pkgs; [
-              android-tools
-            ];
-          };
-      };
+    };
+    aspects."david@Tytonidae" = {
+      includes = with den.aspects; [
+        radicle
+        spotify
+        kdenlive
+        ion
+        aria2
+        awscli
+        rustypaste-cli
+        incus
+      ];
+      homeManager =
+        { pkgs, ... }:
+        {
+          home.packages = with pkgs; [
+            android-tools
+          ];
+        };
     };
   };
 }

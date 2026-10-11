@@ -46,8 +46,8 @@ paths containing `/_`, which hold plain NixOS or home-manager modules.
 | `./aspects/<feature>*`     | shared feature aspects, `den.aspects.<name>`, each with `nixos` and/or `homeManager` parts |
 | `./overlays`               | overlays, defined with den-overlays and composed into `overlays.default`                   |
 
-A machine-specific setting for a user goes in the machine's
-`den.aspects.${machine}.provides.${user}`.
+A machine-specific setting for a user goes in
+`den.aspects."${user}@${machine}"`, which den applies on top of `den.aspects.${user}`.
 
 | `outputs` field                           | description                                                            | source                |
 | :---------------------------------------- | :--------------------------------------------------------------------- | :-------------------- |
