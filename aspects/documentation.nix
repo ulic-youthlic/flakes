@@ -1,13 +1,20 @@
 {
   den.aspects.documentation.nixos =
-    { pkgs, ... }:
     {
-      environment.systemPackages = builtins.attrValues {
-        inherit (pkgs)
-          man-pages
-          man-pages-posix
-          ;
-      };
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
+    {
+      environment.systemPackages = lib.mkIf config.documentation.enable (
+        builtins.attrValues {
+          inherit (pkgs)
+            man-pages
+            man-pages-posix
+            ;
+        }
+      );
       documentation = {
         info.enable = true;
         nixos.enable = true;

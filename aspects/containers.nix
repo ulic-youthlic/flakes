@@ -3,13 +3,28 @@
     nixos =
       {
         host,
+        lib,
         ...
       }:
       let
         cfg = host.containers;
       in
       {
-        networking = {
+        # Each container runs one service, managed from the host: it needs no
+        # documentation, no command-not-found and no Nix of its own.
+        options.containers = lib.mkOption {
+          type = lib.types.attrsOf (
+            lib.types.submodule {
+              config.config = {
+                documentation.enable = false;
+                programs.command-not-found.enable = false;
+                nix.enable = false;
+              };
+            }
+          );
+        };
+
+        config.networking = {
           bridges."${cfg.bridgeName}".interfaces = [
           ];
           interfaces."${cfg.bridgeName}" = {

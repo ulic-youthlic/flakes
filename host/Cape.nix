@@ -63,7 +63,6 @@
     };
     aspects.Cape = {
       includes = with den.aspects; [
-        helix
         juicity.server
         openssh
         tailscale
