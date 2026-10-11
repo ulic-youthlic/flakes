@@ -95,6 +95,7 @@
         guix
         nix-ld
         nftables
+        perlless
       ];
       nixos = {
         imports = [

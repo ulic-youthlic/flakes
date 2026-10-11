@@ -16,8 +16,10 @@
         }
       );
       documentation = {
-        info.enable = true;
-        nixos.enable = true;
+        # Defaults, so a host can drop them: they pull perl in through
+        # texinfo and nixos-help's w3m.
+        info.enable = lib.mkDefault true;
+        nixos.enable = lib.mkDefault true;
         dev.enable = true;
         man = {
           enable = true;
