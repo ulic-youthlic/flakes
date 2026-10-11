@@ -39,10 +39,6 @@
           template = "cinny";
           port = 9093;
         };
-        cinny-2 = {
-          template = "cinny";
-          port = 9094;
-        };
         cinny-3 = {
           template = "cinny";
           port = 9095;

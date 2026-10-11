@@ -28,13 +28,6 @@
           path = "/run/secrets/miniflux";
         };
       };
-      matrix-tuwunel = {
-        serverName = "im.youthlic.social";
-        sops = {
-          secret = "matrix-reg-token";
-          path = "/run/secrets/matrix-reg-token";
-        };
-      };
       radicle-seed = {
         publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBbQrJNWcWsFncTX4w/hkhz6zPNwHrTjA+6lnq5dmu/s radicle";
         sops = {
@@ -74,7 +67,6 @@
         caddy.outer-wilds
         caddy.radicle-explorer
         forgejo
-        matrix-tuwunel
         miniflux
         radicle-seed
         rqbit
