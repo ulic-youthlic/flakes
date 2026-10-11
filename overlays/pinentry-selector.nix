@@ -13,22 +13,15 @@
         ];
         text = # bash
           ''
-            if [ -v XDG_SESSION_TYPE ]; then
-              case $XDG_SESSION_TYPE in
-                tty)
-                  pinentry-tty "$@";;
-                *)
-                  pinentry-gnome3 "$@";;
-              esac
-            elif [ -v SSH_CLIENT ] && [ -n "$SSH_CLIENT" ]; then
-              pinentry-tty "$@"
-            elif [ -v WAYLAND_DISPLAY ] && [ -n "$WAYLAND_DISPLAY" ]; then
-              pinentry-gnome3 "$@"
-            elif [ -v DISPLAY ] && [ -n "$DISPLAY" ]; then
-              pinentry-gnome3 "$@"
-            else
-              pinentry-tty "$@"
+            # gpg passes the client's session type to the agent, and SSH
+            # logins are "tty". Prompt in that terminal: gpg-agent has the
+            # desktop's D-Bus, so pinentry-gnome3 would open its dialog on the
+            # desktop instead. pinentry-gnome3 handles every other case,
+            # falling back to curses without D-Bus or a GCR prompter.
+            if [ "''${XDG_SESSION_TYPE-}" = tty ]; then
+              exec pinentry-tty "$@"
             fi
+            exec pinentry-gnome3 "$@"
           '';
       };
     };
