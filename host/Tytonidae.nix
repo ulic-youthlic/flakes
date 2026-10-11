@@ -96,6 +96,7 @@
         nix-ld
         nftables
         perlless
+        flake-registry
       ];
       nixos = {
         imports = [

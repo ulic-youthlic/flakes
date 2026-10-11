@@ -1,4 +1,3 @@
-{ inputs, ... }:
 {
   den.aspects.nix.nixos =
     {
@@ -8,16 +7,6 @@
       ...
     }:
     {
-      environment.etc =
-        with lib;
-        pipe inputs [
-          (mapAttrs' (
-            name: value:
-            lib.nameValuePair "nix/inputs/${name}" {
-              source = value;
-            }
-          ))
-        ];
       environment.systemPackages = with pkgs; [
         deploy-rs
       ];
@@ -30,7 +19,6 @@
           !include ${config.sops.secrets."access-tokens".path}
         '';
         settings = {
-          nix-path = [ "/etc/nix/inputs" ];
           substituters = [
             "https://cache.nixos.org"
             "https://cache.nixos-cuda.org"
@@ -61,27 +49,6 @@
           use-xdg-base-directories = true;
           builders-use-substitutes = true;
         };
-        registry =
-          (
-            with lib;
-            pipe inputs [
-              (filterAttrs (name: _value: name != "nixpkgs"))
-              (mapAttrs (
-                _name: value: {
-                  flake = lib.mkForce {
-                    outPath = value;
-                  };
-                }
-              ))
-            ]
-          )
-          // {
-            p = {
-              flake = {
-                outPath = ../.;
-              };
-            };
-          };
       };
     };
 }
