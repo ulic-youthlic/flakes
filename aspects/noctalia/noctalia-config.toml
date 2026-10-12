@@ -10,14 +10,15 @@ tint_intensity = 0.99999997764825821
 
 [bar.default]
 background_opacity = 0.69999998435378075
-center = ["workspaces"]
+center = ["active-workspace"]
 contact_shadow = true
 end = [
+  "recorder",
   "brightness",
   "output_volume",
   "input_volume",
-  "tray",
   "notifications",
+  "tray",
   "battery",
   "date",
   "session",
@@ -29,11 +30,29 @@ radius_bottom_right = 0
 radius_top_right = 0
 scale = 1.350000012665987
 shadow = false
-start = ["sysmon", "caffeine", "network", "bluetooth", "weather", "wallpaper", "media", "privacy"]
+start = [
+  "cat",
+  "widget",
+  "caffeine",
+  "network",
+  "bluetooth",
+  "weather",
+  "wallpaper",
+  "media",
+  "privacy",
+  "bar",
+  "mail",
+  "toggle",
+]
 thickness = 47
 
 [brightness]
 enable_ddcutil = true
+
+[calendar]
+
+[control_center.calendar]
+show_events_card = false
 
 [desktop_widgets]
 schema_version = 2
@@ -50,6 +69,8 @@ box_width = 184.0
 cx = 154.5
 cy = 115.5
 output = "eDP-1"
+placement_height = 960.0
+placement_width = 1707.0
 rotation = 0.0
 type = "clock"
 
@@ -60,12 +81,34 @@ background_opacity = 1.0
 enabled = true
 
 [hot_corners.top_right]
-action = "launcher"
+action = "none"
+
+[idle]
+behavior_order = ["lock", "screen-off", "lock-and-suspend"]
+
+[idle.behavior.lock]
+action = "lock"
+enabled = true
+timeout = 600.0
+
+[idle.behavior.lock-and-suspend]
+action = "lock_and_suspend"
+enabled = true
+timeout = 900.0
+
+[idle.behavior.screen-off]
+action = "screen_off"
+enabled = true
+timeout = 660.0
 
 [keybinds]
 down = ["Down", "Ctrl+n"]
 up = ["Up", "Ctrl+p"]
 validate = ["Return", "KP_Enter"]
+
+[lockscreen]
+allow_empty_password = true
+blur_intensity = 0.59999998658895493
 
 [lockscreen_widgets]
 enabled = false
@@ -81,8 +124,10 @@ visible = true
 box_height = 196.0
 box_width = 810.0
 cx = 854.0
-cy = 778.0
+cy = 778.00006103515625
 output = "eDP-1"
+placement_height = 960.0
+placement_width = 1707.0
 rotation = 0.0
 type = "login_box"
 
@@ -104,14 +149,41 @@ show_weather = true
 
 [notification]
 background_opacity = 1.0
+border = false
+offset_y = 15
 position = "bottom_right"
 
 [osd]
-background_opacity = 0.9
+background_opacity = 0.90000000000000002
 border = false
 position = "top_center"
 position_vertical = "center_left"
-scale = 0.8
+scale = 0.80000000000000004
+
+[plugin_settings."h-jangra/keyviz"]
+enabled_by_default = false
+max_keys = 7
+timeout_ms = 1000
+
+[plugin_settings."noctalia/screen_recorder"]
+audio_codec = "flac"
+color_range = "full"
+copy_to_clipboard = true
+frame_rate = 170
+replay_duration = 1800
+replay_storage = "disk"
+video_codec = "hevc"
+video_qp = 0
+
+[plugins]
+enabled = [
+  "dotnetrob/cat",
+  "salemsayed/niri-active-workspace",
+  "raycursive/niri-displays",
+  "radimous/prismlauncher-instances",
+  "noctalia/screen_recorder",
+  "mirei124/bangumi-progress",
+]
 
 [shell]
 button_borders = false
@@ -138,13 +210,20 @@ transparency_mode = "glass"
 wallpaper_placement = "floating"
 wallpaper_position = "center"
 
+[shell.screenshot]
+confirm_region = true
+remember_last_region = true
+
 [shell.shadow]
 direction = "down_right"
 
 [theme]
 builtin = "Catppuccin"
 community_palette = "Ayu Blue"
-mode = "light"
+# auto follows the day/night schedule of [location] (set at runtime in
+# settings.toml) and writes color-scheme, which GTK4 follows; GTK3 is switched
+# by the hooks in ./default.nix.
+mode = "auto"
 source = "builtin"
 wallpaper_scheme = "m3-content"
 
@@ -154,6 +233,20 @@ enable_builtin_templates = false
 [wallpaper.automation]
 enabled = true
 
+[widget.active-workspace]
+capsule = true
+capsule_opacity = 0.5
+label_mode = "index"
+type = "salemsayed/niri-active-workspace:active-workspace"
+
+[widget.active-workspace.actions]
+right = "panel-toggle raycursive/niri-displays:panel"
+
+[widget.bar]
+capsule = true
+capsule_opacity = 0.5
+type = "mirei124/bangumi-progress:bar"
+
 [widget.battery]
 hide_when_plugged = true
 show_label = false
@@ -162,8 +255,11 @@ show_label = false
 interactive = true
 show_label = false
 
-[widget.network]
-show_label = false
+[widget.cat]
+type = "dotnetrob/cat:cat"
+
+[widget.cat.actions]
+left = "panel-toggle tordex/nvtop:panel gpu"
 
 [widget.date]
 scale = 0.75
@@ -172,9 +268,15 @@ vertical_format = "{:%H\\n%M\\n-\\n%m\\n%d}"
 [widget.input_volume]
 show_label = false
 
+[widget.mail]
+type = "mdj2812/thunderbird-companion:mail"
+
 [widget.media]
 hide_when_no_media = true
 title_scroll = "on_hover"
+
+[widget.network]
+show_label = false
 
 [widget.output_volume]
 show_label = false
@@ -182,8 +284,14 @@ show_label = false
 [widget.privacy]
 hide_inactive = true
 
+[widget.recorder]
+type = "noctalia/screen_recorder:recorder"
+
 [widget.sysmon]
 show_value = false
+
+[widget.toggle]
+type = "0lucasmatheus/awwwall:toggle"
 
 [widget.tray]
 drawer = true
@@ -191,6 +299,9 @@ pinned = ["Fcitx"]
 
 [widget.weather]
 show_temperature = false
+
+[widget.widget]
+type = "h-jangra/keyviz:widget"
 
 [widget.workspaces]
 hide_when_empty = true
