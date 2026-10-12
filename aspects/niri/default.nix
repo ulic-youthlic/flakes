@@ -36,6 +36,7 @@
       includes = with den.aspects; [
         kanshi
         noctalia
+        theme-gtk
         ghostty
         zen-browser
         helium
