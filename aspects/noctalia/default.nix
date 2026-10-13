@@ -1,7 +1,6 @@
 { den, inputs, ... }:
 {
   den.aspects.noctalia = {
-    # The wallpaper directory noctalia shows comes from wallpaper.
     includes = [ den.aspects.wallpaper ];
     homeManager =
       {
@@ -11,17 +10,6 @@
         ...
       }:
       let
-        # Noctalia resolves `auto` against its day/night schedule and writes
-        # org.gnome.desktop.interface color-scheme itself, which GTK4/libadwaita
-        # follow. GTK3 has no color-scheme support at all (the key is absent from
-        # GTK3's Wayland translation table), so its variant has to be selected by
-        # theme *name* — that is the one thing this script exists to do.
-        #
-        # theme_mode_changed supplies NOCTALIA_THEME_MODE. `started` has no mode in
-        # the environment (and the first resolve at login does not fire
-        # theme_mode_changed), so ask the shell over IPC, which is up before
-        # startup hooks run. Noctalia writes color-scheme with an async `dconf
-        # write`, so that key is only a fallback in case IPC times out.
         gtkThemeSync = pkgs.writeShellApplication {
           name = "noctalia-gtk-theme-sync";
           runtimeInputs = [
@@ -50,10 +38,6 @@
 
             dconf write /org/gnome/desktop/interface/gtk-theme "'$theme'"
 
-            # X11 GTK apps read XSETTINGS, not dconf, so they need the same theme
-            # name written to the XSETTINGS property. xwayland-satellite owns the
-            # selection (for DPI); the helper rewrites that property in place and
-            # preserves the satellite's keys. No-op when no X display exists.
             if [ -n "''${DISPLAY:-}" ]; then
               xsettings-theme --theme "$theme" || true
             fi
