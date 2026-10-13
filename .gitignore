@@ -8,3 +8,6 @@ result-*
 
 # Ignore automatically generated direnv output
 .direnv
+
+# Ignore Rust build output from `cargo build` / clippy / rust-analyzer
+target

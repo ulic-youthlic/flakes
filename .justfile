@@ -64,6 +64,31 @@ go-lock:
     go mod tidy
     gomod2nix
 
+# Format all crates in the workspace.
+[group('rust')]
+rust-fmt:
+    cargo fmt --all
+
+# Lint every crate with clippy, denying warnings.
+[group('rust')]
+rust-lint:
+    cargo clippy --workspace --all-targets -- -D warnings
+
+# Check every crate in the workspace.
+[group('rust')]
+rust-check:
+    cargo check --workspace --all-targets
+
+# Run the workspace test suite.
+[group('rust')]
+rust-test:
+    cargo test --workspace
+
+# Resolve dependencies and regenerate the root Cargo.lock.
+[group('rust')]
+rust-lock:
+    cargo generate-lockfile
+
 # Build a local NixOS specialisation without activating it.
 [group('system')]
 build specialisation=DEFAULT_SPECIALISATION:

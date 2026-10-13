@@ -1,0 +1,14 @@
+# Rust workspace root, mirroring the Go side: go.mod + gomod2nix.toml at the
+# repo root, with sources under go-modules/<name>/. Here the lock is Cargo.lock
+# and the sources live under crates/<name>/.
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+
+[profile.release]
+lto = true
+strip = true

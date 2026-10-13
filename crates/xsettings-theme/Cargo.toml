@@ -1,0 +1,15 @@
+[package]
+name = "xsettings-theme"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+# Error handling.
+snafu = "0.9"
+# Argument parsing. A clap-compatible derive API, so switching costs only the
+# `use` line. Alpha, but chosen deliberately.
+palc = "0.0.2"
+# No "allow-unsafe-code" feature: that pulls in as-raw-xcb-connection, which
+# links libxcb. RustConnection speaks the X protocol over the socket itself, so
+# the binary has no C dependency at all.
+x11rb = { version = "0.14", default-features = false }
