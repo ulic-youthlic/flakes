@@ -24,9 +24,17 @@ fi
 
 if [ "$mode" = light ]; then
   theme=adw-gtk3
+  scheme=prefer-light
 else
   theme=adw-gtk3-dark
+  scheme=prefer-dark
 fi
+
+# color-scheme is what libadwaita apps follow (through the desktop portal), and
+# Noctalia only writes it from its built-in template pipeline, which is disabled
+# here because those templates also inject Noctalia's own CSS into GTK apps.
+# Writing it from this hook keeps the key in step with the mode without that.
+dconf write /org/gnome/desktop/interface/color-scheme "'$scheme'"
 
 # gtk-theme is what GTK3 apps follow. GTK3 has no color-scheme concept at all, so
 # its light/dark variant can only be selected by theme name.
