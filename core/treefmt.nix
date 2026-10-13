@@ -4,6 +4,8 @@
   perSystem = { lib, ... }: {
     treefmt.programs = {
       goimports.enable = true;
+      # Finds scripts/*.sh by extension, plus .envrc.
+      shfmt.enable = true;
       nixfmt = {
         enable = true;
         excludes = [ "_sources/*.nix" ];

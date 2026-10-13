@@ -89,6 +89,16 @@ rust-test:
 rust-lock:
     cargo generate-lockfile
 
+# Format every script under ./scripts.
+[group('bash')]
+bash-fmt:
+    shfmt -s -i 2 -w scripts
+
+# Shellcheck every script under ./scripts.
+[group('bash')]
+bash-lint:
+    shellcheck -s bash scripts/*.sh
+
 # Build a local NixOS specialisation without activating it.
 [group('system')]
 build specialisation=DEFAULT_SPECIALISATION:

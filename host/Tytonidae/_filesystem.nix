@@ -68,50 +68,8 @@ in
 
   environment.systemPackages = [
     pkgs.e2fsprogs
-    (pkgs.writeShellApplication {
-      name = "btrbk-backup";
-      runtimeInputs = with pkgs; [
-        btrbk
-        btrfs-progs
-        cryptsetup
-        util-linux
-        systemd
-      ];
-      text = ''
-        if [ "$(id -u)" -ne 0 ]; then
-          echo "run as root: sudo btrbk-backup [--scrub]" >&2
-          exit 1
-        fi
-        dev=/dev/disk/by-partlabel/${backupPartLabel}
-        if [ ! -e "$dev" ]; then
-          echo "backup disk ($dev) is not plugged in" >&2
-          exit 1
-        fi
-
-        opened=0
-        mounted=0
-        cleanup() {
-          if [ "$mounted" = 1 ]; then umount ${backupMountPoint}; fi
-          if [ "$opened" = 1 ]; then cryptsetup close ${backupMapperName}; fi
-        }
-        trap cleanup EXIT
-
-        if [ ! -e /dev/mapper/${backupMapperName} ]; then
-          # FIDO2 token (CanoKey) if enrolled, falls back to the passphrase after 10s
-          systemd-cryptsetup attach ${backupMapperName} "$dev" - fido2-device=auto,token-timeout=10
-          opened=1
-        fi
-        if ! mountpoint -q ${backupMountPoint}; then
-          mount -o noatime,compress=zstd /dev/mapper/${backupMapperName} ${backupMountPoint}
-          mounted=1
-        fi
-
-        btrbk -c /etc/btrbk/btrbk.conf run --progress
-        if [ "''${1:-}" = "--scrub" ]; then
-          btrfs scrub start -B ${backupMountPoint}
-        fi
-        sync
-      '';
+    (pkgs.btrbk-backup.override {
+      inherit backupPartLabel backupMapperName backupMountPoint;
     })
   ];
 }
