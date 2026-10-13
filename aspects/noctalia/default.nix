@@ -26,6 +26,7 @@
           name = "noctalia-gtk-theme-sync";
           runtimeInputs = [
             pkgs.dconf
+            pkgs.xsettings-theme
             config.programs.noctalia.package
           ];
           text = ''
@@ -48,6 +49,14 @@
             fi
 
             dconf write /org/gnome/desktop/interface/gtk-theme "'$theme'"
+
+            # X11 GTK apps read XSETTINGS, not dconf, so they need the same theme
+            # name written to the XSETTINGS property. xwayland-satellite owns the
+            # selection (for DPI); the helper rewrites that property in place and
+            # preserves the satellite's keys. No-op when no X display exists.
+            if [ -n "''${DISPLAY:-}" ]; then
+              xsettings-theme --theme "$theme" || true
+            fi
           '';
         };
       in

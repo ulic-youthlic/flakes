@@ -28,6 +28,11 @@
         enable = true;
         flavor = "latte";
         qt5ct.enable = true;
+
+        # Would otherwise default on with catppuccin.enable and inject
+        # Papirus-Light into GTK apps, which conflicts with the plain Adwaita
+        # icons set by ./theme-gtk via gtk.enable.
+        gtk.icon.enable = false;
       };
     };
   };
