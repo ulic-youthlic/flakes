@@ -74,20 +74,10 @@ rust-fmt:
 rust-lint:
     cargo clippy --workspace --all-targets -- -D warnings
 
-# Check every crate in the workspace.
-[group('rust')]
-rust-check:
-    cargo check --workspace --all-targets
-
 # Run the workspace test suite.
 [group('rust')]
 rust-test:
     cargo test --workspace
-
-# Resolve dependencies and regenerate the root Cargo.lock.
-[group('rust')]
-rust-lock:
-    cargo generate-lockfile
 
 # Format every script under ./scripts.
 [group('bash')]
