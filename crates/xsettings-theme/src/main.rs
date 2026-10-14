@@ -8,24 +8,69 @@
 //! Existing entries are preserved on purpose: GTK deletes any setting that
 //! disappears from the blob, so dropping the satellite's DPI keys would break
 //! HiDPI scaling on X11.
+//!
+//! # References
+//!
+//! - [XSETTINGS specification][spec] — Owen Taylor's spec, v0.5. The
+//!   [`_XSETTINGS_SETTINGS` format][fmt] section is the authority for the blob
+//!   parsed here; the [manager behavior][mgr] section covers owning the
+//!   selection and bumping the serial.
+//! - [X Window System Protocol][xproto] — the core protocol. The requests used
+//!   here are `InternAtom`, `GetSelectionOwner`, `GetProperty` and
+//!   `ChangeProperty` (see section 9, Requests).
+//! - [x11rb documentation][x11rb] — the client library, in particular the
+//!   [cookie module][cookie] for how a request becomes a reply.
+//! - [xsettingsd][xsettingsd] — a standalone C++ XSETTINGS manager, useful as a
+//!   reference implementation and for its `dump_xsettings` tool.
+//!
+//! [spec]: https://dueno.pages.freedesktop.org/xdg-specs/xsettings-spec/latest/
+//! [fmt]: https://dueno.pages.freedesktop.org/xdg-specs/xsettings-spec/latest/ar01s04.html
+//! [mgr]: https://dueno.pages.freedesktop.org/xdg-specs/xsettings-spec/latest/ar01s05.html
+//! [xproto]: https://xorg.freedesktop.org/archive/current/doc/xproto/x11protocol.html
+//! [x11rb]: https://docs.rs/x11rb/0.14.0/x11rb/
+//! [cookie]: https://docs.rs/x11rb/0.14.0/x11rb/cookie/index.html
+//! [xsettingsd]: https://codeberg.org/derat/xsettingsd
 
 use palc::Parser;
 use snafu::{ResultExt, Snafu};
-use x11rb::connection::Connection;
 use x11rb::protocol::xproto::{AtomEnum, ConnectionExt as _, PropMode};
 use x11rb::rust_connection::RustConnection;
 use x11rb::wrapper::ConnectionExt as _;
 
-/// Keys this helper owns. Any existing entry with one of these names is replaced.
-const MANAGED: [&str; 4] = [
-    "Net/ThemeName",
-    "Net/IconThemeName",
-    "Gtk/CursorThemeName",
-    "Gtk/FontName",
-];
+/// The kind of a value, as it appears in the first byte of an entry.
+///
+/// Only the kinds this helper round-trips are listed. XSETTINGS also defines a
+/// COLOR kind (2), which is refused at parse time rather than modelled: writing
+/// one we cannot decode would corrupt the blob for every client reading it.
+///
+/// `repr(u8)`, so the discriminant *is* the wire byte.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[repr(u8)]
+enum Kind {
+    /// A signed 32-bit integer.
+    Integer = 0,
+    /// A UTF-8 string.
+    Text = 1,
+}
 
-const KIND_INTEGER: u8 = 0;
-const KIND_STRING: u8 = 1;
+impl TryFrom<u8> for Kind {
+    type Error = Error;
+
+    /// Everything outside the supported set is a blob we should not touch.
+    fn try_from(byte: u8) -> Result<Self> {
+        match byte {
+            0 => Ok(Self::Integer),
+            1 => Ok(Self::Text),
+            _ => Err(Error::MalformedProperty),
+        }
+    }
+}
+
+impl From<Kind> for u8 {
+    fn from(kind: Kind) -> Self {
+        kind as u8
+    }
+}
 
 /// Write light/dark theme keys into the XSETTINGS property.
 #[derive(Debug, Parser)]
@@ -46,6 +91,21 @@ struct Cli {
     /// Font name, as `Family Size`
     #[arg(long, default_value = "Adwaita Sans 11")]
     font: String,
+}
+
+impl Cli {
+    /// The keys this helper owns, each paired with the value to advertise.
+    ///
+    /// Any entry under one of these names is replaced; every other name in the
+    /// blob is left alone.
+    fn keys(&self) -> [(&'static str, &str); 4] {
+        [
+            ("Net/ThemeName", &self.theme),
+            ("Net/IconThemeName", &self.icon_theme),
+            ("Gtk/CursorThemeName", &self.cursor_theme),
+            ("Gtk/FontName", &self.font),
+        ]
+    }
 }
 
 #[derive(Debug, Snafu)]
@@ -72,132 +132,356 @@ enum Error {
 
     #[snafu(display("the existing XSETTINGS property is malformed"))]
     MalformedProperty,
-
-    #[snafu(display("flushing the X connection failed"))]
-    Flush {
-        source: x11rb::errors::ConnectionError,
-    },
 }
 
 type Result<T, E = Error> = std::result::Result<T, E>;
 
+/// The byte order the integers of a blob are written in: header byte 0 is 0 for
+/// little-endian, 1 for big-endian.
+///
+/// Held as a value rather than the raw `bool` this used to thread through as
+/// `le`, so the decode and encode sides read as a matched pair.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum ByteOrder {
+    Little,
+    Big,
+}
+
+impl ByteOrder {
+    fn from_flag(flag: u8) -> Self {
+        if flag == 0 {
+            Self::Little
+        } else {
+            Self::Big
+        }
+    }
+
+    fn flag(self) -> u8 {
+        match self {
+            Self::Little => 0,
+            Self::Big => 1,
+        }
+    }
+
+    fn decode_u16(self, bytes: [u8; 2]) -> u16 {
+        match self {
+            Self::Little => u16::from_le_bytes(bytes),
+            Self::Big => u16::from_be_bytes(bytes),
+        }
+    }
+
+    fn decode_u32(self, bytes: [u8; 4]) -> u32 {
+        match self {
+            Self::Little => u32::from_le_bytes(bytes),
+            Self::Big => u32::from_be_bytes(bytes),
+        }
+    }
+
+    fn encode_u16(self, value: u16) -> [u8; 2] {
+        match self {
+            Self::Little => value.to_le_bytes(),
+            Self::Big => value.to_be_bytes(),
+        }
+    }
+
+    fn encode_u32(self, value: u32) -> [u8; 4] {
+        match self {
+            Self::Little => value.to_le_bytes(),
+            Self::Big => value.to_be_bytes(),
+        }
+    }
+}
+
+/// A front-to-back cursor over a property blob.
+///
+/// Every read consumes the bytes it returns, so the position is whatever is
+/// left of the slice: there is no offset to keep in step with the reads by
+/// hand, and reading past the end is an error rather than a panic.
+struct Reader<'a> {
+    rest: &'a [u8],
+}
+
+impl<'a> Reader<'a> {
+    fn new(blob: &'a [u8]) -> Self {
+        Self { rest: blob }
+    }
+
+    /// Consume `len` bytes.
+    fn take(&mut self, len: usize) -> Result<&'a [u8]> {
+        let rest: &'a [u8] = self.rest;
+        let (head, tail) = rest.split_at_checked(len).ok_or(Error::MalformedProperty)?;
+        self.rest = tail;
+        Ok(head)
+    }
+
+    /// Consume `N` bytes as a fixed-size array.
+    fn array<const N: usize>(&mut self) -> Result<[u8; N]> {
+        let rest: &'a [u8] = self.rest;
+        let (head, tail) = rest
+            .split_first_chunk::<N>()
+            .ok_or(Error::MalformedProperty)?;
+        self.rest = tail;
+        Ok(*head)
+    }
+
+    fn u8(&mut self) -> Result<u8> {
+        Ok(self.array::<1>()?[0])
+    }
+
+    fn u16(&mut self, order: ByteOrder) -> Result<u16> {
+        Ok(order.decode_u16(self.array()?))
+    }
+
+    fn u32(&mut self, order: ByteOrder) -> Result<u32> {
+        Ok(order.decode_u32(self.array()?))
+    }
+
+    /// Consume `len` bytes and drop them — the padding to the next four-byte
+    /// boundary.
+    fn skip(&mut self, len: usize) -> Result<()> {
+        self.take(len).map(drop)
+    }
+
+    /// Consume a UTF-8 string of `len` bytes plus the padding after it.
+    ///
+    /// Names and text values are borrowed verbatim from other clients, so this
+    /// rejects anything that is not UTF-8 rather than replacing the bad bytes:
+    /// a replacement character would change the length the string is written
+    /// back out with, shifting every entry that follows it.
+    fn text(&mut self, len: usize) -> Result<String> {
+        let bytes = self.take(len)?;
+        self.skip(pad4(len))?;
+        str::from_utf8(bytes)
+            .map(str::to_owned)
+            .map_err(|_| Error::MalformedProperty)
+    }
+}
+
+/// One key of the property: a name and the value under it.
+///
+/// One entry, as it sits in the blob:
+///
+/// ```text
+///  0        1        2         4                4+n      +4         +8
+/// +--------+--------+---------+================+--------+----------+========
+/// |  kind  | unused | n       |  name (n bytes)| padding|  serial  |  value
+/// |   u8   |   u8   |  u16    |  utf8          | pad4(n)|   u32    |   ...
+/// +--------+--------+---------+================+--------+----------+========
+///                                                          (per-entry
+///                                                           change serial)
+/// ```
+///
+/// `kind` is the leading byte of the value's own layout (see [`Value`]), and
+/// `n` is a `u16` — so a name is capped at 65535 bytes. Both the name and the
+/// value are padded so the next field starts on a 4-byte boundary.
+#[derive(Debug)]
 struct Entry {
     name: String,
-    kind: u8,
-    /// Raw value bytes: 4 bytes for an integer, the payload for a string.
-    value: Vec<u8>,
+    value: Value,
 }
 
-#[inline]
-fn pad4(n: usize) -> usize {
-    (4 - (n % 4)) % 4
-}
+impl Entry {
+    /// Consume one entry: `[kind, unused][u16 name length][name][padding]
+    /// [change serial][value]`.
+    fn read(reader: &mut Reader<'_>, order: ByteOrder) -> Result<Self> {
+        let kind = Kind::try_from(reader.u8()?)?;
+        reader.skip(1)?; // unused
 
-#[inline]
-fn rd32(b: &[u8], off: usize, le: bool) -> u32 {
-    let s = [b[off], b[off + 1], b[off + 2], b[off + 3]];
-    if le {
-        u32::from_le_bytes(s)
-    } else {
-        u32::from_be_bytes(s)
+        let name_len = reader.u16(order)? as usize;
+        let name = reader.text(name_len)?;
+
+        // Per-entry change serial. GTK ignores it, and everything we write out
+        // carries the blob's serial, so there is nothing to keep here.
+        reader.u32(order)?;
+
+        Ok(Self {
+            name,
+            value: Value::read(reader, order, kind)?,
+        })
     }
-}
 
-/// Parse a `_XSETTINGS_SETTINGS` blob into its serial and entries.
-fn parse(b: &[u8]) -> Result<(u32, Vec<Entry>)> {
-    if b.len() < 12 {
-        return MalformedPropertySnafu.fail();
-    }
-    let le = b[0] == 0;
-    let serial = rd32(b, 4, le);
-    let count = rd32(b, 8, le);
-    let mut pos = 12usize;
-    let mut out = Vec::new();
+    /// Append this entry to `out`.
+    fn write(&self, out: &mut Vec<u8>, order: ByteOrder, serial: u32) {
+        out.push(self.value.kind().into());
+        out.push(0); // unused
+        out.extend_from_slice(&order.encode_u16(self.name.len() as u16));
+        out.extend_from_slice(self.name.as_bytes());
+        out.resize(out.len() + pad4(self.name.len()), 0);
+        out.extend_from_slice(&order.encode_u32(serial));
 
-    for _ in 0..count {
-        if pos + 4 > b.len() {
-            return MalformedPropertySnafu.fail();
-        }
-        let kind = b[pos];
-        let nlen = u16::from_le_bytes([b[pos + 2], b[pos + 3]]) as usize;
-        pos += 4;
-
-        if pos + nlen > b.len() {
-            return MalformedPropertySnafu.fail();
-        }
-        let name = String::from_utf8_lossy(&b[pos..pos + nlen]).into_owned();
-        pos += nlen + pad4(nlen);
-
-        if pos + 4 > b.len() {
-            return MalformedPropertySnafu.fail();
-        }
-        pos += 4; // per-entry change serial; GTK ignores it
-
-        let value = match kind {
-            KIND_INTEGER => {
-                if pos + 4 > b.len() {
-                    return MalformedPropertySnafu.fail();
-                }
-                let v = b[pos..pos + 4].to_vec();
-                pos += 4;
-                v
+        match &self.value {
+            Value::Integer(value) => out.extend_from_slice(&order.encode_u32(*value as u32)),
+            Value::Text(text) => {
+                out.extend_from_slice(&order.encode_u32(text.len() as u32));
+                out.extend_from_slice(text.as_bytes());
+                out.resize(out.len() + pad4(text.len()), 0);
             }
-            KIND_STRING => {
-                if pos + 4 > b.len() {
-                    return MalformedPropertySnafu.fail();
-                }
-                let sl = rd32(b, pos, le) as usize;
-                pos += 4;
-                if pos + sl > b.len() {
-                    return MalformedPropertySnafu.fail();
-                }
-                let v = b[pos..pos + sl].to_vec();
-                pos += sl + pad4(sl);
-                v
-            }
-            // COLOR and anything unknown: refuse rather than corrupt the blob.
-            _ => return MalformedPropertySnafu.fail(),
-        };
-
-        out.push(Entry { name, kind, value });
+        }
     }
-
-    Ok((serial, out))
 }
 
-/// Serialize entries back into a blob, little-endian.
-fn emit(serial: u32, entries: &[Entry]) -> Vec<u8> {
-    let mut o = Vec::new();
-    o.extend_from_slice(&[0, 0, 0, 0]); // LSBFirst + 3 unused bytes
-    o.extend_from_slice(&serial.to_le_bytes());
-    o.extend_from_slice(&(entries.len() as u32).to_le_bytes());
+/// The value under a key.
+///
+/// The payload following [`Entry`]'s header, chosen by the entry's `kind`
+/// byte. The two variants are laid out differently on the wire — one is a
+/// fixed 4 bytes, the other is length-prefixed and padded:
+///
+/// ```text
+/// kind 0 — Integer
+/// +------------------+
+/// |      i32  (4)    |          raw 32-bit value, no padding
+/// +------------------+
+///
+/// kind 1 — Text
+///  0              4                4+m      +4
+/// +---------------+================+--------+
+/// |   m  (u32)    |  utf8 (m bytes)| padding|
+/// +---------------+================+--------+
+///   length prefix                   pad4(m)
+/// ```
+///
+/// `Integer` carries a signed `i32` written as four raw bytes, so a negative
+/// value is the two's-complement pattern rather than a sign-and-magnitude one.
+/// `Text` is a `u32` length — unlike `Entry`'s `u16` name length — followed by
+/// the bytes and the same 4-byte alignment.
+///
+/// `kind` itself belongs to the entry, not here: it is the first byte of
+/// `Entry`'s header, which is why `read` takes it as an argument rather than
+/// reading it off this type.
+#[derive(Debug)]
+enum Value {
+    Integer(i32),
+    Text(String),
+}
 
-    for e in entries {
-        o.push(e.kind);
-        o.push(0);
-        o.extend_from_slice(&(e.name.len() as u16).to_le_bytes());
-        o.extend_from_slice(e.name.as_bytes());
-        o.resize(o.len() + pad4(e.name.len()), 0);
-        o.extend_from_slice(&serial.to_le_bytes());
-
-        if e.kind == KIND_STRING {
-            o.extend_from_slice(&(e.value.len() as u32).to_le_bytes());
-            o.extend_from_slice(&e.value);
-            o.resize(o.len() + pad4(e.value.len()), 0);
-        } else {
-            o.extend_from_slice(&e.value);
+impl Value {
+    /// Read the payload for an already-decoded `kind`.
+    ///
+    /// The match is exhaustive on purpose: a kind added to `Kind` fails to
+    /// compile here rather than falling into a `_` arm.
+    fn read(reader: &mut Reader<'_>, order: ByteOrder, kind: Kind) -> Result<Self> {
+        match kind {
+            Kind::Integer => Ok(Self::Integer(reader.u32(order)? as i32)),
+            Kind::Text => {
+                let len = reader.u32(order)? as usize;
+                Ok(Self::Text(reader.text(len)?))
+            }
         }
     }
 
-    o
+    /// The kind byte this value goes out with.
+    fn kind(&self) -> Kind {
+        match self {
+            Self::Integer(_) => Kind::Integer,
+            Self::Text(_) => Kind::Text,
+        }
+    }
 }
 
-fn str_entry(name: &str, value: &str) -> Entry {
-    Entry {
-        name: name.to_string(),
-        kind: KIND_STRING,
-        value: value.as_bytes().to_vec(),
+impl From<&str> for Value {
+    fn from(text: &str) -> Self {
+        Self::Text(text.to_string())
     }
+}
+
+/// The `_XSETTINGS_SETTINGS` property, whole.
+///
+/// Clients retheme when the serial moves, and they drop any setting missing
+/// from the blob, so this type round-trips everything it did not set itself.
+///
+/// The blob it reads and writes:
+///
+/// ```text
+///  0      1            4              8                12
+/// +------+------------+--------------+----------------+=========
+/// | byte |  unused    | serial (u32) |  count (u32)   | entries
+/// | order|   3 bytes  |              |                |  x count
+/// +------+------------+--------------+----------------+=========
+///    0 = LSBFirst                        number of entries
+///    1 = MSBFirst                        that follow
+/// ```
+///
+/// Every integer in the blob — the serial, the count, and each length and
+/// value below — is written in the byte order this leading byte selects, so
+/// the `ByteOrder` read from offset 0 governs the rest of the parse. The
+/// serial is bumped on every write; clients treat a change as "re-read me".
+#[derive(Debug)]
+struct XSettings {
+    order: ByteOrder,
+    serial: u32,
+    entries: Vec<Entry>,
+}
+
+impl XSettings {
+    /// The property of an owner that has not published one yet: serial 1, so
+    /// the first write is serial 2.
+    fn empty() -> Self {
+        Self {
+            order: ByteOrder::Little,
+            serial: 1,
+            entries: Vec::new(),
+        }
+    }
+
+    /// Parse a blob, leaving it be if anything in it is malformed.
+    fn parse(blob: &[u8]) -> Result<Self> {
+        let mut reader = Reader::new(blob);
+        let order = ByteOrder::from_flag(reader.u8()?);
+        reader.skip(3)?; // unused
+        let serial = reader.u32(order)?;
+        let count = reader.u32(order)?;
+
+        let entries = (0..count)
+            .map(|_| Entry::read(&mut reader, order))
+            .collect::<Result<Vec<_>>>()?;
+
+        Ok(Self {
+            order,
+            serial,
+            entries,
+        })
+    }
+
+    /// Render back into a property blob.
+    fn blob(&self) -> Vec<u8> {
+        let mut out = Vec::new();
+        out.push(self.order.flag());
+        out.extend_from_slice(&[0; 3]); // unused
+        out.extend_from_slice(&self.order.encode_u32(self.serial));
+        out.extend_from_slice(&self.order.encode_u32(self.entries.len() as u32));
+
+        for entry in &self.entries {
+            entry.write(&mut out, self.order, self.serial);
+        }
+        out
+    }
+
+    /// Replace `name` where it stands, or append it if it is new.
+    ///
+    /// Replacing in place leaves the blob in the order its owner published,
+    /// rather than reshuffling it with our keys at the end.
+    fn set(&mut self, name: &str, value: impl Into<Value>) {
+        let value = value.into();
+        match self.entries.iter_mut().find(|entry| entry.name == name) {
+            Some(entry) => entry.value = value,
+            None => self.entries.push(Entry {
+                name: name.to_string(),
+                value,
+            }),
+        }
+    }
+
+    /// Advance the serial. Clients act on a change, so never write 0.
+    fn bump(&mut self) -> u32 {
+        self.serial = self.serial.wrapping_add(1).max(1);
+        self.serial
+    }
+}
+
+/// Zero bytes needed to round a field of `len` bytes up to four.
+#[inline]
+fn pad4(len: usize) -> usize {
+    len.next_multiple_of(4) - len
 }
 
 fn atom(conn: &RustConnection, name: &'static str) -> Result<u32> {
@@ -216,11 +500,11 @@ fn atom(conn: &RustConnection, name: &'static str) -> Result<u32> {
 fn run(cli: &Cli) -> Result<()> {
     let (conn, _screen_num) = x11rb::connect(None).context(ConnectSnafu)?;
 
-    let sel = atom(&conn, "_XSETTINGS_S0")?;
-    let prop = atom(&conn, "_XSETTINGS_SETTINGS")?;
+    let selection = atom(&conn, "_XSETTINGS_S0")?;
+    let property = atom(&conn, "_XSETTINGS_SETTINGS")?;
 
-    let win = conn
-        .get_selection_owner(sel)
+    let owner = conn
+        .get_selection_owner(selection)
         .context(SendRequestSnafu {
             request: "get_selection_owner",
         })?
@@ -230,13 +514,14 @@ fn run(cli: &Cli) -> Result<()> {
         })?
         .owner;
 
-    if win == x11rb::NONE {
+    if owner == x11rb::NONE {
         return NoOwnerSnafu.fail();
     }
 
-    // Pull the current blob so existing keys (DPI, scale) survive our write.
+    // Start from the published blob so the keys we do not own (the satellite's
+    // DPI and scaling entries) survive our write.
     let reply = conn
-        .get_property(false, win, prop, AtomEnum::ANY, 0, 1 << 20)
+        .get_property(false, owner, property, AtomEnum::ANY, 0, 1 << 20)
         .context(SendRequestSnafu {
             request: "get_property",
         })?
@@ -245,34 +530,35 @@ fn run(cli: &Cli) -> Result<()> {
             request: "get_property",
         })?;
 
-    let (serial, mut entries) = if reply.value.is_empty() {
-        (1, Vec::new())
+    let mut settings = if reply.value.is_empty() {
+        XSettings::empty()
     } else {
-        parse(&reply.value)?
+        XSettings::parse(&reply.value)?
     };
 
-    entries.retain(|e| !MANAGED.contains(&e.name.as_str()));
-    entries.push(str_entry("Net/ThemeName", &cli.theme));
-    entries.push(str_entry("Net/IconThemeName", &cli.icon_theme));
-    entries.push(str_entry("Gtk/CursorThemeName", &cli.cursor_theme));
-    entries.push(str_entry("Gtk/FontName", &cli.font));
+    for (name, value) in cli.keys() {
+        settings.set(name, value);
+    }
+    let serial = settings.bump();
 
-    let next_serial = serial.wrapping_add(1).max(1);
-    let blob = emit(next_serial, &entries);
-
-    conn.change_property8(PropMode::REPLACE, win, prop, prop, &blob)
-        .context(SendRequestSnafu {
-            request: "change_property8",
-        })?
-        .check()
-        .context(ReplySnafu {
-            request: "change_property8",
-        })?;
-    conn.flush().context(FlushSnafu)?;
+    conn.change_property8(
+        PropMode::REPLACE,
+        owner,
+        property,
+        property,
+        &settings.blob(),
+    )
+    .context(SendRequestSnafu {
+        request: "change_property8",
+    })?
+    .check()
+    .context(ReplySnafu {
+        request: "change_property8",
+    })?;
 
     println!(
-        "xsettings-theme: serial={next_serial} entries={} theme={}",
-        entries.len(),
+        "xsettings-theme: serial={serial} entries={} theme={}",
+        settings.entries.len(),
         cli.theme
     );
     Ok(())
