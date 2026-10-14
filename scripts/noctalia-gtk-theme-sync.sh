@@ -30,15 +30,15 @@ else
   scheme=prefer-dark
 fi
 
+# gtk-theme is what GTK3 apps follow. GTK3 has no color-scheme concept at all, so
+# its light/dark variant can only be selected by theme name.
+dconf write /org/gnome/desktop/interface/gtk-theme "'$theme'"
+
 # color-scheme is what libadwaita apps follow (through the desktop portal), and
 # Noctalia only writes it from its built-in template pipeline, which is disabled
 # here because those templates also inject Noctalia's own CSS into GTK apps.
 # Writing it from this hook keeps the key in step with the mode without that.
 dconf write /org/gnome/desktop/interface/color-scheme "'$scheme'"
-
-# gtk-theme is what GTK3 apps follow. GTK3 has no color-scheme concept at all, so
-# its light/dark variant can only be selected by theme name.
-dconf write /org/gnome/desktop/interface/gtk-theme "'$theme'"
 
 # X11 GTK apps read XSETTINGS, not dconf, so they need the same theme name written
 # to the XSETTINGS property. xwayland-satellite owns the selection (for DPI); the
